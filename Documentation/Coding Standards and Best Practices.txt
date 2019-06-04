@@ -1,0 +1,100 @@
+Coding Standards and Best Practices
+
+Agreeing Members:
+Person McPerson 
+Person O’Person 
+Person VonPerson
+
+Purpose
+
+To develop reliable and maintainable applications, you must follow coding standards and best practices.
+
+The naming conventions, coding standards and best practices described in this document are compiled from our own experience
+
+All team members are always expected to follow the coding standards and best practices.
+
+
+Commenting standards
+
+	File header expectation
+	
+		Example:
+
+	Method heading expectation
+	
+		Example:
+
+	Code block expectation
+	
+		Example:
+
+
+Naming convention
+
+	Meaningful, descriptive words to name variables.
+	Good:
+		string CharacterName;
+		int Row, Column;
+		GameObject SpawnedItem;
+
+	Not Good:
+		string nam;
+		int i,j;
+		GameObject temp;
+
+	Capitalization expectation
+	
+		Example:
+		
+	Standard Prefixing 
+	
+		Example:
+		
+	Abbreviation use 
+	
+		Example:
+		
+
+File Formatting
+
+
+Indentation and Spacing
+
+	Indenting standard
+	
+		Example:
+		
+	Curly braces ( {} ) format
+	
+		Example:
+		
+	Blank line expectation
+	
+		Example:
+		
+	Spacing around operators
+	
+		Example:
+
+	
+Programming practices
+
+	Maximum characters per line
+	
+		Example:
+		
+	Maximum nested conditions 
+	
+		Example:
+		
+	Maximum lines per method
+	
+		Example:
+		
+	#region usage
+	
+		Example:
+		
+	Static values (hardcoded numbers. Const variables, and #defines)
+	
+		Example:

@@ -1,0 +1,11 @@
+** Any time someone on the team imports an asset into the project add the credits for that object here.**
+*At the end of the project the credits on the game will have to contain the source of the assets used in the production of the product and it is way easier to just keep a log of that than re-find the source of the assets later.*
+
+Textures/Materials/Sprites:
+
+Models:
+
+Music:
+
+SFX:
+
