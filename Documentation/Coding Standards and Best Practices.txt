@@ -1,7 +1,7 @@
-Coding Standards and Best Practices
+﻿Coding Standards and Best Practices
 
 Agreeing Members:
-Person McPerson 
+Petra Andraschko
 Person O’Person 
 Person VonPerson
 
