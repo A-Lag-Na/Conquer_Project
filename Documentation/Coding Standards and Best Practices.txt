@@ -19,15 +19,16 @@ Commenting standards
 
 	File header expectation
 	
-		Example:
+		Example: //<Filename>
 
 	Method heading expectation
 	
-		Example:
+		Example: //Explanation of what the method does
+			 //What the parameters of the function are
 
 	Code block expectation
 	
-		Example:
+		Example: //Explanation of what the code block is supposed to do
 
 
 Naming convention
@@ -45,15 +46,17 @@ Naming convention
 
 	Capitalization expectation
 	
-		Example:
+		Example: Pascal Casing for functions, Camel Casing for variables
+			void ReadName(), int weaponDamage
 		
 	Standard Prefixing 
 	
-		Example:
+		Example: For parameter variables use underscore
+			void ReadName(string _name)
 		
 	Abbreviation use 
 	
-		Example:
+		Example: Allowed if variable is discernable
 		
 
 File Formatting
@@ -63,39 +66,43 @@ Indentation and Spacing
 
 	Indenting standard
 	
-		Example:
+		Example: crtl K+D will format the document
 		
 	Curly braces ( {} ) format
 	
-		Example:
+		Example: void ReadName()
+			 {
+			   //function 
+			 }
 		
 	Blank line expectation
 	
-		Example:
+		Example: Two new lines between chunks of code
 		
 	Spacing around operators
 	
-		Example:
+		Example: space before and after operator
+			1 + 1
 
 	
 Programming practices
 
 	Maximum characters per line
 	
-		Example:
+		Example: Don't let the characters fill the screen
 		
 	Maximum nested conditions 
 	
-		Example:
+		Example: 3 maximum nested conditions
 		
 	Maximum lines per method
 	
-		Example:
+		Example: As many as needed
 		
 	#region usage
 	
-		Example:
+		Example: not needed
 		
 	Static values (hardcoded numbers. Const variables, and #defines)
 	
-		Example:
+		Example: certain things will be hardcoded
