@@ -116,15 +116,15 @@ PrefabInstance:
       objectReference: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.g
-      value: 0.02821736
+      value: 0.87843144
       objectReference: {fileID: 0}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.b
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.numCapVertices

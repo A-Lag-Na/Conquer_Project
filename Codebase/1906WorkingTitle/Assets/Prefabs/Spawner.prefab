@@ -45,9 +45,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnabled: 0
   enemies:
-  - {fileID: 618301725643849870, guid: 765400cb40b5b474ab690ce6f2a5c8ba, type: 3}
   - {fileID: 2351237706826510883, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
-  doors: []
+  doors:
+  - {fileID: 0}
   points: 5
+  pointsClone: 0
   timer: 1
   spawnedEnemies: []
