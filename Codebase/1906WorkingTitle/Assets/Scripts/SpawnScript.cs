@@ -40,6 +40,17 @@ public class SpawnScript : MonoBehaviour
             StartCoroutine(SpawnEnemy());
     }
 
+    //Get-setters for enabled
+    public bool GetEnabled()
+    {
+        return spawnEnabled;
+    }
+
+    public void SetEnabled(bool _enable)
+    {
+        spawnEnabled = _enable;
+    }
+
     IEnumerator SpawnEnemy()
     {
         //Searches list and removes any null values (dead enemies)
