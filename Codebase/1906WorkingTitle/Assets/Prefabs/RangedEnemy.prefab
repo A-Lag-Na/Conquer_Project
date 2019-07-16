@@ -122,5 +122,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackMin: 120
   attackMax: 120
-  attackTypes: []
+  attackTypes:
+  - Bullet
   attackEnabled: 1
