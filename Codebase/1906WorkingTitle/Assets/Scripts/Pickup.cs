@@ -8,6 +8,11 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] Type type;
     [SerializeField] Player player;
+    
+    private void Update()
+    {
+        transform.Rotate(Vector3.forward * (100.0f * Time.deltaTime));
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -19,7 +24,7 @@ public class Pickup : MonoBehaviour
                     //player.AddToInventory(this);
                     break;
                 case Type.Coin:
-                    player.AddCoins(5);
+                    //player.AddCoins(5);
                     break;
                 case Type.Health:
                     //player.AddHealth(10);
