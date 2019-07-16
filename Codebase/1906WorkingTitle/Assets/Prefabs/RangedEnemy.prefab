@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 1
-  health: 1
+  health: 3
   damage: 1
 --- !u!195 &1336841922
 NavMeshAgent:
