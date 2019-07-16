@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AttackBehavior : MonoBehaviour
+public class EnemyAI : MonoBehaviour
 {
     //Counts frames between attacks
     private int attackTimer;
@@ -47,6 +47,10 @@ public class AttackBehavior : MonoBehaviour
     void Update()
     {
         agent.SetDestination(player.transform.position);
+        if(agent.remainingDistance < agent.stoppingDistance)
+        {
+            agent.transform.LookAt(player.transform);
+        }
 
         if (attackEnabled)
             StartCoroutine(attack());
