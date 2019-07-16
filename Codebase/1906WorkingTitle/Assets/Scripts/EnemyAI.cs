@@ -36,7 +36,11 @@ public class EnemyAI : MonoBehaviour
     IEnumerator attack()
     {
         attackEnabled = false;
-        GameObject clone = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        Quaternion temp = projectile.transform.rotation;
+        temp.x = 0;
+        temp.z = 0;
+        GameObject clone = Instantiate(projectile, transform.position, temp);
+        
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
@@ -58,6 +62,8 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (attackEnabled)
+        {
             StartCoroutine(attack());
+        }
     }
 }
