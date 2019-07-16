@@ -10,7 +10,7 @@ public class StatIncrease : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            //player.GetComponent<Player>().
+            player.GetComponent<Player>().AddHealth(10);
         }
     }
 }

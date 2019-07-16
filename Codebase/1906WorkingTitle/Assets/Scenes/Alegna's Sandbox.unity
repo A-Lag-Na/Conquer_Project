@@ -995,6 +995,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3828636513520417020, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: projectile
@@ -1030,11 +1035,6 @@ PrefabInstance:
         type: 3}
       propertyPath: playerCoins
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3828636513520417020, guid: 037e4b3854aacd74db48b4a91f4e2712,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 3828636513520416995, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -22197,6 +22197,7 @@ GameObject:
   - component: {fileID: 2748947214139335685}
   - component: {fileID: 2748947214139335684}
   - component: {fileID: 2748947214139335680}
+  - component: {fileID: 2748947214139335686}
   m_Layer: 0
   m_Name: Room 9
   m_TagString: Room
@@ -22234,6 +22235,19 @@ Transform:
   m_Father: {fileID: 7245666597646109174}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2748947214139335686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748947214139335683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa95a5dda1e07bf42a491a9265d998d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6461685}
 --- !u!1 &2748947214144191963
 GameObject:
   m_ObjectHideFlags: 0
@@ -23004,6 +23018,7 @@ GameObject:
   - component: {fileID: 2748947214183326864}
   - component: {fileID: 2748947214183326879}
   - component: {fileID: 2748947214183326876}
+  - component: {fileID: 2748947214183326880}
   m_Layer: 0
   m_Name: Room 6
   m_TagString: Room
@@ -23024,6 +23039,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 9, y: 2, z: 8}
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2748947214183326880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748947214183326878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa95a5dda1e07bf42a491a9265d998d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6461685}
 --- !u!1 &2748947214189572289
 GameObject:
   m_ObjectHideFlags: 0
@@ -24322,6 +24350,7 @@ GameObject:
   - component: {fileID: 2748947214259027260}
   - component: {fileID: 2748947214259027259}
   - component: {fileID: 2748947214259027256}
+  - component: {fileID: 2748947214259027261}
   m_Layer: 0
   m_Name: Room 3
   m_TagString: Room
@@ -24360,6 +24389,19 @@ Transform:
   m_Father: {fileID: 7245666597646109174}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2748947214259027261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2748947214259027258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa95a5dda1e07bf42a491a9265d998d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 6461685}
 --- !u!33 &2748947214263015840
 MeshFilter:
   m_ObjectHideFlags: 0
