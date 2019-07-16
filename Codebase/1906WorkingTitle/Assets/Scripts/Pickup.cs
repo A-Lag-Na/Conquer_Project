@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    private enum Type { Inventory, Coin, Health, Key, EOF};
+    private enum Type { Inventory, Coin, Health, EOF};
 
     [SerializeField] Type type;
     [SerializeField] Player player;
@@ -29,9 +29,6 @@ public class Pickup : MonoBehaviour
                 case Type.Health:
                     //player.AddHealth(10);
                     player.TakeDamage();
-                    break;
-                case Type.Key:
-
                     break;
                 case Type.EOF:
                     break;

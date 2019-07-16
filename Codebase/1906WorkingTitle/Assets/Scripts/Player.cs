@@ -23,6 +23,8 @@ public class Player : MonoBehaviour
     [SerializeField] float blinkTime = 0.1f;
     private float playerY;
 
+    [SerializeField] GameObject test;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +80,7 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         BlinkOnHit();
+        test.GetComponent<UpdateUI>().TakeDamage();
         //Decrement health until 0 or less
         playerHealth--;
         if (playerHealth <= 0)

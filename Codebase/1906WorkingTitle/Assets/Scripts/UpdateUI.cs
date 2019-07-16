@@ -98,6 +98,7 @@ public class UpdateUI : MonoBehaviour
     //}
     #endregion
     
+
     public void TakeDamage()
     {
         damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
