@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2374690145450221498}
   - component: {fileID: 2374690145450221497}
-  - component: {fileID: 2374690145450221496}
   m_Layer: 0
   m_Name: Spawner
   m_TagString: Untagged
@@ -46,57 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnEnabled: 0
   enemies:
-  - {fileID: 1589754504979735094, guid: 7e52daa578919bc4b86866f92722c457, type: 3}
-  - {fileID: 9192331697871958154, guid: fcee352c7ff2f55439787468131d6cf4, type: 3}
+  - {fileID: 618301725643849870, guid: 765400cb40b5b474ab690ce6f2a5c8ba, type: 3}
+  - {fileID: 2351237706826510883, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
   doors: []
   points: 5
   timer: 1
   spawnedEnemies: []
---- !u!212 &2374690145450221496
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2374690145450221447}
-  m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d0988946ffdff7942920ae9495b6e163, type: 3}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.30588236}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0

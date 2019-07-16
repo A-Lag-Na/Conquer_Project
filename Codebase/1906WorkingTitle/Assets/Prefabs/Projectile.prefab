@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 5817089736496742070}
   - component: {fileID: 1844844462920280700}
   - component: {fileID: 4444641465012830224}
-  - component: {fileID: 6124851507516596567}
   - component: {fileID: 1114702317}
+  - component: {fileID: 1114702312}
   m_Layer: 10
   m_Name: Projectile
   m_TagString: Player Bullet
@@ -110,7 +110,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!96 &6124851507516596567
+--- !u!114 &1114702317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6748821361840403601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8f6a1f5277f3b4aa1019c3c4dc6a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!96 &1114702312
 TrailRenderer:
   serializedVersion: 2
   m_ObjectHideFlags: 0
@@ -128,7 +140,7 @@ TrailRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 333ff9f41e73de547aa93d94468a0d6d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -151,7 +163,7 @@ TrailRenderer:
   m_Time: 5
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.125
+    widthMultiplier: 0.1
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -205,15 +217,3 @@ TrailRenderer:
   m_MinVertexDistance: 0.1
   m_Autodestruct: 0
   m_Emitting: 1
---- !u!114 &1114702317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6748821361840403601}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8f6a1f5277f3b4aa1019c3c4dc6a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
