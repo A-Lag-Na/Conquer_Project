@@ -34,4 +34,20 @@ public class EnemyStats : MonoBehaviour
     {
         damage = _damage;
     }
+
+    //Our enemy is damaged
+    public void TakesDamage(int _damage = 1)
+    {
+        health -= damage;
+        if(health <= 0)
+        {
+            Kill();
+        }
+    }
+
+    //Kill function
+    public void Kill()
+    {
+        GameObject.Destroy(this);
+    }
 }

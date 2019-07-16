@@ -20,8 +20,12 @@ public class PlayerBullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Enemy"))
         {
-            
+            //The enemy we hit takes damage.
+            collision.collider.GetComponentInParent<EnemyStats>().TakesDamage();
         }
-        Destroy(gameObject);
+        if (!collision.collider.CompareTag("Player"))
+        {
+            Destroy(gameObject);
+        }
     }
 }
