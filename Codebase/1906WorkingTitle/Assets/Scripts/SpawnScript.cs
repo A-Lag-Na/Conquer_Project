@@ -54,7 +54,7 @@ public class SpawnScript : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        if (spawnedEnemies.Count == 0)
+        if (spawnedEnemies.Count == 0 && pointsClone < 1)
         {
             SetDoorLock(false);
         }
