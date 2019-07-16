@@ -36,7 +36,11 @@ public class EnemyAI : MonoBehaviour
     IEnumerator attack()
     {
         attackEnabled = false;
-        GameObject clone = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        Quaternion temp = projectile.transform.rotation;
+        temp.x = 0;
+        temp.z = 0;
+        GameObject clone = Instantiate(projectile, transform.position, temp);
+        
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
@@ -49,10 +53,17 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.transform.position);
         if(agent.remainingDistance < agent.stoppingDistance)
         {
-            agent.transform.LookAt(player.transform);
+            Quaternion rotation = Quaternion.LookRotation(player.transform.position);
+            // Lock the rotation around X and Z Axes
+            rotation.x = 0.0f;
+            rotation.z = 0.0f;
+            // Change the player's tranform's rotation to the rotation Quaternion
+            agent.transform.rotation = rotation;
         }
 
         if (attackEnabled)
+        {
             StartCoroutine(attack());
+        }
     }
 }

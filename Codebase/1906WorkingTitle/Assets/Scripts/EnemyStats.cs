@@ -13,8 +13,17 @@ public class EnemyStats : MonoBehaviour
     //How much damage the enemy deals on hit.
     [SerializeField] private int damage = 2;
 
+<<<<<<< HEAD
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp;
+=======
+    //Amount of time enemy blinks on taking damage
+    public float blinkTime;
+
+    //Enemy's color and renderer
+    private Renderer enemyRender;
+    private Color enemyColor;
+>>>>>>> 3d274fd67789164f133b56a9dd8456f6db1b6155
 
     //get-setters
     public int GetPoints()
@@ -41,6 +50,7 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakesDamage(int _damage = 1)
     {
+        BlinkOnHit();
         health -= damage;
         if(health <= 0)
         {
@@ -55,5 +65,26 @@ public class EnemyStats : MonoBehaviour
         vec = new Vector3(vec.x, vec.y+0.5f, vec.z);
         Instantiate(pickUp, vec, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+
+    public void Start()
+    {
+        enemyRender = GetComponentInParent<Renderer>();
+        enemyColor = enemyRender.material.color;
+    }
+
+    public void Update()
+    {
+        if (enemyRender.material.color != enemyColor)
+        {
+            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
+        }
+    }
+
+    //Enemy feedback on damage taken
+    public void BlinkOnHit()
+    {
+        enemyRender.material.color = Color.red;
     }
 }

@@ -57,7 +57,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 41b0dec5892071148a03c9739955d834, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,7 +187,11 @@ MonoBehaviour:
   enemyPoints: 1
   health: 3
   damage: 1
+<<<<<<< HEAD
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
+=======
+  blinkTime: 0.1
+>>>>>>> 3d274fd67789164f133b56a9dd8456f6db1b6155
 --- !u!195 &1336841922
 NavMeshAgent:
   m_ObjectHideFlags: 0
