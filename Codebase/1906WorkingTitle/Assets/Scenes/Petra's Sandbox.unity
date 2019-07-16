@@ -415,6 +415,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Half World Map
       objectReference: {fileID: 0}
+    - target: {fileID: 7807947552684323881, guid: 0781bd9132a5dff489d3ddccbd39bff5,
+        type: 3}
+      propertyPath: m_Name
+      value: Me
+      objectReference: {fileID: 0}
+    - target: {fileID: 4858283679288740722, guid: 0781bd9132a5dff489d3ddccbd39bff5,
+        type: 3}
+      propertyPath: m_Name
+      value: Me
+      objectReference: {fileID: 0}
     - target: {fileID: 1829578325695196277, guid: 0781bd9132a5dff489d3ddccbd39bff5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -479,16 +489,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -4.48
-      objectReference: {fileID: 0}
-    - target: {fileID: 7807947552684323881, guid: 0781bd9132a5dff489d3ddccbd39bff5,
-        type: 3}
-      propertyPath: m_Name
-      value: Me
-      objectReference: {fileID: 0}
-    - target: {fileID: 4858283679288740722, guid: 0781bd9132a5dff489d3ddccbd39bff5,
-        type: 3}
-      propertyPath: m_Name
-      value: Me
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0781bd9132a5dff489d3ddccbd39bff5, type: 3}
@@ -712,7 +712,7 @@ PrefabInstance:
     - target: {fileID: 3828636513520416995, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.66
+      value: 20.699
       objectReference: {fileID: 0}
     - target: {fileID: 3828636513520416995, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -770,6 +770,11 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: blinkTime
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 3828636513520416993, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: m_CastShadows
