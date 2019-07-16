@@ -8,7 +8,12 @@ public class Pickup : MonoBehaviour
 
     [SerializeField] Type type;
     [SerializeField] Player player;
-    
+
+    private void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+    }
+
     private void Update()
     {
         transform.Rotate(Vector3.forward * (100.0f * Time.deltaTime));
@@ -24,11 +29,10 @@ public class Pickup : MonoBehaviour
                     //player.AddToInventory(this);
                     break;
                 case Type.Coin:
-                    //player.AddCoins(5);
+                    player.GetComponent<Player>().AddCoins(5);
                     break;
                 case Type.Health:
-                    //player.AddHealth(10);
-                    player.TakeDamage();
+                    player.GetComponent<Player>().AddHealth(10);
                     break;
                 case Type.EOF:
                     break;
