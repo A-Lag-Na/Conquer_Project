@@ -13,6 +13,9 @@ public class EnemyStats : MonoBehaviour
     //How much damage the enemy deals on hit.
     [SerializeField] private int damage = 2;
 
+    //Pickup the enemy will drop
+    [SerializeField] GameObject pickUp;
+
     //get-setters
     public int GetPoints()
     {
@@ -48,6 +51,9 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
+        Vector3 vec = GetComponent<Transform>().position;
+        vec = new Vector3(vec.x, vec.y+0.5f, vec.z);
+        Instantiate(pickUp, vec, Quaternion.identity);
         Destroy(gameObject);
     }
 }
