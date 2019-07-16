@@ -36,9 +36,10 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-        if (spawnAgain)
+        if (spawnAgain && spawnEnabled)
+        {
             StartCoroutine(SpawnEnemy());
+        }
     }
 
     //Get-setters for enabled
