@@ -125,7 +125,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   playerHealth: 2147483647
-  projectile: {fileID: 0}
+  projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
+    type: 3}
   bulletVelocity: 10
   mainCamera: {fileID: 0}
-  blinkTime: 1
+  blinkTime: 0.1

@@ -53,6 +53,8 @@ public class EnemyAI : MonoBehaviour
         }
 
         if (attackEnabled)
+        {
             StartCoroutine(attack());
+        }
     }
 }

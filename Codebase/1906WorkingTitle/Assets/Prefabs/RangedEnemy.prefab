@@ -187,6 +187,7 @@ MonoBehaviour:
   enemyPoints: 1
   health: 3
   damage: 1
+  blinkTime: 0.1
 --- !u!195 &1336841922
 NavMeshAgent:
   m_ObjectHideFlags: 0
