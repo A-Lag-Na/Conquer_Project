@@ -61,13 +61,19 @@ public class SpawnScript : MonoBehaviour
             GameObject enemyClone = Instantiate(enemies[temp], transform.position, Quaternion.identity);
 
             //Adds the enemy to spawned enemies list
-            spawnedEnemies.Add(enemyClone);
-
-            
+            spawnedEnemies.Add(enemyClone);            
 
             //subtracts enemy points from spawner's
             pointsClone -= enemies[temp].GetComponent<EnemyStats>().GetPoints();
         }
+        else
+        {
+            if (enemies.Count == 0)
+            {
+                SetDoorLock(false);
+            }
+        }
+            
 
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
