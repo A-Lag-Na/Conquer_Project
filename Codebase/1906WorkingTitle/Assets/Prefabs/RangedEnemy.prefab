@@ -187,6 +187,7 @@ MonoBehaviour:
   enemyPoints: 1
   health: 3
   damage: 1
+  pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
 --- !u!195 &1336841922
 NavMeshAgent:
