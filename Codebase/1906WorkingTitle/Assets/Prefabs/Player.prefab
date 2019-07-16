@@ -127,6 +127,7 @@ MonoBehaviour:
   speed: 6
   health: 10
   projectile: {fileID: 0}
+  bulletVelocity: 10
 --- !u!54 &3828636513520416997
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -48,6 +48,6 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
-        GameObject.Destroy(this);
+        Destroy(gameObject);
     }
 }

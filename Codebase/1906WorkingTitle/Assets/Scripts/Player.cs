@@ -8,30 +8,36 @@ public class Player : MonoBehaviour
     public int health;
 
 
-    private Transform form;
+    private Transform playerTransform;
     private CharacterController characterController;
     private Vector3 moveDirection;
     private Vector3 mousePosition;
-    private Vector3 middleOfScreen;
-    private Vector3 cameraVector;
+    private Vector3 targetPosition;
     [SerializeField] GameObject projectile;
-
+    [SerializeField] uint bulletVelocity;
+    [SerializeField] Camera mainCamera;
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        form = GetComponent<Transform>();
-        middleOfScreen = new Vector3(Screen.width / 2, Screen.height / 2, 0.0f);
+        playerTransform = GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
         // Rotate the Player Transform to face the Mouse Position
-        cameraVector = Input.mousePosition - middleOfScreen;
-        mousePosition = new Vector3(cameraVector.x, 0f, cameraVector.y);
-        form.LookAt(mousePosition);
+        mousePosition = Input.mousePosition;
+        targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+        Vector3 relativePosition = targetPosition - playerTransform.position;
+
+        Quaternion rotation = Quaternion.LookRotation(relativePosition);
+        // Lock the rotation around X and Z Axes
+        rotation.x = 0.0f;
+        rotation.z = 0.0f;
+        // Change the player's tranform's rotation to the rotation Quaternion
+        playerTransform.rotation = rotation;
 
         // Move the Player GameObject when the WASD or Arrow Keys are pressed
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
@@ -41,9 +47,9 @@ public class Player : MonoBehaviour
         // If the right mouse button is clicked Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            GameObject clone = Instantiate(projectile, form.position, form.rotation);
+            GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
             clone.gameObject.SetActive(true);
-            clone.GetComponent<Rigidbody>().velocity = form.TransformDirection(Vector3.forward * 10);
+            clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
         }
     }
 
