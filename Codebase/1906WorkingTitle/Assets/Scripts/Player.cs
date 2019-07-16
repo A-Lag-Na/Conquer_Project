@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float speed;
-    public int health;
+    public float movementSpeed;
+    public int playerHealth;
 
 
     private Transform playerTransform;
@@ -41,7 +41,7 @@ public class Player : MonoBehaviour
 
         // Move the Player GameObject when the WASD or Arrow Keys are pressed
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        moveDirection *= speed;
+        moveDirection *= movementSpeed;
         characterController.Move(moveDirection * Time.deltaTime);
 
         // If the right mouse button is clicked Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
@@ -56,8 +56,8 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         //Decrement health until 0 or less
-        health--;
-        if (health <= 0)
+        playerHealth--;
+        if (playerHealth <= 0)
         {
             Death();
         }
@@ -66,13 +66,5 @@ public class Player : MonoBehaviour
     public void Death()
     {
         gameObject.SetActive(false);
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag("Enemy"))
-        {
-            TakeDamage();
-        }
     }
 }
