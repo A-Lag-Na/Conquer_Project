@@ -10,6 +10,7 @@ public class CameraTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //Finds each camera position object in each room
         camPos = transform.Find("Camera Position").gameObject;
         
     }
@@ -19,7 +20,10 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            //Changes the cameras position
             Camera.main.transform.position = camPos.transform.position;
+
+            //Spawns enemies and locks rooms
             spawner.GetComponent<SpawnScript>().SetDoorLock(true);
             spawner.GetComponent<SpawnScript>().SetEnabled(true);
         }
