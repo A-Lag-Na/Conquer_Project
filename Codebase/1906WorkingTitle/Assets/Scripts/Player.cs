@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public float movementSpeed;
     public int playerHealth;
 
-
+    private int playerCoins;
     private Transform playerTransform;
     private CharacterController characterController;
     private Vector3 moveDirection;
@@ -66,5 +66,10 @@ public class Player : MonoBehaviour
     public void Death()
     {
         gameObject.SetActive(false);
+    }
+
+    public void AddCoins(int amountOfCoins)
+    {
+        playerCoins += amountOfCoins;
     }
 }
