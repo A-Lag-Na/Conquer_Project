@@ -53,7 +53,9 @@ public class EnemyAI : MonoBehaviour
         agent.SetDestination(player.transform.position);
         if(agent.remainingDistance < agent.stoppingDistance)
         {
-            Quaternion rotation = Quaternion.LookRotation(player.transform.position);
+            Vector3 targetPosition = player.transform.position;
+            Vector3 relativePosition = targetPosition - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(relativePosition);
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
             rotation.z = 0.0f;
