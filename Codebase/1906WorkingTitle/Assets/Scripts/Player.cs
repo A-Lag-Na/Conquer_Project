@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     [SerializeField] uint bulletVelocity;
     [SerializeField] Camera mainCamera;
     [SerializeField] float blinkTime = 0.1f;
+    private float playerY;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +30,8 @@ public class Player : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRenderer = GetComponent<Renderer>();
         playerColor = playerRenderer.material.color;
+        blinkTime = 0.1f;
+        playerY = playerTransform.position.y;
     }
 
     // Update is called once per frame
@@ -50,6 +53,8 @@ public class Player : MonoBehaviour
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
         moveDirection *= movementSpeed;
         characterController.Move(moveDirection * Time.deltaTime);
+
+        playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
 
         // If the right mouse button is clicked Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Input.GetKeyDown(KeyCode.Mouse0))
