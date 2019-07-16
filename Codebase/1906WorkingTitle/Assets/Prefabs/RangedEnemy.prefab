@@ -123,5 +123,7 @@ MonoBehaviour:
   attackMin: 120
   attackMax: 120
   attackTypes:
-  - Bullet
+  - bullet
   attackEnabled: 1
+  projectile: {fileID: 3439170161942968340, guid: 0418e4fab80af7a4fb7105fdeb422ab1,
+    type: 3}

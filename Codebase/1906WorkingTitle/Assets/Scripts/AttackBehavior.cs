@@ -1,13 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class AttackBehavior : MonoBehaviour
 {
     //Counts frames between attacks
     private int attackTimer;
-    [SerializeField] private int attackMin = 120;
-    [SerializeField] private int attackMax = 120;
+
+    [SerializeField] private int attackRate = 1;
+    //[SerializeField] private int attackMax = 120;
+
+    [SerializeField] private int bulletSpeed = 2;
 
     //List of different attacks this enemy can use
     [SerializeField] List<string> attackTypes;
@@ -18,38 +22,33 @@ public class AttackBehavior : MonoBehaviour
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
 
-    private Transform trans;
+    NavMeshAgent agent;
+    GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        attackTimer = Random.Range(attackMin, attackMax);
-        trans = GetComponent<Transform>();
+        agent = GetComponent<NavMeshAgent>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        //attackTimer = Random.Range(attackMin, attackMax); 
     }
+
+    IEnumerator attack()
+    {
+        attackEnabled = false;
+        GameObject clone = Instantiate(projectile, transform.position, projectile.transform.rotation);
+        clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+        yield return new WaitForSeconds(attackRate);
+        attackEnabled = true;
+    }
+
 
     // Update is called once per frame
     void Update()
     {
-        attackTimer--;
-        if(attackEnabled && attackTimer <= 0)
-        {
-            //Chooses and stores a random attack from the available attack list.
-            string temp = attackTypes[Random.Range(0, attackTypes.Count)];
+        agent.SetDestination(player.transform.position);
 
-            if(temp.Equals("bullet"))
-            {
-                Vector3 vect = Vector3.MoveTowards(GameObject.FindGameObjectWithTag("Player").transform.position, GetComponentInParent<Transform>().position, 99);
-                GameObject clone = Instantiate(projectile, transform.position, Quaternion.identity);
-                clone.gameObject.SetActive(true);
-                clone.GetComponent<Rigidbody>().velocity = trans.TransformDirection(vect * 10);
-            }
-
-            else if(temp.Equals("melee"))
-            {
-
-            }
-
-            attackTimer = Random.Range(attackMin, attackMax);
-        }
+        if (attackEnabled)
+            StartCoroutine(attack());
     }
 }
