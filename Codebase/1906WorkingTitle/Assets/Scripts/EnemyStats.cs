@@ -13,17 +13,14 @@ public class EnemyStats : MonoBehaviour
     //How much damage the enemy deals on hit.
     [SerializeField] private int damage = 2;
 
-<<<<<<< HEAD
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp;
-=======
     //Amount of time enemy blinks on taking damage
     public float blinkTime;
 
     //Enemy's color and renderer
     private Renderer enemyRender;
     private Color enemyColor;
->>>>>>> 3d274fd67789164f133b56a9dd8456f6db1b6155
 
     //get-setters
     public int GetPoints()
