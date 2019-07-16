@@ -943,6 +943,7 @@ MonoBehaviour:
   InvSlot1: {fileID: 981500051}
   InvSlot2: {fileID: 114867667}
   damageFlasher: {fileID: 0}
+  test: {fileID: 0}
 --- !u!1 &1546769079
 GameObject:
   m_ObjectHideFlags: 0

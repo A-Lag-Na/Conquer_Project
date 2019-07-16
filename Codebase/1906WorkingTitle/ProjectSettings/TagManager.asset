@@ -7,6 +7,9 @@ TagManager:
   - Enemy
   - Player Bullet
   - Enemy Bullet
+  - Room
+  - Door
+  - Pickups
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Player Bullet
   - Enemy
   - Enemy Bullet
-  - 
+  - Pickups
   - 
   - 
   - 
