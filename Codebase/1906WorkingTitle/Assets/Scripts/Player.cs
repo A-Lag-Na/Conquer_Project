@@ -6,22 +6,29 @@ public class Player : MonoBehaviour
 {
     public float movementSpeed;
     public int playerHealth;
-
     private int playerCoins;
+
     private Transform playerTransform;
     private CharacterController characterController;
+    private Renderer playerRenderer;
+    private Color playerColor;
+
     private Vector3 moveDirection;
     private Vector3 mousePosition;
     private Vector3 targetPosition;
+
     [SerializeField] GameObject projectile;
     [SerializeField] uint bulletVelocity;
     [SerializeField] Camera mainCamera;
+    [SerializeField] float blinkTime = 0.1f;
 
     // Start is called before the first frame update
     void Start()
     {
         characterController = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
+        playerRenderer = GetComponent<Renderer>();
+        playerColor = playerRenderer.material.color;
     }
 
     // Update is called once per frame
@@ -51,10 +58,21 @@ public class Player : MonoBehaviour
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
         }
+
+        if (playerRenderer.material.color != playerColor)
+        {
+            playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, blinkTime);
+        }
+    }
+
+    public void BlinkOnHit()
+    {
+        playerRenderer.material.color = Color.red;
     }
 
     public void TakeDamage()
     {
+        BlinkOnHit();
         //Decrement health until 0 or less
         playerHealth--;
         if (playerHealth <= 0)

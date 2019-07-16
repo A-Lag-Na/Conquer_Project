@@ -22,6 +22,7 @@ public class PlayerBullet : MonoBehaviour
         {
             //The enemy we hit takes damage.
             collision.collider.GetComponentInParent<EnemyStats>().TakesDamage();
+            //collision.collider.GetComponentInParent<MeshRenderer>().SetP
         }
         Destroy(gameObject);
     }

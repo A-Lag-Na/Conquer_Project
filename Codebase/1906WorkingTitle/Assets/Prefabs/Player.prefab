@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 806bcbaa3426f3f42a1e1c103c8676e4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -124,7 +124,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 6
-  playerHealth: 6
+  playerHealth: 2147483647
   projectile: {fileID: 0}
   bulletVelocity: 10
   mainCamera: {fileID: 0}
+  blinkTime: 1

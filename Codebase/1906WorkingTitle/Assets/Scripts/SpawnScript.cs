@@ -17,7 +17,7 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private int points;
 
     //So we don't modify points directly.
-    private int pointsClone;
+    public int pointsClone;
 
     //Tracks the number of frames passing
     public int timer;
@@ -36,21 +36,37 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(spawnAgain)
+        if (spawnAgain && spawnEnabled)
+        {
             StartCoroutine(SpawnEnemy());
+        }
+    }
+
+    //Get-setters for enabled
+    public bool GetEnabled()
+    {
+        return spawnEnabled;
+    }
+
+    public void SetEnabled(bool _enable)
+    {
+        spawnEnabled = _enable;
     }
 
     IEnumerator SpawnEnemy()
     {
+        if (spawnedEnemies.Count == 0 && pointsClone < 1)
+        {
+            SetDoorLock(false);
+        }
         //Searches list and removes any null values (dead enemies)
-        for (int i = spawnedEnemies.Count - 1; i > 0; i--)
+        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
         {
             if (spawnedEnemies[i] == null)
             {
                 spawnedEnemies.RemoveAt(i);
             }
         }
-
         spawnAgain = false;
         if (pointsClone > 0)
         {
@@ -61,13 +77,11 @@ public class SpawnScript : MonoBehaviour
             GameObject enemyClone = Instantiate(enemies[temp], transform.position, Quaternion.identity);
 
             //Adds the enemy to spawned enemies list
-            spawnedEnemies.Add(enemyClone);
-
-            
+            spawnedEnemies.Add(enemyClone);            
 
             //subtracts enemy points from spawner's
             pointsClone -= enemies[temp].GetComponent<EnemyStats>().GetPoints();
-        }
+        }            
 
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
@@ -76,9 +90,9 @@ public class SpawnScript : MonoBehaviour
     //Function that takes in a bool and sets the doors to be active/inactive if the bool is true/false
     public void SetDoorLock(bool _lock)
     {
-        foreach (GameObject g in doors)
+        for(int i = 0; i < doors.Count; i++)
         {
-            g.SetActive(_lock);
+            doors[i].SetActive(_lock);
         }
     }
 
