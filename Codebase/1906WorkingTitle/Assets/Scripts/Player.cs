@@ -123,9 +123,6 @@ public class Player : MonoBehaviour
     public void IncreaseHealth()
     {
         playerHealth+=10;
-        if (playerHealth > maxPlayerHealth)
-        {
-            maxPlayerHealth = playerHealth;
-        }
+        maxPlayerHealth+=10;
     }
 }

@@ -8,9 +8,10 @@ public class EnemyBullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
-            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            //GameObject player = GameObject.FindGameObjectWithTag("Player");
             //Hardcoding for now, will refactor on bullet prefab refactor
-            player.GetComponent<Player>().TakeDamage();
+            //player.GetComponent<Player>().TakeDamage();
+            collision.collider.GetComponentInParent<Player>().TakeDamage();
             //Refactored version
             //player.GetComponent<Player>().TakeDamage(this.GetComponent<BulletStats>().GetDamage());
         }

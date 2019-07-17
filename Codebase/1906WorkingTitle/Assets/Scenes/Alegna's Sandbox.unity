@@ -1106,6 +1106,26 @@ PrefabInstance:
       propertyPath: m_Height
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 880377866, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 880377865, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 346594169, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
+      propertyPath: m_Radius
+      value: 0.63
+      objectReference: {fileID: 0}
+    - target: {fileID: 346594169, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
+      propertyPath: m_Center.x
+      value: -0.0027701855
+      objectReference: {fileID: 0}
+    - target: {fileID: 346594169, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
+      propertyPath: m_Center.z
+      value: 0.064587116
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3828636513520417022, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
     - {fileID: 3828636513520416992, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
@@ -1124,7 +1144,7 @@ GameObject:
   - component: {fileID: 1009911449}
   m_Layer: 9
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1726,7 +1746,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 4.7
+  orthographic size: 5.623
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
