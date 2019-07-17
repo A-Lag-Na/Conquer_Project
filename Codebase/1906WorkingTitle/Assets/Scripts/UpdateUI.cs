@@ -8,9 +8,10 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
 
     //recorded stats
-    [SerializeField] float health = 10.0f;
+    [SerializeField] Player player;
+    [SerializeField] float health;
     [SerializeField] int lives = 5;
-    [SerializeField] int coins = 10;
+    [SerializeField] int coins;
     [SerializeField] Sprite slotOne, slotTwo;
     [SerializeField] int level;
     [SerializeField] int defense;
@@ -21,28 +22,34 @@ public class UpdateUI : MonoBehaviour
     [SerializeField] Text healthText, livesText, coinText, statsText;
     [SerializeField] RectTransform healthTransform;
     [SerializeField] Image InvSlot1, InvSlot2, damageFlasher;
-    
-    
+
+
     void Start()
     {
+        //grab player GameObject
+        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+
         //update health
-        //float health = player.GetHealth();
+        health = player.GetHealth();
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
-        Vector3 scale = healthTransform.localScale;
-        scale.x = health / 10.0f;
-        healthTransform.localScale = scale;
+        Vector3 HealthScale = healthTransform.localScale;
+        if(player.GetMaxHealth()!=0)
+            HealthScale.x = health / player.GetMaxHealth();
+        else
+            Debug.Log("Error on first healthscale");
+        healthTransform.localScale = HealthScale;
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
-        healthText.text = health.ToString() + "/10";
+        healthText.text = $"health/{player.GetMaxHealth()}";
 
         //update coin count
-        //float coins = player.GetCoins();
+        coins = player.GetCoins();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
-        coinText.text = "X" + coins.ToString();
+        coinText.text = $"X{coins}";
 
         //update lives count
         //float lives = player.GetLives();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
-        livesText.text = "X" + lives.ToString();
+        livesText.text = $"X{lives}";
 
         //update stats text
         statsText = transform.Find("Stats").GetComponent<Text>();
@@ -108,36 +115,31 @@ public class UpdateUI : MonoBehaviour
     private void Update()
     {
         //update health
-        //float health = player.GetHealth();
-        Vector3 HealthScale = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>().localScale;
-        HealthScale.x = health / 100.0f;
-        transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>().localScale = HealthScale;
-        healthText.text = health.ToString() + "/100";
+        health = player.GetHealth();
+        Vector3 HealthScale = healthTransform.localScale;
+        if (player.GetMaxHealth() != 0)
+            HealthScale.x = health / player.GetMaxHealth();
+        else
+            Debug.Log("Error on second healthscale");
+        healthTransform.localScale = HealthScale;
+        healthText.text = $"{health} / {player.GetMaxHealth()}";
 
         //update coin count
-        //float coins = player.GetCoins();
-        coinText.text = "X" + coins.ToString();
+        coins = player.GetCoins();
+        coinText.text = $"X{coins}";
 
         //update lives count
         //float lives = player.GetLives();
-        livesText.text = "X" + lives.ToString();
+        livesText.text = $"X{lives}";
 
         //update inventory
-
         InvSlot1.sprite = slotOne;
         InvSlot2.sprite = slotTwo;
 
         //update player stats
-
         statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackStrength}";
 
         //taking damage
-        //damageFlasher.color = Color.Lerp(new Color(255.0f, 255.0f, 255.0f, 125.0f), new Color(255.0f, 255.0f, 255.0f, 0.0f), damageTime);
-        //if (damageTime < 1.0f)
-        //{ // while t below the end limit...
-        //  // increment it at the desired rate every update:
-        //    damageTime += Time.deltaTime / damageTimeDuration;
-        //}
         if (damageFlasher.color != new Color(255.0f, 0.0f, 0.0f, 0.0f))
         {
             damageFlasher.color = Color.Lerp(damageFlasher.color, new Color(255.0f, 0.0f, 0.0f, 0.0f), 0.1f);

@@ -5,8 +5,9 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public float movementSpeed;
-    public int playerHealth;
-    private int playerCoins;
+    [SerializeField] float playerHealth;
+    [SerializeField] float maxPlayerHealth;
+    [SerializeField] int playerCoins;
 
     private Transform playerTransform;
     private CharacterController characterController;
@@ -23,7 +24,7 @@ public class Player : MonoBehaviour
     [SerializeField] float blinkTime = 0.1f;
     private float playerY;
 
-    [SerializeField] GameObject test;
+    [SerializeField] GameObject mainUI;
 
     // Start is called before the first frame update
     void Start()
@@ -80,13 +81,28 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         BlinkOnHit();
-        test.GetComponent<UpdateUI>().TakeDamage();
+        mainUI.GetComponent<UpdateUI>().TakeDamage();
         //Decrement health until 0 or less
         playerHealth--;
         if (playerHealth <= 0)
         {
             Death();
         }
+    }
+
+    public float GetHealth()
+    {
+        return playerHealth;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxPlayerHealth;
+    }
+
+    public void AddHealth(float amountOfHealth)
+    {
+        playerHealth += amountOfHealth;
     }
 
     public void Death()
@@ -97,5 +113,16 @@ public class Player : MonoBehaviour
     public void AddCoins(int amountOfCoins)
     {
         playerCoins += amountOfCoins;
+    }
+
+    public int GetCoins()
+    {
+        return playerCoins;
+    }
+
+    public void IncreaseHealth()
+    {
+        playerHealth+=10;
+        maxPlayerHealth+=10;
     }
 }
