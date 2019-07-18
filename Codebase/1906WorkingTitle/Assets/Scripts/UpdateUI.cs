@@ -9,8 +9,8 @@ public class UpdateUI : MonoBehaviour
 
     //recorded stats
     private Player player;
-    private float health;
-    private int lives = 5, coins, level, defense, attackSpeed, attackStrength;
+    private float health, attackSpeed;
+    private int lives = 5, coins, level, defense, attackDamage;
     private Sprite slotOne, slotTwo;
 
     //UI elements to remember
@@ -48,7 +48,12 @@ public class UpdateUI : MonoBehaviour
         livesText.text = $"X{lives}";
 
         //update stats text
+        level = player.GetLevel();
+        defense = player.GetDefense();
+        attackSpeed = player.GetAttackSpeed();
+        attackDamage = player.GetDamage();
         statsText = transform.Find("Stats").GetComponent<Text>();
+        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
 
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
@@ -133,7 +138,11 @@ public class UpdateUI : MonoBehaviour
         InvSlot2.sprite = slotTwo;
 
         //update player stats
-        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackStrength}";
+        level = player.GetLevel();
+        defense = player.GetDefense();
+        attackSpeed = player.GetAttackSpeed();
+        attackDamage = player.GetDamage();
+        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
 
         //taking damage
         if (damageFlasher.color != new Color(255.0f, 0.0f, 0.0f, 0.0f))

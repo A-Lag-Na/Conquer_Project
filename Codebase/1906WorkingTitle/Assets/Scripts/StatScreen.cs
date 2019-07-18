@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StatScreen : MonoBehaviour
 {
     private Button speedBTN, damageBTN, defenseBTN;
+    private Player player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,22 +17,28 @@ public class StatScreen : MonoBehaviour
 
         //assign funsction listeners
         speedBTN.onClick.AddListener(AddSpeed);
-        speedBTN.onClick.AddListener(AddDamage);
-        speedBTN.onClick.AddListener(AddDefense);
+        damageBTN.onClick.AddListener(AddDamage);
+        defenseBTN.onClick.AddListener(AddDefense);
+
+        //assign player if found
+        if(GameObject.Find("Player"))
+            player = GameObject.Find("Player").GetComponent<Player>();
     }
 
     private void AddSpeed()
     {
-
+        player.AddAttackSpeed();
     }
 
     private void AddDamage()
     {
-
+        player.AddDamage();
     }
 
     private void AddDefense()
     {
-
+        player.AddDefense();
     }
+
+
 }

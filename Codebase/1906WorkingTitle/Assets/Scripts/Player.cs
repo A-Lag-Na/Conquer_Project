@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
     [SerializeField] int playerAttackDamage;
-    float lastTimeFired;
+    private float lastTimeFired, playerExperience;
+    private int playerLevel;
+
     #endregion
 
     #region UnityComponents
@@ -159,5 +161,54 @@ public class Player : MonoBehaviour
     {
         playerHealth += 10;
         maxPlayerHealth += 10;
+    }
+
+    public int GetDefense()
+    {
+        return playerDefense;
+    }
+
+    public void AddDefense()
+    {
+        playerDefense += 1;
+    }
+
+    public int GetDamage()
+    {
+        return playerAttackDamage;
+    }
+
+    public void AddDamage()
+    {
+        playerAttackDamage += 1;
+    }
+
+    public float GetAttackSpeed()
+    {
+        return playerAttackSpeed;
+    }
+    public void AddAttackSpeed()
+    {
+        playerAttackSpeed += 1;
+    }
+
+    public float GetMovementSpeed()
+    {
+        return playerMovementSpeed;
+    }
+
+    private void IncreaseMovementSpeed()
+    {
+
+    }
+
+    public float GetExperience()
+    {
+        return playerExperience;
+    }
+
+    public int GetLevel()
+    {
+        return playerLevel;
     }
 }
