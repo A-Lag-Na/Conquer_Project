@@ -58,9 +58,12 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
-        Vector3 vec = GetComponent<Transform>().position;
-        vec = new Vector3(vec.x, vec.y+0.5f, vec.z);
-        Instantiate(pickUp, vec, Quaternion.identity);
+        if(pickUp != null)
+        {
+            Vector3 vec = GetComponent<Transform>().position;
+            vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
+            Instantiate(pickUp, vec, Quaternion.identity);
+        }
         Destroy(gameObject);
     }
 

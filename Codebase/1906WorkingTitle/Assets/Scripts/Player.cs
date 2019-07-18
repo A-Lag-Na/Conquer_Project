@@ -85,7 +85,10 @@ public class Player : MonoBehaviour
     public void TakeDamage()
     {
         BlinkOnHit();
-        mainUI.GetComponent<UpdateUI>().TakeDamage();
+        if(mainUI != null)
+        {
+            mainUI.GetComponent<UpdateUI>().TakeDamage();
+        }
         //Decrement health until 0 or less
         playerHealth--;
         if (playerHealth <= 0)
