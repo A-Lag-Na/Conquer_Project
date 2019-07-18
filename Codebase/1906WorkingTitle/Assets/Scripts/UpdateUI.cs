@@ -22,7 +22,8 @@ public class UpdateUI : MonoBehaviour
     void Start()
     {
         //grab player GameObject
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if(GameObject.Find("Player"))
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         //update health
         health = player.GetHealth();
