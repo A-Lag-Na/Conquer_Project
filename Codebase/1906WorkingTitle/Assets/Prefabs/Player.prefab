@@ -199,6 +199,7 @@ MonoBehaviour:
   projectile: {fileID: 0}
   bulletVelocity: 15
   mainUI: {fileID: 0}
+  mainUI: {fileID: 0}
 --- !u!136 &346594169
 CapsuleCollider:
   m_ObjectHideFlags: 0
