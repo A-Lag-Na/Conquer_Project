@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fire Projectile
       objectReference: {fileID: 0}
+    - target: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 4547882303786511871, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
       propertyPath: m_LocalPosition.x
