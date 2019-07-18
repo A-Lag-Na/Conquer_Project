@@ -63,7 +63,13 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
+            GradientColorKey[] grads = { new GradientColorKey(Color.white, 0), new GradientColorKey(Color.cyan, 1) };
+            GradientAlphaKey[] alphs = { };
+            clone.gameObject.tag = "Player Bullet";
+            clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
+            clone.GetComponent<TrailRenderer>().startColor = Color.black;
+            clone.GetComponent<TrailRenderer>().endColor = Color.white;
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
         }
 

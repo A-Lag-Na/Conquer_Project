@@ -40,6 +40,9 @@ public class EnemyAI : MonoBehaviour
         temp.x = 0;
         temp.z = 0;
         GameObject clone = Instantiate(projectile, transform.position, temp);
+
+        clone.gameObject.tag = "Enemy Bullet";
+        clone.gameObject.layer = 12;
         
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);

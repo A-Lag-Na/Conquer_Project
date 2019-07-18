@@ -190,10 +190,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 6
   playerHealth: 10
+  maxPlayerHealth: 0
+  playerCoins: 0
   projectile: {fileID: 0}
   bulletVelocity: 10
   mainCamera: {fileID: 0}
   blinkTime: 0.1
+  mainUI: {fileID: 0}
 --- !u!136 &346594169
 CapsuleCollider:
   m_ObjectHideFlags: 0
