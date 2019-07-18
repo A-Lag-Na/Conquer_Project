@@ -8,20 +8,15 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
 
     //recorded stats
-    [SerializeField] Player player;
-    [SerializeField] float health;
-    [SerializeField] int lives = 5;
-    [SerializeField] int coins;
-    [SerializeField] Sprite slotOne, slotTwo;
-    [SerializeField] int level;
-    [SerializeField] int defense;
-    [SerializeField] int attackSpeed;
-    [SerializeField] int attackStrength;
+    private Player player;
+    private float health;
+    private int lives = 5, coins, level, defense, attackSpeed, attackStrength;
+    private Sprite slotOne, slotTwo;
 
     //UI elements to remember
-    [SerializeField] Text healthText, livesText, coinText, statsText;
-    [SerializeField] RectTransform healthTransform;
-    [SerializeField] Image InvSlot1, InvSlot2, damageFlasher;
+    private Text healthText, livesText, coinText, statsText;
+    private RectTransform healthTransform;
+    private Image InvSlot1, InvSlot2, damageFlasher;
 
 
     void Start()

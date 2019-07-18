@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
         playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
         lastTimeFired = 0.0f;
+        if(GameObject.Find("Main UI"))
+            mainUI = GameObject.Find("Main UI");
     }
 
     // Update is called once per frame
@@ -113,7 +115,7 @@ public class Player : MonoBehaviour
         BlinkOnHit();
         //Decrease by amountOfDamage health until 0 or less
         playerHealth -= amountOfDamage;
-        if(mainUI != null)
+        if(mainUI != null && mainUI.activeSelf)
         {
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         }
@@ -121,7 +123,6 @@ public class Player : MonoBehaviour
         playerHealth--;
         if (playerHealth <= 0)
             Death();
-        mainUI.GetComponent<UpdateUI>().TakeDamage();
     }
 
     public float GetHealth()
