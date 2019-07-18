@@ -7,19 +7,34 @@ public class CollisionScript : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Destroy(gameObject);
-        string temp = gameObject.tag;
+        int temp = gameObject.layer;
         switch(temp)
         {
-            case "Player Bullet":
+            case 10:
                 {
                     if (collision.collider.CompareTag("Enemy"))
                     {
+                        //Apply extra on-hit effects here:
+                        switch(gameObject.tag)
+                        {
+                            case "Fire Bullet":
+                                {
+
+                                    break;
+                                }
+                            case "Ice Bullet":
+                                {
+
+                                    break;
+                                }
+                        }
                         //The enemy we hit takes damage.
                         collision.collider.GetComponentInParent<EnemyStats>().TakesDamage();
+                        
                     }
                     break;
                 }
-            case "Enemy Bullet":
+            case 12:
                 {
                     if (collision.collider.CompareTag("Player"))
                     {

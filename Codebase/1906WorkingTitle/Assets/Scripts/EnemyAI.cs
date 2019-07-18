@@ -46,8 +46,8 @@ public class EnemyAI : MonoBehaviour
         clone.gameObject.layer = 12;
         clone.SetActive(true);
 
-        clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
-        clone.GetComponent<TrailRenderer>().endColor = Color.white;
+        //clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
+        //clone.GetComponent<TrailRenderer>().endColor = Color.white;
 
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);

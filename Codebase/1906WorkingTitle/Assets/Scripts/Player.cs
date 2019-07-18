@@ -12,7 +12,9 @@ public class Player : MonoBehaviour
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
     [SerializeField] int playerAttackDamage;
-    float lastTimeFired;
+    private float lastTimeFired, playerExperience;
+    private int playerLevel;
+
     #endregion
 
     #region UnityComponents
@@ -46,6 +48,8 @@ public class Player : MonoBehaviour
         playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
         lastTimeFired = 0.0f;
+        if(GameObject.Find("Main UI"))
+            mainUI = GameObject.Find("Main UI");
     }
 
     // Update is called once per frame
@@ -86,7 +90,6 @@ public class Player : MonoBehaviour
             playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
         #endregion
     }
-
     public void ShootBullet()
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
@@ -108,6 +111,14 @@ public class Player : MonoBehaviour
         playerRenderer.material.color = Color.red;
     }
 
+    public void Death()
+    {
+        gameObject.SetActive(false);
+    }
+
+    #region AccessorsAndMutators
+
+    #region Health
     public void TakeDamage(int amountOfDamage = 1)
     {
         //Decrease health by amountOfDamage until 0 or less
@@ -119,15 +130,15 @@ public class Player : MonoBehaviour
         }
         BlinkOnHit();
         playerHealth -= amountOfDamage;
-        if(mainUI != null)
+        if(mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
             Death();
     }
 
-    public int GetPlayerDamage()
+    public void RestoreHealth(float amountOfHealth)
     {
-        return playerAttackDamage;
+        playerHealth += amountOfHealth;
     }
 
     public float GetHealth()
@@ -140,16 +151,14 @@ public class Player : MonoBehaviour
         return maxPlayerHealth;
     }
 
-    public void RestoreHealth(float amountOfHealth)
+    public void IncreaseHealth()
     {
-        playerHealth += amountOfHealth;
+        playerHealth += 10;
+        maxPlayerHealth += 10;
     }
+    #endregion
 
-    public void Death()
-    {
-        gameObject.SetActive(false);
-    }
-
+    #region Coins
     public void AddCoins(int amountOfCoins)
     {
         playerCoins += amountOfCoins;
@@ -159,10 +168,67 @@ public class Player : MonoBehaviour
     {
         return playerCoins;
     }
+    #endregion
 
-    public void IncreaseHealth()
+    #region Defense
+    public int GetDefense()
     {
-        playerHealth += 10;
-        maxPlayerHealth += 10;
+        return playerDefense;
     }
+
+    public void AddDefense()
+    {
+        playerDefense += 1;
+    }
+    #endregion
+
+    #region Damage
+    public int GetDamage()
+    {
+        return playerAttackDamage;
+    }
+
+    public void AddDamage()
+    {
+        playerAttackDamage += 1;
+    }
+    #endregion
+
+    #region AttackSpeed
+    public float GetAttackSpeed()
+    {
+        return playerAttackSpeed;
+    }
+
+    public void AddAttackSpeed()
+    {
+        playerAttackSpeed += 1;
+    }
+    #endregion
+
+    #region MovementSpeed
+    public float GetMovementSpeed()
+    {
+        return playerMovementSpeed;
+    }
+
+    private void IncreaseMovementSpeed()
+    {
+
+    }
+    #endregion
+
+    #region LevelAndXP
+    public float GetExperience()
+    {
+        return playerExperience;
+    }
+
+    public int GetLevel()
+    {
+        return playerLevel;
+    }
+    #endregion
+
+    #endregion
 }
