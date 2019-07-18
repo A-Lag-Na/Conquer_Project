@@ -110,18 +110,24 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(int amountOfDamage = 1)
     {
+        //Decrease health by amountOfDamage until 0 or less
+        amountOfDamage -= playerDefense;
+        if (amountOfDamage <= 0)
+        {
+            playerRenderer.material.color = Color.yellow;
+            return;
+        }
         BlinkOnHit();
-        //Decrease by amountOfDamage health until 0 or less
         playerHealth -= amountOfDamage;
         if(mainUI != null)
-        {
             mainUI.GetComponent<UpdateUI>().TakeDamage();
-        }
-        //Decrement health until 0 or less
-        playerHealth--;
         if (playerHealth <= 0)
             Death();
-        mainUI.GetComponent<UpdateUI>().TakeDamage();
+    }
+
+    public int GetPlayerDamage()
+    {
+        return playerAttackDamage;
     }
 
     public float GetHealth()
