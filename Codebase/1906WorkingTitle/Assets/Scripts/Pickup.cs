@@ -33,7 +33,7 @@ public class Pickup : MonoBehaviour
                     collision.collider.GetComponentInParent<Player>().AddCoins(5);
                     break;
                 case Type.Health:
-                    collision.collider.GetComponentInParent<Player>().AddHealth(10);
+                    collision.collider.GetComponentInParent<Player>().RestoreHealth(10);
                     break;
                 case Type.EOF:
                     break;

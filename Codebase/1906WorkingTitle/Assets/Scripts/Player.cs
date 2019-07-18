@@ -4,25 +4,36 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public float movementSpeed;
+    #region PlayerStats
+    [SerializeField] float playerMovementSpeed;
     [SerializeField] float playerHealth;
     [SerializeField] float maxPlayerHealth;
     [SerializeField] int playerCoins;
+    [SerializeField] int playerDefense;
+    [SerializeField] float playerAttackSpeed;
+    [SerializeField] int playerAttackDamage;
+    float lastTimeFired;
+    #endregion
 
+    #region UnityComponents
     private Transform playerTransform;
     private CharacterController characterController;
     private Renderer playerRenderer;
     private Color playerColor;
+    #endregion
 
+    #region PlayerMovementProperties
     private Vector3 moveDirection;
     private Vector3 mousePosition;
     private Vector3 targetPosition;
+    [SerializeField] Camera mainCamera;
+    private float playerY;
+    #endregion
 
+    #region Projectiles
     [SerializeField] GameObject projectile;
     [SerializeField] uint bulletVelocity;
-    [SerializeField] Camera mainCamera;
-    [SerializeField] float blinkTime = 0.1f;
-    private float playerY;
+    #endregion
 
     [SerializeField] GameObject mainUI;
 
@@ -33,13 +44,14 @@ public class Player : MonoBehaviour
         playerTransform = GetComponent<Transform>();
         playerRenderer = GetComponent<Renderer>();
         playerColor = playerRenderer.material.color;
-        blinkTime = 0.1f;
         playerY = playerTransform.position.y;
+        lastTimeFired = 0.0f;
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region PlayerMovement
         // Rotate the Player Transform to face the Mouse Position
         mousePosition = Input.mousePosition;
         targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
@@ -54,22 +66,36 @@ public class Player : MonoBehaviour
 
         // Move the Player GameObject when the WASD or Arrow Keys are pressed
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        moveDirection *= movementSpeed;
+        moveDirection *= playerMovementSpeed;
         characterController.Move(moveDirection * Time.deltaTime);
 
         playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
+        #endregion
 
-        // If the right mouse button is clicked Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
+        #region PlayerAttack
+        // If the right mouse button is clicked call ShootBullet
         if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            ShootBullet();
+        }
+        #endregion
+
+        #region HitFeedback
+        // Player reverting to original color after hit
+        if (playerRenderer.material.color != playerColor)
+            playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
+        #endregion
+    }
+
+    public void ShootBullet()
+    {
+        //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
+        if (Time.time > lastTimeFired + playerAttackSpeed)
         {
             GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
-        }
-
-        if (playerRenderer.material.color != playerColor)
-        {
-            playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, blinkTime);
+            lastTimeFired = Time.time;
         }
     }
 
@@ -78,16 +104,14 @@ public class Player : MonoBehaviour
         playerRenderer.material.color = Color.red;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int amountOfDamage = 1)
     {
         BlinkOnHit();
-        mainUI.GetComponent<UpdateUI>().TakeDamage();
-        //Decrement health until 0 or less
-        playerHealth--;
+        //Decrease by amountOfDamage health until 0 or less
+        playerHealth -= amountOfDamage;
         if (playerHealth <= 0)
-        {
             Death();
-        }
+        mainUI.GetComponent<UpdateUI>().TakeDamage();
     }
 
     public float GetHealth()
@@ -100,7 +124,7 @@ public class Player : MonoBehaviour
         return maxPlayerHealth;
     }
 
-    public void AddHealth(float amountOfHealth)
+    public void RestoreHealth(float amountOfHealth)
     {
         playerHealth += amountOfHealth;
     }
@@ -122,7 +146,7 @@ public class Player : MonoBehaviour
 
     public void IncreaseHealth()
     {
-        playerHealth+=10;
-        maxPlayerHealth+=10;
+        playerHealth += 10;
+        maxPlayerHealth += 10;
     }
 }

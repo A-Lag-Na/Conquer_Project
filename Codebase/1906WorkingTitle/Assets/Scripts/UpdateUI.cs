@@ -59,7 +59,7 @@ public class UpdateUI : MonoBehaviour
         InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
         
         //grab damage flashing panel
-        damageFlasher = transform.Find("DamageFlash").GetComponent<Image>();
+        damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
         
     }
     
