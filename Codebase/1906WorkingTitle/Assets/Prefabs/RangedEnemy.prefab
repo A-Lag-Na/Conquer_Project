@@ -227,5 +227,5 @@ MonoBehaviour:
   bulletSpeed: 10
   attackTypes: []
   attackEnabled: 1
-  projectile: {fileID: 3439170161942968340, guid: 0418e4fab80af7a4fb7105fdeb422ab1,
+  projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}

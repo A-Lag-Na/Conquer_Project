@@ -22,6 +22,8 @@ public class EnemyAI : MonoBehaviour
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
 
+
+
     NavMeshAgent agent;
     GameObject player;
 
@@ -40,7 +42,13 @@ public class EnemyAI : MonoBehaviour
         temp.x = 0;
         temp.z = 0;
         GameObject clone = Instantiate(projectile, transform.position, temp);
-        
+        clone.gameObject.tag = "Enemy Bullet";
+        clone.gameObject.layer = 12;
+        clone.SetActive(true);
+
+        //clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
+        //clone.GetComponent<TrailRenderer>().endColor = Color.white;
+
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;

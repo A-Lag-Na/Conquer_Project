@@ -188,12 +188,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8731e60b3d0ef41b84d99bf6adac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 6
+  playerMovementSpeed: 2
   playerHealth: 10
-  projectile: {fileID: 0}
-  bulletVelocity: 10
+  maxPlayerHealth: 10
+  playerCoins: 0
+  playerDefense: 0
+  playerAttackSpeed: 1
+  playerAttackDamage: 1
   mainCamera: {fileID: 0}
-  blinkTime: 0.1
+  projectile: {fileID: 0}
+  bulletVelocity: 15
+  mainUI: {fileID: 0}
+  mainUI: {fileID: 0}
 --- !u!136 &346594169
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +210,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.63
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
