@@ -7,17 +7,16 @@ public class Pickup : MonoBehaviour
     private enum Type { Inventory, Coin, Health, EOF};
 
     [SerializeField] Type type;
-    //[SerializeField] Player player;
 
     private void Start()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        //player.GetComponentInParent<Player>();
+
     }
 
     private void Update()
     {
-        transform.Rotate(Vector3.forward * (100.0f * Time.deltaTime));
+        if(Type.Coin == type)
+            transform.Rotate(Vector3.forward * (100.0f * Time.deltaTime));
     }
 
     private void OnCollisionEnter(Collision collision)
