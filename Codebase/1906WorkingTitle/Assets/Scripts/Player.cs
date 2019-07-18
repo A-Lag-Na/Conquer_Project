@@ -63,8 +63,6 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
-            GradientColorKey[] grads = { new GradientColorKey(Color.white, 0), new GradientColorKey(Color.cyan, 1) };
-            GradientAlphaKey[] alphs = { };
             clone.gameObject.tag = "Player Bullet";
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
