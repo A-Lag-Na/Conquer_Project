@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
         #region PlayerAttack
         // If the right mouse button is clicked call ShootBullet
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             ShootBullet();
         }
@@ -90,6 +90,7 @@ public class Player : MonoBehaviour
             playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
         #endregion
     }
+
     public void ShootBullet()
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
