@@ -11,10 +11,13 @@ public class Player : MonoBehaviour
     [SerializeField] int playerCoins;
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
+    private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
-    private float lastTimeFired, playerExperience;
+    private float lastTimeFired;
+    [SerializeField] private float playerExperience;
+    private float nextLevelExperience;
     private int playerLevel;
-
+    private int playerSpendingPoints;
     #endregion
 
     #region UnityComponents
@@ -47,9 +50,21 @@ public class Player : MonoBehaviour
         playerRenderer = GetComponent<Renderer>();
         playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
-        lastTimeFired = 0.0f;
-        if(GameObject.Find("Main UI"))
+        if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
+        playerMovementSpeed = 3;
+        maxPlayerHealth = 10;
+        playerHealth = 10;
+        playerCoins = 0;
+        playerDefense = 0;
+        playerAttackSpeed = 1.0f;
+        visualAttackSpeed = 1;
+        playerAttackDamage = 1;
+        lastTimeFired = 0.0f;
+        playerExperience = 0;
+        playerLevel = 1;
+        nextLevelExperience = 10;
+        playerSpendingPoints = 0;
     }
 
     // Update is called once per frame
@@ -89,6 +104,11 @@ public class Player : MonoBehaviour
         if (playerRenderer.material.color != playerColor)
             playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
         #endregion
+
+        #region Leveling
+        if (playerExperience >= nextLevelExperience)
+            LevelUp();
+        #endregion
     }
 
     public void ShootBullet()
@@ -117,6 +137,16 @@ public class Player : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    public void LevelUp()
+    {
+        maxPlayerHealth += 10;
+        playerHealth = maxPlayerHealth;
+        playerMovementSpeed++;
+        playerSpendingPoints++;
+        nextLevelExperience += 10;
+        playerLevel++;
+    }
+
     #region AccessorsAndMutators
 
     #region Health
@@ -131,7 +161,7 @@ public class Player : MonoBehaviour
         }
         BlinkOnHit();
         playerHealth -= amountOfDamage;
-        if(mainUI != null && mainUI.activeSelf)
+        if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
             Death();
@@ -179,7 +209,8 @@ public class Player : MonoBehaviour
 
     public void AddDefense()
     {
-        playerDefense += 1;
+        playerDefense++;
+        playerSpendingPoints--;
     }
     #endregion
 
@@ -191,19 +222,22 @@ public class Player : MonoBehaviour
 
     public void AddDamage()
     {
-        playerAttackDamage += 1;
+        playerAttackDamage++;
+        playerSpendingPoints--;
     }
     #endregion
 
     #region AttackSpeed
-    public float GetAttackSpeed()
+    public int GetAttackSpeed()
     {
-        return playerAttackSpeed;
+        return visualAttackSpeed;
     }
 
     public void AddAttackSpeed()
     {
-        playerAttackSpeed += 1;
+        visualAttackSpeed++;
+        playerAttackSpeed -= 0.1f;
+        playerSpendingPoints--;
     }
     #endregion
 
@@ -212,17 +246,22 @@ public class Player : MonoBehaviour
     {
         return playerMovementSpeed;
     }
-
-    private void IncreaseMovementSpeed()
-    {
-
-    }
     #endregion
 
     #region LevelAndXP
     public float GetExperience()
     {
         return playerExperience;
+    }
+
+    public float GetNextLevelExperience()
+    {
+        return nextLevelExperience;
+    }
+
+    public int GetSpendingPoints()
+    {
+        return playerSpendingPoints;
     }
 
     public int GetLevel()
