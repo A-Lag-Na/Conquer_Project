@@ -8,10 +8,11 @@ public class StatScreen : MonoBehaviour
     private Button speedBTN, damageBTN, defenseBTN;
     [SerializeField] Player player;
     private float movementSpeed, currentHealth, maxHealth, currentExperience, attackSpeed;
-    [SerializeField] int defense, damage, level, pointsAvailable;
+    private int defense, damage, level, pointsAvailable;
 
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
     private RectTransform levelTransform;
+    private GameObject mainUI;
     
     // Start is called before the first frame update
     void Start()
@@ -70,6 +71,13 @@ public class StatScreen : MonoBehaviour
         //update available points
         //pointsAvailable = player.GetPointsLeft();
         pointsAvailable = 100000;
+
+        //grab main ui if active and existing
+        if(GameObject.Find("Main UI"))
+        {
+            mainUI = GameObject.Find("Main UI");
+            mainUI.SetActive(false);
+        }
     }
 
     private void AddSpeed()
@@ -96,7 +104,7 @@ public class StatScreen : MonoBehaviour
     {
         //update level
         level = player.GetLevel();
-        levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
+        levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
         //update health
         currentHealth = player.GetHealth();
@@ -121,5 +129,14 @@ public class StatScreen : MonoBehaviour
 
         //update available points
         //pointsAvailable = player.GetPointsLeft();
+
+        //exit stat screen and reenable main ui
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (mainUI != null && mainUI.activeSelf)
+                mainUI.SetActive(true);
+            Destroy(gameObject);
+        }
     }
+    
 }
