@@ -45,7 +45,7 @@ public class ConditionManager : MonoBehaviour
             {
                 iceTimer--;
                 thawTimer++;
-                if (iceTimer % 20 == 0 && GetSpeed() > 0)
+                if (iceTimer % 20 == 0 && GetSpeed()-0.3f >= 0)
                 {
                     SetSpeed(GetSpeed() - 0.3f);
                 }
