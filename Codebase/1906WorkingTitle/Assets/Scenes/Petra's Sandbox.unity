@@ -496,7 +496,7 @@ PrefabInstance:
         type: 3}
       propertyPath: projectile
       value: 
-      objectReference: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
+      objectReference: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -519,6 +519,12 @@ PrefabInstance:
       propertyPath: playerAttackSpeed
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: projectile2
+      value: 
+      objectReference: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
 --- !u!1 &1338051424 stripped

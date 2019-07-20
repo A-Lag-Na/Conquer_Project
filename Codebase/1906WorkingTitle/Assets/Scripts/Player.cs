@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
 
     #region Projectiles
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile2;
     [SerializeField] uint bulletVelocity;
     #endregion
 
@@ -97,7 +98,11 @@ public class Player : MonoBehaviour
         // If the right mouse button is clicked call ShootBullet
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            ShootBullet();
+            ShootBullet(0);
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            ShootBullet(1);
         }
         #endregion
 
@@ -113,13 +118,26 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    public void ShootBullet()
+    public void ShootBullet(int type)
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
-            GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
-            clone.gameObject.tag = "Fire Bullet";
+            GameObject clone;
+            switch(type)
+            {
+                case 1:
+                    {
+                        clone = Instantiate(projectile2, playerTransform.position, playerTransform.rotation);
+                        break;
+                    }
+                default:
+                    {
+                        clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
+                        break;
+                    }
+            }
+            
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
             clone.GetComponent<TrailRenderer>().startColor = Color.black;
