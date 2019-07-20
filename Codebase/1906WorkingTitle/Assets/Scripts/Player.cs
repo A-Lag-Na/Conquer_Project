@@ -166,9 +166,12 @@ public class Player : MonoBehaviour
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
+        {
             playerLives--;
-        if (playerLives <= 0)
-            Death();
+            if (playerLives <= 0)
+                Death();
+            playerHealth = maxPlayerHealth;
+        }
     }
 
     public void RestoreHealth(float amountOfHealth)
