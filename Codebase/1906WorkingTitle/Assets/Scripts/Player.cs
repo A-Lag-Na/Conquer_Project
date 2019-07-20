@@ -242,6 +242,10 @@ public class Player : MonoBehaviour
     #endregion
 
     #region MovementSpeed
+    public void SetMovementSpeed(float newMovementSpeed)
+    {
+        playerMovementSpeed = newMovementSpeed;
+    }
     public float GetMovementSpeed()
     {
         return playerMovementSpeed;
