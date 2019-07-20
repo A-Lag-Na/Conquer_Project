@@ -21,18 +21,17 @@ public class CollisionScript : MonoBehaviour
                         {
                             case "Fire Bullet":
                                 {
-                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 150);
+                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 179);
                                     break;
                                 }
                             case "Ice Bullet":
                                 {
-
+                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("ice", 179);
                                     break;
                                 }
                         }
                         //The enemy we hit takes damage.
                         collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(1);
-                        
                     }
                     break;
                 }

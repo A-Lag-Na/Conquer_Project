@@ -11,6 +11,7 @@ public class ConditionManager : MonoBehaviour
     [SerializeField] bool isPlayer;
     private Component statsScript;
     private float speed;
+    private float maxSpeed;
 
     public void Start()
     {
@@ -25,6 +26,7 @@ public class ConditionManager : MonoBehaviour
             statsScript = GetComponentInParent<EnemyStats>();
         }
         speed = GetSpeed();
+        maxSpeed = GetSpeed();
     }
 
     public void Update()
@@ -41,7 +43,20 @@ public class ConditionManager : MonoBehaviour
             }
             if (iceTimer > 0)
             {
-
+                iceTimer--;
+                thawTimer++;
+                if (iceTimer % 20 == 0 && GetSpeed() > 0)
+                {
+                    SetSpeed(GetSpeed() - 0.3f);
+                }
+            }
+            if(thawTimer > 0 && iceTimer == 0)
+            {
+                thawTimer--;
+                if (thawTimer % 20 == 1 && GetSpeed()+0.3f <= maxSpeed)
+                {
+                    SetSpeed(GetSpeed() + 0.3f);
+                }
             }
         }
     }
@@ -58,7 +73,6 @@ public class ConditionManager : MonoBehaviour
             case "ice":
                 {
                     iceTimer += ticks;
-                    thawTimer += ticks;
                     break;
                 }
             default:

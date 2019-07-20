@@ -190,6 +190,7 @@ MonoBehaviour:
   damage: 1
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
+  enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &1336841922
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -200,7 +201,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3.6
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 600

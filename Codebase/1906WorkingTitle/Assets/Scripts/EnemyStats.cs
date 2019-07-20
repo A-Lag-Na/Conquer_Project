@@ -21,7 +21,7 @@ public class EnemyStats : MonoBehaviour
 
     //Enemy's color and renderer
     private Renderer enemyRender;
-    private Color enemyColor;
+    public Color enemyColor;
 
     //get-setters
     public int GetPoints()
