@@ -42,12 +42,8 @@ public class EnemyAI : MonoBehaviour
         temp.x = 0;
         temp.z = 0;
         GameObject clone = Instantiate(projectile, transform.position, temp);
-        clone.gameObject.tag = "Enemy Bullet";
         clone.gameObject.layer = 12;
         clone.SetActive(true);
-
-        //clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
-        //clone.GetComponent<TrailRenderer>().endColor = Color.white;
 
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
@@ -59,7 +55,7 @@ public class EnemyAI : MonoBehaviour
     void Update()
     {
         agent.SetDestination(player.transform.position);
-        if(agent.remainingDistance < agent.stoppingDistance)
+        if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
         {
             Vector3 targetPosition = player.transform.position;
             Vector3 relativePosition = targetPosition - transform.position;

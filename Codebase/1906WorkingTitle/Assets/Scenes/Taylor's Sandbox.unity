@@ -901,6 +901,7 @@ GameObject:
   - component: {fileID: 1985353174}
   - component: {fileID: 1985353173}
   - component: {fileID: 1985353175}
+  - component: {fileID: 1985353180}
   m_Layer: 11
   m_Name: BulletHell Enemy
   m_TagString: Enemy
@@ -920,7 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 994d08876f0d25746a61bc1f6b65a3ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 0.1
+  attackRate: 0
   bulletSpeed: 5
   attackTypes: []
   attackEnabled: 1
@@ -965,6 +966,7 @@ MonoBehaviour:
   damage: 1
   pickUp: {fileID: 2131500695}
   blinkTime: 0.1
+  enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!135 &1985353176
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1041,6 +1043,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1985353180
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985353172}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireTimer: 0
+  iceTimer: 0
+  thawTimer: 0
+  isPlayer: 0
 --- !u!1 &2042427493
 GameObject:
   m_ObjectHideFlags: 0

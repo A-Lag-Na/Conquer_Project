@@ -92,6 +92,7 @@ GameObject:
   - component: {fileID: 6575994589695979374}
   - component: {fileID: 1336841922}
   - component: {fileID: 1336841916}
+  - component: {fileID: 4183320886380877096}
   m_Layer: 11
   m_Name: RangedEnemy
   m_TagString: Enemy
@@ -185,10 +186,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 1
-  health: 3
+  health: 10
   damage: 1
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
+  enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!195 &1336841922
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -199,7 +201,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 3.6
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 600
@@ -229,3 +231,19 @@ MonoBehaviour:
   attackEnabled: 1
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
+--- !u!114 &4183320886380877096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2351237706826510883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireTimer: 0
+  iceTimer: 0
+  thawTimer: 0
+  isPlayer: 0

@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
 
     #region Projectiles
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile2;
+    [SerializeField] GameObject projectile3;
     [SerializeField] uint bulletVelocity;
     #endregion
 
@@ -97,7 +99,15 @@ public class Player : MonoBehaviour
         // If the right mouse button is clicked call ShootBullet
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            ShootBullet();
+            ShootBullet(1);
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            ShootBullet(2);
+        }
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            ShootBullet(3);
         }
         #endregion
 
@@ -113,17 +123,36 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    public void ShootBullet()
+    public void ShootBullet(int type)
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
-            GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
-            clone.gameObject.tag = "Player Bullet";
+            GameObject clone;
+            switch(type)
+            {
+                case 1:
+                    {
+                        clone = Instantiate(projectile2, playerTransform.position, playerTransform.rotation);
+                        break;
+                    }
+                case 2:
+                    {
+                        clone = Instantiate(projectile3, playerTransform.position, playerTransform.rotation);
+                        clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
+                        clone.GetComponent<TrailRenderer>().endColor = Color.white;
+                        break;
+                    }
+                default:
+                    {
+                        clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
+                        clone.GetComponent<TrailRenderer>().startColor = Color.black;
+                        clone.GetComponent<TrailRenderer>().endColor = Color.white;
+                        break;
+                    }
+            }
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
-            clone.GetComponent<TrailRenderer>().startColor = Color.black;
-            clone.GetComponent<TrailRenderer>().endColor = Color.white;
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
             lastTimeFired = Time.time;
         }

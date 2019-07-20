@@ -5,12 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
-  - Player Bullet
-  - Enemy Bullet
   - Room
   - Door
   - Pickups
   - Fire Bullet
+  - Ice Bullet
   layers:
   - Default
   - TransparentFX

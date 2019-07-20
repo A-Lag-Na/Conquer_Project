@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class EnemyStats : MonoBehaviour
 
     //Enemy's color and renderer
     private Renderer enemyRender;
-    private Color enemyColor;
+    public Color enemyColor;
 
     //get-setters
     public int GetPoints()
@@ -43,9 +44,17 @@ public class EnemyStats : MonoBehaviour
     {
         damage = _damage;
     }
+    public float GetMovementSpeed()
+    {
+        return GetComponent<NavMeshAgent>().speed;
+    }
+    public void SetMovementSpeed(float _speed)
+    {
+       GetComponent<NavMeshAgent>().speed = _speed;
+    }
 
     //Our enemy is damaged
-    public void TakesDamage(int _damage = 1)
+    public void TakeDamage(int _damage = 1)
     {
         BlinkOnHit();
         health -= damage;
