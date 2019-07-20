@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
@@ -42,6 +43,14 @@ public class EnemyStats : MonoBehaviour
     public void SetDamage(int _damage)
     {
         damage = _damage;
+    }
+    public float GetMovementSpeed()
+    {
+        return GetComponent<NavMeshAgent>().speed;
+    }
+    public void SetMovementSpeed(float _speed)
+    {
+       GetComponent<NavMeshAgent>().speed = _speed;
     }
 
     //Our enemy is damaged

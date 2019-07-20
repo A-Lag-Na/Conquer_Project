@@ -14,12 +14,14 @@ public class CollisionScript : MonoBehaviour
                 {
                     if (collision.collider.CompareTag("Enemy"))
                     {
+                        GameObject enemy = collision.collider.gameObject;
+
                         //Apply extra on-hit effects here:
                         switch(gameObject.tag)
                         {
                             case "Fire Bullet":
                                 {
-
+                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 30);
                                     break;
                                 }
                             case "Ice Bullet":
