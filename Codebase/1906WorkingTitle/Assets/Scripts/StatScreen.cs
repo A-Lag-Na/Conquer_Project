@@ -69,8 +69,7 @@ public class StatScreen : MonoBehaviour
         defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
 
         //update available points
-        //pointsAvailable = player.GetPointsLeft();
-        pointsAvailable = 100000;
+        pointsAvailable = player.GetSpendingPoints();
 
         //grab main ui if active and existing
         if(GameObject.Find("Main UI"))
@@ -128,7 +127,7 @@ public class StatScreen : MonoBehaviour
         defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
 
         //update available points
-        //pointsAvailable = player.GetPointsLeft();
+        pointsAvailable = player.GetSpendingPoints();
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))

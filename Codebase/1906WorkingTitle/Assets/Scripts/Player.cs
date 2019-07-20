@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] int playerCoins;
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
-    private int visualAttackSpeed;
+    [SerializeField] private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
     [SerializeField] private float playerExperience;
     private float nextLevelExperience;
     private int playerLevel;
     private int playerSpendingPoints;
+    private int playerLives;
     #endregion
 
     #region UnityComponents
@@ -37,6 +38,7 @@ public class Player : MonoBehaviour
 
     #region Projectiles
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile2;
     [SerializeField] uint bulletVelocity;
     #endregion
 
@@ -65,6 +67,7 @@ public class Player : MonoBehaviour
         playerLevel = 1;
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
+        playerLives = 5;
     }
 
     // Update is called once per frame
@@ -95,7 +98,11 @@ public class Player : MonoBehaviour
         // If the right mouse button is clicked call ShootBullet
         if (Input.GetKey(KeyCode.Mouse0))
         {
-            ShootBullet();
+            ShootBullet(0);
+        }
+        if (Input.GetKey(KeyCode.Mouse1))
+        {
+            ShootBullet(1);
         }
         #endregion
 
@@ -111,13 +118,26 @@ public class Player : MonoBehaviour
         #endregion
     }
 
-    public void ShootBullet()
+    public void ShootBullet(int type)
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
-            GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
-            clone.gameObject.tag = "Player Bullet";
+            GameObject clone;
+            switch(type)
+            {
+                case 1:
+                    {
+                        clone = Instantiate(projectile2, playerTransform.position, playerTransform.rotation);
+                        break;
+                    }
+                default:
+                    {
+                        clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
+                        break;
+                    }
+            }
+            
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
             clone.GetComponent<TrailRenderer>().startColor = Color.black;
@@ -164,6 +184,8 @@ public class Player : MonoBehaviour
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
+            playerLives--;
+        if (playerLives <= 0)
             Death();
     }
 
@@ -246,6 +268,7 @@ public class Player : MonoBehaviour
     {
         playerMovementSpeed = newMovementSpeed;
     }
+
     public float GetMovementSpeed()
     {
         return playerMovementSpeed;
@@ -272,6 +295,19 @@ public class Player : MonoBehaviour
     {
         return playerLevel;
     }
+    #endregion
+
+    #region PlayerLives
+    public int GetLives()
+    {
+        return playerLives;
+    }
+
+    public void IncreaseLives()
+    {
+        playerLives++;
+    }
+
     #endregion
 
     #endregion

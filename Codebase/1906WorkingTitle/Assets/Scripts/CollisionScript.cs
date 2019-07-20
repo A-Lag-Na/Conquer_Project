@@ -6,20 +6,22 @@ public class CollisionScript : MonoBehaviour
 {
     private void OnCollisionEnter(Collision collision)
     {
-        Destroy(gameObject);
         int temp = gameObject.layer;
-        switch(temp)
+        Destroy(gameObject);
+        switch (temp)
         {
             case 10:
                 {
                     if (collision.collider.CompareTag("Enemy"))
                     {
+                        GameObject enemy = collision.collider.gameObject;
+
                         //Apply extra on-hit effects here:
                         switch(gameObject.tag)
                         {
                             case "Fire Bullet":
                                 {
-
+                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 150);
                                     break;
                                 }
                             case "Ice Bullet":
@@ -29,7 +31,7 @@ public class CollisionScript : MonoBehaviour
                                 }
                         }
                         //The enemy we hit takes damage.
-                        collision.collider.GetComponentInParent<EnemyStats>().TakesDamage();
+                        collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(1);
                         
                     }
                     break;
@@ -38,7 +40,7 @@ public class CollisionScript : MonoBehaviour
                 {
                     if (collision.collider.CompareTag("Player"))
                     {
-                        collision.collider.GetComponentInParent<Player>().TakeDamage();
+                        collision.collider.GetComponentInParent<Player>().TakeDamage(1);
                     }
                     break;
                 }
