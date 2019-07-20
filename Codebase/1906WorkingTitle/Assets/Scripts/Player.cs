@@ -11,13 +11,14 @@ public class Player : MonoBehaviour
     [SerializeField] int playerCoins;
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
-    private int visualAttackSpeed;
+    [SerializeField] private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
     [SerializeField] private float playerExperience;
     private float nextLevelExperience;
     private int playerLevel;
     private int playerSpendingPoints;
+    private int playerLives;
     #endregion
 
     #region UnityComponents
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         playerLevel = 1;
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
+        playerLives = 5;
     }
 
     // Update is called once per frame
@@ -164,6 +166,8 @@ public class Player : MonoBehaviour
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
+            playerLives--;
+        if (playerLives <= 0)
             Death();
     }
 
@@ -246,6 +250,7 @@ public class Player : MonoBehaviour
     {
         playerMovementSpeed = newMovementSpeed;
     }
+
     public float GetMovementSpeed()
     {
         return playerMovementSpeed;
@@ -272,6 +277,19 @@ public class Player : MonoBehaviour
     {
         return playerLevel;
     }
+    #endregion
+
+    #region PlayerLives
+    public int GetLives()
+    {
+        return playerLives;
+    }
+
+    public void IncreaseLives()
+    {
+        playerLives++;
+    }
+
     #endregion
 
     #endregion

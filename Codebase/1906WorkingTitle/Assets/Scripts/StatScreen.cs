@@ -68,8 +68,7 @@ public class StatScreen : MonoBehaviour
         defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
 
         //update available points
-        //pointsAvailable = player.GetPointsLeft();
-        pointsAvailable = 100000;
+        pointsAvailable = player.GetSpendingPoints();
     }
 
     private void AddSpeed()
@@ -120,6 +119,6 @@ public class StatScreen : MonoBehaviour
         defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
 
         //update available points
-        //pointsAvailable = player.GetPointsLeft();
+        pointsAvailable = player.GetSpendingPoints();
     }
 }
