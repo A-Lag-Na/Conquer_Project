@@ -6,9 +6,9 @@ using UnityEngine.UI;
 public class StatScreen : MonoBehaviour
 {
     private Button speedBTN, damageBTN, defenseBTN;
-    private Player player;
+    [SerializeField] Player player;
     private float movementSpeed, currentHealth, maxHealth, currentExperience, attackSpeed;
-    private int defense, damage, level, pointsAvailable;
+    [SerializeField] int defense, damage, level, pointsAvailable;
 
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
     private RectTransform levelTransform;
@@ -44,31 +44,40 @@ public class StatScreen : MonoBehaviour
 
         //update level
         level = player.GetLevel();
+        levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
         //update health
         currentHealth = player.GetHealth();
         maxHealth = player.GetMaxHealth();
+        healthText.text = $"Current / Max Health\t\t\t\t\t\t\t\t\t{currentHealth} / {maxHealth}";
 
         //update movement speed
         movementSpeed = player.GetMovementSpeed();
+        movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{movementSpeed}";
 
         //update attack speed
         attackSpeed = player.GetAttackSpeed();
+        attackSpeedText.text = $"Attack Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{attackSpeed}";
 
         //update damage
         damage = player.GetDamage();
+        damageText.text = $"Attack Damage\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{damage}";
 
         //update defense
         defense = player.GetDefense();
+        defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
 
         //update available points
         //pointsAvailable = player.GetPointsLeft();
+        pointsAvailable = 100000;
     }
 
     private void AddSpeed()
     {
-        if(pointsAvailable>0)
+        if (pointsAvailable > 0)
+        {
             player.AddAttackSpeed();
+        }
     }
 
     private void AddDamage()
@@ -85,6 +94,32 @@ public class StatScreen : MonoBehaviour
 
     private void Update()
     {
+        //update level
+        level = player.GetLevel();
+        levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
+
+        //update health
+        currentHealth = player.GetHealth();
+        maxHealth = player.GetMaxHealth();
+        healthText.text = $"Current / Max Health\t\t\t\t\t\t\t\t\t{currentHealth} / {maxHealth}";
+
+        //update movement speed
+        movementSpeed = player.GetMovementSpeed();
+        movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{movementSpeed}";
+
+        //update attack speed
+        attackSpeed = player.GetAttackSpeed();
+        attackSpeedText.text = $"Attack Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{attackSpeed}";
+
+        //update damage
+        damage = player.GetDamage();
+        damageText.text = $"Attack Damage\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{damage}";
+
+        //update defense
+        defense = player.GetDefense();
+        defenseText.text = $"Defense\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{defense}";
+
+        //update available points
         //pointsAvailable = player.GetPointsLeft();
     }
 }
