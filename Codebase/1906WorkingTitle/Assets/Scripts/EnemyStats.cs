@@ -54,7 +54,7 @@ public class EnemyStats : MonoBehaviour
     }
 
     //Our enemy is damaged
-    public void TakesDamage(int _damage = 1)
+    public void TakeDamage(int _damage = 1)
     {
         BlinkOnHit();
         health -= damage;

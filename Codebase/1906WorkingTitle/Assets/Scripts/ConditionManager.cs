@@ -33,7 +33,11 @@ public class ConditionManager : MonoBehaviour
         {
             if (fireTimer > 0)
             {
-
+                fireTimer--;
+                if (fireTimer % 60 == 0)
+                {
+                   Damage(1);
+                }
             }
             if (iceTimer > 0)
             {
@@ -107,6 +111,17 @@ public class ConditionManager : MonoBehaviour
         else
         {
             ((EnemyStats)statsScript).SetMovementSpeed(_speed);
+        }
+    }
+    public void Damage(int _damage)
+    {
+        if (isPlayer)
+        {
+            ((Player)statsScript).TakeDamage(_damage);
+        }
+        else
+        {
+            ((EnemyStats)statsScript).TakeDamage(_damage);
         }
     }
 }

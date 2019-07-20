@@ -117,7 +117,7 @@ public class Player : MonoBehaviour
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
             GameObject clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
-            clone.gameObject.tag = "Player Bullet";
+            clone.gameObject.tag = "Fire Bullet";
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
             clone.GetComponent<TrailRenderer>().startColor = Color.black;
