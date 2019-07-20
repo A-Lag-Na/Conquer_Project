@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
 
         #region PlayerAttack
         // If the right mouse button is clicked call ShootBullet
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0))
         {
             ShootBullet();
         }
@@ -112,19 +112,34 @@ public class Player : MonoBehaviour
         playerRenderer.material.color = Color.red;
     }
 
+    public void Death()
+    {
+        gameObject.SetActive(false);
+    }
+
+    #region AccessorsAndMutators
+
+    #region Health
     public void TakeDamage(int amountOfDamage = 1)
     {
+        //Decrease health by amountOfDamage until 0 or less
+        amountOfDamage -= playerDefense;
+        if (amountOfDamage <= 0)
+        {
+            playerRenderer.material.color = Color.yellow;
+            return;
+        }
         BlinkOnHit();
-        //Decrease by amountOfDamage health until 0 or less
         playerHealth -= amountOfDamage;
         if(mainUI != null && mainUI.activeSelf)
-        {
             mainUI.GetComponent<UpdateUI>().TakeDamage();
-        }
-        //Decrement health until 0 or less
-        playerHealth--;
         if (playerHealth <= 0)
             Death();
+    }
+
+    public void RestoreHealth(float amountOfHealth)
+    {
+        playerHealth += amountOfHealth;
     }
 
     public float GetHealth()
@@ -137,16 +152,14 @@ public class Player : MonoBehaviour
         return maxPlayerHealth;
     }
 
-    public void RestoreHealth(float amountOfHealth)
+    public void IncreaseHealth()
     {
-        playerHealth += amountOfHealth;
+        playerHealth += 10;
+        maxPlayerHealth += 10;
     }
+    #endregion
 
-    public void Death()
-    {
-        gameObject.SetActive(false);
-    }
-
+    #region Coins
     public void AddCoins(int amountOfCoins)
     {
         playerCoins += amountOfCoins;
@@ -156,13 +169,9 @@ public class Player : MonoBehaviour
     {
         return playerCoins;
     }
+    #endregion
 
-    public void IncreaseHealth()
-    {
-        playerHealth += 10;
-        maxPlayerHealth += 10;
-    }
-
+    #region Defense
     public int GetDefense()
     {
         return playerDefense;
@@ -172,7 +181,9 @@ public class Player : MonoBehaviour
     {
         playerDefense += 1;
     }
+    #endregion
 
+    #region Damage
     public int GetDamage()
     {
         return playerAttackDamage;
@@ -182,16 +193,21 @@ public class Player : MonoBehaviour
     {
         playerAttackDamage += 1;
     }
+    #endregion
 
+    #region AttackSpeed
     public float GetAttackSpeed()
     {
         return playerAttackSpeed;
     }
+
     public void AddAttackSpeed()
     {
         playerAttackSpeed += 1;
     }
+    #endregion
 
+    #region MovementSpeed
     public float GetMovementSpeed()
     {
         return playerMovementSpeed;
@@ -201,7 +217,9 @@ public class Player : MonoBehaviour
     {
 
     }
+    #endregion
 
+    #region LevelAndXP
     public float GetExperience()
     {
         return playerExperience;
@@ -211,4 +229,7 @@ public class Player : MonoBehaviour
     {
         return playerLevel;
     }
+    #endregion
+
+    #endregion
 }
