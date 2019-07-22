@@ -105,6 +105,10 @@ public class Player : MonoBehaviour
         {
             ShootBullet(2);
         }
+        if (Input.GetKey(KeyCode.Mouse2))
+        {
+            ShootBullet(3);
+        }
         #endregion
 
         #region HitFeedback
@@ -191,9 +195,12 @@ public class Player : MonoBehaviour
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
         if (playerHealth <= 0)
+        {
             playerLives--;
-        if (playerLives <= 0)
-            Death();
+            if (playerLives <= 0)
+                Death();
+            playerHealth = maxPlayerHealth;
+        }
     }
 
     public void RestoreHealth(float amountOfHealth)
