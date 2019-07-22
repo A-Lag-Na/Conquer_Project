@@ -4,33 +4,46 @@ using UnityEngine;
 
 public class CollisionScript : MonoBehaviour
 {
+    public AudioSource audioSource;
+        
     private void OnCollisionEnter(Collision collision)
     {
-        int temp = gameObject.layer;
-        Destroy(gameObject);
         GameObject target = collision.collider.gameObject;
+        audioSource = target.GetComponent<AudioSource>();
+        int temp = gameObject.layer;
+        if(audioSource != null)
+        {
+            audioSource.enabled = true;
+            audioSource.Play();
+        }
         if (collision.collider.CompareTag("Enemy"))
         {
             //The enemy we hit takes damage.
-            collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(1);
+            collision.collider.GetComponent<EnemyStats>().TakeDamage(1);
         }
         if (collision.collider.CompareTag("Player"))
         {
-            collision.collider.GetComponentInParent<Player>().TakeDamage(1);
+            collision.collider.GetComponent<Player>().TakeDamage(1);
         }
-        //Apply extra on-hit effects here:
-        switch (gameObject.tag)
+        ConditionManager con = target.GetComponent<ConditionManager>();
+        if (gameObject.tag != "Untagged" && con != null)
         {
-            case "Fire Bullet":
-                {
-                    target.GetComponentInParent<ConditionManager>().TimerAdd("fire", 179);
-                    break;
-                }
-            case "Ice Bullet":
-                {
-                    target.GetComponentInParent<ConditionManager>().TimerAdd("ice", 179);
-                    break;
-                }
+            //Apply extra on-hit effects here:
+            switch (gameObject.tag)
+            {
+                case "Fire Bullet":
+                    {
+                        con.TimerAdd("fire", 179);
+                        break;
+                    }
+                case "Ice Bullet":
+                    {
+                        con.SubtractSpeed((float)0.6);
+                        con.TimerAdd("thaw", 90);
+                        break;
+                    }
+            }
         }
+        Destroy(gameObject);
     }
 }

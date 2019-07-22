@@ -5,7 +5,6 @@ using UnityEngine;
 public class ConditionManager : MonoBehaviour
 {
     public int fireTimer = 0;
-    public int iceTimer = 0;
     public int thawTimer = 0;
 
     [SerializeField] bool isPlayer;
@@ -31,7 +30,7 @@ public class ConditionManager : MonoBehaviour
 
     public void Update()
     {
-        if (fireTimer > 0 || iceTimer > 0 || thawTimer > 0)
+        if (fireTimer > 0 || thawTimer > 0)
         {
             if (fireTimer > 0)
             {
@@ -41,21 +40,12 @@ public class ConditionManager : MonoBehaviour
                    Damage(1);
                 }
             }
-            if (iceTimer > 0)
-            {
-                iceTimer--;
-                thawTimer++;
-                if (iceTimer % 20 == 0 && GetSpeed()-0.3f >= 0)
-                {
-                    SetSpeed(GetSpeed() - 0.3f);
-                }
-            }
-            if(thawTimer > 0 && iceTimer == 0)
+            if(thawTimer > 0)
             {
                 thawTimer--;
-                if (thawTimer % 20 == 1 && GetSpeed()+0.3f <= maxSpeed)
+                if (thawTimer % 30 == 1 && GetSpeed()+0.2f <= maxSpeed)
                 {
-                    SetSpeed(GetSpeed() + 0.3f);
+                    SetSpeed(GetSpeed() + 0.2f);
                 }
             }
         }
@@ -70,9 +60,9 @@ public class ConditionManager : MonoBehaviour
                     fireTimer += ticks;
                     break;
                 }
-            case "ice":
+            case "thaw":
                 {
-                    iceTimer += ticks;
+                    thawTimer += ticks;
                     break;
                 }
             default:
@@ -91,9 +81,8 @@ public class ConditionManager : MonoBehaviour
                     fireTimer = ticks;
                     break;
                 }
-            case "ice":
+            case "thaw":
                 {
-                    iceTimer = ticks;
                     thawTimer = ticks;
                     break;
                 }
@@ -126,6 +115,10 @@ public class ConditionManager : MonoBehaviour
         {
             ((EnemyStats)statsScript).SetMovementSpeed(_speed);
         }
+    }
+    public void SubtractSpeed(float _speed)
+    {
+        SetSpeed(GetSpeed() - _speed);
     }
     public void Damage(int _damage)
     {
