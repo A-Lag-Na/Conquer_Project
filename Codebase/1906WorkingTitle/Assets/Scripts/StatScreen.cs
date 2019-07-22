@@ -79,7 +79,7 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddSpeed()
+    public void AddSpeed()
     {
         if (pointsAvailable > 0)
         {
@@ -87,13 +87,13 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddDamage()
+    public void AddDamage()
     {
         if (pointsAvailable > 0)
             player.AddDamage();
     }
 
-    private void AddDefense()
+    public void AddDefense()
     {
         if (pointsAvailable > 0)
             player.AddDefense();
