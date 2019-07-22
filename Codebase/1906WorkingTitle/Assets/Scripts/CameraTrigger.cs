@@ -20,6 +20,7 @@ public class CameraTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Room: " + gameObject.name);
             //Changes the cameras position
             Camera.main.transform.position = camPos.transform.position;
 
