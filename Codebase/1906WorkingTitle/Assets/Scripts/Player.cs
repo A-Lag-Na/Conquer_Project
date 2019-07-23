@@ -55,12 +55,9 @@ public class Player : MonoBehaviour
         playerY = playerTransform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
-        playerMovementSpeed = 3;
         maxPlayerHealth = 10;
         playerHealth = 10;
         playerCoins = 0;
-        playerDefense = 0;
-        playerAttackSpeed = 1.0f;
         visualAttackSpeed = 1;
         playerAttackDamage = 1;
         lastTimeFired = 0.0f;

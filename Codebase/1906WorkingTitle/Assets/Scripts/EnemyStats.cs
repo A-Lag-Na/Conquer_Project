@@ -57,7 +57,7 @@ public class EnemyStats : MonoBehaviour
     public void TakeDamage(int _damage = 1)
     {
         BlinkOnHit();
-        health -= damage;
+        health -= _damage;
         if(health <= 0)
         {
             Kill();

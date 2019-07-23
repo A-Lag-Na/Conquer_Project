@@ -4,6 +4,21 @@ using UnityEngine;
 
 public class CollisionScript : MonoBehaviour
 {
+    int playerDamage;
+    GameObject player;
+    Player playerScript;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Player>();
+    }
+
+    private void Update()
+    {
+        playerDamage = playerScript.GetDamage();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         int temp = gameObject.layer;
@@ -31,7 +46,7 @@ public class CollisionScript : MonoBehaviour
                                 }
                         }
                         //The enemy we hit takes damage.
-                        collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(1);
+                        collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(playerDamage);
                     }
                     break;
                 }
