@@ -25,7 +25,6 @@ public class CollisionScript : MonoBehaviour
     {
         GameObject target = collision.collider.gameObject;
         audioSource = target.GetComponent<AudioSource>();
-        int temp = gameObject.layer;
         if(audioSource != null)
         {
             audioSource.enabled = true;
@@ -34,7 +33,7 @@ public class CollisionScript : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             //The enemy we hit takes damage.
-            collision.collider.GetComponent<EnemyStats>().TakeDamage(1);
+            collision.collider.GetComponent<EnemyStats>().TakeDamage(playerDamage);
         }
         if (collision.collider.CompareTag("Player"))
         {
@@ -48,24 +47,6 @@ public class CollisionScript : MonoBehaviour
             {
                 case "Fire Bullet":
                     {
-                        GameObject enemy = collision.collider.gameObject;
-
-                        //Apply extra on-hit effects here:
-                        switch(gameObject.tag)
-                        {
-                            case "Fire Bullet":
-                                {
-                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 179);
-                                    break;
-                                }
-                            case "Ice Bullet":
-                                {
-                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("ice", 179);
-                                    break;
-                                }
-                        }
-                        //The enemy we hit takes damage.
-                        collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(playerDamage);
                         con.TimerAdd("fire", 179);
                         break;
                     }

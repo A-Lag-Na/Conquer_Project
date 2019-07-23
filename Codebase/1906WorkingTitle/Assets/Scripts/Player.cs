@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerExperience;
     private float nextLevelExperience;
     private int playerLevel;
-    private int playerSpendingPoints;
-    private int playerLives;
+    [SerializeField] private int playerSpendingPoints;
+    [SerializeField] private int playerLives;
     #endregion
 
     #region UnityComponents
@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         playerHealth = 10;
         playerCoins = 0;
         visualAttackSpeed = 1;
-        playerAttackDamage = 1;
         lastTimeFired = 0.0f;
         playerExperience = 0;
         playerLevel = 1;
@@ -113,11 +112,7 @@ public class Player : MonoBehaviour
         if (playerRenderer.material.color != playerColor)
             playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
         #endregion
-
-        #region Leveling
-        if (playerExperience >= nextLevelExperience)
-            LevelUp();
-        #endregion
+        
     }
 
     public void ShootBullet(int type)
@@ -305,6 +300,13 @@ public class Player : MonoBehaviour
     public int GetLevel()
     {
         return playerLevel;
+    }
+
+    public void GainExperience(int playerEXP)
+    {
+        playerExperience += playerEXP;
+        if (playerExperience >= nextLevelExperience)
+            LevelUp();
     }
     #endregion
 
