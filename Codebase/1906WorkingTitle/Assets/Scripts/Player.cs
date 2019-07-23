@@ -172,7 +172,7 @@ public class Player : MonoBehaviour
         playerHealth = maxPlayerHealth;
         playerMovementSpeed++;
         playerSpendingPoints++;
-        nextLevelExperience += 10;
+        playerExperience = 0;
         playerLevel++;
     }
 

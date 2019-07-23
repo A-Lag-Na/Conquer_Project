@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    private enum Type { Inventory, Coin, Health, EOF};
+    private enum Type {Coin, Health, EOF};
 
     [SerializeField] Type type;
 
@@ -25,9 +25,6 @@ public class Pickup : MonoBehaviour
         {
             switch (type)
             {
-                case Type.Inventory:
-                    //player.AddToInventory(this);
-                    break;
                 case Type.Coin:
                     collision.collider.GetComponentInParent<Player>().AddCoins(1);
                     break;
