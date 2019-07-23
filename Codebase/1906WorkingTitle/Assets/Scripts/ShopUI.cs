@@ -21,7 +21,8 @@ public class ShopUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
         {
-            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
     }
 
