@@ -31,6 +31,7 @@ public class BulletHellEnemy : MonoBehaviour
 
     NavMeshAgent agent;
     GameObject player;
+    private bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -110,9 +111,21 @@ public class BulletHellEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
-        agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-        ShootBullet();
+        if (!paused)
+        {
+            agent.SetDestination(player.transform.position);
+            agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            ShootBullet();
+        }
+    }
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+
+    void OnResumeGame()
+    {
+        paused = false;
     }
 }
