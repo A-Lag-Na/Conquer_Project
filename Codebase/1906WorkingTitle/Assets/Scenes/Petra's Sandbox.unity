@@ -437,6 +437,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: -2018029439070025550, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 3828636513520416995, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -517,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: playerAttackSpeed
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -525,6 +530,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
         type: 3}
+    - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: playerAttackDamage
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 037e4b3854aacd74db48b4a91f4e2712, type: 3}
 --- !u!1 &1338051424 stripped
@@ -546,7 +556,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTimer: 0
-  iceTimer: 0
   thawTimer: 0
   isPlayer: 0
 --- !u!1001 &1368579458
@@ -759,6 +768,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: RangedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5279336939109397354, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -813,6 +827,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}

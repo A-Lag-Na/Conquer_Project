@@ -43,7 +43,7 @@ public class UpdateUI : MonoBehaviour
         coinText.text = $"X{coins}";
 
         //update lives count
-        //float lives = player.GetLives();
+        lives = player.GetLives();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
         livesText.text = $"X{lives}";
 
@@ -130,7 +130,7 @@ public class UpdateUI : MonoBehaviour
         coinText.text = $"X{coins}";
 
         //update lives count
-        //float lives = player.GetLives();
+        lives = player.GetLives();
         livesText.text = $"X{lives}";
 
         //update inventory

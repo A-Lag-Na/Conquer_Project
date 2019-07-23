@@ -7,7 +7,7 @@ public class StatScreen : MonoBehaviour
 {
     private Button speedBTN, damageBTN, defenseBTN;
     [SerializeField] Player player;
-    private float movementSpeed, currentHealth, maxHealth, currentExperience, attackSpeed;
+    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp ,attackSpeed;
     private int defense, damage, level, pointsAvailable;
 
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
@@ -47,6 +47,13 @@ public class StatScreen : MonoBehaviour
         level = player.GetLevel();
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
+        //update level bar
+        currentExperience = player.GetExperience();
+        nextLevelExp = player.GetNextLevelExperience();
+        Vector3 levelScale = levelTransform.localScale;
+        levelScale.x = currentExperience / nextLevelExp;
+        levelTransform.localScale = levelScale;
+
         //update health
         currentHealth = player.GetHealth();
         maxHealth = player.GetMaxHealth();
@@ -70,6 +77,7 @@ public class StatScreen : MonoBehaviour
 
         //update available points
         pointsAvailable = player.GetSpendingPoints();
+        pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //grab main ui if active and existing
         if(GameObject.Find("Main UI"))
@@ -79,7 +87,7 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddSpeed()
+    public void AddSpeed()
     {
         if (pointsAvailable > 0)
         {
@@ -87,13 +95,13 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddDamage()
+    public void AddDamage()
     {
         if (pointsAvailable > 0)
             player.AddDamage();
     }
 
-    private void AddDefense()
+    public void AddDefense()
     {
         if (pointsAvailable > 0)
             player.AddDefense();
@@ -105,6 +113,13 @@ public class StatScreen : MonoBehaviour
         level = player.GetLevel();
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
+        //update level bar
+        currentExperience = player.GetExperience();
+        nextLevelExp = player.GetNextLevelExperience();
+        Vector3 levelScale = levelTransform.localScale;
+        levelScale.x = currentExperience / nextLevelExp;
+        levelTransform.localScale = levelScale;
+
         //update health
         currentHealth = player.GetHealth();
         maxHealth = player.GetMaxHealth();
@@ -128,6 +143,7 @@ public class StatScreen : MonoBehaviour
 
         //update available points
         pointsAvailable = player.GetSpendingPoints();
+        pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))

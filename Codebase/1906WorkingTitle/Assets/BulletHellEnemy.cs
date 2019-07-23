@@ -1,19 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class BulletHellEnemy : MonoBehaviour
 {
-    //Counts frames between attacks
-    private int attackTimer;
-
+    #region SerializeFields
     [SerializeField] private float attackRate = 1;
     //[SerializeField] private int attackMax = 120;
 
     [SerializeField] private int bulletSpeed = 2;
-
-    //List of different attacks this enemy can use
-    [SerializeField] List<string> attackTypes;
 
     //If this enemy's attack behavior is enabled or not.
     [SerializeField] bool attackEnabled = true;
@@ -21,9 +17,17 @@ public class BulletHellEnemy : MonoBehaviour
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
 
+    [SerializeField] float rotationRate = 2;
+    #endregion
 
+    //Counts frames between attacks
+    private int attackTimer;
 
-    UnityEngine.AI.NavMeshAgent agent;
+    [SerializeField] int rotationSpeed;
+    int rotationCap;
+    bool rotateEnabled = true;
+
+    NavMeshAgent agent;
     GameObject player;
 
     // Start is called before the first frame update
@@ -31,17 +35,14 @@ public class BulletHellEnemy : MonoBehaviour
     {
         agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        //attackTimer = Random.Range(attackMin, attackMax); 
+        rotationSpeed = 60;
+        rotationCap = 1200;
     }
 
     IEnumerator attack()
     {
         attackEnabled = false;
-        Quaternion temp = projectile.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        GameObject clone = Instantiate(projectile, transform.position, temp);
-        clone.gameObject.tag = "Enemy Bullet";
+        GameObject clone = Instantiate(projectile, transform.position, projectile.transform.rotation);
         clone.gameObject.layer = 12;
         clone.SetActive(true);
 
@@ -49,8 +50,18 @@ public class BulletHellEnemy : MonoBehaviour
         clone.GetComponent<TrailRenderer>().endColor = Color.white;
 
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
+    }
+
+    IEnumerator RotateFaster()
+    {
+        rotateEnabled = false;
+        if (rotationSpeed < rotationCap)
+            rotationSpeed += 60;
+        yield return new WaitForSeconds(rotationRate);
+        rotateEnabled = true;
     }
 
 
@@ -58,12 +69,11 @@ public class BulletHellEnemy : MonoBehaviour
     void Update()
     {
         agent.SetDestination(player.transform.position);
-        agent.transform.Rotate(0, 1200 * Time.deltaTime, 0);
-        transform.Rotate(0, 1200 * Time.deltaTime, 0);
-
+        agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        if (rotateEnabled)
+            StartCoroutine(RotateFaster());
         if (attackEnabled)
-        {
             StartCoroutine(attack());
-        }
     }
 }

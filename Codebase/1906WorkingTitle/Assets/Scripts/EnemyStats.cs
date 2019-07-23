@@ -14,6 +14,12 @@ public class EnemyStats : MonoBehaviour
     //How much damage the enemy deals on hit.
     [SerializeField] private int damage = 2;
 
+    //Amount of seconds between attacks.
+    [SerializeField] private float attackRate = 1;
+
+    //Speed at whichc bullets travel
+    [SerializeField] private float bulletSpeed = 10;
+
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp;
     //Amount of time enemy blinks on taking damage
@@ -22,6 +28,9 @@ public class EnemyStats : MonoBehaviour
     //Enemy's color and renderer
     private Renderer enemyRender;
     public Color enemyColor;
+
+    GameObject player;
+    Player playerScript;
 
     //get-setters
     public int GetPoints()
@@ -36,6 +45,19 @@ public class EnemyStats : MonoBehaviour
     {
         return damage;
     }
+    public float GetAttackRate()
+    {
+        return attackRate;
+    }
+    public float GetMovementSpeed()
+    {
+        return GetComponent<NavMeshAgent>().speed;
+    }
+    public float GetBulletSpeed()
+    {
+        return bulletSpeed;
+    }
+
     public void SetHealth(int _health)
     {
         health = _health;
@@ -44,21 +66,25 @@ public class EnemyStats : MonoBehaviour
     {
         damage = _damage;
     }
-    public float GetMovementSpeed()
+    public void SetAttackRate(float _attackRate)
     {
-        return GetComponent<NavMeshAgent>().speed;
+        attackRate = _attackRate;
     }
     public void SetMovementSpeed(float _speed)
     {
-       GetComponent<NavMeshAgent>().speed = _speed;
+        GetComponent<NavMeshAgent>().speed = _speed;
+    }
+    public void SetBulletSpeed(float _speed)
+    {
+        bulletSpeed = _speed;
     }
 
     //Our enemy is damaged
     public void TakeDamage(int _damage = 1)
     {
         BlinkOnHit();
-        health -= damage;
-        if(health <= 0)
+        health -= _damage;
+        if (health <= 0)
         {
             Kill();
         }
@@ -67,20 +93,25 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
-        if(pickUp != null)
+        if (pickUp != null)
         {
             Vector3 vec = GetComponent<Transform>().position;
             vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
             Instantiate(pickUp, vec, Quaternion.identity);
         }
+        if (playerScript != null)
+        {
+            playerScript.GainExperience(enemyPoints);
+        }
         Destroy(gameObject);
     }
-
 
     public void Start()
     {
         enemyRender = GetComponentInParent<Renderer>();
         enemyColor = enemyRender.material.color;
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     public void Update()
@@ -91,7 +122,7 @@ public class EnemyStats : MonoBehaviour
         }
     }
 
-    //Enemy feedback on damage taken
+    //Color feedback on damage taken
     public void BlinkOnHit()
     {
         enemyRender.material.color = Color.red;

@@ -17,8 +17,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float playerExperience;
     private float nextLevelExperience;
     private int playerLevel;
-    private int playerSpendingPoints;
-    private int playerLives;
+    [SerializeField] private int playerSpendingPoints;
+    [SerializeField] private int playerLives;
     #endregion
 
     #region UnityComponents
@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private CharacterController characterController;
     private Renderer playerRenderer;
     private Color playerColor;
+    [SerializeField] Texture2D crosshairs;
     #endregion
 
     #region PlayerMovementProperties
@@ -55,20 +56,17 @@ public class Player : MonoBehaviour
         playerY = playerTransform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
-        playerMovementSpeed = 3;
         maxPlayerHealth = 10;
         playerHealth = 10;
         playerCoins = 0;
-        playerDefense = 0;
-        playerAttackSpeed = 1.0f;
         visualAttackSpeed = 1;
-        playerAttackDamage = 1;
         lastTimeFired = 0.0f;
         playerExperience = 0;
         playerLevel = 1;
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
         playerLives = 5;
+        Cursor.SetCursor(crosshairs, Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame
@@ -108,6 +106,9 @@ public class Player : MonoBehaviour
         {
             ShootBullet(3);
         }
+        
+        
+
         #endregion
 
         #region HitFeedback
@@ -115,11 +116,7 @@ public class Player : MonoBehaviour
         if (playerRenderer.material.color != playerColor)
             playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
         #endregion
-
-        #region Leveling
-        if (playerExperience >= nextLevelExperience)
-            LevelUp();
-        #endregion
+        
     }
 
     public void ShootBullet(int type)
@@ -150,6 +147,7 @@ public class Player : MonoBehaviour
                         break;
                     }
             }
+            clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
@@ -173,7 +171,7 @@ public class Player : MonoBehaviour
         playerHealth = maxPlayerHealth;
         playerMovementSpeed++;
         playerSpendingPoints++;
-        nextLevelExperience += 10;
+        playerExperience = 0;
         playerLevel++;
     }
 
@@ -307,6 +305,13 @@ public class Player : MonoBehaviour
     public int GetLevel()
     {
         return playerLevel;
+    }
+
+    public void GainExperience(int playerEXP)
+    {
+        playerExperience += playerEXP;
+        if (playerExperience >= nextLevelExperience)
+            LevelUp();
     }
     #endregion
 

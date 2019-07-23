@@ -20,6 +20,7 @@ public class MainMenu : MonoBehaviour
         start.onClick.AddListener(StartGame);
         options.onClick.AddListener(OptionsMenu);
         exit.onClick.AddListener(ExitGame);
+        
     }
 
     private void StartGame()
