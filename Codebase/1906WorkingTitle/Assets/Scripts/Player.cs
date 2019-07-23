@@ -89,8 +89,7 @@ public class Player : MonoBehaviour
 
         // Move the Player GameObject when the WASD or Arrow Keys are pressed
         moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        moveDirection *= playerMovementSpeed;
-        characterController.Move(moveDirection * Time.deltaTime);
+        characterController.Move(moveDirection * playerMovementSpeed * Time.deltaTime);
 
         playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
         #endregion
