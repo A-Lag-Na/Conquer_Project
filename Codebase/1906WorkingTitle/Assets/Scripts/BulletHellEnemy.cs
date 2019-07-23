@@ -31,6 +31,7 @@ public class BulletHellEnemy : MonoBehaviour
 
     NavMeshAgent agent;
     GameObject player;
+    private bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -45,8 +46,48 @@ public class BulletHellEnemy : MonoBehaviour
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + attackRate)
         {
-            GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
-            if (Time.time >= 5)
+            if (Time.time >= 15)
+            {
+                GameObject clone4 = Instantiate(projectile, transform.position, transform.rotation);
+                clone4.GetComponent<CollisionScript>().bulletDamage = 1;
+                clone4.gameObject.layer = 12;
+                clone4.gameObject.SetActive(true);
+                clone4.GetComponent<TrailRenderer>().startColor = Color.red;
+                clone4.GetComponent<TrailRenderer>().endColor = Color.white;
+                clone4.GetComponent<Rigidbody>().velocity = transform.right * -bulletSpeed;
+                GameObject clone3 = Instantiate(projectile, transform.position, transform.rotation);
+                clone3.GetComponent<CollisionScript>().bulletDamage = 1;
+                clone3.gameObject.layer = 12;
+                clone3.gameObject.SetActive(true);
+                clone3.GetComponent<TrailRenderer>().startColor = Color.red;
+                clone3.GetComponent<TrailRenderer>().endColor = Color.white;
+                clone3.GetComponent<Rigidbody>().velocity = transform.right * bulletSpeed;
+                GameObject clone2 = Instantiate(projectile, transform.position, transform.rotation);
+                clone2.GetComponent<CollisionScript>().bulletDamage = 1;
+                clone2.gameObject.layer = 12;
+                clone2.gameObject.SetActive(true);
+                clone2.GetComponent<TrailRenderer>().startColor = Color.red;
+                clone2.GetComponent<TrailRenderer>().endColor = Color.white;
+                clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
+            }
+            else if (Time.time >= 10)
+            {
+                GameObject clone3 = Instantiate(projectile, transform.position, transform.rotation);
+                clone3.GetComponent<CollisionScript>().bulletDamage = 1;
+                clone3.gameObject.layer = 12;
+                clone3.gameObject.SetActive(true);
+                clone3.GetComponent<TrailRenderer>().startColor = Color.red;
+                clone3.GetComponent<TrailRenderer>().endColor = Color.white;
+                clone3.GetComponent<Rigidbody>().velocity = transform.right * bulletSpeed;
+                GameObject clone2 = Instantiate(projectile, transform.position, transform.rotation);
+                clone2.GetComponent<CollisionScript>().bulletDamage = 1;
+                clone2.gameObject.layer = 12;
+                clone2.gameObject.SetActive(true);
+                clone2.GetComponent<TrailRenderer>().startColor = Color.red;
+                clone2.GetComponent<TrailRenderer>().endColor = Color.white;
+                clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
+            }
+            else if (Time.time >= 5)
             {
                 GameObject clone2 = Instantiate(projectile, transform.position, transform.rotation);
                 clone2.GetComponent<CollisionScript>().bulletDamage = 1;
@@ -56,26 +97,7 @@ public class BulletHellEnemy : MonoBehaviour
                 clone2.GetComponent<TrailRenderer>().endColor = Color.white;
                 clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
             }
-            if (Time.time >= 10)
-            {
-                GameObject clone2 = Instantiate(projectile, transform.position, transform.rotation);
-                clone2.GetComponent<CollisionScript>().bulletDamage = 1;
-                clone2.gameObject.layer = 12;
-                clone2.gameObject.SetActive(true);
-                clone2.GetComponent<TrailRenderer>().startColor = Color.red;
-                clone2.GetComponent<TrailRenderer>().endColor = Color.white;
-                clone2.GetComponent<Rigidbody>().velocity = transform.right * bulletSpeed;
-            }
-            if (Time.time >= 15)
-            {
-                GameObject clone2 = Instantiate(projectile, transform.position, transform.rotation);
-                clone2.GetComponent<CollisionScript>().bulletDamage = 1;
-                clone2.gameObject.layer = 12;
-                clone2.gameObject.SetActive(true);
-                clone2.GetComponent<TrailRenderer>().startColor = Color.red;
-                clone2.GetComponent<TrailRenderer>().endColor = Color.white;
-                clone2.GetComponent<Rigidbody>().velocity = transform.right * -bulletSpeed;
-            }
+            GameObject clone = Instantiate(projectile, transform.position, transform.rotation);
             clone.GetComponent<CollisionScript>().bulletDamage = 1;
             clone.gameObject.layer = 12;
             clone.gameObject.SetActive(true);
@@ -89,9 +111,21 @@ public class BulletHellEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
-        agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-        ShootBullet();
+        if (!paused)
+        {
+            agent.SetDestination(player.transform.position);
+            agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            ShootBullet();
+        }
+    }
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+
+    void OnResumeGame()
+    {
+        paused = false;
     }
 }
