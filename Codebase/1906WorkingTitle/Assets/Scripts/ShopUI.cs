@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] Button Buy, Sell, Exit;
     private GameObject mainUI;
-
+    List<BaseItem> shopItems = new List<BaseItem>;
 
     // Start is called before the first frame update
     void Start()

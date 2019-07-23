@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private int gold;
-    List<Item> itemList = new List<Item>();
+    List<BaseItem> itemList = new List<BaseItem>();
     
 
     #region gold
@@ -20,7 +20,7 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public void AddItem(Item _item)
+    public void AddItem(BaseItem _item)
     {
         itemList.Add(_item);
     }
