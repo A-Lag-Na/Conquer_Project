@@ -7,17 +7,16 @@ public class SpawnScript : MonoBehaviour
     //Whether the spawner is spawning or not.
     [SerializeField] private bool spawnEnabled;
 
-    //List of different enemies the spawner can choose to spawn. SORTED BY ASCENDING POINT VALUE
+    //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies;
+    private List<EnemyStats> enemiesClone;
 
     //list of doors.
     [SerializeField] private List<GameObject> doors;
 
     //How many points worth of enemies the spawner can soawn
     [SerializeField] private int points;
-
-    //So we don't modify points directly.
-    public int pointsClone;
+    private int pointsClone;
 
     //Tracks the number of frames passing
     public int timer;
@@ -31,6 +30,10 @@ public class SpawnScript : MonoBehaviour
     void Start()
     {
         pointsClone = points;
+        foreach (GameObject g in enemies)
+        {
+            enemiesClone.Add(g.GetComponent<EnemyStats>());
+        }
     }
 
     // Update is called once per frame
@@ -70,8 +73,15 @@ public class SpawnScript : MonoBehaviour
         spawnAgain = false;
         if (pointsClone > 0)
         {
+            foreach (EnemyStats e in enemiesClone)
+            {
+                if(e.GetPoints() > pointsClone)
+                {
+                    enemiesClone.Remove(e);
+                }
+            }
             //Temp selects 
-            int temp = Mathf.RoundToInt(Random.Range(0, Mathf.Min(enemies.Count, pointsClone)));
+            int temp = Mathf.RoundToInt(Random.Range(0, enemiesClone.Count));
 
             //Spawns an enemy
             GameObject enemyClone = Instantiate(enemies[temp], transform.position, Quaternion.identity);
@@ -102,6 +112,17 @@ public class SpawnScript : MonoBehaviour
         for(int i = _lower; i < _upper; i++)
         {
             doors[i].SetActive(_lock);
+        }
+    }
+
+    //Resets the spawner
+    public void ResetSpawner()
+    {
+        enemiesClone.Clear();
+        pointsClone = points;
+        foreach (GameObject g in enemies)
+        {
+            enemiesClone.Add(g.GetComponent<EnemyStats>());
         }
     }
 }
