@@ -7,7 +7,7 @@ public class StatScreen : MonoBehaviour
 {
     private Button speedBTN, damageBTN, defenseBTN;
     [SerializeField] Player player;
-    private float movementSpeed, currentHealth, maxHealth, currentExperience, attackSpeed;
+    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp ,attackSpeed;
     private int defense, damage, level, pointsAvailable;
 
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
@@ -48,9 +48,10 @@ public class StatScreen : MonoBehaviour
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
         //update level bar
-        currentExperience = player.GetExperience() / 10;
+        currentExperience = player.GetExperience();
+        nextLevelExp = player.GetNextLevelExperience();
         Vector3 levelScale = levelTransform.localScale;
-        levelScale.x = currentExperience / 10.0f;
+        levelScale.x = currentExperience / nextLevelExp;
         levelTransform.localScale = levelScale;
 
         //update health
@@ -113,9 +114,10 @@ public class StatScreen : MonoBehaviour
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
         //update level bar
-        currentExperience = player.GetExperience() % 10;
+        currentExperience = player.GetExperience();
+        nextLevelExp = player.GetNextLevelExperience();
         Vector3 levelScale = levelTransform.localScale;
-        levelScale.x = currentExperience / 10.0f;
+        levelScale.x = currentExperience / nextLevelExp;
         levelTransform.localScale = levelScale;
 
         //update health
