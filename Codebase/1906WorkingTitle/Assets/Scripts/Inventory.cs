@@ -5,16 +5,23 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private int gold;
+    List<Item> itemList = new List<Item>();
+    
 
-    // Start is called before the first frame update
-    void Start()
+    #region gold
+    public void AddCoins(int amountOfCoins)
     {
-        
+        gold += amountOfCoins;
     }
 
-    // Update is called once per frame
-    void Update()
+    public int GetCoins()
     {
-        
+        return gold;
+    }
+    #endregion
+
+    public void AddItem(Item _item)
+    {
+        itemList.Add(_item);
     }
 }
