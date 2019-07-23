@@ -76,6 +76,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
+  hurt: {fileID: 8300000, guid: b58ee7932e434e2468dc44186d61d692, type: 3}
+  bulletDamage: 0
 --- !u!96 &1114702312
 TrailRenderer:
   serializedVersion: 2

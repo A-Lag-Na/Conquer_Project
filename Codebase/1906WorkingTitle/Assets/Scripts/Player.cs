@@ -26,6 +26,8 @@ public class Player : MonoBehaviour
     private CharacterController characterController;
     private Renderer playerRenderer;
     private Color playerColor;
+    private AudioSource source;
+    [SerializeField] private AudioClip fire;
     [SerializeField] Texture2D crosshairs;
     #endregion
 
@@ -67,6 +69,8 @@ public class Player : MonoBehaviour
         playerSpendingPoints = 0;
         playerLives = 5;
         Cursor.SetCursor(crosshairs, new Vector2(357, 360), CursorMode.Auto);
+        source = GetComponent<AudioSource>();
+        source.enabled = true;
     }
 
     // Update is called once per frame
@@ -153,6 +157,7 @@ public class Player : MonoBehaviour
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
             lastTimeFired = Time.time;
+            source.PlayOneShot(fire);
         }
     }
 

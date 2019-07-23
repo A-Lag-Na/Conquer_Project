@@ -5,6 +5,7 @@ using UnityEngine;
 public class CollisionScript : MonoBehaviour
 {
     public AudioSource audioSource;
+    public AudioClip hurt;
     public int bulletDamage;
 
     private void OnCollisionEnter(Collision collision)
@@ -14,7 +15,7 @@ public class CollisionScript : MonoBehaviour
         if(audioSource != null)
         {
             audioSource.enabled = true;
-            audioSource.Play();
+            audioSource.PlayOneShot(hurt);
         }
         if (collision.collider.CompareTag("Enemy"))
         {
