@@ -19,6 +19,10 @@ public class Player : MonoBehaviour
     private int playerLevel;
     [SerializeField] private int playerSpendingPoints;
     [SerializeField] private int playerLives;
+
+    //If player is immune to ice or fire conditions
+    public bool iceImmune = false;
+    public bool fireImmune = false;
     #endregion
 
     #region UnityComponents

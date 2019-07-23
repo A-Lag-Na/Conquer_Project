@@ -29,6 +29,9 @@ public class EnemyStats : MonoBehaviour
     private Renderer enemyRender;
     public Color enemyColor;
 
+    public bool fireImmune;
+    public bool iceImmune;
+
     GameObject player;
     Player playerScript;
 
