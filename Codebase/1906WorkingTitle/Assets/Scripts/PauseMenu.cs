@@ -42,13 +42,8 @@ public class PauseMenu : MonoBehaviour
 
     void Resume()
     {
+        UnPause();
         Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
-        Time.timeScale = 1;
-        Object[] objects = FindObjectsOfType(typeof(GameObject));
-        foreach (GameObject go in objects)
-        {
-            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        }
         Destroy(gameObject);    
     }
 
@@ -57,8 +52,19 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    void UnPause()
+    {
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        }
+    }
+
     void ExitGame()
     {
+        UnPause();
         SceneManager.LoadScene("Main Menu");
     }
 
