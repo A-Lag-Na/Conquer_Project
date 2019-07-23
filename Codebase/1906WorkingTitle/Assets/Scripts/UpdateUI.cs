@@ -17,7 +17,6 @@ public class UpdateUI : MonoBehaviour
     private Text healthText, livesText, coinText, statsText;
     private RectTransform healthTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
-    GameObject pauseMenu;
 
     void Start()
     {
@@ -62,7 +61,6 @@ public class UpdateUI : MonoBehaviour
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
         
-        pauseMenu = Resources.Load<GameObject>("Prefabs/Pause Menu");
     }
     
 
@@ -155,7 +153,24 @@ public class UpdateUI : MonoBehaviour
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Instantiate(pauseMenu);
+            PauseGame();
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OpenStats();
+        }
+    }
+
+    void PauseGame()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Pause Menu"));
+        Destroy(gameObject);
+    }
+
+    void OpenStats()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
+        Destroy(gameObject);
     }
 }

@@ -20,13 +20,12 @@ public class PauseMenu : MonoBehaviour
         OptionsBTN.onClick.AddListener(Options);
         ExitBTN.onClick.AddListener(ExitGame);
         
-        //grab main ui if active and existing
-        if (GameObject.Find("Main UI"))
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
         {
-            mainUI = GameObject.Find("Main UI");
-            mainUI.SetActive(false);
+            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
-        
     }
 
     // Update is called once per frame
@@ -43,8 +42,13 @@ public class PauseMenu : MonoBehaviour
 
     void Resume()
     {
-        if (mainUI != null)
-            mainUI.SetActive(true);
+        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        }
         Destroy(gameObject);    
     }
 

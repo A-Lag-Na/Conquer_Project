@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private Vector3 targetPosition;
     [SerializeField] Camera mainCamera;
     private float playerY;
+    private bool paused;
     #endregion
 
     #region Projectiles
@@ -66,58 +67,60 @@ public class Player : MonoBehaviour
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
         playerLives = 5;
-        Cursor.SetCursor(crosshairs, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
     }
 
     // Update is called once per frame
     void Update()
     {
-        #region PlayerMovement
-        // Rotate the Player Transform to face the Mouse Position
-        mousePosition = Input.mousePosition;
-        targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-        Vector3 relativePosition = targetPosition - playerTransform.position;
-
-        Quaternion rotation = Quaternion.LookRotation(relativePosition);
-        // Lock the rotation around X and Z Axes
-        rotation.x = 0.0f;
-        rotation.z = 0.0f;
-        // Change the player's tranform's rotation to the rotation Quaternion
-        playerTransform.rotation = rotation;
-
-        // Move the Player GameObject when the WASD or Arrow Keys are pressed
-        moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-        moveDirection *= playerMovementSpeed;
-        characterController.Move(moveDirection * Time.deltaTime);
-
-        playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
-        #endregion
-
-        #region PlayerAttack
-        // If the right mouse button is clicked call ShootBullet
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (!paused)
         {
-            ShootBullet(1);
-        }
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            ShootBullet(2);
-        }
-        if (Input.GetKey(KeyCode.Mouse2))
-        {
-            ShootBullet(3);
-        }
-        
-        
+            #region PlayerMovement
+            // Rotate the Player Transform to face the Mouse Position
+            mousePosition = Input.mousePosition;
+            targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
+            Vector3 relativePosition = targetPosition - playerTransform.position;
 
-        #endregion
+            Quaternion rotation = Quaternion.LookRotation(relativePosition);
+            // Lock the rotation around X and Z Axes
+            rotation.x = 0.0f;
+            rotation.z = 0.0f;
+            // Change the player's tranform's rotation to the rotation Quaternion
+            playerTransform.rotation = rotation;
 
-        #region HitFeedback
-        // Player reverting to original color after hit
-        if (playerRenderer.material.color != playerColor)
-            playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
-        #endregion
-        
+            // Move the Player GameObject when the WASD or Arrow Keys are pressed
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+            moveDirection *= playerMovementSpeed;
+            characterController.Move(moveDirection * Time.deltaTime);
+
+            playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
+            #endregion
+
+            #region PlayerAttack
+            // If the right mouse button is clicked call ShootBullet
+            if (Input.GetKey(KeyCode.Mouse0))
+            {
+                ShootBullet(1);
+            }
+            if (Input.GetKey(KeyCode.Mouse1))
+            {
+                ShootBullet(2);
+            }
+            if (Input.GetKey(KeyCode.Mouse2))
+            {
+                ShootBullet(3);
+            }
+
+
+
+            #endregion
+
+            #region HitFeedback
+            // Player reverting to original color after hit
+            if (playerRenderer.material.color != playerColor)
+                playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
+            #endregion
+        }
     }
 
     public void ShootBullet(int type)
@@ -327,6 +330,18 @@ public class Player : MonoBehaviour
         playerLives++;
     }
 
+    #endregion
+
+    #region Pause
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+    
+    void OnResumeGame()
+    {
+        paused = false;
+    }
     #endregion
 
     #endregion
