@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CollisionScript : MonoBehaviour
 {
+    public AudioSource audioSource;
+        
     int playerDamage;
     GameObject player;
     Player playerScript;
@@ -21,13 +23,30 @@ public class CollisionScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+        GameObject target = collision.collider.gameObject;
+        audioSource = target.GetComponent<AudioSource>();
         int temp = gameObject.layer;
-        Destroy(gameObject);
-        switch (temp)
+        if(audioSource != null)
         {
-            case 10:
-                {
-                    if (collision.collider.CompareTag("Enemy"))
+            audioSource.enabled = true;
+            audioSource.Play();
+        }
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            //The enemy we hit takes damage.
+            collision.collider.GetComponent<EnemyStats>().TakeDamage(1);
+        }
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.collider.GetComponent<Player>().TakeDamage(1);
+        }
+        ConditionManager con = target.GetComponent<ConditionManager>();
+        if (gameObject.tag != "Untagged" && con != null)
+        {
+            //Apply extra on-hit effects here:
+            switch (gameObject.tag)
+            {
+                case "Fire Bullet":
                     {
                         GameObject enemy = collision.collider.gameObject;
 
@@ -47,19 +66,17 @@ public class CollisionScript : MonoBehaviour
                         }
                         //The enemy we hit takes damage.
                         collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(playerDamage);
+                        con.TimerAdd("fire", 179);
+                        break;
                     }
-                    break;
-                }
-            case 12:
-                {
-                    if (collision.collider.CompareTag("Player"))
+                case "Ice Bullet":
                     {
-                        collision.collider.GetComponentInParent<Player>().TakeDamage(1);
+                        con.SubtractSpeed((float)0.6);
+                        con.TimerAdd("thaw", 90);
+                        break;
                     }
-                    break;
-                }
-            default:
-                break;
+            }
         }
+        Destroy(gameObject);
     }
 }
