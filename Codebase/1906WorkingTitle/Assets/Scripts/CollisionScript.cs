@@ -4,47 +4,60 @@ using UnityEngine;
 
 public class CollisionScript : MonoBehaviour
 {
+    public AudioSource audioSource;
+        
+    int playerDamage;
+    GameObject player;
+    Player playerScript;
+
+    private void Start()
+    {
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Player>();
+    }
+
+    private void Update()
+    {
+        playerDamage = playerScript.GetDamage();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        int temp = gameObject.layer;
-        Destroy(gameObject);
-        switch (temp)
+        GameObject target = collision.collider.gameObject;
+        audioSource = target.GetComponent<AudioSource>();
+        if(audioSource != null)
         {
-            case 10:
-                {
-                    if (collision.collider.CompareTag("Enemy"))
-                    {
-                        GameObject enemy = collision.collider.gameObject;
-
-                        //Apply extra on-hit effects here:
-                        switch(gameObject.tag)
-                        {
-                            case "Fire Bullet":
-                                {
-                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("fire", 179);
-                                    break;
-                                }
-                            case "Ice Bullet":
-                                {
-                                    enemy.GetComponentInParent<ConditionManager>().TimerAdd("ice", 179);
-                                    break;
-                                }
-                        }
-                        //The enemy we hit takes damage.
-                        collision.collider.GetComponentInParent<EnemyStats>().TakeDamage(1);
-                    }
-                    break;
-                }
-            case 12:
-                {
-                    if (collision.collider.CompareTag("Player"))
-                    {
-                        collision.collider.GetComponentInParent<Player>().TakeDamage(1);
-                    }
-                    break;
-                }
-            default:
-                break;
+            audioSource.enabled = true;
+            audioSource.Play();
         }
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            //The enemy we hit takes damage.
+            collision.collider.GetComponent<EnemyStats>().TakeDamage(playerDamage);
+        }
+        if (collision.collider.CompareTag("Player"))
+        {
+            collision.collider.GetComponent<Player>().TakeDamage(1);
+        }
+        ConditionManager con = target.GetComponent<ConditionManager>();
+        if (gameObject.tag != "Untagged" && con != null)
+        {
+            //Apply extra on-hit effects here:
+            switch (gameObject.tag)
+            {
+                case "Fire Bullet":
+                    {
+                        con.TimerAdd("fire", 179);
+                        break;
+                    }
+                case "Ice Bullet":
+                    {
+                        con.SubtractSpeed((float)0.6);
+                        con.TimerAdd("thaw", 90);
+                        break;
+                    }
+            }
+        }
+        Destroy(gameObject);
     }
 }

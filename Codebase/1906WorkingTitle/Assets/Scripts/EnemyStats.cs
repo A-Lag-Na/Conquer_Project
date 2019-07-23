@@ -23,6 +23,9 @@ public class EnemyStats : MonoBehaviour
     private Renderer enemyRender;
     public Color enemyColor;
 
+    GameObject player;
+    Player playerScript;
+
     //get-setters
     public int GetPoints()
     {
@@ -50,15 +53,15 @@ public class EnemyStats : MonoBehaviour
     }
     public void SetMovementSpeed(float _speed)
     {
-       GetComponent<NavMeshAgent>().speed = _speed;
+        GetComponent<NavMeshAgent>().speed = _speed;
     }
 
     //Our enemy is damaged
     public void TakeDamage(int _damage = 1)
     {
         BlinkOnHit();
-        health -= damage;
-        if(health <= 0)
+        health -= _damage;
+        if (health <= 0)
         {
             Kill();
         }
@@ -67,11 +70,15 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
-        if(pickUp != null)
+        if (pickUp != null)
         {
             Vector3 vec = GetComponent<Transform>().position;
             vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
             Instantiate(pickUp, vec, Quaternion.identity);
+        }
+        if (playerScript != null)
+        {
+            playerScript.GainExperience(enemyPoints);
         }
         Destroy(gameObject);
     }
@@ -81,6 +88,8 @@ public class EnemyStats : MonoBehaviour
     {
         enemyRender = GetComponentInParent<Renderer>();
         enemyColor = enemyRender.material.color;
+        player = GameObject.Find("Player");
+        playerScript = player.GetComponent<Player>();
     }
 
     public void Update()
