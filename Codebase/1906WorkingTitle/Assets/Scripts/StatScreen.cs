@@ -47,6 +47,12 @@ public class StatScreen : MonoBehaviour
         level = player.GetLevel();
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
+        //update level bar
+        currentExperience = player.GetExperience() / 10;
+        Vector3 levelScale = levelTransform.localScale;
+        levelScale.x = currentExperience / 10.0f;
+        levelTransform.localScale = levelScale;
+
         //update health
         currentHealth = player.GetHealth();
         maxHealth = player.GetMaxHealth();
@@ -70,6 +76,7 @@ public class StatScreen : MonoBehaviour
 
         //update available points
         pointsAvailable = player.GetSpendingPoints();
+        pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //grab main ui if active and existing
         if(GameObject.Find("Main UI"))
@@ -79,7 +86,7 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddSpeed()
+    public void AddSpeed()
     {
         if (pointsAvailable > 0)
         {
@@ -87,13 +94,13 @@ public class StatScreen : MonoBehaviour
         }
     }
 
-    private void AddDamage()
+    public void AddDamage()
     {
         if (pointsAvailable > 0)
             player.AddDamage();
     }
 
-    private void AddDefense()
+    public void AddDefense()
     {
         if (pointsAvailable > 0)
             player.AddDefense();
@@ -105,6 +112,12 @@ public class StatScreen : MonoBehaviour
         level = player.GetLevel();
         levelText.text = $"Level {level}\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{level + 1}";
 
+        //update level bar
+        currentExperience = player.GetExperience() % 10;
+        Vector3 levelScale = levelTransform.localScale;
+        levelScale.x = currentExperience / 10.0f;
+        levelTransform.localScale = levelScale;
+
         //update health
         currentHealth = player.GetHealth();
         maxHealth = player.GetMaxHealth();
@@ -128,6 +141,7 @@ public class StatScreen : MonoBehaviour
 
         //update available points
         pointsAvailable = player.GetSpendingPoints();
+        pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))

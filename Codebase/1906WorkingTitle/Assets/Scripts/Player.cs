@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
     private CharacterController characterController;
     private Renderer playerRenderer;
     private Color playerColor;
+    [SerializeField] Texture2D crosshairs;
     #endregion
 
     #region PlayerMovementProperties
@@ -65,6 +66,7 @@ public class Player : MonoBehaviour
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
         playerLives = 5;
+        Cursor.SetCursor(crosshairs, Vector2.zero, CursorMode.Auto);
     }
 
     // Update is called once per frame
@@ -105,6 +107,9 @@ public class Player : MonoBehaviour
         {
             ShootBullet(3);
         }
+        
+        
+
         #endregion
 
         #region HitFeedback
