@@ -432,15 +432,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -2018029439070025550, guid: 037e4b3854aacd74db48b4a91f4e2712,
-        type: 3}
-      propertyPath: m_Volume
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 3828636513520417020, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: -2018029439070025550, guid: 037e4b3854aacd74db48b4a91f4e2712,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3828636513520416995, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -522,7 +522,7 @@ PrefabInstance:
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
       propertyPath: playerAttackSpeed
-      value: 0.2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3828636513520417023, guid: 037e4b3854aacd74db48b4a91f4e2712,
         type: 3}
@@ -758,15 +758,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2351237706826510883, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_Name
       value: RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5279336939109397354, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}

@@ -190,15 +190,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8731e60b3d0ef41b84d99bf6adac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementSpeed: 5
+  playerMovementSpeed: 4
   playerHealth: 10
   maxPlayerHealth: 10
   playerCoins: 0
   playerDefense: 0
   playerAttackSpeed: 1
-  visualAttackSpeed: 0
+  visualAttackSpeed: 1
   playerAttackDamage: 1
   playerExperience: 0
+  playerSpendingPoints: 0
+  playerLives: 0
+  crosshairs: {fileID: 0}
   mainCamera: {fileID: 0}
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
