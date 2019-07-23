@@ -24,15 +24,19 @@ public class SpawnScript : MonoBehaviour
     bool spawnAgain = true;
 
     //List of enemies spawned by the spawner.
-    public List<GameObject> spawnedEnemies;   
+    public List<GameObject> spawnedEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
         pointsClone = points;
-        foreach (GameObject g in enemies)
+        enemiesClone = new List<EnemyStats>();
+        if (enemies.Count > 0)
         {
-            enemiesClone.Add(g.GetComponent<EnemyStats>());
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
+            }
         }
     }
 
@@ -73,11 +77,11 @@ public class SpawnScript : MonoBehaviour
         spawnAgain = false;
         if (pointsClone > 0)
         {
-            foreach (EnemyStats e in enemiesClone)
+            for (int i = 0; i < enemiesClone.Count; i++)
             {
-                if(e.GetPoints() > pointsClone)
+                if (enemiesClone[i].GetPoints() > pointsClone)
                 {
-                    enemiesClone.Remove(e);
+                    enemiesClone.Remove(enemiesClone[i]);
                 }
             }
             //Temp selects 
@@ -87,11 +91,11 @@ public class SpawnScript : MonoBehaviour
             GameObject enemyClone = Instantiate(enemies[temp], transform.position, Quaternion.identity);
 
             //Adds the enemy to spawned enemies list
-            spawnedEnemies.Add(enemyClone);            
+            spawnedEnemies.Add(enemyClone);
 
             //subtracts enemy points from spawner's
             pointsClone -= enemies[temp].GetComponent<EnemyStats>().GetPoints();
-        }            
+        }
 
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
@@ -100,7 +104,7 @@ public class SpawnScript : MonoBehaviour
     //Function that takes in a bool and sets the doors to be active/inactive if the bool is true/false
     public void SetDoorLock(bool _lock)
     {
-        for(int i = 0; i < doors.Count; i++)
+        for (int i = 0; i < doors.Count; i++)
         {
             doors[i].SetActive(_lock);
         }
@@ -109,7 +113,7 @@ public class SpawnScript : MonoBehaviour
     //Function that changes the locks of some doors but not others
     public void SetDoorRange(bool _lock, int _lower, int _upper)
     {
-        for(int i = _lower; i < _upper; i++)
+        for (int i = _lower; i < _upper; i++)
         {
             doors[i].SetActive(_lock);
         }
@@ -120,9 +124,12 @@ public class SpawnScript : MonoBehaviour
     {
         enemiesClone.Clear();
         pointsClone = points;
-        foreach (GameObject g in enemies)
+        if (enemies.Count > 0)
         {
-            enemiesClone.Add(g.GetComponent<EnemyStats>());
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
+            }
         }
     }
 }

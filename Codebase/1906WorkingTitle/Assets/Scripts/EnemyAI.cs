@@ -5,24 +5,16 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
-    //Counts frames between attacks
-    private int attackTimer;
-
-    [SerializeField] private int attackRate = 1;
+    [SerializeField] private float attackRate;
     //[SerializeField] private int attackMax = 120;
 
-    [SerializeField] private int bulletSpeed = 2;
-
-    //List of different attacks this enemy can use
-    [SerializeField] List<string> attackTypes;
+    [SerializeField] private float bulletSpeed;
 
     //If this enemy's attack behavior is enabled or not.
     [SerializeField] bool attackEnabled = true;
 
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
-
-
 
     NavMeshAgent agent;
     GameObject player;
@@ -32,7 +24,9 @@ public class EnemyAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        //attackTimer = Random.Range(attackMin, attackMax); 
+        EnemyStats temp = GetComponent<EnemyStats>();
+        attackRate = temp.GetAttackRate();
+        bulletSpeed = temp.GetBulletSpeed();
     }
 
     IEnumerator attack()
@@ -42,6 +36,7 @@ public class EnemyAI : MonoBehaviour
         temp.x = 0;
         temp.z = 0;
         GameObject clone = Instantiate(projectile, transform.position, temp);
+        clone.GetComponent<CollisionScript>().bulletDamage = GetComponent<EnemyStats>().GetDamage();
         clone.gameObject.layer = 12;
         clone.SetActive(true);
 
@@ -71,5 +66,13 @@ public class EnemyAI : MonoBehaviour
         {
             StartCoroutine(attack());
         }
+    }
+
+    //Call this function after you change either attackRate or bulletSpeed in EnemyStats while the enemy is active.
+    public void RefreshStats()
+    {
+        EnemyStats temp = GetComponent<EnemyStats>();
+        attackRate = temp.GetAttackRate();
+        bulletSpeed = temp.GetBulletSpeed();
     }
 }

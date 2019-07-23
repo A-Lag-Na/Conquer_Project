@@ -5,21 +5,7 @@ using UnityEngine;
 public class CollisionScript : MonoBehaviour
 {
     public AudioSource audioSource;
-        
-    int playerDamage;
-    GameObject player;
-    Player playerScript;
-
-    private void Start()
-    {
-        player = GameObject.Find("Player");
-        playerScript = player.GetComponent<Player>();
-    }
-
-    private void Update()
-    {
-        playerDamage = playerScript.GetDamage();
-    }
+    public int bulletDamage;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -33,11 +19,11 @@ public class CollisionScript : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             //The enemy we hit takes damage.
-            collision.collider.GetComponent<EnemyStats>().TakeDamage(playerDamage);
+            collision.collider.GetComponent<EnemyStats>().TakeDamage(bulletDamage);
         }
         if (collision.collider.CompareTag("Player"))
         {
-            collision.collider.GetComponent<Player>().TakeDamage(1);
+            collision.collider.GetComponent<Player>().TakeDamage(bulletDamage);
         }
         ConditionManager con = target.GetComponent<ConditionManager>();
         if (gameObject.tag != "Untagged" && con != null)

@@ -118,7 +118,10 @@ public class ConditionManager : MonoBehaviour
     }
     public void SubtractSpeed(float _speed)
     {
-        SetSpeed(GetSpeed() - _speed);
+        if(GetSpeed() - _speed >= 0)
+        {
+            SetSpeed(GetSpeed() - _speed);
+        }
     }
     public void Damage(int _damage)
     {

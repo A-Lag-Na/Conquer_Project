@@ -148,6 +148,7 @@ public class Player : MonoBehaviour
                         break;
                     }
             }
+            clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
