@@ -66,7 +66,7 @@ public class Player : MonoBehaviour
         nextLevelExperience = 10;
         playerSpendingPoints = 0;
         playerLives = 5;
-        Cursor.SetCursor(crosshairs, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(crosshairs, new Vector2(357, 360), CursorMode.Auto);
     }
 
     // Update is called once per frame
