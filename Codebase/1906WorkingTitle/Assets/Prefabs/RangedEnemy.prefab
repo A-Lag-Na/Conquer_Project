@@ -252,6 +252,9 @@ MonoBehaviour:
   fireTimer: 0
   thawTimer: 0
   isPlayer: 0
+  minFrozenSpeed: 0
+  thawIncrement: 0.2
+  fireDamage: 1
 --- !u!82 &-7261595029303865240
 AudioSource:
   m_ObjectHideFlags: 0

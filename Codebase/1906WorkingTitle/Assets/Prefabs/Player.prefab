@@ -200,7 +200,7 @@ MonoBehaviour:
   playerAttackSpeed: 1
   visualAttackSpeed: 1
   playerAttackDamage: 1
-
+  playerSpendingPoints: 0
   playerLives: 0
   iceImmune: 0
   fireImmune: 0
@@ -244,6 +244,9 @@ MonoBehaviour:
   fireTimer: 0
   thawTimer: 0
   isPlayer: 1
+  minFrozenSpeed: 0
+  thawIncrement: 0.2
+  fireDamage: 1
 --- !u!82 &-2018029439070025550
 AudioSource:
   m_ObjectHideFlags: 0

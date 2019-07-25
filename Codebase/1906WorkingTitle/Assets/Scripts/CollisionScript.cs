@@ -6,6 +6,7 @@ public class CollisionScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip hurt;
+    public AudioClip burn;
     public int bulletDamage;
     public bool iceImmune = false;
     public bool fireImmune = false;
@@ -16,7 +17,6 @@ public class CollisionScript : MonoBehaviour
         audioSource = target.GetComponent<AudioSource>();
         if(audioSource != null)
         {
-            audioSource.enabled = true;
             audioSource.PlayOneShot(hurt);
         }
         if (collision.collider.CompareTag("Enemy"))
@@ -48,6 +48,7 @@ public class CollisionScript : MonoBehaviour
                         {
                             if (!fireImmune)
                             {
+                                audioSource.PlayOneShot(burn);
                                 con.TimerAdd("fire", 179);
                             }
                             break;
@@ -56,7 +57,7 @@ public class CollisionScript : MonoBehaviour
                         {
                             if (!iceImmune)
                             {
-                                con.SubtractSpeed((float)0.6);
+                                con.SubtractSpeed(0.6f);
                                 con.TimerAdd("thaw", 90);
                             }
                             break;

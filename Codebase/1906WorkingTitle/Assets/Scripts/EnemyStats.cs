@@ -111,6 +111,7 @@ public class EnemyStats : MonoBehaviour
 
     public void Start()
     {
+        GetComponent<AudioSource>().enabled = true;
         enemyRender = GetComponentInParent<Renderer>();
         enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");

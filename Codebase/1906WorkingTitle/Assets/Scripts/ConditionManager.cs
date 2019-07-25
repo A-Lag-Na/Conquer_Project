@@ -10,7 +10,11 @@ public class ConditionManager : MonoBehaviour
     [SerializeField] bool isPlayer;
     private Component statsScript;
     private float speed;
+    [SerializeField] private float minFrozenSpeed;
     private float maxSpeed;
+    //thawIncrement: How much the player's  movement speed increases on a thaw tick
+    [SerializeField] private float thawIncrement;
+    [SerializeField] private int fireDamage;
     GameObject fireParticle;
     GameObject iceParticle;
 
@@ -68,16 +72,16 @@ public class ConditionManager : MonoBehaviour
                 fireTimer--;
                 if (fireTimer % 60 == 0)
                 {
-                    Damage(1);
+                    Damage(fireDamage);
                 }
             }
             if (thawTimer > 0)
             {
                 iceParticle.SetActive(true);
                 thawTimer--;
-                if (thawTimer % 30 == 1 && GetSpeed() + 0.2f <= maxSpeed)
+                if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed-thawIncrement) <= maxSpeed)
                 {
-                    SetSpeed(GetSpeed() + 0.2f);
+                    SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
                 }
             }
         }
@@ -132,7 +136,8 @@ public class ConditionManager : MonoBehaviour
         }
     }
 
-    //Cast get-setters (This workaround feels silly and wrong)
+    #region GetSetters
+    //Cast get-setters (This get-set speed workaround feels silly and wrong)
     public float GetSpeed()
     {
         if (isPlayer)
@@ -173,4 +178,29 @@ public class ConditionManager : MonoBehaviour
             ((EnemyStats)statsScript).TakeDamage(_damage);
         }
     }
+    public float GetThawIncrement()
+    {
+        return thawIncrement;
+    }
+    public float GetMinFrozenSpeed()
+    {
+        return minFrozenSpeed;
+    }
+    public int GetFireDamage()
+    {
+        return fireDamage;
+    }
+    public void SetThawIncrement(float _thawIncrement)
+    {
+        thawIncrement = _thawIncrement;
+    }
+    public void SetMinFrozenSpeed(float _minFrozenSpeed)
+    {
+        minFrozenSpeed = _minFrozenSpeed;
+    }
+    public void SetFireDamage(int _fireDamage)
+    {
+        fireDamage = _fireDamage;
+    }
+    #endregion GetSet
 }
