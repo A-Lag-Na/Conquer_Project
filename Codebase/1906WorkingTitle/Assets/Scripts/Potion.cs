@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Potion : BaseItem
 {
-    float healthReturn;
+    [SerializeField] float healthReturn = 5;
 
-    float Heal()
+    public float Heal()
     {
         return healthReturn;
     }

@@ -9,13 +9,13 @@ public class UpdateUI : MonoBehaviour
 
     //recorded stats
     private Player player;
-    private float health, attackSpeed;
+    private float health, attackSpeed, currentExperience, nextLevelExp;
     private int lives = 5, coins, level, defense, attackDamage;
     private Sprite slotOne, slotTwo;
 
     //UI elements to remember
     private Text healthText, livesText, coinText, statsText;
-    private RectTransform healthTransform;
+    private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
 
     void Start()
@@ -23,37 +23,36 @@ public class UpdateUI : MonoBehaviour
         //grab player GameObject
         if(GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
-
-        //update health
-        health = player.GetHealth();
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
-        Vector3 HealthScale = healthTransform.localScale;
-        if(player.GetMaxHealth()!=0)
-            HealthScale.x = health / player.GetMaxHealth();
-        else
-            Debug.Log("Error on first healthscale");
-        healthTransform.localScale = HealthScale;
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
-        healthText.text = $"health/{player.GetMaxHealth()}";
-
-        //update coin count
-        coins = player.GetCoins();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
-        coinText.text = $"X{coins}";
-
-        //update lives count
-        lives = player.GetLives();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
-        livesText.text = $"X{lives}";
-
-        //update stats text
-        level = player.GetLevel();
-        defense = player.GetDefense();
-        attackSpeed = player.GetAttackSpeed();
-        attackDamage = player.GetDamage();
         statsText = transform.Find("Stats").GetComponent<Text>();
-        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
+        levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
+        #region start
+        ////update health
+        //health = player.GetHealth();
+        //Vector3 HealthScale = healthTransform.localScale;
+        //if (player.GetMaxHealth() != 0)
+        //    HealthScale.x = health / player.GetMaxHealth();
+        //healthTransform.localScale = HealthScale;
+        //healthText.text = $"health/{player.GetMaxHealth()}";
 
+        ////update coin count
+        //coins = player.GetCoins();
+        //coinText.text = $"X{coins}";
+
+        ////update lives count
+        //lives = player.GetLives();
+        //livesText.text = $"X{lives}";
+
+        ////update stats text
+        //level = player.GetLevel();
+        //defense = player.GetDefense();
+        //attackSpeed = player.GetAttackSpeed();
+        //attackDamage = player.GetDamage();
+        //statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
+        #endregion
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
         InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
@@ -119,10 +118,15 @@ public class UpdateUI : MonoBehaviour
         Vector3 HealthScale = healthTransform.localScale;
         if (player.GetMaxHealth() != 0)
             HealthScale.x = health / player.GetMaxHealth();
-        else
-            Debug.Log("Error on second healthscale");
         healthTransform.localScale = HealthScale;
         healthText.text = $"{health} / {player.GetMaxHealth()}";
+
+        //update level bar
+        currentExperience = player.GetExperience();
+        nextLevelExp = player.GetNextLevelExperience();
+        Vector3 levelScale = levelTransform.localScale;
+        levelScale.x = currentExperience / nextLevelExp;
+        levelTransform.localScale = levelScale;
 
         //update coin count
         coins = player.GetCoins();

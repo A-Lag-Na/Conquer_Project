@@ -6,7 +6,10 @@ public class CollisionScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip hurt;
+    public AudioClip burn;
     public int bulletDamage;
+    public bool iceImmune = false;
+    public bool fireImmune = false;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,35 +17,52 @@ public class CollisionScript : MonoBehaviour
         audioSource = target.GetComponent<AudioSource>();
         if(audioSource != null)
         {
-            audioSource.enabled = true;
             audioSource.PlayOneShot(hurt);
         }
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
         {
+            EnemyStats temp = collision.collider.GetComponent<EnemyStats>();
             //The enemy we hit takes damage.
-            collision.collider.GetComponent<EnemyStats>().TakeDamage(bulletDamage);
+            temp.TakeDamage(bulletDamage);
+            fireImmune = temp.fireImmune;
+            iceImmune = temp.iceImmune;
         }
         if (collision.collider.CompareTag("Player"))
         {
+            Player temp = collision.collider.GetComponent<Player>();
+            //The enemy we hit takes damage.
+            temp.TakeDamage(bulletDamage);
+            fireImmune = temp.fireImmune;
+            iceImmune = temp.iceImmune;
             collision.collider.GetComponent<Player>().TakeDamage(bulletDamage);
         }
-        ConditionManager con = target.GetComponent<ConditionManager>();
-        if (gameObject.tag != "Untagged" && con != null)
+        if(!(iceImmune && fireImmune))
         {
-            //Apply extra on-hit effects here:
-            switch (gameObject.tag)
+            ConditionManager con = target.GetComponent<ConditionManager>();
+            if (gameObject.tag != "Untagged" && con != null)
             {
-                case "Fire Bullet":
-                    {
-                        con.TimerAdd("fire", 179);
-                        break;
-                    }
-                case "Ice Bullet":
-                    {
-                        con.SubtractSpeed((float)0.6);
-                        con.TimerAdd("thaw", 90);
-                        break;
-                    }
+                //Apply extra on-hit effects here:
+                switch (gameObject.tag)
+                {
+                    case "Fire Bullet":
+                        {
+                            if (!fireImmune)
+                            {
+                                audioSource.PlayOneShot(burn);
+                                con.TimerAdd("fire", 179);
+                            }
+                            break;
+                        }
+                    case "Ice Bullet":
+                        {
+                            if (!iceImmune)
+                            {
+                                con.SubtractSpeed(0.6f);
+                                con.TimerAdd("thaw", 90);
+                            }
+                            break;
+                        }
+                }
             }
         }
         Destroy(gameObject);

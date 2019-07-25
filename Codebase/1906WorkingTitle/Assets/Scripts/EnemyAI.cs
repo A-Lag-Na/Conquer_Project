@@ -9,6 +9,7 @@ public class EnemyAI : MonoBehaviour
     //[SerializeField] private int attackMax = 120;
 
     [SerializeField] private float bulletSpeed;
+    int bulletDamage;
 
     //If this enemy's attack behavior is enabled or not.
     [SerializeField] bool attackEnabled = true;
@@ -28,6 +29,7 @@ public class EnemyAI : MonoBehaviour
         EnemyStats temp = GetComponent<EnemyStats>();
         attackRate = temp.GetAttackRate();
         bulletSpeed = temp.GetBulletSpeed();
+        bulletDamage = GetComponent<EnemyStats>().GetDamage();
     }
 
     IEnumerator attack()
@@ -37,7 +39,7 @@ public class EnemyAI : MonoBehaviour
         temp.x = 0;
         temp.z = 0;
         GameObject clone = Instantiate(projectile, transform.position, temp);
-        clone.GetComponent<CollisionScript>().bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
 

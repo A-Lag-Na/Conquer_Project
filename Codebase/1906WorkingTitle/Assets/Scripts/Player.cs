@@ -14,11 +14,15 @@ public class Player : MonoBehaviour
     [SerializeField] private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
-    [SerializeField] private float playerExperience;
-    private float nextLevelExperience;
-    private int playerLevel;
-    [SerializeField] private int playerSpendingPoints;
+    private float playerExperience;
+    private float nextLevelExperience = 10;
+    private int playerLevel = 1;
+    [SerializeField] private int playerSpendingPoints = 0;
     [SerializeField] private int playerLives;
+
+    //If player is immune to ice or fire conditions
+    public bool iceImmune = false;
+    public bool fireImmune = false;
     #endregion
 
     #region UnityComponents
@@ -66,10 +70,6 @@ public class Player : MonoBehaviour
         playerCoins = 0;
         visualAttackSpeed = 1;
         lastTimeFired = 0.0f;
-        playerExperience = 0;
-        playerLevel = 1;
-        nextLevelExperience = 10;
-        playerSpendingPoints = 0;
         playerLives = 5;
         Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
         source = GetComponent<AudioSource>();
@@ -120,9 +120,6 @@ public class Player : MonoBehaviour
             {
                 ShootBullet(3);
             }
-
-
-
             #endregion
 
             //#region HitFeedback
@@ -178,16 +175,6 @@ public class Player : MonoBehaviour
     public void Death()
     {
         gameObject.SetActive(false);
-    }
-
-    public void LevelUp()
-    {
-        maxPlayerHealth += 10;
-        playerHealth = maxPlayerHealth;
-        playerMovementSpeed++;
-        playerSpendingPoints++;
-        playerExperience = 0;
-        playerLevel++;
     }
 
     #region AccessorsAndMutators
@@ -302,6 +289,17 @@ public class Player : MonoBehaviour
     #endregion
 
     #region LevelAndXP
+
+    public void LevelUp()
+    {
+        maxPlayerHealth += 10;
+        playerHealth = maxPlayerHealth;
+        playerMovementSpeed++;
+        playerSpendingPoints++;
+        playerExperience = 0;
+        playerLevel++;
+    }
+
     public float GetExperience()
     {
         return playerExperience;

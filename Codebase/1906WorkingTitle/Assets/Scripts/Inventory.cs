@@ -5,9 +5,12 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     private int gold;
-    List<BaseItem> itemList = new List<BaseItem>();
-    
+    List<Weapon> weaponList = new List<Weapon>();
+    List<Potion> potionList = new List<Potion>();
+    Weapon weapon;
+    Potion potion;
 
+    
     #region gold
     public void AddCoins(int amountOfCoins)
     {
@@ -20,8 +23,38 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public void AddItem(BaseItem _item)
+    //public void AddWeapon(Weapon _weapon)
+    //{
+    //    weaponList.Add(_weapon);
+    //}
+    //public void AddPotion(Potion _potion)
+    //{
+    //    potionList.Add(_potion);
+    //}
+
+
+    public void ChangeWeapon(Weapon _weapon)
     {
-        itemList.Add(_item);
+        weapon = _weapon;
+    }
+
+    public void ChangePotion(Potion _potion)
+    {
+        potion = _potion;
+    }
+
+    public float Heal()
+    {
+        return potion.Heal();
+    }
+
+    public int Attack()
+    {
+        return weapon.Attack();
+    }
+
+    public float GetAttackSpeed()
+    {
+        return weapon.GetAttackSpeed();
     }
 }
