@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
     private AudioSource source;
     [SerializeField] private AudioClip fire;
     [SerializeField] Texture2D crosshairs;
+    private Animator animator;
     #endregion
 
     #region PlayerMovementProperties
@@ -55,6 +56,7 @@ public class Player : MonoBehaviour
         characterController = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
         playerRenderer = GetComponent<Renderer>();
+        animator = GetComponent<Animator>();
         playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
         if (GameObject.Find("Main UI"))
@@ -97,6 +99,10 @@ public class Player : MonoBehaviour
             moveDirection *= playerMovementSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
 
+            //Set animator values
+            animator.SetFloat("Horizontal", moveDirection.x);
+            animator.SetFloat("Vertical", moveDirection.z);
+
             playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
             #endregion
 
@@ -119,11 +125,11 @@ public class Player : MonoBehaviour
 
             #endregion
 
-            #region HitFeedback
-            // Player reverting to original color after hit
-            if (playerRenderer.material.color != playerColor)
-                playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
-            #endregion
+            //#region HitFeedback
+            //// Player reverting to original color after hit
+            //if (playerRenderer.material.color != playerColor)
+            //    playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
+            //#endregion
         }
     }
 
@@ -164,10 +170,10 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void BlinkOnHit()
-    {
-        playerRenderer.material.color = Color.red;
-    }
+    //public void BlinkOnHit()
+    //{
+    //    playerRenderer.material.color = Color.red;
+    //}
 
     public void Death()
     {
@@ -196,7 +202,7 @@ public class Player : MonoBehaviour
             playerRenderer.material.color = Color.yellow;
             return;
         }
-        BlinkOnHit();
+        //BlinkOnHit();
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
