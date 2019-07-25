@@ -7,9 +7,13 @@ public class ShopUI : MonoBehaviour
 {
     public bool buy = true;
 
-    [SerializeField] Button Buy, Sell, Exit;
+    private Player player;
+    private int coins;
+    private Text coinText;
+    private Button Buy, Sell, Exit;
     private GameObject mainUI;
     List<BaseItem> shopItems = new List<BaseItem>();
+    BaseItem currentItem;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +42,22 @@ public class ShopUI : MonoBehaviour
 
         }
 
+
+        //update coin count
+        coins = player.GetCoins();
+        coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
+        coinText.text = $"X{coins}";
+
+
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ExitMenu();
         }
+
     }
 
+    #region Buttons
     void OpenBuyMenu()
     {
         Debug.Log("Clicked Buy");
@@ -60,5 +73,17 @@ public class ShopUI : MonoBehaviour
         Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
         Destroy(gameObject);
     }
+    #endregion
 
+    void BuyItem()
+    {
+
+    }
+
+    void SelectItem()
+    {
+
+    }
+
+    
 }
