@@ -29,6 +29,9 @@ public class EnemyStats : MonoBehaviour
     private Renderer enemyRender;
     public Color enemyColor;
 
+    public bool fireImmune;
+    public bool iceImmune;
+
     GameObject player;
     Player playerScript;
 
@@ -108,6 +111,7 @@ public class EnemyStats : MonoBehaviour
 
     public void Start()
     {
+        GetComponent<AudioSource>().enabled = true;
         enemyRender = GetComponentInParent<Renderer>();
         enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");
