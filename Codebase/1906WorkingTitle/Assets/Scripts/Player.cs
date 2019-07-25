@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
-    [SerializeField] private float playerExperience;
+    private float playerExperience;
     private float nextLevelExperience;
     private int playerLevel;
     [SerializeField] private int playerSpendingPoints;
@@ -67,8 +67,6 @@ public class Player : MonoBehaviour
         playerExperience = 0;
         playerLevel = 1;
         nextLevelExperience = 10;
-        playerSpendingPoints = 0;
-        playerLives = 5;
         Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
         source = GetComponent<AudioSource>();
         source.enabled = true;
@@ -172,16 +170,6 @@ public class Player : MonoBehaviour
     public void Death()
     {
         gameObject.SetActive(false);
-    }
-
-    public void LevelUp()
-    {
-        maxPlayerHealth += 10;
-        playerHealth = maxPlayerHealth;
-        playerMovementSpeed++;
-        playerSpendingPoints++;
-        playerExperience = 0;
-        playerLevel++;
     }
 
     #region AccessorsAndMutators
@@ -296,6 +284,17 @@ public class Player : MonoBehaviour
     #endregion
 
     #region LevelAndXP
+
+    public void LevelUp()
+    {
+        maxPlayerHealth += 10;
+        playerHealth = maxPlayerHealth;
+        playerMovementSpeed++;
+        playerSpendingPoints++;
+        playerExperience = 0;
+        playerLevel++;
+    }
+
     public float GetExperience()
     {
         return playerExperience;
