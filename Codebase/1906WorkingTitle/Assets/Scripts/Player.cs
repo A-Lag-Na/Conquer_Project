@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     [SerializeField] private int visualAttackSpeed;
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
-    [SerializeField] private float playerExperience;
+    private float playerExperience;
     private float nextLevelExperience = 10;
     private int playerLevel = 1;
     [SerializeField] private int playerSpendingPoints = 0;
@@ -174,16 +174,6 @@ public class Player : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-    public void LevelUp()
-    {
-        maxPlayerHealth += 10;
-        playerHealth = maxPlayerHealth;
-        playerMovementSpeed++;
-        playerSpendingPoints++;
-        playerExperience = 0;
-        playerLevel++;
-    }
-
     #region AccessorsAndMutators
 
     #region Health
@@ -296,6 +286,17 @@ public class Player : MonoBehaviour
     #endregion
 
     #region LevelAndXP
+
+    public void LevelUp()
+    {
+        maxPlayerHealth += 10;
+        playerHealth = maxPlayerHealth;
+        playerMovementSpeed++;
+        playerSpendingPoints++;
+        playerExperience = 0;
+        playerLevel++;
+    }
+
     public float GetExperience()
     {
         return playerExperience;
