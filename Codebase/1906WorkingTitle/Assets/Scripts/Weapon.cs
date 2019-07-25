@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Weapon : BaseItem
 {
-    int damage;
-    float attackSpeed;
+    [SerializeField] int damage;
+    [SerializeField] float attackSpeed;
 
-    int Attack()
+    public int Attack()
     {
         return damage;
     }
 
-    float GetAttackSpeed()
+    public float GetAttackSpeed()
     {
         return attackSpeed;
     }
