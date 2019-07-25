@@ -11,6 +11,8 @@ public class ConditionManager : MonoBehaviour
     private Component statsScript;
     private float speed;
     private float maxSpeed;
+    GameObject fireParticle;
+    GameObject iceParticle;
 
     public void Start()
     {
@@ -18,6 +20,34 @@ public class ConditionManager : MonoBehaviour
         {
             isPlayer = true;
             statsScript = GetComponentInParent<Player>();
+            fireParticle = GameObject.Find("PlayerFire");
+            iceParticle = GameObject.Find("PlayerIce");
+        }
+        else if (gameObject.name.Equals("RangedEnemy"))
+        {
+            isPlayer = false;
+            statsScript = GetComponentInParent<EnemyStats>();
+            fireParticle = GameObject.Find("RangedFire");
+            iceParticle = GameObject.Find("RangedIce");
+        }
+        else if (gameObject.name.Equals("BulletHell Enemy"))
+        {
+            isPlayer = false;
+            statsScript = GetComponentInParent<EnemyStats>();
+            fireParticle = GameObject.Find("BulletHell Fire");
+            iceParticle = GameObject.Find("BulletHell Ice");
+        }
+        else if (gameObject.name.Equals("FireEnemy"))
+        {
+            isPlayer = false;
+            statsScript = GetComponentInParent<EnemyStats>();
+            iceParticle = GameObject.Find("FireIce");
+        }
+        else if (gameObject.name.Equals("Ice Enemy"))
+        {
+            isPlayer = false;
+            statsScript = GetComponentInParent<EnemyStats>();
+            fireParticle = GameObject.Find("IceFire");
         }
         else
         {
@@ -34,21 +64,30 @@ public class ConditionManager : MonoBehaviour
         {
             if (fireTimer > 0)
             {
+                fireParticle.SetActive(true);
                 fireTimer--;
                 if (fireTimer % 60 == 0)
                 {
-                   Damage(1);
+                    Damage(1);
                 }
             }
-            if(thawTimer > 0)
+            if (thawTimer > 0)
             {
+                iceParticle.SetActive(true);
                 thawTimer--;
-                if (thawTimer % 30 == 1 && GetSpeed()+0.2f <= maxSpeed)
+                if (thawTimer % 30 == 1 && GetSpeed() + 0.2f <= maxSpeed)
                 {
                     SetSpeed(GetSpeed() + 0.2f);
                 }
             }
         }
+        if (fireTimer <= 0)
+            if (fireParticle != null)
+                fireParticle.SetActive(false);
+        if (thawTimer <= 0)
+            if (iceParticle != null)
+                iceParticle.SetActive(false);
+
     }
 
     public void TimerAdd(string condition, int ticks)
@@ -96,7 +135,7 @@ public class ConditionManager : MonoBehaviour
     //Cast get-setters (This workaround feels silly and wrong)
     public float GetSpeed()
     {
-        if(isPlayer)
+        if (isPlayer)
         {
             return ((Player)statsScript).GetMovementSpeed();
         }
@@ -118,7 +157,7 @@ public class ConditionManager : MonoBehaviour
     }
     public void SubtractSpeed(float _speed)
     {
-        if(GetSpeed() - _speed >= 0)
+        if (GetSpeed() - _speed >= 0)
         {
             SetSpeed(GetSpeed() - _speed);
         }
