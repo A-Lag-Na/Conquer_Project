@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1390932859670083531}
   - component: {fileID: 5270708205789088466}
   - component: {fileID: 5054324215529274949}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Hit Effect - Blood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4765,4 +4765,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b35526f62af38488e7a05aa8a5039e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 0
+  _time: 1

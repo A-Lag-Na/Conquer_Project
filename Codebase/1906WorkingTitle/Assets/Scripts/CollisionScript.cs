@@ -8,7 +8,8 @@ public class CollisionScript : MonoBehaviour
     public AudioClip hurt;
     public AudioClip burn;
     public int bulletDamage;
-    public GameObject hitEffect;
+    public GameObject sparks;
+    public GameObject blood;
     public bool iceImmune = false;
     public bool fireImmune = false;
 
@@ -22,6 +23,7 @@ public class CollisionScript : MonoBehaviour
         }
         if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
         {
+            Instantiate(blood, transform.position, blood.transform.rotation);
             if (collision.collider.CompareTag("Player"))
             {
                 Player temp = collision.collider.GetComponent<Player>();
@@ -42,7 +44,7 @@ public class CollisionScript : MonoBehaviour
         }
         else
         {
-            Instantiate(hitEffect, transform.position, hitEffect.transform.rotation);
+            Instantiate(sparks, transform.position, sparks.transform.rotation);
         }
         if (!(iceImmune && fireImmune))
         {
