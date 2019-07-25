@@ -114,9 +114,6 @@ public class Player : MonoBehaviour
             {
                 ShootBullet(3);
             }
-
-
-
             #endregion
 
             #region HitFeedback

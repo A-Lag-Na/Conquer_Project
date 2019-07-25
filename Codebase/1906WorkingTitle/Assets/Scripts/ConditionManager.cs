@@ -27,37 +27,36 @@ public class ConditionManager : MonoBehaviour
             fireParticle = GameObject.Find("PlayerFire");
             iceParticle = GameObject.Find("PlayerIce");
         }
-        else if (gameObject.name.Equals("RangedEnemy"))
+        else if (gameObject.tag.Equals("Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             fireParticle = GameObject.Find("RangedFire");
             iceParticle = GameObject.Find("RangedIce");
         }
-        else if (gameObject.name.Equals("BulletHell Enemy"))
+        else if (gameObject.tag.Equals("BulletHell Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             fireParticle = GameObject.Find("BulletHell Fire");
             iceParticle = GameObject.Find("BulletHell Ice");
         }
-        else if (gameObject.name.Equals("FireEnemy"))
+        else if (gameObject.tag.Equals("Fire Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             iceParticle = GameObject.Find("FireIce");
         }
-        else if (gameObject.name.Equals("Ice Enemy"))
+        else if (gameObject.tag.Equals("Ice Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             fireParticle = GameObject.Find("IceFire");
         }
-        else
-        {
-            isPlayer = false;
-            statsScript = GetComponentInParent<EnemyStats>();
-        }
+        if (fireParticle != null)
+            fireParticle.SetActive(false);
+        if (iceParticle != null)
+            iceParticle.SetActive(false);
         speed = GetSpeed();
         maxSpeed = GetSpeed();
     }
@@ -68,7 +67,8 @@ public class ConditionManager : MonoBehaviour
         {
             if (fireTimer > 0)
             {
-                fireParticle.SetActive(true);
+                if (fireParticle != null)
+                    fireParticle.SetActive(true);
                 fireTimer--;
                 if (fireTimer % 60 == 0)
                 {
@@ -77,9 +77,10 @@ public class ConditionManager : MonoBehaviour
             }
             if (thawTimer > 0)
             {
-                iceParticle.SetActive(true);
+                if (iceParticle != null)
+                    iceParticle.SetActive(true);
                 thawTimer--;
-                if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed-thawIncrement) <= maxSpeed)
+                if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
                 {
                     SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
                 }
