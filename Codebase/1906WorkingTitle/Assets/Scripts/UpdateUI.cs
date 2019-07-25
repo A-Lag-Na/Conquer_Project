@@ -28,7 +28,7 @@ public class UpdateUI : MonoBehaviour
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
         statsText = transform.Find("Stats").GetComponent<Text>();
-        levelTransform = transform.Find("XP Bar").GetComponent<RectTransform>();
+        levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
         #region start
         ////update health
         //health = player.GetHealth();
