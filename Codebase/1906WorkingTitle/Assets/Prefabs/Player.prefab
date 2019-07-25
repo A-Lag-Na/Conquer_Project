@@ -200,7 +200,7 @@ MonoBehaviour:
   playerAttackSpeed: 1
   visualAttackSpeed: 1
   playerAttackDamage: 1
-  playerSpendingPoints: 15
+
   playerLives: 0
   iceImmune: 0
   fireImmune: 0
