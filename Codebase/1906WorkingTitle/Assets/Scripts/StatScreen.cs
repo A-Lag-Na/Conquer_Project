@@ -79,11 +79,12 @@ public class StatScreen : MonoBehaviour
         pointsAvailable = player.GetSpendingPoints();
         pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
-        //grab main ui if active and existing
-        if(GameObject.Find("Main UI"))
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
         {
-            mainUI = GameObject.Find("Main UI");
-            mainUI.SetActive(false);
+            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -146,12 +147,22 @@ public class StatScreen : MonoBehaviour
         pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //exit stat screen and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
         {
-            if (mainUI != null && mainUI.activeSelf)
-                mainUI.SetActive(true);
-            Destroy(gameObject);
+            ResumeGame();
         }
+    }
+
+    void ResumeGame()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        }
+        Destroy(gameObject);
     }
     
 }

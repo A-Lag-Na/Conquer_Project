@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
 
     NavMeshAgent agent;
     GameObject player;
+    private bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -49,22 +50,25 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.SetDestination(player.transform.position);
-        if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
+        if (!paused)
         {
-            Vector3 targetPosition = player.transform.position;
-            Vector3 relativePosition = targetPosition - transform.position;
-            Quaternion rotation = Quaternion.LookRotation(relativePosition);
-            // Lock the rotation around X and Z Axes
-            rotation.x = 0.0f;
-            rotation.z = 0.0f;
-            // Change the player's tranform's rotation to the rotation Quaternion
-            agent.transform.rotation = rotation;
-        }
+            agent.SetDestination(player.transform.position);
+            if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
+            {
+                Vector3 targetPosition = player.transform.position;
+                Vector3 relativePosition = targetPosition - transform.position;
+                Quaternion rotation = Quaternion.LookRotation(relativePosition);
+                // Lock the rotation around X and Z Axes
+                rotation.x = 0.0f;
+                rotation.z = 0.0f;
+                // Change the player's tranform's rotation to the rotation Quaternion
+                agent.transform.rotation = rotation;
+            }
 
-        if (attackEnabled)
-        {
-            StartCoroutine(attack());
+            if (attackEnabled)
+            {
+                StartCoroutine(attack());
+            }
         }
     }
 
@@ -74,5 +78,15 @@ public class EnemyAI : MonoBehaviour
         EnemyStats temp = GetComponent<EnemyStats>();
         attackRate = temp.GetAttackRate();
         bulletSpeed = temp.GetBulletSpeed();
+    }
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+
+
+    void OnResumeGame()
+    {
+        paused = false;
     }
 }

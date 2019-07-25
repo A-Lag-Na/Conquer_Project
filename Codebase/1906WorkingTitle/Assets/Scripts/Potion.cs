@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : Item
+public class Potion : BaseItem
 {
-    float healhReturn;
+    float healthReturn;
 
     float Heal()
     {
-        return healhReturn;
+        return healthReturn;
     }
 }

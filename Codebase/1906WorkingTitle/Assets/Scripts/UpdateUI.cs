@@ -18,7 +18,6 @@ public class UpdateUI : MonoBehaviour
     private RectTransform healthTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
 
-
     void Start()
     {
         //grab player GameObject
@@ -149,5 +148,29 @@ public class UpdateUI : MonoBehaviour
         {
             damageFlasher.color = Color.Lerp(damageFlasher.color, new Color(255.0f, 0.0f, 0.0f, 0.0f), 0.1f);
         }
+
+
+        //exit stat screen and reenable main ui
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            PauseGame();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            OpenStats();
+        }
+    }
+
+    void PauseGame()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Pause Menu"));
+        Destroy(gameObject);
+    }
+
+    void OpenStats()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
+        Destroy(gameObject);
     }
 }

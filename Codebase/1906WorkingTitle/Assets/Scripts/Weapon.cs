@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Weapon : Item
+public class Weapon : BaseItem
 {
     int damage;
     float attackSpeed;

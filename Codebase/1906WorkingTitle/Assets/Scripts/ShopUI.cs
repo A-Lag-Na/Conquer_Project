@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField] Button Buy, Sell, Exit;
     private GameObject mainUI;
-
+    List<BaseItem> shopItems = new List<BaseItem>();
 
     // Start is called before the first frame update
     void Start()
@@ -18,12 +18,11 @@ public class ShopUI : MonoBehaviour
         Sell.onClick.AddListener(OpenSellMenu);
         Exit.onClick.AddListener(ExitMenu);
 
-
-        //grab main ui if active and existing
-        if (GameObject.Find("Main UI"))
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
         {
-            mainUI = GameObject.Find("Main UI");
-            mainUI.SetActive(false);
+            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
     }
 
@@ -42,9 +41,7 @@ public class ShopUI : MonoBehaviour
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (mainUI != null && mainUI.activeSelf)
-                mainUI.SetActive(true);
-            Destroy(gameObject);
+            ExitMenu();
         }
     }
 
@@ -60,6 +57,7 @@ public class ShopUI : MonoBehaviour
     }
     void ExitMenu()
     {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
         Destroy(gameObject);
     }
 
