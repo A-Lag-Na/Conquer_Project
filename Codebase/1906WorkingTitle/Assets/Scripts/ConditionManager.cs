@@ -17,6 +17,7 @@ public class ConditionManager : MonoBehaviour
     [SerializeField] private int fireDamage;
     GameObject fireParticle;
     GameObject iceParticle;
+    private bool paused;
 
     public void Start()
     {
@@ -63,6 +64,8 @@ public class ConditionManager : MonoBehaviour
 
     public void Update()
     {
+        if (!paused)
+        {
         if (fireTimer > 0 || thawTimer > 0)
         {
             if (fireTimer > 0)
@@ -92,7 +95,7 @@ public class ConditionManager : MonoBehaviour
         if (thawTimer <= 0)
             if (iceParticle != null)
                 iceParticle.SetActive(false);
-
+    }
     }
 
     public void TimerAdd(string condition, int ticks)
@@ -206,6 +209,15 @@ public class ConditionManager : MonoBehaviour
     public void Refresh()
     {
         maxSpeed = GetSpeed();
+    }
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+    
+    void OnResumeGame()
+    {
+        paused = false;
     }
     #endregion GetSet
 }
