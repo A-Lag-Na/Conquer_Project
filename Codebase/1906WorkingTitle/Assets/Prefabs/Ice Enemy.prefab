@@ -67,6 +67,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: iceImmune
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7146275862574137060, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -81,11 +91,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LightProbeUsage
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
       propertyPath: projectile

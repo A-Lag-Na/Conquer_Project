@@ -199,8 +199,10 @@ MonoBehaviour:
   visualAttackSpeed: 1
   playerAttackDamage: 1
   playerExperience: 0
-  playerSpendingPoints: 0
+  playerSpendingPoints: 3
   playerLives: 0
+  iceImmune: 0
+  fireImmune: 0
   fire: {fileID: 8300000, guid: 2fb6e2be29afff64e90a7077099cacef, type: 3}
   crosshairs: {fileID: 0}
   mainCamera: {fileID: 0}
