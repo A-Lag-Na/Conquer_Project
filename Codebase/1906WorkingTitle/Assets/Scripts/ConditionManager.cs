@@ -203,5 +203,9 @@ public class ConditionManager : MonoBehaviour
     {
         fireDamage = _fireDamage;
     }
+    public void Refresh()
+    {
+        maxSpeed = GetSpeed();
+    }
     #endregion GetSet
 }

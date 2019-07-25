@@ -49,6 +49,5 @@ MonoBehaviour:
   doors:
   - {fileID: 0}
   points: 5
-  pointsClone: 0
   timer: 1
   spawnedEnemies: []
