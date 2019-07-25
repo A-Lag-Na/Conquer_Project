@@ -19,7 +19,7 @@ public class CollisionScript : MonoBehaviour
         {
             audioSource.PlayOneShot(hurt);
         }
-        if (collision.collider.CompareTag("Enemy"))
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
         {
             EnemyStats temp = collision.collider.GetComponent<EnemyStats>();
             //The enemy we hit takes damage.
