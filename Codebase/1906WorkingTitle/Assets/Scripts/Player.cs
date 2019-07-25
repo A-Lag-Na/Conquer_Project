@@ -15,9 +15,9 @@ public class Player : MonoBehaviour
     [SerializeField] int playerAttackDamage;
     private float lastTimeFired;
     [SerializeField] private float playerExperience;
-    private float nextLevelExperience;
-    private int playerLevel;
-    [SerializeField] private int playerSpendingPoints;
+    private float nextLevelExperience = 10;
+    private int playerLevel = 1;
+    [SerializeField] private int playerSpendingPoints = 0;
     [SerializeField] private int playerLives;
 
     //If player is immune to ice or fire conditions
@@ -68,10 +68,6 @@ public class Player : MonoBehaviour
         playerCoins = 0;
         visualAttackSpeed = 1;
         lastTimeFired = 0.0f;
-        playerExperience = 0;
-        playerLevel = 1;
-        nextLevelExperience = 10;
-        playerSpendingPoints = 0;
         playerLives = 5;
         Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
         source = GetComponent<AudioSource>();
