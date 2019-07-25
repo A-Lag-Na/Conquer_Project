@@ -17,6 +17,7 @@ public class ConditionManager : MonoBehaviour
     [SerializeField] private int fireDamage;
     GameObject fireParticle;
     GameObject iceParticle;
+    private bool paused;
 
     public void Start()
     {
@@ -63,36 +64,38 @@ public class ConditionManager : MonoBehaviour
 
     public void Update()
     {
-        if (fireTimer > 0 || thawTimer > 0)
+        if (!paused)
         {
-            if (fireTimer > 0)
+            if (fireTimer > 0 || thawTimer > 0)
             {
+                if (fireTimer > 0)
+                {
+                    if (fireParticle != null)
+                        fireParticle.SetActive(true);
+                    fireTimer--;
+                    if (fireTimer % 60 == 0)
+                    {
+                        Damage(fireDamage);
+                    }
+                }
+                if (thawTimer > 0)
+                {
+                    if (iceParticle != null)
+                        iceParticle.SetActive(true);
+                    thawTimer--;
+                    if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
+                    {
+                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
+                    }
+                }
+            }
+            if (fireTimer <= 0)
                 if (fireParticle != null)
-                    fireParticle.SetActive(true);
-                fireTimer--;
-                if (fireTimer % 60 == 0)
-                {
-                    Damage(fireDamage);
-                }
-            }
-            if (thawTimer > 0)
-            {
+                    fireParticle.SetActive(false);
+            if (thawTimer <= 0)
                 if (iceParticle != null)
-                    iceParticle.SetActive(true);
-                thawTimer--;
-                if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
-                {
-                    SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
-                }
-            }
+                    iceParticle.SetActive(false);
         }
-        if (fireTimer <= 0)
-            if (fireParticle != null)
-                fireParticle.SetActive(false);
-        if (thawTimer <= 0)
-            if (iceParticle != null)
-                iceParticle.SetActive(false);
-
     }
 
     public void TimerAdd(string condition, int ticks)
@@ -202,6 +205,16 @@ public class ConditionManager : MonoBehaviour
     public void SetFireDamage(int _fireDamage)
     {
         fireDamage = _fireDamage;
+    }
+
+    void OnPauseGame()
+    {
+        paused = true;
+    }
+    
+    void OnResumeGame()
+    {
+        paused = false;
     }
     #endregion GetSet
 }
