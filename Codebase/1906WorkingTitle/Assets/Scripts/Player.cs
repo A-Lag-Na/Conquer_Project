@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
     [SerializeField] float playerMovementSpeed;
     [SerializeField] float playerHealth;
     [SerializeField] float maxPlayerHealth;
-    [SerializeField] int playerCoins;
     [SerializeField] int playerDefense;
     [SerializeField] float playerAttackSpeed;
     [SerializeField] private int visualAttackSpeed;
@@ -31,6 +30,7 @@ public class Player : MonoBehaviour
     private Renderer playerRenderer;
     private Color playerColor;
     private AudioSource source;
+    private Inventory inventory;
     [SerializeField] private AudioClip fire;
     [SerializeField] Texture2D crosshairs;
     private Animator animator;
@@ -59,15 +59,15 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
-        playerRenderer = GetComponent<Renderer>();
+        inventory = GetComponent<Inventory>();
+        //playerRenderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
-        playerColor = playerRenderer.material.color;
+        //playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
         maxPlayerHealth = 10;
         playerHealth = 10;
-        playerCoins = 0;
         visualAttackSpeed = 1;
         lastTimeFired = 0.0f;
         playerLives = 5;
@@ -189,7 +189,7 @@ public class Player : MonoBehaviour
         amountOfDamage -= playerDefense;
         if (amountOfDamage <= 0)
         {
-            playerRenderer.material.color = Color.yellow;
+           // playerRenderer.material.color = Color.yellow;
             return;
         }
         //BlinkOnHit();
@@ -230,12 +230,12 @@ public class Player : MonoBehaviour
     #region Coins
     public void AddCoins(int amountOfCoins)
     {
-        playerCoins += amountOfCoins;
+        inventory.AddCoins(amountOfCoins);
     }
 
     public int GetCoins()
     {
-        return playerCoins;
+        return inventory.GetCoins();
     }
     #endregion
 
