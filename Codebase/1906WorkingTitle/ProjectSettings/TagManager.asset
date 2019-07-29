@@ -13,6 +13,8 @@ TagManager:
   - BulletHell Enemy
   - Fire Enemy
   - Ice Enemy
+  - BridgeCollider
+  - Bridge
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Enemy
   - Enemy Bullet
   - Pickups
-  - 
+  - Blood
   - 
   - 
   - 

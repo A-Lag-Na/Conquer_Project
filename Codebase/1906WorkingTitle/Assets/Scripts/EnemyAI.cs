@@ -85,8 +85,6 @@ public class EnemyAI : MonoBehaviour
     {
         paused = true;
     }
-
-
     void OnResumeGame()
     {
         paused = false;

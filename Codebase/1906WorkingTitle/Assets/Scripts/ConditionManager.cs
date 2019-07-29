@@ -206,12 +206,15 @@ public class ConditionManager : MonoBehaviour
     {
         fireDamage = _fireDamage;
     }
-
+    public void Refresh()
+    {
+        maxSpeed = GetSpeed();
+    }
     void OnPauseGame()
     {
         paused = true;
     }
-    
+
     void OnResumeGame()
     {
         paused = false;

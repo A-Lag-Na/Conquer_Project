@@ -77,7 +77,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
   hurt: {fileID: 8300000, guid: b58ee7932e434e2468dc44186d61d692, type: 3}
+  burn: {fileID: 0}
   bulletDamage: 0
+  sparks: {fileID: 4862458918604485940, guid: e38789e27b3813e4695ae8660c15bccc, type: 3}
+  blood: {fileID: 7209053802212718509, guid: 36b711bee4fb100469ac728bf7577c6f, type: 3}
+  iceImmune: 0
+  fireImmune: 0
 --- !u!96 &1114702312
 TrailRenderer:
   serializedVersion: 2

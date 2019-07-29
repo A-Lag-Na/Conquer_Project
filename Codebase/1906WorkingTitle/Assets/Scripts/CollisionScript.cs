@@ -8,6 +8,8 @@ public class CollisionScript : MonoBehaviour
     public AudioClip hurt;
     public AudioClip burn;
     public int bulletDamage;
+    public GameObject sparks;
+    public GameObject blood;
     public bool iceImmune = false;
     public bool fireImmune = false;
 
@@ -19,24 +21,32 @@ public class CollisionScript : MonoBehaviour
         {
             audioSource.PlayOneShot(hurt);
         }
-        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
         {
-            EnemyStats temp = collision.collider.GetComponent<EnemyStats>();
-            //The enemy we hit takes damage.
-            temp.TakeDamage(bulletDamage);
-            fireImmune = temp.fireImmune;
-            iceImmune = temp.iceImmune;
+            Instantiate(blood, transform.position, blood.transform.rotation);
+            if (collision.collider.CompareTag("Player"))
+            {
+                Player temp = collision.collider.GetComponent<Player>();
+                //The enemy we hit takes damage.
+                temp.TakeDamage(bulletDamage);
+                fireImmune = temp.fireImmune;
+                iceImmune = temp.iceImmune;
+                collision.collider.GetComponent<Player>().TakeDamage(bulletDamage);
+            }
+            if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+            {
+                EnemyStats temp = collision.collider.GetComponent<EnemyStats>();
+                //The enemy we hit takes damage.
+                temp.TakeDamage(bulletDamage);
+                fireImmune = temp.fireImmune;
+                iceImmune = temp.iceImmune;
+            }
         }
-        if (collision.collider.CompareTag("Player"))
+        else
         {
-            Player temp = collision.collider.GetComponent<Player>();
-            //The enemy we hit takes damage.
-            temp.TakeDamage(bulletDamage);
-            fireImmune = temp.fireImmune;
-            iceImmune = temp.iceImmune;
-            collision.collider.GetComponent<Player>().TakeDamage(bulletDamage);
+            Instantiate(sparks, transform.position, sparks.transform.rotation);
         }
-        if(!(iceImmune && fireImmune))
+        if (!(iceImmune && fireImmune))
         {
             ConditionManager con = target.GetComponent<ConditionManager>();
             if (gameObject.tag != "Untagged" && con != null)
