@@ -59,9 +59,9 @@ public class Player : MonoBehaviour
     {
         characterController = GetComponent<CharacterController>();
         playerTransform = GetComponent<Transform>();
-        playerRenderer = GetComponent<Renderer>();
+        //playerRenderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
-        playerColor = playerRenderer.material.color;
+        //playerColor = playerRenderer.material.color;
         playerY = playerTransform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
@@ -186,7 +186,7 @@ public class Player : MonoBehaviour
         amountOfDamage -= playerDefense;
         if (amountOfDamage <= 0)
         {
-            playerRenderer.material.color = Color.yellow;
+           // playerRenderer.material.color = Color.yellow;
             return;
         }
         //BlinkOnHit();

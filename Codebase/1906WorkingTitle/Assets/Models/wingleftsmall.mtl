@@ -1,0 +1,17 @@
+# Wavefront MTL file
+# Creator: Ultimate Unwrap3D Pro v3.33
+# URL: http://www.unwrap3d.com
+# Time: Mon Jan 16 10:29:45 2012
+# num_materials: 1
+
+newmtl wingleftsmall
+Ka 0.000000 0.000000 0.000000
+Kd 1.000000 1.000000 1.000000
+Ks 0.000000 0.000000 0.000000
+d 1.000000
+illum 2
+Ns 0.000000
+map_Kd waspwings_tex.bmp
+map_Bump waspwings_NM.bmp
+
+# num_materials: 1
