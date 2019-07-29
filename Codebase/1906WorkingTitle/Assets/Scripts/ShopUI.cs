@@ -7,12 +7,13 @@ public class ShopUI : MonoBehaviour
 {
     public bool buy = true;
 
+    private Inventory inventory;
     private Player player;
     private int coins;
     private Text coinText;
     private Button Buy, Sell, Exit;
     private GameObject mainUI;
-    List<BaseItem> shopItems = new List<BaseItem>();
+    //List<BaseItem> shopItems = new List<BaseItem>();
     BaseItem currentItem;
 
     // Start is called before the first frame update
@@ -28,6 +29,10 @@ public class ShopUI : MonoBehaviour
             if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
+
+        player = GameObject.Find("Player").GetComponent<Player>();
+        inventory = GameObject.Find("Player").GetComponent<Inventory>();
+
     }
 
     // Update is called once per frame
@@ -75,14 +80,21 @@ public class ShopUI : MonoBehaviour
     }
     #endregion
 
-    void BuyItem()
+    public void Purchase()
     {
-
+        inventory.AddCoins(currentItem.GetValue());
     }
 
-    void SelectItem()
+    void Checkout(BaseItem _item)
     {
+        if(_item.GetValue() < coins)
+        {
+            currentItem = _item;
+        }
+        else
+        {
 
+        }
     }
 
     
