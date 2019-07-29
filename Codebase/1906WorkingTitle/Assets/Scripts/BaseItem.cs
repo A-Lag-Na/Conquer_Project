@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
-    enum Type { Weapon, Potion, EOF};
+    public enum Type { Weapon, Potion, EOF};
     [SerializeField] Type itemType;
 
     [SerializeField] int value;
 
+    public Type ItemType()
+    {
+        return itemType;
+    }
+
+    public int GetValue()
+    {
+        return value;
+    }
 
 }
