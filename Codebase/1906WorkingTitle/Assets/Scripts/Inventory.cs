@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private int gold;
+    [SerializeField] private int gold;
     List<Weapon> weaponList = new List<Weapon>();
     List<Potion> potionList = new List<Potion>();
-    Weapon weapon;
-    Potion potion;
+    [SerializeField] Weapon weapon;
+    [SerializeField] Potion potion;
 
     
     #region gold
@@ -33,14 +33,24 @@ public class Inventory : MonoBehaviour
     //}
 
 
-    public void ChangeWeapon(Weapon _weapon)
+    public void ChangeWeapon(BaseItem _weapon)
     {
-        weapon = _weapon;
+        weapon = (Weapon)_weapon;
     }
 
-    public void ChangePotion(Potion _potion)
+    public void RemoveWeapon()
     {
-        potion = _potion;
+        weapon = null;
+    }
+
+    public void ChangePotion(BaseItem _potion)
+    {
+        potion = (Potion)_potion;
+    }
+
+    public void RemovePotion()
+    {
+        potion = null;
     }
 
     public float Heal()

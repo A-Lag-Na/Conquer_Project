@@ -20,8 +20,9 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
+        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
         //grab player GameObject
-        if(GameObject.Find("Player"))
+        if (GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
@@ -164,6 +165,11 @@ public class UpdateUI : MonoBehaviour
         {
             OpenStats();
         }
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            OpenShop();
+        }
     }
 
     void PauseGame()
@@ -175,6 +181,12 @@ public class UpdateUI : MonoBehaviour
     void OpenStats()
     {
         Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
+        Destroy(gameObject);
+    }
+
+    void OpenShop()
+    {
+        Instantiate(Resources.Load<GameObject>("Prefabs/Shop Camera"));
         Destroy(gameObject);
     }
 }
