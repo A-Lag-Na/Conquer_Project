@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 346594169}
   - component: {fileID: 3746575738770876259}
   - component: {fileID: -2018029439070025550}
+  - component: {fileID: 8988053837180474812}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -343,6 +344,18 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &8988053837180474812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3828636513520417020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4a2e68c3d20df648a2b5915dd56f0ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3828636513847467825
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,14 +363,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3828636513520416995}
     m_Modifications:
-    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
-      propertyPath: m_Name
-      value: PlayerIce
-      objectReference: {fileID: 0}
-    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4912415173136776, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -402,6 +407,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
+      propertyPath: m_Name
+      value: PlayerIce
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 198359397427839540, guid: bc42e33df8ad9d14cba646735d12f85d,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -422,14 +435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3828636513520416995}
     m_Modifications:
-    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
-      propertyPath: m_Name
-      value: PlayerFire
-      objectReference: {fileID: 0}
-    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4351478612477126, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -473,6 +478,14 @@ PrefabInstance:
     - target: {fileID: 4351478612477126, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
+      propertyPath: m_Name
+      value: PlayerFire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
