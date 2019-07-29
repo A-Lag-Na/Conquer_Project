@@ -237,6 +237,7 @@ MonoBehaviour:
   attackEnabled: 1
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
+  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
 --- !u!114 &4183320886380877096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -265,7 +266,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: b58ee7932e434e2468dc44186d61d692, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
   m_Pitch: 1

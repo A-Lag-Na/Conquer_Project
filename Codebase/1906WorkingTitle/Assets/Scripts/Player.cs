@@ -100,8 +100,11 @@ public class Player : MonoBehaviour
             characterController.Move(moveDirection * Time.deltaTime);
 
             //Set animator values
-            animator.SetFloat("Horizontal", moveDirection.x);
-            animator.SetFloat("Vertical", moveDirection.z);
+            if(animator != null)
+            {
+                animator.SetFloat("Horizontal", moveDirection.x);
+                animator.SetFloat("Vertical", moveDirection.z);
+            }
 
             playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
             #endregion
