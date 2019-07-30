@@ -6,15 +6,15 @@ public class ShopKeep : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject Shop;
-    
-    void Start()
+
+    private void Start()
     {
-        
+        Shop = transform.Find("Shop Camera").gameObject;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OpenShop()
     {
-        
+        Instantiate(Shop);
     }
+
 }
