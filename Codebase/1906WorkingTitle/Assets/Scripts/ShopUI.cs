@@ -18,6 +18,8 @@ public class ShopUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainUI = GameObject.Find("Main UI");
+        mainUI.SetActive(false);
 
         Buy = transform.Find("Buy").GetComponent<Button>();
         Buy.onClick.AddListener(OpenBuyMenu);
@@ -79,14 +81,16 @@ public class ShopUI : MonoBehaviour
     }
     void ExitMenu()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        mainUI.SetActive(true);
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
         {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         }
-        Destroy(transform.parent.gameObject);
+        //Destroy(transform.parent.gameObject);
+        transform.parent.gameObject.SetActive(false);
     }
     #endregion
 

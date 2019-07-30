@@ -6,14 +6,20 @@ public class Weapon : BaseItem
 {
     [SerializeField] int damage;
     [SerializeField] float attackSpeed;
+    private Weapon shallow;
+    
 
-    public Weapon(Weapon _weapon)
+    private void Update()
     {
-        this.damage = _weapon.damage;
-        this.attackSpeed = _weapon.attackSpeed;
-        this.SetName(_weapon.GetName());
-        SetSprite(_weapon.GetSprite());
-        SetValue(_weapon.GetValue());
+        if (shallow != null)
+        {
+            this.damage = shallow.damage;
+            this.attackSpeed = shallow.attackSpeed;
+            this.SetName(shallow.GetName());
+            SetSprite(shallow.GetSprite());
+            SetValue(shallow.GetValue());
+            shallow = null;
+        }
     }
 
     public int Attack()
@@ -24,5 +30,9 @@ public class Weapon : BaseItem
     public float GetAttackSpeed()
     {
         return attackSpeed;
+    }
+    public void SetShallow(Weapon _shallow)
+    {
+        shallow = _shallow;
     }
 }

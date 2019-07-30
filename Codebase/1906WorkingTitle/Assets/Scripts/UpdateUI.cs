@@ -18,9 +18,14 @@ public class UpdateUI : MonoBehaviour
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
 
+    GameObject statScreen, pauseMenu;
+
     void Start()
     {
-
+        statScreen = GameObject.Find("Stat Screen");
+        statScreen.SetActive(false);
+        pauseMenu = GameObject.Find("Pause Menu");
+        pauseMenu.SetActive(false);
         //grab player GameObject
         if (GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
@@ -174,14 +179,18 @@ public class UpdateUI : MonoBehaviour
 
     void PauseGame()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Pause Menu"));
-        Destroy(gameObject);
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Pause Menu"));
+        GameObject.Find("Pause Menu").SetActive(true);
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 
     void OpenStats()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
-        Destroy(gameObject);
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
+        GameObject.Find("Stat Screen").SetActive(true);
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
 
     void OpenShop()

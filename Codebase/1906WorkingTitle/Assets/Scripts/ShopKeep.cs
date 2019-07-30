@@ -14,8 +14,9 @@ public class ShopKeep : MonoBehaviour
 
     public void OpenShop()
     {
-        GameObject shopClone = Instantiate(Shop);
-        shopClone.SetActive(true);
+        //GameObject shopClone = Instantiate(Shop);
+        //shopClone.SetActive(true);
+        Shop.SetActive(true);
     }
 
 }

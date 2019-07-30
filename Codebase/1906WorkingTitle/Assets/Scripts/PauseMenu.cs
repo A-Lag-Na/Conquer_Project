@@ -8,9 +8,12 @@ public class PauseMenu : MonoBehaviour
 {
 
     Button ResumeBTN, OptionsBTN, ExitBTN;
+    GameObject mainUI;
     // Start is called before the first frame update
     void Start()
     {
+        mainUI = GameObject.Find("Main UI");
+        mainUI.SetActive(false);
         ResumeBTN = GameObject.Find("Resume").GetComponent<Button>();
         OptionsBTN = GameObject.Find("Options").GetComponent<Button>();
         ExitBTN = GameObject.Find("Exit Game").GetComponent<Button>();
@@ -43,13 +46,14 @@ public class PauseMenu : MonoBehaviour
     void Resume()
     {
         UnPause();
-        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
-        Destroy(gameObject);    
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        mainUI.SetActive(true);
+        //Destroy(gameObject);
     }
 
     void Options()
     {
-
+        SceneManager.LoadScene("Options");
     }
 
     void UnPause()

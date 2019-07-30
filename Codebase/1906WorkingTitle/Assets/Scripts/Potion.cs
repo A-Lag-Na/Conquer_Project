@@ -5,17 +5,28 @@ using UnityEngine;
 public class Potion : BaseItem
 {
     [SerializeField] float healthReturn = 5;
+    private Potion shallow;
+    
 
-    public Potion(Potion _potion)
+    private void Update()
     {
-        this.SetName(_potion.GetName());
-        this.healthReturn = _potion.healthReturn;
-        SetSprite(_potion.GetSprite());
-        SetValue(_potion.GetValue());
+        if(shallow != null)
+        {
+            this.SetName(shallow.GetName());
+            this.healthReturn = shallow.healthReturn;
+            SetSprite(shallow.GetSprite());
+            SetValue(shallow.GetValue());
+            shallow = null;
+        }
     }
 
     public float Heal()
     {
         return healthReturn;
+    }
+
+    public void SetShallow(Potion _shallow)
+    {
+        shallow = _shallow;
     }
 }

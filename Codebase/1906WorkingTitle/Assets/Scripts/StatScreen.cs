@@ -17,6 +17,8 @@ public class StatScreen : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainUI = GameObject.Find("Main UI");
+        mainUI.SetActive(false);
         //assign buttons
         speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
         damageBTN = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
@@ -155,14 +157,16 @@ public class StatScreen : MonoBehaviour
 
     void ResumeGame()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        mainUI.SetActive(true);
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
         {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         }
-        Destroy(gameObject);
+        //Destroy(gameObject);
+        //gameObject.SetActive(false);
     }
     
 }
