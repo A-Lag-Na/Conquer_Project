@@ -46,13 +46,13 @@ public class ConditionManager : MonoBehaviour
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
-            iceParticle = GameObject.Find("FireIce");
+            iceParticle = GameObject.Find("DragonIce");
         }
         else if (gameObject.tag.Equals("Ice Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
-            fireParticle = GameObject.Find("IceFire");
+            fireParticle = GameObject.Find("SpiderFire");
         }
         if (fireParticle != null)
             fireParticle.SetActive(false);

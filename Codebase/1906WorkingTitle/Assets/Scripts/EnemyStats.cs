@@ -115,8 +115,8 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         GetComponent<AudioSource>().enabled = true;
-        //enemyRender = GetComponentInParent<Renderer>();
-        //enemyColor = enemyRender.material.color;
+        enemyRender = GetComponentInChildren<Renderer>();
+        enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -124,15 +124,15 @@ public class EnemyStats : MonoBehaviour
 
     public void Update()
     {
-        //if (enemyRender.material.color != enemyColor)
-        //{
-        //    enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
-        //}
+        if (enemyRender.material.color != enemyColor)
+        {
+            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
+        }
     }
 
     //Color feedback on damage taken
     public void BlinkOnHit()
     {
-        //enemyRender.material.color = Color.red;
+        enemyRender.material.color = Color.red;
     }
 }
