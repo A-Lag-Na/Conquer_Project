@@ -52,8 +52,11 @@ public class EnemyAI : MonoBehaviour
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        anim.SetTrigger("Attack");
-        anim.SetBool("Dead", false);
+        if(anim != null)
+        {
+            anim.SetBool("Attack", true);
+            anim.SetBool("Dead", false);
+        }
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
     }

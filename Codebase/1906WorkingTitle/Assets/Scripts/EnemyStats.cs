@@ -37,6 +37,7 @@ public class EnemyStats : MonoBehaviour
     Player playerScript;
 
     //get-setters
+    #region getset
     public int GetPoints()
     {
         return enemyPoints;
@@ -82,6 +83,7 @@ public class EnemyStats : MonoBehaviour
     {
         bulletSpeed = _speed;
     }
+    #endregion getset
 
     //Our enemy is damaged
     public void TakeDamage(int _damage = 1)
@@ -90,8 +92,11 @@ public class EnemyStats : MonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
-            anim.SetBool("Dead", true);
-            anim.SetBool("Attack", false);
+            if(anim != null)
+            {
+                anim.SetBool("Dead", true);
+                anim.SetBool("Attack", false);
+            }
             Kill();
         }
     }
@@ -115,8 +120,8 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         GetComponent<AudioSource>().enabled = true;
-        //enemyRender = GetComponentInParent<Renderer>();
-        //enemyColor = enemyRender.material.color;
+        enemyRender = GetComponentInChildren<Renderer>();
+        enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<Player>();
         anim = GetComponent<Animator>();
@@ -124,15 +129,15 @@ public class EnemyStats : MonoBehaviour
 
     public void Update()
     {
-        //if (enemyRender.material.color != enemyColor)
-        //{
-        //    enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
-        //}
+        if (enemyRender.material.color != enemyColor)
+        {
+            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
+        }
     }
 
     //Color feedback on damage taken
     public void BlinkOnHit()
     {
-        //enemyRender.material.color = Color.red;
+        enemyRender.material.color = Color.red;
     }
 }

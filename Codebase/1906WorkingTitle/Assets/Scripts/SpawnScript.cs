@@ -9,7 +9,7 @@ public class SpawnScript : MonoBehaviour
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies;
-    private List<EnemyStats> enemiesClone;
+    public List<EnemyStats> enemiesClone;
 
     //list of doors.
     [SerializeField] private List<GameObject> doors;
@@ -31,12 +31,9 @@ public class SpawnScript : MonoBehaviour
     {
         pointsClone = points;
         enemiesClone = new List<EnemyStats>();
-        if (enemies.Count > 0)
+        for (int i = 0; i < enemies.Count; i++)
         {
-            for (int i = 0; i < enemies.Count; i++)
-            {
-                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
-            }
+            enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
         }
     }
 
@@ -96,7 +93,6 @@ public class SpawnScript : MonoBehaviour
             //subtracts enemy points from spawner's
             pointsClone -= enemies[temp].GetComponent<EnemyStats>().GetPoints();
         }
-
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
     }
