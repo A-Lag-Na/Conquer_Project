@@ -17,8 +17,11 @@ public class EnemyAI : MonoBehaviour
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
 
+    [SerializeField] AudioClip fire;
+
     NavMeshAgent agent;
     GameObject player;
+    AudioSource source;
     private bool paused;
 
     // Start is called before the first frame update
@@ -30,6 +33,8 @@ public class EnemyAI : MonoBehaviour
         attackRate = temp.GetAttackRate();
         bulletSpeed = temp.GetBulletSpeed();
         bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        source = GetComponentInParent<AudioSource>();
+        source.enabled = true;
     }
 
     IEnumerator attack()
@@ -42,7 +47,7 @@ public class EnemyAI : MonoBehaviour
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
-        
+        source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;

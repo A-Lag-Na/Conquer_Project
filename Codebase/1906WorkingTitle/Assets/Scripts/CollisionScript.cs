@@ -19,7 +19,9 @@ public class CollisionScript : MonoBehaviour
         audioSource = target.GetComponent<AudioSource>();
         if(audioSource != null)
         {
+            audioSource.volume = 1.0f;
             audioSource.PlayOneShot(hurt);
+            audioSource.volume = 0.5f;
         }
         if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
         {

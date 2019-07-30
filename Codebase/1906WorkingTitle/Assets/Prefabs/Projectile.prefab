@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 0}
-  hurt: {fileID: 8300000, guid: b58ee7932e434e2468dc44186d61d692, type: 3}
+  hurt: {fileID: 8300000, guid: 565be76cfa840a34fb00d3845a60fc35, type: 3}
   burn: {fileID: 0}
   bulletDamage: 0
   sparks: {fileID: 4862458918604485940, guid: e38789e27b3813e4695ae8660c15bccc, type: 3}
