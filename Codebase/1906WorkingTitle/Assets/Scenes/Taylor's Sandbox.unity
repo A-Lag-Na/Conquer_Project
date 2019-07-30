@@ -520,7 +520,7 @@ PrefabInstance:
     - target: {fileID: 2374690145450221447, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2374690145450221498, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
@@ -2376,11 +2376,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BulletHell Enemy
-      objectReference: {fileID: 0}
-    - target: {fileID: 1648946467457729227, guid: 60bf276add31f3245b3bb0695fc500c4,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1648946467457729220, guid: 60bf276add31f3245b3bb0695fc500c4,
         type: 3}

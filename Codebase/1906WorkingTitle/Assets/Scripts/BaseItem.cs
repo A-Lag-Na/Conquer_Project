@@ -8,6 +8,7 @@ public class BaseItem : MonoBehaviour
     [SerializeField] Type itemType;
     [SerializeField] int value;
     [SerializeField] string name = "";
+    [SerializeField] Sprite sprite;
 
 
     public Type ItemType()

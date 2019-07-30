@@ -9970,7 +9970,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7999029628684770106
 Transform:
   m_ObjectHideFlags: 0
