@@ -20,7 +20,7 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
+
         //grab player GameObject
         if (GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
