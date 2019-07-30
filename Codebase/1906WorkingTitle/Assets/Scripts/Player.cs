@@ -365,5 +365,17 @@ public class Player : MonoBehaviour
     }
     #endregion
 
+    #region Weapon and Potion
+    public Sprite GetWeapon()
+    {
+        return inventory.WeaponSprite();
+    }
+
+    public Sprite GetPotion()
+    {
+        return inventory.PotionSprite();
+    }
+    #endregion
+
     #endregion
 }

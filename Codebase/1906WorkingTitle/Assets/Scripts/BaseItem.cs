@@ -10,6 +10,10 @@ public class BaseItem : MonoBehaviour
     [SerializeField] string name = "";
     [SerializeField] Sprite sprite;
 
+    private void Start()
+    {
+
+    }
 
     public Type ItemType()
     {
