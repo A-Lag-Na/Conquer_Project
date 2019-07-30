@@ -21,4 +21,28 @@ public class BaseItem : MonoBehaviour
         return value;
     }
 
+    public Sprite GetSprite()
+    {
+        return sprite;
+    }
+
+    protected void SetValue(int _value)
+    {
+        value = _value;
+    }
+
+    protected void SetSprite(Sprite _sprite)
+    {
+        sprite = _sprite;
+    }
+
+    protected void SetName(string _name)
+    {
+        name = _name;
+    }
+
+    protected string GetName()
+    {
+        return name;
+    }
 }

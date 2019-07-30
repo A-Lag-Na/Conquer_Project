@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
 
     public void ChangeWeapon(BaseItem _weapon)
     {
-        weapon = (Weapon)_weapon;
+        weapon = new Weapon((Weapon)_weapon);
     }
 
     public void RemoveWeapon()
@@ -45,7 +45,7 @@ public class Inventory : MonoBehaviour
 
     public void ChangePotion(BaseItem _potion)
     {
-        potion = (Potion)_potion;
+        potion = new Potion((Potion)_potion);
     }
 
     public void RemovePotion()
@@ -66,5 +66,15 @@ public class Inventory : MonoBehaviour
     public float GetAttackSpeed()
     {
         return weapon.GetAttackSpeed();
+    }
+
+    public Sprite WeaponSprite()
+    {
+        return weapon.GetSprite();
+    }
+
+    public Sprite PotionSprite()
+    {
+        return potion.GetSprite();
     }
 }
