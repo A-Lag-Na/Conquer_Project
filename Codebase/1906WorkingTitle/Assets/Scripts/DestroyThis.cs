@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KillMe : MonoBehaviour
+public class DestroyThis : MonoBehaviour
 {
     public float _time;
     // Start is called before the first frame update

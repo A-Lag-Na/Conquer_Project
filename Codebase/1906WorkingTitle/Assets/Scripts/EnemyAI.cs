@@ -16,6 +16,7 @@ public class EnemyAI : MonoBehaviour
 
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectilePos;
 
     [SerializeField] AudioClip fire;
 
@@ -45,14 +46,17 @@ public class EnemyAI : MonoBehaviour
         Quaternion temp = projectile.transform.rotation;
         temp.x = 0;
         temp.z = 0;
-        GameObject clone = Instantiate(projectile, transform.position, temp);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, temp);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        anim.SetBool("Attack", true);
-        anim.SetBool("Dead", false);
+        if(anim != null)
+        {
+            anim.SetBool("Attack", true);
+            anim.SetBool("Dead", false);
+        }
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
     }
