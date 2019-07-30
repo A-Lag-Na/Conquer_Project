@@ -187,8 +187,8 @@ public class UpdateUI : MonoBehaviour
     void OpenShop()
     {
         //Instantiate(Resources.Load<GameObject>("Prefabs/Shop Camera"));
-        float dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, transform.position);
-        if (dist <= 100.0f)
+        float dist = Vector2.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+        if (dist <= 2.2f)
         {
             GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
             Destroy(gameObject);
