@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject projectile2;
     [SerializeField] GameObject projectile3;
     [SerializeField] uint bulletVelocity;
+    [SerializeField] GameObject projectilePosition;
     #endregion
 
     [SerializeField] GameObject mainUI;
@@ -58,11 +59,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        //playerTransform = GetComponent<Transform>();
         inventory = GetComponent<Inventory>();
-        //playerRenderer = GetComponent<Renderer>();
+        playerRenderer = GetComponentInChildren<Renderer>();
         animator = GetComponent<Animator>();
-        //playerColor = playerRenderer.material.color;
+        playerColor = playerRenderer.material.color;
         playerY = transform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
@@ -128,11 +128,11 @@ public class Player : MonoBehaviour
             }
             #endregion
 
-            //#region HitFeedback
-            //// Player reverting to original color after hit
-            //if (playerRenderer.material.color != playerColor)
-            //    playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
-            //#endregion
+            #region HitFeedback
+            // Player reverting to original color after hit
+            if (playerRenderer.material.color != playerColor)
+                playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
+            #endregion
         }
     }
 
@@ -146,19 +146,19 @@ public class Player : MonoBehaviour
             {
                 case 1:
                     {
-                        clone = Instantiate(projectile2, transform.position, transform.rotation);
+                        clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
                 case 2:
                     {
-                        clone = Instantiate(projectile3, transform.position, transform.rotation);
+                        clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
                     }
                 default:
                     {
-                        clone = Instantiate(projectile, transform.position, transform.rotation);
+                        clone = Instantiate(projectile, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.black;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
@@ -177,6 +177,7 @@ public class Player : MonoBehaviour
     public void BlinkOnHit()
     {
         animator.SetTrigger("On Hit");
+        playerRenderer.material.color = Color.red;
     }
 
     public void Death()
@@ -194,7 +195,7 @@ public class Player : MonoBehaviour
         amountOfDamage -= playerDefense;
         if (amountOfDamage <= 0)
         {
-           // playerRenderer.material.color = Color.yellow;
+            playerRenderer.material.color = Color.yellow;
             return;
         }
         BlinkOnHit();
