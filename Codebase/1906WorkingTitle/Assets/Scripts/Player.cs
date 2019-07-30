@@ -58,12 +58,12 @@ public class Player : MonoBehaviour
     void Start()
     {
         characterController = GetComponent<CharacterController>();
-        playerTransform = GetComponent<Transform>();
+        //playerTransform = GetComponent<Transform>();
         inventory = GetComponent<Inventory>();
         //playerRenderer = GetComponent<Renderer>();
         animator = GetComponent<Animator>();
         //playerColor = playerRenderer.material.color;
-        playerY = playerTransform.position.y;
+        playerY = transform.position.y;
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
         maxPlayerHealth = 10;
@@ -85,28 +85,31 @@ public class Player : MonoBehaviour
             // Rotate the Player Transform to face the Mouse Position
             mousePosition = Input.mousePosition;
             targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
-            Vector3 relativePosition = targetPosition - playerTransform.position;
+            Vector3 relativePosition = targetPosition - transform.position;
 
             Quaternion rotation = Quaternion.LookRotation(relativePosition);
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
             rotation.z = 0.0f;
             // Change the player's tranform's rotation to the rotation Quaternion
-            playerTransform.rotation = rotation;
+            transform.rotation = rotation;
 
             // Move the Player GameObject when the WASD or Arrow Keys are pressed
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
             moveDirection *= playerMovementSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
 
+            //transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
+
             //Set animator values
-            if(animator != null)
+            if (animator != null)
             {
+                animator.SetBool("Walk", true);
                 animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.z);
+                animator.SetFloat("Vertical", moveDirection.z);  
             }
 
-            playerTransform.position = new Vector3(playerTransform.position.x, playerY, playerTransform.position.z);
+            
             #endregion
 
             #region PlayerAttack
@@ -143,19 +146,19 @@ public class Player : MonoBehaviour
             {
                 case 1:
                     {
-                        clone = Instantiate(projectile2, playerTransform.position, playerTransform.rotation);
+                        clone = Instantiate(projectile2, transform.position, transform.rotation);
                         break;
                     }
                 case 2:
                     {
-                        clone = Instantiate(projectile3, playerTransform.position, playerTransform.rotation);
+                        clone = Instantiate(projectile3, transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
                     }
                 default:
                     {
-                        clone = Instantiate(projectile, playerTransform.position, playerTransform.rotation);
+                        clone = Instantiate(projectile, transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.black;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
@@ -164,19 +167,21 @@ public class Player : MonoBehaviour
             clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);
-            clone.GetComponent<Rigidbody>().velocity = playerTransform.TransformDirection(Vector3.forward * bulletVelocity);
+            clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
             lastTimeFired = Time.time;
+            animator.SetTrigger("Attack");
             source.PlayOneShot(fire);
         }
     }
 
-    //public void BlinkOnHit()
-    //{
-    //    playerRenderer.material.color = Color.red;
-    //}
+    public void BlinkOnHit()
+    {
+        animator.SetTrigger("On Hit");
+    }
 
     public void Death()
     {
+        animator.SetBool("Death", true);
         gameObject.SetActive(false);
     }
 
@@ -192,7 +197,7 @@ public class Player : MonoBehaviour
            // playerRenderer.material.color = Color.yellow;
             return;
         }
-        //BlinkOnHit();
+        BlinkOnHit();
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
