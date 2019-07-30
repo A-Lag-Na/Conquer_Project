@@ -50,9 +50,12 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject projectile2;
     [SerializeField] GameObject projectile3;
     [SerializeField] uint bulletVelocity;
+    [SerializeField] GameObject projectilePos;
     #endregion
 
+   
     [SerializeField] GameObject mainUI;
+   
 
     // Start is called before the first frame update
     void Start()
@@ -146,19 +149,19 @@ public class Player : MonoBehaviour
             {
                 case 1:
                     {
-                        clone = Instantiate(projectile2, transform.position, transform.rotation);
+                        clone = Instantiate(projectile2, projectilePos.transform.position, transform.rotation);
                         break;
                     }
                 case 2:
                     {
-                        clone = Instantiate(projectile3, transform.position, transform.rotation);
+                        clone = Instantiate(projectile3, projectilePos.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
                     }
                 default:
                     {
-                        clone = Instantiate(projectile, transform.position, transform.rotation);
+                        clone = Instantiate(projectile, projectilePos.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.black;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
