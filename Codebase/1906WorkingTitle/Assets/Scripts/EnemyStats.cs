@@ -37,6 +37,7 @@ public class EnemyStats : MonoBehaviour
     Player playerScript;
 
     //get-setters
+    #region getset
     public int GetPoints()
     {
         return enemyPoints;
@@ -82,6 +83,7 @@ public class EnemyStats : MonoBehaviour
     {
         bulletSpeed = _speed;
     }
+    #endregion getset
 
     //Our enemy is damaged
     public void TakeDamage(int _damage = 1)
@@ -90,8 +92,11 @@ public class EnemyStats : MonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
-            anim.SetBool("Dead", true);
-            anim.SetBool("Attack", false);
+            if(anim != null)
+            {
+                anim.SetBool("Dead", true);
+                anim.SetBool("Attack", false);
+            }
             Kill();
         }
     }
