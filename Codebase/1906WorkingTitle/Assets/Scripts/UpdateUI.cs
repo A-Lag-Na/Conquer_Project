@@ -20,7 +20,7 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
-        GameObject.Find("Main Camera").GetComponent<Camera>().enabled = true;
+
         //grab player GameObject
         if (GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
@@ -186,7 +186,16 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/Shop Camera"));
-        Destroy(gameObject);
+        //Instantiate(Resources.Load<GameObject>("Prefabs/Shop Camera"));
+        float dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, transform.position);
+        if (dist <= 100.0f)
+        {
+            GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log($"Distance is {dist}");
+        }
     }
 }

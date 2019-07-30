@@ -7,6 +7,7 @@ public class Pickup : MonoBehaviour
     private enum Type {Coin, Health, EOF};
 
     [SerializeField] Type type;
+    [SerializeField] AudioClip clip;
 
     private void Start()
     {
@@ -23,6 +24,9 @@ public class Pickup : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            Player player = collision.collider.GetComponentInParent<Player>();
+            AudioSource source = collision.collider.GetComponentInParent<AudioSource>();
+            source.PlayOneShot(clip);
             switch (type)
             {
                 case Type.Coin:
