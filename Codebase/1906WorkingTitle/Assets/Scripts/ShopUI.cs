@@ -12,16 +12,12 @@ public class ShopUI : MonoBehaviour
     private Text coinText, purchaseText;
     private Button Buy, Sell, Exit;
     private GameObject mainUI;
-    private Camera mainCamera;
     //List<BaseItem> shopItems = new List<BaseItem>();
     BaseItem currentItem;
 
     // Start is called before the first frame update
     void Start()
     {
-
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-        mainCamera.enabled = false;
 
         Buy = transform.Find("Buy").GetComponent<Button>();
         Buy.onClick.AddListener(OpenBuyMenu);
@@ -84,7 +80,7 @@ public class ShopUI : MonoBehaviour
     void ExitMenu()
     {
         Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
-        Destroy(gameObject);
+        Destroy(transform.parent.gameObject);
     }
     #endregion
 
