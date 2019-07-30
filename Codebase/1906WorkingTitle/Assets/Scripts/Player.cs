@@ -301,6 +301,7 @@ public class Player : MonoBehaviour
         playerSpendingPoints++;
         playerExperience = 0;
         playerLevel++;
+        GetComponent<ConditionManager>().Refresh();
     }
 
     public float GetExperience()
