@@ -208,7 +208,7 @@ public class ConditionManager : MonoBehaviour
     }
     public void Refresh()
     {
-        maxSpeed = GetSpeed();
+        maxSpeed += 1;
     }
     void OnPauseGame()
     {
