@@ -80,6 +80,12 @@ public class ShopUI : MonoBehaviour
     void ExitMenu()
     {
         Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        }
         Destroy(transform.parent.gameObject);
     }
     #endregion
