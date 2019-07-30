@@ -30,15 +30,24 @@ public class ShopUI : MonoBehaviour
         Exit = transform.Find("Exit").GetComponent<Button>();
         Exit.onClick.AddListener(ExitMenu);
 
-        Object[] objects = FindObjectsOfType(typeof(GameObject));
-        foreach (GameObject go in objects)
-        {
-            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
-                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        }
         
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
+    }
+
+    private void OnEnable()
+    {
+        if (mainUI != null)
+        {
+            Time.timeScale = 0;
+            Object[] objects = FindObjectsOfType(typeof(GameObject));
+            foreach (GameObject go in objects)
+            {
+                if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                    go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            }
+            mainUI.SetActive(false);
+        }
     }
 
     // Update is called once per frame

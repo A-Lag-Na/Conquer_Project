@@ -67,7 +67,14 @@ public class UpdateUI : MonoBehaviour
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
         
     }
-    
+
+    private void OnEnable()
+    {
+        if(statScreen!=null)
+            statScreen.SetActive(false);
+        if(pauseMenu!=null)
+           pauseMenu.SetActive(false);
+    }
 
     #region inDev
     //void UpdateCoins()
@@ -109,7 +116,7 @@ public class UpdateUI : MonoBehaviour
     //    //transform.GetChild(4).GetComponent<Image>().sprite = slotTwo;
     //}
     #endregion
-    
+
 
     public void TakeDamage()
     {
@@ -143,6 +150,8 @@ public class UpdateUI : MonoBehaviour
         livesText.text = $"X{lives}";
 
         //update inventory
+        slotOne = player.GetWeapon();
+        slotTwo = player.GetPotion();
         InvSlot1.sprite = slotOne;
         InvSlot2.sprite = slotTwo;
 
@@ -179,28 +188,20 @@ public class UpdateUI : MonoBehaviour
 
     void PauseGame()
     {
-        //Instantiate(Resources.Load<GameObject>("Prefabs/Pause Menu"));
-        GameObject.Find("Pause Menu").SetActive(true);
-        //Destroy(gameObject);
-        //gameObject.SetActive(false);
+        pauseMenu.SetActive(true);
     }
 
     void OpenStats()
     {
-        //Instantiate(Resources.Load<GameObject>("Prefabs/Stat Screen"));
-        GameObject.Find("Stat Screen").SetActive(true);
-        //Destroy(gameObject);
-        //gameObject.SetActive(false);
+        statScreen.SetActive(true);
     }
 
     void OpenShop()
     {
-        //Instantiate(Resources.Load<GameObject>("Prefabs/Shop Camera"));
         float dist = Vector2.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
         if (dist <= 2.2f)
         {
             GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
-            Destroy(gameObject);
         }
         else
         {

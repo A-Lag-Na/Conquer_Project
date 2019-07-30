@@ -22,19 +22,28 @@ public class PauseMenu : MonoBehaviour
         OptionsBTN.onClick.AddListener(Options);
         ExitBTN.onClick.AddListener(ExitGame);
         
-        Time.timeScale = 0;
-        Object[] objects = FindObjectsOfType(typeof(GameObject));
-        foreach (GameObject go in objects)
+        
+    }
+
+    private void OnEnable()
+    {
+        if (mainUI != null)
         {
-            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
-                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            Time.timeScale = 0;
+            Object[] objects = FindObjectsOfType(typeof(GameObject));
+            foreach (GameObject go in objects)
+            {
+                if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                    go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            }
+            mainUI.SetActive(false);
         }
     }
+    
 
     // Update is called once per frame
     void Update()
     {
-
         //exit pause menu and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))
         {

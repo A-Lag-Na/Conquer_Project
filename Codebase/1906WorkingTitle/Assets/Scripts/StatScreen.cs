@@ -81,12 +81,20 @@ public class StatScreen : MonoBehaviour
         pointsAvailable = player.GetSpendingPoints();
         pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
-        Time.timeScale = 0;
-        Object[] objects = FindObjectsOfType(typeof(GameObject));
-        foreach (GameObject go in objects)
+    }
+
+    private void OnEnable()
+    {
+        if (mainUI != null)
         {
-            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
-                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            Time.timeScale = 0;
+            Object[] objects = FindObjectsOfType(typeof(GameObject));
+            foreach (GameObject go in objects)
+            {
+                if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                    go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            }
+            mainUI.SetActive(false);
         }
     }
 
@@ -157,7 +165,6 @@ public class StatScreen : MonoBehaviour
 
     void ResumeGame()
     {
-        //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
         mainUI.SetActive(true);
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -165,8 +172,6 @@ public class StatScreen : MonoBehaviour
         {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         }
-        //Destroy(gameObject);
-        //gameObject.SetActive(false);
     }
     
 }

@@ -7,8 +7,8 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int gold;
     List<Weapon> weaponList = new List<Weapon>();
     List<Potion> potionList = new List<Potion>();
-    [SerializeField] Weapon weapon = new Weapon();
-    [SerializeField] Potion potion = new Potion();
+    [SerializeField] Weapon weapon;
+    [SerializeField] Potion potion;
 
     
     #region gold
@@ -35,7 +35,8 @@ public class Inventory : MonoBehaviour
 
     public void ChangeWeapon(BaseItem _weapon)
     {
-        weapon.SetShallow((Weapon)_weapon);
+        //weapon.SetShallow((Weapon)_weapon);
+        weapon = (Weapon)_weapon;
     }
 
     public void RemoveWeapon()
@@ -45,7 +46,8 @@ public class Inventory : MonoBehaviour
 
     public void ChangePotion(BaseItem _potion)
     {
-        potion.SetShallow((Potion)_potion);
+        //potion.SetShallow((Potion)_potion);
+        potion = (Potion)_potion;
     }
 
     public void RemovePotion()
