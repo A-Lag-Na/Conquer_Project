@@ -114,7 +114,7 @@ MonoBehaviour:
   isPlayer: 0
   minFrozenSpeed: 0
   thawIncrement: 0
-  fireDamage: 0
+  fireDamage: 1
 --- !u!114 &6157528642217353790
 MonoBehaviour:
   m_ObjectHideFlags: 0
