@@ -19,6 +19,7 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] AudioClip fire;
 
+    Animator anim;
     NavMeshAgent agent;
     GameObject player;
     AudioSource source;
@@ -27,6 +28,7 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         EnemyStats temp = GetComponent<EnemyStats>();
@@ -49,6 +51,8 @@ public class EnemyAI : MonoBehaviour
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+        anim.SetBool("Attack", true);
+        anim.SetBool("Dead", false);
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
     }

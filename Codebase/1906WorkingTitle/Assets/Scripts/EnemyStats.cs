@@ -32,6 +32,7 @@ public class EnemyStats : MonoBehaviour
     public bool fireImmune;
     public bool iceImmune;
 
+    Animator anim;
     GameObject player;
     Player playerScript;
 
@@ -89,6 +90,8 @@ public class EnemyStats : MonoBehaviour
         health -= _damage;
         if (health <= 0)
         {
+            anim.SetBool("Dead", true);
+            anim.SetBool("Attack", false);
             Kill();
         }
     }
@@ -112,23 +115,24 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         GetComponent<AudioSource>().enabled = true;
-        //enemyRender = GetComponentInParent<Renderer>();
-        //enemyColor = enemyRender.material.color;
+        enemyRender = GetComponentInChildren<Renderer>();
+        enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<Player>();
+        anim = GetComponent<Animator>();
     }
 
     public void Update()
     {
-        //if (enemyRender.material.color != enemyColor)
-        //{
-        //    enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
-        //}
+        if (enemyRender.material.color != enemyColor)
+        {
+            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
+        }
     }
 
     //Color feedback on damage taken
     public void BlinkOnHit()
     {
-        //enemyRender.material.color = Color.red;
+        enemyRender.material.color = Color.red;
     }
 }

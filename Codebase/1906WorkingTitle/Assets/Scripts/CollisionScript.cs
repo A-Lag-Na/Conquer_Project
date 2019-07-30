@@ -6,7 +6,7 @@ public class CollisionScript : MonoBehaviour
 {
     public AudioSource audioSource;
     public AudioClip hurt;
-    public AudioClip burn;
+    //public AudioClip burn;
     public int bulletDamage;
     public GameObject sparks;
     public GameObject blood;
@@ -60,7 +60,8 @@ public class CollisionScript : MonoBehaviour
                         {
                             if (!fireImmune)
                             {
-                                audioSource.PlayOneShot(burn);
+                                //Burn sound effect
+                                //audioSource.PlayOneShot(burn);
                                 con.TimerAdd("fire", 179);
                             }
                             break;
