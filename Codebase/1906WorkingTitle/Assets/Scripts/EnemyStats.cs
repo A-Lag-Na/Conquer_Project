@@ -95,7 +95,6 @@ public class EnemyStats : MonoBehaviour
             if(anim != null)
             {
                 anim.SetBool("Dead", true);
-                anim.SetBool("Attack", false);
             }
             Kill();
         }
@@ -138,6 +137,7 @@ public class EnemyStats : MonoBehaviour
     //Color feedback on damage taken
     public void BlinkOnHit()
     {
+        anim.SetTrigger("On Hit");
         enemyRender.material.color = Color.red;
     }
 }

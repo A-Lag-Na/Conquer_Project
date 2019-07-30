@@ -53,7 +53,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject projectilePosition;
     #endregion
 
+   
     [SerializeField] GameObject mainUI;
+   
 
     // Start is called before the first frame update
     void Start()
