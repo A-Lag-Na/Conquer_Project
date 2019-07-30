@@ -113,7 +113,7 @@ public class EnemyStats : MonoBehaviour
     {
         GetComponent<AudioSource>().enabled = true;
         //enemyRender = GetComponentInParent<Renderer>();
-        enemyColor = enemyRender.material.color;
+        //enemyColor = enemyRender.material.color;
         player = GameObject.Find("Player");
         playerScript = player.GetComponent<Player>();
     }
@@ -129,6 +129,6 @@ public class EnemyStats : MonoBehaviour
     //Color feedback on damage taken
     public void BlinkOnHit()
     {
-        enemyRender.material.color = Color.red;
+        //enemyRender.material.color = Color.red;
     }
 }

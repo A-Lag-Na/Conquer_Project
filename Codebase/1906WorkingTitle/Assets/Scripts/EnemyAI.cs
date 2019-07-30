@@ -42,7 +42,7 @@ public class EnemyAI : MonoBehaviour
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
-
+        
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
