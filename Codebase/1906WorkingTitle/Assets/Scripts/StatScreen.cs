@@ -81,6 +81,13 @@ public class StatScreen : MonoBehaviour
         pointsAvailable = player.GetSpendingPoints();
         pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+        {
+            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        }
     }
 
     private void OnEnable()
