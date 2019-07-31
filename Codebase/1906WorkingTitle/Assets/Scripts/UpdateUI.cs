@@ -10,7 +10,7 @@ public class UpdateUI : MonoBehaviour
     //recorded stats
     [SerializeField] private Player player;
     [SerializeField] private Inventory inventory;
-    private float health, attackSpeed, currentExperience, nextLevelExp;
+    private float health, maxHealth, attackSpeed, currentExperience, nextLevelExp;
     private int lives = 5, coins, level, defense, attackDamage;
     private Sprite slotOne, slotTwo;
 
@@ -137,11 +137,12 @@ public class UpdateUI : MonoBehaviour
     {
         //update health
         health = player.GetHealth();
+        maxHealth = player.GetMaxHealth();
         Vector3 HealthScale = healthTransform.localScale;
         if (player.GetMaxHealth() != 0)
-            HealthScale.x = health / player.GetMaxHealth();
+            HealthScale.x = health / maxHealth;
         healthTransform.localScale = HealthScale;
-        healthText.text = $"{health} / {player.GetMaxHealth()}";
+        healthText.text = $"{health} / {maxHealth}";
 
         //update level bar
         currentExperience = player.GetExperience();
@@ -192,7 +193,8 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            player.RestoreHealth(inventory.Heal());
+            if(health != maxHealth)
+                player.RestoreHealth(inventory.Heal());
         }
 
         if (Input.GetKeyDown(KeyCode.C))
