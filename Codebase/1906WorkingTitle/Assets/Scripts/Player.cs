@@ -101,7 +101,7 @@ public class Player : MonoBehaviour
             moveDirection *= playerMovementSpeed;
             characterController.Move(moveDirection * Time.deltaTime);
 
-            //transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
+            transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
 
             //Set animator values
             if (animator != null)
