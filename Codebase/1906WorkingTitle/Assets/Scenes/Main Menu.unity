@@ -601,6 +601,23 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3220899378075303934, guid: 7096890c946ebe5418fc6bc03c81f498,
+        type: 3}
+      propertyPath: m_Text
+      value: 'WASD to move your character
+
+        Left Click - Fire Arrows
+
+        Middle Mouse - Regular Arrows
+
+        Right Click - Ice Arrows
+
+        Tab - Open stat screen
+
+        E - Use Health Potion
+
+        C - Access nearby Shops'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7096890c946ebe5418fc6bc03c81f498, type: 3}
 --- !u!1001 &1434250938

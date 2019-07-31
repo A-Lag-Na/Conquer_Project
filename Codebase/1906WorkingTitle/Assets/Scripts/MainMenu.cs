@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Alegna's Sandbox");
+        SceneManager.LoadScene("Build Scene");
     }
     private void HowToPlay()
     {
