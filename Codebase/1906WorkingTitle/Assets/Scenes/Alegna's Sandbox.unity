@@ -12304,12 +12304,12 @@ PrefabInstance:
     - target: {fileID: 2136082576785955264, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -44.4
+      value: -43.7
       objectReference: {fileID: 0}
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
@@ -19726,7 +19726,7 @@ PrefabInstance:
     - target: {fileID: 2374690145450221498, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.804333
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 2374690145450221498, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
@@ -19736,7 +19736,7 @@ PrefabInstance:
     - target: {fileID: 2374690145450221498, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -76.44568
+      value: -3.98
       objectReference: {fileID: 0}
     - target: {fileID: 2374690145450221498, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
@@ -19797,7 +19797,7 @@ PrefabInstance:
     - target: {fileID: 2374690145450221497, guid: 664e0ca190c8ceb45882f5728e6ea205,
         type: 3}
       propertyPath: points
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 664e0ca190c8ceb45882f5728e6ea205, type: 3}
@@ -20162,7 +20162,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: 088e2cabfe872824493c7607d32be79c, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
@@ -20183,12 +20183,12 @@ PrefabInstance:
     - target: {fileID: 2136082576785955264, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 43.1
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
@@ -34099,7 +34099,7 @@ PrefabInstance:
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.5
+      value: 14.1
       objectReference: {fileID: 0}
     - target: {fileID: 1905514719834598067, guid: a1d69a75747b09c4a941a0383d89139f,
         type: 3}
@@ -36870,7 +36870,7 @@ MonoBehaviour:
   playerLives: 0
   iceImmune: 0
   fireImmune: 0
-  fire: {fileID: 8300000, guid: 2fb6e2be29afff64e90a7077099cacef, type: 3}
+  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   crosshairs: {fileID: 0}
   mainCamera: {fileID: 2040624789}
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
