@@ -30,7 +30,7 @@ public class PauseMenu : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
         {
-            if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+            if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         }
     }
@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
             Object[] objects = FindObjectsOfType(typeof(GameObject));
             foreach (GameObject go in objects)
             {
-                if ((go.name != "Shop UI(Clone)" && go.name != "Main UI(Clone)" && go.name != "Pause Menu(Clone)"))
+                if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
             }
             mainUI.SetActive(false);
@@ -54,6 +54,7 @@ public class PauseMenu : MonoBehaviour
             optionsMenu.SetActive(false);
         if(transform.Find("Pause").gameObject)
             transform.Find("Pause").gameObject.SetActive(true);
+        
     }
     
 
@@ -71,7 +72,6 @@ public class PauseMenu : MonoBehaviour
     void Resume()
     {
         UnPause();
-        //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
         mainUI.SetActive(true);
         //Destroy(gameObject);
     }

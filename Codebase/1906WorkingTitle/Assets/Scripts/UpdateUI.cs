@@ -8,8 +8,8 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
 
     //recorded stats
-    private Player player;
-    private Inventory inventory;
+    [SerializeField] private Player player;
+    [SerializeField] private Inventory inventory;
     private float health, attackSpeed, currentExperience, nextLevelExp;
     private int lives = 5, coins, level, defense, attackDamage;
     private Sprite slotOne, slotTwo;
@@ -19,14 +19,14 @@ public class UpdateUI : MonoBehaviour
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
 
-    GameObject statScreen, pauseMenu;
+    [SerializeField] GameObject statScreen, pauseMenu;
 
     void Start()
     {
-        statScreen = GameObject.Find("Stat Screen");
-        statScreen.SetActive(false);
-        pauseMenu = GameObject.Find("Pause Menu");
+        pauseMenu = GameObject.Find("Pause Menu").gameObject;
         pauseMenu.SetActive(false);
+        statScreen = GameObject.Find("Stat Screen").gameObject;
+        statScreen.SetActive(false);
         //grab player GameObject
         if (GameObject.Find("Player")) {
             player = GameObject.Find("Player").GetComponent<Player>();
@@ -68,7 +68,13 @@ public class UpdateUI : MonoBehaviour
         
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
-        
+        //foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        //{
+        //    if (go.name == "Pause Menu")
+        //        pauseMenu = go;
+        //    if (go.name == "Stat Screen")
+        //        statScreen = go;
+        //}
     }
 
     private void OnEnable()

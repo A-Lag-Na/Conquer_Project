@@ -14,15 +14,23 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        howToPlay = GameObject.Find("How to play");
+        howToPlay = GameObject.Find("How to playText");
         howToPlay.SetActive(false);
 
         options = GameObject.Find("Options");
         options.SetActive(false);
 
+        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        {
+            if (go.name == "How to playText")
+                howToPlay = go;
+            if (go.name == "Options")
+                options = go;
+        }
+
         //assign buttons
         startBTN = GameObject.Find("Start Game").GetComponent<Button>();
-        howToPlayBTN = GameObject.Find("How to Play").GetComponent<Button>();
+        howToPlayBTN = GameObject.Find("How to PlayBTN").GetComponent<Button>();
         optionsBTN = GameObject.Find("OptionsBTN").GetComponent<Button>();
         exitBTN = GameObject.Find("Exit Game").GetComponent<Button>();
 
@@ -38,6 +46,8 @@ public class MainMenu : MonoBehaviour
     {
         if(howToPlay!=null)
             howToPlay.SetActive(false);
+        if(options != null)
+            options.SetActive(false);
     }
 
     private void Update()
