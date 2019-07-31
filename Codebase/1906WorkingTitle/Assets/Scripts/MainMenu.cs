@@ -8,29 +8,44 @@ public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private Button start, howToPlay, options, exit;
+    private Button startBTN, howToPlayBTN, optionsBTN, exitBTN;
+
+    private GameObject howToPlay, options;
+
     void Start()
     {
+        howToPlay = GameObject.Find("How to play");
+        howToPlay.SetActive(false);
+
+        options = GameObject.Find("Options");
+        options.SetActive(false);
+
         //assign buttons
-        start = GameObject.Find("Start Game").GetComponent<Button>();
-        howToPlay = GameObject.Find("How to Play").GetComponent<Button>();
-        options = GameObject.Find("Options").GetComponent<Button>();
-        exit = GameObject.Find("Exit Game").GetComponent<Button>();
+        startBTN = GameObject.Find("Start Game").GetComponent<Button>();
+        howToPlayBTN = GameObject.Find("How to Play").GetComponent<Button>();
+        optionsBTN = GameObject.Find("OptionsBTN").GetComponent<Button>();
+        exitBTN = GameObject.Find("Exit Game").GetComponent<Button>();
 
         //add function listeners
-        start.onClick.AddListener(StartGame);
-        howToPlay.onClick.AddListener(HowToPlay);
-        options.onClick.AddListener(OptionsMenu);
-        exit.onClick.AddListener(ExitGame);
+        startBTN.onClick.AddListener(StartGame);
+        howToPlayBTN.onClick.AddListener(HowToPlay);
+        optionsBTN.onClick.AddListener(OptionsMenu);
+        exitBTN.onClick.AddListener(ExitGame);
         
+    }
+
+    private void OnEnable()
+    {
+        if(howToPlay!=null)
+            howToPlay.SetActive(false);
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(GameObject.Find("How to play(Clone)"))
-                Destroy(GameObject.Find("How to play(Clone)"));
+            if(howToPlay.activeSelf)
+                howToPlay.SetActive(false);
         }
     }
 
@@ -40,11 +55,12 @@ public class MainMenu : MonoBehaviour
     }
     private void HowToPlay()
     {
-        Instantiate(Resources.Load<GameObject>("Prefabs/How to play"));
+        howToPlay.SetActive(true);
     }
     private void OptionsMenu()
     {
-        SceneManager.LoadScene("Options");
+        //SceneManager.LoadScene("Options");
+        options.SetActive(true);
     }
     private void ExitGame()
     {

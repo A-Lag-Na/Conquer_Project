@@ -8,15 +8,18 @@ public class PauseMenu : MonoBehaviour
 {
 
     Button ResumeBTN, OptionsBTN, ExitBTN;
-    GameObject mainUI;
+    GameObject mainUI, optionsMenu;
     // Start is called before the first frame update
     void Start()
     {
         mainUI = GameObject.Find("Main UI");
         mainUI.SetActive(false);
-        ResumeBTN = GameObject.Find("Resume").GetComponent<Button>();
-        OptionsBTN = GameObject.Find("Options").GetComponent<Button>();
-        ExitBTN = GameObject.Find("Exit Game").GetComponent<Button>();
+        optionsMenu = transform.Find("Options").gameObject;
+        optionsMenu.SetActive(false);
+
+        ResumeBTN = transform.Find("Pause").Find("Resume").gameObject.GetComponent<Button>();
+        OptionsBTN = transform.Find("Pause").Find("OptionsBTN").gameObject.GetComponent<Button>();
+        ExitBTN = transform.Find("Pause").Find("Exit Game").gameObject.GetComponent<Button>();
 
         ResumeBTN.onClick.AddListener(Resume);
         OptionsBTN.onClick.AddListener(Options);
@@ -45,6 +48,12 @@ public class PauseMenu : MonoBehaviour
             }
             mainUI.SetActive(false);
         }
+
+        optionsMenu = transform.Find("Options").gameObject;
+        //if (optionsMenu != null)
+            optionsMenu.SetActive(false);
+        if(transform.Find("Pause").gameObject)
+            transform.Find("Pause").gameObject.SetActive(true);
     }
     
 
@@ -52,7 +61,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //exit pause menu and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !transform.Find("Options").gameObject.activeSelf)
         {
             Resume();
         }
@@ -69,7 +78,8 @@ public class PauseMenu : MonoBehaviour
 
     void Options()
     {
-        SceneManager.LoadScene("Options");
+        //SceneManager.LoadScene("Options");
+        optionsMenu.SetActive(true);
     }
 
     void UnPause()

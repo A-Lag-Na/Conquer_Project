@@ -164,7 +164,7 @@ public class StatScreen : MonoBehaviour
         pointsText.text = $"{pointsAvailable}\t\tPoints Available";
 
         //exit stat screen and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
         {
             ResumeGame();
         }
