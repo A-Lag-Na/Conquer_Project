@@ -18,9 +18,10 @@ public class BulletHellEnemy : MonoBehaviour
     [SerializeField] GameObject projectile;
 
     [SerializeField] float rotationRate = 2;
-    
-    #endregion
 
+    [SerializeField] AudioClip fire;
+    #endregion
+    AudioSource source;
     //Counts frames between attacks
     private int attackTimer;
 
@@ -44,6 +45,8 @@ public class BulletHellEnemy : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rotationSpeed = 120;
         bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        source = GetComponentInParent<AudioSource>();
+        source.enabled = true;
     }
 
     public void ShootBullet()
@@ -75,6 +78,7 @@ public class BulletHellEnemy : MonoBehaviour
             GameObject clone = CreateBullet();
             clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
             lastTimeFired = Time.time;
+            source.PlayOneShot(fire);
         }
     }
 

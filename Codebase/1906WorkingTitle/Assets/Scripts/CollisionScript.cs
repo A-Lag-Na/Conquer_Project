@@ -28,20 +28,19 @@ public class CollisionScript : MonoBehaviour
             Instantiate(blood, transform.position, blood.transform.rotation);
             if (collision.collider.CompareTag("Player"))
             {
-                Player temp = collision.collider.GetComponent<Player>();
+                Player player = collision.collider.GetComponent<Player>();
                 //The enemy we hit takes damage.
-                temp.TakeDamage(bulletDamage);
-                fireImmune = temp.fireImmune;
-                iceImmune = temp.iceImmune;
-                collision.collider.GetComponent<Player>().TakeDamage(bulletDamage);
+                player.TakeDamage(bulletDamage);
+                fireImmune = player.fireImmune;
+                iceImmune = player.iceImmune;
             }
             if(collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
             {
-                EnemyStats temp = collision.collider.GetComponent<EnemyStats>();
+                EnemyStats enemy = collision.collider.GetComponent<EnemyStats>();
                 //The enemy we hit takes damage.
-                temp.TakeDamage(bulletDamage);
-                fireImmune = temp.fireImmune;
-                iceImmune = temp.iceImmune;
+                enemy.TakeDamage(bulletDamage);
+                fireImmune = enemy.fireImmune;
+                iceImmune = enemy.iceImmune;
             }
         }
         else
