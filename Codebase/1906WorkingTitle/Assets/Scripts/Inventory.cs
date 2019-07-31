@@ -57,26 +57,41 @@ public class Inventory : MonoBehaviour
 
     public float Heal()
     {
-        return potion.Heal();
+        if(potion!=null)
+            return potion.Heal();
+        else
+            return 0.0f;
     }
 
     public int Attack()
     {
-        return weapon.Attack();
+        if(weapon!=null)
+            return weapon.Attack();
+        else
+            return 0;
     }
 
     public float GetAttackSpeed()
     {
-        return weapon.GetAttackSpeed();
+        if(weapon!=null)
+            return weapon.GetAttackSpeed();
+        else
+            return 0.0f;
     }
 
     public Sprite WeaponSprite()
     {
-        return weapon.GetSprite();
+        if(weapon!=null)
+            return weapon.GetSprite();
+        else
+            return Resources.Load<Sprite>("Sprites/background");
     }
 
     public Sprite PotionSprite()
     {
-        return potion.GetSprite();
+        if(potion!=null)
+            return potion.GetSprite();
+        else
+            return Resources.Load<Sprite>("Sprites/background");
     }
 }

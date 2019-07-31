@@ -216,6 +216,8 @@ public class Player : MonoBehaviour
     public void RestoreHealth(float amountOfHealth)
     {
         playerHealth += amountOfHealth;
+        if(playerHealth>maxPlayerHealth)
+            playerHealth = maxPlayerHealth;
     }
 
     public float GetHealth()

@@ -27,7 +27,10 @@ public class BaseItem : MonoBehaviour
 
     public Sprite GetSprite()
     {
-        return sprite;
+        if (sprite != null)
+            return sprite;
+        else
+            return Resources.Load<Sprite>("Sprites/background");
     }
 
     protected void SetValue(int _value)

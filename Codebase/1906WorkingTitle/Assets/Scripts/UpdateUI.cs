@@ -9,6 +9,7 @@ public class UpdateUI : MonoBehaviour
 
     //recorded stats
     private Player player;
+    private Inventory inventory;
     private float health, attackSpeed, currentExperience, nextLevelExp;
     private int lives = 5, coins, level, defense, attackDamage;
     private Sprite slotOne, slotTwo;
@@ -27,8 +28,10 @@ public class UpdateUI : MonoBehaviour
         pauseMenu = GameObject.Find("Pause Menu");
         pauseMenu.SetActive(false);
         //grab player GameObject
-        if (GameObject.Find("Player"))
+        if (GameObject.Find("Player")) {
             player = GameObject.Find("Player").GetComponent<Player>();
+            inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        }
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
@@ -150,6 +153,7 @@ public class UpdateUI : MonoBehaviour
         livesText.text = $"X{lives}";
 
         //update inventory
+
         slotOne = player.GetWeapon();
         slotTwo = player.GetPotion();
         InvSlot1.sprite = slotOne;
@@ -175,9 +179,14 @@ public class UpdateUI : MonoBehaviour
             PauseGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Tab))
         {
             OpenStats();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            player.RestoreHealth(inventory.Heal());
         }
 
         if (Input.GetKeyDown(KeyCode.C))
@@ -199,7 +208,7 @@ public class UpdateUI : MonoBehaviour
     void OpenShop()
     {
         float dist = Vector2.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
-        if (dist <= 2.2f)
+        if (dist <= 3.0f)
         {
             GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
         }
