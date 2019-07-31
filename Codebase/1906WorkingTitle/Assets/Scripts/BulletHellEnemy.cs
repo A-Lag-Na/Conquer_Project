@@ -26,14 +26,17 @@ public class BulletHellEnemy : MonoBehaviour
 
     [SerializeField] int rotationSpeed;
     int rotationCap;
-    bool rotateEnabled = true;
     float lastTimeFired;
 
     NavMeshAgent agent;
     GameObject player;
     private bool paused;
     int bulletDamage;
-
+    float timeMade;
+    private void OnEnable()
+    {
+        timeMade = Time.time;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -48,7 +51,7 @@ public class BulletHellEnemy : MonoBehaviour
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + attackRate)
         {
-            if (Time.time >= 15)
+            if (Time.time >= timeMade + 15)
             {
                 GameObject clone4 = CreateBullet();
                 clone4.GetComponent<Rigidbody>().velocity = transform.right * -bulletSpeed;
@@ -57,14 +60,14 @@ public class BulletHellEnemy : MonoBehaviour
                 GameObject clone2 = CreateBullet();
                 clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
             }
-            else if (Time.time >= 10)
+            else if (Time.time >= timeMade + 10)
             {
                 GameObject clone3 = CreateBullet();
                 clone3.GetComponent<Rigidbody>().velocity = transform.right * bulletSpeed;
                 GameObject clone2 = CreateBullet();
                 clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
             }
-            else if (Time.time >= 5)
+            else if (Time.time >= timeMade + 5)
             {
                 GameObject clone2 = CreateBullet();
                 clone2.GetComponent<Rigidbody>().velocity = transform.forward * -bulletSpeed;
