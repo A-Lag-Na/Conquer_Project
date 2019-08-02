@@ -53,9 +53,9 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject projectilePosition;
     #endregion
 
-   
+    bool isRotated;
     [SerializeField] GameObject mainUI;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
         source = GetComponent<AudioSource>();
         source.enabled = true;
+        isRotated = false;
     }
 
     // Update is called once per frame
@@ -94,7 +95,10 @@ public class Player : MonoBehaviour
             rotation.x = 0.0f;
             rotation.z = 0.0f;
             // Change the player's tranform's rotation to the rotation Quaternion
-            transform.rotation = rotation;
+            if (isRotated == false)
+            {
+                transform.rotation = rotation;
+            }
 
             // Move the Player GameObject when the WASD or Arrow Keys are pressed
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
@@ -108,10 +112,10 @@ public class Player : MonoBehaviour
             {
                 animator.SetBool("Walk", true);
                 animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.z);  
+                animator.SetFloat("Vertical", moveDirection.z);
             }
 
-            
+
             #endregion
 
             #region PlayerAttack
@@ -144,7 +148,7 @@ public class Player : MonoBehaviour
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
             GameObject clone;
-            switch(type)
+            switch (type)
             {
                 case 1:
                     {
@@ -171,9 +175,18 @@ public class Player : MonoBehaviour
             clone.gameObject.SetActive(true);
             clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
             lastTimeFired = Time.time;
-            animator.SetTrigger("Attack");
             source.PlayOneShot(fire);
+            StartCoroutine(ShootRotation());
         }
+    }
+
+    IEnumerator ShootRotation()
+    {
+        isRotated = true;
+        animator.SetTrigger("Attack");
+        transform.Rotate(0, 90, 0);
+        yield return new WaitForSeconds(.5f);
+        isRotated = false;
     }
 
     public void BlinkOnHit()
@@ -216,7 +229,7 @@ public class Player : MonoBehaviour
     public void RestoreHealth(float amountOfHealth)
     {
         playerHealth += amountOfHealth;
-        if(playerHealth>maxPlayerHealth)
+        if (playerHealth > maxPlayerHealth)
             playerHealth = maxPlayerHealth;
     }
 
@@ -360,7 +373,7 @@ public class Player : MonoBehaviour
     {
         paused = true;
     }
-    
+
     void OnResumeGame()
     {
         paused = false;

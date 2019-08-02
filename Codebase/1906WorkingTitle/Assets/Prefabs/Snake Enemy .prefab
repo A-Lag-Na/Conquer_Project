@@ -10171,7 +10171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 1
-  health: 1
+  health: 3
   damage: 1
   attackRate: 1
   bulletSpeed: 10

@@ -57,8 +57,12 @@ public class Inventory : MonoBehaviour
 
     public float Heal()
     {
-        if(potion!=null)
-            return potion.Heal();
+        if (potion != null)
+        {
+            float heal = potion.Heal();
+            potion = null;
+            return heal;
+        }
         else
             return 0.0f;
     }

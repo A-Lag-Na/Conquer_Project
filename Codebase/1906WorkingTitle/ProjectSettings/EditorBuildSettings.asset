@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Menu.unity
     guid: dce36353c57f8324f8b0d3407e7a16f2
   - enabled: 1
-    path: Assets/Scenes/Alegna's Sandbox.unity
-    guid: 9d60b0cbea22981429131083c4b51ab9
-  - enabled: 1
-    path: Assets/Scenes/Options.unity
-    guid: d91c3a3209a2ba44badfafa3a4858735
+    path: Assets/Scenes/Build Scene.unity
+    guid: f84863054adee9a4c88ba84d8c36fe53
   m_configObjects: {}
