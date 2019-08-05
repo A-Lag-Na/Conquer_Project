@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 469536748384550705}
   - component: {fileID: 469536748384550718}
   - component: {fileID: 469536748384550719}
-  - component: {fileID: 469536748384550706}
   - component: {fileID: 469536748384550707}
   - component: {fileID: 469536748384550709}
   m_Layer: 9
@@ -92,7 +91,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c8731e60b3d0ef41b84d99bf6adac72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMovementSpeed: 4
+  playerMovementSpeed: 8
   playerHealth: 10
   maxPlayerHealth: 10
   playerDefense: 0
@@ -229,19 +228,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!65 &469536748384550706
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469536748384550716}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.2960582, y: 2.3140416, z: 1.1415281}
-  m_Center: {x: -0.07572007, y: 1.063473, z: -0.07654309}
 --- !u!114 &469536748384550707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1723,6 +1709,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3521666438964514095}
     m_Modifications:
+    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
+      propertyPath: m_Name
+      value: PlayerFire
+      objectReference: {fileID: 0}
     - target: {fileID: 4351478612477126, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1779,10 +1769,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
-      propertyPath: m_Name
-      value: PlayerFire
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
 --- !u!4 &2073986391004428402 stripped
@@ -1798,6 +1784,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3521666438964514095}
     m_Modifications:
+    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
+      propertyPath: m_Name
+      value: PlayerIce
+      objectReference: {fileID: 0}
     - target: {fileID: 4912415173136776, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1853,10 +1843,6 @@ PrefabInstance:
     - target: {fileID: 4912415173136776, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_LocalScale.z
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
-      propertyPath: m_Name
-      value: PlayerIce
       objectReference: {fileID: 0}
     - target: {fileID: 198359397427839540, guid: bc42e33df8ad9d14cba646735d12f85d,
         type: 3}
