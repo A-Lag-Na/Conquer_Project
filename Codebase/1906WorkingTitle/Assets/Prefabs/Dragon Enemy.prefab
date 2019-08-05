@@ -362,7 +362,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   attackRate: 1
-  bulletSpeed: 10
+  bulletSpeed: 15
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -381,7 +381,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletSpeed: 10
   attackEnabled: 1
   projectile: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
     type: 3}

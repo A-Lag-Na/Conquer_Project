@@ -429,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 1717699465624698063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.34, y: 0, z: -2.65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 971200126597314226}
   - {fileID: 7491514425697219890}
@@ -486,7 +486,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   attackRate: 1
-  bulletSpeed: 10
+  bulletSpeed: 15
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -527,7 +527,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletSpeed: 10
   attackEnabled: 1
   projectile: {fileID: 4581777492162815454, guid: c8ff2d06d3f5ced439683491831bf545,
     type: 3}

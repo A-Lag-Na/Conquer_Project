@@ -111,7 +111,7 @@ MonoBehaviour:
     type: 3}
   projectile3: {fileID: 4581777492162815454, guid: c8ff2d06d3f5ced439683491831bf545,
     type: 3}
-  bulletVelocity: 15
+  bulletVelocity: 20
   projectilePosition: {fileID: 8477406419875487616}
   mainUI: {fileID: 0}
 --- !u!114 &469536748384550718
@@ -1709,10 +1709,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3521666438964514095}
     m_Modifications:
-    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
-      propertyPath: m_Name
-      value: PlayerFire
-      objectReference: {fileID: 0}
     - target: {fileID: 4351478612477126, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1769,6 +1765,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
+      propertyPath: m_Name
+      value: PlayerFire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
 --- !u!4 &2073986391004428402 stripped
@@ -1784,10 +1784,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3521666438964514095}
     m_Modifications:
-    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
-      propertyPath: m_Name
-      value: PlayerIce
-      objectReference: {fileID: 0}
     - target: {fileID: 4912415173136776, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1844,6 +1840,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
+      propertyPath: m_Name
+      value: PlayerIce
+      objectReference: {fileID: 0}
     - target: {fileID: 198359397427839540, guid: bc42e33df8ad9d14cba646735d12f85d,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
@@ -1864,16 +1864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5386238179389389815}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: 433f5cc769ac8c84786ce8e22d922e91,
-        type: 3}
-      propertyPath: m_Name
-      value: Bow_Wooden
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: 433f5cc769ac8c84786ce8e22d922e91,
-        type: 3}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 433f5cc769ac8c84786ce8e22d922e91,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1943,6 +1933,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 433f5cc769ac8c84786ce8e22d922e91,
+        type: 3}
+      propertyPath: m_Name
+      value: Bow_Wooden
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 433f5cc769ac8c84786ce8e22d922e91,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -1504981713932161579, guid: 433f5cc769ac8c84786ce8e22d922e91,
         type: 3}
