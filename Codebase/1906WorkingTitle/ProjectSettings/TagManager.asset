@@ -15,6 +15,7 @@ TagManager:
   - Ice Enemy
   - BridgeCollider
   - Bridge
+  - Water
   layers:
   - Default
   - TransparentFX
