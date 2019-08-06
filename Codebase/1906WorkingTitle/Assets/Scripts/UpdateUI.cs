@@ -10,12 +10,12 @@ public class UpdateUI : MonoBehaviour
     //recorded stats
     [SerializeField] private Player player;
     [SerializeField] private Inventory inventory;
-    private float health, maxHealth, attackSpeed, currentExperience, nextLevelExp;
-    private int lives = 5, coins, level, defense, attackDamage;
+    private float health, maxHealth, currentExperience, nextLevelExp;
+    private int lives = 5, coins;
     private Sprite slotOne, slotTwo;
 
     //UI elements to remember
-    private Text healthText, livesText, coinText, statsText;
+    private Text healthText, livesText, coinText;
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher;
 
@@ -36,7 +36,6 @@ public class UpdateUI : MonoBehaviour
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
-        statsText = transform.Find("Stats").GetComponent<Text>();
         levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
         #region start
         ////update health
@@ -165,13 +164,7 @@ public class UpdateUI : MonoBehaviour
         slotTwo = player.GetPotion();
         InvSlot1.sprite = slotOne;
         InvSlot2.sprite = slotTwo;
-
-        //update player stats
-        level = player.GetLevel();
-        defense = player.GetDefense();
-        attackSpeed = player.GetAttackSpeed();
-        attackDamage = player.GetDamage();
-        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
+        
 
         //taking damage
         if (damageFlasher.color != new Color(255.0f, 0.0f, 0.0f, 0.0f))
