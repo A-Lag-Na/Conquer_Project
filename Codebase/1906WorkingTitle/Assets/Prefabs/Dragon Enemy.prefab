@@ -283,12 +283,12 @@ GameObject:
   m_Component:
   - component: {fileID: 3406084970454133083}
   - component: {fileID: 4741969340237317153}
-  - component: {fileID: 1810308395457174343}
   - component: {fileID: 1810308395457174340}
   - component: {fileID: 1810308395457174341}
   - component: {fileID: 1810308395457174346}
   - component: {fileID: 1810308395457174347}
   - component: {fileID: 1810308395457174342}
+  - component: {fileID: 1061986612}
   m_Layer: 11
   m_Name: Dragon Enemy
   m_TagString: Fire Enemy
@@ -305,7 +305,7 @@ Transform:
   m_GameObject: {fileID: 1810308395457174344}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.33, y: -0.009, z: -2.68}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 0.5}
   m_Children:
   - {fileID: 5817526960846566910}
   - {fileID: 4816279106140683313}
@@ -333,19 +333,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &1810308395457174343
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810308395457174344}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.2791228
-  m_Center: {x: -0.06549144, y: 2.3521733, z: -0.31108475}
 --- !u!114 &1810308395457174340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -362,7 +349,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   attackRate: 1
-  bulletSpeed: 10
+  bulletSpeed: 15
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -381,7 +368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletSpeed: 10
   attackEnabled: 1
   projectile: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
     type: 3}
@@ -523,6 +509,20 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!136 &1061986612
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810308395457174344}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0862037
+  m_Height: 3.5714579
+  m_Direction: 1
+  m_Center: {x: -0.05861491, y: 1.9719377, z: 0.0630908}
 --- !u!1 &1813132041780035963
 GameObject:
   m_ObjectHideFlags: 0

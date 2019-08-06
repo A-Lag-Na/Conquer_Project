@@ -8,7 +8,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private float attackRate;
     //[SerializeField] private int attackMax = 120;
 
-    [SerializeField] private float bulletSpeed;
+    private float bulletSpeed;
     int bulletDamage;
 
     //If this enemy's attack behavior is enabled or not.
@@ -93,11 +93,11 @@ public class EnemyAI : MonoBehaviour
         attackRate = temp.GetAttackRate();
         bulletSpeed = temp.GetBulletSpeed();
     }
-    void OnPauseGame()
+    public void OnPauseGame()
     {
         paused = true;
     }
-    void OnResumeGame()
+    public void OnResumeGame()
     {
         paused = false;
     }

@@ -19,9 +19,10 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerSpendingPoints = 0;
     [SerializeField] private int playerLives;
 
-    //If player is immune to ice or fire conditions
+    //If player is immune to status conditions
     public bool iceImmune = false;
     public bool fireImmune = false;
+    public bool stunImmune = false;
     #endregion
 
     #region UnityComponents
@@ -166,10 +167,11 @@ public class Player : MonoBehaviour
                     {
                         clone = Instantiate(projectile, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.black;
-                        clone.GetComponent<TrailRenderer>().endColor = Color.white;
+                        clone.GetComponent<TrailRenderer>().endColor = Color.black;
                         break;
                     }
             }
+            clone.GetComponent<TrailRenderer>().time = .1125f;
             clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
             clone.gameObject.layer = 10;
             clone.gameObject.SetActive(true);

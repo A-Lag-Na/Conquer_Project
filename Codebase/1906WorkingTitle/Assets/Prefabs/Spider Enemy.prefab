@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 372095915}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.44, z: -2.14}
+  m_LocalPosition: {x: -0.15, y: 0.75, z: 0.14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2417631768395304668}
@@ -407,12 +407,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2417631768395304668}
   - component: {fileID: 5694560426523780006}
-  - component: {fileID: 1717699465624698053}
   - component: {fileID: 1717699465624698052}
   - component: {fileID: 1717699465624698051}
   - component: {fileID: 1717699465624698050}
   - component: {fileID: 1717699465624698049}
   - component: {fileID: 1717699465624698048}
+  - component: {fileID: 2088833959}
   m_Layer: 11
   m_Name: Spider Enemy
   m_TagString: Ice Enemy
@@ -429,7 +429,7 @@ Transform:
   m_GameObject: {fileID: 1717699465624698063}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.34, y: 0, z: -2.65}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 971200126597314226}
   - {fileID: 7491514425697219890}
@@ -457,19 +457,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &1717699465624698053
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1717699465624698063}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 2.286398
-  m_Center: {x: 0.019015312, y: 0.78809404, z: 0.009508133}
 --- !u!114 &1717699465624698052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -486,7 +473,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   attackRate: 1
-  bulletSpeed: 10
+  bulletSpeed: 15
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -527,7 +514,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletSpeed: 10
   attackEnabled: 1
   projectile: {fileID: 4581777492162815454, guid: c8ff2d06d3f5ced439683491831bf545,
     type: 3}
@@ -647,6 +633,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &2088833959
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1717699465624698063}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6550741, y: 6, z: 3.240077}
+  m_Center: {x: -0.050465584, y: 2.559586, z: -0.78829616}
 --- !u!1 &1910549274329423050
 GameObject:
   m_ObjectHideFlags: 0
