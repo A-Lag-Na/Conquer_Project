@@ -93,11 +93,11 @@ public class EnemyAI : MonoBehaviour
         attackRate = temp.GetAttackRate();
         bulletSpeed = temp.GetBulletSpeed();
     }
-    void OnPauseGame()
+    public void OnPauseGame()
     {
         paused = true;
     }
-    void OnResumeGame()
+    public void OnResumeGame()
     {
         paused = false;
     }

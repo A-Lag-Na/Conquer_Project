@@ -95,7 +95,7 @@ public class ConditionManager : MonoBehaviour
                     stunTimer--;
                     if(stunTimer == 1)
                     {
-
+                        this.OnResumeGame();
                     }
                 }
             }
