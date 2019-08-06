@@ -6,12 +6,14 @@ public class ConditionManager : MonoBehaviour
 {
     public int fireTimer = 0;
     public int thawTimer = 0;
+    public int stunTimer = 0;
 
     [SerializeField] bool isPlayer;
     private Component statsScript;
     private float speed;
-    [SerializeField] private float minFrozenSpeed;
     private float maxSpeed;
+    [SerializeField] private float minFrozenSpeed;
+    
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
     [SerializeField] private float thawIncrement;
     [SerializeField] private int fireDamage;
@@ -88,6 +90,14 @@ public class ConditionManager : MonoBehaviour
                         SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
                     }
                 }
+                if(stunTimer > 0)
+                {
+                    stunTimer--;
+                    if(stunTimer == 1)
+                    {
+
+                    }
+                }
             }
             if (fireTimer <= 0)
                 if (fireParticle != null)
@@ -112,6 +122,11 @@ public class ConditionManager : MonoBehaviour
                     thawTimer += ticks;
                     break;
                 }
+            case "stun":
+                {
+                    stunTimer += ticks;
+                    break;
+                }
             default:
                 {
                     break;
@@ -131,6 +146,11 @@ public class ConditionManager : MonoBehaviour
             case "thaw":
                 {
                     thawTimer = ticks;
+                    break;
+                }
+            case "stun":
+                {
+                    stunTimer = ticks;
                     break;
                 }
             default:

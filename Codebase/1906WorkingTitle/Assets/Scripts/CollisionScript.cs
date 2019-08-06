@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CollisionScript : MonoBehaviour
 {
-    public AudioSource audioSource;
+    private AudioSource audioSource;
     public AudioClip hurt;
     //public AudioClip burn;
     public int bulletDamage;
