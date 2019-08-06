@@ -188,6 +188,7 @@ public class UpdateUI : MonoBehaviour
         {
             damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
         }
+        
 
         if(levelUp)
         {

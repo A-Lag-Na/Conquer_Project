@@ -32,6 +32,9 @@ public class BulletHellEnemy : MonoBehaviour
     NavMeshAgent agent;
     GameObject player;
     private bool paused;
+
+    public bool stunned;
+
     int bulletDamage;
     float timeMade;
     private void OnEnable()
@@ -85,7 +88,7 @@ public class BulletHellEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
+        if (!paused & !stunned)
         {
             agent.SetDestination(player.transform.position);
             agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
@@ -93,12 +96,20 @@ public class BulletHellEnemy : MonoBehaviour
             ShootBullet();
         }
     }
-    void OnPauseGame()
+
+    public void Stun()
+    {
+        stunned = true;
+    }
+    public void Unstun()
+    {
+        stunned = false;
+    }
+    public void OnPauseGame()
     {
         paused = true;
     }
-
-    void OnResumeGame()
+    public void OnResumeGame()
     {
         paused = false;
     }

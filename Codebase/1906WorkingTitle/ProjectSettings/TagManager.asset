@@ -14,8 +14,10 @@ TagManager:
   - Fire Enemy
   - Ice Enemy
   - BridgeCollider
-  - Bridge
   - Water
+  - Stun Bullet
+  - FirePot
+  - GluePot
   layers:
   - Default
   - TransparentFX
