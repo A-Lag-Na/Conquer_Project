@@ -61,15 +61,6 @@ public class ShopUI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (buy)
-        //{
-
-        //}
-        //else
-        //{
-
-        //}
-
 
         //update coin count
         coins = inventory.GetCoins();
@@ -118,11 +109,11 @@ public class ShopUI : MonoBehaviour
             inventory.AddCoins(-1 * currentItem.GetValue());
             if (currentItem.ItemType() == BaseItem.Type.Weapon)
             {
-                inventory.ChangeWeapon(currentItem);
+                inventory.AddWeapon(currentItem);
             }
             else
             {
-                inventory.ChangePotion(currentItem);
+                inventory.AddPotion(currentItem);
             }
             currentItem = null;
             purchaseText.text = "";

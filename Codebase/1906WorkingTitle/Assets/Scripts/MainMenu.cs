@@ -20,13 +20,13 @@ public class MainMenu : MonoBehaviour
         options = GameObject.Find("Options");
         options.SetActive(false);
 
-        foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
-        {
-            if (go.name == "How to playText")
-                howToPlay = go;
-            if (go.name == "Options")
-                options = go;
-        }
+        //foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
+        //{
+        //    if (go.name == "How to playText")
+        //        howToPlay = go;
+        //    if (go.name == "Options")
+        //        options = go;
+        //}
 
         //assign buttons
         startBTN = GameObject.Find("Start Game").GetComponent<Button>();
@@ -54,8 +54,7 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if(howToPlay.activeSelf)
-                howToPlay.SetActive(false);
+            CloseHowTo();
         }
     }
 
@@ -67,6 +66,13 @@ public class MainMenu : MonoBehaviour
     {
         howToPlay.SetActive(true);
     }
+
+    public void CloseHowTo()
+    {
+        if (howToPlay.activeSelf)
+            howToPlay.SetActive(false);
+    }
+
     private void OptionsMenu()
     {
         //SceneManager.LoadScene("Options");

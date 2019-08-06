@@ -5,12 +5,19 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     [SerializeField] private int gold;
-    List<Weapon> weaponList = new List<Weapon>();
-    List<Potion> potionList = new List<Potion>();
+    LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
+    LinkedList<Potion> potionList = new LinkedList<Potion>();
+    [SerializeField] LinkedListNode<Weapon> weaponNode;
     [SerializeField] Weapon weapon;
     [SerializeField] Potion potion;
+    [SerializeField] LinkedListNode<Potion> potionNode;
 
-    
+    private void Start()
+    {
+        weaponNode = weaponList.First;
+        potionNode = potionList.First;
+    }
+
     #region gold
     public void AddCoins(int amountOfCoins)
     {
@@ -23,38 +30,87 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    //public void AddWeapon(Weapon _weapon)
-    //{
-    //    weaponList.Add(_weapon);
-    //}
-    //public void AddPotion(Potion _potion)
-    //{
-    //    potionList.Add(_potion);
-    //}
 
-
-    public void ChangeWeapon(BaseItem _weapon)
-    {
-        //weapon.SetShallow((Weapon)_weapon);
-        weapon = (Weapon)_weapon;
-    }
+    //public void ChangeWeapon(BaseItem _weapon)
+    //{
+    //    weapon = (Weapon)_weapon;
+    //}
 
     public void RemoveWeapon()
     {
         weapon = null;
     }
 
-    public void ChangePotion(BaseItem _potion)
-    {
-        //potion.SetShallow((Potion)_potion);
-        potion = (Potion)_potion;
-    }
+    //public void ChangePotion(BaseItem _potion)
+    //{
+    //    potion = (Potion)_potion;
+    //}
 
     public void RemovePotion()
     {
         potion = null;
     }
 
+    #region Add Weapons and Potions
+    public void AddWeapon(BaseItem _weapon)
+    {
+        weaponList.AddLast((Weapon)_weapon);
+        if (weaponNode == null)
+        {
+            weaponNode = weaponList.First;
+        }
+    }
+    public void AddPotion(BaseItem _potion)
+    {
+        potionList.AddLast((Potion)_potion);
+        if (potionNode == null)
+        {
+            potionNode = potionList.First;
+        }
+    }
+    #endregion
+
+    #region Cycle Weapon
+
+    public void CycleWeaponForward()
+    {
+        if (weaponNode.Next != null)
+        {
+            weaponNode = weaponNode.Next;
+        }
+    }
+
+    public void CycleWeaponBackward()
+    {
+        if (weaponNode.Previous != null)
+        {
+            weaponNode = weaponNode.Previous;
+        }
+    }
+
+    #endregion
+
+    #region Cycle Potion
+
+    public void CyclePotionForward()
+    {
+        if (potionNode.Next != null)
+        {
+            potionNode = potionNode.Next;
+        }
+    }
+
+    public void CyclePotionBackward()
+    {
+        if (potionNode.Previous != null)
+        {
+            potionNode = potionNode.Previous;
+        }
+    }
+
+    #endregion
+
+    #region Potion stat Grab
     public float Heal()
     {
         if (potion != null)
@@ -66,7 +122,9 @@ public class Inventory : MonoBehaviour
         else
             return 0.0f;
     }
+    #endregion
 
+    #region Weapon Stat Grabs
     public int Attack()
     {
         if(weapon!=null)
@@ -82,11 +140,13 @@ public class Inventory : MonoBehaviour
         else
             return 0.0f;
     }
+    #endregion
 
+    #region Sprite Grabs
     public Sprite WeaponSprite()
     {
         if(weapon!=null)
-            return weapon.GetSprite();
+            return weaponNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
     }
@@ -94,8 +154,9 @@ public class Inventory : MonoBehaviour
     public Sprite PotionSprite()
     {
         if(potion!=null)
-            return potion.GetSprite();
+            return potionNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
     }
+    #endregion
 }

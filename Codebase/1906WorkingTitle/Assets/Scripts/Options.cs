@@ -58,7 +58,7 @@ public class Options : MonoBehaviour
         controls.SetActive(true);
     }
 
-    void CloseCurrentScreen()
+    public void CloseCurrentScreen()
     {
         if(currentScreen != null)
         {

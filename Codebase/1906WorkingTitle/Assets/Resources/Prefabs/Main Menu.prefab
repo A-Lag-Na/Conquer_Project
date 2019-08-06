@@ -545,7 +545,7 @@ GameObject:
   - component: {fileID: 247538542753104808}
   - component: {fileID: 247538542753104809}
   m_Layer: 5
-  m_Name: How to Play
+  m_Name: How to PlayBTN
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
