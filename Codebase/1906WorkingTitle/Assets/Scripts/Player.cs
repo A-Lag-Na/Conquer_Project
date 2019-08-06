@@ -38,6 +38,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip fire;
     [SerializeField] Texture2D crosshairs;
     private Animator animator;
+    GameObject dashTrail;
     #endregion
 
     #region PlayerMovementProperties
@@ -59,12 +60,16 @@ public class Player : MonoBehaviour
     #endregion
 
     bool isRotated;
+    bool isDashing;
+    float lastTimeDashed;
     [SerializeField] GameObject mainUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        dashTrail = GameObject.Find("DashTrail");
+        dashTrail.SetActive(false);
         characterController = GetComponent<CharacterController>();
         inventory = GetComponent<Inventory>();
         playerRenderer = GetComponentInChildren<Renderer>();
@@ -82,6 +87,7 @@ public class Player : MonoBehaviour
         source = GetComponent<AudioSource>();
         source.enabled = true;
         isRotated = false;
+        isDashing = false;
     }
 
     // Update is called once per frame
@@ -120,8 +126,11 @@ public class Player : MonoBehaviour
                 moveDirection *= playerMovementSpeed;
                 characterController.Move(moveDirection * Time.deltaTime);
 
-                transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
-
+            if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector3.zero)
+            {
+                if (isDashing == false)
+                    StartCoroutine(PlayerDash());
+            }
                 //Set animator values
                 if (animator != null)
                 {
@@ -212,6 +221,20 @@ public class Player : MonoBehaviour
         isRotated = false;
     }
 
+    IEnumerator PlayerDash()
+    {
+        dashTrail.SetActive(true);
+        yield return new WaitForSeconds(.01f);
+        isDashing = true;
+        gameObject.layer = 12;
+        characterController.Move(moveDirection);
+        yield return new WaitForSeconds(.4f);
+        dashTrail.SetActive(false);
+        yield return new WaitForSeconds(.6f);
+        gameObject.layer = 9;
+        isDashing = false;
+    }
+
     public void BlinkOnHit()
     {
         animator.SetTrigger("On Hit");
@@ -229,23 +252,26 @@ public class Player : MonoBehaviour
     #region Health
     public void TakeDamage(int amountOfDamage = 1)
     {
-        //Decrease health by amountOfDamage until 0 or less
-        amountOfDamage -= playerDefense;
-        if (amountOfDamage <= 0)
+        if (isDashing == false)
         {
-            playerRenderer.material.color = Color.yellow;
-            return;
-        }
-        BlinkOnHit();
-        playerHealth -= amountOfDamage;
-        if (mainUI != null && mainUI.activeSelf)
-            mainUI.GetComponent<UpdateUI>().TakeDamage();
-        if (playerHealth <= 0)
-        {
-            playerLives--;
-            if (playerLives <= 0)
-                Death();
-            playerHealth = maxPlayerHealth;
+            //Decrease health by amountOfDamage until 0 or less
+            amountOfDamage -= playerDefense;
+            if (amountOfDamage <= 0)
+            {
+                playerRenderer.material.color = Color.yellow;
+                return;
+            }
+            BlinkOnHit();
+            playerHealth -= amountOfDamage;
+            if (mainUI != null && mainUI.activeSelf)
+                mainUI.GetComponent<UpdateUI>().TakeDamage();
+            if (playerHealth <= 0)
+            {
+                playerLives--;
+                if (playerLives <= 0)
+                    Death();
+                playerHealth = maxPlayerHealth;
+            }
         }
     }
 
