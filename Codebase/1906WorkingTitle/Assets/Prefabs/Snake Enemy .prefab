@@ -10033,7 +10033,7 @@ Transform:
   m_GameObject: {fileID: 6438206596685392169}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 9.94, y: -9.8, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.8, z: 1}
   m_Children:
   - {fileID: 1011041589576633821}
   - {fileID: 2989440447925944044}
@@ -10174,7 +10174,7 @@ MonoBehaviour:
   health: 3
   damage: 1
   attackRate: 1
-  bulletSpeed: 10
+  bulletSpeed: 15
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   blinkTime: 0.1
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
@@ -10193,7 +10193,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  bulletSpeed: 10
   attackEnabled: 1
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
@@ -10250,8 +10249,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6839015, y: 3.8553705, z: 3.5884595}
-  m_Center: {x: -0.035659492, y: 1.4276853, z: 0.13379025}
+  m_Size: {x: 0.9242331, y: 3.8553705, z: 2.300084}
+  m_Center: {x: 5.844883e-16, y: 1.4276853, z: 0.20887023}
 --- !u!1 &6835378996034420086
 GameObject:
   m_ObjectHideFlags: 0
