@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
@@ -10,10 +11,11 @@ public class ConditionManager : MonoBehaviour
 
     [SerializeField] bool isPlayer;
     private Component statsScript;
+    private Component aiScript;
     private float speed;
     private float maxSpeed;
     [SerializeField] private float minFrozenSpeed;
-    
+
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
     [SerializeField] private float thawIncrement;
     [SerializeField] private int fireDamage;
@@ -26,6 +28,7 @@ public class ConditionManager : MonoBehaviour
         if (gameObject.tag.Equals("Player"))
         {
             isPlayer = true;
+            aiScript = GetComponentInParent<Player>();
             statsScript = GetComponentInParent<Player>();
             fireParticle = GameObject.Find("PlayerFire");
             iceParticle = GameObject.Find("PlayerIce");
@@ -34,6 +37,7 @@ public class ConditionManager : MonoBehaviour
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
+            aiScript = GetComponentInParent<EnemyAI>();
             fireParticle = GameObject.Find("RangedFire");
             iceParticle = GameObject.Find("RangedIce");
         }
@@ -41,6 +45,7 @@ public class ConditionManager : MonoBehaviour
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
+            aiScript = GetComponentInParent<BulletHellEnemy>();
             fireParticle = GameObject.Find("BulletHell Fire");
             iceParticle = GameObject.Find("BulletHell Ice");
         }
@@ -48,12 +53,14 @@ public class ConditionManager : MonoBehaviour
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
+            aiScript = GetComponentInParent<EnemyAI>();
             iceParticle = GameObject.Find("DragonIce");
         }
         else if (gameObject.tag.Equals("Ice Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
+            aiScript = GetComponentInParent<EnemyAI>();
             fireParticle = GameObject.Find("SpiderFire");
         }
         if (fireParticle != null)
@@ -68,7 +75,7 @@ public class ConditionManager : MonoBehaviour
     {
         if (!paused)
         {
-            if (fireTimer > 0 || thawTimer > 0)
+            if (fireTimer > 0 || thawTimer > 0 || stunTimer > 0)
             {
                 if (fireTimer > 0)
                 {
@@ -90,12 +97,12 @@ public class ConditionManager : MonoBehaviour
                         SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
                     }
                 }
-                if(stunTimer > 0)
+                if (stunTimer > 0)
                 {
                     stunTimer--;
-                    if(stunTimer == 1)
+                    if (stunTimer == 0)
                     {
-                        this.OnResumeGame();
+                        Unstun();
                     }
                 }
             }
@@ -233,11 +240,44 @@ public class ConditionManager : MonoBehaviour
     void OnPauseGame()
     {
         paused = true;
+        if (isPlayer)
+        {
+            ((Player)aiScript).OnPauseGame();
+        }
+        else if (gameObject.CompareTag("BulletHell Enemy"))
+        {
+            ((BulletHellEnemy)aiScript).OnPauseGame();
+        }
+        else
+        {
+            ((EnemyAI)aiScript).OnPauseGame();
+        }
     }
-
     void OnResumeGame()
     {
         paused = false;
+
     }
     #endregion GetSet
+
+    public void Unstun()
+    {
+        if (gameObject.CompareTag("Player"))
+        {
+            ((Player)aiScript).Unstun();
+        }
+        else
+        {
+            NavMeshAgent nav = GetComponentInParent<NavMeshAgent>();
+            nav.enabled = true;
+            if (gameObject.CompareTag("BulletHell Enemy"))
+            {
+                ((BulletHellEnemy)aiScript).Unstun();
+            }
+            else
+            {
+                ((EnemyAI)aiScript).Unstun();
+            }
+        }
+    }
 }

@@ -16,6 +16,7 @@ TagManager:
   - BridgeCollider
   - Bridge
   - Water
+  - Stun Bullet
   layers:
   - Default
   - TransparentFX
