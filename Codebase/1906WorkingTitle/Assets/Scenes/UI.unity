@@ -132,11 +132,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
-    - target: {fileID: 7643891376193755789, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7643891376193755785, guid: 088100d67a5aa474fb02caba1b105ef8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -240,32 +235,6 @@ PrefabInstance:
     - target: {fileID: 7643891376193755785, guid: 088100d67a5aa474fb02caba1b105ef8,
         type: 3}
       propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643891377523823780, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600,
-        type: 3}
-    - target: {fileID: 7643891377523823780, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_Type
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643891377523823780, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_PreserveAspect
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643891377523823780, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7643891377523823780, guid: 088100d67a5aa474fb02caba1b105ef8,
-        type: 3}
-      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
