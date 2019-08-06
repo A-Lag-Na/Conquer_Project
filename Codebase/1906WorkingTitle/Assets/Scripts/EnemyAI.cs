@@ -24,6 +24,8 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent agent;
     GameObject player;
     AudioSource source;
+
+    public bool stunned;
     private bool paused;
 
     // Start is called before the first frame update
@@ -52,7 +54,7 @@ public class EnemyAI : MonoBehaviour
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        if(anim != null)
+        if(anim != null && !stunned)
         {
             anim.SetTrigger("Attack");
         }
@@ -64,7 +66,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
+        if (!paused && !stunned)
         {
             agent.SetDestination(player.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
@@ -86,6 +88,7 @@ public class EnemyAI : MonoBehaviour
         }
     }
 
+    #region stuff
     //Call this function after you change either attackRate or bulletSpeed in EnemyStats while the enemy is active.
     public void RefreshStats()
     {
@@ -101,4 +104,13 @@ public class EnemyAI : MonoBehaviour
     {
         paused = false;
     }
+    public void Stun()
+    {
+        stunned = true;
+    }
+    public void Unstun()
+    {
+        stunned = false;
+    }
+    #endregion stuff
 }

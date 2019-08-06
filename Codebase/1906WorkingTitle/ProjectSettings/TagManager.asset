@@ -15,6 +15,7 @@ TagManager:
   - Ice Enemy
   - BridgeCollider
   - Water
+  - Stun Bullet
   layers:
   - Default
   - TransparentFX

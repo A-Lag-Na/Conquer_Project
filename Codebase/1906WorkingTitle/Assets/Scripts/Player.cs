@@ -23,6 +23,9 @@ public class Player : MonoBehaviour
     public bool iceImmune = false;
     public bool fireImmune = false;
     public bool stunImmune = false;
+
+    //If player is currently stunned
+    public bool stunned = false;
     #endregion
 
     #region UnityComponents
@@ -47,7 +50,8 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Projectiles
-    [SerializeField] GameObject projectile;
+    [SerializeField] GameObject projectile0;
+    [SerializeField] GameObject projectile1;
     [SerializeField] GameObject projectile2;
     [SerializeField] GameObject projectile3;
     [SerializeField] uint bulletVelocity;
@@ -85,7 +89,7 @@ public class Player : MonoBehaviour
     {
         if (!paused)
         {
-            #region PlayerMovement
+            #region PlayerRotation
             // Rotate the Player Transform to face the Mouse Position
             mousePosition = Input.mousePosition;
             targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
@@ -100,39 +104,6 @@ public class Player : MonoBehaviour
             {
                 transform.rotation = rotation;
             }
-
-            // Move the Player GameObject when the WASD or Arrow Keys are pressed
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-            moveDirection *= playerMovementSpeed;
-            characterController.Move(moveDirection * Time.deltaTime);
-
-            transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
-
-            //Set animator values
-            if (animator != null)
-            {
-                animator.SetBool("Walk", true);
-                animator.SetFloat("Horizontal", moveDirection.x);
-                animator.SetFloat("Vertical", moveDirection.z);
-            }
-
-
-            #endregion
-
-            #region PlayerAttack
-            // If the right mouse button is clicked call ShootBullet
-            if (Input.GetKey(KeyCode.Mouse0))
-            {
-                ShootBullet(1);
-            }
-            if (Input.GetKey(KeyCode.Mouse1))
-            {
-                ShootBullet(2);
-            }
-            if (Input.GetKey(KeyCode.Mouse2))
-            {
-                ShootBullet(3);
-            }
             #endregion
 
             #region HitFeedback
@@ -140,6 +111,46 @@ public class Player : MonoBehaviour
             if (playerRenderer.material.color != playerColor)
                 playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
             #endregion
+
+            if (!stunned)
+            {
+                #region PlayerMovement
+                // Move the Player GameObject when the WASD or Arrow Keys are pressed
+                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+                moveDirection *= playerMovementSpeed;
+                characterController.Move(moveDirection * Time.deltaTime);
+
+                transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
+
+                //Set animator values
+                if (animator != null)
+                {
+                    animator.SetBool("Walk", true);
+                    animator.SetFloat("Horizontal", moveDirection.x);
+                    animator.SetFloat("Vertical", moveDirection.z);
+                }
+                #endregion
+
+                #region PlayerAttack
+                // If the right mouse button is clicked call ShootBullet
+                if (Input.GetKey(KeyCode.Mouse0))
+                {
+                    ShootBullet(3);
+                }
+                if (Input.GetKey(KeyCode.Mouse1))
+                {
+                    ShootBullet(1);
+                }
+                if (Input.GetKey(KeyCode.Mouse2))
+                {
+                    ShootBullet(2);
+                }
+                if(Input.GetKey(KeyCode.Alpha1))
+                {
+                    ShootBullet(0);
+                }
+                #endregion
+            }
         }
     }
 
@@ -151,23 +162,33 @@ public class Player : MonoBehaviour
             GameObject clone;
             switch (type)
             {
+                case 0:
+                    {
+                        clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
+                        clone.GetComponent<TrailRenderer>().startColor = Color.black;
+                        clone.GetComponent<TrailRenderer>().endColor = Color.black;
+                        break;
+                    }
                 case 1:
                     {
-                        clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
+                        clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
                 case 2:
                     {
-                        clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
+                        clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
+                        break;
+                    }                
+                case 3:
+                    {
+                        clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
                 default:
                     {
-                        clone = Instantiate(projectile, projectilePosition.transform.position, transform.rotation);
-                        clone.GetComponent<TrailRenderer>().startColor = Color.black;
-                        clone.GetComponent<TrailRenderer>().endColor = Color.black;
+                        clone = null;
                         break;
                     }
             }
@@ -371,14 +392,25 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Pause
-    void OnPauseGame()
+    public void OnPauseGame()
     {
         paused = true;
     }
 
-    void OnResumeGame()
+    public void OnResumeGame()
     {
         paused = false;
+    }
+    #endregion
+
+    #region Stun
+    public void Stun()
+    {
+        stunned = true;
+    }
+    public void Unstun()
+    {
+        stunned = false;
     }
     #endregion
 

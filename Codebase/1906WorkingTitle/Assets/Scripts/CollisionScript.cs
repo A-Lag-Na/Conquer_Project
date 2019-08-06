@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class CollisionScript : MonoBehaviour
 {
@@ -16,10 +17,13 @@ public class CollisionScript : MonoBehaviour
 
     private Player player;
     private EnemyStats enemy;
+    private NavMeshAgent nav;
 
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.collider.gameObject;
+        nav = target.GetComponent<NavMeshAgent>();
+
         audioSource = target.GetComponent<AudioSource>();
         if (audioSource != null)
         {
@@ -43,6 +47,7 @@ public class CollisionScript : MonoBehaviour
                 //The enemy we hit takes damage.
                 fireImmune = enemy.fireImmune;
                 iceImmune = enemy.iceImmune;
+                stunImmune = enemy.stunImmune;
             }
         }
         else
@@ -83,15 +88,23 @@ public class CollisionScript : MonoBehaviour
                             if (!stunImmune)
                             {
                                 DamageCheck();
-                                if (collision.collider.CompareTag("BulletHell Enemy"))
+                                if (target.CompareTag("BulletHell Enemy"))
                                 {
-
+                                    BulletHellEnemy hellai = enemy.GetComponent<BulletHellEnemy>();
+                                    hellai.Stun();
+                                    nav.enabled = false;
+                                }
+                                else if (!target.CompareTag("Player"))
+                                {
+                                    EnemyAI ai = enemy.GetComponent<EnemyAI>();
+                                    ai.Stun();
+                                    nav.enabled = false;
                                 }
                                 else
                                 {
-                                    enemy.GetComponent<EnemyAI>().OnPauseGame();
+                                    player.Stun();
                                 }
-                                enemy.StopAllCoroutines();
+                                con.TimerAdd("stun", 31);
                             }
                             break;
                         }
@@ -119,4 +132,3 @@ public class CollisionScript : MonoBehaviour
         }
     }
 }
-
