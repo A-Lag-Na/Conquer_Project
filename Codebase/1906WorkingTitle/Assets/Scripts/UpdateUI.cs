@@ -10,16 +10,26 @@ public class UpdateUI : MonoBehaviour
     //recorded stats
     [SerializeField] private Player player;
     [SerializeField] private Inventory inventory;
-    private float health, maxHealth, attackSpeed, currentExperience, nextLevelExp;
-    private int lives = 5, coins, level, defense, attackDamage;
-    private Sprite slotOne, slotTwo;
+    private float health, maxHealth, currentExperience, nextLevelExp;
+    private int lives, coins;
 
     //UI elements to remember
-    private Text healthText, livesText, coinText, statsText;
+    private Text healthText, livesText, coinText;
     private RectTransform healthTransform, levelTransform;
-    private Image InvSlot1, InvSlot2, damageFlasher;
+    private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
+    private Sprite cSprite, tabSprite;
 
-    [SerializeField] GameObject statScreen, pauseMenu;
+    //Color flashes
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent;
+
+    //distance from shop
+    float dist;
+
+    // stat screen and pause menu references to keep
+    private GameObject statScreen, pauseMenu;
+
+    //bool for level up flashing
+    private bool levelUp = false;
 
     void Start()
     {
@@ -36,8 +46,9 @@ public class UpdateUI : MonoBehaviour
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
-        statsText = transform.Find("Stats").GetComponent<Text>();
         levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
+        levelFlasher = transform.Find("XP Bar").transform.Find("LevelUpFlash").GetComponent<Image>();
+        buttonPrompt = transform.Find("ButtonPrompt").GetComponent<Image>();
         #region start
         ////update health
         //health = player.GetHealth();
@@ -68,13 +79,15 @@ public class UpdateUI : MonoBehaviour
         
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
-        //foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
-        //{
-        //    if (go.name == "Pause Menu")
-        //        pauseMenu = go;
-        //    if (go.name == "Stat Screen")
-        //        statScreen = go;
-        //}
+
+        //set flash colors
+        damageColor = new Color(255.0f, 0.0f, 0.0f, 0.0f);
+        levelColorOpaque = new Color32(1, 210, 231, 128);
+        levelColorTransparent = new Color32(1, 210, 231, 0);
+
+        //set button sprites
+        cSprite = Resources.Load<Sprite>("Sprites/c_sprite");
+        tabSprite = Resources.Load<Sprite>("Sprites/tab_sprite");
     }
 
     private void OnEnable()
@@ -82,7 +95,7 @@ public class UpdateUI : MonoBehaviour
         if(statScreen!=null)
             statScreen.SetActive(false);
         if(pauseMenu!=null)
-           pauseMenu.SetActive(false);
+            pauseMenu.SetActive(false);
     }
 
     #region inDev
@@ -132,6 +145,12 @@ public class UpdateUI : MonoBehaviour
         damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
     }
     
+    public void LevelUp()
+    {
+        levelUp = true;
+        buttonPrompt.color = new Color32(255,255,255,255);
+        buttonPrompt.sprite = tabSprite;
+    }
 
     private void Update()
     {
@@ -160,25 +179,37 @@ public class UpdateUI : MonoBehaviour
         livesText.text = $"X{lives}";
 
         //update inventory
-
-        slotOne = player.GetWeapon();
-        slotTwo = player.GetPotion();
-        InvSlot1.sprite = slotOne;
-        InvSlot2.sprite = slotTwo;
-
-        //update player stats
-        level = player.GetLevel();
-        defense = player.GetDefense();
-        attackSpeed = player.GetAttackSpeed();
-        attackDamage = player.GetDamage();
-        statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
+        InvSlot1.sprite = player.GetWeapon();
+        InvSlot2.sprite = player.GetPotion();
+        
 
         //taking damage
-        if (damageFlasher.color != new Color(255.0f, 0.0f, 0.0f, 0.0f))
+        if (damageFlasher.color != damageColor)
         {
-            damageFlasher.color = Color.Lerp(damageFlasher.color, new Color(255.0f, 0.0f, 0.0f, 0.0f), 0.1f);
+            damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
         }
 
+        if(levelUp)
+        {
+            levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
+        }
+
+        //check if near shop
+        dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+        if(dist <= 5.2f)
+        {
+            buttonPrompt.color = new Color32(255, 255, 255, 255);
+            buttonPrompt.sprite = cSprite;
+        }
+        else if (levelUp)
+        {
+            buttonPrompt.color = new Color32(255, 255, 255, 255);
+            buttonPrompt.sprite = tabSprite;
+        }
+        else
+        {
+            buttonPrompt.color = new Color32(0, 0, 0, 0);
+        }
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -188,6 +219,9 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
+            levelUp = false;
+            levelFlasher.color = levelColorTransparent;
+            buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             OpenStats();
         }
 
@@ -215,14 +249,9 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        float dist = Vector2.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
-        if (dist <= 3.0f)
+        if (dist <= 5.2f)
         {
             GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
-        }
-        else
-        {
-            Debug.Log($"Distance is {dist}");
         }
     }
 }

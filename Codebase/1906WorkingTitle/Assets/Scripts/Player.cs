@@ -327,6 +327,10 @@ public class Player : MonoBehaviour
         playerExperience = 0;
         playerLevel++;
         GetComponent<ConditionManager>().Refresh();
+        if (mainUI != null && mainUI.activeSelf)
+        {
+            mainUI.GetComponent<UpdateUI>().LevelUp();
+        }
     }
 
     public float GetExperience()
