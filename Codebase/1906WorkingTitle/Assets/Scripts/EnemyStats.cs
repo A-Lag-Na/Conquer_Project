@@ -31,6 +31,7 @@ public class EnemyStats : MonoBehaviour
 
     public bool fireImmune;
     public bool iceImmune;
+    public bool stunImmune;
 
     Animator anim;
     GameObject player;
