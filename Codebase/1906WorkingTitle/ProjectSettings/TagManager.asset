@@ -17,6 +17,8 @@ TagManager:
   - Bridge
   - Water
   - Stun Bullet
+  - FirePot
+  - GluePot
   layers:
   - Default
   - TransparentFX
