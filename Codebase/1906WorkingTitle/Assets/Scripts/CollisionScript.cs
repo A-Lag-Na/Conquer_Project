@@ -55,10 +55,11 @@ public class CollisionScript : MonoBehaviour
         else
         {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
-            if (gameObject.CompareTag("FirePot"))
+            {
                 Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
-            if (gameObject.CompareTag("GluePot"))
-                Instantiate(glueCreep, transform.position, glueCreep.transform.rotation);
+                if (gameObject.CompareTag("GluePot"))
+                    Instantiate(glueCreep, transform.position, glueCreep.transform.rotation);
+            }
         }
         if (!(isIceImmune && isFireImmune))
         {
@@ -114,12 +115,14 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "FirePot":
                         {
+                            DamageCheck();
+                            Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                             break;
                         }
                     case "GluePot":
                         {
-
+                            DamageCheck();
                             break;
                         }
                     default:
@@ -129,21 +132,21 @@ public class CollisionScript : MonoBehaviour
                         }
                 }
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
-    }
 
-    private void DamageCheck()
-    {
-        if (player != null)
+        void DamageCheck()
         {
-            player.TakeDamage(bulletDamage);
-            Instantiate(blood, transform.position, blood.transform.rotation);
-        }
-        if (enemy != null)
-        {
-            enemy.TakeDamage(bulletDamage);
-            Instantiate(blood, transform.position, blood.transform.rotation);
+            if (player != null)
+            {
+                player.TakeDamage(bulletDamage);
+                Instantiate(blood, transform.position, blood.transform.rotation);
+            }
+            if (enemy != null)
+            {
+                enemy.TakeDamage(bulletDamage);
+                Instantiate(blood, transform.position, blood.transform.rotation);
+            }
         }
     }
 }

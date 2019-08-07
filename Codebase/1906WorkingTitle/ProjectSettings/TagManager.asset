@@ -18,6 +18,8 @@ TagManager:
   - Stun Bullet
   - FirePot
   - GluePot
+  - Bridge
+  - Trap
   layers:
   - Default
   - TransparentFX
@@ -35,6 +37,7 @@ TagManager:
   - Pickups
   - Blood
   - Dash
+  - Trap
   - 
   - 
   - 
