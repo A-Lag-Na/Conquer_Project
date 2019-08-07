@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Weapon : BaseItem
 {
-    [SerializeField] int damage;
-    [SerializeField] float attackSpeed;
-    
+    [SerializeField] int damage = 0;
+    [SerializeField] float attackSpeed = 0;
+
     public int Attack()
     {
         return damage;
