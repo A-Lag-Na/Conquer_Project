@@ -19,10 +19,7 @@ public class GameOver : MonoBehaviour
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        }
-
     }
 
     void PlayAgain()
@@ -36,13 +33,12 @@ public class GameOver : MonoBehaviour
         UnPause();
         SceneManager.LoadScene("Main Menu");
     }
+
     void UnPause()
     {
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        }
     }
 }
