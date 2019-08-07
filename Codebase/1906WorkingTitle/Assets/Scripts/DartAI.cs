@@ -6,7 +6,6 @@ public class DartAI : MonoBehaviour
 {
 
     [SerializeField] private float attackRate;
-    //[SerializeField] private int attackMax = 120;
 
     private float bulletSpeed;
     int bulletDamage;
@@ -19,9 +18,9 @@ public class DartAI : MonoBehaviour
     [SerializeField] GameObject projectilePos = null;
 
     [SerializeField] AudioClip fire = null;
-    
+
     AudioSource source;
-    
+
     private bool paused;
 
     // Start is called before the first frame update
@@ -34,14 +33,10 @@ public class DartAI : MonoBehaviour
         source.enabled = true;
     }
 
-
-    IEnumerator attack()
+    IEnumerator DartAttack()
     {
         attackEnabled = false;
-        Quaternion temp = projectile.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, temp);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
@@ -55,13 +50,8 @@ public class DartAI : MonoBehaviour
     void Update()
     {
         if (!paused)
-        {
-
             if (attackEnabled)
-            {
-                StartCoroutine(attack());
-            }
-        }
+                StartCoroutine(DartAttack());
     }
 
     #region Pause/Unpause
