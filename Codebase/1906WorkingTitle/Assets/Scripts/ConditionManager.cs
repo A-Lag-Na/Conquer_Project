@@ -92,9 +92,9 @@ public class ConditionManager : MonoBehaviour
                     if (iceParticle != null)
                         iceParticle.SetActive(true);
                     thawTimer--;
-                    if (thawTimer % 30 == 0 && Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
+                    if (Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
                     {
-                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed));
+                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement/30f, minFrozenSpeed, maxSpeed));
                     }
                 }
                 if (stunTimer > 0)
