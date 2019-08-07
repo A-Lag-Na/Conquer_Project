@@ -4,23 +4,8 @@ using UnityEngine;
 
 public class Weapon : BaseItem
 {
-    [SerializeField] int damage;
-    [SerializeField] float attackSpeed;
-    private Weapon shallow;
-    
-
-    private void Update()
-    {
-        if (shallow != null)
-        {
-            this.damage = shallow.damage;
-            this.attackSpeed = shallow.attackSpeed;
-            this.SetName(shallow.GetName());
-            SetSprite(shallow.GetSprite());
-            SetValue(shallow.GetValue());
-            shallow = null;
-        }
-    }
+    [SerializeField] int damage = 0;
+    [SerializeField] float attackSpeed = 0;
 
     public int Attack()
     {
@@ -30,9 +15,5 @@ public class Weapon : BaseItem
     public float GetAttackSpeed()
     {
         return attackSpeed;
-    }
-    public void SetShallow(Weapon _shallow)
-    {
-        shallow = _shallow;
     }
 }

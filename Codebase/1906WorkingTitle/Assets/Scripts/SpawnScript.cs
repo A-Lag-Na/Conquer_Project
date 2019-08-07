@@ -8,14 +8,14 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private bool spawnEnabled;
 
     //List of different enemies the spawner can choose to spawn.
-    [SerializeField] private List<GameObject> enemies;
+    [SerializeField] private List<GameObject> enemies = null;
     public List<EnemyStats> enemiesClone;
 
     //list of doors.
-    [SerializeField] private List<GameObject> doors;
+    [SerializeField] private List<GameObject> doors = null;
 
     //How many points worth of enemies the spawner can soawn
-    [SerializeField] private int points;
+    [SerializeField] private int points = 0;
     private int pointsClone;
 
     //Tracks the number of frames passing

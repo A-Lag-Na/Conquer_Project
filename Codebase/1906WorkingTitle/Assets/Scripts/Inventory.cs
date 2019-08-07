@@ -8,9 +8,8 @@ public class Inventory : MonoBehaviour
     LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
     LinkedList<Potion> potionList = new LinkedList<Potion>();
     [SerializeField] LinkedListNode<Weapon> weaponNode;
-    [SerializeField] Weapon weapon;
-    [SerializeField] Potion potion;
     [SerializeField] LinkedListNode<Potion> potionNode;
+    [SerializeField] int amountOfPotions;
 
     private void Start()
     {
@@ -20,20 +19,30 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        
+        if (weaponNode != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad7))
+                CycleWeaponForward();
+            if (Input.GetKeyDown(KeyCode.Keypad1))
+                CycleWeaponBackward();
+        }
+
+        if (potionNode != null)
+        {
+            if (Input.GetKeyDown(KeyCode.Keypad9))
+                CyclePotionForward();
+            if (Input.GetKeyDown(KeyCode.Keypad3))
+                CyclePotionBackward();
+        }
+        amountOfPotions = potionList.Count;
     }
 
-    #region Remove Weapons and Potions
-    public void RemoveWeapon()
-    {
-        weapon = null;
-    }
-
-    public void RemovePotion()
-    {
-        potion = null;
-    }
-    #endregion
+    //#region Remove Weapons and Potions
+    //public void RemoveWeapon()
+    //{
+    //    weapon = null;
+    //}
+    
 
     #region gold
     public void AddCoins(int amountOfCoins)
@@ -109,10 +118,24 @@ public class Inventory : MonoBehaviour
     #region Potion stat Grab
     public float Heal()
     {
-        if (potion != null)
+        if (potionNode != null)
         {
-            float heal = potion.Heal();
-            potion = null;
+            float heal = potionNode.Value.Heal();
+            if (potionNode.Next != null)
+            {
+                potionNode = potionNode.Next;
+                potionList.Remove(potionNode.Previous);
+            }
+            else if (potionNode.Previous != null)
+            {
+                potionNode = potionNode.Previous;
+                potionList.Remove(potionNode.Next);
+            }
+            else
+            {
+                potionList.Remove(potionNode);
+                potionNode = null;
+            }
             return heal;
         }
         else
@@ -123,16 +146,16 @@ public class Inventory : MonoBehaviour
     #region Weapon Stat Grabs
     public int Attack()
     {
-        if(weapon!=null)
-            return weapon.Attack();
+        if(weaponNode!=null)
+            return weaponNode.Value.Attack();
         else
             return 0;
     }
 
     public float GetAttackSpeed()
     {
-        if(weapon!=null)
-            return weapon.GetAttackSpeed();
+        if(weaponNode!=null)
+            return weaponNode.Value.GetAttackSpeed();
         else
             return 0.0f;
     }
@@ -141,7 +164,7 @@ public class Inventory : MonoBehaviour
     #region Sprite Grabs
     public Sprite WeaponSprite()
     {
-        if(weapon!=null)
+        if(weaponNode!=null)
             return weaponNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
@@ -149,7 +172,7 @@ public class Inventory : MonoBehaviour
 
     public Sprite PotionSprite()
     {
-        if(potion!=null)
+        if(potionNode!=null)
             return potionNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");

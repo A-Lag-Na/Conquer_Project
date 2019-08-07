@@ -5,87 +5,89 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region PlayerStats
-    [SerializeField] float playerMovementSpeed;
-    [SerializeField] float playerHealth;
-    [SerializeField] float maxPlayerHealth;
-    [SerializeField] int playerDefense;
-    [SerializeField] float playerAttackSpeed;
-    [SerializeField] private int visualAttackSpeed;
-    [SerializeField] int playerAttackDamage;
-    private float lastTimeFired;
-    private float playerExperience;
-    private float nextLevelExperience = 10;
+    [SerializeField] float playerMovementSpeed = 8.0f;
+    [SerializeField] float playerHealth = 10.0f;
+    [SerializeField] float maxPlayerHealth = 10.0f;
+    [SerializeField] int playerDefense = 1;
+    [SerializeField] float playerAttackSpeed = 1.0f;
+    [SerializeField] private int visualAttackSpeed = 1;
+    [SerializeField] int playerAttackDamage = 1;
+    private float lastTimeFired = 0.0f;
+    private float playerExperience = 0.0f;
+    private float nextLevelExperience = 10.0f;
     private int playerLevel = 1;
     [SerializeField] private int playerSpendingPoints = 0;
-    [SerializeField] private int playerLives;
+    [SerializeField] private int playerLives = 5;
 
     //If player is immune to status conditions
-    public bool iceImmune = false;
-    public bool fireImmune = false;
-    public bool stunImmune = false;
+    public bool isIceImmune = false;
+    public bool isFireImmune = false;
+    public bool isStunImmune = false;
 
     //If player is currently stunned
-    public bool stunned = false;
+    public bool isStunned = false;
+
+    private bool isRotated = false;
+    private bool isDashing = false;
     #endregion
 
     #region UnityComponents
-    private Transform playerTransform;
-    private CharacterController characterController;
-    private Renderer playerRenderer;
-    private Color playerColor;
-    private AudioSource source;
-    private Inventory inventory;
-    [SerializeField] private AudioClip fire;
-    [SerializeField] Texture2D crosshairs;
-    private Animator animator;
-    GameObject dashTrail;
+    private CharacterController characterController = null;
+    private Renderer playerRenderer = null;
+    private Color playerColor = Color.black;
+    private AudioSource source = null;
+    private Inventory inventory = null;
+    [SerializeField] private AudioClip fire = null;
+    [SerializeField] private Texture2D crosshairs = null;
+    private Animator animator = null;
+    private GameObject dashTrail = null;
+    [SerializeField] private GameObject mainUI = null;
     #endregion
 
     #region PlayerMovementProperties
-    private Vector3 moveDirection;
-    private Vector3 mousePosition;
-    private Vector3 targetPosition;
-    [SerializeField] Camera mainCamera;
-    private float playerY;
-    private bool paused;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 mousePosition = Vector3.zero;
+    private Vector3 targetPosition = Vector3.zero;
+    [SerializeField] private Camera mainCamera = null;
+    private float playerY = 0.0f;
+    private bool paused = false;
     #endregion
 
     #region Projectiles
-    [SerializeField] GameObject projectile0;
-    [SerializeField] GameObject projectile1;
-    [SerializeField] GameObject projectile2;
-    [SerializeField] GameObject projectile3;
-    [SerializeField] uint bulletVelocity;
-    [SerializeField] GameObject projectilePosition;
+    [SerializeField] private GameObject projectile0 = null;
+    [SerializeField] private GameObject projectile1 = null;
+    [SerializeField] private GameObject projectile2 = null;
+    [SerializeField] private GameObject projectile3 = null;
+    [SerializeField] private uint bulletVelocity = 0;
+    [SerializeField] private GameObject projectilePosition = null;
     #endregion
-
-    bool isRotated;
-    bool isDashing;
-    float lastTimeDashed;
-    [SerializeField] GameObject mainUI;
-
 
     // Start is called before the first frame update
     void Start()
     {
         dashTrail = GameObject.Find("DashTrail");
         dashTrail.SetActive(false);
+
         characterController = GetComponent<CharacterController>();
+
         inventory = GetComponent<Inventory>();
+
         playerRenderer = GetComponentInChildren<Renderer>();
-        animator = GetComponent<Animator>();
         playerColor = playerRenderer.material.color;
+
+        animator = GetComponent<Animator>();
+
         playerY = transform.position.y;
-        if (GameObject.Find("Main UI"))
-            mainUI = GameObject.Find("Main UI");
-        maxPlayerHealth = 10;
-        playerHealth = 10;
-        visualAttackSpeed = 1;
-        lastTimeFired = 0.0f;
-        playerLives = 5;
+
         Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
+
         source = GetComponent<AudioSource>();
         source.enabled = true;
+
+        if (GameObject.Find("Main UI"))
+            mainUI = GameObject.Find("Main UI");
+
+        lastTimeFired = 0.0f;
         isRotated = false;
         isDashing = false;
     }
@@ -96,41 +98,49 @@ public class Player : MonoBehaviour
         if (!paused)
         {
             #region PlayerRotation
+
             // Rotate the Player Transform to face the Mouse Position
             mousePosition = Input.mousePosition;
             targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             Vector3 relativePosition = targetPosition - transform.position;
 
+
             Quaternion rotation = Quaternion.LookRotation(relativePosition);
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
             rotation.z = 0.0f;
+
+
             // Change the player's tranform's rotation to the rotation Quaternion
             if (isRotated == false)
-            {
                 transform.rotation = rotation;
-            }
+
             #endregion
 
             #region HitFeedback
+
             // Player reverting to original color after hit
             if (playerRenderer.material.color != playerColor)
                 playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
+
             #endregion
 
-            if (!stunned)
+            if (!isStunned)
             {
                 #region PlayerMovement
+
                 // Move the Player GameObject when the WASD or Arrow Keys are pressed
                 moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
                 moveDirection *= playerMovementSpeed;
                 characterController.Move(moveDirection * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector3.zero)
-            {
-                if (isDashing == false)
-                    StartCoroutine(PlayerDash());
-            }
+
+                // Player Dash if Spacebar is pressed
+                if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector3.zero)
+                    if (isDashing == false)
+                        StartCoroutine(PlayerDash());
+
+
                 //Set animator values
                 if (animator != null)
                 {
@@ -138,30 +148,27 @@ public class Player : MonoBehaviour
                     animator.SetFloat("Horizontal", moveDirection.x);
                     animator.SetFloat("Vertical", moveDirection.z);
                 }
+
                 #endregion
 
                 #region PlayerAttack
-                // If the right mouse button is clicked call ShootBullet
+
+                // If the corresponding button is clicked call ShootBullet
                 if (Input.GetKey(KeyCode.Mouse0))
-                {
                     ShootBullet(3);
-                }
                 if (Input.GetKey(KeyCode.Mouse1))
-                {
                     ShootBullet(1);
-                }
                 if (Input.GetKey(KeyCode.Mouse2))
-                {
                     ShootBullet(2);
-                }
-                if(Input.GetKey(KeyCode.Alpha1))
-                {
+                if (Input.GetKey(KeyCode.Alpha1))
                     ShootBullet(0);
-                }
+
                 #endregion
             }
         }
     }
+
+    #region PlayerFunctions
 
     public void ShootBullet(int type)
     {
@@ -189,7 +196,7 @@ public class Player : MonoBehaviour
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
-                    }                
+                    }
                 case 3:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
@@ -224,14 +231,15 @@ public class Player : MonoBehaviour
     IEnumerator PlayerDash()
     {
         dashTrail.SetActive(true);
-        yield return new WaitForSeconds(.01f);
+        yield return new WaitForSeconds(0.01f);
         isDashing = true;
         gameObject.layer = 12;
         characterController.Move(moveDirection);
-        yield return new WaitForSeconds(.4f);
-        dashTrail.SetActive(false);
-        yield return new WaitForSeconds(.6f);
+        yield return new WaitForSeconds(0.1f);
         gameObject.layer = 9;
+        yield return new WaitForSeconds(0.3f);
+        dashTrail.SetActive(false);
+        yield return new WaitForSeconds(0.6f);
         isDashing = false;
     }
 
@@ -248,31 +256,31 @@ public class Player : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
+            TakeDamage();
+    }
+
+    #endregion
+
     #region AccessorsAndMutators
 
     #region Health
-    public void TakeDamage(int amountOfDamage = 1)
+    public void TakeDamage(float amountOfDamage = 1)
     {
-        if (isDashing == false)
+        //Decrease health by amountOfDamage until 0 or less
+        amountOfDamage /= playerDefense;
+        BlinkOnHit();
+        playerHealth -= amountOfDamage;
+        if (mainUI != null && mainUI.activeSelf)
+            mainUI.GetComponent<UpdateUI>().TakeDamage();
+        if (playerHealth <= 0)
         {
-            //Decrease health by amountOfDamage until 0 or less
-            amountOfDamage -= playerDefense;
-            if (amountOfDamage <= 0)
-            {
-                playerRenderer.material.color = Color.yellow;
-                return;
-            }
-            BlinkOnHit();
-            playerHealth -= amountOfDamage;
-            if (mainUI != null && mainUI.activeSelf)
-                mainUI.GetComponent<UpdateUI>().TakeDamage();
-            if (playerHealth <= 0)
-            {
-                playerLives--;
-                if (playerLives <= 0)
-                    Death();
-                playerHealth = maxPlayerHealth;
-            }
+            playerLives--;
+            if (playerLives <= 0)
+                Death();
+            playerHealth = maxPlayerHealth;
         }
     }
 
@@ -293,6 +301,7 @@ public class Player : MonoBehaviour
         return maxPlayerHealth;
     }
 
+    //Check to see if other scripts use this function
     public void IncreaseHealth()
     {
         playerHealth += 10;
@@ -372,13 +381,11 @@ public class Player : MonoBehaviour
         playerHealth = maxPlayerHealth;
         playerMovementSpeed++;
         playerSpendingPoints++;
-        playerExperience = 0;
+        playerExperience -= 10;
         playerLevel++;
         GetComponent<ConditionManager>().Refresh();
         if (mainUI != null && mainUI.activeSelf)
-        {
             mainUI.GetComponent<UpdateUI>().LevelUp();
-        }
     }
 
     public float GetExperience()
@@ -437,11 +444,11 @@ public class Player : MonoBehaviour
     #region Stun
     public void Stun()
     {
-        stunned = true;
+        isStunned = true;
     }
     public void Unstun()
     {
-        stunned = false;
+        isStunned = false;
     }
     #endregion
 

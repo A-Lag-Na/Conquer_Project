@@ -12,15 +12,12 @@ public class CameraTrigger : MonoBehaviour
     {
         //Finds each camera position object in each room
         camPos = transform.Find("Camera Position").gameObject;
-        
     }
-
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            
             //Changes the cameras position
             Camera.main.transform.position = camPos.transform.position;
 
@@ -28,6 +25,5 @@ public class CameraTrigger : MonoBehaviour
             spawner.GetComponent<SpawnScript>().SetDoorLock(true);
             spawner.GetComponent<SpawnScript>().SetEnabled(true);
         }
-        
     }
 }
