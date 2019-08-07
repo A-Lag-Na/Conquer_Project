@@ -338,6 +338,11 @@ public class Player : MonoBehaviour
         playerAttackDamage++;
         playerSpendingPoints--;
     }
+
+    public void ModifyDamage(int _playerDamage)
+    {
+        playerAttackDamage += _playerDamage;
+    }
     #endregion
 
     #region AttackSpeed
