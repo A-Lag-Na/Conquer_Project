@@ -47,9 +47,9 @@ public class CollisionScript : MonoBehaviour
             if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
-                isFireImmune = enemy.fireImmune;
-                isIceImmune = enemy.iceImmune;
-                isStunImmune = enemy.stunImmune;
+                isFireImmune = enemy.isFireImmune;
+                isIceImmune = enemy.isIceImmune;
+                isStunImmune = enemy.isStunImmune;
             }
         }
         else
