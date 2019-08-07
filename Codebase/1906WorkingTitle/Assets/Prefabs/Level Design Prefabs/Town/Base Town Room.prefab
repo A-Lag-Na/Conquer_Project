@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 10df1fe651fbff241bf8faabb2878017, type: 2}
+  - {fileID: 2100000, guid: 217f0335a8f477149af75f2675d8462d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 2284082708014675842}
   - component: {fileID: 324014600921395003}
   m_Layer: 0
-  m_Name: Town Forest Entrance
+  m_Name: Base Town Room
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,8 +6,8 @@ public class Pickup : MonoBehaviour
 {
     private enum Type {Coin, Health, EOF};
 
-    [SerializeField] Type type;
-    [SerializeField] AudioClip clip;
+    [SerializeField] Type type = (Type)1;
+    [SerializeField] AudioClip clip = null;
 
     private void Start()
     {

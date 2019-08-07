@@ -26,10 +26,6 @@ public class ShopUI : MonoBehaviour
 
         Sell = transform.Find("Sell").GetComponent<Button>();
         Sell.onClick.AddListener(OpenSellMenu);
-
-        Exit = transform.Find("Exit").GetComponent<Button>();
-        Exit.onClick.AddListener(ExitMenu);
-
         
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
@@ -87,7 +83,7 @@ public class ShopUI : MonoBehaviour
         Debug.Log("Clicked Sell");
         buy = false;
     }
-    void ExitMenu()
+    public void ExitMenu()
     {
         //Instantiate(Resources.Load<GameObject>("Prefabs/Main UI"));
         mainUI.SetActive(true);
@@ -107,7 +103,7 @@ public class ShopUI : MonoBehaviour
         if (currentItem != null)
         {
             inventory.AddCoins(-1 * currentItem.GetValue());
-            if (currentItem.ItemType() == BaseItem.Type.Weapon)
+            if (currentItem.GetItemType() == BaseItem.Type.Weapon)
             {
                 inventory.AddWeapon(currentItem);
             }

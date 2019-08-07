@@ -21,7 +21,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private float bulletSpeed = 10;
 
     //Pickup the enemy will drop
-    [SerializeField] GameObject pickUp;
+    [SerializeField] GameObject pickUp = null;
     //Amount of time enemy blinks on taking damage
     public float blinkTime;
 
