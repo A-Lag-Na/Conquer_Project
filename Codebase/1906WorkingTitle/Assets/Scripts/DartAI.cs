@@ -20,18 +20,16 @@ public class DartAI : MonoBehaviour
 
     [SerializeField] AudioClip fire;
     
-    GameObject player;
     AudioSource source;
-
-    public bool stunned;
+    
     private bool paused;
+
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
-        attackRate = 5;
-        bulletSpeed = 5;
-        bulletDamage = 5;
+        attackRate = 0.5f;
+        bulletSpeed = 10;
+        bulletDamage = 1;
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
     }
