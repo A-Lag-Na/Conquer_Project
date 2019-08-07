@@ -32,34 +32,34 @@ public class Player : MonoBehaviour
     #endregion
 
     #region UnityComponents
-    private CharacterController characterController;
-    private Renderer playerRenderer;
-    private Color playerColor;
-    private AudioSource source;
-    private Inventory inventory;
-    [SerializeField] private AudioClip fire;
-    [SerializeField] private Texture2D crosshairs;
-    private Animator animator;
-    private GameObject dashTrail;
-    [SerializeField] private GameObject mainUI;
+    private CharacterController characterController = null;
+    private Renderer playerRenderer = null;
+    private Color playerColor = Color.black;
+    private AudioSource source = null;
+    private Inventory inventory = null;
+    [SerializeField] private AudioClip fire = null;
+    [SerializeField] private Texture2D crosshairs = null;
+    private Animator animator = null;
+    private GameObject dashTrail = null;
+    [SerializeField] private GameObject mainUI = null;
     #endregion
 
     #region PlayerMovementProperties
-    private Vector3 moveDirection;
-    private Vector3 mousePosition;
-    private Vector3 targetPosition;
-    [SerializeField] private Camera mainCamera;
-    private float playerY;
-    private bool paused;
+    private Vector3 moveDirection = Vector3.zero;
+    private Vector3 mousePosition = Vector3.zero;
+    private Vector3 targetPosition = Vector3.zero;
+    [SerializeField] private Camera mainCamera = null;
+    private float playerY = 0.0f;
+    private bool paused = false;
     #endregion
 
     #region Projectiles
-    [SerializeField] private GameObject projectile0;
-    [SerializeField] private GameObject projectile1;
-    [SerializeField] private GameObject projectile2;
-    [SerializeField] private GameObject projectile3;
-    [SerializeField] private uint bulletVelocity;
-    [SerializeField] private GameObject projectilePosition;
+    [SerializeField] private GameObject projectile0 = null;
+    [SerializeField] private GameObject projectile1 = null;
+    [SerializeField] private GameObject projectile2 = null;
+    [SerializeField] private GameObject projectile3 = null;
+    [SerializeField] private uint bulletVelocity = 0;
+    [SerializeField] private GameObject projectilePosition = null;
     #endregion
 
     // Start is called before the first frame update
