@@ -11,9 +11,9 @@ public class CollisionScript : MonoBehaviour
     public int bulletDamage;
     public GameObject sparks;
     public GameObject blood;
-    public bool iceImmune = false;
-    public bool fireImmune = false;
-    public bool stunImmune = false;
+    public bool isIceImmune = false;
+    public bool isFireImmune = false;
+    public bool isStunImmune = false;
 
     private Player player;
     private EnemyStats enemy;
@@ -37,24 +37,22 @@ public class CollisionScript : MonoBehaviour
             {
                 player = collision.collider.GetComponent<Player>();
                 //The enemy we hit takes damage.
-                fireImmune = player.isFireImmune;
-                iceImmune = player.isIceImmune;
-                stunImmune = player.isStunImmune;
+                isFireImmune = player.isFireImmune;
+                isIceImmune = player.isIceImmune;
+                isStunImmune = player.isStunImmune;
             }
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
                 //The enemy we hit takes damage.
-                fireImmune = enemy.fireImmune;
-                iceImmune = enemy.iceImmune;
-                stunImmune = enemy.stunImmune;
+                isFireImmune = enemy.fireImmune;
+                isIceImmune = enemy.iceImmune;
+                isStunImmune = enemy.stunImmune;
             }
         }
         else
-        {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
-        }
-        if (!(iceImmune && fireImmune))
+        if (!(isIceImmune && isFireImmune))
         {
             ConditionManager con = target.GetComponent<ConditionManager>();
             if (con != null)
@@ -64,7 +62,7 @@ public class CollisionScript : MonoBehaviour
                 {
                     case "Fire Bullet":
                         {
-                            if (!fireImmune)
+                            if (!isFireImmune)
                             {
                                 DamageCheck();
                                 //Burn sound effect
@@ -75,7 +73,7 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "Ice Bullet":
                         {
-                            if (!iceImmune)
+                            if (!isIceImmune)
                             {
                                 DamageCheck();
                                 con.SubtractSpeed(0.6f);
@@ -85,25 +83,23 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "Stun Bullet":
                         {
-                            if (!stunImmune)
+                            if (!isStunImmune)
                             {
                                 DamageCheck();
                                 if (target.CompareTag("BulletHell Enemy"))
                                 {
-                                    BulletHellEnemy hellai = enemy.GetComponent<BulletHellEnemy>();
-                                    hellai.Stun();
+                                    BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                    bulletHellAI.Stun();
                                     nav.enabled = false;
                                 }
                                 else if (!target.CompareTag("Player"))
                                 {
-                                    EnemyAI ai = enemy.GetComponent<EnemyAI>();
-                                    ai.Stun();
+                                    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+                                    enemyAI.Stun();
                                     nav.enabled = false;
                                 }
                                 else
-                                {
                                     player.Stun();
-                                }
                                 con.TimerAdd("stun", 31);
                             }
                             break;
