@@ -594,7 +594,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2b35526f62af38488e7a05aa8a5039e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _time: 5
+  _time: 999
+--- !u!114 &1239361643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239361641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1248769826
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -607,6 +619,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FireEffect
       objectReference: {fileID: 0}
+    - target: {fileID: 193658171781584106, guid: 5166be6336baa144b8b72177c2339dcc,
+        type: 3}
+      propertyPath: m_TagString
+      value: FirePot
+      objectReference: {fileID: 0}
     - target: {fileID: 6919200892257226116, guid: 5166be6336baa144b8b72177c2339dcc,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -615,7 +632,7 @@ PrefabInstance:
     - target: {fileID: 6919200892257226116, guid: 5166be6336baa144b8b72177c2339dcc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.84
+      value: -6.41
       objectReference: {fileID: 0}
     - target: {fileID: 6919200892257226116, guid: 5166be6336baa144b8b72177c2339dcc,
         type: 3}

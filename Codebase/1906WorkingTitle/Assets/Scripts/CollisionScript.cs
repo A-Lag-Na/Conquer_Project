@@ -19,6 +19,9 @@ public class CollisionScript : MonoBehaviour
     private EnemyStats enemy;
     private NavMeshAgent nav;
 
+    [SerializeField] GameObject fireCreep = null;
+    [SerializeField] GameObject glueCreep = null;
+
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.collider.gameObject;
@@ -31,7 +34,7 @@ public class CollisionScript : MonoBehaviour
             audioSource.PlayOneShot(hurt);
             audioSource.volume = 0.5f;
         }
-        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+        if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
         {
             if (collision.collider.CompareTag("Player"))
             {
@@ -41,17 +44,22 @@ public class CollisionScript : MonoBehaviour
                 isIceImmune = player.isIceImmune;
                 isStunImmune = player.isStunImmune;
             }
-            if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+            if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
-                //The enemy we hit takes damage.
                 isFireImmune = enemy.fireImmune;
                 isIceImmune = enemy.iceImmune;
                 isStunImmune = enemy.stunImmune;
             }
         }
         else
+        {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
+            if (gameObject.CompareTag("FirePot"))
+                Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+            if (gameObject.CompareTag("GluePot"))
+                Instantiate(glueCreep, transform.position, glueCreep.transform.rotation);
+        }
         if (!(isIceImmune && isFireImmune))
         {
             ConditionManager con = target.GetComponent<ConditionManager>();
@@ -104,6 +112,16 @@ public class CollisionScript : MonoBehaviour
                             }
                             break;
                         }
+                    case "FirePot":
+                        {
+                            Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                            break;
+                        }
+                    case "GluePot":
+                        {
+
+                            break;
+                        }
                     default:
                         {
                             DamageCheck();
@@ -114,16 +132,17 @@ public class CollisionScript : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
     private void DamageCheck()
     {
         if (player != null)
         {
-            player.TakeDamage();
+            player.TakeDamage(bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
         if (enemy != null)
         {
-            enemy.TakeDamage();
+            enemy.TakeDamage(bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
     }
