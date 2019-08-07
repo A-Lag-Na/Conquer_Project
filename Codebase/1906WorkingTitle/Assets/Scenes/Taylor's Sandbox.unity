@@ -374,6 +374,31 @@ PrefabInstance:
       propertyPath: mainCamera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: playerAttackSpeed
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: fireImmune
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: stunImmune
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: iceImmune
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: playerHealth
+      value: 152.47
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24b01301e171e540bf8b839f876b570, type: 3}
 --- !u!1 &443084244
@@ -832,7 +857,7 @@ Transform:
   m_Father: {fileID: 443084245}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1001 &1846101352
+--- !u!1001 &1074549666
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -847,12 +872,12 @@ PrefabInstance:
     - target: {fileID: 7999029628684770106, guid: 8d5103ebf6374414185043236b7fe8d2,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.2
+      value: 9.94
       objectReference: {fileID: 0}
     - target: {fileID: 7999029628684770106, guid: 8d5103ebf6374414185043236b7fe8d2,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 4.62
       objectReference: {fileID: 0}
     - target: {fileID: 7999029628684770106, guid: 8d5103ebf6374414185043236b7fe8d2,
         type: 3}

@@ -37,9 +37,9 @@ public class CollisionScript : MonoBehaviour
             {
                 player = collision.collider.GetComponent<Player>();
                 //The enemy we hit takes damage.
-                fireImmune = player.fireImmune;
-                iceImmune = player.iceImmune;
-                stunImmune = player.stunImmune;
+                fireImmune = player.isFireImmune;
+                iceImmune = player.isIceImmune;
+                stunImmune = player.isStunImmune;
             }
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
             {

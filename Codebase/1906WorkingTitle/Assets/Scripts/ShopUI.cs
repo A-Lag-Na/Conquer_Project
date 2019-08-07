@@ -107,7 +107,7 @@ public class ShopUI : MonoBehaviour
         if (currentItem != null)
         {
             inventory.AddCoins(-1 * currentItem.GetValue());
-            if (currentItem.ItemType() == BaseItem.Type.Weapon)
+            if (currentItem.GetItemType() == BaseItem.Type.Weapon)
             {
                 inventory.AddWeapon(currentItem);
             }
