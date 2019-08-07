@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
     private int coins;
     private Text coinText, purchaseText;
     private Button Exit;
-    private GameObject mainUI;
+    private GameObject mainUI, denyScreen;
     //List<BaseItem> shopItems = new List<BaseItem>();
     BaseItem currentItem;
 
@@ -18,6 +18,9 @@ public class ShopUI : MonoBehaviour
     {
         mainUI = GameObject.Find("Main UI");
         mainUI.SetActive(false);
+
+        denyScreen = transform.Find("Deny Screen").gameObject;
+        denyScreen.SetActive(false);
 
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
@@ -68,29 +71,34 @@ public class ShopUI : MonoBehaviour
 
     public void Purchase()
     {
-        if (currentItem != null)
+        if (currentItem != null && currentItem.GetValue() <= coins)
         {
             inventory.AddCoins(-1 * currentItem.GetValue());
             if (currentItem.GetItemType() == BaseItem.Type.Weapon)
                 inventory.AddWeapon(currentItem);
             else
                 inventory.AddPotion(currentItem);
-            currentItem = null;
-            purchaseText.text = "";
+        }
+        else if(currentItem != null && currentItem.GetValue() > coins)
+        {
+            DenyPuchase();
         }
     }
 
     public void Checkout(BaseItem _item)
     {
-        if (_item.GetValue() < coins)
-        {
-            currentItem = _item;
-            purchaseText.text = $"{currentItem.name}\n{currentItem.GetValue()} Coins";
-        }
-        else
-        {
-            //add popup dialog denying
-        }
+        currentItem = _item;
+        purchaseText.text = $"{currentItem.name}\n{currentItem.GetValue()} Coins";
+    }
+
+    void DenyPuchase()
+    {
+        denyScreen.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        denyScreen.SetActive(false);
     }
 
 }
