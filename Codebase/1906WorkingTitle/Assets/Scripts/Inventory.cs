@@ -18,6 +18,23 @@ public class Inventory : MonoBehaviour
         potionNode = potionList.First;
     }
 
+    private void Update()
+    {
+        
+    }
+
+    #region Remove Weapons and Potions
+    public void RemoveWeapon()
+    {
+        weapon = null;
+    }
+
+    public void RemovePotion()
+    {
+        potion = null;
+    }
+    #endregion
+
     #region gold
     public void AddCoins(int amountOfCoins)
     {
@@ -29,27 +46,6 @@ public class Inventory : MonoBehaviour
         return gold;
     }
     #endregion
-
-
-    //public void ChangeWeapon(BaseItem _weapon)
-    //{
-    //    weapon = (Weapon)_weapon;
-    //}
-
-    public void RemoveWeapon()
-    {
-        weapon = null;
-    }
-
-    //public void ChangePotion(BaseItem _potion)
-    //{
-    //    potion = (Potion)_potion;
-    //}
-
-    public void RemovePotion()
-    {
-        potion = null;
-    }
 
     #region Add Weapons and Potions
     public void AddWeapon(BaseItem _weapon)
