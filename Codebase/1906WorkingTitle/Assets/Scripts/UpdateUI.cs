@@ -213,7 +213,7 @@ public class UpdateUI : MonoBehaviour
         }
 
         //exit stat screen and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
         {
             PauseGame();
         }
