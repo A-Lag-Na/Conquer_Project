@@ -9,11 +9,6 @@ public class Pickup : MonoBehaviour
     [SerializeField] Type type = (Type)1;
     [SerializeField] AudioClip clip = null;
 
-    private void Start()
-    {
-
-    }
-
     private void Update()
     {
         if(Type.Coin == type)

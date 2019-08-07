@@ -7,13 +7,13 @@ public class StatScreen : MonoBehaviour
 {
     private Button speedBTN, damageBTN, defenseBTN;
     [SerializeField] Player player;
-    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp ,attackSpeed;
+    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp, attackSpeed;
     private int defense, damage, level, pointsAvailable;
 
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
     private RectTransform levelTransform;
     private GameObject mainUI;
-    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +30,7 @@ public class StatScreen : MonoBehaviour
         defenseBTN.onClick.AddListener(AddDefense);
 
         //assign player if found
-        if(GameObject.Find("Player"))
+        if (GameObject.Find("Player"))
             player = GameObject.Find("Player").GetComponent<Player>();
 
         //assign Texts
@@ -84,10 +84,8 @@ public class StatScreen : MonoBehaviour
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        }
     }
 
     private void OnEnable()
@@ -97,10 +95,8 @@ public class StatScreen : MonoBehaviour
             Time.timeScale = 0;
             Object[] objects = FindObjectsOfType(typeof(GameObject));
             foreach (GameObject go in objects)
-            {
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            }
             mainUI.SetActive(false);
         }
     }
@@ -108,9 +104,7 @@ public class StatScreen : MonoBehaviour
     public void AddSpeed()
     {
         if (pointsAvailable > 0)
-        {
             player.AddAttackSpeed();
-        }
     }
 
     public void AddDamage()
@@ -165,9 +159,7 @@ public class StatScreen : MonoBehaviour
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
-        {
             ResumeGame();
-        }
     }
 
     void ResumeGame()
@@ -176,9 +168,7 @@ public class StatScreen : MonoBehaviour
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        }
     }
-    
+
 }

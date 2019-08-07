@@ -47,9 +47,9 @@ public class CollisionScript : MonoBehaviour
             if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
-                isFireImmune = enemy.fireImmune;
-                isIceImmune = enemy.iceImmune;
-                isStunImmune = enemy.stunImmune;
+                isFireImmune = enemy.isFireImmune;
+                isIceImmune = enemy.isIceImmune;
+                isStunImmune = enemy.isStunImmune;
             }
         }
         else
@@ -120,12 +120,14 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "FirePot":
                         {
+                        	DamageCheck();
                             Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                             break;
                         }
                     case "IcePot":
                         {
+                        	DamageCheck();
                             Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                             break;

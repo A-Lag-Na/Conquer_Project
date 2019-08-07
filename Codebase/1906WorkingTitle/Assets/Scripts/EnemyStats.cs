@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
+    #region Stats
     //How many points the enemy is worth to the spawner
     [SerializeField] private int enemyPoints = 1;
 
@@ -20,25 +21,42 @@ public class EnemyStats : MonoBehaviour
     //Speed at whichc bullets travel
     [SerializeField] private float bulletSpeed = 10;
 
+    public bool isFireImmune;
+    public bool isIceImmune;
+    public bool isStunImmune;
+    #endregion
+
+    #region UnityComponents
+
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp = null;
-    //Amount of time enemy blinks on taking damage
-    public float blinkTime;
 
     //Enemy's color and renderer
     private Renderer enemyRender;
     public Color enemyColor;
 
-    public bool fireImmune;
-    public bool iceImmune;
-    public bool stunImmune;
-
     Animator anim;
     GameObject player;
     Player playerScript;
+    #endregion
 
-    //get-setters
-    #region getset
+    public void Start()
+    {
+        GetComponent<AudioSource>().enabled = true;
+        enemyRender = GetComponentInChildren<Renderer>();
+        enemyColor = enemyRender.material.color;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponentInParent<Player>();
+        anim = GetComponent<Animator>();
+    }
+
+    public void Update()
+    {
+        if (enemyRender.material.color != enemyColor)
+            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
+    }
+    
+    #region Getters and Setters
     public int GetPoints()
     {
         return enemyPoints;
@@ -84,8 +102,9 @@ public class EnemyStats : MonoBehaviour
     {
         bulletSpeed = _speed;
     }
-    #endregion getset
+    #endregion
 
+    #region EnemyFunctions
     //Our enemy is damaged
     public void TakeDamage(float _damage = 1)
     {
@@ -114,28 +133,8 @@ public class EnemyStats : MonoBehaviour
             Instantiate(pickUp, vec, Quaternion.identity);
         }
         if (playerScript != null)
-        {
             playerScript.GainExperience(enemyPoints);
-        }
         Destroy(gameObject);
-    }
-
-    public void Start()
-    {
-        GetComponent<AudioSource>().enabled = true;
-        enemyRender = GetComponentInChildren<Renderer>();
-        enemyColor = enemyRender.material.color;
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponentInParent<Player>();
-        anim = GetComponent<Animator>();
-    }
-
-    public void Update()
-    {
-        if (enemyRender.material.color != enemyColor)
-        {
-            enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, blinkTime);
-        }
     }
 
     //Color feedback on damage taken
@@ -145,4 +144,5 @@ public class EnemyStats : MonoBehaviour
             anim.SetTrigger("On Hit");
         enemyRender.material.color = Color.red;
     }
+    #endregion
 }

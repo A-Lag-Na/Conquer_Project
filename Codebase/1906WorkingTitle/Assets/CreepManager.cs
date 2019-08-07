@@ -26,8 +26,8 @@ public class CreepManager : MonoBehaviour
         else if (colTag == "Enemy" || colTag == "BulletHell Enemy" || colTag == "Fire Enemy" || colTag == "Ice Enemy")
         {
             enemy = collide.GetComponent<EnemyStats>();
-            isFireImmune = enemy.fireImmune;
-            isIceImmune = enemy.iceImmune;
+                isFireImmune = enemy.isFireImmune;
+                isIceImmune = enemy.isIceImmune;
         }
         else { }
         if(con!=null)

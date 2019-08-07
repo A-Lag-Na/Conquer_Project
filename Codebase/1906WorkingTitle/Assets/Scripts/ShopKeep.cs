@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShopKeep : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] GameObject Shop;
 
+    // Start is called before the first frame update
     private void Start()
     {
         Shop = transform.Find("Shop Camera").gameObject;
@@ -14,9 +14,6 @@ public class ShopKeep : MonoBehaviour
 
     public void OpenShop()
     {
-        //GameObject shopClone = Instantiate(Shop);
-        //shopClone.SetActive(true);
         Shop.SetActive(true);
     }
-
 }
