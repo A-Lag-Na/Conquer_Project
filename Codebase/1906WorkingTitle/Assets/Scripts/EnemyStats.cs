@@ -10,7 +10,7 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] private int enemyPoints = 1;
 
     //How many hits it takes to kill the enemy.
-    [SerializeField] private int health = 2;
+    [SerializeField] private float health = 2;
 
     //How much damage the enemy deals on hit.
     [SerializeField] private int damage = 2;
@@ -61,7 +61,7 @@ public class EnemyStats : MonoBehaviour
     {
         return enemyPoints;
     }
-    public int GetHealth()
+    public float GetHealth()
     {
         return health;
     }
@@ -82,7 +82,7 @@ public class EnemyStats : MonoBehaviour
         return bulletSpeed;
     }
 
-    public void SetHealth(int _health)
+    public void SetHealth(float _health)
     {
         health = _health;
     }
@@ -106,7 +106,7 @@ public class EnemyStats : MonoBehaviour
 
     #region EnemyFunctions
     //Our enemy is damaged
-    public void TakeDamage(int _damage = 1)
+    public void TakeDamage(float _damage = 1)
     {
         if(damage > 0)
         {

@@ -300,13 +300,6 @@ public class Player : MonoBehaviour
     {
         return maxPlayerHealth;
     }
-
-    //Check to see if other scripts use this function
-    public void IncreaseHealth()
-    {
-        playerHealth += 10;
-        maxPlayerHealth += 10;
-    }
     #endregion
 
     #region Coins

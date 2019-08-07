@@ -20,7 +20,7 @@ public class CollisionScript : MonoBehaviour
     private NavMeshAgent nav;
 
     [SerializeField] GameObject fireCreep = null;
-    [SerializeField] GameObject glueCreep = null;
+    [SerializeField] GameObject iceCreep = null;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -56,9 +56,14 @@ public class CollisionScript : MonoBehaviour
         {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
             {
-                Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
-                if (gameObject.CompareTag("GluePot"))
-                    Instantiate(glueCreep, transform.position, glueCreep.transform.rotation);
+                if(gameObject.CompareTag("FirePot"))
+                {
+                    Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                }
+                if (gameObject.CompareTag("IcePot"))
+                {
+                    Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
+                }
             }
         }
         if (!(isIceImmune && isFireImmune))
@@ -115,14 +120,16 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "FirePot":
                         {
-                            DamageCheck();
+                        	DamageCheck();
                             Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                             break;
                         }
-                    case "GluePot":
+                    case "IcePot":
                         {
-                            DamageCheck();
+                        	DamageCheck();
+                            Instantiate(sparks, transform.position, sparks.transform.rotation);
+                            Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                             break;
                         }
                     default:
@@ -134,19 +141,18 @@ public class CollisionScript : MonoBehaviour
             }
             Destroy(gameObject);
         }
-
-        void DamageCheck()
+    }
+    private void DamageCheck()
+    {
+        if (player != null)
         {
-            if (player != null)
-            {
-                player.TakeDamage(bulletDamage);
-                Instantiate(blood, transform.position, blood.transform.rotation);
-            }
-            if (enemy != null)
-            {
-                enemy.TakeDamage(bulletDamage);
-                Instantiate(blood, transform.position, blood.transform.rotation);
-            }
+            player.TakeDamage(bulletDamage);
+            Instantiate(blood, transform.position, blood.transform.rotation);
+        }
+        if (enemy != null)
+        {
+            enemy.TakeDamage(bulletDamage);
+            Instantiate(blood, transform.position, blood.transform.rotation);
         }
     }
 }

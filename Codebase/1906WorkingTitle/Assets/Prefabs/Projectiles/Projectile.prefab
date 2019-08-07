@@ -79,12 +79,13 @@ MonoBehaviour:
   bulletDamage: 0
   sparks: {fileID: 4862458918604485940, guid: e38789e27b3813e4695ae8660c15bccc, type: 3}
   blood: {fileID: 7209053802212718509, guid: 36b711bee4fb100469ac728bf7577c6f, type: 3}
-  iceImmune: 0
-  fireImmune: 0
-  stunImmune: 0
+  isIceImmune: 0
+  isFireImmune: 0
+  isStunImmune: 0
   fireCreep: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
     type: 3}
-  glueCreep: {fileID: 0}
+  iceCreep: {fileID: 7834789050226885555, guid: 05f1caa6465ecc2419d60be83a1e5cfa,
+    type: 3}
 --- !u!96 &1114702312
 TrailRenderer:
   serializedVersion: 2

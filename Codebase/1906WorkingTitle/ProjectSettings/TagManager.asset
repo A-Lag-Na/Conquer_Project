@@ -17,9 +17,9 @@ TagManager:
   - Water
   - Stun Bullet
   - FirePot
-  - GluePot
   - Bridge
   - Trap
+  - IcePot
   layers:
   - Default
   - TransparentFX
@@ -35,7 +35,7 @@ TagManager:
   - Enemy
   - Enemy Bullet
   - Pickups
-  - Blood
+  - Creep
   - Dash
   - Trap
   - 
@@ -51,8 +51,7 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
+  - Blood
   - 
   m_SortingLayers:
   - name: Default
