@@ -11,47 +11,56 @@ public class BulletHellEnemy : MonoBehaviour
 
     [SerializeField] private int bulletSpeed = 2;
 
-    //If this enemy's attack behavior is enabled or not.
-    [SerializeField] bool attackEnabled = true;
-
     //What projectile the enemy shoots
-    [SerializeField] GameObject projectile;
+    [SerializeField] private GameObject projectile = null;
 
-    [SerializeField] float rotationRate = 2;
-
-    [SerializeField] AudioClip fire;
+    [SerializeField] private AudioClip fire = null;
     #endregion
-    AudioSource source;
-    //Counts frames between attacks
-    private int attackTimer;
 
-    [SerializeField] int rotationSpeed;
-    int rotationCap;
-    float lastTimeFired;
+    #region EnemyStats
+    private int rotationSpeed = 1;
+    private float lastTimeFired = 0.0f;
+    private bool isPaused = false;
+    public bool isStunned = false;
+    private int bulletDamage = 1;
+    private float timeMade = 0.0f;
+    #endregion
 
-    NavMeshAgent agent;
-    GameObject player;
-    private bool paused;
+    #region UnityComponents
+    private AudioSource source;
+    private NavMeshAgent agent;
+    private GameObject player;
+    #endregion
 
-    public bool stunned;
-
-    int bulletDamage;
-    float timeMade;
     private void OnEnable()
     {
         timeMade = Time.time;
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
-        player = GameObject.FindGameObjectWithTag("Player");
-        rotationSpeed = 120;
+        agent = GetComponent<NavMeshAgent>();
         bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        player = GameObject.FindGameObjectWithTag("Player");
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
+        rotationSpeed = 120;
     }
 
+    // Update is called once per frame
+    void Update()
+    {
+        if (!isPaused & !isStunned)
+        {
+            agent.SetDestination(player.transform.position);
+            agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+            ShootBullet();
+        }
+    }
+
+    #region EnemyFunctions
     public void ShootBullet()
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
@@ -85,33 +94,24 @@ public class BulletHellEnemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (!paused & !stunned)
-        {
-            agent.SetDestination(player.transform.position);
-            agent.transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-            transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
-            ShootBullet();
-        }
-    }
-
     public void Stun()
     {
-        stunned = true;
+        isStunned = true;
     }
+
     public void Unstun()
     {
-        stunned = false;
+        isStunned = false;
     }
+
     public void OnPauseGame()
     {
-        paused = true;
+        isPaused = true;
     }
+
     public void OnResumeGame()
     {
-        paused = false;
+        isPaused = false;
     }
 
     GameObject CreateBullet()
@@ -124,4 +124,5 @@ public class BulletHellEnemy : MonoBehaviour
         clone.GetComponent<TrailRenderer>().endColor = Color.white;
         return clone;
     }
+    #endregion
 }

@@ -11,13 +11,16 @@ public class CollisionScript : MonoBehaviour
     public int bulletDamage;
     public GameObject sparks;
     public GameObject blood;
-    public bool iceImmune = false;
-    public bool fireImmune = false;
-    public bool stunImmune = false;
+    public bool isIceImmune = false;
+    public bool isFireImmune = false;
+    public bool isStunImmune = false;
 
     private Player player;
     private EnemyStats enemy;
     private NavMeshAgent nav;
+
+    [SerializeField] GameObject fireCreep = null;
+    [SerializeField] GameObject glueCreep = null;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,30 +34,33 @@ public class CollisionScript : MonoBehaviour
             audioSource.PlayOneShot(hurt);
             audioSource.volume = 0.5f;
         }
-        if (collision.collider.CompareTag("Player") || collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+        if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
         {
             if (collision.collider.CompareTag("Player"))
             {
                 player = collision.collider.GetComponent<Player>();
                 //The enemy we hit takes damage.
-                fireImmune = player.fireImmune;
-                iceImmune = player.iceImmune;
-                stunImmune = player.stunImmune;
+                isFireImmune = player.isFireImmune;
+                isIceImmune = player.isIceImmune;
+                isStunImmune = player.isStunImmune;
             }
-            if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy") || collision.collider.CompareTag("Fire Enemy") || collision.collider.CompareTag("Ice Enemy"))
+            if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
-                //The enemy we hit takes damage.
-                fireImmune = enemy.fireImmune;
-                iceImmune = enemy.iceImmune;
-                stunImmune = enemy.stunImmune;
+                isFireImmune = enemy.fireImmune;
+                isIceImmune = enemy.iceImmune;
+                isStunImmune = enemy.stunImmune;
             }
         }
         else
         {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
+            if (gameObject.CompareTag("FirePot"))
+                Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+            if (gameObject.CompareTag("GluePot"))
+                Instantiate(glueCreep, transform.position, glueCreep.transform.rotation);
         }
-        if (!(iceImmune && fireImmune))
+        if (!(isIceImmune && isFireImmune))
         {
             ConditionManager con = target.GetComponent<ConditionManager>();
             if (con != null)
@@ -64,7 +70,7 @@ public class CollisionScript : MonoBehaviour
                 {
                     case "Fire Bullet":
                         {
-                            if (!fireImmune)
+                            if (!isFireImmune)
                             {
                                 DamageCheck();
                                 //Burn sound effect
@@ -75,7 +81,7 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "Ice Bullet":
                         {
-                            if (!iceImmune)
+                            if (!isIceImmune)
                             {
                                 DamageCheck();
                                 con.SubtractSpeed(0.6f);
@@ -85,27 +91,35 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "Stun Bullet":
                         {
-                            if (!stunImmune)
+                            if (!isStunImmune)
                             {
                                 DamageCheck();
                                 if (target.CompareTag("BulletHell Enemy"))
                                 {
-                                    BulletHellEnemy hellai = enemy.GetComponent<BulletHellEnemy>();
-                                    hellai.Stun();
+                                    BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                    bulletHellAI.Stun();
                                     nav.enabled = false;
                                 }
                                 else if (!target.CompareTag("Player"))
                                 {
-                                    EnemyAI ai = enemy.GetComponent<EnemyAI>();
-                                    ai.Stun();
+                                    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+                                    enemyAI.Stun();
                                     nav.enabled = false;
                                 }
                                 else
-                                {
                                     player.Stun();
-                                }
                                 con.TimerAdd("stun", 31);
                             }
+                            break;
+                        }
+                    case "FirePot":
+                        {
+                            Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                            break;
+                        }
+                    case "GluePot":
+                        {
+
                             break;
                         }
                     default:
@@ -118,16 +132,17 @@ public class CollisionScript : MonoBehaviour
         }
         Destroy(gameObject);
     }
+
     private void DamageCheck()
     {
         if (player != null)
         {
-            player.TakeDamage();
+            player.TakeDamage(bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
         if (enemy != null)
         {
-            enemy.TakeDamage();
+            enemy.TakeDamage(bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
     }

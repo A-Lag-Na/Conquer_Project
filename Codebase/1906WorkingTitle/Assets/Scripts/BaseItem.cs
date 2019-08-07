@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class BaseItem : MonoBehaviour
 {
+    #region BaseProperties
     public enum Type { Weapon, Potion, EOF};
-    [SerializeField] Type itemType;
-    [SerializeField] int value;
-    [SerializeField] string name = "";
-    [SerializeField] Sprite sprite;
+    [SerializeField] private Type itemType = (Type)1;
+    [SerializeField] private int value = 0;
+    [SerializeField] private new string name = "";
+    [SerializeField] private Sprite sprite;
+    #endregion
 
-    private void Start()
-    {
-
-    }
-
-    public Type ItemType()
+    #region BaseFunctions
+    public Type GetItemType()
     {
         return itemType;
     }
@@ -52,4 +50,5 @@ public class BaseItem : MonoBehaviour
     {
         return name;
     }
+    #endregion
 }
