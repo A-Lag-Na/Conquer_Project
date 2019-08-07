@@ -89,15 +89,18 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(int _damage = 1)
     {
-        BlinkOnHit();
-        health -= _damage;
-        if (health <= 0)
+        if(damage > 0)
         {
-            if (anim != null)
+            BlinkOnHit();
+            health -= _damage;
+            if (health <= 0)
             {
-                anim.SetBool("Dead", true);
+                if (anim != null)
+                {
+                    anim.SetBool("Dead", true);
+                }
+                Kill();
             }
-            Kill();
         }
     }
 
