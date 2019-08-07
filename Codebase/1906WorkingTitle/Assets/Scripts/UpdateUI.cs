@@ -7,17 +7,19 @@ public class UpdateUI : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    //recorded stats
+    #region RecordedStats
     [SerializeField] private Player player;
     [SerializeField] private Inventory inventory;
     private float health, maxHealth, currentExperience, nextLevelExp;
     private int lives, coins;
+    #endregion
 
-    //UI elements to remember
+    #region UI elements to remember
     private Text healthText, livesText, coinText;
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
     private Sprite cSprite, tabSprite;
+    #endregion
 
     //Color flashes
     [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent;
@@ -38,10 +40,12 @@ public class UpdateUI : MonoBehaviour
         statScreen = GameObject.Find("Stat Screen").gameObject;
         statScreen.SetActive(false);
         //grab player GameObject
-        if (GameObject.Find("Player")) {
+        if (GameObject.Find("Player"))
+        {
             player = GameObject.Find("Player").GetComponent<Player>();
             inventory = GameObject.Find("Player").GetComponent<Inventory>();
         }
+
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
         healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
@@ -49,34 +53,11 @@ public class UpdateUI : MonoBehaviour
         levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
         levelFlasher = transform.Find("XP Bar").transform.Find("LevelUpFlash").GetComponent<Image>();
         buttonPrompt = transform.Find("ButtonPrompt").GetComponent<Image>();
-        #region start
-        ////update health
-        //health = player.GetHealth();
-        //Vector3 HealthScale = healthTransform.localScale;
-        //if (player.GetMaxHealth() != 0)
-        //    HealthScale.x = health / player.GetMaxHealth();
-        //healthTransform.localScale = HealthScale;
-        //healthText.text = $"health/{player.GetMaxHealth()}";
 
-        ////update coin count
-        //coins = player.GetCoins();
-        //coinText.text = $"X{coins}";
-
-        ////update lives count
-        //lives = player.GetLives();
-        //livesText.text = $"X{lives}";
-
-        ////update stats text
-        //level = player.GetLevel();
-        //defense = player.GetDefense();
-        //attackSpeed = player.GetAttackSpeed();
-        //attackDamage = player.GetDamage();
-        //statsText.text = $"Level - {level}\nDefense - {defense}\nAttack Speed - {attackSpeed}\nAttack Strength - {attackDamage}";
-        #endregion
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
         InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
-        
+
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
 
@@ -92,63 +73,21 @@ public class UpdateUI : MonoBehaviour
 
     private void OnEnable()
     {
-        if(statScreen!=null)
+        if (statScreen != null)
             statScreen.SetActive(false);
-        if(pauseMenu!=null)
+        if (pauseMenu != null)
             pauseMenu.SetActive(false);
     }
-
-    #region inDev
-    //void UpdateCoins()
-    //{
-
-    //    //update coin count
-    //    //float coins = player.GetCoins();
-    //    transform.GetChild(2).GetChild(0).GetComponent<Text>().text = "X" + coins.ToString();
-    //}
-
-    //void UpdateLives()
-    //{
-
-    //    //update lives count
-    //    //float lives = player.GetLives();
-    //    transform.GetChild(0).GetChild(0).GetComponent<Text>().text = "X" + lives.ToString();
-    //}
-
-    //void UpdateHealth()
-    //{
-
-    //    //update health
-    //    //float health = player.GetHealth();
-    //    Vector3 scale = transform.GetChild(1).GetChild(0).GetComponent<RectTransform>().localScale;
-    //    scale.x = health / 100.0f;
-    //    transform.GetChild(1).GetChild(0).GetComponent<RectTransform>().localScale = scale;
-    //    transform.GetChild(1).GetChild(1).GetComponent<Text>().text = health.ToString() + "/100";
-    //}
-
-    //void UpdateInventorySlot1()
-    //{
-
-    //    //transform.GetChild(3).GetComponent<Image>().sprite = slotOne;
-    //}
-
-    //void UpdateInventorySlot2()
-    //{
-
-    //    //transform.GetChild(4).GetComponent<Image>().sprite = slotTwo;
-    //}
-    #endregion
-
 
     public void TakeDamage()
     {
         damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
     }
-    
+
     public void LevelUp()
     {
         levelUp = true;
-        buttonPrompt.color = new Color32(255,255,255,255);
+        buttonPrompt.color = new Color32(255, 255, 255, 255);
         buttonPrompt.sprite = tabSprite;
     }
 
@@ -181,23 +120,18 @@ public class UpdateUI : MonoBehaviour
         //update inventory
         InvSlot1.sprite = player.GetWeapon();
         InvSlot2.sprite = player.GetPotion();
-        
+
 
         //taking damage
         if (damageFlasher.color != damageColor)
-        {
             damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
-        }
-        
 
-        if(levelUp)
-        {
+        if (levelUp)
             levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
-        }
 
         //check if near shop
         dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
-        if(dist <= 5.2f)
+        if (dist <= 5.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
@@ -208,15 +142,11 @@ public class UpdateUI : MonoBehaviour
             buttonPrompt.sprite = tabSprite;
         }
         else
-        {
             buttonPrompt.color = new Color32(0, 0, 0, 0);
-        }
 
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-        {
             PauseGame();
-        }
 
         if (Input.GetKeyDown(KeyCode.Tab))
         {
@@ -228,14 +158,12 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(health != maxHealth)
+            if (health != maxHealth)
                 player.RestoreHealth(inventory.Heal());
         }
 
         if (Input.GetKeyDown(KeyCode.C))
-        {
             OpenShop();
-        }
     }
 
     void PauseGame()
@@ -251,8 +179,6 @@ public class UpdateUI : MonoBehaviour
     void OpenShop()
     {
         if (dist <= 5.2f)
-        {
             GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
-        }
     }
 }
