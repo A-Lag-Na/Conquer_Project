@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
     private int coins;
     private Text coinText, purchaseText;
     private Button Exit;
-    private GameObject mainUI;
+    private GameObject mainUI, denyScreen;
     //List<BaseItem> shopItems = new List<BaseItem>();
     BaseItem currentItem;
 
@@ -18,6 +18,9 @@ public class ShopUI : MonoBehaviour
     {
         mainUI = GameObject.Find("Main UI");
         mainUI.SetActive(false);
+
+        denyScreen = transform.Find("Deny Screen").gameObject;
+        denyScreen.SetActive(false);
 
         inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
@@ -89,8 +92,18 @@ public class ShopUI : MonoBehaviour
         }
         else
         {
-            //add popup dialog denying
+            DenyPuchase();
         }
+    }
+
+    void DenyPuchase()
+    {
+        denyScreen.SetActive(true);
+    }
+
+    public void Continue()
+    {
+        denyScreen.SetActive(false);
     }
 
 }
