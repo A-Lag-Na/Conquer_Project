@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(0.01f);
         isDashing = true;
-        gameObject.layer = 12;
+        gameObject.layer = 15;
         characterController.Move(moveDirection);
         yield return new WaitForSeconds(0.1f);
         gameObject.layer = 9;
