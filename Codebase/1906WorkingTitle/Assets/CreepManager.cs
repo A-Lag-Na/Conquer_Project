@@ -6,8 +6,9 @@ public class CreepManager : MonoBehaviour
 {
     Player player;
     EnemyStats enemy;
-    bool fireImmune;
-    bool iceImmune;
+    bool isFireImmune;
+    bool isIceImmune;
+
     private void OnTriggerStay(Collider other)
     {
         string colTag = other.gameObject.tag;
@@ -19,14 +20,14 @@ public class CreepManager : MonoBehaviour
         if (colTag == "Player")
         {
             player = other.GetComponent<Player>();
-            fireImmune = player.isFireImmune;
-            iceImmune = player.isIceImmune;
+                isFireImmune = player.isFireImmune;
+                isIceImmune = player.isIceImmune;
         }
         else if (colTag == "Enemy" || colTag == "BulletHell Enemy" || colTag == "Fire Enemy" || colTag == "Ice Enemy")
         {
             enemy = other.GetComponent<EnemyStats>();
-            fireImmune = enemy.fireImmune;
-            iceImmune = enemy.iceImmune;
+                isFireImmune = enemy.fireImmune;
+                isIceImmune = enemy.iceImmune;
         }
         else { }
 
@@ -34,7 +35,7 @@ public class CreepManager : MonoBehaviour
         {
             case "FirePot":
                 {
-                    if ((player != null || enemy != null) && !fireImmune)
+                        if ((player != null || enemy != null) && !isFireImmune)
                     {
                         con.TimerAdd("fire", 3);
                     }
@@ -42,7 +43,7 @@ public class CreepManager : MonoBehaviour
                 }
             case "GluePot":
                 {
-                    if ((player != null || enemy != null) && !iceImmune)
+                        if ((player != null || enemy != null) && !isIceImmune)
                     {
                         con.SubtractSpeed(0.006f);
                         con.TimerAdd("thaw", 1);

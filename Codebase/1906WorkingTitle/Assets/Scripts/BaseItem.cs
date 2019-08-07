@@ -12,6 +12,7 @@ public class BaseItem : MonoBehaviour
     [SerializeField] private Sprite sprite;
     #endregion
 
+    #region BaseFunctions
     public Type GetItemType()
     {
         return itemType;
@@ -49,4 +50,5 @@ public class BaseItem : MonoBehaviour
     {
         return name;
     }
+    #endregion
 }

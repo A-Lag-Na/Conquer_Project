@@ -5,15 +5,18 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    #region EnemyStats
     [SerializeField] private float attackRate;
-    //[SerializeField] private int attackMax = 120;
-
     private float bulletSpeed;
     int bulletDamage;
+    public bool isStunned;
+    private bool isPaused;
+    bool attackEnabled = true;
+    #endregion
 
     //If this enemy's attack behavior is enabled or not.
-    [SerializeField] bool attackEnabled = true;
 
+    #region UnityComponents
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
@@ -24,9 +27,8 @@ public class EnemyAI : MonoBehaviour
     NavMeshAgent agent;
     GameObject player;
     AudioSource source;
+    #endregion
 
-    public bool stunned;
-    private bool paused;
 
     // Start is called before the first frame update
     void Start()
@@ -34,30 +36,25 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyStats temp = GetComponent<EnemyStats>();
-        attackRate = temp.GetAttackRate();
-        bulletSpeed = temp.GetBulletSpeed();
+        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        attackRate = enemyStats.GetAttackRate();
+        bulletSpeed = enemyStats.GetBulletSpeed();
         bulletDamage = GetComponent<EnemyStats>().GetDamage();
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
     }
 
-    IEnumerator attack()
+    IEnumerator EnemyAttack()
     {
         attackEnabled = false;
-        Quaternion temp = projectile.transform.rotation;
-        temp.x = 0;
-        temp.z = 0;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, temp);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        if(anim != null && !stunned)
-        {
+        if (anim != null && !isStunned)
             anim.SetTrigger("Attack");
-        }
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
     }
@@ -66,7 +63,7 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!paused && !stunned)
+        if (!isPaused && !isStunned)
         {
             agent.SetDestination(player.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
@@ -77,18 +74,16 @@ public class EnemyAI : MonoBehaviour
                 // Lock the rotation around X and Z Axes
                 rotation.x = 0.0f;
                 rotation.z = 0.0f;
-                // Change the player's tranform's rotation to the rotation Quaternion
+                // Change the enemy's tranform's rotation to the rotation Quaternion
                 agent.transform.rotation = rotation;
             }
 
             if (attackEnabled)
-            {
-                StartCoroutine(attack());
-            }
+                StartCoroutine(EnemyAttack());
         }
     }
 
-    #region stuff
+    #region EnemyFunctions
     //Call this function after you change either attackRate or bulletSpeed in EnemyStats while the enemy is active.
     public void RefreshStats()
     {
@@ -98,19 +93,19 @@ public class EnemyAI : MonoBehaviour
     }
     public void OnPauseGame()
     {
-        paused = true;
+        isPaused = true;
     }
     public void OnResumeGame()
     {
-        paused = false;
+        isPaused = false;
     }
     public void Stun()
     {
-        stunned = true;
+        isStunned = true;
     }
     public void Unstun()
     {
-        stunned = false;
+        isStunned = false;
     }
-    #endregion stuff
+    #endregion
 }
