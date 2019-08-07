@@ -109,7 +109,42 @@ public class Inventory : MonoBehaviour
     #endregion
 
     #region Potion stat Grab
-    public float Heal()
+
+    public void UsePotion()
+    {
+        if(potionNode != null)
+        {
+            Player player = GetComponentInParent<Player>();
+            if (potionNode.Value.GetPotionType() == Potion.PotionType.Consumable)
+            {
+                switch (potionNode.Value.name)
+                {
+                    case "Health Potion":
+                        if(player.GetHealth() < player.GetMaxHealth())
+                            Heal();
+                        break;
+                    case "Defense Potion":
+                        //DefenseBuff();
+                        break;
+                    case "Damage Buff Potion":
+                        //DamageBuff();
+                        break;
+                    case "Movement Speed Potion":
+                        //MovementSpeedBuff();
+                        break;
+                    default:
+                        break;
+                }
+            }
+            else
+            {
+                //ThrowPotion();
+            }
+
+        }
+    }
+
+    private float Heal()
     {
         if (potionNode != null)
         {
