@@ -74,4 +74,10 @@ public class DartAI : MonoBehaviour
         paused = false;
     }
     #endregion
+
+    public void DisableAttack()
+    {
+        StopAllCoroutines();
+        attackEnabled = false;
+    }
 }
