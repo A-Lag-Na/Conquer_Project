@@ -36,14 +36,7 @@ public class Inventory : MonoBehaviour
         }
         amountOfPotions = potionList.Count;
     }
-
-    //#region Remove Weapons and Potions
-    //public void RemoveWeapon()
-    //{
-    //    weapon = null;
-    //}
     
-
     #region gold
     public void AddCoins(int amountOfCoins)
     {
