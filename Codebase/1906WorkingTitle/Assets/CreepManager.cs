@@ -9,51 +9,53 @@ public class CreepManager : MonoBehaviour
     bool isFireImmune;
     bool isIceImmune;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerStay(Collider collide)
     {
-        string colTag = other.gameObject.tag;
-        ConditionManager con = other.gameObject.GetComponentInParent<ConditionManager>();
+        string colTag = collide.gameObject.tag;
+        ConditionManager con = collide.gameObject.GetComponentInParent<ConditionManager>();
 
         //Burn sound effect
         //audioSource.PlayOneShot(burn);
 
         if (colTag == "Player")
         {
-            player = other.GetComponent<Player>();
-                isFireImmune = player.isFireImmune;
-                isIceImmune = player.isIceImmune;
+            player = collide.GetComponent<Player>();
+            isFireImmune = player.isFireImmune;
+            isIceImmune = player.isIceImmune;
         }
         else if (colTag == "Enemy" || colTag == "BulletHell Enemy" || colTag == "Fire Enemy" || colTag == "Ice Enemy")
         {
-            enemy = other.GetComponent<EnemyStats>();
-                isFireImmune = enemy.fireImmune;
-                isIceImmune = enemy.iceImmune;
+            enemy = collide.GetComponent<EnemyStats>();
+            isFireImmune = enemy.fireImmune;
+            isIceImmune = enemy.iceImmune;
         }
         else { }
-
-        switch (gameObject.tag)
+        if(con!=null)
         {
-            case "FirePot":
-                {
+            switch (gameObject.tag)
+            {
+                case "FirePot":
+                    {
                         if ((player != null || enemy != null) && !isFireImmune)
-                    {
-                        con.TimerAdd("fire", 3);
+                        {
+                            con.TimerAdd("fire", 3);
+                        }
+                        break;
                     }
-                    break;
-                }
-            case "GluePot":
-                {
+                case "IcePot":
+                    {
                         if ((player != null || enemy != null) && !isIceImmune)
-                    {
-                        con.SubtractSpeed(0.006f);
-                        con.TimerAdd("thaw", 1);
+                        {
+                            con.SubtractSpeed(0.006f);
+                            con.TimerAdd("thaw", 1);
+                        }
+                        break;
                     }
-                    break;
-                }
-            default:
-                {
-                    break;
-                }
+                default:
+                    {
+                        break;
+                    }
+            }
         }
     }
 }
