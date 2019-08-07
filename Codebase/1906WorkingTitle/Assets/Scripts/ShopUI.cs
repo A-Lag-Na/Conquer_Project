@@ -71,29 +71,24 @@ public class ShopUI : MonoBehaviour
 
     public void Purchase()
     {
-        if (currentItem != null)
+        if (currentItem != null && currentItem.GetValue() <= coins)
         {
             inventory.AddCoins(-1 * currentItem.GetValue());
             if (currentItem.GetItemType() == BaseItem.Type.Weapon)
                 inventory.AddWeapon(currentItem);
             else
                 inventory.AddPotion(currentItem);
-            currentItem = null;
-            purchaseText.text = "";
+        }
+        else if(currentItem != null && currentItem.GetValue() > coins)
+        {
+            DenyPuchase();
         }
     }
 
     public void Checkout(BaseItem _item)
     {
-        if (_item.GetValue() < coins)
-        {
-            currentItem = _item;
-            purchaseText.text = $"{currentItem.name}\n{currentItem.GetValue()} Coins";
-        }
-        else
-        {
-            DenyPuchase();
-        }
+        currentItem = _item;
+        purchaseText.text = $"{currentItem.name}\n{currentItem.GetValue()} Coins";
     }
 
     void DenyPuchase()
