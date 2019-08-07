@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-
     Button ResumeBTN, OptionsBTN, ExitBTN;
     GameObject mainUI, optionsMenu;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -25,14 +25,19 @@ public class PauseMenu : MonoBehaviour
         OptionsBTN.onClick.AddListener(Options);
         ExitBTN.onClick.AddListener(ExitGame);
 
-
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        }
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        //exit pause menu and reenable main ui
+        if (Input.GetKeyDown(KeyCode.Escape) && !transform.Find("Options").gameObject.activeSelf)
+            Resume();
     }
 
     private void OnEnable()
@@ -42,43 +47,25 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 0;
             Object[] objects = FindObjectsOfType(typeof(GameObject));
             foreach (GameObject go in objects)
-            {
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            }
             mainUI.SetActive(false);
         }
 
         optionsMenu = transform.Find("Options").gameObject;
-        //if (optionsMenu != null)
-            optionsMenu.SetActive(false);
-        if(transform.Find("Pause").gameObject)
+        optionsMenu.SetActive(false);
+        if (transform.Find("Pause").gameObject)
             transform.Find("Pause").gameObject.SetActive(true);
-        
     }
-    
-
-    // Update is called once per frame
-    void Update()
-    {
-        //exit pause menu and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape) && !transform.Find("Options").gameObject.activeSelf)
-        {
-            Resume();
-        }
-    }
-
 
     void Resume()
     {
         UnPause();
         mainUI.SetActive(true);
-        //Destroy(gameObject);
     }
 
     void Options()
     {
-        //SceneManager.LoadScene("Options");
         optionsMenu.SetActive(true);
     }
 
@@ -87,9 +74,7 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-        {
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        }
     }
 
     void ExitGame()
