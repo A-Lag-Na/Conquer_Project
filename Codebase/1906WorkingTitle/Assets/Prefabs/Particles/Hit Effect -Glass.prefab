@@ -142,10 +142,15 @@ PrefabInstance:
       propertyPath: VelocityModule.z.minScalar
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1390932859670083531, guid: 36b711bee4fb100469ac728bf7577c6f,
+        type: 3}
+      propertyPath: ShapeModule.radiusThickness
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5054324215529274949, guid: 36b711bee4fb100469ac728bf7577c6f,
         type: 3}
       propertyPath: _time
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 36b711bee4fb100469ac728bf7577c6f, type: 3}
