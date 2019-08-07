@@ -6,12 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     private Button startBTN, howToPlayBTN, optionsBTN, exitBTN;
 
     private GameObject howToPlay, options;
 
+    //Start is called before the first frame update
     void Start()
     {
         howToPlay = GameObject.Find("How to playText");
@@ -19,14 +18,6 @@ public class MainMenu : MonoBehaviour
 
         options = GameObject.Find("Options");
         options.SetActive(false);
-
-        //foreach (GameObject go in Resources.FindObjectsOfTypeAll(typeof(GameObject)) as GameObject[])
-        //{
-        //    if (go.name == "How to playText")
-        //        howToPlay = go;
-        //    if (go.name == "Options")
-        //        options = go;
-        //}
 
         //assign buttons
         startBTN = GameObject.Find("Start Game").GetComponent<Button>();
@@ -53,15 +44,14 @@ public class MainMenu : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {
             CloseHowTo();
-        }
     }
 
     private void StartGame()
     {
         SceneManager.LoadScene("Build Scene");
     }
+
     private void HowToPlay()
     {
         howToPlay.SetActive(true);
@@ -75,9 +65,9 @@ public class MainMenu : MonoBehaviour
 
     private void OptionsMenu()
     {
-        //SceneManager.LoadScene("Options");
         options.SetActive(true);
     }
+
     private void ExitGame()
     {
         Application.Quit();

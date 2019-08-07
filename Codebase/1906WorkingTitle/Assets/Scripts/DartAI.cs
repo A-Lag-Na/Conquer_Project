@@ -15,10 +15,10 @@ public class DartAI : MonoBehaviour
     [SerializeField] bool attackEnabled = true;
 
     //What projectile the enemy shoots
-    [SerializeField] GameObject projectile;
-    [SerializeField] GameObject projectilePos;
+    [SerializeField] GameObject projectile = null;
+    [SerializeField] GameObject projectilePos = null;
 
-    [SerializeField] AudioClip fire;
+    [SerializeField] AudioClip fire = null;
     
     AudioSource source;
     

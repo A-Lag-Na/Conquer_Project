@@ -6,7 +6,6 @@ public class Potion : BaseItem
 {
     [SerializeField] float healthReturn = 5;
     
-
     public float Heal()
     {
         return healthReturn;

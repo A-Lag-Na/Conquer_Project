@@ -87,6 +87,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
         type: 3}
+    - target: {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
+      propertyPath: bulletDamage
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
       value: 0.734
@@ -110,6 +114,11 @@ PrefabInstance:
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key1.r
       value: 0.85300004
+      objectReference: {fileID: 0}
+    - target: {fileID: 4444641465012830224, guid: b835f69537dc0534e92fdf75f7f4c014,
+        type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
