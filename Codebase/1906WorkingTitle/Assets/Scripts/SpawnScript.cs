@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SpawnScript : MonoBehaviour
 {
+    #region SpawnerStats
     //Whether the spawner is spawning or not.
     [SerializeField] private bool spawnEnabled;
 
@@ -25,6 +26,7 @@ public class SpawnScript : MonoBehaviour
 
     //List of enemies spawned by the spawner.
     public List<GameObject> spawnedEnemies;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -32,19 +34,17 @@ public class SpawnScript : MonoBehaviour
         pointsClone = points;
         enemiesClone = new List<EnemyStats>();
         for (int i = 0; i < enemies.Count; i++)
-        {
             enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (spawnAgain && spawnEnabled)
-        {
             StartCoroutine(SpawnEnemy());
-        }
     }
+
+    #region SpawnerFunctions
 
     //Get-setters for enabled
     public bool GetEnabled()
@@ -60,39 +60,33 @@ public class SpawnScript : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         if (spawnedEnemies.Count == 0 && pointsClone < 1)
-        {
             SetDoorLock(false);
-        }
+
         //Searches list and removes any null values (dead enemies)
         for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
-        {
             if (spawnedEnemies[i] == null)
-            {
                 spawnedEnemies.RemoveAt(i);
-            }
-        }
         spawnAgain = false;
+
         if (pointsClone > 0)
         {
             for (int i = 0; i < enemiesClone.Count; i++)
-            {
                 if (enemiesClone[i].GetPoints() > pointsClone)
-                {
                     enemiesClone.Remove(enemiesClone[i]);
-                }
-            }
-            //Temp selects 
-            int temp = Mathf.RoundToInt(Random.Range(0, enemiesClone.Count));
+
+            //randomNum selects 
+            int randomNum = Mathf.RoundToInt(Random.Range(0, enemiesClone.Count));
 
             //Spawns an enemy
-            GameObject enemyClone = Instantiate(enemies[temp], transform.position, Quaternion.identity);
+            GameObject enemyClone = Instantiate(enemies[randomNum], transform.position, Quaternion.identity);
 
             //Adds the enemy to spawned enemies list
             spawnedEnemies.Add(enemyClone);
 
             //subtracts enemy points from spawner's
-            pointsClone -= enemies[temp].GetComponent<EnemyStats>().GetPoints();
+            pointsClone -= enemies[randomNum].GetComponent<EnemyStats>().GetPoints();
         }
+
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
     }
@@ -101,28 +95,18 @@ public class SpawnScript : MonoBehaviour
     public void SetDoorLock(bool _lock)
     {
         for (int i = 0; i < doors.Count; i++)
-        {
             doors[i].SetActive(_lock);
-        }
         if (!_lock)
-        {
             foreach (Transform child in transform.parent)
-            {
-                if(child.gameObject.layer == 15)
-                {
+                if (child.gameObject.layer == 15)
                     child.gameObject.GetComponent<DartAI>().DisableAttack();
-                }
-            }
-        }
     }
 
     //Function that changes the locks of some doors but not others
     public void SetDoorRange(bool _lock, int _lower, int _upper)
     {
         for (int i = _lower; i < _upper; i++)
-        {
             doors[i].SetActive(_lock);
-        }
     }
 
     //Resets the spawner
@@ -131,11 +115,8 @@ public class SpawnScript : MonoBehaviour
         enemiesClone.Clear();
         pointsClone = points;
         if (enemies.Count > 0)
-        {
             for (int i = 0; i < enemies.Count; i++)
-            {
                 enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
-            }
-        }
     }
+    #endregion
 }
