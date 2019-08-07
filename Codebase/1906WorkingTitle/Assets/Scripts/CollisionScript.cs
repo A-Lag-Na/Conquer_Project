@@ -114,7 +114,7 @@ public class CollisionScript : MonoBehaviour
                                 }
                                 else
                                     player.Stun();
-                                con.TimerAdd("stun", 31);
+                                con.TimerAdd("stun", 16);
                             }
                             break;
                         }
