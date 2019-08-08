@@ -67,6 +67,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1747532865434295145, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: m_Radius
+      value: 1.3602161
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747532865434295145, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: attackRate
@@ -91,16 +101,12 @@ PrefabInstance:
       propertyPath: projectilePos
       value: 
       objectReference: {fileID: 5252745216505827100}
-    - target: {fileID: 1747532865434295145, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
-      propertyPath: m_Radius
-      value: 1.3602161
-      objectReference: {fileID: 0}
-    - target: {fileID: 1747532865434295145, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 7b45ffbc56e7aca48a4be53f78dce682,
+        type: 2}
     - target: {fileID: 2903663983187072319, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_UseGravity

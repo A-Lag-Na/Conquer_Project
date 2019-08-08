@@ -6,13 +6,15 @@ public class BaseItem : MonoBehaviour
 {
     #region BaseProperties
     public enum Type { Weapon, Potion, EOF};
-    [SerializeField] private Type itemType = (Type)1;
+    [SerializeField] private Type itemType = Type.EOF;
     [SerializeField] private int value = 0;
     [SerializeField] private new string name = "";
     [SerializeField] private Sprite sprite;
     #endregion
 
     #region BaseFunctions
+
+    #region Gets
     public Type GetItemType()
     {
         return itemType;
@@ -31,6 +33,13 @@ public class BaseItem : MonoBehaviour
             return Resources.Load<Sprite>("Sprites/background");
     }
 
+    protected string GetName()
+    {
+        return name;
+    }
+
+    #endregion
+    #region Sets
     protected void SetValue(int _value)
     {
         value = _value;
@@ -45,10 +54,7 @@ public class BaseItem : MonoBehaviour
     {
         name = _name;
     }
+    #endregion
 
-    protected string GetName()
-    {
-        return name;
-    }
     #endregion
 }

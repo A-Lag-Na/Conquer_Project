@@ -11,29 +11,22 @@ public class TurnerAI : MonoBehaviour
     Animator anim = null;
     NavMeshAgent agent = null;
     AudioSource source = null;
-    Rigidbody rb = null;
 
     // Start is called before the first frame update
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        rb = GetComponent<Rigidbody>();
-        agent.destination = transform.forward * 10;
+        agent.SetDestination(transform.forward * 12);
     }
+    
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionStay(Collision collisionInfo)
     {
-        
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        Collider col = collision.collider;
+        Collider col = collisionInfo.collider;
         GameObject obj = col.gameObject;
-        if(obj.CompareTag("Player") || obj.CompareTag("Default"))
+        if (obj.CompareTag("Player") || obj.CompareTag("Untagged"))
         {
-            agent.destination = transform.right * 10;
+            agent.SetDestination(transform.right * 12);
         }
     }
 

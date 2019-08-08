@@ -351,12 +351,13 @@ MonoBehaviour:
   damage: 1
   attackRate: 1
   bulletSpeed: 15
+  isFireImmune: 0
+  isIceImmune: 0
+  isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
-  blinkTime: 0.1
+  childEnemy: {fileID: 0}
+  children: 0
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
-  fireImmune: 1
-  iceImmune: 0
-  stunImmune: 0
 --- !u!114 &1810308395457174341
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -370,12 +371,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 1
-  attackEnabled: 1
+  isStunned: 0
   projectile: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
     type: 3}
   projectilePos: {fileID: 894435223510246337}
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
-  stunned: 0
 --- !u!114 &1810308395457174346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,7 +404,8 @@ AudioSource:
   m_GameObject: {fileID: 1810308395457174344}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 7b45ffbc56e7aca48a4be53f78dce682,
+    type: 2}
   m_audioClip: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 0.5
