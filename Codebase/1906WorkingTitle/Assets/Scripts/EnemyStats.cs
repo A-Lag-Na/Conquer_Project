@@ -31,6 +31,10 @@ public class EnemyStats : MonoBehaviour
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp = null;
 
+    [SerializeField] GameObject childEnemy = null;
+
+    public int children;
+
     //Enemy's color and renderer
     private Renderer enemyRender;
     public Color enemyColor;
@@ -132,9 +136,21 @@ public class EnemyStats : MonoBehaviour
             vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
             Instantiate(pickUp, vec, Quaternion.identity);
         }
+        if(childEnemy != null && children > 0)
+        {
+            Split(children);
+        }
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
         Destroy(gameObject);
+    }
+
+    public void Split(int children)
+    {
+        for (int i = 0; i < children; i++)
+        {
+            Instantiate(childEnemy, transform, childEnemy.transform);
+        }
     }
 
     //Color feedback on damage taken

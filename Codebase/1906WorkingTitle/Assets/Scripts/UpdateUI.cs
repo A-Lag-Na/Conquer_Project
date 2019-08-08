@@ -158,8 +158,7 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if (health != maxHealth)
-                player.RestoreHealth(inventory.Heal());
+            inventory.UsePotion();
         }
 
         if (Input.GetKeyDown(KeyCode.C))
