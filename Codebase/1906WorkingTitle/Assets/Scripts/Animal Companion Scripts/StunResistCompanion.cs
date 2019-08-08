@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackBoostCompanion : MonoBehaviour
+public class StunResistCompanion : MonoBehaviour
 {
     GameObject player = null;
     Player playerStats = null;
@@ -21,11 +21,11 @@ public class AttackBoostCompanion : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Player>();
         transform.position = playerPositionOffset;
-        playerStats.ModifyDamage(1);
+        playerStats.isStunImmune = true;
     }
 
     private void OnDisable()
     {
-        playerStats.ModifyDamage(-1);
+        playerStats.isStunImmune = false;
     }
 }
