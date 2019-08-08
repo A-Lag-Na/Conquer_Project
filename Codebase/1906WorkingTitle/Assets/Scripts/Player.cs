@@ -31,6 +31,9 @@ public class Player : MonoBehaviour
     private bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
+
+    private bool isSpellCasting = false;
+    private int activeSpell = 0;
     #endregion
 
     #region UnityComponents
@@ -60,6 +63,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectile1 = null;
     [SerializeField] private GameObject projectile2 = null;
     [SerializeField] private GameObject projectile3 = null;
+    [SerializeField] private GameObject spell1 = null;
+
     [SerializeField] private uint bulletVelocity = 0;
     [SerializeField] private GameObject projectilePosition = null;
     #endregion
@@ -167,6 +172,23 @@ public class Player : MonoBehaviour
                     ShootBullet(0);
 
                 #endregion
+
+                #region SpellCasting
+
+                if(isSpellCasting)
+                {
+                    switch (activeSpell)
+                    {
+                        case 1:
+                            {
+                                spell1.transform.position = projectilePosition.transform.position;
+                                spell1.transform.rotation = projectilePosition.transform.rotation;
+                                break;
+                            }
+                    }
+                }
+
+                #endregion
             }
         }
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
@@ -174,10 +196,36 @@ public class Player : MonoBehaviour
 
     #region PlayerFunctions
 
+    public void CastSpell(string type, float duration)
+    {
+        switch (type)
+        {
+            case "Ice":
+                {
+                    activeSpell = 1;
+                    spell1.SetActive(true);
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+        lastTimeFired = Time.time;
+        source.PlayOneShot(fire);
+        StartCoroutine(ShootRotation());
+    }
+    IEnumerator SpellCast(float duration, GameObject spell)
+    {
+        isSpellCasting = true;
+        yield return new WaitForSeconds(duration);
+        isSpellCasting = false;
+    }
+
     public void ShootBullet(int type)
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
-        if (Time.time > lastTimeFired + playerAttackSpeed)
+        if (Time.time > lastTimeFired + playerAttackSpeed && !isSpellCasting)
         {
             GameObject clone;
             switch (type)
@@ -185,8 +233,6 @@ public class Player : MonoBehaviour
                 case 0:
                     {
                         clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
-                        clone.GetComponent<TrailRenderer>().startColor = Color.black;
-                        clone.GetComponent<TrailRenderer>().endColor = Color.black;
                         break;
                     }
                 case 1:
@@ -197,13 +243,12 @@ public class Player : MonoBehaviour
                 case 2:
                     {
                         clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
-                        clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
-                        clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
                     }
                 case 3:
                     {
-                        clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
+                        clone = null;
+                        CastSpell("Ice", 4f);
                         break;
                     }
                 default:
@@ -212,14 +257,17 @@ public class Player : MonoBehaviour
                         break;
                     }
             }
-            clone.GetComponent<TrailRenderer>().time = .1125f;
-            clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
-            clone.gameObject.layer = 10;
-            clone.gameObject.SetActive(true);
-            clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
-            lastTimeFired = Time.time;
-            source.PlayOneShot(fire);
-            StartCoroutine(ShootRotation());
+            if (clone != null)
+            {
+                clone.GetComponent<TrailRenderer>().time = .1125f;
+                clone.GetComponent<CollisionScript>().bulletDamage = playerAttackDamage;
+                clone.gameObject.layer = 10;
+                clone.gameObject.SetActive(true);
+                clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
+                lastTimeFired = Time.time;
+                source.PlayOneShot(fire);
+                StartCoroutine(ShootRotation());
+            }
         }
     }
 
