@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     private bool isRotated = false;
     private bool isDashing = false;
+    public bool isRegenerating = false;
     #endregion
 
     #region UnityComponents
@@ -301,6 +302,21 @@ public class Player : MonoBehaviour
     {
         return maxPlayerHealth;
     }
+
+    public void ModifyHealth(float _playerHealth)
+    {
+        maxPlayerHealth += _playerHealth;
+    }
+
+    public IEnumerator HealthRegen()
+    {
+        isRegenerating = true;
+        if (playerHealth < maxPlayerHealth)
+            playerHealth += 0.5f;
+        yield return new WaitForSeconds(2.5f);
+        isRegenerating = false;
+    }
+
     #endregion
 
     #region Coins
