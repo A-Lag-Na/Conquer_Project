@@ -29,6 +29,7 @@ public class Player : MonoBehaviour
 
     private bool isRotated = false;
     private bool isDashing = false;
+    public bool isRegenerating = false;
     #endregion
 
     #region UnityComponents
@@ -166,6 +167,7 @@ public class Player : MonoBehaviour
                 #endregion
             }
         }
+        transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
     #region PlayerFunctions
@@ -300,6 +302,21 @@ public class Player : MonoBehaviour
     {
         return maxPlayerHealth;
     }
+
+    public void ModifyHealth(float _playerHealth)
+    {
+        maxPlayerHealth += _playerHealth;
+    }
+
+    public IEnumerator HealthRegen()
+    {
+        isRegenerating = true;
+        if (playerHealth < maxPlayerHealth)
+            playerHealth += 0.5f;
+        yield return new WaitForSeconds(2.5f);
+        isRegenerating = false;
+    }
+
     #endregion
 
     #region Coins
@@ -325,6 +342,12 @@ public class Player : MonoBehaviour
         playerDefense++;
         playerSpendingPoints--;
     }
+
+    public void ModifyDefense(int _playerDefense)
+    {
+        playerDefense += _playerDefense;
+    }
+
     #endregion
 
     #region Damage
@@ -337,6 +360,11 @@ public class Player : MonoBehaviour
     {
         playerAttackDamage++;
         playerSpendingPoints--;
+    }
+
+    public void ModifyDamage(int _playerDamage)
+    {
+        playerAttackDamage += _playerDamage;
     }
     #endregion
 
@@ -363,6 +391,11 @@ public class Player : MonoBehaviour
     public float GetMovementSpeed()
     {
         return playerMovementSpeed;
+    }
+
+    public void ModifySpeed(float _playerSpeed)
+    {
+        GetComponent<ConditionManager>().Refresh(_playerSpeed);
     }
     #endregion
 
