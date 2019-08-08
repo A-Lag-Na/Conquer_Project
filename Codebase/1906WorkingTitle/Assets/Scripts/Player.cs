@@ -29,7 +29,10 @@ public class Player : MonoBehaviour
 
     private bool isRotated = false;
     private bool isDashing = false;
-    public bool isRegenerating = false;
+    private bool isRegenerating = false;
+    private float playerExperienceModifier = 1;
+    private int playerCoinModifier = 1;
+    private int bulletChoice = 1;
     #endregion
 
     #region UnityComponents
@@ -91,6 +94,8 @@ public class Player : MonoBehaviour
         lastTimeFired = 0.0f;
         isRotated = false;
         isDashing = false;
+        isRegenerating = false;
+        bulletChoice = 1;
     }
 
     // Update is called once per frame
@@ -153,16 +158,17 @@ public class Player : MonoBehaviour
                 #endregion
 
                 #region PlayerAttack
-
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                    bulletChoice = 1;
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                    bulletChoice = 2;
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                    bulletChoice = 3;
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                    bulletChoice = 4;
                 // If the corresponding button is clicked call ShootBullet
                 if (Input.GetKey(KeyCode.Mouse0))
-                    ShootBullet(3);
-                if (Input.GetKey(KeyCode.Mouse1))
-                    ShootBullet(1);
-                if (Input.GetKey(KeyCode.Mouse2))
-                    ShootBullet(2);
-                if (Input.GetKey(KeyCode.Alpha1))
-                    ShootBullet(0);
+                    ShootBullet(bulletChoice);
 
                 #endregion
             }
@@ -180,26 +186,26 @@ public class Player : MonoBehaviour
             GameObject clone;
             switch (type)
             {
-                case 0:
+                case 1:
                     {
                         clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.black;
                         clone.GetComponent<TrailRenderer>().endColor = Color.black;
                         break;
                     }
-                case 1:
+                case 2:
                     {
                         clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
-                case 2:
+                case 3:
                     {
                         clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
                         clone.GetComponent<TrailRenderer>().startColor = Color.cyan;
                         clone.GetComponent<TrailRenderer>().endColor = Color.white;
                         break;
                     }
-                case 3:
+                case 4:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
                         break;
@@ -308,6 +314,11 @@ public class Player : MonoBehaviour
         maxPlayerHealth += _playerHealth;
     }
 
+    public bool GetisRegenerating()
+    {
+        return isRegenerating;
+    }
+
     public IEnumerator HealthRegen()
     {
         isRegenerating = true;
@@ -322,12 +333,18 @@ public class Player : MonoBehaviour
     #region Coins
     public void AddCoins(int amountOfCoins)
     {
+        amountOfCoins *= playerCoinModifier;
         inventory.AddCoins(amountOfCoins);
     }
 
     public int GetCoins()
     {
         return inventory.GetCoins();
+    }
+
+    public void CoinModifier(int _coinModifier)
+    {
+        playerCoinModifier += _coinModifier;
     }
     #endregion
 
@@ -434,11 +451,17 @@ public class Player : MonoBehaviour
         return playerLevel;
     }
 
-    public void GainExperience(int playerEXP)
+    public void GainExperience(float playerEXP)
     {
+        playerEXP *= playerExperienceModifier;
         playerExperience += playerEXP;
         if (playerExperience >= nextLevelExperience)
             LevelUp();
+    }
+
+    public void XPModifier(float _XPModifier)
+    {
+        playerExperienceModifier += _XPModifier;
     }
     #endregion
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthRegenCompanion : MonoBehaviour
+public class CoinCompanion : MonoBehaviour
 {
     GameObject player = null;
     Player playerStats = null;
@@ -14,8 +14,6 @@ public class HealthRegenCompanion : MonoBehaviour
     {
         playerPositionOffset = new Vector3(player.transform.position.x - 3, player.transform.position.y, player.transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
-        if (playerStats.GetisRegenerating() == false)
-            StartCoroutine(playerStats.HealthRegen());
     }
 
     private void OnEnable()
@@ -23,11 +21,11 @@ public class HealthRegenCompanion : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Player>();
         transform.position = playerPositionOffset;
-        playerStats.ModifyHealth(10);
+        playerStats.CoinModifier(1);
     }
 
     private void OnDisable()
     {
-        playerStats.ModifyHealth(-10);
+        playerStats.CoinModifier(-1);
     }
 }
