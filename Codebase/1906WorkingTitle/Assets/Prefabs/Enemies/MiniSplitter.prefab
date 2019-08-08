@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: MiniSplitter
       objectReference: {fileID: 0}
+    - target: {fileID: 5103296313136717577, guid: 83d9e9093bda01d47a1425cfde1908ff,
+        type: 3}
+      propertyPath: childEnemy
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6112462422878814989, guid: 83d9e9093bda01d47a1425cfde1908ff,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -81,11 +86,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.8
-      objectReference: {fileID: 0}
-    - target: {fileID: 5103296313136717577, guid: 83d9e9093bda01d47a1425cfde1908ff,
-        type: 3}
-      propertyPath: childEnemy
-      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83d9e9093bda01d47a1425cfde1908ff, type: 3}

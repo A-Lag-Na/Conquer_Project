@@ -6,7 +6,7 @@ public class BaseItem : MonoBehaviour
 {
     #region BaseProperties
     public enum Type { Weapon, Potion, EOF};
-    [SerializeField] private Type itemType = (Type)1;
+    [SerializeField] private Type itemType = Type.EOF;
     [SerializeField] private int value = 0;
     [SerializeField] private new string name = "";
     [SerializeField] private Sprite sprite;
