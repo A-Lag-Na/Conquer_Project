@@ -31,6 +31,8 @@ public class Player : MonoBehaviour
     private bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
+    private int playerCoinModifier = 1;
+    private int bulletChoice = 1;
 
     private bool isSpellCasting = false;
     private int activeSpell = 0;
@@ -98,6 +100,7 @@ public class Player : MonoBehaviour
         isRotated = false;
         isDashing = false;
         isRegenerating = false;
+        bulletChoice = 1;
     }
 
     // Update is called once per frame
@@ -160,16 +163,17 @@ public class Player : MonoBehaviour
                 #endregion
 
                 #region PlayerAttack
-
+                if (Input.GetKeyDown(KeyCode.Alpha1))
+                    bulletChoice = 1;
+                if (Input.GetKeyDown(KeyCode.Alpha2))
+                    bulletChoice = 2;
+                if (Input.GetKeyDown(KeyCode.Alpha3))
+                    bulletChoice = 3;
+                if (Input.GetKeyDown(KeyCode.Alpha4))
+                    bulletChoice = 4;
                 // If the corresponding button is clicked call ShootBullet
                 if (Input.GetKey(KeyCode.Mouse0))
-                    ShootBullet(3);
-                if (Input.GetKey(KeyCode.Mouse1))
-                    ShootBullet(1);
-                if (Input.GetKey(KeyCode.Mouse2))
-                    ShootBullet(2);
-                if (Input.GetKey(KeyCode.Alpha1))
-                    ShootBullet(0);
+                    ShootBullet(bulletChoice);
 
                 #endregion
 
@@ -230,25 +234,25 @@ public class Player : MonoBehaviour
             GameObject clone;
             switch (type)
             {
-                case 0:
+                case 1:
                     {
                         clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
-                case 1:
+                case 2:
                     {
                         clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
-                case 2:
+                case 3:
                     {
                         clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
                         break;
                     }
-                case 3:
+                case 4:
                     {
-                        clone = null;
-                        CastSpell("Ice", 4f);
+                        //clone = null;
+                        //CastSpell("Ice", 4f);
                         break;
                     }
                 default:
@@ -358,6 +362,11 @@ public class Player : MonoBehaviour
         maxPlayerHealth += _playerHealth;
     }
 
+    public bool GetisRegenerating()
+    {
+        return isRegenerating;
+    }
+
     public IEnumerator HealthRegen()
     {
         isRegenerating = true;
@@ -372,12 +381,18 @@ public class Player : MonoBehaviour
     #region Coins
     public void AddCoins(int amountOfCoins)
     {
+        amountOfCoins *= playerCoinModifier;
         inventory.AddCoins(amountOfCoins);
     }
 
     public int GetCoins()
     {
         return inventory.GetCoins();
+    }
+
+    public void CoinModifier(int _coinModifier)
+    {
+        playerCoinModifier += _coinModifier;
     }
     #endregion
 
@@ -490,11 +505,6 @@ public class Player : MonoBehaviour
         playerExperience += playerEXP;
         if (playerExperience >= nextLevelExperience)
             LevelUp();
-    }
-
-    public bool GetisRegenerating()
-    {
-        return isRegenerating;
     }
 
     public void XPModifier(float _XPModifier)
