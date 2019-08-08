@@ -399,6 +399,11 @@ PrefabInstance:
       propertyPath: playerHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: playerExperienceModifier
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24b01301e171e540bf8b839f876b570, type: 3}
 --- !u!1 &443084244
