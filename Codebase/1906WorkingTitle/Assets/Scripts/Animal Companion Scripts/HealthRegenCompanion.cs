@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireResistCompanion : MonoBehaviour
+public class HealthRegenCompanion : MonoBehaviour
 {
     GameObject player = null;
     Player playerStats = null;
@@ -14,6 +14,8 @@ public class FireResistCompanion : MonoBehaviour
     {
         playerPositionOffset = new Vector3(player.transform.position.x - 3, player.transform.position.y, player.transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
+        if (playerStats.isRegenerating == false)
+            StartCoroutine(playerStats.HealthRegen());
     }
 
     private void OnEnable()
@@ -21,11 +23,11 @@ public class FireResistCompanion : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Player>();
         transform.position = playerPositionOffset;
-        playerStats.isFireImmune = true;
+        playerStats.ModifyHealth(10);
     }
 
     private void OnDisable()
     {
-        playerStats.isFireImmune = false;
+        playerStats.ModifyHealth(-10);
     }
 }
