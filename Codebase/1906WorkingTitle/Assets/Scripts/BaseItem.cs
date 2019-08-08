@@ -13,6 +13,8 @@ public class BaseItem : MonoBehaviour
     #endregion
 
     #region BaseFunctions
+
+    #region Gets
     public Type GetItemType()
     {
         return itemType;
@@ -31,6 +33,13 @@ public class BaseItem : MonoBehaviour
             return Resources.Load<Sprite>("Sprites/background");
     }
 
+    protected string GetName()
+    {
+        return name;
+    }
+
+    #endregion
+    #region Sets
     protected void SetValue(int _value)
     {
         value = _value;
@@ -45,10 +54,7 @@ public class BaseItem : MonoBehaviour
     {
         name = _name;
     }
+    #endregion
 
-    protected string GetName()
-    {
-        return name;
-    }
     #endregion
 }
