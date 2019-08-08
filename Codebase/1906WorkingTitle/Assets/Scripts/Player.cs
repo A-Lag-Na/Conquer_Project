@@ -29,7 +29,8 @@ public class Player : MonoBehaviour
 
     private bool isRotated = false;
     private bool isDashing = false;
-    public bool isRegenerating = false;
+    private bool isRegenerating = false;
+    private float playerExperienceModifier = 1;
     #endregion
 
     #region UnityComponents
@@ -91,6 +92,7 @@ public class Player : MonoBehaviour
         lastTimeFired = 0.0f;
         isRotated = false;
         isDashing = false;
+        isRegenerating = false;
     }
 
     // Update is called once per frame
@@ -434,11 +436,22 @@ public class Player : MonoBehaviour
         return playerLevel;
     }
 
-    public void GainExperience(int playerEXP)
+    public void GainExperience(float playerEXP)
     {
+        playerEXP *= playerExperienceModifier;
         playerExperience += playerEXP;
         if (playerExperience >= nextLevelExperience)
             LevelUp();
+    }
+
+    public bool GetisRegenerating()
+    {
+        return isRegenerating;
+    }
+
+    public void XPModifier(float _XPModifier)
+    {
+        playerExperienceModifier += _XPModifier;
     }
     #endregion
 
