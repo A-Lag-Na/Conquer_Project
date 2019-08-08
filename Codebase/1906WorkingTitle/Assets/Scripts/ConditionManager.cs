@@ -230,9 +230,9 @@ public class ConditionManager : MonoBehaviour
     {
         fireDamage = _fireDamage;
     }
-    public void Refresh()
+    public void Refresh(float _amountToIncrease = 1)
     {
-        maxSpeed += 1;
+        maxSpeed += _amountToIncrease;
     }
     void OnPauseGame()
     {
