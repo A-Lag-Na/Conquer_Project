@@ -613,17 +613,17 @@ PrefabInstance:
     - target: {fileID: 3913413580323742296, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.41
+      value: 4.29
       objectReference: {fileID: 0}
     - target: {fileID: 3913413580323742296, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.88
+      value: -7.72
       objectReference: {fileID: 0}
     - target: {fileID: 3913413580323742296, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.65
+      value: -6.52
       objectReference: {fileID: 0}
     - target: {fileID: 3913413580323742296, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
@@ -668,7 +668,12 @@ PrefabInstance:
     - target: {fileID: 7443535332636379739, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
       propertyPath: m_Radius
-      value: 0.7
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443535332636379739, guid: 17f9300cffc525a4699c47ea7c6c3457,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2616138589409148508, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
@@ -678,6 +683,21 @@ PrefabInstance:
     - target: {fileID: 9154907728906995696, guid: 17f9300cffc525a4699c47ea7c6c3457,
         type: 3}
       propertyPath: m_StoppingDistance
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154907728906995696, guid: 17f9300cffc525a4699c47ea7c6c3457,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154907728906995696, guid: 17f9300cffc525a4699c47ea7c6c3457,
+        type: 3}
+      propertyPath: m_Height
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9154907728906995696, guid: 17f9300cffc525a4699c47ea7c6c3457,
+        type: 3}
+      propertyPath: m_AutoRepath
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9154907728906995598, guid: 17f9300cffc525a4699c47ea7c6c3457,
