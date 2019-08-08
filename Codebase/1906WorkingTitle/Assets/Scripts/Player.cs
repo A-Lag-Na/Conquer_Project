@@ -251,6 +251,7 @@ public class Player : MonoBehaviour
                     }
                 case 4:
                     {
+                        clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
                         //clone = null;
                         //CastSpell("Ice", 4f);
                         break;
