@@ -6,7 +6,7 @@ using UnityEngine.AI;
 public class EnemyStats : MonoBehaviour
 {
     #region Stats
-    //How many points the enemy is worth to the spawner
+    //How many points the enemy is worth to the spawner, and how much experience it grants on kill.
     [SerializeField] private int enemyPoints = 1;
 
     //How many hits it takes to kill the enemy.
@@ -24,6 +24,8 @@ public class EnemyStats : MonoBehaviour
     public bool isFireImmune;
     public bool isIceImmune;
     public bool isStunImmune;
+    //Has this enemy been spawned externally? (through splitter or spawner enemy)
+    private bool isChild;
     #endregion
 
     #region UnityComponents
@@ -32,6 +34,10 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] GameObject pickUp = null;
 
     [SerializeField] GameObject childEnemy = null;
+
+    //Need this to notify the spawner to add new enemies on split.
+    [SerializeField] GameObject spawnerObject;
+    SpawnScript spawnerScript;
 
     public int children;
 
@@ -52,6 +58,8 @@ public class EnemyStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
         anim = GetComponent<Animator>();
+
+        spawnerScript = spawnerObject.GetComponent<SpawnScript>();
     }
 
     public void Update()
@@ -140,6 +148,10 @@ public class EnemyStats : MonoBehaviour
         {
             Split(children);
         }
+        if(isChild)
+        {
+            spawnerScript.remainingChildren -= 1;
+        }
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
         Destroy(gameObject);
@@ -149,7 +161,17 @@ public class EnemyStats : MonoBehaviour
     {
         for (int i = 0; i < children; i++)
         {
-            Instantiate(childEnemy, transform, childEnemy.transform);
+            GameObject child = Instantiate(childEnemy, transform.position, Quaternion.identity);
+            EnemyStats childStats = child.GetComponent<EnemyStats>();
+
+            childStats.isChild = true;
+
+            if(spawnerObject != null)
+            { 
+                childStats.SetSpawner(spawnerObject);
+                spawnerScript.AddEnemy(child);
+                spawnerScript.remainingChildren += childStats.children;
+            }
         }
     }
 
@@ -159,6 +181,11 @@ public class EnemyStats : MonoBehaviour
         if (anim != null)
             anim.SetTrigger("On Hit");
         enemyRender.material.color = Color.red;
+    }
+
+    public void SetSpawner(GameObject _spawner)
+    {
+        spawnerObject = _spawner;
     }
     #endregion
 }
