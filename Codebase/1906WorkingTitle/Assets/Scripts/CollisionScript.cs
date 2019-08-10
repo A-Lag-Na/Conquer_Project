@@ -138,6 +138,40 @@ public class CollisionScript : MonoBehaviour
                             Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                             break;
                         }
+                    case "Hex":
+                        {
+                            DamageCheck();
+                            if (!isFireImmune)
+                            {
+                                //Burn sound effect
+                                //audioSource.PlayOneShot(burn);
+                                con.TimerAdd("fire", 179);
+                            }
+                            if (!isIceImmune)
+                            {
+                                con.SubtractSpeed(0.6f);
+                                con.TimerAdd("thaw", 90);
+                            }
+                            if (!isStunImmune)
+                            {
+                                if (target.CompareTag("BulletHell Enemy"))
+                                {
+                                    BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                    bulletHellAI.Stun();
+                                    nav.enabled = false;
+                                }
+                                else if (!target.CompareTag("Player"))
+                                {
+                                    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+                                    enemyAI.Stun();
+                                    nav.enabled = false;
+                                }
+                                else
+                                    player.Stun();
+                                con.TimerAdd("stun", 16);
+                            }
+                            break;
+                        }
                     default:
                         {
                             DamageCheck();
