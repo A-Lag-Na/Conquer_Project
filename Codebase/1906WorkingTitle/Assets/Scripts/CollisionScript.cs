@@ -34,7 +34,7 @@ public class CollisionScript : MonoBehaviour
             audioSource.PlayOneShot(hurt);
             audioSource.volume = 0.5f;
         }
-        if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
+        if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
         {
             if (collision.collider.CompareTag("Player"))
             {
@@ -44,7 +44,7 @@ public class CollisionScript : MonoBehaviour
                 isIceImmune = player.isIceImmune;
                 isStunImmune = player.isStunImmune;
             }
-            if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy") || target.CompareTag("Fire Enemy") || target.CompareTag("Ice Enemy"))
+            if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
                 enemy = collision.collider.GetComponent<EnemyStats>();
                 isFireImmune = enemy.isFireImmune;
@@ -56,7 +56,7 @@ public class CollisionScript : MonoBehaviour
         {
             Instantiate(sparks, transform.position, sparks.transform.rotation);
             {
-                if(gameObject.CompareTag("FirePot"))
+                if (gameObject.CompareTag("FirePot"))
                 {
                     Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                 }
@@ -109,7 +109,13 @@ public class CollisionScript : MonoBehaviour
                                 else if (!target.CompareTag("Player"))
                                 {
                                     EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-                                    enemyAI.Stun();
+                                    if (enemyAI != null)
+                                        enemyAI.Stun();
+                                    else
+                                    {
+                                        BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                        bulletHellAI.Stun();
+                                    }
                                     nav.enabled = false;
                                 }
                                 else
@@ -120,14 +126,14 @@ public class CollisionScript : MonoBehaviour
                         }
                     case "FirePot":
                         {
-                        	DamageCheck();
+                            DamageCheck();
                             Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                             break;
                         }
                     case "IcePot":
                         {
-                        	DamageCheck();
+                            DamageCheck();
                             Instantiate(sparks, transform.position, sparks.transform.rotation);
                             Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                             break;

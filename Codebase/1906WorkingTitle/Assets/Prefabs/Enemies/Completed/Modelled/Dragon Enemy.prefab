@@ -292,7 +292,7 @@ GameObject:
   - component: {fileID: 407980055}
   m_Layer: 11
   m_Name: Dragon Enemy
-  m_TagString: Fire Enemy
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,6 +356,7 @@ MonoBehaviour:
   isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
+  spawnerObject: {fileID: 0}
   children: 0
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1810308395457174341
@@ -1376,7 +1377,7 @@ GameObject:
   - component: {fileID: 7565724258214719670}
   - component: {fileID: 7564526180226023624}
   m_Layer: 11
-  m_Name: DragonIce
+  m_Name: Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

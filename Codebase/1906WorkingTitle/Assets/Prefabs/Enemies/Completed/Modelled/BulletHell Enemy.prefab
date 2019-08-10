@@ -98,6 +98,7 @@ MonoBehaviour:
   isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
+  spawnerObject: {fileID: 0}
   children: 0
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &1648946467457729219
@@ -373,7 +374,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1048550648207452, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_Name
-      value: BulletHell Ice
+      value: Ice
       objectReference: {fileID: 0}
     - target: {fileID: 4912415173136776, guid: bc42e33df8ad9d14cba646735d12f85d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -453,7 +454,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1832183600156154, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_Name
-      value: BulletHell Fire
+      value: Fire
       objectReference: {fileID: 0}
     - target: {fileID: 4351478612477126, guid: f584b4d5076829f4799f9d4dcf6de929, type: 3}
       propertyPath: m_LocalPosition.x

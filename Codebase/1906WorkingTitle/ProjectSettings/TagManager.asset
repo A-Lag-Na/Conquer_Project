@@ -11,8 +11,6 @@ TagManager:
   - Fire Bullet
   - Ice Bullet
   - BulletHell Enemy
-  - Fire Enemy
-  - Ice Enemy
   - BridgeCollider
   - Water
   - Stun Bullet

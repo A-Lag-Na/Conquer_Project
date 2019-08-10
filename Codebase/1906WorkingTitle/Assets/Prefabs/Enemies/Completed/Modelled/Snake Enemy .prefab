@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3060468486879696366}
   - component: {fileID: 3060468486879696365}
   m_Layer: 11
-  m_Name: RangedFire
+  m_Name: Fire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4861,7 +4861,7 @@ GameObject:
   - component: {fileID: 3060468487074685977}
   - component: {fileID: 3060468487074685976}
   m_Layer: 11
-  m_Name: RangedIce
+  m_Name: Ice
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10182,6 +10182,7 @@ MonoBehaviour:
   isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
+  spawnerObject: {fileID: 0}
   children: 0
   enemyColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!114 &3060468487126496442
