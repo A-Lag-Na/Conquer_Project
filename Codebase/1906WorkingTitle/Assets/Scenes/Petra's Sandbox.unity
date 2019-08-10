@@ -233,7 +233,12 @@ PrefabInstance:
         type: 3}
       propertyPath: spell1
       value: 
-      objectReference: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
+      objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: projectile0
+      value: 
+      objectReference: {fileID: 2097692970444449809, guid: 0f22ff864599e8f408b46d09d8b45f49,
         type: 3}
     - target: {fileID: 469536748384550709, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}

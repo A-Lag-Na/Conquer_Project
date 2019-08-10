@@ -21,6 +21,7 @@ TagManager:
   - Trap
   - IcePot
   - IceSpell
+  - Hex
   layers:
   - Default
   - TransparentFX
