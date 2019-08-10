@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BulletSplit : MonoBehaviour
 {
-    [SerializeField] private float boltSpeed = 20.0f;
+    [SerializeField] private float boltSpeed = 5;
     [SerializeField] private int numChildren = 0;
     [SerializeField] GameObject bolts = null;
 
@@ -44,9 +44,11 @@ public class BulletSplit : MonoBehaviour
                 {
                     if (EnemyPositions.Count > 0 && EnemyPositions[i] != null)
                     {
+                        Vector3 target = EnemyPositions[i];
                         GameObject bolt = Instantiate(bolts, collider.transform.position, bolts.transform.rotation);
                         bolt.layer = 12;
-                        bolt.GetComponent<Rigidbody>().velocity = (EnemyPositions[i] - currentPosition) * boltSpeed;
+                        Rigidbody rb = bolt.GetComponent<Rigidbody>();
+                        rb.velocity = Vector3.Normalize((new Vector3 (target.x - currentPosition.x, 0.0f, target.z - currentPosition.z))) * boltSpeed;
                         //Zap sound effect could go here
                     }
                 }
