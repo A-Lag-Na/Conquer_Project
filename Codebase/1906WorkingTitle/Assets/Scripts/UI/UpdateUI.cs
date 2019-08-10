@@ -35,10 +35,17 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
-        pauseMenu = GameObject.Find("Pause Menu").gameObject;
-        pauseMenu.SetActive(false);
-        statScreen = GameObject.Find("Stat Screen").gameObject;
-        statScreen.SetActive(false);
+        if (GameObject.Find("Pause Menu"))
+        {
+            pauseMenu = GameObject.Find("Pause Menu").gameObject;
+            pauseMenu.SetActive(false);
+        }
+
+        if (GameObject.Find("Stat Screen"))
+        {
+            statScreen = GameObject.Find("Stat Screen").gameObject;
+            statScreen.SetActive(false);
+        }
         //grab player GameObject
         if (GameObject.Find("Player"))
         {
@@ -95,32 +102,35 @@ public class UpdateUI : MonoBehaviour
     {
         #region UIUpdates
         //update health
-        health = player.GetHealth();
-        maxHealth = player.GetMaxHealth();
-        Vector3 HealthScale = healthTransform.localScale;
-        if (player.GetMaxHealth() != 0)
-            HealthScale.x = health / maxHealth;
-        healthTransform.localScale = HealthScale;
-        healthText.text = $"{health} / {maxHealth}";
+        if (player != null)
+        {
+            health = player.GetHealth();
+            maxHealth = player.GetMaxHealth();
+            Vector3 HealthScale = healthTransform.localScale;
+            if (player.GetMaxHealth() != 0)
+                HealthScale.x = health / maxHealth;
+            healthTransform.localScale = HealthScale;
+            healthText.text = $"{health} / {maxHealth}";
 
-        //update level bar
-        currentExperience = player.GetExperience();
-        nextLevelExp = player.GetNextLevelExperience();
-        Vector3 levelScale = levelTransform.localScale;
-        levelScale.x = currentExperience / nextLevelExp;
-        levelTransform.localScale = levelScale;
+            //update level bar
+            currentExperience = player.GetExperience();
+            nextLevelExp = player.GetNextLevelExperience();
+            Vector3 levelScale = levelTransform.localScale;
+            levelScale.x = currentExperience / nextLevelExp;
+            levelTransform.localScale = levelScale;
 
-        //update coin count
-        coins = player.GetCoins();
-        coinText.text = $"X{coins}";
+            //update coin count
+            coins = player.GetCoins();
+            coinText.text = $"X{coins}";
 
-        //update lives count
-        lives = player.GetLives();
-        livesText.text = $"X{lives}";
+            //update lives count
+            lives = player.GetLives();
+            livesText.text = $"X{lives}";
 
-        //update inventory
-        InvSlot1.sprite = player.GetWeapon();
-        InvSlot2.sprite = player.GetPotion();
+            //update inventory
+            InvSlot1.sprite = player.GetWeapon();
+            InvSlot2.sprite = player.GetPotion();
+        }
         #endregion
 
         #region DamageFlash
