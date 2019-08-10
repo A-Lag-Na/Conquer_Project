@@ -26,11 +26,10 @@ public class CreepManager : MonoBehaviour
         else if (colTag == "Enemy" || colTag == "BulletHell Enemy" || colTag == "Fire Enemy" || colTag == "Ice Enemy")
         {
             enemy = collide.GetComponent<EnemyStats>();
-                isFireImmune = enemy.isFireImmune;
-                isIceImmune = enemy.isIceImmune;
+            isFireImmune = enemy.isFireImmune;
+            isIceImmune = enemy.isIceImmune;
         }
-        else { }
-        if(con!=null)
+        if (con != null)
         {
             switch (gameObject.tag)
             {
@@ -48,6 +47,14 @@ public class CreepManager : MonoBehaviour
                         {
                             con.SubtractSpeed(0.006f);
                             con.TimerAdd("thaw", 1);
+                        }
+                        break;
+                    }
+                case "Aura":
+                    {
+                        if (player != null || enemy != null)
+                        {
+                            con.TimerAdd("aura", 2);
                         }
                         break;
                     }

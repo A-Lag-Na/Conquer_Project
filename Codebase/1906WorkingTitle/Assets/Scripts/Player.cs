@@ -327,8 +327,9 @@ public class Player : MonoBehaviour
     public void TakeDamage(float amountOfDamage = 1)
     {
         //Decrease health by amountOfDamage until 0 or less
+        if (amountOfDamage >= 1)
+            BlinkOnHit();
         amountOfDamage /= playerDefense;
-        BlinkOnHit();
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();

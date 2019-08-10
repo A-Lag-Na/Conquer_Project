@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    private enum Type {Coin, Health, EOF};
+    public enum Type {Coin, Health, EOF};
 
-    [SerializeField] Type type = (Type)1;
+    public Type type = (Type)1;
     [SerializeField] AudioClip clip = null;
 
     private void Update()
