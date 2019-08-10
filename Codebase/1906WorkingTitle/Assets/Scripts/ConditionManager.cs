@@ -98,8 +98,8 @@ public class ConditionManager : MonoBehaviour
                 }
                 if(auraTimer > 0)
                 {
-                    //if(!tag.Equals("Player"))
-                    //    enemyRender.material.color = Color.Lerp(enemyRender.material.color, new Color(0, 0.5f, 0.0399f), .08f);
+                    if(!tag.Equals("Player"))
+                        enemyRender.material.color = Color.Lerp(enemyRender.material.color, Color.black, .08f);
                     Damage(auraDamage);
                     auraTimer--;
                 }
