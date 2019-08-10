@@ -93,6 +93,7 @@ public class UpdateUI : MonoBehaviour
 
     private void Update()
     {
+        #region UIUpdates
         //update health
         health = player.GetHealth();
         maxHealth = player.GetMaxHealth();
@@ -120,31 +121,39 @@ public class UpdateUI : MonoBehaviour
         //update inventory
         InvSlot1.sprite = player.GetWeapon();
         InvSlot2.sprite = player.GetPotion();
+        #endregion
 
-
+        #region DamageFlash
         //taking damage
         if (damageFlasher.color != damageColor)
             damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
 
         if (levelUp)
             levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
+        #endregion
 
+        #region Button Prompts
         //check if near shop
-        dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+        if (GameObject.Find("Shop Keeper") != null)
+        {
+            dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+            if (levelUp)
+            {
+                buttonPrompt.color = new Color32(255, 255, 255, 255);
+                buttonPrompt.sprite = tabSprite;
+            }
+        }
         if (dist <= 5.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
         }
-        else if (levelUp)
-        {
-            buttonPrompt.color = new Color32(255, 255, 255, 255);
-            buttonPrompt.sprite = tabSprite;
-        }
-        else
+        else if (buttonPrompt.sprite != tabSprite)
             buttonPrompt.color = new Color32(0, 0, 0, 0);
+        #endregion
 
-        //exit stat screen and reenable main ui
+        #region InputCheck
+        //check for menu or inventory input
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             PauseGame();
 
@@ -163,21 +172,25 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.C))
             OpenShop();
+        #endregion
     }
 
     void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
     }
 
     void OpenStats()
     {
-        statScreen.SetActive(true);
+        if (statScreen != null)
+            statScreen.SetActive(true);
     }
 
     void OpenShop()
     {
         if (dist <= 5.2f)
-            GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+            if (GameObject.Find("Shop Keeper") != null)
+                GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
 }
