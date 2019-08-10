@@ -16,6 +16,14 @@ public class VolumeControl : MonoBehaviour
         masterSlider = transform.Find("Master Volume").GetComponent<Slider>();
         musicSlider = transform.Find("Music Volume").GetComponent<Slider>();
         sfxSlider = transform.Find("SFX Volume").GetComponent<Slider>();
+
+        masterVolume = PlayerPrefs.GetFloat("masterVolume");
+        musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+
+        masterSlider.value = masterVolume;
+        musicSlider.value = musicVolume;
+        sfxSlider.value = sfxVolume;
     }
 
     // Update is called once per frame
@@ -32,6 +40,7 @@ public class VolumeControl : MonoBehaviour
         PlayerPrefs.SetFloat("masterVolume", masterVolume);
         PlayerPrefs.SetFloat("musicVolume", musicVolume);
         PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        PlayerPrefs.Save();
     }
 
     private void OnEnable()
