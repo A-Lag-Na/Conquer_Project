@@ -5,27 +5,32 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    public int fireTimer = 0;
-    public int thawTimer = 0;
-    public int stunTimer = 0;
+    private int fireTimer = 0;
+    private int thawTimer = 0;
+    private int stunTimer = 0;
+    private int auraTimer = 0;
 
     [SerializeField] bool isPlayer;
     private Component statsScript;
     private Component aiScript;
     private float speed;
     private float maxSpeed;
-    [SerializeField] private float minFrozenSpeed;
+    private float minFrozenSpeed;
 
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
-    [SerializeField] private float thawIncrement;
-    [SerializeField] private int fireDamage;
+    private float thawIncrement;
+    private float fireDamage;
+    private float auraDamage;
+
     GameObject fireParticle;
     GameObject iceParticle;
+
     private bool isPaused;
 
     public void Start()
     {
-        if (gameObject.tag.Equals("Player"))
+        string tag = gameObject.tag;
+        if (tag.Equals("Player"))
         {
             isPlayer = true;
             aiScript = GetComponentInParent<Player>();
@@ -33,19 +38,18 @@ public class ConditionManager : MonoBehaviour
             fireParticle = GameObject.Find("PlayerFire");
             iceParticle = GameObject.Find("PlayerIce");
         }
-        else if (gameObject.tag.Equals("Enemy"))
-        {
+        else
+        { 
+            if(tag.Equals("Enemy"))
+            {
+                aiScript = GetComponentInParent<EnemyAI>();
+            }
+            if(tag.Equals("BulletHell Enemy"))
+            {
+                aiScript = GetComponentInParent<BulletHellEnemy>();
+            }
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
-            aiScript = GetComponentInParent<EnemyAI>();
-            fireParticle = GameObject.Find("Fire");
-            iceParticle = GameObject.Find("Ice");
-        }
-        else if (gameObject.tag.Equals("BulletHell Enemy"))
-        {
-            isPlayer = false;
-            statsScript = GetComponentInParent<EnemyStats>();
-            aiScript = GetComponentInParent<BulletHellEnemy>();
             fireParticle = GameObject.Find("Fire");
             iceParticle = GameObject.Find("Ice");
         }
@@ -53,6 +57,10 @@ public class ConditionManager : MonoBehaviour
             fireParticle.SetActive(false);
         if (iceParticle != null)
             iceParticle.SetActive(false);
+        if(auraDamage == 0f)
+        {
+            auraDamage = .017f;
+        }
         speed = GetSpeed();
         maxSpeed = GetSpeed();
     }
@@ -61,7 +69,7 @@ public class ConditionManager : MonoBehaviour
     {
         if (!isPaused)
         {
-            if (fireTimer > 0 || thawTimer > 0 || stunTimer > 0)
+            if (fireTimer > 0 || thawTimer > 0 || stunTimer > 0 || auraTimer > 0)
             {
                 if (fireTimer > 0)
                 {
@@ -85,6 +93,12 @@ public class ConditionManager : MonoBehaviour
                     if (stunTimer == 0)
                         Unstun();
                 }
+                if(auraTimer > 0)
+                {
+                    auraDamage--;
+                    Damage(auraDamage);
+                    ((EnemyStats)aiScript).
+                }
             }
             if (fireTimer <= 0)
                 if (fireParticle != null)
@@ -98,6 +112,7 @@ public class ConditionManager : MonoBehaviour
         }
     }
 
+    #region TimerManagement
     public void TimerAdd(string condition, int ticks)
     {
         switch (condition)
@@ -117,13 +132,17 @@ public class ConditionManager : MonoBehaviour
                     stunTimer += ticks;
                     break;
                 }
+            case "aura":
+                {
+                    auraTimer += ticks;
+                    break;
+                }
             default:
                 {
                     break;
                 }
         }
     }
-
     public void TimerSet(string condition, int ticks)
     {
         switch (condition)
@@ -149,6 +168,7 @@ public class ConditionManager : MonoBehaviour
                 }
         }
     }
+    #endregion
 
     #region GetSetters
     //Cast get-setters (This get-set speed workaround feels silly and wrong)
@@ -181,7 +201,7 @@ public class ConditionManager : MonoBehaviour
             SetSpeed(GetSpeed() - _speed);
         }
     }
-    public void Damage(int _damage)
+    public void Damage(float _damage)
     {
         if (isPlayer)
         {
@@ -200,7 +220,7 @@ public class ConditionManager : MonoBehaviour
     {
         return minFrozenSpeed;
     }
-    public int GetFireDamage()
+    public float GetFireDamage()
     {
         return fireDamage;
     }
@@ -212,7 +232,7 @@ public class ConditionManager : MonoBehaviour
     {
         minFrozenSpeed = _minFrozenSpeed;
     }
-    public void SetFireDamage(int _fireDamage)
+    public void SetFireDamage(float _fireDamage)
     {
         fireDamage = _fireDamage;
     }
@@ -241,8 +261,6 @@ public class ConditionManager : MonoBehaviour
         isPaused = false;
 
     }
-    #endregion GetSet
-
     public void Unstun()
     {
         if (gameObject.CompareTag("Player"))
@@ -263,4 +281,5 @@ public class ConditionManager : MonoBehaviour
             }
         }
     }
+    #endregion GetSet
 }
