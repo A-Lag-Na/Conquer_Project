@@ -7,11 +7,11 @@ public class BulletSplit : MonoBehaviour
     [SerializeField] private float boltSpeed = 5;
     [SerializeField] private int numChildren = 0;
     [SerializeField] GameObject bolts = null;
+    private int layer = 0;
 
-    private IEnumerable RevertLayer(GameObject hit)
+    private void Start()
     {
-        yield return new WaitForSeconds(0.05f);
-        hit.layer = 11;
+        layer = gameObject.layer;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -33,11 +33,10 @@ public class BulletSplit : MonoBehaviour
                 GameObject hit = collider.gameObject;
 
                 //Sets enemy to a new layer so they do not collide with bolts.
-                hit.layer = 18;
+                //hit.layer = 10;
 
 
                 Vector3 currentPosition = hit.GetComponent<Transform>().position;
-
                 EnemyPositions.Remove(currentPosition);
                 
                 for (int i = 0; i < numChildren; i++)
@@ -46,16 +45,13 @@ public class BulletSplit : MonoBehaviour
                     {
                         Vector3 target = EnemyPositions[i];
                         GameObject bolt = Instantiate(bolts, collider.transform.position, bolts.transform.rotation);
-                        bolt.layer = 12;
+                        bolt.layer = layer;
                         Rigidbody rb = bolt.GetComponent<Rigidbody>();
                         rb.velocity = Vector3.Normalize((new Vector3 (target.x - currentPosition.x, 0.0f, target.z - currentPosition.z))) * boltSpeed;
                         //Zap sound effect could go here
                     }
                 }
-                StartCoroutine("RevertLayer", hit);
             }
         }
     }
-
-    
 }

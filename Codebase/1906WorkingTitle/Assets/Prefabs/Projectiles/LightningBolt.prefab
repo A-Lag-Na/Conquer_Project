@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3502729614766670675}
   - component: {fileID: 5739721995965259060}
   - component: {fileID: 5739721995965259057}
-  m_Layer: 12
+  m_Layer: 0
   m_Name: LightningBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,7 +76,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc88433169189046a97f06a3a9adf80, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltSpeed: 15
+  boltSpeed: 25
   numChildren: 2
   bolts: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
 --- !u!114 &5739721995965259060
