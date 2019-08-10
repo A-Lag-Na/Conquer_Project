@@ -12,8 +12,12 @@ public class PauseMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainUI = GameObject.Find("Main UI");
-        mainUI.SetActive(false);
+        if(GameObject.Find("Main UI"))
+        {
+            mainUI = GameObject.Find("Main UI");
+            mainUI.SetActive(false);
+        }
+
         optionsMenu = transform.Find("Options").gameObject;
         optionsMenu.SetActive(false);
 
@@ -61,7 +65,8 @@ public class PauseMenu : MonoBehaviour
     void Resume()
     {
         UnPause();
-        mainUI.SetActive(true);
+        if (mainUI != null)
+            mainUI.SetActive(true);
     }
 
     void Options()

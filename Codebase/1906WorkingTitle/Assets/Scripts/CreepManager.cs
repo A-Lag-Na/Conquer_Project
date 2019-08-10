@@ -51,6 +51,14 @@ public class CreepManager : MonoBehaviour
                         }
                         break;
                     }
+                case "Aura":
+                    {
+                        if(player != null || enemy != null)
+                        {
+                            con.TimerAdd("aura", 1);
+                        }
+                        break;
+                    }
                 default:
                     {
                         break;
