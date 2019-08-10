@@ -12,21 +12,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StunEnemy
       objectReference: {fileID: 0}
-    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: attackRate
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: stunImmune
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5279336939109397354, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,17 +67,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2903663983187072319, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: m_UseGravity
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
-        type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 24300002, guid: 7b45ffbc56e7aca48a4be53f78dce682,
-        type: 2}
     - target: {fileID: 1747532865434295145, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: m_Radius
@@ -103,14 +77,6 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 1832181533917185, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
-      propertyPath: m_Name
-      value: Fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 1048549982684287, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
     - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
       propertyPath: projectile
       value: 
@@ -120,6 +86,40 @@ PrefabInstance:
       propertyPath: projectilePos
       value: 
       objectReference: {fileID: 5252745216505827100}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: attackRate
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: stunImmune
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: 24300002, guid: 7b45ffbc56e7aca48a4be53f78dce682,
+        type: 2}
+    - target: {fileID: 2903663983187072319, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
+        type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832181533917185, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048549982684287, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: m_Name
+      value: Ice
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
 --- !u!1 &5252745216505827100 stripped
