@@ -20,6 +20,7 @@ TagManager:
   - IcePot
   - IceSpell
   - Hex
+  - Aura
   layers:
   - Default
   - TransparentFX
