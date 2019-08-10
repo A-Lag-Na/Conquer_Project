@@ -5,7 +5,7 @@ using UnityEngine;
 public class Potion : BaseItem
 {
     public enum PotionType { Consumable, Thrown, EOF};
-    PotionType potionType;
+    PotionType potionType = PotionType.EOF;
     [SerializeField] float healthReturn = 5;
     
     public PotionType GetPotionType()

@@ -156,7 +156,7 @@ public class UpdateUI : MonoBehaviour
             OpenStats();
         }
 
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.F))
         {
             inventory.UsePotion();
         }

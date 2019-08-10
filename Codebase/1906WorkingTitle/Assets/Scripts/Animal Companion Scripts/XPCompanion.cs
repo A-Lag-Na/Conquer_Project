@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireResistCompanion : MonoBehaviour
+public class XPCompanion : MonoBehaviour
 {
     GameObject player = null;
     Player playerStats = null;
@@ -21,11 +21,11 @@ public class FireResistCompanion : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Player>();
         transform.position = playerPositionOffset;
-        playerStats.isFireImmune = true;
+        playerStats.XPModifier(0.5f);
     }
 
     private void OnDisable()
     {
-        playerStats.isFireImmune = false;
+        playerStats.XPModifier(-0.5f);
     }
 }

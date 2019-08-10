@@ -24,6 +24,9 @@ public class SpawnScript : MonoBehaviour
 
     bool spawnAgain = true;
 
+    //Tracks number of externally spawned enemies
+    public int remainingChildren;
+
     //List of enemies spawned by the spawner.
     public List<GameObject> spawnedEnemies;
     #endregion
@@ -40,7 +43,7 @@ public class SpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawnAgain && spawnEnabled)
+        if (spawnAgain && spawnEnabled || spawnedEnemies.Count > 0)
             StartCoroutine(SpawnEnemy());
     }
 
@@ -59,13 +62,10 @@ public class SpawnScript : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        if (spawnedEnemies.Count == 0 && pointsClone < 1)
+        if (remainingChildren == 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 
-        //Searches list and removes any null values (dead enemies)
-        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
-            if (spawnedEnemies[i] == null)
-                spawnedEnemies.RemoveAt(i);
+        RefreshSpawnedEnemies();
         spawnAgain = false;
 
         if (pointsClone > 0)
@@ -79,12 +79,17 @@ public class SpawnScript : MonoBehaviour
 
             //Spawns an enemy
             GameObject enemyClone = Instantiate(enemies[randomNum], transform.position, Quaternion.identity);
+            EnemyStats enemyCloneStats = enemyClone.GetComponent<EnemyStats>();
+            enemyCloneStats.SetSpawner(gameObject);
 
             //Adds the enemy to spawned enemies list
             spawnedEnemies.Add(enemyClone);
 
             //subtracts enemy points from spawner's
-            pointsClone -= enemies[randomNum].GetComponent<EnemyStats>().GetPoints();
+            pointsClone -= enemyCloneStats.GetPoints();
+
+            //Adds children to remainingchildren counter
+            remainingChildren += enemyCloneStats.children;
         }
 
         yield return new WaitForSeconds(timer);
@@ -117,6 +122,29 @@ public class SpawnScript : MonoBehaviour
         if (enemies.Count > 0)
             for (int i = 0; i < enemies.Count; i++)
                 enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
+    }
+
+    //For use with splitting enemies.
+    public void AddEnemy(GameObject _enemy)
+    {
+        spawnedEnemies.Add(_enemy);
+    }
+
+    //Searches list and removes any null values (dead enemies)
+    public void RefreshSpawnedEnemies()
+    {
+        for (int i = spawnedEnemies.Count - 1; i >= 0; i--)
+            if (spawnedEnemies[i] == null)
+                spawnedEnemies.RemoveAt(i);
+    }
+
+    public void AddRemainingChild()
+    {
+        remainingChildren++;
+    }
+    public void SubtractRemainingChild()
+    {
+        remainingChildren--;
     }
     #endregion
 }
