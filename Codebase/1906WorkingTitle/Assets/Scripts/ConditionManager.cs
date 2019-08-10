@@ -38,30 +38,16 @@ public class ConditionManager : MonoBehaviour
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             aiScript = GetComponentInParent<EnemyAI>();
-            fireParticle = GameObject.Find("RangedFire");
-            iceParticle = GameObject.Find("RangedIce");
+            fireParticle = GameObject.Find("Fire");
+            iceParticle = GameObject.Find("Ice");
         }
         else if (gameObject.tag.Equals("BulletHell Enemy"))
         {
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             aiScript = GetComponentInParent<BulletHellEnemy>();
-            fireParticle = GameObject.Find("BulletHell Fire");
-            iceParticle = GameObject.Find("BulletHell Ice");
-        }
-        else if (gameObject.tag.Equals("Fire Enemy"))
-        {
-            isPlayer = false;
-            statsScript = GetComponentInParent<EnemyStats>();
-            aiScript = GetComponentInParent<EnemyAI>();
-            iceParticle = GameObject.Find("DragonIce");
-        }
-        else if (gameObject.tag.Equals("Ice Enemy"))
-        {
-            isPlayer = false;
-            statsScript = GetComponentInParent<EnemyStats>();
-            aiScript = GetComponentInParent<EnemyAI>();
-            fireParticle = GameObject.Find("SpiderFire");
+            fireParticle = GameObject.Find("Fire");
+            iceParticle = GameObject.Find("Ice");
         }
         if (fireParticle != null)
             fireParticle.SetActive(false);

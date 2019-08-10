@@ -51,6 +51,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar01RedD (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4341673273649340, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.138488
@@ -113,6 +121,14 @@ PrefabInstance:
     - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_Name
       value: Pillar02RedD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -177,6 +193,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar02RedD (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 13.058488
@@ -239,6 +263,14 @@ PrefabInstance:
     - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_Name
       value: Pillar02RedD (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,6 +335,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar01RedD (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4341673273649340, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.061512
@@ -365,6 +405,14 @@ PrefabInstance:
     - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_Name
       value: Pillar02RedD (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -429,6 +477,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar02RedD (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.291512
@@ -491,6 +547,14 @@ PrefabInstance:
     - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_Name
       value: Pillar01RedD (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4341673273649340, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -555,6 +619,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Pillar02RedD (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940013879285844, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4361159585270464, guid: 9495754c709bff341a2836b50fd2469e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.908487
@@ -617,6 +689,14 @@ PrefabInstance:
     - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_Name
       value: Pillar01RedD
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649872482601046, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4341673273649340, guid: c88ac593385d6cd4999b920f228a573f, type: 3}
       propertyPath: m_LocalPosition.x
