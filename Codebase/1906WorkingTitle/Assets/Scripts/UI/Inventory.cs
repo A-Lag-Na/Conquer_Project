@@ -126,7 +126,7 @@ public class Inventory : MonoBehaviour
                             Heal();
                         break;
                     case "Defense Potion":
-                        //DefenseBuff();
+                        player.AddDefense(potionNode.Value.GetFloatModifier());
                         break;
                     case "Damage Buff Potion":
                         //DamageBuff();
