@@ -71,7 +71,7 @@ public class ShopUI : MonoBehaviour
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         transform.parent.gameObject.SetActive(false);
-        if(mainUI !+ null)
+        if(mainUI != null)
             mainUI.SetActive(true);
     }
 
