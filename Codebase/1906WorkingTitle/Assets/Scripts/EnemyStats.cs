@@ -53,7 +53,7 @@ public class EnemyStats : MonoBehaviour
     public void Start()
     {
         GetComponent<AudioSource>().enabled = true;
-        enemyRender = GetComponentInChildren<Renderer>();
+        enemyRender = GetComponent<Renderer>();
         enemyColor = enemyRender.material.color;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
@@ -120,7 +120,7 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(float _damage = 1)
     {
-        if(damage > 0)
+        if(damage > 0f)
         {
             BlinkOnHit();
             health -= _damage;
@@ -186,6 +186,10 @@ public class EnemyStats : MonoBehaviour
     public void SetSpawner(GameObject _spawner)
     {
         spawnerObject = _spawner;
+    }
+    public Renderer GetRenderer()
+    {
+        return enemyRender;
     }
     #endregion
 }

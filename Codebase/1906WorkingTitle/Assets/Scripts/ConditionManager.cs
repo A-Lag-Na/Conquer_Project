@@ -8,11 +8,13 @@ public class ConditionManager : MonoBehaviour
     private int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
-    private int auraTimer = 0;
+    public int auraTimer = 0;
 
     [SerializeField] bool isPlayer;
     private Component statsScript;
     private Component aiScript;
+
+    private Renderer enemyRender = null;
     private float speed;
     private float maxSpeed;
     private float minFrozenSpeed;
@@ -50,6 +52,7 @@ public class ConditionManager : MonoBehaviour
             }
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
+            enemyRender = ((EnemyStats)statsScript).GetRenderer();
             fireParticle = GameObject.Find("Fire");
             iceParticle = GameObject.Find("Ice");
         }
@@ -95,9 +98,10 @@ public class ConditionManager : MonoBehaviour
                 }
                 if(auraTimer > 0)
                 {
-                    auraDamage--;
+                    //if(!tag.Equals("Player"))
+                    //    enemyRender.material.color = Color.Lerp(enemyRender.material.color, new Color(0, 0.5f, 0.0399f), .08f);
                     Damage(auraDamage);
-                    //((EnemyStats)aiScript).
+                    auraTimer--;
                 }
             }
             if (fireTimer <= 0)

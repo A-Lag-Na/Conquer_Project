@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3031127060560052265}
   - component: {fileID: 9072134817292618610}
   - component: {fileID: 8953555929006894276}
-  m_Layer: 14
+  m_Layer: 17
   m_Name: DeathAura
   m_TagString: Aura
   m_Icon: {fileID: 0}
