@@ -12,6 +12,63 @@ PrefabInstance:
       propertyPath: m_Name
       value: Splitter
       objectReference: {fileID: 0}
+    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252745215803708209, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252745215803708239, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
+        type: 3}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: enemyPoints
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: health
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: damage
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: attackRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: childEnemy
+      value: 
+      objectReference: {fileID: 8297779320312325896, guid: 775ffee37e4bd604181d7b45c579c69f,
+        type: 3}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: children
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 118930910161991321, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -82,67 +139,40 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 5252745215803708239, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
-        type: 3}
     - target: {fileID: 3155286080545078039, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed0e662ab3babfd468d099fb2e530fe5, type: 2}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: enemyPoints
-      value: 3
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: health
-      value: 5
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: damage
-      value: 3
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: attackRate
-      value: 3
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: bulletSpeed
-      value: 10
+      propertyPath: m_LocalScale.y
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: childEnemy
-      value: 
-      objectReference: {fileID: 8297779320312325896, guid: 775ffee37e4bd604181d7b45c579c69f,
-        type: 3}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: children
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5252745215803708209, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Speed
-      value: 2.5
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4b119632cb8374f8a1b7cb53949f3b, type: 3}
