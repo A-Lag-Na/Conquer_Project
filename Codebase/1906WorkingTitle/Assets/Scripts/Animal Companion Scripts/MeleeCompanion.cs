@@ -47,9 +47,12 @@ public class MeleeCompanion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (target != null)
-            target.GetComponent<EnemyStats>().TakeDamage();
-        hasAttacked = true;
-        lastTimeAttacked = Time.time;
+        if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
+        {
+            if (target != null)
+                target.GetComponent<EnemyStats>().TakeDamage();
+            hasAttacked = true;
+            lastTimeAttacked = Time.time;
+        }
     }
 }
