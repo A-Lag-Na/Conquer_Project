@@ -97,7 +97,7 @@ public class ConditionManager : MonoBehaviour
                 {
                     auraDamage--;
                     Damage(auraDamage);
-                    ((EnemyStats)aiScript).
+                    //((EnemyStats)aiScript).
                 }
             }
             if (fireTimer <= 0)
