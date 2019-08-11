@@ -59,7 +59,10 @@ public class EnemyStats : MonoBehaviour
         playerScript = player.GetComponentInParent<Player>();
         anim = GetComponent<Animator>();
 
-        spawnerScript = spawnerObject.GetComponent<SpawnScript>();
+        if(spawnerObject != null)
+        {
+            spawnerScript = spawnerObject.GetComponent<SpawnScript>();
+        }
     }
 
     public void Update()
@@ -93,7 +96,6 @@ public class EnemyStats : MonoBehaviour
     {
         return bulletSpeed;
     }
-
     public void SetHealth(float _health)
     {
         health = _health;

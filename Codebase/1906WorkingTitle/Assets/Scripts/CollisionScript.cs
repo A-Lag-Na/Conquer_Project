@@ -66,7 +66,7 @@ public class CollisionScript : MonoBehaviour
                 }
             }
         }
-        if (!(isIceImmune && isFireImmune))
+        if (!(isIceImmune && isFireImmune && isStunImmune))
         {
             ConditionManager con = target.GetComponent<ConditionManager>();
             if (con != null)

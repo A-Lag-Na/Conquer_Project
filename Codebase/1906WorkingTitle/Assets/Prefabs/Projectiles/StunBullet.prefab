@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
       propertyPath: m_Name
-      value: Lightning Projectile
+      value: StunBullet
       objectReference: {fileID: 0}
     - target: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
@@ -75,7 +75,8 @@ PrefabInstance:
     - target: {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: fireCreep
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
+        type: 3}
     - target: {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
       propertyPath: m_Parameters.colorGradient.key0.r
       value: 0.9811321
