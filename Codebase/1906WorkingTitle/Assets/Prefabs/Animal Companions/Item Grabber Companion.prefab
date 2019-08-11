@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4565902651843088458}
   - component: {fileID: 4565902651843088437}
   - component: {fileID: 4565902651843088436}
-  m_Layer: 9
+  m_Layer: 19
   m_Name: Item Grabber Companion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
