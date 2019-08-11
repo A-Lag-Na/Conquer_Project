@@ -7,7 +7,7 @@ public class Weapon : BaseItem
     [SerializeField] int damage = 0;
     [SerializeField] float attackSpeed = 0;
 
-    public int Attack()
+    public int GetAttackDamage()
     {
         return damage;
     }

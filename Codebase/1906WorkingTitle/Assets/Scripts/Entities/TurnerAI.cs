@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class TurnerAI : MonoBehaviour
 {
-    public bool isStunned;
-    private bool isPaused;
+    //public bool isStunned;
+    //private bool isPaused;
 
-    Animator anim = null;
+    //Animator anim = null;
     NavMeshAgent agent = null;
-    AudioSource source = null;
+    //AudioSource source = null;
 
     // Start is called before the first frame update
     void Start()
@@ -36,22 +36,22 @@ public class TurnerAI : MonoBehaviour
     {
         EnemyStats temp = GetComponent<EnemyStats>();
     }
-    public void OnPauseGame()
-    {
-        isPaused = true;
-    }
-    public void OnResumeGame()
-    {
-        isPaused = false;
-    }
-    public void Stun()
-    {
-        isStunned = true;
-    }
-    public void Unstun()
-    {
-        isStunned = false;
-    }
+    //public void OnPauseGame()
+    //{
+    //    isPaused = true;
+    //}
+    //public void OnResumeGame()
+    //{
+    //    isPaused = false;
+    //}
+    //public void Stun()
+    //{
+    //    isStunned = true;
+    //}
+    //public void Unstun()
+    //{
+    //    isStunned = false;
+    //}
     #endregion
 }
 

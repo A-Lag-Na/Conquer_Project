@@ -15,7 +15,7 @@ public class UpdateUI : MonoBehaviour
     #endregion
 
     #region UI elements to remember
-    private Text healthText, livesText, coinText;
+    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name;
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
     private Sprite cSprite, tabSprite;
@@ -35,10 +35,17 @@ public class UpdateUI : MonoBehaviour
 
     void Start()
     {
-        pauseMenu = GameObject.Find("Pause Menu").gameObject;
-        pauseMenu.SetActive(false);
-        statScreen = GameObject.Find("Stat Screen").gameObject;
-        statScreen.SetActive(false);
+        if (GameObject.Find("Pause Menu"))
+        {
+            pauseMenu = GameObject.Find("Pause Menu").gameObject;
+            pauseMenu.SetActive(false);
+        }
+
+        if (GameObject.Find("Stat Screen"))
+        {
+            statScreen = GameObject.Find("Stat Screen").gameObject;
+            statScreen.SetActive(false);
+        }
         //grab player GameObject
         if (GameObject.Find("Player"))
         {
@@ -56,7 +63,9 @@ public class UpdateUI : MonoBehaviour
 
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
+        InvSlot1Name = transform.Find("Inventory Slot 1").GetChild(0).GetComponent<Text>();
         InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
+        InvSlot2Name = transform.Find("Inventory Slot 2").GetChild(0).GetComponent<Text>();
 
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
@@ -93,58 +102,82 @@ public class UpdateUI : MonoBehaviour
 
     private void Update()
     {
-        //update health
-        health = player.GetHealth();
-        maxHealth = player.GetMaxHealth();
-        Vector3 HealthScale = healthTransform.localScale;
-        if (player.GetMaxHealth() != 0)
-            HealthScale.x = health / maxHealth;
-        healthTransform.localScale = HealthScale;
-        healthText.text = $"{health} / {maxHealth}";
+        #region UIUpdates
+        if (player != null)
+        {
+            #region Health Update
+            //update health
+            health = player.GetHealth();
+            maxHealth = player.GetMaxHealth();
+            Vector3 HealthScale = healthTransform.localScale;
+            if (player.GetMaxHealth() != 0)
+                HealthScale.x = health / maxHealth;
+            healthTransform.localScale = HealthScale;
+            healthText.text = $"{health} / {maxHealth}";
+            #endregion
 
-        //update level bar
-        currentExperience = player.GetExperience();
-        nextLevelExp = player.GetNextLevelExperience();
-        Vector3 levelScale = levelTransform.localScale;
-        levelScale.x = currentExperience / nextLevelExp;
-        levelTransform.localScale = levelScale;
+            #region Level Update
+            //update level bar
+            currentExperience = player.GetExperience();
+            nextLevelExp = player.GetNextLevelExperience();
+            Vector3 levelScale = levelTransform.localScale;
+            levelScale.x = currentExperience / nextLevelExp;
+            levelTransform.localScale = levelScale;
+            #endregion
 
-        //update coin count
-        coins = player.GetCoins();
-        coinText.text = $"X{coins}";
+            #region Coin Update
+            //update coin count
+            coins = player.GetCoins();
+            coinText.text = $"X{coins}";
+            #endregion
 
-        //update lives count
-        lives = player.GetLives();
-        livesText.text = $"X{lives}";
+            #region Lives Update
+            //update lives count
+            lives = player.GetLives();
+            livesText.text = $"X{lives}";
+            #endregion
 
-        //update inventory
-        InvSlot1.sprite = player.GetWeapon();
-        InvSlot2.sprite = player.GetPotion();
+            #region Inventory Update
+            //update inventory
+            InvSlot1.sprite = inventory.WeaponSprite();
+            InvSlot2.sprite = inventory.PotionSprite();
+            InvSlot1Name.text = inventory.WeaponName();
+            InvSlot2Name.text = inventory.PotionName();
+            #endregion
+        }
+        #endregion
 
-
+        #region DamageFlash
         //taking damage
         if (damageFlasher.color != damageColor)
             damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
 
         if (levelUp)
             levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
+        #endregion
 
+        #region Button Prompts
         //check if near shop
-        dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+        if (GameObject.Find("Shop Keeper") != null)
+        {
+            dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+            if (levelUp)
+            {
+                buttonPrompt.color = new Color32(255, 255, 255, 255);
+                buttonPrompt.sprite = tabSprite;
+            }
+        }
         if (dist <= 5.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
         }
-        else if (levelUp)
-        {
-            buttonPrompt.color = new Color32(255, 255, 255, 255);
-            buttonPrompt.sprite = tabSprite;
-        }
-        else
+        else if (buttonPrompt.sprite != tabSprite)
             buttonPrompt.color = new Color32(0, 0, 0, 0);
+        #endregion
 
-        //exit stat screen and reenable main ui
+        #region InputCheck
+        //check for menu or inventory input
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             PauseGame();
 
@@ -158,26 +191,30 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            inventory.UsePotion();
+            StartCoroutine(inventory.PotionTimer());
         }
 
         if (Input.GetKeyDown(KeyCode.C))
             OpenShop();
+        #endregion
     }
 
     void PauseGame()
     {
-        pauseMenu.SetActive(true);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(true);
     }
 
     void OpenStats()
     {
-        statScreen.SetActive(true);
+        if (statScreen != null)
+            statScreen.SetActive(true);
     }
 
     void OpenShop()
     {
         if (dist <= 5.2f)
-            GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+            if (GameObject.Find("Shop Keeper") != null)
+                GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
 }

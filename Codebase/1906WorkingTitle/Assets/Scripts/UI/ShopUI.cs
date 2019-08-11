@@ -16,13 +16,17 @@ public class ShopUI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mainUI = GameObject.Find("Main UI");
-        mainUI.SetActive(false);
+        if (GameObject.Find("Main UI"))
+        {
+            mainUI = GameObject.Find("Main UI");
+            mainUI.SetActive(false);
+        }
 
         denyScreen = transform.Find("Deny Screen").gameObject;
         denyScreen.SetActive(false);
 
-        inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        if(GameObject.Find("Player"))
+            inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
 
         Time.timeScale = 0;
@@ -37,7 +41,8 @@ public class ShopUI : MonoBehaviour
     {
 
         //update coin count
-        coins = inventory.GetCoins();
+        if(inventory != null)
+            coins = inventory.GetCoins();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         coinText.text = $"X{coins}";
 
@@ -61,12 +66,13 @@ public class ShopUI : MonoBehaviour
     
     public void ExitMenu()
     {
-        mainUI.SetActive(true);
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         transform.parent.gameObject.SetActive(false);
+        if(mainUI != null)
+            mainUI.SetActive(true);
     }
 
     public void Purchase()

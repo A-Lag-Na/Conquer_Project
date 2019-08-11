@@ -33,7 +33,7 @@ public class BaseItem : MonoBehaviour
             return Resources.Load<Sprite>("Sprites/background");
     }
 
-    protected string GetName()
+    public string GetName()
     {
         return name;
     }

@@ -16,6 +16,12 @@ public class HealthRegenCompanion : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
         if (playerStats.GetisRegenerating() == false)
             StartCoroutine(playerStats.HealthRegen());
+        Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+        // Lock the rotation around X and Z Axes
+        rotation.x = 0.0f;
+        rotation.z = 0.0f;
+        // Change the companion's tranform's rotation to the rotation Quaternion
+        transform.rotation = rotation;
     }
 
     private void OnEnable()

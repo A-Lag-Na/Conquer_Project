@@ -11,8 +11,6 @@ TagManager:
   - Fire Bullet
   - Ice Bullet
   - BulletHell Enemy
-  - Fire Enemy
-  - Ice Enemy
   - BridgeCollider
   - Water
   - Stun Bullet
@@ -21,6 +19,8 @@ TagManager:
   - Trap
   - IcePot
   - IceSpell
+  - Hex
+  - Aura
   layers:
   - Default
   - TransparentFX
@@ -40,7 +40,7 @@ TagManager:
   - Dash
   - Trap
   - Spell
-  - 
+  - Boltless
   - 
   - 
   - 

@@ -59,7 +59,10 @@ public class EnemyStats : MonoBehaviour
         playerScript = player.GetComponentInParent<Player>();
         anim = GetComponent<Animator>();
 
-        spawnerScript = spawnerObject.GetComponent<SpawnScript>();
+        if(spawnerObject != null)
+        {
+            spawnerScript = spawnerObject.GetComponent<SpawnScript>();
+        }
     }
 
     public void Update()
@@ -93,7 +96,6 @@ public class EnemyStats : MonoBehaviour
     {
         return bulletSpeed;
     }
-
     public void SetHealth(float _health)
     {
         health = _health;
@@ -120,7 +122,7 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(float _damage = 1)
     {
-        if(damage > 0)
+        if(damage > 0f)
         {
             BlinkOnHit();
             health -= _damage;
@@ -186,6 +188,10 @@ public class EnemyStats : MonoBehaviour
     public void SetSpawner(GameObject _spawner)
     {
         spawnerObject = _spawner;
+    }
+    public Renderer GetRenderer()
+    {
+        return enemyRender;
     }
     #endregion
 }

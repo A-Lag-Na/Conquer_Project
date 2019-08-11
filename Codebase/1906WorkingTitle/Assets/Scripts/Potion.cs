@@ -5,16 +5,27 @@ using UnityEngine;
 public class Potion : BaseItem
 {
     public enum PotionType { Consumable, Thrown, EOF};
-    PotionType potionType = PotionType.EOF;
-    [SerializeField] float healthReturn = 5;
+    [SerializeField] PotionType potionType = PotionType.Consumable;
+    [SerializeField] float floatModifier = 5;
+    [SerializeField] int intModifier = 5;
+    [SerializeField] GameObject potionEffect = null;
     
     public PotionType GetPotionType()
     {
         return potionType;
     }
 
-    public float Heal()
+    public float GetFloatModifier()
     {
-        return healthReturn;
+        return floatModifier;
+    }
+    public int GetIntModifier()
+    {
+        return intModifier;
+    }
+
+    public GameObject GetPotionEffect()
+    {
+        return potionEffect;
     }
 }

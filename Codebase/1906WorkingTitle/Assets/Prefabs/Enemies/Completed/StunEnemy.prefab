@@ -77,6 +77,15 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: projectile
+      value: 
+      objectReference: {fileID: 1064183398099304414, guid: 53594128f06f15f43b14133d44657238,
+        type: 3}
+    - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: projectilePos
+      value: 
+      objectReference: {fileID: 5252745216505827100}
     - target: {fileID: 6575994589695979374, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: attackRate
@@ -92,15 +101,6 @@ PrefabInstance:
       propertyPath: stunImmune
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
-      propertyPath: projectile
-      value: 
-      objectReference: {fileID: 1064183398099304414, guid: 53594128f06f15f43b14133d44657238,
-        type: 3}
-    - target: {fileID: 1336841916, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
-      propertyPath: projectilePos
-      value: 
-      objectReference: {fileID: 5252745216505827100}
     - target: {fileID: -7261595029303865240, guid: 84c51cbc1be6f8e4b9631d28bcdec453,
         type: 3}
       propertyPath: OutputAudioMixerGroup
@@ -111,6 +111,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_UseGravity
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1832181533917185, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048549982684287, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
+      propertyPath: m_Name
+      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 84c51cbc1be6f8e4b9631d28bcdec453, type: 3}
