@@ -136,23 +136,36 @@ public class Inventory : MonoBehaviour
                 {
                     case "Health Potion":
                         if (player.GetHealth() < player.GetMaxHealth())
+                        {
                             player.RestoreHealth(potionNode.Value.GetFloatModifier());
+                            RemovePotion();
+                        }
                         break;
+
                     case "Defense Potion":
                         player.ModifyDefense(potionNode.Value.GetIntModifier());
+                        int intModValue = potionNode.Value.GetIntModifier();
+                        RemovePotion();
                         yield return new WaitForSeconds(3f);
-                        player.ModifyDefense(-1 * potionNode.Value.GetIntModifier());
+                        player.ModifyDefense(-1 * intModValue);
                         break;
+
                     case "Damage Buff Potion":
                         player.ModifyDamage(potionNode.Value.GetIntModifier());
+                        intModValue = potionNode.Value.GetIntModifier();
+                        RemovePotion();
                         yield return new WaitForSeconds(5f);
-                        player.ModifyDamage(-1 * potionNode.Value.GetIntModifier());
+                        player.ModifyDamage(-1 * intModValue);
                         break;
+
                     case "Movement Speed Potion":
                         player.ModifySpeed(potionNode.Value.GetFloatModifier());
+                        float floatModValue = potionNode.Value.GetFloatModifier();
+                        RemovePotion();
                         yield return new WaitForSeconds(6f);
-                        player.ModifySpeed(-1 * potionNode.Value.GetFloatModifier());
+                        player.ModifySpeed(-1 * floatModValue);
                         break;
+
                     default:
                         break;
                 }
@@ -161,26 +174,7 @@ public class Inventory : MonoBehaviour
             else
             {
                 player.ThrowPotion(potionNode.Value.GetPotionEffect());
-            }
-
-            //clear potion after use
-            if (potionNode != null)
-            {
-                if (potionNode.Next != null)
-                {
-                    potionNode = potionNode.Next;
-                    potionList.Remove(potionNode.Previous);
-                }
-                else if (potionNode.Previous != null)
-                {
-                    potionNode = potionNode.Previous;
-                    potionList.Remove(potionNode.Next);
-                }
-                else
-                {
-                    potionList.Remove(potionNode);
-                    potionNode = null;
-                }
+                RemovePotion();
             }
 
         }
@@ -223,4 +217,27 @@ public class Inventory : MonoBehaviour
             return "";
     }
     #endregion
+
+    #region Remove Potion
+    private void RemovePotion()
+    {
+        //clear potion after use
+        if (potionNode.Next != null)
+        {
+            potionNode = potionNode.Next;
+            potionList.Remove(potionNode.Previous);
+        }
+        else if (potionNode.Previous != null)
+        {
+            potionNode = potionNode.Previous;
+            potionList.Remove(potionNode.Next);
+        }
+        else
+        {
+            potionList.Remove(potionNode);
+            potionNode = null;
+        }
+    }
+    #endregion
+
 }

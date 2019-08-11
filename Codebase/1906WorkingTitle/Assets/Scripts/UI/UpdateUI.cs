@@ -12,11 +12,10 @@ public class UpdateUI : MonoBehaviour
     [SerializeField] private Inventory inventory;
     private float health, maxHealth, currentExperience, nextLevelExp;
     private int lives, coins;
-    private string slot1Name, slot2Name;
     #endregion
 
     #region UI elements to remember
-    private Text healthText, livesText, coinText;
+    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name;
     private RectTransform healthTransform, levelTransform;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
     private Sprite cSprite, tabSprite;
@@ -64,7 +63,9 @@ public class UpdateUI : MonoBehaviour
 
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
+        InvSlot1Name = transform.Find("Inventory Slot 1").GetChild(0).GetComponent<Text>();
         InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
+        InvSlot2Name = transform.Find("Inventory Slot 2").GetChild(0).GetComponent<Text>();
 
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
@@ -140,8 +141,8 @@ public class UpdateUI : MonoBehaviour
             //update inventory
             InvSlot1.sprite = inventory.WeaponSprite();
             InvSlot2.sprite = inventory.PotionSprite();
-            string slot1 = inventory.WeaponName();
-            string slot2 = inventory.PotionName();
+            InvSlot1Name.text = inventory.WeaponName();
+            InvSlot2Name.text = inventory.PotionName();
             #endregion
         }
         #endregion
