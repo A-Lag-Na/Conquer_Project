@@ -276,6 +276,19 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void ThrowPotion(GameObject potion)
+    {
+        GameObject clone = Instantiate(potion, projectilePosition.transform.position, transform.rotation);
+        clone.GetComponent<TrailRenderer>().time = .1125f;
+        clone.GetComponent<CollisionScript>().bulletDamage = 0;
+        clone.gameObject.layer = 10;
+        clone.gameObject.SetActive(true);
+        clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
+        lastTimeFired = Time.time;
+        source.PlayOneShot(fire);
+        StartCoroutine(ShootRotation());
+    }
+
     IEnumerator ShootRotation()
     {
         isRotated = true;
@@ -447,6 +460,12 @@ public class Player : MonoBehaviour
         playerAttackSpeed -= 0.1f;
         playerSpendingPoints--;
     }
+
+    public void ModifyAttackSpeed(float _attackSpeed)
+    {
+        playerAttackSpeed -= _attackSpeed;
+        visualAttackSpeed += (int)(_attackSpeed * 10f);
+    }
     #endregion
 
     #region MovementSpeed
@@ -550,18 +569,6 @@ public class Player : MonoBehaviour
         isStunned = false;
     }
     #endregion
-
-    #region Weapon and Potion
-    public Sprite GetWeapon()
-    {
-        return inventory.WeaponSprite();
-    }
-
-    public Sprite GetPotion()
-    {
-        return inventory.PotionSprite();
-    }
-    #endregion
-
+    
     #endregion
 }

@@ -12,6 +12,7 @@ public class UpdateUI : MonoBehaviour
     [SerializeField] private Inventory inventory;
     private float health, maxHealth, currentExperience, nextLevelExp;
     private int lives, coins;
+    private string slot1Name, slot2Name;
     #endregion
 
     #region UI elements to remember
@@ -101,9 +102,10 @@ public class UpdateUI : MonoBehaviour
     private void Update()
     {
         #region UIUpdates
-        //update health
         if (player != null)
         {
+            #region Health Update
+            //update health
             health = player.GetHealth();
             maxHealth = player.GetMaxHealth();
             Vector3 HealthScale = healthTransform.localScale;
@@ -111,25 +113,36 @@ public class UpdateUI : MonoBehaviour
                 HealthScale.x = health / maxHealth;
             healthTransform.localScale = HealthScale;
             healthText.text = $"{health} / {maxHealth}";
+            #endregion
 
+            #region Level Update
             //update level bar
             currentExperience = player.GetExperience();
             nextLevelExp = player.GetNextLevelExperience();
             Vector3 levelScale = levelTransform.localScale;
             levelScale.x = currentExperience / nextLevelExp;
             levelTransform.localScale = levelScale;
+            #endregion
 
+            #region Coin Update
             //update coin count
             coins = player.GetCoins();
             coinText.text = $"X{coins}";
+            #endregion
 
+            #region Lives Update
             //update lives count
             lives = player.GetLives();
             livesText.text = $"X{lives}";
+            #endregion
 
+            #region Inventory Update
             //update inventory
-            InvSlot1.sprite = player.GetWeapon();
-            InvSlot2.sprite = player.GetPotion();
+            InvSlot1.sprite = inventory.WeaponSprite();
+            InvSlot2.sprite = inventory.PotionSprite();
+            string slot1 = inventory.WeaponName();
+            string slot2 = inventory.PotionName();
+            #endregion
         }
         #endregion
 
@@ -177,7 +190,7 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            inventory.UsePotion();
+            StartCoroutine(inventory.PotionTimer());
         }
 
         if (Input.GetKeyDown(KeyCode.C))

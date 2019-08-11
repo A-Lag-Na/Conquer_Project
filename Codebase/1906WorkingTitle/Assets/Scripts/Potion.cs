@@ -5,9 +5,9 @@ using UnityEngine;
 public class Potion : BaseItem
 {
     public enum PotionType { Consumable, Thrown, EOF};
-    PotionType potionType = PotionType.EOF;
+    [SerializeField] PotionType potionType = PotionType.Consumable;
     [SerializeField] float floatModifier = 5;
-    [SerializeField] float intModifier = 5;
+    [SerializeField] int intModifier = 5;
     [SerializeField] GameObject potionEffect = null;
     
     public PotionType GetPotionType()
@@ -19,7 +19,7 @@ public class Potion : BaseItem
     {
         return floatModifier;
     }
-    public float GetIntModifier()
+    public int GetIntModifier()
     {
         return intModifier;
     }

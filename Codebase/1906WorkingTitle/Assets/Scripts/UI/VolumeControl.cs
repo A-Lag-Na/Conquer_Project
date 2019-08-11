@@ -8,7 +8,7 @@ public class VolumeControl : MonoBehaviour
 {
     [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume;
     Slider masterSlider = null, musicSlider = null, sfxSlider = null;
-    [SerializeField] AudioMixer musicMixer, sfxMixer;
+    [SerializeField] AudioMixer musicMixer = null, sfxMixer = null;
 
     // Start is called before the first frame update
     void Start()

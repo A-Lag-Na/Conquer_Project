@@ -10,9 +10,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] LinkedListNode<Weapon> weaponNode;
     [SerializeField] LinkedListNode<Potion> potionNode;
     [SerializeField] int amountOfPotions;
+    Player player = null;
 
     private void Start()
     {
+        player = GetComponentInParent<Player>();
         weaponNode = weaponList.First;
         potionNode = potionList.First;
     }
@@ -58,6 +60,8 @@ public class Inventory : MonoBehaviour
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
     public void AddPotion(BaseItem _potion)
@@ -76,7 +80,11 @@ public class Inventory : MonoBehaviour
     {
         if (weaponNode.Next != null)
         {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
             weaponNode = weaponNode.Next;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
 
@@ -84,7 +92,11 @@ public class Inventory : MonoBehaviour
     {
         if (weaponNode.Previous != null)
         {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
             weaponNode = weaponNode.Previous;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
 
@@ -110,87 +122,72 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-    #region Potion stat Grab
-
-    public void UsePotion()
+    #region Use Potion
+    
+    public IEnumerator PotionTimer()
     {
-        if(potionNode != null)
+        //check if there is a potion
+        if (potionNode != null)
         {
-            Player player = GetComponentInParent<Player>();
+            //if consumable type
             if (potionNode.Value.GetPotionType() == Potion.PotionType.Consumable)
             {
                 switch (potionNode.Value.name)
                 {
                     case "Health Potion":
-                        if(player.GetHealth() < player.GetMaxHealth())
-                            Heal();
+                        if (player.GetHealth() < player.GetMaxHealth())
+                            player.RestoreHealth(potionNode.Value.GetFloatModifier());
                         break;
                     case "Defense Potion":
-                        player.AddDefense(potionNode.Value.GetFloatModifier());
+                        player.ModifyDefense(potionNode.Value.GetIntModifier());
+                        yield return new WaitForSeconds(3f);
+                        player.ModifyDefense(-1 * potionNode.Value.GetIntModifier());
                         break;
                     case "Damage Buff Potion":
-                        //DamageBuff();
+                        player.ModifyDamage(potionNode.Value.GetIntModifier());
+                        yield return new WaitForSeconds(5f);
+                        player.ModifyDamage(-1 * potionNode.Value.GetIntModifier());
                         break;
                     case "Movement Speed Potion":
-                        //MovementSpeedBuff();
+                        player.ModifySpeed(potionNode.Value.GetFloatModifier());
+                        yield return new WaitForSeconds(6f);
+                        player.ModifySpeed(-1 * potionNode.Value.GetFloatModifier());
                         break;
                     default:
                         break;
                 }
             }
+            //if thrown type
             else
             {
-                //ThrowPotion();
+                player.ThrowPotion(potionNode.Value.GetPotionEffect());
+            }
+
+            //clear potion after use
+            if (potionNode != null)
+            {
+                if (potionNode.Next != null)
+                {
+                    potionNode = potionNode.Next;
+                    potionList.Remove(potionNode.Previous);
+                }
+                else if (potionNode.Previous != null)
+                {
+                    potionNode = potionNode.Previous;
+                    potionList.Remove(potionNode.Next);
+                }
+                else
+                {
+                    potionList.Remove(potionNode);
+                    potionNode = null;
+                }
             }
 
         }
     }
 
-    private float Heal()
-    {
-        if (potionNode != null)
-        {
-            float heal = potionNode.Value.Heal();
-            if (potionNode.Next != null)
-            {
-                potionNode = potionNode.Next;
-                potionList.Remove(potionNode.Previous);
-            }
-            else if (potionNode.Previous != null)
-            {
-                potionNode = potionNode.Previous;
-                potionList.Remove(potionNode.Next);
-            }
-            else
-            {
-                potionList.Remove(potionNode);
-                potionNode = null;
-            }
-            return heal;
-        }
-        else
-            return 0.0f;
-    }
     #endregion
-
-    #region Weapon Stat Grabs
-    public int Attack()
-    {
-        if(weaponNode!=null)
-            return weaponNode.Value.Attack();
-        else
-            return 0;
-    }
-
-    public float GetAttackSpeed()
-    {
-        if(weaponNode!=null)
-            return weaponNode.Value.GetAttackSpeed();
-        else
-            return 0.0f;
-    }
-    #endregion
-
+    
     #region Sprite Grabs
     public Sprite WeaponSprite()
     {
@@ -206,6 +203,24 @@ public class Inventory : MonoBehaviour
             return potionNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
+    }
+    #endregion
+
+    #region Name Grabs
+    public string WeaponName()
+    {
+        if (weaponNode != null)
+            return weaponNode.Value.GetName();
+        else
+            return "";
+    }
+
+    public string PotionName()
+    {
+        if (potionNode != null)
+            return potionNode.Value.GetName();
+        else
+            return "";
     }
     #endregion
 }
