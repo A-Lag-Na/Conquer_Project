@@ -21,6 +21,8 @@ public class Companion : MonoBehaviour
     [SerializeField] GameObject projectilePos = null;
     [SerializeField] AudioClip fire = null;
     AudioSource source = null;
+    [SerializeField] GameObject potion = null;
+    float previousExp = 0.0f;
 
     // Start is called before the first frame update
     void Start()
@@ -105,6 +107,12 @@ public class Companion : MonoBehaviour
                     }
                 }
             }
+            else if (name == "Scavenger Companion")
+                if (playerStats.GetExperience() > previousExp)
+                {
+                    Instantiate(potion, transform.position, transform.rotation);
+                    previousExp = playerStats.GetExperience();
+                }
         }
     }
 
@@ -144,6 +152,7 @@ public class Companion : MonoBehaviour
             playerStats.XPModifier(0.5f);
         isFollowing = true;
         playerStats.SetCompanion(this);
+        previousExp = playerStats.GetExperience();
     }
 
     public void Deactivate()
