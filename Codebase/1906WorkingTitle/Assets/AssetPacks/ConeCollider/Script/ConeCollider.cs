@@ -11,7 +11,7 @@ public class ConeCollider : MonoBehaviour {
     [SerializeField]
     private float m_distance = 1;
     [SerializeField]
-    private bool m_isTrigger;
+    private bool m_isTrigger = false;
     private Mesh m_mesh;
     private Vector3 m_localScale;
     [SerializeField]
