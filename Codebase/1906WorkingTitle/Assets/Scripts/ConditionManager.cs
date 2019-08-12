@@ -240,9 +240,13 @@ public class ConditionManager : MonoBehaviour
     {
         fireDamage = _fireDamage;
     }
-    public void Refresh(float _amountToIncrease = 1)
+    public void Modify(float _amountToIncrease = 1)
     {
         maxSpeed += _amountToIncrease;
+    }
+    public void Refresh()
+    {
+        maxSpeed = GetSpeed();
     }
     void OnPauseGame()
     {
@@ -283,6 +287,15 @@ public class ConditionManager : MonoBehaviour
             {
                 ((EnemyAI)aiScript).Unstun();
             }
+        }
+    }
+
+    public void LovePotion()
+    {
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            ((EnemyAI)aiScript).FallInLove();
         }
     }
     #endregion GetSet

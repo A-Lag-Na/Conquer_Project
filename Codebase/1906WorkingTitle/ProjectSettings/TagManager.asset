@@ -22,6 +22,7 @@ TagManager:
   - Hex
   - Aura
   - FireBall
+  - SavePoint
   layers:
   - Default
   - TransparentFX
@@ -40,6 +41,8 @@ TagManager:
   - Creep
   - Dash
   - Trap
+  -
+  -
   - 
   - 
   - Companion

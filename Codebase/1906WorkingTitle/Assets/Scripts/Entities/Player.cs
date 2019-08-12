@@ -12,12 +12,13 @@ public class Player : MonoBehaviour
     [SerializeField] float playerAttackSpeed = 1.0f;
     [SerializeField] private int visualAttackSpeed = 1;
     [SerializeField] int playerAttackDamage = 1;
-    private float lastTimeFired = 0.0f;
     private float playerExperience = 0.0f;
     private float nextLevelExperience = 10.0f;
     private int playerLevel = 1;
     [SerializeField] private int playerSpendingPoints = 0;
     [SerializeField] private int playerLives = 5;
+
+    private float lastTimeFired = 0.0f;
 
     //If player is immune to status conditions
     public bool isIceImmune = false;
@@ -46,13 +47,14 @@ public class Player : MonoBehaviour
     private Animator animator = null;
     private GameObject dashTrail = null;
     [SerializeField] private GameObject mainUI = null;
+    SaveScript save = null;
     #endregion
 
     #region PlayerMovementProperties
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 mousePosition = Vector3.zero;
     private Vector3 targetPosition = Vector3.zero;
-    [SerializeField] private Camera mainCamera = null;
+    private Camera mainCamera = null;
     private float playerY = 0.0f;
     private bool paused = false;
     #endregion
@@ -70,6 +72,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         dashTrail = GameObject.Find("DashTrail");
         dashTrail.SetActive(false);
 
@@ -97,6 +100,7 @@ public class Player : MonoBehaviour
         isDashing = false;
         isRegenerating = false;
         bulletChoice = 1;
+        save = GetComponent<SaveScript>();
     }
 
     // Update is called once per frame
@@ -294,6 +298,12 @@ public class Player : MonoBehaviour
             TakeDamage();
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("SavePoint"))
+            save.Save();
+    }
+
     #endregion
 
     #region AccessorsAndMutators
@@ -311,6 +321,7 @@ public class Player : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerLives--;
+            save.Load();
             if (playerLives <= 0)
                 Death();
             playerHealth = maxPlayerHealth;
@@ -353,6 +364,16 @@ public class Player : MonoBehaviour
         isRegenerating = false;
     }
 
+    public void SetHealth(float _playerHealth)
+    {
+        playerHealth = _playerHealth;
+    }
+
+    public void SetMaxHealth(float _playerMaxHealth)
+    {
+        maxPlayerHealth = _playerMaxHealth;
+    }
+
     #endregion
 
     #region Coins
@@ -370,6 +391,11 @@ public class Player : MonoBehaviour
     public void CoinModifier(int _coinModifier)
     {
         playerCoinModifier += _coinModifier;
+    }
+
+    public void SetCoins(int _coins)
+    {
+        inventory.AddCoins(_coins);
     }
     #endregion
 
@@ -390,6 +416,11 @@ public class Player : MonoBehaviour
         playerDefense += _playerDefense;
     }
 
+    public void SetDefense(int _playerDefense)
+    {
+        playerDefense = _playerDefense;
+    }
+
     #endregion
 
     #region Damage
@@ -407,6 +438,11 @@ public class Player : MonoBehaviour
     public void ModifyDamage(int _playerDamage)
     {
         playerAttackDamage += _playerDamage;
+    }
+
+    public void SetDamage(int _playerDamage)
+    {
+        playerAttackDamage = _playerDamage;
     }
     #endregion
 
@@ -429,6 +465,21 @@ public class Player : MonoBehaviour
         visualAttackSpeed += (int)(_attackSpeed * 10f);
     }
 
+    public void SetAttackSpeed(int _attackSpeed)
+    {
+        visualAttackSpeed = _attackSpeed;
+    }
+
+    public float GetFireRate()
+    {
+        return playerAttackSpeed;
+    }
+
+    public void SetFireRate(float _playerAttackSpeed)
+    {
+        playerAttackSpeed = _playerAttackSpeed;
+    }
+
     public float GetLastTimeFired()
     {
         return lastTimeFired;
@@ -443,6 +494,7 @@ public class Player : MonoBehaviour
     public void SetMovementSpeed(float newMovementSpeed)
     {
         playerMovementSpeed = newMovementSpeed;
+        GetComponent<ConditionManager>().Refresh();
     }
 
     public float GetMovementSpeed()
@@ -452,7 +504,7 @@ public class Player : MonoBehaviour
 
     public void ModifySpeed(float _playerSpeed)
     {
-        GetComponent<ConditionManager>().Refresh(_playerSpeed);
+        GetComponent<ConditionManager>().Modify(_playerSpeed);
     }
     #endregion
 
@@ -466,7 +518,7 @@ public class Player : MonoBehaviour
         playerSpendingPoints++;
         playerExperience -= 10;
         playerLevel++;
-        GetComponent<ConditionManager>().Refresh();
+        GetComponent<ConditionManager>().Modify();
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().LevelUp();
     }
@@ -476,9 +528,19 @@ public class Player : MonoBehaviour
         return playerExperience;
     }
 
+    public void SetExperience(float _playerExp)
+    {
+        playerExperience = _playerExp;
+    }
+
     public float GetNextLevelExperience()
     {
         return nextLevelExperience;
+    }
+
+    public void SetNextLevelExperience(float _nextLevel)
+    {
+        nextLevelExperience = _nextLevel;
     }
 
     public int GetSpendingPoints()
@@ -486,9 +548,19 @@ public class Player : MonoBehaviour
         return playerSpendingPoints;
     }
 
+    public void SetSpendingPoints(int _spendPoints)
+    {
+        playerSpendingPoints = _spendPoints;
+    }
+
     public int GetLevel()
     {
         return playerLevel;
+    }
+
+    public void SetLevel(int _level)
+    {
+        playerLevel = _level;
     }
 
     public void GainExperience(float playerEXP)
@@ -516,6 +588,11 @@ public class Player : MonoBehaviour
         playerLives++;
     }
 
+    public void SetLives(int _lives)
+    {
+        playerLives = _lives;
+    }
+
     #endregion
 
     #region Pause
@@ -540,6 +617,18 @@ public class Player : MonoBehaviour
         isStunned = false;
     }
     #endregion
-    
+
+    #region Position
+    public Vector3 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public void SetPosition(Vector3 _position)
+    {
+        transform.position = _position;
+    }
+    #endregion
+
     #endregion
 }

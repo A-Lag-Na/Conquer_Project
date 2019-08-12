@@ -10,7 +10,7 @@ public class EnemyAI : MonoBehaviour
     private float bulletSpeed;
     int bulletDamage;
     public bool isStunned;
-    private bool isPaused;
+    private bool isPaused, inLove;
     bool attackEnabled = true;
     #endregion
 
@@ -26,6 +26,7 @@ public class EnemyAI : MonoBehaviour
     Animator anim;
     NavMeshAgent agent;
     GameObject player;
+    GameObject target;
     AudioSource source;
     #endregion
 
@@ -42,6 +43,7 @@ public class EnemyAI : MonoBehaviour
         bulletDamage = GetComponent<EnemyStats>().GetDamage();
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
+        target = player;
     }
 
     IEnumerator EnemyAttack()
@@ -65,10 +67,14 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isPaused && !isStunned)
         {
-            agent.SetDestination(player.transform.position);
+            if(inLove && player != null && target == null)
+            {
+                SetTarget();
+            }
+            agent.SetDestination(target.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
             {
-                Vector3 targetPosition = player.transform.position;
+                Vector3 targetPosition = target.transform.position;
                 Vector3 relativePosition = targetPosition - transform.position;
                 Quaternion rotation = Quaternion.LookRotation(relativePosition);
                 // Lock the rotation around X and Z Axes
@@ -106,6 +112,35 @@ public class EnemyAI : MonoBehaviour
     public void Unstun()
     {
         isStunned = false;
+    }
+
+    public IEnumerator FallInLove()
+    {
+        SetTarget();
+        inLove = true;
+        yield return new WaitForSeconds(7f);
+        inLove = false;
+        target = player;
+    }
+
+    private void SetTarget()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            
+            float curDistance = Vector3.Distance(position, go.transform.position);
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        target = closest;
     }
     #endregion
 }
