@@ -17,6 +17,7 @@ public class CollisionScript : MonoBehaviour
 
     private Player player;
     private EnemyStats enemy;
+    private EnemyAI ai;
     private NavMeshAgent nav;
 
     [SerializeField] GameObject fireCreep = null;
@@ -40,17 +41,18 @@ public class CollisionScript : MonoBehaviour
             }
             if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
-                if (collision.collider.CompareTag("Player"))
+                if (target.CompareTag("Player"))
                 {
-                    player = collision.collider.GetComponent<Player>();
-                    //The enemy we hit takes damage.
+                    player = target.GetComponent<Player>();
                     isFireImmune = player.isFireImmune;
                     isIceImmune = player.isIceImmune;
                     isStunImmune = player.isStunImmune;
                 }
-                if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
+                if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy")) 
                 {
-                    enemy = collision.collider.GetComponent<EnemyStats>();
+                    if(!target.CompareTag("BulletHell Enemy"))
+                        ai = target.GetComponent<EnemyAI>();
+                    enemy = target.GetComponent<EnemyStats>();
                     isFireImmune = enemy.isFireImmune;
                     isIceImmune = enemy.isIceImmune;
                     isStunImmune = enemy.isStunImmune;
@@ -128,6 +130,15 @@ public class CollisionScript : MonoBehaviour
                                 }
                                 break;
                             }
+                        case "Love Bullet":
+                            {
+                                if(ai != null)
+                                {
+                                    DamageCheck();
+                                    ai.FallInLove(5.0f);
+                                }
+                                break;
+                            }
                         case "FirePot":
                             {
                                 DamageCheck();
@@ -176,6 +187,7 @@ public class CollisionScript : MonoBehaviour
                                 }
                                 break;
                             }
+                        
                         default:
                             {
                                 DamageCheck();

@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    [SerializeField] int fireTimer = 0;
+    private int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;
 
-    [SerializeField] bool isPlayer;
+    private bool isPlayer;
     private Component statsScript;
     private Component aiScript;
 
@@ -24,8 +24,8 @@ public class ConditionManager : MonoBehaviour
     private float fireDamage;
     private float auraDamage;
 
-    GameObject fireParticle;
-    GameObject iceParticle;
+    GameObject fireParticle = null;
+    GameObject iceParticle = null;
 
     private bool isPaused;
 
@@ -285,15 +285,6 @@ public class ConditionManager : MonoBehaviour
             {
                 ((EnemyAI)aiScript).Unstun();
             }
-        }
-    }
-
-    public void LovePotion()
-    {
-
-        if (gameObject.CompareTag("Enemy"))
-        {
-            ((EnemyAI)aiScript).FallInLove();
         }
     }
     #endregion GetSet
