@@ -6,14 +6,14 @@ using UnityEngine.AI;
 public class CollisionScript : MonoBehaviour
 {
     private AudioSource audioSource;
-    public AudioClip hurt;
+    private AudioClip hurt = null;
     //public AudioClip burn;
-    public int bulletDamage;
-    public GameObject sparks;
-    public GameObject blood;
-    public bool isIceImmune = false;
-    public bool isFireImmune = false;
-    public bool isStunImmune = false;
+    public float bulletDamage;
+    [SerializeField] GameObject sparks = null;
+    [SerializeField] GameObject blood = null;
+    private bool isIceImmune = false;
+    private bool isFireImmune = false;
+    private bool isStunImmune = false;
 
     private Player player;
     private EnemyStats enemy;
@@ -22,164 +22,169 @@ public class CollisionScript : MonoBehaviour
     [SerializeField] GameObject fireCreep = null;
     [SerializeField] GameObject iceCreep = null;
 
+    [SerializeField] GameObject owner = null;
+
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.collider.gameObject;
-        nav = target.GetComponent<NavMeshAgent>();
+        if (target != owner)
+        {
+            nav = target.GetComponent<NavMeshAgent>();
 
-        audioSource = target.GetComponent<AudioSource>();
-        if (audioSource != null)
-        {
-            audioSource.volume = 1.0f;
-            audioSource.PlayOneShot(hurt);
-            audioSource.volume = 0.5f;
-        }
-        if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
-        {
-            if (collision.collider.CompareTag("Player"))
+            audioSource = target.GetComponent<AudioSource>();
+            if (audioSource != null)
             {
-                player = collision.collider.GetComponent<Player>();
-                //The enemy we hit takes damage.
-                isFireImmune = player.isFireImmune;
-                isIceImmune = player.isIceImmune;
-                isStunImmune = player.isStunImmune;
+                audioSource.volume = 1.0f;
+                audioSource.PlayOneShot(hurt);
+                audioSource.volume = 0.5f;
             }
-            if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
+            if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
-                enemy = collision.collider.GetComponent<EnemyStats>();
-                isFireImmune = enemy.isFireImmune;
-                isIceImmune = enemy.isIceImmune;
-                isStunImmune = enemy.isStunImmune;
-            }
-        }
-        else
-        {
-            Instantiate(sparks, transform.position, sparks.transform.rotation);
-            {
-                if (gameObject.CompareTag("FirePot"))
+                if (collision.collider.CompareTag("Player"))
                 {
-                    Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                    player = collision.collider.GetComponent<Player>();
+                    //The enemy we hit takes damage.
+                    isFireImmune = player.isFireImmune;
+                    isIceImmune = player.isIceImmune;
+                    isStunImmune = player.isStunImmune;
                 }
-                if (gameObject.CompareTag("IcePot"))
+                if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
                 {
-                    Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
+                    enemy = collision.collider.GetComponent<EnemyStats>();
+                    isFireImmune = enemy.isFireImmune;
+                    isIceImmune = enemy.isIceImmune;
+                    isStunImmune = enemy.isStunImmune;
                 }
             }
-        }
-        if (!(isIceImmune && isFireImmune && isStunImmune))
-        {
-            ConditionManager con = target.GetComponent<ConditionManager>();
-            if (con != null)
+            else
             {
-                //Apply extra on-hit effects here:
-                switch (gameObject.tag)
+                Instantiate(sparks, transform.position, sparks.transform.rotation);
                 {
-                    case "Fire Bullet":
-                        {
-                            if (!isFireImmune)
+                    if (gameObject.CompareTag("FirePot"))
+                    {
+                        Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                    }
+                    if (gameObject.CompareTag("IcePot"))
+                    {
+                        Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
+                    }
+                }
+            }
+            if (!(isIceImmune && isFireImmune && isStunImmune))
+            {
+                ConditionManager con = target.GetComponent<ConditionManager>();
+                if (con != null)
+                {
+                    //Apply extra on-hit effects here:
+                    switch (gameObject.tag)
+                    {
+                        case "Fire Bullet":
                             {
-                                DamageCheck();
-                                //Burn sound effect
-                                //audioSource.PlayOneShot(burn);
-                                con.TimerAdd("fire", 179);
-                            }
-                            break;
-                        }
-                    case "Ice Bullet":
-                        {
-                            if (!isIceImmune)
-                            {
-                                DamageCheck();
-                                con.SubtractSpeed(0.6f);
-                                con.TimerAdd("thaw", 90);
-                            }
-                            break;
-                        }
-                    case "Stun Bullet":
-                        {
-                            if (!isStunImmune)
-                            {
-                                DamageCheck();
-                                if (target.CompareTag("BulletHell Enemy"))
+                                if (!isFireImmune)
                                 {
-                                    BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
-                                    bulletHellAI.Stun();
-                                    nav.enabled = false;
+                                    DamageCheck();
+                                    //Burn sound effect
+                                    //audioSource.PlayOneShot(burn);
+                                    con.TimerAdd("fire", 179);
                                 }
-                                else if (!target.CompareTag("Player"))
+                                break;
+                            }
+                        case "Ice Bullet":
+                            {
+                                if (!isIceImmune)
                                 {
-                                    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-                                    if (enemyAI != null)
-                                        enemyAI.Stun();
-                                    else
+                                    DamageCheck();
+                                    con.SubtractSpeed(0.6f);
+                                    con.TimerAdd("thaw", 90);
+                                }
+                                break;
+                            }
+                        case "Stun Bullet":
+                            {
+                                if (!isStunImmune)
+                                {
+                                    DamageCheck();
+                                    if (target.CompareTag("BulletHell Enemy"))
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
                                         bulletHellAI.Stun();
+                                        nav.enabled = false;
                                     }
-                                    nav.enabled = false;
+                                    else if (!target.CompareTag("Player"))
+                                    {
+                                        EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+                                        if (enemyAI != null)
+                                            enemyAI.Stun();
+                                        else
+                                        {
+                                            BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                            bulletHellAI.Stun();
+                                        }
+                                        nav.enabled = false;
+                                    }
+                                    else
+                                        player.Stun();
+                                    con.TimerAdd("stun", 16);
                                 }
-                                else
-                                    player.Stun();
-                                con.TimerAdd("stun", 16);
+                                break;
                             }
-                            break;
-                        }
-                    case "FirePot":
-                        {
-                            DamageCheck();
-                            Instantiate(sparks, transform.position, sparks.transform.rotation);
-                            Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
-                            break;
-                        }
-                    case "IcePot":
-                        {
-                            DamageCheck();
-                            Instantiate(sparks, transform.position, sparks.transform.rotation);
-                            Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
-                            break;
-                        }
-                    case "Hex":
-                        {
-                            DamageCheck();
-                            if (!isFireImmune)
+                        case "FirePot":
                             {
-                                //Burn sound effect
-                                //audioSource.PlayOneShot(burn);
-                                con.TimerAdd("fire", 179);
+                                DamageCheck();
+                                Instantiate(sparks, transform.position, sparks.transform.rotation);
+                                Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
+                                break;
                             }
-                            if (!isIceImmune)
+                        case "IcePot":
                             {
-                                con.SubtractSpeed(0.6f);
-                                con.TimerAdd("thaw", 90);
+                                DamageCheck();
+                                Instantiate(sparks, transform.position, sparks.transform.rotation);
+                                Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
+                                break;
                             }
-                            if (!isStunImmune)
+                        case "Hex":
                             {
-                                if (target.CompareTag("BulletHell Enemy"))
+                                DamageCheck();
+                                if (!isFireImmune)
                                 {
-                                    BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
-                                    bulletHellAI.Stun();
-                                    nav.enabled = false;
+                                    //Burn sound effect
+                                    //audioSource.PlayOneShot(burn);
+                                    con.TimerAdd("fire", 179);
                                 }
-                                else if (!target.CompareTag("Player"))
+                                if (!isIceImmune)
                                 {
-                                    EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
-                                    enemyAI.Stun();
-                                    nav.enabled = false;
+                                    con.SubtractSpeed(0.6f);
+                                    con.TimerAdd("thaw", 90);
                                 }
-                                else
-                                    player.Stun();
-                                con.TimerAdd("stun", 16);
+                                if (!isStunImmune)
+                                {
+                                    if (target.CompareTag("BulletHell Enemy"))
+                                    {
+                                        BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
+                                        bulletHellAI.Stun();
+                                        nav.enabled = false;
+                                    }
+                                    else if (!target.CompareTag("Player"))
+                                    {
+                                        EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
+                                        enemyAI.Stun();
+                                        nav.enabled = false;
+                                    }
+                                    else
+                                        player.Stun();
+                                    con.TimerAdd("stun", 16);
+                                }
+                                break;
                             }
-                            break;
-                        }
-                    default:
-                        {
-                            DamageCheck();
-                            break;
-                        }
+                        default:
+                            {
+                                DamageCheck();
+                                break;
+                            }
+                    }
                 }
+                Destroy(gameObject);
             }
-            Destroy(gameObject);
         }
     }
     private void DamageCheck()
@@ -194,5 +199,13 @@ public class CollisionScript : MonoBehaviour
             enemy.TakeDamage(bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
+    }
+    public GameObject GetOwner()
+    {
+        return owner;
+    }
+    public void SetOwner(GameObject _owner)
+    {
+        owner = _owner;
     }
 }
