@@ -351,7 +351,7 @@ MonoBehaviour:
   damage: 1
   attackRate: 1
   bulletSpeed: 15
-  isFireImmune: 0
+  isFireImmune: 1
   isIceImmune: 0
   isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
@@ -389,6 +389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireTimer: 0
   isPlayer: 0
 --- !u!82 &1810308395457174347
 AudioSource:

@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    private int fireTimer = 0;
+    [SerializeField] int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;

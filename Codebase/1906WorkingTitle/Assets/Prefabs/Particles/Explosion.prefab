@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: -3596771715904998205}
   m_Layer: 14
   m_Name: Explosion
-  m_TagString: FireBall
+  m_TagString: Explosion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4825,7 +4825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 2
+  particleDamage: 0
 --- !u!135 &8239735863876897217
 SphereCollider:
   m_ObjectHideFlags: 0

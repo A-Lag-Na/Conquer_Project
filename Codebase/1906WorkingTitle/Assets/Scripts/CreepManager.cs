@@ -10,7 +10,7 @@ public class CreepManager : MonoBehaviour
     bool isFireImmune;
     bool isIceImmune;
 
-    [SerializeField] float damage = 0;
+    [SerializeField] float particleDamage = 0;
 
     private void OnTriggerStay(Collider collide)
     {
@@ -44,6 +44,15 @@ public class CreepManager : MonoBehaviour
                         }
                         break;
                     }
+                case "Explosion":
+                    {
+                        if ((player != null || enemy != null) && !isFireImmune)
+                        {
+                            con.TimerAdd("fire", 1);
+                            con.Damage(particleDamage);
+                        }
+                        break;
+                    }
                 case "IcePot":
                     {
                         if ((player != null || enemy != null) && !isIceImmune)
@@ -59,7 +68,7 @@ public class CreepManager : MonoBehaviour
                         {
                             con.SubtractSpeed(0.006f);
                             con.TimerAdd("thaw", 1);
-                            con.Damage(damage);
+                            con.Damage(particleDamage);
                         }
                         break;
                     }
@@ -79,12 +88,12 @@ public class CreepManager : MonoBehaviour
         }
     }
 
-    public void SetDamage(float _damage)
+    public void SetParticleDamage(float _particleDamage)
     {
-        damage = _damage;
+        particleDamage = _particleDamage;
     }
-    public float GetDamage()
+    public float GetParticleDamage()
     {
-        return damage;
+        return particleDamage;
     }
 }

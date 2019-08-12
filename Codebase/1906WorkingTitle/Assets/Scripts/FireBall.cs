@@ -11,7 +11,7 @@ public class FireBall : MonoBehaviour
         if (childType != null)
         {
             GameObject child = Instantiate(childType, transform.position, childType.transform.rotation);
-            child.GetComponent<CreepManager>().SetDamage(explosionDamage/60f);
+            child.GetComponent<CreepManager>().SetParticleDamage(explosionDamage/60f);
         }
     }
 }
