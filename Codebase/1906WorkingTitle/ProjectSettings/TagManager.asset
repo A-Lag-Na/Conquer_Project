@@ -22,6 +22,7 @@ TagManager:
   - Hex
   - Aura
   - SavePoint
+  - Companion
   layers:
   - Default
   - TransparentFX
