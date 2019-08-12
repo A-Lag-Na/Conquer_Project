@@ -15,7 +15,7 @@ public class SpawnScript : MonoBehaviour
     //list of doors.
     [SerializeField] private List<GameObject> doors = null;
 
-    //How many points worth of enemies the spawner can soawn
+    //How many points worth of enemies the spawner can spawn
     [SerializeField] private int points = 0;
     private int pointsClone;
 

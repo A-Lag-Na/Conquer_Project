@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeTrapDemo : MonoBehaviour {
+public class SpikeTrap: MonoBehaviour {
 
     //This script goes on the SpikeTrap prefab;
 
