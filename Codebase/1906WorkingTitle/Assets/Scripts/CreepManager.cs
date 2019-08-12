@@ -78,4 +78,13 @@ public class CreepManager : MonoBehaviour
             }
         }
     }
+
+    public void SetDamage(float _damage)
+    {
+        damage = _damage;
+    }
+    public float GetDamage()
+    {
+        return damage;
+    }
 }

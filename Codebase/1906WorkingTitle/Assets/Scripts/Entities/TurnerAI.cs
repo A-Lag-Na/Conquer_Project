@@ -32,7 +32,8 @@ public class TurnerAI : MonoBehaviour
             do
             {
                 dest = transform.right * dist + gameObject.transform.position;
-            } while (!NavMesh.SamplePosition(dest, out success, dist, 0));
+                dist--;
+            } while (!NavMesh.SamplePosition(dest, out success, dist+1, 0));
             agent.SetDestination(success.position);
         }
     }
