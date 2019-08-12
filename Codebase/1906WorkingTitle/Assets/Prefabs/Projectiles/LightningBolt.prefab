@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 8123020807263400230}
   - component: {fileID: 6214302269614454437}
   - component: {fileID: 8217133509093858505}
-  - component: {fileID: 3502729614766670675}
   - component: {fileID: 5739721995965259060}
+  - component: {fileID: 3502729614766670675}
   - component: {fileID: 5739721995965259057}
   m_Layer: 0
   m_Name: LightningBolt
@@ -64,6 +64,26 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &5739721995965259060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301320370126645320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8f6a1f5277f3b4aa1019c3c4dc6a5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDamage: 0
+  sparks: {fileID: 4862458918604485940, guid: e38789e27b3813e4695ae8660c15bccc, type: 3}
+  blood: {fileID: 7209053802212718509, guid: 36b711bee4fb100469ac728bf7577c6f, type: 3}
+  fireCreep: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
+    type: 3}
+  iceCreep: {fileID: 7834789050226885555, guid: 05f1caa6465ecc2419d60be83a1e5cfa,
+    type: 3}
+  owner: {fileID: 0}
 --- !u!114 &3502729614766670675
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79,29 +99,6 @@ MonoBehaviour:
   boltSpeed: 25
   numChildren: 2
   bolts: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
---- !u!114 &5739721995965259060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1301320370126645320}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d8f6a1f5277f3b4aa1019c3c4dc6a5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hurt: {fileID: 8300000, guid: 565be76cfa840a34fb00d3845a60fc35, type: 3}
-  bulletDamage: 0
-  sparks: {fileID: 4862458918604485940, guid: e38789e27b3813e4695ae8660c15bccc, type: 3}
-  blood: {fileID: 7209053802212718509, guid: 36b711bee4fb100469ac728bf7577c6f, type: 3}
-  isIceImmune: 0
-  isFireImmune: 0
-  isStunImmune: 0
-  fireCreep: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
-    type: 3}
-  iceCreep: {fileID: 7834789050226885555, guid: 05f1caa6465ecc2419d60be83a1e5cfa,
-    type: 3}
 --- !u!96 &5739721995965259057
 TrailRenderer:
   serializedVersion: 2

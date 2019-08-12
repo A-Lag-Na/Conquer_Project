@@ -6,8 +6,11 @@ public class CreepManager : MonoBehaviour
 {
     Player player;
     EnemyStats enemy;
+    
     bool isFireImmune;
     bool isIceImmune;
+
+    [SerializeField] float damage = 0;
 
     private void OnTriggerStay(Collider collide)
     {
@@ -47,6 +50,16 @@ public class CreepManager : MonoBehaviour
                         {
                             con.SubtractSpeed(0.006f);
                             con.TimerAdd("thaw", 1);
+                        }
+                        break;
+                    }
+                case "IceSpell":
+                    {
+                        if ((player != null || enemy != null) && !isIceImmune)
+                        {
+                            con.SubtractSpeed(0.006f);
+                            con.TimerAdd("thaw", 1);
+                            con.Damage(damage);
                         }
                         break;
                     }
