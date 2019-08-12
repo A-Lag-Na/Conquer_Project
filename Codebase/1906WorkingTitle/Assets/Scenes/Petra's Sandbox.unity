@@ -239,7 +239,8 @@ PrefabInstance:
         type: 3}
       propertyPath: projectile0
       value: 
-      objectReference: {fileID: 1637271675}
+      objectReference: {fileID: 278662973729705185, guid: 3d9cef3ccf448a44691e424ca05da68c,
+        type: 3}
     - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: isFireImmune
@@ -943,9 +944,3 @@ PrefabInstance:
     - {fileID: 0}
     - {fileID: -6143662139320291496, guid: 2d8c87066c0928146a7f1c0bb6975a0d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2d8c87066c0928146a7f1c0bb6975a0d, type: 3}
---- !u!1 &1637271675 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
-    type: 3}
-  m_PrefabInstance: {fileID: 1256655456}
-  m_PrefabAsset: {fileID: 0}

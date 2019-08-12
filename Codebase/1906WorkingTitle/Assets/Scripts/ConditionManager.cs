@@ -5,12 +5,12 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    [SerializeField] int fireTimer = 0;
+    private int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;
 
-    [SerializeField] bool isPlayer;
+    private bool isPlayer;
     private Component statsScript;
     private Component aiScript;
 
@@ -24,8 +24,8 @@ public class ConditionManager : MonoBehaviour
     private float fireDamage;
     private float auraDamage;
 
-    GameObject fireParticle;
-    GameObject iceParticle;
+    GameObject fireParticle = null;
+    GameObject iceParticle = null;
 
     private bool isPaused;
 
@@ -37,30 +37,28 @@ public class ConditionManager : MonoBehaviour
             isPlayer = true;
             aiScript = GetComponentInParent<Player>();
             statsScript = GetComponentInParent<Player>();
-            fireParticle = GameObject.Find("PlayerFire");
-            iceParticle = GameObject.Find("PlayerIce");
         }
         else
-        { 
-            if(tag.Equals("Enemy"))
+        {
+            if (tag.Equals("Enemy"))
             {
                 aiScript = GetComponentInParent<EnemyAI>();
             }
-            if(tag.Equals("BulletHell Enemy"))
+            if (tag.Equals("BulletHell Enemy"))
             {
                 aiScript = GetComponentInParent<BulletHellEnemy>();
             }
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             enemyRender = ((EnemyStats)statsScript).GetRenderer();
-            fireParticle = GameObject.Find("Fire");
-            iceParticle = GameObject.Find("Ice");
         }
+        fireParticle = GameObject.FindGameObjectWithTag("Fire Particle");
+        iceParticle = GameObject.FindGameObjectWithTag("Ice Particle");
         if (fireParticle != null)
             fireParticle.SetActive(false);
         if (iceParticle != null)
             iceParticle.SetActive(false);
-        if(auraDamage == 0f)
+        if (auraDamage == 0f)
         {
             auraDamage = .017f;
         }
@@ -88,7 +86,7 @@ public class ConditionManager : MonoBehaviour
                         iceParticle.SetActive(true);
                     thawTimer--;
                     if (Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
-                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement/30f, minFrozenSpeed, maxSpeed));
+                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement / 30f, minFrozenSpeed, maxSpeed));
                 }
                 if (stunTimer > 0)
                 {
@@ -96,9 +94,9 @@ public class ConditionManager : MonoBehaviour
                     if (stunTimer == 0)
                         Unstun();
                 }
-                if(auraTimer > 0)
+                if (auraTimer > 0)
                 {
-                    if(!tag.Equals("Player"))
+                    if (!tag.Equals("Player"))
                         enemyRender.material.color = Color.Lerp(enemyRender.material.color, Color.black, .08f);
                     Damage(auraDamage);
                     auraTimer--;
@@ -287,15 +285,6 @@ public class ConditionManager : MonoBehaviour
             {
                 ((EnemyAI)aiScript).Unstun();
             }
-        }
-    }
-
-    public void LovePotion()
-    {
-
-        if (gameObject.CompareTag("Enemy"))
-        {
-            ((EnemyAI)aiScript).FallInLove();
         }
     }
     #endregion GetSet

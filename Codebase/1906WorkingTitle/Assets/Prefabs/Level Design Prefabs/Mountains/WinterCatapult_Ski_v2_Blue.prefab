@@ -15,8 +15,8 @@ GameObject:
   m_Name: WinterCatapultWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &1457286165180206808
 Transform:
@@ -92,8 +92,8 @@ GameObject:
   m_Name: WinterCatapultBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2165114311113595427
 Transform:
@@ -169,8 +169,8 @@ GameObject:
   m_Name: WinterCatapultWheel_v2 (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &4093983941502421993
 Transform:
@@ -246,8 +246,8 @@ GameObject:
   m_Name: WinterCatapultArm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &7341914761372272992
 Transform:
@@ -323,8 +323,8 @@ GameObject:
   m_Name: WinterCatapultSki (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3861107982330151594
 Transform:
@@ -400,8 +400,8 @@ GameObject:
   m_Name: WinterCatapultWheel_v2 (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &7581600484844093769
 Transform:
@@ -520,8 +520,8 @@ GameObject:
   m_Name: WinterCatapultWheel (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &8488510331481666100
 Transform:
@@ -597,8 +597,8 @@ GameObject:
   m_Name: WinterCatapultSki
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3925880786176266970
 Transform:
@@ -674,8 +674,8 @@ GameObject:
   m_Name: WinterCatapultWheel_v2 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &469581090901879862
 Transform:
@@ -751,8 +751,8 @@ GameObject:
   m_Name: WinterCatapultWheel (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &1334547420613851518
 Transform:
@@ -828,8 +828,8 @@ GameObject:
   m_Name: WinterCatapultWheel (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &3010225724094339484
 Transform:
@@ -905,8 +905,8 @@ GameObject:
   m_Name: WinterCatapultWheel_v2 (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &1494887333424066757
 Transform:
@@ -982,8 +982,8 @@ GameObject:
   m_Name: WinterCatapultArm_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7680932919031373479
 Transform:

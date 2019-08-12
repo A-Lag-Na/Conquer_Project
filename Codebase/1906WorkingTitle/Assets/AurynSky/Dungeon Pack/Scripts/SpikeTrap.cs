@@ -45,8 +45,10 @@ public class SpikeTrapDemo : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("olo");
         if (other.tag == "Player")
         {
+            Debug.Log("Player Enter");
             onTrap = true;
         }
     }
@@ -54,6 +56,7 @@ public class SpikeTrapDemo : MonoBehaviour {
     {
         if(other.tag == "Player")
         {
+            Debug.Log("Player Leave");
             onTrap = false;
         }
     }
