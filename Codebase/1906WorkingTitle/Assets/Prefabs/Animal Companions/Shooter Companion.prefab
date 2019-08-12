@@ -11,11 +11,13 @@ GameObject:
   - component: {fileID: 1810482166649867134}
   - component: {fileID: 1810482166649867121}
   - component: {fileID: 1810482166649867120}
-  - component: {fileID: 1810482166649867123}
   - component: {fileID: 1810482166649867122}
+  - component: {fileID: 1778786080}
+  - component: {fileID: 1778786078}
+  - component: {fileID: 1778786079}
   m_Layer: 0
   m_Name: Shooter Companion
-  m_TagString: Untagged
+  m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,22 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1810482166649867123
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810482166649867125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ba153b3a9d9b3bb41948ed88d6599cab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
-    type: 3}
-  projectilePos: {fileID: 1810482166649867125}
-  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
 --- !u!82 &1810482166649867122
 AudioSource:
   m_ObjectHideFlags: 0
@@ -191,3 +177,48 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1778786080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810482166649867125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ee9bf232aa206341992ae4967f7b529, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
+    type: 3}
+  projectilePos: {fileID: 1810482166649867125}
+  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
+--- !u!54 &1778786078
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810482166649867125}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &1778786079
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810482166649867125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}

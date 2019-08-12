@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Codebase/1906WorkingTitle/Assets/AurynSky/Dungeon Pack/Scripts/SpikeTrap.cs.meta
+guid: 413868ca41a56604abff2c17b9f6e933
+=======
 guid: 3a6d90dbc986207498552ee6be9ad467
+>>>>>>> 024b77ad60761de2d23bd78f82270a277ccf0b5d:Codebase/1906WorkingTitle/Assets/Scripts/FireBall.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

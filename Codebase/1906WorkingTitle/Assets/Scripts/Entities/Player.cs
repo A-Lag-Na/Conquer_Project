@@ -193,7 +193,7 @@ public class Player : MonoBehaviour
             {
                 case 1:
                     {
-                        if(projectile0.layer == 17)
+                        if (projectile0.layer == 17)
                         {
                             projectile0.SetActive(true);
                             clone = null;
@@ -217,7 +217,7 @@ public class Player : MonoBehaviour
                 case 4:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
-                        
+
                         break;
                     }
                 default:
@@ -302,6 +302,9 @@ public class Player : MonoBehaviour
     {
         if (other.CompareTag("SavePoint"))
             save.Save();
+        if (other.CompareTag("Companion"))
+            other.GetComponent<Companion>().Activate();
+
     }
 
     #endregion

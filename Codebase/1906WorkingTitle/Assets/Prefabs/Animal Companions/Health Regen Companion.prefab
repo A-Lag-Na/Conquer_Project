@@ -11,10 +11,12 @@ GameObject:
   - component: {fileID: 6327429674331764357}
   - component: {fileID: 6327429674331764356}
   - component: {fileID: 6327429674331764359}
-  - component: {fileID: 6327429674331764358}
+  - component: {fileID: 7004211347178052654}
+  - component: {fileID: 8865685935532024449}
+  - component: {fileID: 2252991995774279894}
   m_Layer: 0
   m_Name: Health Regen Companion
-  m_TagString: Untagged
+  m_TagString: Companion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -78,7 +80,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &6327429674331764358
+--- !u!114 &7004211347178052654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -87,6 +89,35 @@ MonoBehaviour:
   m_GameObject: {fileID: 6327429674331764361}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e708efee3cd80a49bdb57848c2ccd12, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ee9bf232aa206341992ae4967f7b529, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &8865685935532024449
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327429674331764361}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!135 &2252991995774279894
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6327429674331764361}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
