@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class MenuButtonSounds : MonoBehaviour
+public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
 {
-
     AudioSource source;
+    [SerializeField] AudioClip hover;
+    [SerializeField] AudioClip click;
     Button button;
 
     // Start is called before the first frame update
@@ -15,21 +17,18 @@ public class MenuButtonSounds : MonoBehaviour
         source = GetComponent<AudioSource>();
         button = GetComponentInParent<Button>();
         button.onClick.AddListener(Clicked);
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnMouseEnter()
-    {
-        
+        hover = Resources.Load<AudioClip>("SFX/Goose");
+        click = Resources.Load<AudioClip>("SFX/Shoot");
     }
 
     private void Clicked()
     {
-        source.PlayOneShot(source.clip);
+        source.PlayOneShot(click);
+    }
+    
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        source.PlayOneShot(hover);
     }
 }

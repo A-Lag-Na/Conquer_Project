@@ -114,11 +114,11 @@ public class EnemyAI : MonoBehaviour
         isStunned = false;
     }
 
-    public IEnumerator FallInLove()
+    public IEnumerator FallInLove(float time)
     {
         SetTarget();
         inLove = true;
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(time);
         inLove = false;
         target = player;
     }
@@ -128,7 +128,7 @@ public class EnemyAI : MonoBehaviour
         GameObject[] gos;
         gos = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject closest = null;
-        float distance = Mathf.Infinity;
+        float distance = float.MaxValue;
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
@@ -141,6 +141,10 @@ public class EnemyAI : MonoBehaviour
             }
         }
         target = closest;
+    }
+    public bool InLove()
+    {
+        return inLove;
     }
     #endregion
 }
