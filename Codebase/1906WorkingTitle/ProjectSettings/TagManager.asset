@@ -21,6 +21,7 @@ TagManager:
   - IceSpell
   - Hex
   - Aura
+  - FireBall
   - SavePoint
   - Companion
   layers:
@@ -41,8 +42,10 @@ TagManager:
   - Creep
   - Dash
   - Trap
-  - Spell
-  - Boltless
+  -
+  -
+  - 
+  - 
   - Companion
   - 
   - 
