@@ -69,6 +69,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectilePosition = null;
     #endregion
 
+    Companion currentCompanion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -303,7 +305,11 @@ public class Player : MonoBehaviour
         if (other.CompareTag("SavePoint"))
             save.Save();
         if (other.CompareTag("Companion"))
+        {
+            if (currentCompanion != null)
+                currentCompanion.Deactivate();
             other.GetComponent<Companion>().Activate();
+        }
 
     }
 
@@ -631,6 +637,20 @@ public class Player : MonoBehaviour
     {
         transform.position = _position;
     }
+    #endregion
+
+    #region Companion
+
+    public void SetCompanion(Companion _companion)
+    {
+        currentCompanion = _companion;
+    }
+
+    public void ResetCompanion()
+    {
+        currentCompanion = null;
+    }
+
     #endregion
 
     #endregion

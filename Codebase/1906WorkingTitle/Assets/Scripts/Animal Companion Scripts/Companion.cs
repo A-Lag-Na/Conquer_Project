@@ -10,7 +10,7 @@ public class Companion : MonoBehaviour
     Player playerStats = null;
     Vector3 animalVelocity = Vector3.zero;
     Vector3 playerPositionOffset = Vector3.zero;
-    bool isFollowing = false;
+    public bool isFollowing = false;
     SphereCollider animalCollider = null;
     Inventory playerInventory = null;
     Pickup pickup = null;
@@ -143,10 +143,12 @@ public class Companion : MonoBehaviour
         else if (name == "XP Companion")
             playerStats.XPModifier(0.5f);
         isFollowing = true;
+        playerStats.SetCompanion(this);
     }
 
     public void Deactivate()
     {
+        playerStats.ResetCompanion();
         if (name == "Attack Companion")
             playerStats.ModifyDamage(-1);
         else if (name == "Coin Booster Companion")
