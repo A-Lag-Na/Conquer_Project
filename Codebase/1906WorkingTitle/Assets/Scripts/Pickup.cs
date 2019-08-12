@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour
 {
-    public enum Type {Coin, Health, EOF};
+    public enum Type {Coin, Health, Potion, EOF};
 
     public Type type = (Type)1;
     [SerializeField] AudioClip clip = null;
@@ -29,6 +29,9 @@ public class Pickup : MonoBehaviour
                     break;
                 case Type.Health:
                     collision.collider.GetComponentInParent<Player>().RestoreHealth(10);
+                    break;
+                case Type.Potion:
+                    collision.collider.GetComponentInParent<Inventory>().AddPotion(GetComponent<Potion>());
                     break;
                 case Type.EOF:
                     break;
