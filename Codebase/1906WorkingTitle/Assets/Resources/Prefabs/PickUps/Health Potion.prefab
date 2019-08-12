@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 3377534769466221441}
   - component: {fileID: 3367146369637010571}
   - component: {fileID: 3359039121006372747}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: bottle
-  m_TagString: Untagged
+  m_TagString: Pickups
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,9 +89,10 @@ GameObject:
   - component: {fileID: 3373190173062687597}
   - component: {fileID: 580936018199728615}
   - component: {fileID: 1795101398898842}
-  m_Layer: 0
+  - component: {fileID: 4495027360370456515}
+  m_Layer: 13
   m_Name: Health Potion
-  m_TagString: Untagged
+  m_TagString: Pickups
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc6b95cc992168641bb44d688c5da5bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  type: 2
   clip: {fileID: 0}
 --- !u!136 &1795101398898842
 CapsuleCollider:
@@ -161,6 +162,22 @@ CapsuleCollider:
   m_Height: 1.51
   m_Direction: 1
   m_Center: {x: 0, y: 0.53, z: 0}
+--- !u!54 &4495027360370456515
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3371395352039972693}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &3371453554595350993
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +189,7 @@ GameObject:
   - component: {fileID: 3377450521951344597}
   - component: {fileID: 3366302479753727081}
   - component: {fileID: 3359071132678529193}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: cork
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,7 +266,7 @@ GameObject:
   - component: {fileID: 3377657191472719325}
   - component: {fileID: 3366289378211409377}
   - component: {fileID: 3358939078027047881}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: liquid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
