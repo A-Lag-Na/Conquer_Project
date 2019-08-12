@@ -8,7 +8,7 @@ public class ConditionManager : MonoBehaviour
     private int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
-    public int auraTimer = 0;
+    private int auraTimer = 0;
 
     [SerializeField] bool isPlayer;
     private Component statsScript;
@@ -287,6 +287,15 @@ public class ConditionManager : MonoBehaviour
             {
                 ((EnemyAI)aiScript).Unstun();
             }
+        }
+    }
+
+    public void LovePotion()
+    {
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            ((EnemyAI)aiScript).FallInLove();
         }
     }
     #endregion GetSet

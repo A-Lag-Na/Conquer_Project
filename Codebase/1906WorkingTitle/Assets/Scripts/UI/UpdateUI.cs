@@ -181,7 +181,7 @@ public class UpdateUI : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
             PauseGame();
 
-        if (Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetButtonDown("Open Stats"))
         {
             levelUp = false;
             levelFlasher.color = levelColorTransparent;
@@ -189,12 +189,12 @@ public class UpdateUI : MonoBehaviour
             OpenStats();
         }
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetButtonDown("Use Potion"))
         {
             StartCoroutine(inventory.PotionTimer());
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Open Shop"))
             OpenShop();
         #endregion
     }

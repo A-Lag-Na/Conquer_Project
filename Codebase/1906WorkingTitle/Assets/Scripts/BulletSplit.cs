@@ -17,14 +17,14 @@ public class BulletSplit : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         string tag = collision.collider.tag;
-        if(tag.Equals("Enemy") || tag.Equals("BulletHell Enemy"))
+        if(tag.Equals("Enemy"))
         {
 
             List<Vector3> EnemyPositions = new List<Vector3>();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
             {
-                EnemyPositions.Add(enemy.GetComponent<Transform>().position);
+                EnemyPositions.Add(enemy.transform.position);
             }
 
             if(EnemyPositions.Count > 0)
@@ -32,22 +32,23 @@ public class BulletSplit : MonoBehaviour
                 Collider collider = collision.collider;
                 GameObject hit = collider.gameObject;
 
-                //Sets enemy to a new layer so they do not collide with bolts.
-                //hit.layer = 10;
+                Transform currentTransform = hit.GetComponent<Transform>();
+                EnemyPositions.Remove(currentTransform.position);
+                Vector3 currentPosition= currentTransform.Find("Shot Position").position;
 
-
-                Vector3 currentPosition = hit.GetComponent<Transform>().position;
-                EnemyPositions.Remove(currentPosition);
-                
                 for (int i = 0; i < numChildren; i++)
                 {
                     if (EnemyPositions.Count > 0 && EnemyPositions[i] != null)
                     {
-                        Vector3 target = EnemyPositions[i];
-                        GameObject bolt = Instantiate(bolts, collider.transform.position, bolts.transform.rotation);
+                        GameObject bolt = Instantiate(bolts, currentPosition, gameObject.transform.rotation);
+                        Transform boltTransform = bolt.GetComponent<Transform>();
+                        bolt.GetComponent<CollisionScript>().SetOwner(hit);
                         bolt.layer = layer;
+                        Vector3 target = EnemyPositions[i];
+                        boltTransform.LookAt(new Vector3(target.x, currentPosition.y, target.z));
                         Rigidbody rb = bolt.GetComponent<Rigidbody>();
-                        rb.velocity = Vector3.Normalize((new Vector3 (target.x - currentPosition.x, 0.0f, target.z - currentPosition.z))) * boltSpeed;
+
+                        rb.velocity = Vector3.Normalize(boltTransform.forward) * boltSpeed;
                         //Zap sound effect could go here
                     }
                 }
