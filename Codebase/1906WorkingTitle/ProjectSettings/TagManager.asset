@@ -24,6 +24,7 @@ TagManager:
   - SavePoint
   - Companion
   - Explosion
+  - Love Bullet
   layers:
   - Default
   - TransparentFX
