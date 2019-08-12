@@ -5,7 +5,7 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    private int fireTimer = 0;
+    [SerializeField] int fireTimer = 0;
     private int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;
@@ -240,9 +240,13 @@ public class ConditionManager : MonoBehaviour
     {
         fireDamage = _fireDamage;
     }
-    public void Refresh(float _amountToIncrease = 1)
+    public void Modify(float _amountToIncrease = 1)
     {
         maxSpeed += _amountToIncrease;
+    }
+    public void Refresh()
+    {
+        maxSpeed = GetSpeed();
     }
     void OnPauseGame()
     {

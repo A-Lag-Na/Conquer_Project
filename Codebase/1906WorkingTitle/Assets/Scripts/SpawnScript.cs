@@ -6,7 +6,7 @@ public class SpawnScript : MonoBehaviour
 {
     #region SpawnerStats
     //Whether the spawner is spawning or not.
-    [SerializeField] private bool spawnEnabled;
+    [SerializeField] private bool spawnEnabled = true;
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
@@ -19,8 +19,8 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private int points = 0;
     private int pointsClone;
 
-    //Tracks the number of frames passing
-    public int timer;
+    //Number of seconds between spawn.
+    public float timer = 3;
 
     bool spawnAgain = true;
 
@@ -34,16 +34,22 @@ public class SpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        pointsClone = points;
-        enemiesClone = new List<EnemyStats>();
-        for (int i = 0; i < enemies.Count; i++)
-            enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
+        if(spawnEnabled)
+        {
+            pointsClone = points;
+            enemiesClone = new List<EnemyStats>();
+            for (int i = 0; i < enemies.Count; i++)
+                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
+        }
+        else
+        {
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (spawnAgain && spawnEnabled || spawnedEnemies.Count > 0)
+        if (spawnEnabled && spawnAgain)
             StartCoroutine(SpawnEnemy());
     }
 
@@ -68,7 +74,7 @@ public class SpawnScript : MonoBehaviour
         RefreshSpawnedEnemies();
         spawnAgain = false;
 
-        if (pointsClone > 0)
+        if (pointsClone > 0 || remainingChildren > 0)
         {
             for (int i = 0; i < enemiesClone.Count; i++)
                 if (enemiesClone[i].GetPoints() > pointsClone)

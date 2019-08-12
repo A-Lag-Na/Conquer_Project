@@ -16,17 +16,25 @@ public class TurnerAI : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(transform.forward * 12);
+        agent.SetDestination(transform.forward * 1);
     }
     
 
-    private void OnCollisionStay(Collision collisionInfo)
+    private void OnCollisionEnter(Collision collision)
     {
-        Collider col = collisionInfo.collider;
+        Collider col = collision.collider;
         GameObject obj = col.gameObject;
         if (obj.CompareTag("Player") || obj.CompareTag("Untagged"))
         {
-            agent.SetDestination(transform.right * 12);
+            Vector3 dest;
+            int dist = 10;
+            NavMeshHit success;
+            do
+            {
+                dest = transform.right * dist + gameObject.transform.position;
+                dist--;
+            } while (!NavMesh.SamplePosition(dest, out success, dist+1, 0));
+            agent.SetDestination(success.position);
         }
     }
 

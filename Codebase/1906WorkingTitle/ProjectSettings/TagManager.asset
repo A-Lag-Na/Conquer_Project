@@ -21,6 +21,9 @@ TagManager:
   - IceSpell
   - Hex
   - Aura
+  - SavePoint
+  - Companion
+  - Explosion
   layers:
   - Default
   - TransparentFX
@@ -39,8 +42,10 @@ TagManager:
   - Creep
   - Dash
   - Trap
-  - Spell
-  - Boltless
+  - 
+  - 
+  - 
+  - 
   - Companion
   - 
   - 
@@ -51,8 +56,6 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - Blood
   - 
   m_SortingLayers:
   - name: Default
