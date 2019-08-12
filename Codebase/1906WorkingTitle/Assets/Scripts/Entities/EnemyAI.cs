@@ -142,5 +142,9 @@ public class EnemyAI : MonoBehaviour
         }
         target = closest;
     }
+    public bool InLove()
+    {
+        return inLove;
+    }
     #endregion
 }

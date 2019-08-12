@@ -151,7 +151,9 @@ public class UpdateUI : MonoBehaviour
         //taking damage
         if (damageFlasher.color != damageColor)
             damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
+        #endregion
 
+        #region Level up
         if (levelUp)
             levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
         #endregion
