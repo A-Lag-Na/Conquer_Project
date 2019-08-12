@@ -14,6 +14,7 @@ public class MusicManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         townMusicSource.enabled = false;
         forestMusicSource.enabled = false;
         desertMusicSource.enabled = false;
