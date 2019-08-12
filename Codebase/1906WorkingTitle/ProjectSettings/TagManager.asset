@@ -24,6 +24,8 @@ TagManager:
   - SavePoint
   - Companion
   - Explosion
+  - Fire Particle
+  - Ice Particle
   layers:
   - Default
   - TransparentFX
