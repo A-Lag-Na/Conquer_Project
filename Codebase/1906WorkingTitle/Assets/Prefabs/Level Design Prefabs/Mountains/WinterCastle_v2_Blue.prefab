@@ -15,8 +15,8 @@ GameObject:
   m_Name: Flag_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6172763657069532497
 Transform:
@@ -91,8 +91,8 @@ GameObject:
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4934853830207420352
 Transform:
@@ -123,8 +123,8 @@ GameObject:
   m_Name: WinterBanner_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6731641213294267585
 Transform:
@@ -176,8 +176,8 @@ GameObject:
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3684712306564516900
 Transform:
@@ -207,8 +207,8 @@ GameObject:
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5813464097159492362
 Transform:
@@ -238,8 +238,8 @@ GameObject:
   m_Name: WinterBanner_v2_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1288908943224454147
 Transform:
@@ -323,8 +323,8 @@ GameObject:
   m_Name: BannerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5806894902365577064
 Transform:
@@ -398,8 +398,8 @@ GameObject:
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &9132862209761306615
 Transform:
@@ -430,8 +430,8 @@ GameObject:
   m_Name: WinterBanner_v2_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &752541865206581075
 Transform:
@@ -513,8 +513,8 @@ GameObject:
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4982218460551597076
 Transform:
@@ -544,8 +544,8 @@ GameObject:
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5263795257446455433
 Transform:
@@ -627,8 +627,8 @@ GameObject:
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2520291695360327928
 Transform:
@@ -659,8 +659,8 @@ GameObject:
   m_Name: Flag
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1252562155002710501
 Transform:
@@ -710,8 +710,8 @@ GameObject:
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8755206754904283107
 Transform:
@@ -740,8 +740,8 @@ GameObject:
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1877885258952599757
 Transform:
@@ -773,8 +773,8 @@ GameObject:
   m_Name: BannerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8771623142746553217
 Transform:
@@ -848,8 +848,8 @@ GameObject:
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1309109616810202460
 Transform:
@@ -880,8 +880,8 @@ GameObject:
   m_Name: WinterBanner_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8378583061021780008
 Transform:
@@ -933,8 +933,8 @@ GameObject:
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6310489934556775198
 Transform:
@@ -965,8 +965,8 @@ GameObject:
   m_Name: WinterBanner_v2_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2548118426392044474
 Transform:
@@ -1048,8 +1048,8 @@ GameObject:
   m_Name: Bone.003_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &117994063458057273
 Transform:
@@ -1078,8 +1078,8 @@ GameObject:
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &367827564814831459
 Transform:
@@ -1109,8 +1109,8 @@ GameObject:
   m_Name: Bone.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8038098433247300459
 Transform:
@@ -1140,8 +1140,8 @@ GameObject:
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8930134173620325857
 Transform:
@@ -1172,8 +1172,8 @@ GameObject:
   m_Name: BannerArmature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7611598009378378650
 Transform:
@@ -1203,8 +1203,8 @@ GameObject:
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5013471065104965212
 Transform:
@@ -1235,8 +1235,8 @@ GameObject:
   m_Name: BannerArmature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &4968216247655653762
 Transform:
@@ -1268,8 +1268,8 @@ GameObject:
   m_Name: BannerHolder_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &5977525385555690723
 Transform:
@@ -1343,8 +1343,8 @@ GameObject:
   m_Name: Bone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &6459455120459243295
 Transform:
@@ -1375,8 +1375,8 @@ GameObject:
   m_Name: WinterBanner_v2_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &3197129031292141254
 Transform:
@@ -1428,8 +1428,8 @@ GameObject:
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8054314891174679956
 Transform:
@@ -1459,8 +1459,8 @@ GameObject:
   m_Name: BannerArmature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7917199198327457131
 Transform:
@@ -1492,8 +1492,8 @@ GameObject:
   m_Name: BannerHolder_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &6978220274474431834
 Transform:
@@ -1569,8 +1569,8 @@ GameObject:
   m_Name: BannerHolder_v2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 0
 --- !u!4 &8924238119325884426
 Transform:
@@ -1646,8 +1646,8 @@ GameObject:
   m_Name: BannerHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7457540103489872971
 Transform:
@@ -1721,8 +1721,8 @@ GameObject:
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &7835772679792753333
 Transform:
@@ -1753,8 +1753,8 @@ GameObject:
   m_Name: Bone.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &1954993707109652983
 Transform:
@@ -1788,8 +1788,8 @@ GameObject:
   m_Name: WinterCastle_v2_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &8947477974404155545
 Transform:
@@ -1885,8 +1885,8 @@ GameObject:
   m_Name: Armature
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &2204900562414370235
 Transform:
@@ -1916,8 +1916,8 @@ GameObject:
   m_Name: Bone.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_NavMeshLayer: 1
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!4 &5110319333819363709
 Transform:
@@ -1945,6 +1945,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinterCastleDoor_v2_L
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967196847004206864, guid: 7dcc1db660c0def42ab6e1a8bb4c83bc,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4967196847004206864, guid: 7dcc1db660c0def42ab6e1a8bb4c83bc,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4967196847251281865, guid: 7dcc1db660c0def42ab6e1a8bb4c83bc,
         type: 3}
@@ -2019,6 +2029,14 @@ PrefabInstance:
     - target: {fileID: 1048550648207452, guid: ed488ac10aefc794eb9d16dd3719e791, type: 3}
       propertyPath: m_Name
       value: Smoke (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048550648207452, guid: ed488ac10aefc794eb9d16dd3719e791, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1048550648207452, guid: ed488ac10aefc794eb9d16dd3719e791, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4912415173136776, guid: ed488ac10aefc794eb9d16dd3719e791, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2096,6 +2114,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinterCastleDoor_v2_R
       objectReference: {fileID: 0}
+    - target: {fileID: 537031752315414053, guid: 79bc71b0626aa2e42a19341cf4137a2e,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 537031752315414053, guid: 79bc71b0626aa2e42a19341cf4137a2e,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 537031754173053750, guid: 79bc71b0626aa2e42a19341cf4137a2e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2169,6 +2197,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
       propertyPath: m_Name
       value: WinterCastleWindow_v2 (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2244,6 +2280,14 @@ PrefabInstance:
     - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
       propertyPath: m_Name
       value: WinterCastleWindow_v2 (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: c4d02b46eb54340419e128b1878e70ee, type: 3}
       propertyPath: m_LocalPosition.x
