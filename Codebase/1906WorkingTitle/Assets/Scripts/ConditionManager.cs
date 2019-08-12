@@ -285,5 +285,14 @@ public class ConditionManager : MonoBehaviour
             }
         }
     }
+
+    public void LovePotion()
+    {
+
+        if (gameObject.CompareTag("Enemy"))
+        {
+            ((EnemyAI)aiScript).FallInLove();
+        }
+    }
     #endregion GetSet
 }

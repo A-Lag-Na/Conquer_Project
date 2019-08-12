@@ -23,19 +23,17 @@ public class Inventory : MonoBehaviour
     {
         if (weaponNode != null)
         {
-            //if (Input.GetKeyDown(KeyCode.Keypad7))
             if(Input.GetAxis("Mouse ScrollWheel") > 0f)
                 CycleWeaponForward();
             if(Input.GetAxis("Mouse ScrollWheel") < 0f)
-            //if (Input.GetKeyDown(KeyCode.Keypad1))
                 CycleWeaponBackward();
         }
 
         if (potionNode != null)
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetButtonDown("Weapon Scroll Up"))
                 CyclePotionForward();
-            if (Input.GetKeyDown(KeyCode.E))
+            if (Input.GetButtonUp("Weapon Scroll Down"))
                 CyclePotionBackward();
         }
         amountOfPotions = potionList.Count;
