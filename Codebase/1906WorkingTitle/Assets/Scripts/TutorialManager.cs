@@ -33,7 +33,8 @@ public class TutorialManager : MonoBehaviour
         //Movement 
         if (popUpIndex == 0)
         {
-            if (Input.GetButtonDown("Forward") || Input.GetButtonDown("Left") || Input.GetButtonDown("Backward") || Input.GetButtonDown("Right"))
+            if (Input.GetAxis("Vertical") > 0f || Input.GetAxis("Horizontal") < 0f ||
+                    Input.GetAxis("Vertical") < 0f || Input.GetAxis("Horizontal") > 0f)
                 popUpIndex++;
         }
         //Attack
@@ -75,5 +76,4 @@ public class TutorialManager : MonoBehaviour
             GameObject.FindGameObjectWithTag("Door").SetActive(false);
         }
     }
-
 }
