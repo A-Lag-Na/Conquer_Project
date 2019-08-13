@@ -14,6 +14,7 @@ public class CameraTrigger : MonoBehaviour
         //Finds each camera position object in each room
         camPos = transform.Find("Camera Position").gameObject;
         spawn = spawner.GetComponent<SpawnScript>();
+        spawner.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,7 +23,7 @@ public class CameraTrigger : MonoBehaviour
         {
             //Changes the cameras position
             Camera.main.transform.position = camPos.transform.position;
-
+            spawner.SetActive(true);
             //Spawns enemies and locks rooms
             spawn.SetDoorLock(true);
             spawn.SetEnabled(true);

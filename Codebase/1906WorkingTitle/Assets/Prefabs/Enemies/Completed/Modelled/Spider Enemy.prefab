@@ -535,8 +535,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTimer: 0
-  isPlayer: 0
 --- !u!82 &1717699465624698048
 AudioSource:
   m_ObjectHideFlags: 0
@@ -645,8 +643,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.6550741, y: 6, z: 3.240077}
-  m_Center: {x: -0.050465584, y: 2.559586, z: -0.78829616}
+  m_Size: {x: 3.740994, y: 21.8449, z: 3.4411297}
+  m_Center: {x: 0.012363672, y: 10.482036, z: -0.6877699}
 --- !u!54 &655935334
 Rigidbody:
   m_ObjectHideFlags: 0
