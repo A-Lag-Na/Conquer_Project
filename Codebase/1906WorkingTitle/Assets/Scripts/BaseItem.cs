@@ -5,7 +5,7 @@ using UnityEngine;
 public class BaseItem : MonoBehaviour
 {
     #region BaseProperties
-    public enum Type { Weapon, Potion, EOF};
+    public enum Type { Weapon, Consumable, EOF};
     [SerializeField] private Type itemType = Type.EOF;
     [SerializeField] private int value = 0;
     [SerializeField] private new string name = "";

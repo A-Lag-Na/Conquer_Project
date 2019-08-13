@@ -136,7 +136,7 @@ public class CollisionScript : MonoBehaviour
                                 if(ai != null)
                                 {
                                     DamageCheck();
-                                    ai.FallInLove(5.0f);
+                                    StartCoroutine(ai.FallInLove(5.0f));
                                 }
                                 break;
                             }

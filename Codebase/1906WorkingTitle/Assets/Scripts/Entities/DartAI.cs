@@ -5,10 +5,10 @@ using UnityEngine;
 public class DartAI : MonoBehaviour
 {
 
-    [SerializeField] private float attackRate;
+    [SerializeField] private float attackRate = 0.0f;
 
-    private float bulletSpeed;
-    int bulletDamage;
+    private float bulletSpeed = 0.0f;
+    int bulletDamage = 0;
 
     //If this enemy's attack behavior is enabled or not.
     [SerializeField] bool attackEnabled = true;
@@ -19,9 +19,9 @@ public class DartAI : MonoBehaviour
 
     [SerializeField] AudioClip fire = null;
 
-    AudioSource source;
+    AudioSource source = null;
 
-    private bool paused;
+    private bool isPaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -49,7 +49,7 @@ public class DartAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!paused)
+        if (!isPaused)
             if (attackEnabled)
                 StartCoroutine(DartAttack());
     }
@@ -57,11 +57,11 @@ public class DartAI : MonoBehaviour
     #region Pause/Unpause
     public void OnPauseGame()
     {
-        paused = true;
+        isPaused = true;
     }
     public void OnResumeGame()
     {
-        paused = false;
+        isPaused = false;
     }
     #endregion
 

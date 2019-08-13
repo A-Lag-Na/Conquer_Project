@@ -60,6 +60,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinterGroundDirtSnow (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5243115149518884115, guid: 263e1010ccdb64b48a7d9fe9a570589f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243115149518884115, guid: 263e1010ccdb64b48a7d9fe9a570589f,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3315178520456732551, guid: 263e1010ccdb64b48a7d9fe9a570589f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -134,6 +144,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinterGroundDirtSnow_v2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223755831774804360, guid: 9d4119a82d798434491732b4f606d177,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223755831774804360, guid: 9d4119a82d798434491732b4f606d177,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2629025236068104223, guid: 9d4119a82d798434491732b4f606d177,
         type: 3}
@@ -210,6 +230,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: WinterGroundDirtSnow_v2 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1223755831774804360, guid: 9d4119a82d798434491732b4f606d177,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223755831774804360, guid: 9d4119a82d798434491732b4f606d177,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2629025236068104223, guid: 9d4119a82d798434491732b4f606d177,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -284,6 +314,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: WinterGroundDirtSnow
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243115149518884115, guid: 263e1010ccdb64b48a7d9fe9a570589f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5243115149518884115, guid: 263e1010ccdb64b48a7d9fe9a570589f,
+        type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3315178520456732551, guid: 263e1010ccdb64b48a7d9fe9a570589f,
         type: 3}

@@ -31,7 +31,7 @@ public class Pickup : MonoBehaviour
                     collision.collider.GetComponentInParent<Player>().RestoreHealth(10);
                     break;
                 case Type.Potion:
-                    collision.collider.GetComponentInParent<Inventory>().AddPotion(GetComponent<Potion>());
+                    collision.collider.GetComponentInParent<Inventory>().AddConsumable(GetComponent<Consumable>());
                     break;
                 case Type.EOF:
                     break;
