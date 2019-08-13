@@ -9,7 +9,6 @@ public class MountainsTrigger : MonoBehaviour
     GameObject iceBarrier = null;
     //Particle effect for the fire
     GameObject fireOne = null;
-    GameObject fireTwo = null;
     #endregion
 
     // Start is called before the first frame update
@@ -18,7 +17,6 @@ public class MountainsTrigger : MonoBehaviour
         //Getting the GO in the script
         iceBarrier = GameObject.Find("Mountain Ice Barrier");
         fireOne = iceBarrier.transform.GetChild(1).gameObject;
-        fireTwo = iceBarrier.transform.GetChild(2).gameObject;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -33,12 +31,9 @@ public class MountainsTrigger : MonoBehaviour
     IEnumerator BurnPath()
     {
         fireOne.SetActive(true);
-        fireTwo.SetActive(true);
         yield return new WaitForSeconds(2);
         iceBarrier.SetActive(false);
         fireOne.SetActive(false);
-        fireTwo.SetActive(false);
-
     }
 
 }
