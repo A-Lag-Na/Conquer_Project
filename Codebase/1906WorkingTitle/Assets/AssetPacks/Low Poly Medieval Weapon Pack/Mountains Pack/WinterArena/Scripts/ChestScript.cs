@@ -35,10 +35,5 @@ public class ChestScript : MonoBehaviour
             //Not allow the player to cash out the chest again
             capsuleCollider.enabled = false;
         }
-       
     }
-   
-    
-
- 
 }
