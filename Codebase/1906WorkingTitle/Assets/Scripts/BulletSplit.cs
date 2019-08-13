@@ -21,7 +21,6 @@ public class BulletSplit : MonoBehaviour
         string tag = collision.collider.tag;
         if (tag.Equals("Enemy"))
         {
-
             List<Vector3> EnemyPositions = new List<Vector3>();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)

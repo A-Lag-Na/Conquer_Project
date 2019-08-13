@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -51,7 +52,8 @@ public class EnemyAI : MonoBehaviour
         {
             if (inLove && player != null && target == null)
                 SetTarget();
-            agent.SetDestination(target.transform.position);
+            if(target.transform.position != null)
+                agent.SetDestination(target.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
             {
                 Vector3 targetPosition = target.transform.position;
@@ -109,24 +111,31 @@ public class EnemyAI : MonoBehaviour
 
     private void SetTarget()
     {
-        GameObject[] gameObjects;
-        gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = float.MaxValue;
-        Vector3 position = transform.position;
-        foreach (GameObject gameobject in gameObjects)
+        List<GameObject> gameObjectList = new List<GameObject>();
+        //Switching array to a list for the purpose of accessing list functions
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in gameObjects)
+            gameObjectList.Add(go);
+        //Using this check to prevent errors from using a love bullet when only one enemy on screen.
+        if (gameObjectList.Count > 1)
         {
-            if (gameobject != gameObject)
+            GameObject closest = null;
+            float distance = float.MaxValue;
+            Vector3 position = transform.position;
+            foreach (GameObject gameobject in gameObjects)
             {
-                float curDistance = Vector3.Distance(position, gameobject.transform.position);
-                if (curDistance < distance)
+                if (gameobject != gameObject)
                 {
-                    closest = gameobject;
-                    distance = curDistance;
+                    float curDistance = Vector3.Distance(position, gameobject.transform.position);
+                    if (curDistance < distance)
+                    {
+                        closest = gameobject;
+                        distance = curDistance;
+                    }
                 }
             }
+            target = closest;
         }
-        target = closest;
     }
 
     public bool InLove()
