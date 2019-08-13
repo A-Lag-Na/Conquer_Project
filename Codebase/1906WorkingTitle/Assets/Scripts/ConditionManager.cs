@@ -52,8 +52,10 @@ public class ConditionManager : MonoBehaviour
         }
         if (auraDamage == 0f)
             auraDamage = .017f;
-        fireParticle.SetActive(false);
-        iceParticle.SetActive(false);
+        if (fireParticle != null)
+            fireParticle.SetActive(false);
+        if (iceParticle != null)
+            iceParticle.SetActive(false);
         speed = GetSpeed();
         maxSpeed = GetSpeed();
     }
@@ -87,16 +89,17 @@ public class ConditionManager : MonoBehaviour
                         Unstun();
                 }
                 if (auraTimer > 0)
-                {                    Damage(auraDamage);
+                {
+                    Damage(auraDamage);
                     auraTimer--;
                 }
             }
-            if (fireParticle.activeSelf && fireTimer==0)
+            if (fireParticle.activeSelf && fireTimer == 0)
             {
                 if (fireParticle != null)
                     fireParticle.SetActive(false);
             }
-            if(iceParticle.activeSelf && thawTimer ==0)
+            if (iceParticle.activeSelf && thawTimer == 0)
             {
                 SetSpeed(maxSpeed);
                 if (iceParticle != null)
