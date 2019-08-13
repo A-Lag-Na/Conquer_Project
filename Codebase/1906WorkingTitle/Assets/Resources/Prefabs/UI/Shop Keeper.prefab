@@ -1647,7 +1647,7 @@ MonoBehaviour:
   consumableType: 1
   floatModifier: 5
   intModifier: 5
-  consumableEffect: {fileID: 1301320370126645320, guid: 63ab55c6f5c5025439b42a193100df34,
+  consumableEffect: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
     type: 3}
 --- !u!1 &387575751
 GameObject:
@@ -3434,11 +3434,10 @@ MonoBehaviour:
   value: 0
   name: Death Aura
   sprite: {fileID: 0}
-  consumableType: 1
+  consumableType: 0
   floatModifier: 5
   intModifier: 5
-  consumableEffect: {fileID: 1301320370126645320, guid: 63ab55c6f5c5025439b42a193100df34,
-    type: 3}
+  consumableEffect: {fileID: 0}
 --- !u!1 &976397685
 GameObject:
   m_ObjectHideFlags: 0

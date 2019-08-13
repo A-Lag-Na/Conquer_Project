@@ -51,7 +51,10 @@ public class EnemyAI : MonoBehaviour
         attackEnabled = false;
         GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
-        clone.gameObject.layer = 12;
+        if(target == player)
+            clone.gameObject.layer = 12;
+        else
+            clone.gameObject.layer = 10;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
@@ -118,7 +121,9 @@ public class EnemyAI : MonoBehaviour
     {
         SetTarget();
         inLove = true;
-        yield return new WaitForSeconds(time);
+        gameObject.layer = 9;
+        yield return new WaitForSeconds(5f);
+        gameObject.layer = 11;
         inLove = false;
         target = player;
     }

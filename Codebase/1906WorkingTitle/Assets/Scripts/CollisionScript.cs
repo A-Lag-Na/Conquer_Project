@@ -135,8 +135,8 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if(ai != null)
                                 {
-                                    DamageCheck();
-                                    StartCoroutine(ai.FallInLove(5.0f));
+                                    if(target.CompareTag("Enemy") && ai != null)
+                                        con.TimerAdd("love", 5);
                                 }
                                 break;
                             }

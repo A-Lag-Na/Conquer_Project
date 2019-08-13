@@ -139,6 +139,11 @@ public class ConditionManager : MonoBehaviour
                     auraTimer += ticks;
                     break;
                 }
+            case "love":
+                {
+                    StartCoroutine(GetComponent<EnemyAI>().FallInLove(5f));
+                    break;
+                }
             default:
                 {
                     break;

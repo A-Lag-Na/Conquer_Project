@@ -4862,6 +4862,7 @@ MonoBehaviour:
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   crosshairs: {fileID: 2800000, guid: a36edb871ebe51b4e92d1058f4bff961, type: 3}
   mainUI: {fileID: 0}
+  deathAura: {fileID: 0}
   projectile0: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectile1: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
@@ -4884,8 +4885,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTimer: 0
-  isPlayer: 1
 --- !u!82 &469536748384550719
 AudioSource:
   m_ObjectHideFlags: 0
@@ -6755,7 +6754,7 @@ PrefabInstance:
     - target: {fileID: 8317217325041530158, guid: f845679bd1374be4aa923173f94b349e,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8795769098935091346, guid: f845679bd1374be4aa923173f94b349e,
         type: 3}

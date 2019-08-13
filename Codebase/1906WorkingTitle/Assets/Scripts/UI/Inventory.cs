@@ -163,7 +163,9 @@ public class Inventory : MonoBehaviour
                         yield return new WaitForSeconds(6f);
                         player.ModifySpeed(-1 * floatModValue);
                         break;
-
+                    case "Death Aura":
+                        player.EnableDeathAura();
+                        break;
                     default:
                         break;
                 }
