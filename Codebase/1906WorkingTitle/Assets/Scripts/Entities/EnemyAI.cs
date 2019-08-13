@@ -56,7 +56,7 @@ public class EnemyAI : MonoBehaviour
         {
             if (inLove && spawnScript.GetNumEnemies() > 1 && target == null && player != null)
                 SetTarget();
-            if(target.transform.position != null)
+            if(target.transform.position != null && player != null)
                 agent.SetDestination(target.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
             {
