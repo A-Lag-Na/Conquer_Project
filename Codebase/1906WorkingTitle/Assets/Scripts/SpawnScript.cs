@@ -152,5 +152,10 @@ public class SpawnScript : MonoBehaviour
     {
         remainingChildren--;
     }
+
+    public int GetNumEnemies()
+    {
+        return spawnedEnemies.Count;
+    }
     #endregion
 }

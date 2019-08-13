@@ -23,6 +23,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] AudioClip fire = null;
 
+    EnemyStats enemyStats = null;
+    SpawnScript spawnScript = null;
+
     Animator anim = null;
     NavMeshAgent agent = null;
     GameObject player = null;
@@ -36,10 +39,11 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        enemyStats = GetComponent<EnemyStats>();
+        spawnScript = enemyStats.GetSpawner().GetComponent<SpawnScript>();
         attackRate = enemyStats.GetAttackRate();
         bulletSpeed = enemyStats.GetBulletSpeed();
-        bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        bulletDamage = enemyStats.GetDamage();
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
         target = player;
@@ -50,7 +54,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isPaused && !isStunned)
         {
-            if (inLove && player != null && target == null)
+            if (inLove && spawnScript.GetNumEnemies() > 1 && target == null && player != null)
                 SetTarget();
             if(target.transform.position != null)
                 agent.SetDestination(target.transform.position);
@@ -147,8 +151,13 @@ public class EnemyAI : MonoBehaviour
     {
         attackEnabled = false;
         GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
-        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
-        clone.gameObject.layer = 12;
+        CollisionScript cs = clone.GetComponent<CollisionScript>();
+        cs.bulletDamage = bulletDamage;
+        cs.SetOwner(gameObject);
+        if(inLove)
+            clone.gameObject.layer = 10;
+        else
+            clone.gameObject.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
