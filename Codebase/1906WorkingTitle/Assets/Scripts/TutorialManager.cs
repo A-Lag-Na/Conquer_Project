@@ -4,13 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject enemy;
-    public GameObject spawner;
-    public GameObject[] popUps;
+    [SerializeField] GameObject player = null;
+    private Player playerScript = null;
+    [SerializeField] GameObject spawner = null;
+    private SpawnScript spawnScript = null;
+    [SerializeField] GameObject[] popUps = null;
 
 
     int popUpIndex = 0;
+
+    public void Start()
+    {
+        spawnScript = spawner.GetComponent<SpawnScript>();
+        playerScript = player.GetComponent<Player>();
+    }
 
     private void Update()
     {
@@ -21,7 +28,6 @@ public class TutorialManager : MonoBehaviour
                 popUps[i].SetActive(true);
             else
                 popUps[i].SetActive(false);
-
         }
        
         //Movement 
@@ -35,19 +41,20 @@ public class TutorialManager : MonoBehaviour
         else if (popUpIndex == 1)
         {
             if (Input.GetMouseButtonDown(0))
+            {
                 popUpIndex++;
+                spawner.SetActive(true);
+                spawnScript.SetEnabled(true);
+            }
         }
         //Enemies
         else if (popUpIndex == 2)
         {
-            if (enemy != null && !enemy.activeSelf)
+            if(spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
             {
-                enemy.SetActive(true);
-                spawner.GetComponent<SpawnScript>().AddEnemy(enemy);
-                spawner.GetComponent<SpawnScript>().AddRemainingChild();
-            }
-            if (spawner.GetComponent<SpawnScript>().remainingChildren == 0)
+                playerScript.GainExperience(playerScript.GetNextLevelExperience());
                 popUpIndex++;
+            }
         }
         //Activating the stats screen
         else if (popUpIndex == 3)
@@ -66,8 +73,7 @@ public class TutorialManager : MonoBehaviour
         //Move towards game
         else if (popUpIndex == 5)
         {
-            spawner.GetComponent<SpawnScript>().SetDoorLock(false);
+            GameObject.FindGameObjectWithTag("Door").SetActive(false);
         }
     }
-
 }

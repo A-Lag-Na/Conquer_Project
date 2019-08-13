@@ -17,7 +17,7 @@ public class SpawnScript : MonoBehaviour
 
     //How many points worth of enemies the spawner can spawn
     [SerializeField] private int points = 0;
-    private int pointsClone;
+    public int pointsClone;
 
     //Number of seconds between spawn.
     public float timer = 3;
@@ -34,16 +34,10 @@ public class SpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(spawnEnabled)
-        {
-            pointsClone = points;
-            enemiesClone = new List<EnemyStats>();
-            for (int i = 0; i < enemies.Count; i++)
-                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
-        }
-        else
-        {
-        }
+        pointsClone = points;
+        enemiesClone = new List<EnemyStats>();
+        for (int i = 0; i < enemies.Count; i++)
+            enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
     }
 
     // Update is called once per frame
@@ -68,23 +62,25 @@ public class SpawnScript : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
-        if (remainingChildren == 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
+        RefreshSpawnedEnemies();
+
+        if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 
-        RefreshSpawnedEnemies();
+        
         spawnAgain = false;
 
-        if (pointsClone > 0 || remainingChildren > 0)
+        if (pointsClone > 0)
         {
-            for (int i = 0; i < enemiesClone.Count; i++)
+            for (int i = enemiesClone.Count-1; i >= 0; i--)
                 if (enemiesClone[i].GetPoints() > pointsClone)
                     enemiesClone.Remove(enemiesClone[i]);
 
             //randomNum selects 
-            int randomNum = Mathf.RoundToInt(Random.Range(0, enemiesClone.Count));
+            int randomNum = Random.Range(0, enemiesClone.Count);
 
             //Spawns an enemy
-            GameObject enemyClone = Instantiate(enemies[randomNum], transform.position, Quaternion.identity);
+            GameObject enemyClone = Instantiate(enemiesClone[randomNum].gameObject, transform.position, Quaternion.identity);
             EnemyStats enemyCloneStats = enemyClone.GetComponent<EnemyStats>();
             enemyCloneStats.SetSpawner(gameObject);
 
@@ -156,6 +152,11 @@ public class SpawnScript : MonoBehaviour
     public int GetNumEnemies()
     {
         return spawnedEnemies.Count;
+    }
+
+    public int GetPointsRemaining()
+    {
+        return pointsClone;
     }
     #endregion
 }

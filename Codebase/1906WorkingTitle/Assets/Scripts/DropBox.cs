@@ -11,7 +11,9 @@ public class DropBox : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count == 0)
+        if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count > 0)
+            boxPiece.SetActive(false);
+        else
             boxPiece.SetActive(true);
     }
 }
