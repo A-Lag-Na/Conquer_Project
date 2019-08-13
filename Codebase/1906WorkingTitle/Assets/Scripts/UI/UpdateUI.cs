@@ -19,7 +19,7 @@ public class UpdateUI : MonoBehaviour
     private Sprite cSprite, tabSprite = null;
 
     //Color flashes
-    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = null;
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = Color.clear;
 
     //distance from shop
     float dist = 0.0f;

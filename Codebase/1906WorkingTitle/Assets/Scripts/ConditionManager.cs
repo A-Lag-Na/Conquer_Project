@@ -10,9 +10,9 @@ public class ConditionManager : MonoBehaviour
     private int stunTimer = 0;
     private int auraTimer = 0;
 
-    private bool isPlayer;
-    private Component statsScript;
-    private Component aiScript;
+    private bool isPlayer = false;
+    private Component statsScript = null;
+    private Component aiScript = null;
 
     private Renderer enemyRender = null;
     private float speed;
