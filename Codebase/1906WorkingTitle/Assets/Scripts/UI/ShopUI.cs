@@ -5,14 +5,16 @@ using UnityEngine.UI;
 
 public class ShopUI : MonoBehaviour
 {
-    private Inventory inventory;
-    private int coins;
-    private Text coinText, purchaseText;
+    #region ShopStats
+    private Inventory inventory = null;
+    private int coins = 0;
+    private Text coinText, purchaseText = null;
     [SerializeField] Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
-    private GameObject mainUI, denyScreen;
+    private GameObject mainUI, denyScreen = null;
     [SerializeField] GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
     //List<BaseItem> shopItems = new List<BaseItem>();
-    BaseItem currentItem;
+    BaseItem currentItem = null;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,7 @@ public class ShopUI : MonoBehaviour
         denyScreen = transform.Find("Deny Screen").gameObject;
         denyScreen.SetActive(false);
 
-        if(GameObject.Find("Player"))
+        if (GameObject.Find("Player"))
             inventory = GameObject.Find("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
 
@@ -50,7 +52,7 @@ public class ShopUI : MonoBehaviour
     {
 
         //update coin count
-        if(inventory != null)
+        if (inventory != null)
             coins = inventory.GetCoins();
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         coinText.text = $"X{coins}";
@@ -72,7 +74,8 @@ public class ShopUI : MonoBehaviour
             mainUI.SetActive(false);
         }
     }
-    
+
+    #region ShopFunctions
     private void ExitMenu()
     {
         Time.timeScale = 1;
@@ -80,7 +83,7 @@ public class ShopUI : MonoBehaviour
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         transform.parent.gameObject.SetActive(false);
-        if(mainUI != null)
+        if (mainUI != null)
             mainUI.SetActive(true);
     }
 
@@ -94,10 +97,8 @@ public class ShopUI : MonoBehaviour
             else
                 inventory.AddConsumable(currentItem);
         }
-        else if(currentItem != null && currentItem.GetValue() > coins)
-        {
+        else if (currentItem != null && currentItem.GetValue() > coins)
             DenyPuchase();
-        }
     }
 
     public void Checkout(BaseItem _item)
@@ -122,16 +123,19 @@ public class ShopUI : MonoBehaviour
         potionsScreen.SetActive(false);
         scrollsScreen.SetActive(false);
     }
+
     private void BuyPotions()
     {
         weaponsScreen.SetActive(false);
         potionsScreen.SetActive(true);
         scrollsScreen.SetActive(false);
     }
+
     private void BuyScrolls()
     {
         weaponsScreen.SetActive(false);
         potionsScreen.SetActive(false);
         scrollsScreen.SetActive(true);
     }
+    #endregion
 }

@@ -6,10 +6,10 @@ using UnityEngine.EventSystems;
 
 public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
 {
-    AudioSource source;
-    [SerializeField] AudioClip hover;
-    [SerializeField] AudioClip click;
-    Button button;
+    AudioSource source = null;
+    [SerializeField] AudioClip hover = null;
+    [SerializeField] AudioClip click = null;
+    Button button = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
     {
         source.PlayOneShot(click);
     }
-    
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         source.PlayOneShot(hover);
