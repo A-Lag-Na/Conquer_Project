@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 public class TutorialDone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
+  //After The Tutorial is done this changes to the game scene.
 
     private void OnTriggerEnter(Collider other)
     {

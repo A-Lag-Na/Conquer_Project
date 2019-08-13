@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class DropBox : MonoBehaviour
 {
+    //This script is for the box piece drop after finishing the boss room
     public GameObject boxPiece;
     public GameObject spawner;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+  
     // Update is called once per frame
     void Update()
     {
