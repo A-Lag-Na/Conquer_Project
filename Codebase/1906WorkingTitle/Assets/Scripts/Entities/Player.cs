@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private float playerExperienceModifier = 1;
     private int playerCoinModifier = 1;
     private int bulletChoice = 1;
+    Companion currentCompanion = null;
     #endregion
 
     #region UnityComponents
@@ -69,12 +70,11 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectilePosition = null;
     #endregion
 
-    Companion currentCompanion;
-
     // Start is called before the first frame update
     void Start()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+
         dashTrail = GameObject.Find("DashTrail");
         dashTrail.SetActive(false);
 
@@ -180,6 +180,7 @@ public class Player : MonoBehaviour
                 #endregion
             }
         }
+
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
@@ -201,9 +202,7 @@ public class Player : MonoBehaviour
                             clone = null;
                         }
                         else
-                        {
                             clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
-                        }
                         break;
                     }
                 case 2:
@@ -219,7 +218,6 @@ public class Player : MonoBehaviour
                 case 4:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
-
                         break;
                     }
                 default:
@@ -230,10 +228,10 @@ public class Player : MonoBehaviour
             }
             if (clone != null)
             {
-                CollisionScript cs = clone.GetComponent<CollisionScript>();
+                CollisionScript collisionScript = clone.GetComponent<CollisionScript>();
                 clone.GetComponent<TrailRenderer>().time = .1125f;
-                cs.SetOwner(gameObject);
-                cs.bulletDamage = playerAttackDamage;
+                collisionScript.SetOwner(gameObject);
+                collisionScript.bulletDamage = playerAttackDamage;
                 clone.gameObject.layer = 10;
                 clone.gameObject.SetActive(true);
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
@@ -493,6 +491,7 @@ public class Player : MonoBehaviour
     {
         return lastTimeFired;
     }
+
     public void SetLastTimeFired(float _lastTimeFired)
     {
         lastTimeFired = _lastTimeFired;
@@ -621,6 +620,7 @@ public class Player : MonoBehaviour
     {
         isStunned = true;
     }
+
     public void Unstun()
     {
         isStunned = false;
