@@ -70,7 +70,15 @@ public class EnemyStats : MonoBehaviour
         if (enemyRender.material.color != enemyColor)
             enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
     }
-    
+
+    private void OnDestroy()
+    {
+        if(gameObject.CompareTag("BulletHell Enemy"))
+        {
+            Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
+        }
+    }
+
     #region Getters and Setters
     public int GetPoints()
     {
