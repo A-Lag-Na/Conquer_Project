@@ -5,16 +5,13 @@ using UnityEngine;
 public class DropBox : MonoBehaviour
 {
     //This script is for the box piece drop after finishing the boss room
-    public GameObject boxPiece;
-    public GameObject spawner;
+    public GameObject boxPiece = null;
+    public GameObject spawner = null;
 
-  
     // Update is called once per frame
     void Update()
     {
         if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count == 0)
-        {
             boxPiece.SetActive(true);
-        }
     }
 }

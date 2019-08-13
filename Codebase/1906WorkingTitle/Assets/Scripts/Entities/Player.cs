@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     private Animator animator = null;
     private GameObject dashTrail = null;
     [SerializeField] private GameObject mainUI = null;
+    [SerializeField] GameObject deathAura = null;
     SaveScript save = null;
     #endregion
 
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
         isDashing = false;
         isRegenerating = false;
         bulletChoice = 1;
+        deathAura.SetActive(false);
         save = GetComponent<SaveScript>();
     }
 
@@ -653,5 +655,11 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Death Aura
+    public void EnableDeathAura()
+    {
+        deathAura.SetActive(true);
+    }
+    #endregion
     #endregion
 }

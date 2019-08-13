@@ -108,7 +108,9 @@ public class EnemyAI : MonoBehaviour
     {
         SetTarget();
         inLove = true;
-        yield return new WaitForSeconds(time);
+        gameObject.layer = 9;
+        yield return new WaitForSeconds(5f);
+        gameObject.layer = 11;
         inLove = false;
         target = player;
     }

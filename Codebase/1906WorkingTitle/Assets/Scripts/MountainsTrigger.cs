@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class MountainsTrigger : MonoBehaviour
 {
+    #region MountainsTriggerProperties
     //Obstacle
-    GameObject iceBarrier;
+    GameObject iceBarrier = null;
     //Particle effect for the fire
-    GameObject fireOne;
-    GameObject fireTwo;
+    GameObject fireOne = null;
+    GameObject fireTwo = null;
+    #endregion
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,9 +25,7 @@ public class MountainsTrigger : MonoBehaviour
     {
         // the coroutine wont start unless triggered by the fire bullet, ice bullet and normal bullet will not have an effect on the barrier
         if (other.tag == "Fire Bullet")
-        {
             StartCoroutine(BurnPath());
-        }
 
     }
 
@@ -37,7 +38,7 @@ public class MountainsTrigger : MonoBehaviour
         iceBarrier.SetActive(false);
         fireOne.SetActive(false);
         fireTwo.SetActive(false);
-       
+
     }
 
 }
