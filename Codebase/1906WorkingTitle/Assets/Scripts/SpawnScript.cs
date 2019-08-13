@@ -64,7 +64,7 @@ public class SpawnScript : MonoBehaviour
     {
         RefreshSpawnedEnemies();
 
-        if (remainingChildren == 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
+        if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 
         
