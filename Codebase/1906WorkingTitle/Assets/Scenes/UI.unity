@@ -1826,14 +1826,14 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 525
       objectReference: {fileID: 0}
+    - target: {fileID: 156261239, guid: f71307bed87bf4747b566b028b21331f, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5399573448976437027, guid: f71307bed87bf4747b566b028b21331f,
         type: 3}
       propertyPath: m_Text
       value: 5     Points Available
-      objectReference: {fileID: 0}
-    - target: {fileID: 156261239, guid: f71307bed87bf4747b566b028b21331f, type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f71307bed87bf4747b566b028b21331f, type: 3}
@@ -2262,11 +2262,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9134496415992252259, guid: 95eddc9dfdb7c024492b7b88877a0983,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95eddc9dfdb7c024492b7b88877a0983, type: 3}
