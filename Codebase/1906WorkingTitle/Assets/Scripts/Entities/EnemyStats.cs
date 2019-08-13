@@ -108,6 +108,11 @@ public class EnemyStats : MonoBehaviour
         return bulletSpeed;
     }
 
+    public GameObject GetSpawner()
+    {
+        return spawnerObject;
+    }
+
     public void SetHealth(float _health)
     {
         health = _health;
@@ -131,6 +136,11 @@ public class EnemyStats : MonoBehaviour
     public void SetBulletSpeed(float _speed)
     {
         bulletSpeed = _speed;
+    }
+
+    public void SetSpawner(GameObject _spawner)
+    {
+        spawnerObject = _spawner;
     }
     #endregion
 
@@ -193,11 +203,6 @@ public class EnemyStats : MonoBehaviour
         if (anim != null)
             anim.SetTrigger("On Hit");
         enemyRender.material.color = Color.red;
-    }
-
-    public void SetSpawner(GameObject _spawner)
-    {
-        spawnerObject = _spawner;
     }
 
     public Renderer GetRenderer()

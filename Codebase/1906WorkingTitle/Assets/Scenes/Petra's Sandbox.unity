@@ -256,6 +256,11 @@ PrefabInstance:
       propertyPath: isIceImmune
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: deathAura
+      value: 
+      objectReference: {fileID: 289852905}
     - target: {fileID: 469536748384550709, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: m_Height
@@ -289,6 +294,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 8477406419875487618, guid: e24b01301e171e540bf8b839f876b570, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: e24b01301e171e540bf8b839f876b570, type: 3}
+--- !u!1 &289852905 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1108498970550749515, guid: e24b01301e171e540bf8b839f876b570,
+    type: 3}
+  m_PrefabInstance: {fileID: 168387693}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &665826128
 GameObject:
   m_ObjectHideFlags: 0
