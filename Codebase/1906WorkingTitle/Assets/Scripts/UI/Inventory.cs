@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    [SerializeField] private int gold;
+    #region InventoryStats
+    [SerializeField] private int gold = 0;
     LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
     LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
-    [SerializeField] LinkedListNode<Weapon> weaponNode;
-    [SerializeField] LinkedListNode<Consumable> consumableNode;
-    [SerializeField] int amountOfPotions;
+    [SerializeField] LinkedListNode<Weapon> weaponNode = null;
+    [SerializeField] LinkedListNode<Consumable> consumableNode = null;
+    [SerializeField] int amountOfPotions = 0;
     Player player = null;
+    #endregion
 
     private void Start()
     {
@@ -23,9 +25,9 @@ public class Inventory : MonoBehaviour
     {
         if (weaponNode != null)
         {
-            if(Input.GetAxis("Mouse ScrollWheel") > 0f)
+            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
                 CycleWeaponForward();
-            if(Input.GetAxis("Mouse ScrollWheel") < 0f)
+            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
                 CycleWeaponBackward();
         }
 
@@ -36,9 +38,10 @@ public class Inventory : MonoBehaviour
             if (Input.GetButtonUp("Potion Scroll Down"))
                 CycleConsumableBackward();
         }
+
         amountOfPotions = consumableList.Count;
     }
-    
+
     #region gold
     public void AddCoins(int amountOfCoins)
     {
@@ -62,6 +65,7 @@ public class Inventory : MonoBehaviour
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
+
     public void AddConsumable(BaseItem _consumable)
     {
         consumableList.AddLast((Consumable)_consumable);
@@ -105,23 +109,19 @@ public class Inventory : MonoBehaviour
     public void CycleConsumableForward()
     {
         if (consumableNode.Next != null)
-        {
             consumableNode = consumableNode.Next;
-        }
     }
 
     public void CycleConsumableBackward()
     {
         if (consumableNode.Previous != null)
-        {
             consumableNode = consumableNode.Previous;
-        }
     }
 
     #endregion
 
     #region Use Consumable
-    
+
     public IEnumerator ConsumableTimer()
     {
         //check if there is a potion
@@ -181,11 +181,11 @@ public class Inventory : MonoBehaviour
     }
 
     #endregion
-    
+
     #region Sprite Grabs
     public Sprite WeaponSprite()
     {
-        if(weaponNode!=null)
+        if (weaponNode != null)
             return weaponNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
@@ -193,7 +193,7 @@ public class Inventory : MonoBehaviour
 
     public Sprite PotionSprite()
     {
-        if(consumableNode!=null)
+        if (consumableNode != null)
             return consumableNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");

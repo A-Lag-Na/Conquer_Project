@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    GameObject camPos;
-    [SerializeField] public GameObject spawner;
-   
+    GameObject camPos = null;
+    [SerializeField] public GameObject spawner = null;
+
     // Start is called before the first frame update
     void Start()
     {

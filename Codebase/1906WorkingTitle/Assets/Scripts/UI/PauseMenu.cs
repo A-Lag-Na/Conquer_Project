@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    Button ResumeBTN, OptionsBTN, ExitBTN;
-    GameObject mainUI, optionsMenu;
+    #region PauseMenuProperties
+    Button ResumeBTN, OptionsBTN, ExitBTN = null;
+    GameObject mainUI, optionsMenu = null;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("Main UI"))
+        if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
             mainUI.SetActive(false);
@@ -62,6 +64,7 @@ public class PauseMenu : MonoBehaviour
             transform.Find("Pause").gameObject.SetActive(true);
     }
 
+    #region PauseMenuFunctions
     void Resume()
     {
         UnPause();
@@ -87,5 +90,5 @@ public class PauseMenu : MonoBehaviour
         UnPause();
         SceneManager.LoadScene("Main Menu");
     }
-
+    #endregion
 }

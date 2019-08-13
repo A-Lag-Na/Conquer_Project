@@ -6,11 +6,11 @@ using UnityEngine.AI;
 public class EnemyAI : MonoBehaviour
 {
     #region EnemyStats
-    [SerializeField] private float attackRate;
-    private float bulletSpeed;
-    int bulletDamage;
-    public bool isStunned;
-    private bool isPaused, inLove;
+    [SerializeField] private float attackRate = 0.0f;
+    private float bulletSpeed = 0.0f;
+    int bulletDamage = 0;
+    public bool isStunned = false;
+    private bool isPaused, inLove = false;
     bool attackEnabled = true;
     #endregion
 
@@ -23,13 +23,12 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] AudioClip fire = null;
 
-    Animator anim;
-    NavMeshAgent agent;
-    GameObject player;
-    GameObject target;
-    AudioSource source;
+    Animator anim = null;
+    NavMeshAgent agent = null;
+    GameObject player = null;
+    GameObject target = null;
+    AudioSource source = null;
     #endregion
-
 
     // Start is called before the first frame update
     void Start()
@@ -46,35 +45,15 @@ public class EnemyAI : MonoBehaviour
         target = player;
     }
 
-    IEnumerator EnemyAttack()
-    {
-        attackEnabled = false;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
-        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
-        if(target == player)
-            clone.gameObject.layer = 12;
-        else
-            clone.gameObject.layer = 10;
-        clone.SetActive(true);
-        source.PlayOneShot(fire);
-        clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
-        if (anim != null && !isStunned)
-            anim.SetTrigger("Attack");
-        yield return new WaitForSeconds(attackRate);
-        attackEnabled = true;
-    }
-
-
     // Update is called once per frame
     void Update()
     {
         if (!isPaused && !isStunned)
         {
-            if(inLove && player != null && target == null)
-            {
+            if (inLove && player != null && target == null)
                 SetTarget();
-            }
-            agent.SetDestination(target.transform.position);
+            if(target.transform.position != null)
+                agent.SetDestination(target.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
             {
                 Vector3 targetPosition = target.transform.position;
@@ -96,22 +75,26 @@ public class EnemyAI : MonoBehaviour
     //Call this function after you change either attackRate or bulletSpeed in EnemyStats while the enemy is active.
     public void RefreshStats()
     {
-        EnemyStats temp = GetComponent<EnemyStats>();
-        attackRate = temp.GetAttackRate();
-        bulletSpeed = temp.GetBulletSpeed();
+        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        attackRate = enemyStats.GetAttackRate();
+        bulletSpeed = enemyStats.GetBulletSpeed();
     }
+
     public void OnPauseGame()
     {
         isPaused = true;
     }
+
     public void OnResumeGame()
     {
         isPaused = false;
     }
+
     public void Stun()
     {
         isStunned = true;
     }
+
     public void Unstun()
     {
         isStunned = false;
@@ -130,28 +113,51 @@ public class EnemyAI : MonoBehaviour
 
     private void SetTarget()
     {
-        GameObject[] gos;
-        gos = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = float.MaxValue;
-        Vector3 position = transform.position;
-        foreach (GameObject go in gos)
+        List<GameObject> gameObjectList = new List<GameObject>();
+        //Switching array to a list for the purpose of accessing list functions
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in gameObjects)
+            gameObjectList.Add(go);
+        //Using this check to prevent errors from using a love bullet when only one enemy on screen.
+        if (gameObjectList.Count > 1)
         {
-            if (go != gameObject)
+            GameObject closest = null;
+            float distance = float.MaxValue;
+            Vector3 position = transform.position;
+            foreach (GameObject gameobject in gameObjects)
             {
-                float curDistance = Vector3.Distance(position, go.transform.position);
-                if (curDistance < distance)
+                if (gameobject != gameObject)
                 {
-                    closest = go;
-                    distance = curDistance;
+                    float curDistance = Vector3.Distance(position, gameobject.transform.position);
+                    if (curDistance < distance)
+                    {
+                        closest = gameobject;
+                        distance = curDistance;
+                    }
                 }
             }
+            target = closest;
         }
-        target = closest;
     }
+
     public bool InLove()
     {
         return inLove;
+    }
+
+    IEnumerator EnemyAttack()
+    {
+        attackEnabled = false;
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
+        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
+        clone.gameObject.layer = 12;
+        clone.SetActive(true);
+        source.PlayOneShot(fire);
+        clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+        if (anim != null && !isStunned)
+            anim.SetTrigger("Attack");
+        yield return new WaitForSeconds(attackRate);
+        attackEnabled = true;
     }
     #endregion
 }
