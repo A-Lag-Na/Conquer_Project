@@ -19,7 +19,8 @@ public class UpdateUI : MonoBehaviour
     private Sprite cSprite, tabSprite = null;
 
     //Color flashes
-    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = null;
+    //Please don't set colors to null. They're non-nullable types that generate errors if set to null.
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent;
 
     //distance from shop
     float dist = 0.0f;

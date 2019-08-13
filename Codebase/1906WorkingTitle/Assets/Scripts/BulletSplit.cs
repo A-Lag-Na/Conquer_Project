@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class BulletSplit : MonoBehaviour
 {
+    #region BulletSplitProperties
     [SerializeField] private float boltSpeed = 5;
     [SerializeField] private int numChildren = 0;
     [SerializeField] GameObject bolts = null;
     private int layer = 0;
+    #endregion
 
     private void Start()
     {
@@ -17,23 +19,21 @@ public class BulletSplit : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         string tag = collision.collider.tag;
-        if(tag.Equals("Enemy"))
+        if (tag.Equals("Enemy"))
         {
             List<Vector3> EnemyPositions = new List<Vector3>();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (GameObject enemy in enemies)
-            {
                 EnemyPositions.Add(enemy.transform.position);
-            }
 
-            if(EnemyPositions.Count > 0)
+            if (EnemyPositions.Count > 0)
             {
                 Collider collider = collision.collider;
                 GameObject hit = collider.gameObject;
 
                 Transform currentTransform = hit.GetComponent<Transform>();
                 EnemyPositions.Remove(currentTransform.position);
-                Vector3 currentPosition= currentTransform.Find("Shot Position").position;
+                Vector3 currentPosition = currentTransform.Find("Shot Position").position;
 
                 for (int i = 0; i < numChildren; i++)
                 {
