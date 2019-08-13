@@ -10,7 +10,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.4
   m_Height: 6
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -29,17 +29,17 @@ PrefabInstance:
     - target: {fileID: 6112462422878814989, guid: 83d9e9093bda01d47a1425cfde1908ff,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.3668184
+      value: -0.27
       objectReference: {fileID: 0}
     - target: {fileID: 6112462422878814989, guid: 83d9e9093bda01d47a1425cfde1908ff,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -7.11
       objectReference: {fileID: 0}
     - target: {fileID: 6112462422878814989, guid: 83d9e9093bda01d47a1425cfde1908ff,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -23.095673
+      value: -4.51
       objectReference: {fileID: 0}
     - target: {fileID: 6112462422878814989, guid: 83d9e9093bda01d47a1425cfde1908ff,
         type: 3}
@@ -152,7 +152,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 418930596771998478, guid: 83d9e9093bda01d47a1425cfde1908ff, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 83d9e9093bda01d47a1425cfde1908ff, type: 3}
 --- !u!1 &8297779320312325896 stripped
 GameObject:

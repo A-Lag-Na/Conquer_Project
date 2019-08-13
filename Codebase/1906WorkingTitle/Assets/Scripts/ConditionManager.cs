@@ -6,8 +6,8 @@ using UnityEngine.AI;
 public class ConditionManager : MonoBehaviour
 {
     #region ConditionManagerProperties
-    private int fireTimer = 0;
-    private int thawTimer = 0;
+    [SerializeField] int fireTimer = 0;
+    [SerializeField] int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;
 
@@ -25,8 +25,8 @@ public class ConditionManager : MonoBehaviour
     private float fireDamage = 0.0f;
     private float auraDamage = 0.0f;
 
-    GameObject fireParticle = null;
-    GameObject iceParticle = null;
+    [SerializeField] GameObject fireParticle = null;
+    [SerializeField] GameObject iceParticle = null;
 
     private bool isPaused = false;
     #endregion
@@ -50,14 +50,10 @@ public class ConditionManager : MonoBehaviour
             statsScript = GetComponentInParent<EnemyStats>();
             enemyRender = ((EnemyStats)statsScript).GetRenderer();
         }
-        fireParticle = GameObject.FindGameObjectWithTag("Fire Particle");
-        iceParticle = GameObject.FindGameObjectWithTag("Ice Particle");
-        if (fireParticle != null)
-            fireParticle.SetActive(false);
-        if (iceParticle != null)
-            iceParticle.SetActive(false);
         if (auraDamage == 0f)
             auraDamage = .017f;
+        fireParticle.SetActive(false);
+        iceParticle.SetActive(false);
         speed = GetSpeed();
         maxSpeed = GetSpeed();
     }
@@ -70,7 +66,7 @@ public class ConditionManager : MonoBehaviour
             {
                 if (fireTimer > 0)
                 {
-                    if (fireParticle != null)
+                    if (fireParticle.activeSelf == false && fireParticle != null)
                         fireParticle.SetActive(true);
                     fireTimer--;
                     if (fireTimer % 60 == 0)
@@ -78,7 +74,7 @@ public class ConditionManager : MonoBehaviour
                 }
                 if (thawTimer > 0)
                 {
-                    if (iceParticle != null)
+                    if (iceParticle.activeSelf == false && iceParticle != null)
                         iceParticle.SetActive(true);
                     thawTimer--;
                     if (Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
@@ -91,17 +87,16 @@ public class ConditionManager : MonoBehaviour
                         Unstun();
                 }
                 if (auraTimer > 0)
-                {
-                    if (!tag.Equals("Player"))
-                        enemyRender.material.color = Color.Lerp(enemyRender.material.color, Color.black, .08f);
-                    Damage(auraDamage);
+                {                    Damage(auraDamage);
                     auraTimer--;
                 }
             }
-            if (fireTimer <= 0)
+            if (fireParticle.activeSelf && fireTimer==0)
+            {
                 if (fireParticle != null)
                     fireParticle.SetActive(false);
-            if (thawTimer <= 0)
+            }
+            if(iceParticle.activeSelf && thawTimer ==0)
             {
                 SetSpeed(maxSpeed);
                 if (iceParticle != null)
