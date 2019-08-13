@@ -5,61 +5,26 @@ using UnityEngine.AI;
 
 public class TurnerAI : MonoBehaviour
 {
-    //public bool isStunned;
-    //private bool isPaused;
+    CharacterController characterController = null;
+    Vector3 moveDirection = Vector3.zero;
+    float enemyY = 0.0f;
 
-    //Animator anim = null;
-    NavMeshAgent agent = null;
-    //AudioSource source = null;
-
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.SetDestination(transform.forward * 1);
+        characterController = GetComponent<CharacterController>();
+        enemyY = transform.position.y;
     }
-    
+
+    private void Update()
+    {
+        moveDirection = transform.forward / 2;
+        characterController.Move(moveDirection);
+        transform.position = new Vector3(transform.position.x, enemyY, transform.position.z);
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
-        Collider col = collision.collider;
-        GameObject obj = col.gameObject;
-        if (obj.CompareTag("Player") || obj.CompareTag("Untagged"))
-        {
-            Vector3 dest;
-            int dist = 10;
-            NavMeshHit success;
-            do
-            {
-                dest = transform.right * dist + gameObject.transform.position;
-                dist--;
-            } while (!NavMesh.SamplePosition(dest, out success, dist+1, 0));
-            agent.SetDestination(success.position);
-        }
+        transform.Rotate(0, 90, 0);
     }
-
-    #region EnemyFunctions
-    //Call this function after you change either attackRate or bulletSpeed in EnemyStats while the enemy is active.
-    public void RefreshStats()
-    {
-        EnemyStats temp = GetComponent<EnemyStats>();
-    }
-    //public void OnPauseGame()
-    //{
-    //    isPaused = true;
-    //}
-    //public void OnResumeGame()
-    //{
-    //    isPaused = false;
-    //}
-    //public void Stun()
-    //{
-    //    isStunned = true;
-    //}
-    //public void Unstun()
-    //{
-    //    isStunned = false;
-    //}
-    #endregion
 }
 
