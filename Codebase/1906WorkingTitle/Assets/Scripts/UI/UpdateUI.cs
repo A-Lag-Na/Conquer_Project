@@ -147,7 +147,7 @@ public class UpdateUI : MonoBehaviour
                 buttonPrompt.sprite = tabSprite;
             }
         }
-        if (dist <= 5.2f)
+        if (dist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
@@ -214,7 +214,7 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (dist <= 5.2f)
+        if (dist <= 8.2f)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
