@@ -71,7 +71,7 @@ public class EnemyStats : MonoBehaviour
             enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
     }
 
-    private void OnDestroy()
+    public void Death()
     {
         if (gameObject.CompareTag("BulletHell Enemy"))
             Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
@@ -176,6 +176,8 @@ public class EnemyStats : MonoBehaviour
             spawnerScript.remainingChildren -= 1;
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
+        if(CompareTag("BulletHell Enemy"))
+            Death();
         Destroy(gameObject);
     }
 
