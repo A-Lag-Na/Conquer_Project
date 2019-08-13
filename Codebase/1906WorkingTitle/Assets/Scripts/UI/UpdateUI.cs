@@ -8,17 +8,17 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
 
     #region RecordedStats
-    [SerializeField] private Player player;
-    [SerializeField] private Inventory inventory;
-    private float health, maxHealth, currentExperience, nextLevelExp;
-    private int lives, coins;
+    [SerializeField] private Player player = null;
+    [SerializeField] private Inventory inventory = null;
+    private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
+    private int lives, coins = 0;
     #endregion
 
     #region UI elements to remember
-    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name;
-    private RectTransform healthTransform, levelTransform;
-    private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
-    private Sprite cSprite, tabSprite;
+    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null;
+    private RectTransform healthTransform, levelTransform = null;
+    private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
+    private Sprite cSprite, tabSprite = null;
     #endregion
 
     //Color flashes
