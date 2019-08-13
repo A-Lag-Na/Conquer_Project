@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     private GameObject dashTrail = null;
     [SerializeField] private GameObject mainUI = null;
     [SerializeField] GameObject deathAura = null;
+    [SerializeField] GameObject iceSpell = null;
     SaveScript save = null;
     #endregion
 
@@ -104,6 +105,7 @@ public class Player : MonoBehaviour
         isRegenerating = false;
         bulletChoice = 1;
         deathAura.SetActive(false);
+        iceSpell.SetActive(false);
         save = GetComponent<SaveScript>();
     }
 
@@ -659,6 +661,11 @@ public class Player : MonoBehaviour
     public void EnableDeathAura()
     {
         deathAura.SetActive(true);
+    }
+
+    public void EnableConeofCold()
+    {
+        iceSpell.SetActive(true);
     }
     #endregion
     #endregion
