@@ -6,12 +6,14 @@ public class CameraTrigger : MonoBehaviour
 {
     GameObject camPos = null;
     [SerializeField] public GameObject spawner = null;
+    SpawnScript spawn = null;
 
     // Start is called before the first frame update
     void Start()
     {
         //Finds each camera position object in each room
         camPos = transform.Find("Camera Position").gameObject;
+        spawn = spawner.GetComponent<SpawnScript>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,8 +24,8 @@ public class CameraTrigger : MonoBehaviour
             Camera.main.transform.position = camPos.transform.position;
 
             //Spawns enemies and locks rooms
-            spawner.GetComponent<SpawnScript>().SetDoorLock(true);
-            spawner.GetComponent<SpawnScript>().SetEnabled(true);
+            spawn.SetDoorLock(true);
+            spawn.SetEnabled(true);
         }
     }
 }
