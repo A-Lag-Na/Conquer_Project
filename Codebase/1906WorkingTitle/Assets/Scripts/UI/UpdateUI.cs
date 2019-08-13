@@ -170,9 +170,6 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetButtonDown("Open Stats"))
         {
-            levelUp = false;
-            levelFlasher.color = levelColorTransparent;
-            buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             OpenStats();
         }
 
@@ -224,6 +221,13 @@ public class UpdateUI : MonoBehaviour
         if (dist <= 8.2f)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+    }
+
+    public void StopLevelFlashing()
+    {
+        levelUp = false;
+        levelFlasher.color = levelColorTransparent;
+        buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
     #endregion
 }
