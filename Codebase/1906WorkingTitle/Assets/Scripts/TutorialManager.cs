@@ -27,8 +27,8 @@ public class TutorialManager : MonoBehaviour
         //Movement 
         if (popUpIndex == 0)
         {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) ||
-                    Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D))
+            if (Input.GetButtonDown("Forward") || Input.GetButtonDown("Left") ||
+                    Input.GetButtonDown("Backward") || Input.GetButtonDown("Right"))
                 popUpIndex++;
         }
         //Attack
@@ -48,14 +48,14 @@ public class TutorialManager : MonoBehaviour
         else if (popUpIndex == 3)
         {
            
-            if (Input.GetKeyDown(KeyCode.Tab))
+            if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
         //Leveling up
         else if (popUpIndex == 4)
         {
             if ((player.GetComponent<Player>().GetDamage() > 1 || player.GetComponent<Player>().GetDefense() > 1
-                || player.GetComponent<Player>().GetAttackSpeed() > 1) && Input.GetKeyDown(KeyCode.Tab))
+                || player.GetComponent<Player>().GetAttackSpeed() > 1) && Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
         //Move towards game
