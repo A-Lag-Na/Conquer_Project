@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
@@ -49,7 +48,8 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        SceneManager.LoadScene("Build Scene");
+        GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
+        StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(1));
     }
 
     private void HowToPlay()

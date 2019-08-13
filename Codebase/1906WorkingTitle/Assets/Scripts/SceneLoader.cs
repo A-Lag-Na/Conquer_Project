@@ -23,7 +23,7 @@ public class SceneLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(restart)
+        if (restart)
             StartCoroutine(LoadingText());
     }
 
@@ -41,7 +41,7 @@ public class SceneLoader : MonoBehaviour
         restart = true;
     }
 
-    IEnumerator LoadNewScene(int scene)
+    public IEnumerator LoadNewScene(int scene)
     {
 
         // This line waits for 3 seconds before executing the next line in the coroutine.
@@ -54,6 +54,7 @@ public class SceneLoader : MonoBehaviour
         // While the asynchronous operation to load the new scene is not yet complete, continue waiting until it's done.
         while (!async.isDone)
         {
+            yield return null;
             progress.value = async.progress;
         }
 
