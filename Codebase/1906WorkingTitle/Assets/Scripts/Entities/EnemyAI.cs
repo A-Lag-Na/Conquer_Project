@@ -40,7 +40,8 @@ public class EnemyAI : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
         enemyStats = GetComponent<EnemyStats>();
-        spawnScript = enemyStats.GetSpawner().GetComponent<SpawnScript>();
+        if(enemyStats.GetSpawner() != null)
+            spawnScript = enemyStats.GetSpawner().GetComponent<SpawnScript>();
         attackRate = enemyStats.GetAttackRate();
         bulletSpeed = enemyStats.GetBulletSpeed();
         bulletDamage = enemyStats.GetDamage();

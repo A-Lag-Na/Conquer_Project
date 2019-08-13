@@ -10,7 +10,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.6
+  m_Radius: 0.3
   m_Height: 7
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -29,17 +29,17 @@ PrefabInstance:
     - target: {fileID: 1928979425485858369, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.779728
+      value: 13.006387
       objectReference: {fileID: 0}
     - target: {fileID: 1928979425485858369, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -10
+      value: -8.23
       objectReference: {fileID: 0}
     - target: {fileID: 1928979425485858369, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -21.47159
+      value: 3.7487803
       objectReference: {fileID: 0}
     - target: {fileID: 1928979425485858369, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
@@ -116,6 +116,10 @@ PrefabInstance:
       propertyPath: children
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 997245283, guid: 775ffee37e4bd604181d7b45c579c69f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6252105028890486269, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -146,12 +150,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.25
       objectReference: {fileID: 0}
-    - target: {fileID: 5460227011133935170, guid: 775ffee37e4bd604181d7b45c579c69f,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 997245283, guid: 775ffee37e4bd604181d7b45c579c69f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 775ffee37e4bd604181d7b45c579c69f, type: 3}
 --- !u!1 &5850446072647396981 stripped
 GameObject:

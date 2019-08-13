@@ -9,6 +9,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject spawner = null;
     private SpawnScript spawnScript = null;
     [SerializeField] GameObject[] popUps = null;
+    private GameObject door;
 
 
     int popUpIndex = 0;
@@ -17,6 +18,7 @@ public class TutorialManager : MonoBehaviour
     {
         spawnScript = spawner.GetComponent<SpawnScript>();
         playerScript = player.GetComponent<Player>();
+        door = GameObject.FindGameObjectWithTag("Door");
     }
 
     private void Update()
@@ -73,7 +75,8 @@ public class TutorialManager : MonoBehaviour
         //Move towards game
         else if (popUpIndex == 5)
         {
-            GameObject.FindGameObjectWithTag("Door").SetActive(false);
+            if(door.activeSelf)
+                door.SetActive(false);
         }
     }
 }
