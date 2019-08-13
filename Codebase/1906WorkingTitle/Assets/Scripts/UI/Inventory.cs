@@ -5,7 +5,7 @@ using UnityEngine;
 public class Inventory : MonoBehaviour
 {
     #region InventoryStats
-    [SerializeField] private int gold = 0;
+    [SerializeField] private int gold = 0, numBoxPieces = 0;
     LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
     LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
     [SerializeField] LinkedListNode<Weapon> weaponNode = null;
@@ -240,4 +240,10 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
+    #region Box Pieces
+    public void AddBoxPiece()
+    {
+        numBoxPieces++;
+    }
+    #endregion
 }
