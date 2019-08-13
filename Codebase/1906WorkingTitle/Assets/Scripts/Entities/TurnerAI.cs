@@ -17,7 +17,7 @@ public class TurnerAI : MonoBehaviour
 
     private void Update()
     {
-        moveDirection = transform.forward / 2;
+        moveDirection = transform.forward / 5;
         characterController.Move(moveDirection);
         transform.position = new Vector3(transform.position.x, enemyY, transform.position.z);
     }

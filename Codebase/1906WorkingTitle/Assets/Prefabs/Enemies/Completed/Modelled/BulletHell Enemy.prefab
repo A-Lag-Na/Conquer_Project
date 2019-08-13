@@ -88,9 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac1e2c1aaf62b34a9428dde0a3fbd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPoints: 3
-  health: 3
-  damage: 1
+  enemyPoints: 10
+  health: 10
+  damage: 3
   attackRate: 0.1
   bulletSpeed: 10
   isFireImmune: 0
@@ -113,8 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireTimer: 0
-  isPlayer: 0
 --- !u!114 &6157528642217353790
 MonoBehaviour:
   m_ObjectHideFlags: 0
