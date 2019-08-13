@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
 
 
                 // Player Dash if Spacebar is pressed
-                if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector3.zero)
+                if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
                     if (isDashing == false)
                         StartCoroutine(PlayerDash());
 
@@ -167,16 +167,16 @@ public class Player : MonoBehaviour
                 #endregion
 
                 #region PlayerAttack
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (Input.GetButtonDown("Bullet 1"))
                     bulletChoice = 1;
-                if (Input.GetKeyDown(KeyCode.Alpha2))
+                if (Input.GetButtonDown("Bullet 2"))
                     bulletChoice = 2;
-                if (Input.GetKeyDown(KeyCode.Alpha3))
+                if (Input.GetButtonDown("Bullet 3"))
                     bulletChoice = 3;
-                if (Input.GetKeyDown(KeyCode.Alpha4))
+                if (Input.GetButtonDown("Bullet 4"))
                     bulletChoice = 4;
                 // If the corresponding button is clicked call ShootBullet
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetAxis("Fire1") > 0f)
                     ShootBullet(bulletChoice);
 
                 #endregion

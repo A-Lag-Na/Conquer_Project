@@ -28,8 +28,8 @@ public class ShopUI : MonoBehaviour
         denyScreen = transform.Find("Deny Screen").gameObject;
         denyScreen.SetActive(false);
 
-        if (GameObject.Find("Player"))
-            inventory = GameObject.Find("Player").GetComponent<Inventory>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
 
         Time.timeScale = 0;

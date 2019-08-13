@@ -15,19 +15,19 @@ public class PlayerMove : MonoBehaviour {
         mouseY = Input.GetAxis("Mouse X");
         this.transform.localEulerAngles += new Vector3(0, mouseY, 0);
         var speed = 0.3f * Time.deltaTime * 60f;
-        if(Input.GetKey(KeyCode.W))
+        if(Input.GetButton("Forward"))
         {
             this.transform.Translate(Vector3.forward * speed);
         }
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetButton("Backward"))
         {
             this.transform.Translate(Vector3.back * speed);
         }
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetButton("Left"))
         {
             this.transform.Translate(Vector3.left * speed);
         }
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetButton("Right"))
         {
             this.transform.Translate(Vector3.right * speed);
         }
