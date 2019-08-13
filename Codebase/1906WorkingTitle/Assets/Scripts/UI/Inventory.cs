@@ -6,9 +6,9 @@ public class Inventory : MonoBehaviour
 {
     [SerializeField] private int gold;
     LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
-    LinkedList<Potion> potionList = new LinkedList<Potion>();
+    LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
     [SerializeField] LinkedListNode<Weapon> weaponNode;
-    [SerializeField] LinkedListNode<Potion> potionNode;
+    [SerializeField] LinkedListNode<Consumable> consumableNode;
     [SerializeField] int amountOfPotions;
     Player player = null;
 
@@ -16,7 +16,7 @@ public class Inventory : MonoBehaviour
     {
         player = GetComponentInParent<Player>();
         weaponNode = weaponList.First;
-        potionNode = potionList.First;
+        consumableNode = consumableList.First;
     }
 
     private void Update()
@@ -29,14 +29,14 @@ public class Inventory : MonoBehaviour
                 CycleWeaponBackward();
         }
 
-        if (potionNode != null)
+        if (consumableNode != null)
         {
-            if (Input.GetButtonDown("Weapon Scroll Up"))
-                CyclePotionForward();
-            if (Input.GetButtonUp("Weapon Scroll Down"))
-                CyclePotionBackward();
+            if (Input.GetButtonDown("Potion Scroll Up"))
+                CycleConsumableForward();
+            if (Input.GetButtonUp("Potion Scroll Down"))
+                CycleConsumableBackward();
         }
-        amountOfPotions = potionList.Count;
+        amountOfPotions = consumableList.Count;
     }
     
     #region gold
@@ -51,7 +51,7 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    #region Add Weapons and Potions
+    #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
         weaponList.AddLast((Weapon)_weapon);
@@ -62,12 +62,12 @@ public class Inventory : MonoBehaviour
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
-    public void AddPotion(BaseItem _potion)
+    public void AddConsumable(BaseItem _consumable)
     {
-        potionList.AddLast((Potion)_potion);
-        if (potionNode == null)
+        consumableList.AddLast((Consumable)_consumable);
+        if (consumableNode == null)
         {
-            potionNode = potionList.First;
+            consumableNode = consumableList.First;
         }
     }
     #endregion
@@ -100,66 +100,66 @@ public class Inventory : MonoBehaviour
 
     #endregion
 
-    #region Cycle Potion
+    #region Cycle Consumable
 
-    public void CyclePotionForward()
+    public void CycleConsumableForward()
     {
-        if (potionNode.Next != null)
+        if (consumableNode.Next != null)
         {
-            potionNode = potionNode.Next;
+            consumableNode = consumableNode.Next;
         }
     }
 
-    public void CyclePotionBackward()
+    public void CycleConsumableBackward()
     {
-        if (potionNode.Previous != null)
+        if (consumableNode.Previous != null)
         {
-            potionNode = potionNode.Previous;
+            consumableNode = consumableNode.Previous;
         }
     }
 
     #endregion
 
-    #region Use Potion
+    #region Use Consumable
     
-    public IEnumerator PotionTimer()
+    public IEnumerator ConsumableTimer()
     {
         //check if there is a potion
-        if (potionNode != null)
+        if (consumableNode != null)
         {
             //if consumable type
-            if (potionNode.Value.GetPotionType() == Potion.PotionType.Consumable)
+            if (consumableNode.Value.GetConsumableType() == Consumable.ConsumableType.Consumable)
             {
-                switch (potionNode.Value.name)
+                switch (consumableNode.Value.name)
                 {
                     case "Health Potion":
                         if (player.GetHealth() < player.GetMaxHealth())
                         {
-                            player.RestoreHealth(potionNode.Value.GetFloatModifier());
-                            RemovePotion();
+                            player.RestoreHealth(consumableNode.Value.GetFloatModifier());
+                            RemoveConsumable();
                         }
                         break;
 
                     case "Defense Potion":
-                        player.ModifyDefense(potionNode.Value.GetIntModifier());
-                        int intModValue = potionNode.Value.GetIntModifier();
-                        RemovePotion();
+                        player.ModifyDefense(consumableNode.Value.GetIntModifier());
+                        int intModValue = consumableNode.Value.GetIntModifier();
+                        RemoveConsumable();
                         yield return new WaitForSeconds(3f);
                         player.ModifyDefense(-1 * intModValue);
                         break;
 
                     case "Damage Buff Potion":
-                        player.ModifyDamage(potionNode.Value.GetIntModifier());
-                        intModValue = potionNode.Value.GetIntModifier();
-                        RemovePotion();
+                        player.ModifyDamage(consumableNode.Value.GetIntModifier());
+                        intModValue = consumableNode.Value.GetIntModifier();
+                        RemoveConsumable();
                         yield return new WaitForSeconds(5f);
                         player.ModifyDamage(-1 * intModValue);
                         break;
 
                     case "Movement Speed Potion":
-                        player.ModifySpeed(potionNode.Value.GetFloatModifier());
-                        float floatModValue = potionNode.Value.GetFloatModifier();
-                        RemovePotion();
+                        player.ModifySpeed(consumableNode.Value.GetFloatModifier());
+                        float floatModValue = consumableNode.Value.GetFloatModifier();
+                        RemoveConsumable();
                         yield return new WaitForSeconds(6f);
                         player.ModifySpeed(-1 * floatModValue);
                         break;
@@ -171,8 +171,8 @@ public class Inventory : MonoBehaviour
             //if thrown type
             else
             {
-                player.ThrowPotion(potionNode.Value.GetPotionEffect());
-                RemovePotion();
+                player.ThrowConsumable(consumableNode.Value.GetPotionEffect());
+                RemoveConsumable();
             }
 
         }
@@ -191,8 +191,8 @@ public class Inventory : MonoBehaviour
 
     public Sprite PotionSprite()
     {
-        if(potionNode!=null)
-            return potionNode.Value.GetSprite();
+        if(consumableNode!=null)
+            return consumableNode.Value.GetSprite();
         else
             return Resources.Load<Sprite>("Sprites/background");
     }
@@ -207,33 +207,33 @@ public class Inventory : MonoBehaviour
             return "";
     }
 
-    public string PotionName()
+    public string ConsumableName()
     {
-        if (potionNode != null)
-            return potionNode.Value.GetName();
+        if (consumableNode != null)
+            return consumableNode.Value.GetName();
         else
             return "";
     }
     #endregion
 
-    #region Remove Potion
-    private void RemovePotion()
+    #region Remove Consumable
+    private void RemoveConsumable()
     {
         //clear potion after use
-        if (potionNode.Next != null)
+        if (consumableNode.Next != null)
         {
-            potionNode = potionNode.Next;
-            potionList.Remove(potionNode.Previous);
+            consumableNode = consumableNode.Next;
+            consumableList.Remove(consumableNode.Previous);
         }
-        else if (potionNode.Previous != null)
+        else if (consumableNode.Previous != null)
         {
-            potionNode = potionNode.Previous;
-            potionList.Remove(potionNode.Next);
+            consumableNode = consumableNode.Previous;
+            consumableList.Remove(consumableNode.Next);
         }
         else
         {
-            potionList.Remove(potionNode);
-            potionNode = null;
+            consumableList.Remove(consumableNode);
+            consumableNode = null;
         }
     }
     #endregion

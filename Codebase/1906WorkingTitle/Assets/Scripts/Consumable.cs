@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Potion : BaseItem
+public class Consumable : BaseItem
 {
-    public enum PotionType { Consumable, Thrown, EOF};
-    [SerializeField] PotionType potionType = PotionType.Consumable;
+    public enum ConsumableType { Consumable, Thrown, EOF};
+    [SerializeField] ConsumableType consumableType = ConsumableType.Consumable;
     [SerializeField] float floatModifier = 5;
     [SerializeField] int intModifier = 5;
-    [SerializeField] GameObject potionEffect = null;
+    [SerializeField] GameObject consumableEffect = null;
     
-    public PotionType GetPotionType()
+    public ConsumableType GetConsumableType()
     {
-        return potionType;
+        return consumableType;
     }
 
     public float GetFloatModifier()
@@ -26,6 +26,6 @@ public class Potion : BaseItem
 
     public GameObject GetPotionEffect()
     {
-        return potionEffect;
+        return consumableEffect;
     }
 }

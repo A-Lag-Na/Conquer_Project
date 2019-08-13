@@ -21,11 +21,11 @@ public class EnemyStats : MonoBehaviour
     //Speed at whichc bullets travel
     [SerializeField] private float bulletSpeed = 10;
 
-    public bool isFireImmune;
-    public bool isIceImmune;
-    public bool isStunImmune;
+    public bool isFireImmune = false;
+    public bool isIceImmune = false;
+    public bool isStunImmune = false;
     //Has this enemy been spawned externally? (through splitter or spawner enemy)
-    private bool isChild;
+    private bool isChild = false;
     #endregion
 
     #region UnityComponents
@@ -36,18 +36,18 @@ public class EnemyStats : MonoBehaviour
     [SerializeField] GameObject childEnemy = null;
 
     //Need this to notify the spawner to add new enemies on split.
-    [SerializeField] GameObject spawnerObject;
-    SpawnScript spawnerScript;
+    [SerializeField] GameObject spawnerObject = null;
+    SpawnScript spawnerScript = null;
 
-    public int children;
+    public int children = 0;
 
     //Enemy's color and renderer
-    private Renderer enemyRender;
-    public Color enemyColor;
+    private Renderer enemyRender = null;
+    public Color enemyColor = null;
 
-    Animator anim;
-    GameObject player;
-    Player playerScript;
+    Animator anim = null;
+    GameObject player = null;
+    Player playerScript = null;
     #endregion
 
     public void Start()
@@ -59,10 +59,8 @@ public class EnemyStats : MonoBehaviour
         playerScript = player.GetComponentInParent<Player>();
         anim = GetComponent<Animator>();
 
-        if(spawnerObject != null)
-        {
+        if (spawnerObject != null)
             spawnerScript = spawnerObject.GetComponent<SpawnScript>();
-        }
     }
 
     public void Update()
@@ -70,48 +68,64 @@ public class EnemyStats : MonoBehaviour
         if (enemyRender.material.color != enemyColor)
             enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
     }
-    
+
+    private void OnDestroy()
+    {
+        if (gameObject.CompareTag("BulletHell Enemy"))
+            Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
+    }
+
     #region Getters and Setters
     public int GetPoints()
     {
         return enemyPoints;
     }
+
     public float GetHealth()
     {
         return health;
     }
+
     public int GetDamage()
     {
         return damage;
     }
+
     public float GetAttackRate()
     {
         return attackRate;
     }
+
     public float GetMovementSpeed()
     {
         return GetComponent<NavMeshAgent>().speed;
     }
+
     public float GetBulletSpeed()
     {
         return bulletSpeed;
     }
+
     public void SetHealth(float _health)
     {
         health = _health;
     }
+
     public void SetDamage(int _damage)
     {
         damage = _damage;
     }
+
     public void SetAttackRate(float _attackRate)
     {
         attackRate = _attackRate;
     }
+
     public void SetMovementSpeed(float _speed)
     {
         GetComponent<NavMeshAgent>().speed = _speed;
     }
+
     public void SetBulletSpeed(float _speed)
     {
         bulletSpeed = _speed;
@@ -122,16 +136,14 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(float _damage = 1)
     {
-        if(damage > 0f)
+        if (damage > 0f)
         {
             BlinkOnHit();
             health -= _damage;
             if (health <= 0)
             {
                 if (anim != null)
-                {
                     anim.SetBool("Dead", true);
-                }
                 Kill();
             }
         }
@@ -146,14 +158,10 @@ public class EnemyStats : MonoBehaviour
             vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
             Instantiate(pickUp, vec, Quaternion.identity);
         }
-        if(childEnemy != null && children > 0)
-        {
+        if (childEnemy != null && children > 0)
             Split(children);
-        }
-        if(isChild)
-        {
+        if (isChild)
             spawnerScript.remainingChildren -= 1;
-        }
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
         Destroy(gameObject);
@@ -168,8 +176,8 @@ public class EnemyStats : MonoBehaviour
 
             childStats.isChild = true;
 
-            if(spawnerObject != null)
-            { 
+            if (spawnerObject != null)
+            {
                 childStats.SetSpawner(spawnerObject);
                 spawnerScript.AddEnemy(child);
                 spawnerScript.remainingChildren += childStats.children;
@@ -189,6 +197,7 @@ public class EnemyStats : MonoBehaviour
     {
         spawnerObject = _spawner;
     }
+
     public Renderer GetRenderer()
     {
         return enemyRender;

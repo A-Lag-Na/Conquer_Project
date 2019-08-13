@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Companion : MonoBehaviour
 {
+    #region CompanionStats
     int bulletDamage = 0;
     GameObject player = null;
     GameObject target = null;
@@ -23,6 +24,7 @@ public class Companion : MonoBehaviour
     AudioSource source = null;
     [SerializeField] GameObject potion = null;
     float previousExp = 0.0f;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -116,6 +118,7 @@ public class Companion : MonoBehaviour
         }
     }
 
+    #region CompanionFunctions
     public void Activate()
     {
         if (name == "Attack Companion")
@@ -217,4 +220,5 @@ public class Companion : MonoBehaviour
         yield return new WaitForSeconds(5);
         canAttack = true;
     }
+    #endregion
 }
