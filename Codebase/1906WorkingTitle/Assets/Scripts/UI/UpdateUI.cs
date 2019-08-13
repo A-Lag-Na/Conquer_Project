@@ -45,10 +45,10 @@ public class UpdateUI : MonoBehaviour
             statScreen.SetActive(false);
         }
         //grab player GameObject
-        if (GameObject.Find("Player"))
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
-            player = GameObject.Find("Player").GetComponent<Player>();
-            inventory = GameObject.Find("Player").GetComponent<Inventory>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();

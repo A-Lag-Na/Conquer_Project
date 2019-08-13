@@ -35,8 +35,8 @@ public class StatScreen : MonoBehaviour
         defenseBTN.onClick.AddListener(AddDefense);
 
         //assign player if found
-        if (GameObject.Find("Player"))
-            player = GameObject.Find("Player").GetComponent<Player>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         //assign Texts
         levelText = GameObject.Find("Level").GetComponent<Text>();
