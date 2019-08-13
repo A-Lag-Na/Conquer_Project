@@ -96,11 +96,18 @@ public class UpdateUI : MonoBehaviour
 
             #region Level Update
             //update level bar
-            currentExperience = player.GetExperience();
-            nextLevelExp = player.GetNextLevelExperience();
-            Vector3 levelScale = levelTransform.localScale;
-            levelScale.x = currentExperience / nextLevelExp;
-            levelTransform.localScale = levelScale;
+            if (!levelUp)
+            {
+                currentExperience = player.GetExperience();
+                nextLevelExp = player.GetNextLevelExperience();
+                Vector3 levelScale = levelTransform.localScale;
+                levelScale.x = currentExperience / nextLevelExp;
+                levelTransform.localScale = levelScale;
+            }
+            else
+            {
+                levelTransform.localScale = new Vector3(1, 1, 1);
+            }
             #endregion
 
             #region Coin Update
@@ -147,7 +154,7 @@ public class UpdateUI : MonoBehaviour
                 buttonPrompt.sprite = tabSprite;
             }
         }
-        if (dist <= 8.2f)
+        if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
