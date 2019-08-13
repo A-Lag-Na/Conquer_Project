@@ -12,26 +12,24 @@ public class UpdateUI : MonoBehaviour
     [SerializeField] private Inventory inventory = null;
     private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
     private int lives, coins = 0;
-    #endregion
 
-    #region UI elements to remember
     private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null;
     private RectTransform healthTransform, levelTransform = null;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
     private Sprite cSprite, tabSprite = null;
-    #endregion
 
     //Color flashes
-    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent;
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = null;
 
     //distance from shop
-    float dist;
+    float dist = 0.0f;
 
     // stat screen and pause menu references to keep
-    private GameObject statScreen, pauseMenu;
+    private GameObject statScreen, pauseMenu = null;
 
     //bool for level up flashing
     private bool levelUp = false;
+    #endregion
 
     void Start()
     {
@@ -78,26 +76,6 @@ public class UpdateUI : MonoBehaviour
         //set button sprites
         cSprite = Resources.Load<Sprite>("Sprites/c_sprite");
         tabSprite = Resources.Load<Sprite>("Sprites/tab_sprite");
-    }
-
-    private void OnEnable()
-    {
-        if (statScreen != null)
-            statScreen.SetActive(false);
-        if (pauseMenu != null)
-            pauseMenu.SetActive(false);
-    }
-
-    public void TakeDamage()
-    {
-        damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
-    }
-
-    public void LevelUp()
-    {
-        levelUp = true;
-        buttonPrompt.color = new Color32(255, 255, 255, 255);
-        buttonPrompt.sprite = tabSprite;
     }
 
     private void Update()
@@ -201,6 +179,27 @@ public class UpdateUI : MonoBehaviour
         #endregion
     }
 
+    #region UIFunctions
+    private void OnEnable()
+    {
+        if (statScreen != null)
+            statScreen.SetActive(false);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+    }
+
+    public void TakeDamage()
+    {
+        damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
+    }
+
+    public void LevelUp()
+    {
+        levelUp = true;
+        buttonPrompt.color = new Color32(255, 255, 255, 255);
+        buttonPrompt.sprite = tabSprite;
+    }
+
     void PauseGame()
     {
         if (pauseMenu != null)
@@ -219,4 +218,5 @@ public class UpdateUI : MonoBehaviour
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
+    #endregion
 }
