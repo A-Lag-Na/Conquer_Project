@@ -182,7 +182,8 @@ public class Player : MonoBehaviour
                 #endregion
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.L))
+            save.Load();
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
@@ -330,7 +331,6 @@ public class Player : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerLives--;
-            save.Load();
             if (playerLives <= 0)
                 Death();
             playerHealth = maxPlayerHealth;
