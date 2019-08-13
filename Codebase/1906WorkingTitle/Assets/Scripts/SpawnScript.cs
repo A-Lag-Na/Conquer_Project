@@ -72,15 +72,15 @@ public class SpawnScript : MonoBehaviour
 
         if (pointsClone > 0)
         {
-            for (int i = 0; i < enemiesClone.Count; i++)
+            for (int i = enemiesClone.Count-1; i >= 0; i--)
                 if (enemiesClone[i].GetPoints() > pointsClone)
                     enemiesClone.Remove(enemiesClone[i]);
 
             //randomNum selects 
-            int randomNum = Mathf.RoundToInt(Random.Range(0, enemiesClone.Count));
+            int randomNum = Random.Range(0, enemiesClone.Count);
 
             //Spawns an enemy
-            GameObject enemyClone = Instantiate(enemies[randomNum], transform.position, Quaternion.identity);
+            GameObject enemyClone = Instantiate(enemiesClone[randomNum].gameObject, transform.position, Quaternion.identity);
             EnemyStats enemyCloneStats = enemyClone.GetComponent<EnemyStats>();
             enemyCloneStats.SetSpawner(gameObject);
 
