@@ -17,7 +17,7 @@ public class SpawnScript : MonoBehaviour
 
     //How many points worth of enemies the spawner can spawn
     [SerializeField] private int points = 0;
-    private int pointsClone;
+    public int pointsClone;
 
     //Number of seconds between spawn.
     public float timer = 3;
@@ -70,7 +70,7 @@ public class SpawnScript : MonoBehaviour
         
         spawnAgain = false;
 
-        if (pointsClone > 0 || remainingChildren > 0)
+        if (pointsClone > 0)
         {
             for (int i = 0; i < enemiesClone.Count; i++)
                 if (enemiesClone[i].GetPoints() > pointsClone)
