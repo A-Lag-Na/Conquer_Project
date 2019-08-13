@@ -6,13 +6,15 @@ using UnityEngine.SceneManagement;
 
 public class GameWin : MonoBehaviour
 {
-    Text text;
-    float time, delay;
+    #region GameWinProperties
+    Text text = null;
+    float time, delay = 0.0f;
     int minutes, seconds;
-    Text title, content, btnTxt1, btnTxt2;
-    Image fadeIn, btnBack1, btnBack2;
-    Button playAgain, mainMenu;
-    Color white, red, black;
+    Text title, content, btnTxt1, btnTxt2 = null;
+    Image fadeIn, btnBack1, btnBack2 = null;
+    Button playAgain, mainMenu = null;
+    Color white, red, black = Color.clear;
+    #endregion
 
     void Start()
     {
@@ -49,33 +51,19 @@ public class GameWin : MonoBehaviour
     void Update()
     {
         if (fadeIn.color != black)
-        {
             fadeIn.color = Color.Lerp(fadeIn.color, black, delay);
-        }
         if (content.color != white)
-        {
             content.color = Color.Lerp(content.color, white, delay);
-        }
         if (btnBack1.color != white)
-        {
             btnBack1.color = Color.Lerp(btnBack1.color, white, delay);
-        }
         if (btnBack2.color != white)
-        {
             btnBack2.color = Color.Lerp(btnBack2.color, white, delay);
-        }
         if (btnTxt1.color != black)
-        {
             btnTxt1.color = Color.Lerp(btnTxt1.color, black, delay);
-        }
         if (btnTxt2.color != black)
-        {
             btnTxt2.color = Color.Lerp(btnTxt2.color, black, delay);
-        }
         if (title.color != red)
-        {
             title.color = Color.Lerp(title.color, red, delay);
-        }
         text.text = $"It took you {(int)time / 60} minutes and {(int)time % 60} seconds!";
     }
 
