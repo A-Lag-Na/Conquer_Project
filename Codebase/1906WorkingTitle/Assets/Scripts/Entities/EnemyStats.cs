@@ -43,7 +43,9 @@ public class EnemyStats : MonoBehaviour
 
     //Enemy's color and renderer
     private Renderer enemyRender = null;
-    public Color enemyColor = Color.black;
+
+    //Please don't set colors to null. They're non-nullable types that generate errors if set to null.
+    public Color enemyColor;
 
     Animator anim = null;
     GameObject player = null;
