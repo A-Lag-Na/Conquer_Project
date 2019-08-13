@@ -96,11 +96,18 @@ public class UpdateUI : MonoBehaviour
 
             #region Level Update
             //update level bar
-            currentExperience = player.GetExperience();
-            nextLevelExp = player.GetNextLevelExperience();
-            Vector3 levelScale = levelTransform.localScale;
-            levelScale.x = currentExperience / nextLevelExp;
-            levelTransform.localScale = levelScale;
+            if (!levelUp)
+            {
+                currentExperience = player.GetExperience();
+                nextLevelExp = player.GetNextLevelExperience();
+                Vector3 levelScale = levelTransform.localScale;
+                levelScale.x = currentExperience / nextLevelExp;
+                levelTransform.localScale = levelScale;
+            }
+            else
+            {
+                levelTransform.localScale = new Vector3(1, 1, 1);
+            }
             #endregion
 
             #region Coin Update
@@ -147,7 +154,7 @@ public class UpdateUI : MonoBehaviour
                 buttonPrompt.sprite = tabSprite;
             }
         }
-        if (dist <= 5.2f)
+        if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
@@ -163,9 +170,6 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetButtonDown("Open Stats"))
         {
-            levelUp = false;
-            levelFlasher.color = levelColorTransparent;
-            buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             OpenStats();
         }
 
@@ -214,9 +218,16 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (dist <= 5.2f)
+        if (dist <= 8.2f)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+    }
+
+    public void StopLevelFlashing()
+    {
+        levelUp = false;
+        levelFlasher.color = levelColorTransparent;
+        buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
     #endregion
 }

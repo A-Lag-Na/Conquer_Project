@@ -34,16 +34,10 @@ public class SpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(spawnEnabled)
-        {
-            pointsClone = points;
-            enemiesClone = new List<EnemyStats>();
-            for (int i = 0; i < enemies.Count; i++)
-                enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
-        }
-        else
-        {
-        }
+        pointsClone = points;
+        enemiesClone = new List<EnemyStats>();
+        for (int i = 0; i < enemies.Count; i++)
+            enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
     }
 
     // Update is called once per frame
@@ -68,10 +62,12 @@ public class SpawnScript : MonoBehaviour
 
     IEnumerator SpawnEnemy()
     {
+        RefreshSpawnedEnemies();
+
         if (remainingChildren == 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 
-        RefreshSpawnedEnemies();
+        
         spawnAgain = false;
 
         if (pointsClone > 0 || remainingChildren > 0)
@@ -156,6 +152,11 @@ public class SpawnScript : MonoBehaviour
     public int GetNumEnemies()
     {
         return spawnedEnemies.Count;
+    }
+
+    public int GetPointsRemaining()
+    {
+        return pointsClone;
     }
     #endregion
 }

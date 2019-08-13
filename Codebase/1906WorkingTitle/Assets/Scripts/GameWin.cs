@@ -34,8 +34,8 @@ public class GameWin : MonoBehaviour
         btnTxt2 = transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Text>();
         btnBack2 = transform.GetChild(0).GetChild(3).GetComponent<Image>();
 
-        playAgain = transform.Find("Play Again").GetComponent<Button>();
-        mainMenu = transform.Find("Main Menu").GetComponent<Button>();
+        playAgain = transform.GetChild(0).Find("Play Again").GetComponent<Button>();
+        mainMenu = transform.GetChild(0).Find("Main Menu").GetComponent<Button>();
 
         playAgain.onClick.AddListener(PlayAgain);
         mainMenu.onClick.AddListener(MainMenu);
@@ -46,6 +46,7 @@ public class GameWin : MonoBehaviour
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
     }
+    
 
     // Update is called once per frame
     void Update()

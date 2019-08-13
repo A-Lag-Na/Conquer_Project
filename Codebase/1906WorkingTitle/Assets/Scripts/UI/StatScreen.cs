@@ -114,6 +114,8 @@ public class StatScreen : MonoBehaviour
             //update available points
             pointsAvailable = player.GetSpendingPoints();
             pointsText.text = $"{pointsAvailable}\t\tPoints Available";
+            if(pointsAvailable == 0)
+                mainUI.GetComponent<UpdateUI>().StopLevelFlashing();
         }
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Open Stats"))
