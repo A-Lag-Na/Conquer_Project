@@ -6,9 +6,11 @@ using UnityEngine.Audio;
 
 public class VolumeControl : MonoBehaviour
 {
-    [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume;
+    #region VolumeProperties
+    [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume = 0.0f;
     Slider masterSlider = null, musicSlider = null, sfxSlider = null;
     [SerializeField] AudioMixer musicMixer = null, sfxMixer = null;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -32,7 +34,7 @@ public class VolumeControl : MonoBehaviour
         masterVolume = masterSlider.value;
         musicVolume = musicSlider.value;
         sfxVolume = sfxSlider.value;
-        
+
         AudioListener.volume = masterVolume;
         musicMixer.SetFloat("MusicVol", Mathf.Log10(musicVolume) * 20);
         sfxMixer.SetFloat("SFXVol", Mathf.Log10(sfxVolume) * 20);
@@ -48,11 +50,11 @@ public class VolumeControl : MonoBehaviour
         masterVolume = PlayerPrefs.GetFloat("masterVolume");
         musicVolume = PlayerPrefs.GetFloat("musicVolume");
         sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-        if(masterSlider != null)
+        if (masterSlider != null)
             masterSlider.value = masterVolume;
-        if(musicSlider != null)
+        if (musicSlider != null)
             musicSlider.value = musicVolume;
-        if(sfxSlider != null)
+        if (sfxSlider != null)
             sfxSlider.value = sfxVolume;
     }
 
