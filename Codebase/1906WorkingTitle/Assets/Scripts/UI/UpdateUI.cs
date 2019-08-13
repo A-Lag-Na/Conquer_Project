@@ -142,7 +142,7 @@ public class UpdateUI : MonoBehaviour
             InvSlot1.sprite = inventory.WeaponSprite();
             InvSlot2.sprite = inventory.PotionSprite();
             InvSlot1Name.text = inventory.WeaponName();
-            InvSlot2Name.text = inventory.PotionName();
+            InvSlot2Name.text = inventory.ConsumableName();
             #endregion
         }
         #endregion
@@ -193,7 +193,7 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetButtonDown("Use Potion"))
         {
-            StartCoroutine(inventory.PotionTimer());
+            StartCoroutine(inventory.ConsumableTimer());
         }
 
         if (Input.GetButtonDown("Open Shop"))

@@ -132,12 +132,14 @@ public class EnemyAI : MonoBehaviour
         Vector3 position = transform.position;
         foreach (GameObject go in gos)
         {
-            
-            float curDistance = Vector3.Distance(position, go.transform.position);
-            if (curDistance < distance)
+            if (go != gameObject)
             {
-                closest = go;
-                distance = curDistance;
+                float curDistance = Vector3.Distance(position, go.transform.position);
+                if (curDistance < distance)
+                {
+                    closest = go;
+                    distance = curDistance;
+                }
             }
         }
         target = closest;

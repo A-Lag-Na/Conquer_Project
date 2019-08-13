@@ -8,8 +8,9 @@ public class ShopUI : MonoBehaviour
     private Inventory inventory;
     private int coins;
     private Text coinText, purchaseText;
-    private Button Exit;
+    [SerializeField] Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
     private GameObject mainUI, denyScreen;
+    [SerializeField] GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
     //List<BaseItem> shopItems = new List<BaseItem>();
     BaseItem currentItem;
 
@@ -34,6 +35,14 @@ public class ShopUI : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+
+        Exit.onClick.AddListener(ExitMenu);
+        Weapons.onClick.AddListener(BuyWeapons);
+        Potions.onClick.AddListener(BuyPotions);
+        Scrolls.onClick.AddListener(BuyScrolls);
+        weaponsScreen.SetActive(true);
+        potionsScreen.SetActive(false);
+        scrollsScreen.SetActive(false);
     }
 
     // Update is called once per frame
@@ -64,7 +73,7 @@ public class ShopUI : MonoBehaviour
         }
     }
     
-    public void ExitMenu()
+    private void ExitMenu()
     {
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -83,7 +92,7 @@ public class ShopUI : MonoBehaviour
             if (currentItem.GetItemType() == BaseItem.Type.Weapon)
                 inventory.AddWeapon(currentItem);
             else
-                inventory.AddPotion(currentItem);
+                inventory.AddConsumable(currentItem);
         }
         else if(currentItem != null && currentItem.GetValue() > coins)
         {
@@ -107,4 +116,22 @@ public class ShopUI : MonoBehaviour
         denyScreen.SetActive(false);
     }
 
+    private void BuyWeapons()
+    {
+        weaponsScreen.SetActive(true);
+        potionsScreen.SetActive(false);
+        scrollsScreen.SetActive(false);
+    }
+    private void BuyPotions()
+    {
+        weaponsScreen.SetActive(false);
+        potionsScreen.SetActive(true);
+        scrollsScreen.SetActive(false);
+    }
+    private void BuyScrolls()
+    {
+        weaponsScreen.SetActive(false);
+        potionsScreen.SetActive(false);
+        scrollsScreen.SetActive(true);
+    }
 }

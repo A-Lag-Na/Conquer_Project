@@ -244,9 +244,9 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void ThrowPotion(GameObject potion)
+    public void ThrowConsumable(GameObject consumable)
     {
-        GameObject clone = Instantiate(potion, projectilePosition.transform.position, transform.rotation);
+        GameObject clone = Instantiate(consumable, projectilePosition.transform.position, transform.rotation);
         clone.GetComponent<TrailRenderer>().time = .1125f;
         clone.GetComponent<CollisionScript>().bulletDamage = 0;
         clone.gameObject.layer = 10;

@@ -2149,6 +2149,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneLoader
       objectReference: {fileID: 0}
+    - target: {fileID: 9134496414610212520, guid: 95eddc9dfdb7c024492b7b88877a0983,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9134496414610212525, guid: 95eddc9dfdb7c024492b7b88877a0983,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2257,7 +2262,7 @@ PrefabInstance:
     - target: {fileID: 9134496415992252259, guid: 95eddc9dfdb7c024492b7b88877a0983,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95eddc9dfdb7c024492b7b88877a0983, type: 3}
