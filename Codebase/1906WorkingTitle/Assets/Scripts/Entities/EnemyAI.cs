@@ -156,10 +156,11 @@ public class EnemyAI : MonoBehaviour
         CollisionScript cs = clone.GetComponent<CollisionScript>();
         cs.bulletDamage = bulletDamage;
         cs.SetOwner(gameObject);
-        if(inLove)
-            clone.gameObject.layer = 10;
+        //Need these layer sets so that enemies don't shoot each other outside of love condition.
+        if (inLove)
+            clone.layer = 10;
         else
-            clone.gameObject.layer = 12;
+            clone.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
