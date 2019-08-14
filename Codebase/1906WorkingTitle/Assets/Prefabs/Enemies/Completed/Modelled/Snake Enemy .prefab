@@ -713,6 +713,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTimer: 0
   thawTimer: 0
+  thawIncrement: 0.05
   fireParticle: {fileID: 6465576134312008920}
   iceParticle: {fileID: 7364869774631867848}
 --- !u!195 &3060468487126496443
@@ -1161,11 +1162,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7999029628684770106}
     m_Modifications:
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1220,6 +1216,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}

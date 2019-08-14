@@ -538,6 +538,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireTimer: 0
   thawTimer: 0
+  thawIncrement: 0.05
   fireParticle: {fileID: 8554410940238480180}
   iceParticle: {fileID: 7370745057917616969}
 --- !u!82 &1717699465624698048
@@ -2285,11 +2286,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2417631768395304668}
     m_Modifications:
-    - target: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire
-      objectReference: {fileID: 0}
     - target: {fileID: 4154862393677500423, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2360,6 +2356,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e2f8653fcb530429a753e7a3d9f9ef, type: 3}
 --- !u!1 &8554410940238480180 stripped
@@ -2381,15 +2382,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2417631768395304668}
     m_Modifications:
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.36
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
@@ -2440,6 +2436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}
