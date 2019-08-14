@@ -41,7 +41,7 @@ public class Pickup : MonoBehaviour
                 default:
                     break;
             }
+            Destroy(gameObject);
         }
-        Destroy(gameObject);
     }
 }
