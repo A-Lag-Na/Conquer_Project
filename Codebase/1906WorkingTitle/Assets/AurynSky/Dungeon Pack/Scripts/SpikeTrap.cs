@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpikeTrapDemo : MonoBehaviour {
+public class SpikeTrap : MonoBehaviour
+{
 
-    
+
 
     public Animator spikeTrapAnim; //Animator for the SpikeTrap;
-    bool onTrap = false;
+    bool onTrap;
     GameObject player; //Player Object
     Player playerScript;//Player Script
 
@@ -21,7 +22,7 @@ public class SpikeTrapDemo : MonoBehaviour {
         spikeTrapAnim = GetComponent<Animator>();
         //start opening and closing the trap for demo purposes;
         StartCoroutine(OpenCloseTrap());
-       
+
     }
 
 
@@ -45,16 +46,15 @@ public class SpikeTrapDemo : MonoBehaviour {
     }
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("olo");
-        if (other.tag == "Player")
+
+        if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Enter");
             onTrap = true;
         }
     }
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Player Leave");
             onTrap = false;
