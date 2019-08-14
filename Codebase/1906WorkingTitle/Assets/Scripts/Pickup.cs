@@ -21,7 +21,8 @@ public class Pickup : MonoBehaviour
         {
             Player player = collision.collider.GetComponentInParent<Player>();
             AudioSource source = collision.collider.GetComponentInParent<AudioSource>();
-            source.PlayOneShot(clip);
+            if(clip != null)
+                source.PlayOneShot(clip);
             switch (type)
             {
                 case Type.Coin:
