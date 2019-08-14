@@ -780,6 +780,7 @@ GameObject:
   - component: {fileID: 4250194190830900}
   - component: {fileID: 33268837253228468}
   - component: {fileID: 23865959910166418}
+  - component: {fileID: 5568976341075235765}
   m_Layer: 0
   m_Name: ForestTower_Red
   m_TagString: Untagged
@@ -853,6 +854,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &5568976341075235765
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1549123707190546}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.999999, y: 5.1571345, z: 4.000001}
+  m_Center: {x: -0.022491872, y: 2.6025288, z: -0.14614522}
 --- !u!1 &1556180797256568
 GameObject:
   m_ObjectHideFlags: 0
