@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac1e2c1aaf62b34a9428dde0a3fbd00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPoints: 3
+  enemyPoints: 10
   health: 3
   damage: 1
   attackRate: 0.1
@@ -471,6 +471,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648946467457729220}
     m_Modifications:
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ice Particle
+      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -540,16 +550,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_TagString
-      value: Ice Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}

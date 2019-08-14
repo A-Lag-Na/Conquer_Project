@@ -56,7 +56,6 @@ public class SpikeTrap : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("Player Leave");
             onTrap = false;
         }
     }
