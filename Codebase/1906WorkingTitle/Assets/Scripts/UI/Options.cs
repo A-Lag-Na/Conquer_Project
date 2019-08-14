@@ -25,7 +25,8 @@ public class Options : MonoBehaviour
             headUI = GameObject.Find("Pause");
         else
             headUI = GameObject.Find("Main Menu");
-        headUI.SetActive(false);
+        if(headUI != null)
+            headUI.SetActive(false);
     }
 
     private void OnEnable()

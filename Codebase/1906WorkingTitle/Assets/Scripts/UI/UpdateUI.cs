@@ -210,6 +210,14 @@ public class UpdateUI : MonoBehaviour
             pauseMenu.SetActive(true);
     }
 
+    public void ResumeGame()
+    {
+        if (statScreen != null)
+            statScreen.SetActive(false);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+    }
+
     void OpenStats()
     {
         if (statScreen != null)

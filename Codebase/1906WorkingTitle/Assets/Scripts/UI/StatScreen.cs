@@ -22,7 +22,7 @@ public class StatScreen : MonoBehaviour
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
-            mainUI.SetActive(false);
+            //mainUI.SetActive(false);
         }
         //assign buttons
         speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
@@ -132,7 +132,7 @@ public class StatScreen : MonoBehaviour
             foreach (GameObject go in objects)
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            mainUI.SetActive(false);
+            //mainUI.SetActive(false);
         }
     }
 
@@ -161,7 +161,8 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         if (mainUI != null)
-            mainUI.SetActive(true);
+            mainUI.GetComponent<UpdateUI>().ResumeGame();
+            //mainUI.SetActive(true);
     }
     #endregion
 
