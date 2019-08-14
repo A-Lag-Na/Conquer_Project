@@ -9,7 +9,7 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private bool spawnEnabled = true;
     [SerializeField] private bool multiSpawnpoint = false;
 
-    [SerializeField] List<GameObject> spawnpoints;
+    [SerializeField] List<GameObject> spawnpoints = null;
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
