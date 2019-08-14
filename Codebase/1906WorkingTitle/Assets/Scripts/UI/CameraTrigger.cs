@@ -7,7 +7,7 @@ public class CameraTrigger : MonoBehaviour
     GameObject camPos = null;
     [SerializeField] public GameObject spawner = null;
     SpawnScript spawn = null;
-    bool enabled = true;
+    bool hasVisited = true;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +16,7 @@ public class CameraTrigger : MonoBehaviour
         camPos = transform.Find("Camera Position").gameObject;
         spawn = spawner.GetComponent<SpawnScript>();
         spawner.SetActive(false);
-        enabled = true;
+        hasVisited = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -25,7 +25,7 @@ public class CameraTrigger : MonoBehaviour
         {
             //Changes the cameras position
             Camera.main.transform.position = camPos.transform.position;
-            if (enabled)
+            if (hasVisited)
             {
                 spawner.SetActive(true);
                 //Spawns enemies and locks rooms
@@ -37,6 +37,6 @@ public class CameraTrigger : MonoBehaviour
 
     public void DisableRoom()
     {
-        enabled = false;
+        hasVisited = false;
     }
 }
