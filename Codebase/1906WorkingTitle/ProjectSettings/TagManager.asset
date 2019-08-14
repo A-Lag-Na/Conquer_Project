@@ -26,6 +26,8 @@ TagManager:
   - Love Bullet
   - FireBall
   - BoxPiece
+  - Fire Particle
+  - Ice Particle
   layers:
   - Default
   - TransparentFX
@@ -44,7 +46,7 @@ TagManager:
   - Creep
   - Dash
   - Trap
-  - 
+  - Spell
   - 
   - 
   - 
