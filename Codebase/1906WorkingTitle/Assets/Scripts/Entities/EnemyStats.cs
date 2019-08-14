@@ -43,7 +43,7 @@ public class EnemyStats : MonoBehaviour
 
     //Enemy's color and renderer
     private Renderer enemyRender = null;
-    public Color enemyColor = null;
+    public Color enemyColor;
 
     Animator anim = null;
     GameObject player = null;
