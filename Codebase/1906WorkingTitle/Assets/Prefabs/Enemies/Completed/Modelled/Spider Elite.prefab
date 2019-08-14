@@ -6065,7 +6065,7 @@ MonoBehaviour:
   attackRate: 0.5
   bulletSpeed: 15
   isFireImmune: 0
-  isIceImmune: 0
+  isIceImmune: 1
   isStunImmune: 0
   pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
@@ -6124,6 +6124,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireTimer: 0
+  thawTimer: 0
+  thawIncrement: 0.05
+  fireParticle: {fileID: 0}
+  iceParticle: {fileID: 0}
 --- !u!82 &6245438018223235816
 AudioSource:
   m_ObjectHideFlags: 0
