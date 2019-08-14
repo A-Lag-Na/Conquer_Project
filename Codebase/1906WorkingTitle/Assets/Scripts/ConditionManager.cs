@@ -260,12 +260,6 @@ public class ConditionManager : MonoBehaviour
     void OnPauseGame()
     {
         isPaused = true;
-        if (isPlayer)
-            ((Player)aiScript).OnPauseGame();
-        else if (gameObject.CompareTag("BulletHell Enemy"))
-            ((BulletHellEnemy)aiScript).OnPauseGame();
-        else
-            ((EnemyAI)aiScript).OnPauseGame();
     }
 
     void OnResumeGame()
