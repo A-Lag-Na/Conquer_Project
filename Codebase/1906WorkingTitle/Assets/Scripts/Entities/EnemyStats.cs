@@ -59,7 +59,10 @@ public class EnemyStats : MonoBehaviour
         enemyColor = enemyRender.material.color;
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
-        anim = GetComponent<Animator>();
+        if(GetComponent<Animator>() != null)
+        {
+            anim = GetComponent<Animator>();
+        }
 
         if (spawnerObject != null)
             spawnerScript = spawnerObject.GetComponent<SpawnScript>();
