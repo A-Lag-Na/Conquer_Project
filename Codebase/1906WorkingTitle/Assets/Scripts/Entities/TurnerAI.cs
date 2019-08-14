@@ -18,7 +18,6 @@ public class TurnerAI : MonoBehaviour
 
     private void Update()
     {
-
         if (!paused)
         {
             moveDirection = transform.forward / 5;
