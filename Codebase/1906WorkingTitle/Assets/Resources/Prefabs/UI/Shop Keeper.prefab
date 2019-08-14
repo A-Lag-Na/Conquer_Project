@@ -1641,7 +1641,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 0
+  value: 6
   name: Cone of Cold
   sprite: {fileID: 0}
   consumableType: 0
@@ -3431,7 +3431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 0
+  value: 6
   name: Death Aura
   sprite: {fileID: 0}
   consumableType: 0
@@ -8752,7 +8752,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 0
+  value: 6
   name: Fireball
   sprite: {fileID: 0}
   consumableType: 1
@@ -10397,7 +10397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 0
+  value: 3
   name: Hex Shot
   sprite: {fileID: 0}
   consumableType: 1
@@ -11672,7 +11672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 0
+  value: 6
   name: Lightning Bolt
   sprite: {fileID: 0}
   consumableType: 1
