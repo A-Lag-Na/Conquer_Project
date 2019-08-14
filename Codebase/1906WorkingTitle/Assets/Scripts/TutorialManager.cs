@@ -19,6 +19,8 @@ public class TutorialManager : MonoBehaviour
         spawnScript = spawner.GetComponent<SpawnScript>();
         playerScript = player.GetComponent<Player>();
         door = GameObject.FindGameObjectWithTag("Door");
+        spawner.SetActive(false);
+        spawnScript.SetEnabled(false);
     }
 
     private void Update()
@@ -61,7 +63,6 @@ public class TutorialManager : MonoBehaviour
         //Activating the stats screen
         else if (popUpIndex == 3)
         {
-           
             if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
