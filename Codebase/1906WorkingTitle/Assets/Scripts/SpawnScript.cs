@@ -121,13 +121,15 @@ public class SpawnScript : MonoBehaviour
         {
             foreach (Transform child in transform.parent)
                 if (child.gameObject.layer == 16)
-                    child.gameObject.GetComponent<DartAI>().DisableAttack();
+                    if(child.gameObject.GetComponent<DartAI>() != null)
+                        child.gameObject.GetComponent<DartAI>().DisableAttack();
         }
         else if (_lock)
         {
             foreach (Transform childs in transform.parent)
                 if (childs.gameObject.layer == 16)
-                    childs.gameObject.GetComponent<DartAI>().EnableAttack();
+                    if(child.gameObject.GetComponent<DartAI>() != null)
+                        childs.gameObject.GetComponent<DartAI>().EnableAttack();
         }
     }
 
