@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
 
         //add function listeners
         startBTN.onClick.AddListener(StartGame);
-        creditsBTN.onClick.AddListener(HowToPlay);
+        creditsBTN.onClick.AddListener(Credits);
         optionsBTN.onClick.AddListener(OptionsMenu);
         exitBTN.onClick.AddListener(ExitGame);
 
@@ -56,7 +56,7 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(1));
     }
 
-    private void HowToPlay()
+    private void Credits()
     {
         credits.SetActive(true);
     }
