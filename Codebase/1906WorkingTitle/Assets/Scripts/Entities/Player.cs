@@ -184,6 +184,8 @@ public class Player : MonoBehaviour
                 if (Input.GetAxis("Fire1") > 0f)
                     ShootBullet(bulletChoice);
 
+                if (playerExperience >= nextLevelExperience)
+                    LevelUp();
                 #endregion
             }
         }
@@ -586,8 +588,6 @@ public class Player : MonoBehaviour
     {
         playerEXP *= playerExperienceModifier;
         playerExperience += playerEXP;
-        if (playerExperience >= nextLevelExperience)
-            LevelUp();
     }
 
     public void XPModifier(float _XPModifier)
