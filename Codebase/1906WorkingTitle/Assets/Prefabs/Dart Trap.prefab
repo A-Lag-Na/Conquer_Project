@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 305934244615624424}
   - component: {fileID: 305934244615624431}
   - component: {fileID: 305934244615624430}
-  m_Layer: 15
+  m_Layer: 16
   m_Name: Cube
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 305934246145901254}
   - component: {fileID: 8565484670821820021}
   - component: {fileID: 6170179084418504975}
-  m_Layer: 15
+  m_Layer: 16
   m_Name: Dart Trap
   m_TagString: Trap
   m_Icon: {fileID: 0}
@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackRate: 0
-  attackEnabled: 1
+  attackEnabled: 0
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectilePos: {fileID: 305934244615624428}

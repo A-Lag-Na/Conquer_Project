@@ -165,9 +165,11 @@ public class Inventory : MonoBehaviour
                         break;
                     case "Death Aura":
                         player.EnableDeathAura();
+                        RemoveConsumable();
                         break;
                     case "Cone of Cold":
                         player.EnableConeofCold();
+                        RemoveConsumable();
                         break;
                     default:
                         break;

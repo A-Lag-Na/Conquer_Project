@@ -1644,7 +1644,7 @@ MonoBehaviour:
   value: 0
   name: Cone of Cold
   sprite: {fileID: 0}
-  consumableType: 1
+  consumableType: 0
   floatModifier: 5
   intModifier: 5
   consumableEffect: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
@@ -9594,7 +9594,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233120848619702440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: b6f10194c0ae6074ab00b56a3b4e7115, type: 3}
   m_Controller: {fileID: 9100000, guid: ea6af8e3ec3f37244982cd0830c3d4f5, type: 2}
   m_CullingMode: 1

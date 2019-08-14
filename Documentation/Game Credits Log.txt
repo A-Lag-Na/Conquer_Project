@@ -2,10 +2,15 @@
 *At the end of the project the credits on the game will have to contain the source of the assets used in the production of the product and it is way easier to just keep a log of that than re-find the source of the assets later.*
 
 Textures/Materials/Sprites:
+https://opengameart.org/content/fireflame
+https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
+https://opengameart.org/content/pixel-lightning
 
 Models:
 http://quaternius.com/assets.html?i=2
 https://assetstore.unity.com/publishers/17283
+https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
+
 Music:
 
 SFX:

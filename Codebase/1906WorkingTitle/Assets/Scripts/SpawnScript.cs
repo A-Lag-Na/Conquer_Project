@@ -103,10 +103,15 @@ public class SpawnScript : MonoBehaviour
     {
         for (int i = 0; i < doors.Count; i++)
             doors[i].SetActive(_lock);
-        if (!_lock)
+        if (_lock)
             foreach (Transform child in transform.parent)
-                if (child.gameObject.layer == 15)
-                    child.gameObject.GetComponent<DartAI>().DisableAttack();
+                if (child.gameObject.layer == 16)
+                    child.gameObject.GetComponent<DartAI>().EnableAttack();
+        else
+            foreach (Transform childs in transform.parent)
+                if (childs.gameObject.layer == 16)
+                    childs.gameObject.GetComponent<DartAI>().DisableAttack();
+
     }
 
     //Function that changes the locks of some doors but not others
