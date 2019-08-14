@@ -7,22 +7,25 @@ public class SpawnScript : MonoBehaviour
     #region SpawnerStats
     //Whether the spawner is spawning or not.
     [SerializeField] private bool spawnEnabled = true;
+    [SerializeField] private bool multiSpawnpoint = false;
+
+    [SerializeField] List<GameObject> spawnpoints;
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
-    public List<EnemyStats> enemiesClone;
+    private List<EnemyStats> enemiesClone;
 
     //list of doors.
     [SerializeField] private List<GameObject> doors = null;
 
     //How many points worth of enemies the spawner can spawn
     [SerializeField] private int points = 0;
-    public int pointsClone;
+    private int pointsClone;
 
     //Number of seconds between spawn.
     public float timer = 3;
 
-    bool spawnAgain = true;
+    private bool spawnAgain = true;
 
     //Tracks number of externally spawned enemies
     public int remainingChildren;
@@ -47,6 +50,55 @@ public class SpawnScript : MonoBehaviour
             StartCoroutine(SpawnEnemy());
     }
 
+    IEnumerator SpawnEnemy()
+    {
+        spawnAgain = false;
+        RefreshSpawnedEnemies();
+
+        if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
+            SetDoorLock(false);
+
+        if (pointsClone > 0)
+        {
+            for (int i = enemiesClone.Count - 1; i >= 0; i--)
+                if (enemiesClone[i].GetPoints() > pointsClone)
+                    enemiesClone.Remove(enemiesClone[i]);
+            
+            int randomNum = Random.Range(0, enemiesClone.Count);
+            GameObject enemyClone = null;
+
+            if (!multiSpawnpoint)
+            {
+                //Spawns an enemy at the spawner's position
+                enemyClone = Instantiate(enemiesClone[randomNum].gameObject, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                //choose a random spawnpoint
+                int randomNum2 = Random.Range(0, spawnpoints.Count);
+                Vector3 spawnpoint = spawnpoints[randomNum2].transform.position;
+                //Spawns an enemy at the chosen spawnpoint
+                enemyClone = Instantiate(enemiesClone[randomNum].gameObject, spawnpoint, Quaternion.identity);
+            }
+            EnemyStats enemyCloneStats = enemyClone.GetComponent<EnemyStats>();
+            enemyCloneStats.SetSpawner(gameObject);
+
+            //Adds the enemy to spawned enemies list
+            spawnedEnemies.Add(enemyClone);
+
+            //subtracts enemy points from spawner's
+            pointsClone -= enemyCloneStats.GetPoints();
+
+            //Adds children to remainingchildren counter
+            remainingChildren += enemyCloneStats.children;
+
+        }
+
+        yield return new WaitForSeconds(timer);
+        spawnAgain = true;
+    }
+
+
     #region SpawnerFunctions
 
     //Get-setters for enabled
@@ -59,59 +111,26 @@ public class SpawnScript : MonoBehaviour
     {
         spawnEnabled = _enable;
     }
-
-    IEnumerator SpawnEnemy()
-    {
-        RefreshSpawnedEnemies();
-
-        if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
-            SetDoorLock(false);
-
-        
-        spawnAgain = false;
-
-        if (pointsClone > 0)
-        {
-            for (int i = enemiesClone.Count-1; i >= 0; i--)
-                if (enemiesClone[i].GetPoints() > pointsClone)
-                    enemiesClone.Remove(enemiesClone[i]);
-
-            //randomNum selects 
-            int randomNum = Random.Range(0, enemiesClone.Count);
-
-            //Spawns an enemy
-            GameObject enemyClone = Instantiate(enemiesClone[randomNum].gameObject, transform.position, Quaternion.identity);
-            EnemyStats enemyCloneStats = enemyClone.GetComponent<EnemyStats>();
-            enemyCloneStats.SetSpawner(gameObject);
-
-            //Adds the enemy to spawned enemies list
-            spawnedEnemies.Add(enemyClone);
-
-            //subtracts enemy points from spawner's
-            pointsClone -= enemyCloneStats.GetPoints();
-
-            //Adds children to remainingchildren counter
-            remainingChildren += enemyCloneStats.children;
-        }
-
-        yield return new WaitForSeconds(timer);
-        spawnAgain = true;
-    }
-
+    
     //Function that takes in a bool and sets the doors to be active/inactive if the bool is true/false
     public void SetDoorLock(bool _lock)
     {
         for (int i = 0; i < doors.Count; i++)
             doors[i].SetActive(_lock);
-        if (_lock)
+        if (!_lock)
+        {
             foreach (Transform child in transform.parent)
                 if (child.gameObject.layer == 16)
-                    child.gameObject.GetComponent<DartAI>().EnableAttack();
-        else
+                    if(child.gameObject.GetComponent<DartAI>() != null)
+                        child.gameObject.GetComponent<DartAI>().DisableAttack();
+        }
+        else if (_lock)
+        {
             foreach (Transform childs in transform.parent)
                 if (childs.gameObject.layer == 16)
-                    childs.gameObject.GetComponent<DartAI>().DisableAttack();
-
+                    if(child.gameObject.GetComponent<DartAI>() != null)
+                        childs.gameObject.GetComponent<DartAI>().EnableAttack();
+        }
     }
 
     //Function that changes the locks of some doors but not others

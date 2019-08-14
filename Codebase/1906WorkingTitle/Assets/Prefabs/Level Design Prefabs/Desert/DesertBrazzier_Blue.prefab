@@ -25,9 +25,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1534373551778582}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.06, y: -0.74, z: 7.82}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4873530581384602}
   - {fileID: 4872165732614818}
@@ -94,13 +94,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3052151654203419517, guid: 100b9cf81ef34454887508775f78ac79,
         type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3052151654203419517, guid: 100b9cf81ef34454887508775f78ac79,
         type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3047178953637269355, guid: 100b9cf81ef34454887508775f78ac79,
         type: 3}
@@ -179,13 +179,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 897595825803124295, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 897595825803124295, guid: a9704c8a0202f5043b0ad815bf22da84,
+        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 897595825803124295, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2657165175845995567, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
@@ -244,16 +249,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6812100252820887841, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6812100252820887841, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 893384332251529373, guid: a9704c8a0202f5043b0ad815bf22da84,
-        type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
       objectReference: {fileID: 0}
@@ -262,7 +262,7 @@ PrefabInstance:
       propertyPath: m_NavMeshLayer
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4020065586012560223, guid: a9704c8a0202f5043b0ad815bf22da84,
+    - target: {fileID: 893384332251529373, guid: a9704c8a0202f5043b0ad815bf22da84,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 8
@@ -271,6 +271,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_NavMeshLayer
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4020065586012560223, guid: a9704c8a0202f5043b0ad815bf22da84,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a9704c8a0202f5043b0ad815bf22da84, type: 3}
@@ -294,13 +299,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6036245028925108166, guid: 0dc45914d072c07408655ded1490cd62,
         type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
+      propertyPath: m_NavMeshLayer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6036245028925108166, guid: 0dc45914d072c07408655ded1490cd62,
         type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
+      propertyPath: m_StaticEditorFlags
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6039783752874450666, guid: 0dc45914d072c07408655ded1490cd62,
         type: 3}

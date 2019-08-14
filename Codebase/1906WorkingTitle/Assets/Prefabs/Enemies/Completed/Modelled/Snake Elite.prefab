@@ -9994,6 +9994,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c0c1c2ac2a9c3b4c85da05562046872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fireTimer: 0
+  thawTimer: 0
+  thawIncrement: 0.05
+  fireParticle: {fileID: 0}
+  iceParticle: {fileID: 0}
 --- !u!195 &5819966560183394842
 NavMeshAgent:
   m_ObjectHideFlags: 0
