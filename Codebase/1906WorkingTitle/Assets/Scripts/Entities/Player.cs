@@ -50,6 +50,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject mainUI = null;
     [SerializeField] GameObject deathAura = null;
     [SerializeField] GameObject iceSpell = null;
+    [SerializeField] GameObject gameOver = null;
     SaveScript save = null;
 
     private ConditionManager con;
@@ -110,6 +111,9 @@ public class Player : MonoBehaviour
         iceSpell.SetActive(false);
         save = GetComponent<SaveScript>();
         con = GetComponent<ConditionManager>();
+
+        gameOver = GameObject.FindGameObjectWithTag("GameOver");
+        gameOver.SetActive(false);
     }
 
     // Update is called once per frame
@@ -298,7 +302,8 @@ public class Player : MonoBehaviour
     public void Death()
     {
         animator.SetBool("Death", true);
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
+        //Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
+        gameOver.SetActive(true);
         gameObject.SetActive(false);
     }
 
