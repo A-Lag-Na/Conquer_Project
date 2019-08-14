@@ -196,7 +196,7 @@ MonoBehaviour:
   bulletSpeed: 10
   isFireImmune: 0
   isIceImmune: 0
-  isStunImmune: 0
+  isStunImmune: 1
   pickUp: {fileID: 0}
   childEnemy: {fileID: 0}
   spawnerObject: {fileID: 0}
