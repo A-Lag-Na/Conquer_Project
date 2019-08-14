@@ -122,6 +122,7 @@ public class SpawnScript : MonoBehaviour
             foreach (Transform child in transform.parent)
                     if(child.gameObject.GetComponent<DartAI>() != null)
                         child.gameObject.GetComponent<DartAI>().DisableAttack();
+            GetComponentInParent<CameraTrigger>().DisableRoom();
         }
         else if (_lock)
         {

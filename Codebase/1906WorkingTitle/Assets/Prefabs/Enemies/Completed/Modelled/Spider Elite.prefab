@@ -6127,8 +6127,10 @@ MonoBehaviour:
   fireTimer: 0
   thawTimer: 0
   thawIncrement: 0.05
-  fireParticle: {fileID: 0}
-  iceParticle: {fileID: 0}
+  fireParticle: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
+    type: 3}
+  iceParticle: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+    type: 3}
 --- !u!82 &6245438018223235816
 AudioSource:
   m_ObjectHideFlags: 0
