@@ -114,7 +114,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireTimer: 0
-  isPlayer: 0
+  thawTimer: 0
+  fireParticle: {fileID: 3264258121399688487}
+  iceParticle: {fileID: 7704820226405035834}
 --- !u!114 &6157528642217353790
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +451,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e2f8653fcb530429a753e7a3d9f9ef, type: 3}
+--- !u!1 &3264258121399688487 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 1505873679730380067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3264258121399688484 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4154862393677500423, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
@@ -544,6 +552,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}
+--- !u!1 &7704820226405035834 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+    type: 3}
+  m_PrefabInstance: {fileID: 8270113947409008077}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7704820226405035813 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,

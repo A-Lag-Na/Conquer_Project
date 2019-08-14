@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: fa66e022c857e3a43b21ad8480ac9005
   - enabled: 1
-    path: Assets/Scenes/Alegna's Sandbox.unity
-    guid: 9d60b0cbea22981429131083c4b51ab9
+    path: Assets/Scenes/Build Scene.unity
+    guid: 3b9fee2349fe5f14ca084fe5bf0faae2
   m_configObjects: {}

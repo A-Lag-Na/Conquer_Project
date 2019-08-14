@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
     private Animator animator = null;
     private GameObject dashTrail = null;
     [SerializeField] private GameObject mainUI = null;
+    [SerializeField] GameObject deathAura = null;
+    [SerializeField] GameObject iceSpell = null;
     SaveScript save = null;
     #endregion
 
@@ -102,6 +104,8 @@ public class Player : MonoBehaviour
         isDashing = false;
         isRegenerating = false;
         bulletChoice = 1;
+        deathAura.SetActive(false);
+        iceSpell.SetActive(false);
         save = GetComponent<SaveScript>();
     }
 
@@ -149,7 +153,7 @@ public class Player : MonoBehaviour
 
 
                 // Player Dash if Spacebar is pressed
-                if (Input.GetKeyDown(KeyCode.Space) && moveDirection != Vector3.zero)
+                if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
                     if (isDashing == false)
                         StartCoroutine(PlayerDash());
 
@@ -165,22 +169,23 @@ public class Player : MonoBehaviour
                 #endregion
 
                 #region PlayerAttack
-                if (Input.GetKeyDown(KeyCode.Alpha1))
+                if (Input.GetButtonDown("Bullet 1"))
                     bulletChoice = 1;
-                if (Input.GetKeyDown(KeyCode.Alpha2))
+                if (Input.GetButtonDown("Bullet 2"))
                     bulletChoice = 2;
-                if (Input.GetKeyDown(KeyCode.Alpha3))
+                if (Input.GetButtonDown("Bullet 3"))
                     bulletChoice = 3;
-                if (Input.GetKeyDown(KeyCode.Alpha4))
+                if (Input.GetButtonDown("Bullet 4"))
                     bulletChoice = 4;
                 // If the corresponding button is clicked call ShootBullet
-                if (Input.GetKey(KeyCode.Mouse0))
+                if (Input.GetAxis("Fire1") > 0f)
                     ShootBullet(bulletChoice);
 
                 #endregion
             }
         }
-
+        if (Input.GetKeyDown(KeyCode.L))
+            save.Load();
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
@@ -288,7 +293,7 @@ public class Player : MonoBehaviour
     public void Death()
     {
         animator.SetBool("Death", true);
-        Instantiate(Resources.Load<GameObject>("Prefabs/Game Over Screen"));
+        Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
         gameObject.SetActive(false);
     }
 
@@ -328,7 +333,6 @@ public class Player : MonoBehaviour
         if (playerHealth <= 0)
         {
             playerLives--;
-            save.Load();
             if (playerLives <= 0)
                 Death();
             playerHealth = maxPlayerHealth;
@@ -653,5 +657,16 @@ public class Player : MonoBehaviour
 
     #endregion
 
+    #region Death Aura
+    public void EnableDeathAura()
+    {
+        deathAura.SetActive(true);
+    }
+
+    public void EnableConeofCold()
+    {
+        iceSpell.SetActive(true);
+    }
+    #endregion
     #endregion
 }

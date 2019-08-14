@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -22,6 +23,9 @@ public class EnemyAI : MonoBehaviour
 
     [SerializeField] AudioClip fire = null;
 
+    EnemyStats enemyStats = null;
+    SpawnScript spawnScript = null;
+
     Animator anim = null;
     NavMeshAgent agent = null;
     GameObject player = null;
@@ -35,10 +39,12 @@ public class EnemyAI : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player");
-        EnemyStats enemyStats = GetComponent<EnemyStats>();
+        enemyStats = GetComponent<EnemyStats>();
+        if(enemyStats.GetSpawner() != null)
+            spawnScript = enemyStats.GetSpawner().GetComponent<SpawnScript>();
         attackRate = enemyStats.GetAttackRate();
         bulletSpeed = enemyStats.GetBulletSpeed();
-        bulletDamage = GetComponent<EnemyStats>().GetDamage();
+        bulletDamage = enemyStats.GetDamage();
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
         target = player;
@@ -49,9 +55,10 @@ public class EnemyAI : MonoBehaviour
     {
         if (!isPaused && !isStunned)
         {
-            if (inLove && player != null && target == null)
+            if (inLove && spawnScript.GetNumEnemies() > 1 && target == null && player != null)
                 SetTarget();
-            agent.SetDestination(target.transform.position);
+            if(target.transform.position != null && player != null)
+                agent.SetDestination(target.transform.position);
             if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
             {
                 Vector3 targetPosition = target.transform.position;
@@ -102,31 +109,40 @@ public class EnemyAI : MonoBehaviour
     {
         SetTarget();
         inLove = true;
-        yield return new WaitForSeconds(time);
+        gameObject.layer = 9;
+        yield return new WaitForSeconds(5f);
+        gameObject.layer = 11;
         inLove = false;
         target = player;
     }
 
     private void SetTarget()
     {
-        GameObject[] gameObjects;
-        gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
-        GameObject closest = null;
-        float distance = float.MaxValue;
-        Vector3 position = transform.position;
-        foreach (GameObject gameobject in gameObjects)
+        List<GameObject> gameObjectList = new List<GameObject>();
+        //Switching array to a list for the purpose of accessing list functions
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject go in gameObjects)
+            gameObjectList.Add(go);
+        //Using this check to prevent errors from using a love bullet when only one enemy on screen.
+        if (gameObjectList.Count > 1)
         {
-            if (gameobject != gameObject)
+            GameObject closest = null;
+            float distance = float.MaxValue;
+            Vector3 position = transform.position;
+            foreach (GameObject gameobject in gameObjects)
             {
-                float curDistance = Vector3.Distance(position, gameobject.transform.position);
-                if (curDistance < distance)
+                if (gameobject != gameObject)
                 {
-                    closest = gameobject;
-                    distance = curDistance;
+                    float curDistance = Vector3.Distance(position, gameobject.transform.position);
+                    if (curDistance < distance)
+                    {
+                        closest = gameobject;
+                        distance = curDistance;
+                    }
                 }
             }
+            target = closest;
         }
-        target = closest;
     }
 
     public bool InLove()
@@ -138,8 +154,14 @@ public class EnemyAI : MonoBehaviour
     {
         attackEnabled = false;
         GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
-        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
-        clone.gameObject.layer = 12;
+        CollisionScript cs = clone.GetComponent<CollisionScript>();
+        cs.bulletDamage = bulletDamage;
+        cs.SetOwner(gameObject);
+        //Need these layer sets so that enemies don't shoot each other outside of love condition.
+        if (inLove)
+            clone.layer = 10;
+        else
+            clone.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;

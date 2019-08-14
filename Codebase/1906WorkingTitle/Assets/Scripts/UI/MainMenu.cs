@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    private Button startBTN, howToPlayBTN, optionsBTN, exitBTN;
+    #region MainMenuProperties
+    private Button startBTN, howToPlayBTN, optionsBTN, exitBTN = null;
 
-    private GameObject howToPlay, options;
+    private GameObject howToPlay, options = null;
+    #endregion
 
     //Start is called before the first frame update
     void Start()
@@ -29,14 +31,14 @@ public class MainMenu : MonoBehaviour
         howToPlayBTN.onClick.AddListener(HowToPlay);
         optionsBTN.onClick.AddListener(OptionsMenu);
         exitBTN.onClick.AddListener(ExitGame);
-        
+
     }
 
     private void OnEnable()
     {
-        if(howToPlay!=null)
+        if (howToPlay != null)
             howToPlay.SetActive(false);
-        if(options != null)
+        if (options != null)
             options.SetActive(false);
     }
 
@@ -45,6 +47,8 @@ public class MainMenu : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseHowTo();
     }
+
+    #region MainMenuFunctions
 
     private void StartGame()
     {
@@ -72,4 +76,5 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
+    #endregion
 }

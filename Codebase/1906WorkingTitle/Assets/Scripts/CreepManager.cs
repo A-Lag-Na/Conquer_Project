@@ -4,29 +4,32 @@ using UnityEngine;
 
 public class CreepManager : MonoBehaviour
 {
-    Player player;
-    EnemyStats enemy;
-    
-    bool isFireImmune;
-    bool isIceImmune;
+    #region CreepManagerProperties
+    Player player = null;
+    EnemyStats enemy = null;
+
+    bool isFireImmune = false;
+    bool isIceImmune = false;
 
     [SerializeField] float particleDamage = 0;
+    #endregion
 
+    #region CreepManagerFunctions
     private void OnTriggerStay(Collider collide)
     {
-        string colTag = collide.gameObject.tag;
+        string colliderTag = collide.gameObject.tag;
         ConditionManager con = collide.gameObject.GetComponentInParent<ConditionManager>();
 
         //Burn sound effect
         //audioSource.PlayOneShot(burn);
 
-        if (colTag == "Player")
+        if (colliderTag == "Player")
         {
             player = collide.GetComponent<Player>();
             isFireImmune = player.isFireImmune;
             isIceImmune = player.isIceImmune;
         }
-        else if (colTag == "Enemy" || colTag == "BulletHell Enemy" || colTag == "Fire Enemy" || colTag == "Ice Enemy")
+        else if (colliderTag == "Enemy" || colliderTag == "BulletHell Enemy" || colliderTag == "Fire Enemy" || colliderTag == "Ice Enemy")
         {
             enemy = collide.GetComponent<EnemyStats>();
             isFireImmune = enemy.isFireImmune;
@@ -39,9 +42,7 @@ public class CreepManager : MonoBehaviour
                 case "FirePot":
                     {
                         if ((player != null || enemy != null) && !isFireImmune)
-                        {
                             con.TimerAdd("fire", 3);
-                        }
                         break;
                     }
                 case "Explosion":
@@ -75,9 +76,7 @@ public class CreepManager : MonoBehaviour
                 case "Aura":
                     {
                         if (player != null || enemy != null)
-                        {
                             con.TimerAdd("aura", 2);
-                        }
                         break;
                     }
                 default:
@@ -92,8 +91,10 @@ public class CreepManager : MonoBehaviour
     {
         particleDamage = _particleDamage;
     }
+
     public float GetParticleDamage()
     {
         return particleDamage;
     }
+    #endregion
 }

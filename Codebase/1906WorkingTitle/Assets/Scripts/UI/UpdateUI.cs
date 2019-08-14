@@ -8,30 +8,28 @@ public class UpdateUI : MonoBehaviour
     // Start is called before the first frame update
 
     #region RecordedStats
-    [SerializeField] private Player player;
-    [SerializeField] private Inventory inventory;
-    private float health, maxHealth, currentExperience, nextLevelExp;
-    private int lives, coins;
-    #endregion
+    [SerializeField] private Player player = null;
+    [SerializeField] private Inventory inventory = null;
+    private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
+    private int lives, coins = 0;
 
-    #region UI elements to remember
-    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name;
-    private RectTransform healthTransform, levelTransform;
-    private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt;
-    private Sprite cSprite, tabSprite;
-    #endregion
+    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null;
+    private RectTransform healthTransform, levelTransform = null;
+    private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
+    private Sprite cSprite, tabSprite = null;
 
     //Color flashes
-    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent;
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = Color.clear;
 
     //distance from shop
-    float dist;
+    float dist = 0.0f;
 
     // stat screen and pause menu references to keep
-    private GameObject statScreen, pauseMenu;
+    private GameObject statScreen, pauseMenu = null;
 
     //bool for level up flashing
     private bool levelUp = false;
+    #endregion
 
     void Start()
     {
@@ -47,10 +45,10 @@ public class UpdateUI : MonoBehaviour
             statScreen.SetActive(false);
         }
         //grab player GameObject
-        if (GameObject.Find("Player"))
+        if (GameObject.FindGameObjectWithTag("Player"))
         {
-            player = GameObject.Find("Player").GetComponent<Player>();
-            inventory = GameObject.Find("Player").GetComponent<Inventory>();
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
         healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
@@ -80,26 +78,6 @@ public class UpdateUI : MonoBehaviour
         tabSprite = Resources.Load<Sprite>("Sprites/tab_sprite");
     }
 
-    private void OnEnable()
-    {
-        if (statScreen != null)
-            statScreen.SetActive(false);
-        if (pauseMenu != null)
-            pauseMenu.SetActive(false);
-    }
-
-    public void TakeDamage()
-    {
-        damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
-    }
-
-    public void LevelUp()
-    {
-        levelUp = true;
-        buttonPrompt.color = new Color32(255, 255, 255, 255);
-        buttonPrompt.sprite = tabSprite;
-    }
-
     private void Update()
     {
         #region UIUpdates
@@ -118,11 +96,18 @@ public class UpdateUI : MonoBehaviour
 
             #region Level Update
             //update level bar
-            currentExperience = player.GetExperience();
-            nextLevelExp = player.GetNextLevelExperience();
-            Vector3 levelScale = levelTransform.localScale;
-            levelScale.x = currentExperience / nextLevelExp;
-            levelTransform.localScale = levelScale;
+            if (!levelUp)
+            {
+                currentExperience = player.GetExperience();
+                nextLevelExp = player.GetNextLevelExperience();
+                Vector3 levelScale = levelTransform.localScale;
+                levelScale.x = currentExperience / nextLevelExp;
+                levelTransform.localScale = levelScale;
+            }
+            else
+            {
+                levelTransform.localScale = new Vector3(1, 1, 1);
+            }
             #endregion
 
             #region Coin Update
@@ -169,7 +154,7 @@ public class UpdateUI : MonoBehaviour
                 buttonPrompt.sprite = tabSprite;
             }
         }
-        if (dist <= 5.2f)
+        if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPrompt.sprite = cSprite;
@@ -185,9 +170,6 @@ public class UpdateUI : MonoBehaviour
 
         if (Input.GetButtonDown("Open Stats"))
         {
-            levelUp = false;
-            levelFlasher.color = levelColorTransparent;
-            buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
             OpenStats();
         }
 
@@ -199,6 +181,27 @@ public class UpdateUI : MonoBehaviour
         if (Input.GetButtonDown("Open Shop"))
             OpenShop();
         #endregion
+    }
+
+    #region UIFunctions
+    private void OnEnable()
+    {
+        if (statScreen != null)
+            statScreen.SetActive(false);
+        if (pauseMenu != null)
+            pauseMenu.SetActive(false);
+    }
+
+    public void TakeDamage()
+    {
+        damageFlasher.color = new Color(255.0f, 0.0f, 0.0f, 0.25f);
+    }
+
+    public void LevelUp()
+    {
+        levelUp = true;
+        buttonPrompt.color = new Color32(255, 255, 255, 255);
+        buttonPrompt.sprite = tabSprite;
     }
 
     void PauseGame()
@@ -215,8 +218,16 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (dist <= 5.2f)
+        if (dist <= 8.2f)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
+
+    public void StopLevelFlashing()
+    {
+        levelUp = false;
+        levelFlasher.color = levelColorTransparent;
+        buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
+    }
+    #endregion
 }

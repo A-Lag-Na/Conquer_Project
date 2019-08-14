@@ -7,7 +7,6 @@ public class BulletHellEnemy : MonoBehaviour
 {
     #region SerializeFields
     [SerializeField] private float attackRate = 1;
-    //[SerializeField] private int attackMax = 120;
 
     [SerializeField] private int bulletSpeed = 2;
 
@@ -27,9 +26,9 @@ public class BulletHellEnemy : MonoBehaviour
     #endregion
 
     #region UnityComponents
-    private AudioSource source;
-    private NavMeshAgent agent;
-    private GameObject player;
+    private AudioSource source = null;
+    private NavMeshAgent agent = null;
+    private GameObject player = null;
     #endregion
 
     private void OnEnable()

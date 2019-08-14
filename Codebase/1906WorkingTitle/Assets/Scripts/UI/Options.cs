@@ -6,9 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class Options : MonoBehaviour
 {
-    private Button ControlsBTN;
-    private GameObject currentScreen;
-    private GameObject controls, headUI;
+    #region OptionsProperties
+    private Button ControlsBTN = null;
+    private GameObject currentScreen = null;
+    private GameObject controls, headUI = null;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +43,7 @@ public class Options : MonoBehaviour
             CloseCurrentScreen();
     }
 
+    #region OptionsFunctions
     void OpenControls()
     {
         currentScreen = controls;
@@ -60,4 +63,5 @@ public class Options : MonoBehaviour
             gameObject.SetActive(false);
         }
     }
+    #endregion
 }

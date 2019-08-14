@@ -5,19 +5,21 @@ using UnityEngine.UI;
 
 public class StatScreen : MonoBehaviour
 {
-    private Button speedBTN, damageBTN, defenseBTN;
-    [SerializeField] Player player;
-    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp, attackSpeed;
-    private int defense, damage, level, pointsAvailable;
+    #region StatScreenProperties
+    private Button speedBTN, damageBTN, defenseBTN = null;
+    [SerializeField] Player player = null;
+    private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp, attackSpeed = 0.0f;
+    private int defense, damage, level, pointsAvailable = 0;
 
-    private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText;
-    private RectTransform levelTransform;
-    private GameObject mainUI;
+    private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
+    private RectTransform levelTransform = null;
+    private GameObject mainUI = null;
+    #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        if(GameObject.Find("Main UI"))
+        if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
             mainUI.SetActive(false);
@@ -33,8 +35,8 @@ public class StatScreen : MonoBehaviour
         defenseBTN.onClick.AddListener(AddDefense);
 
         //assign player if found
-        if (GameObject.Find("Player"))
-            player = GameObject.Find("Player").GetComponent<Player>();
+        if (GameObject.FindGameObjectWithTag("Player"))
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         //assign Texts
         levelText = GameObject.Find("Level").GetComponent<Text>();
@@ -71,37 +73,6 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-    }
-
-    private void OnEnable()
-    {
-        if (mainUI != null)
-        {
-            Time.timeScale = 0;
-            Object[] objects = FindObjectsOfType(typeof(GameObject));
-            foreach (GameObject go in objects)
-                if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
-                    go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            mainUI.SetActive(false);
-        }
-    }
-
-    public void AddSpeed()
-    {
-        if (pointsAvailable > 0)
-            player.AddAttackSpeed();
-    }
-
-    public void AddDamage()
-    {
-        if (pointsAvailable > 0)
-            player.AddDamage();
-    }
-
-    public void AddDefense()
-    {
-        if (pointsAvailable > 0)
-            player.AddDefense();
     }
 
     private void Update()
@@ -143,10 +114,44 @@ public class StatScreen : MonoBehaviour
             //update available points
             pointsAvailable = player.GetSpendingPoints();
             pointsText.text = $"{pointsAvailable}\t\tPoints Available";
+            if(pointsAvailable == 0)
+                mainUI.GetComponent<UpdateUI>().StopLevelFlashing();
         }
         //exit stat screen and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Tab))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Open Stats"))
             ResumeGame();
+    }
+
+    #region StatScreenFunctions
+    private void OnEnable()
+    {
+        if (mainUI != null)
+        {
+            Time.timeScale = 0;
+            Object[] objects = FindObjectsOfType(typeof(GameObject));
+            foreach (GameObject go in objects)
+                if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
+                    go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            mainUI.SetActive(false);
+        }
+    }
+
+    public void AddSpeed()
+    {
+        if (pointsAvailable > 0)
+            player.AddAttackSpeed();
+    }
+
+    public void AddDamage()
+    {
+        if (pointsAvailable > 0)
+            player.AddDamage();
+    }
+
+    public void AddDefense()
+    {
+        if (pointsAvailable > 0)
+            player.AddDefense();
     }
 
     void ResumeGame()
@@ -155,8 +160,9 @@ public class StatScreen : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if(mainUI != null)
+        if (mainUI != null)
             mainUI.SetActive(true);
     }
+    #endregion
 
 }

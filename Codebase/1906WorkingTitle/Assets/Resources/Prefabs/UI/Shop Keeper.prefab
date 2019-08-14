@@ -1644,10 +1644,10 @@ MonoBehaviour:
   value: 0
   name: Cone of Cold
   sprite: {fileID: 0}
-  consumableType: 1
+  consumableType: 0
   floatModifier: 5
   intModifier: 5
-  consumableEffect: {fileID: 1301320370126645320, guid: 63ab55c6f5c5025439b42a193100df34,
+  consumableEffect: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
     type: 3}
 --- !u!1 &387575751
 GameObject:
@@ -3434,11 +3434,10 @@ MonoBehaviour:
   value: 0
   name: Death Aura
   sprite: {fileID: 0}
-  consumableType: 1
+  consumableType: 0
   floatModifier: 5
   intModifier: 5
-  consumableEffect: {fileID: 1301320370126645320, guid: 63ab55c6f5c5025439b42a193100df34,
-    type: 3}
+  consumableEffect: {fileID: 0}
 --- !u!1 &976397685
 GameObject:
   m_ObjectHideFlags: 0
@@ -9595,7 +9594,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4233120848619702440}
-  m_Enabled: 1
+  m_Enabled: 0
   m_Avatar: {fileID: 9000000, guid: b6f10194c0ae6074ab00b56a3b4e7115, type: 3}
   m_Controller: {fileID: 9100000, guid: ea6af8e3ec3f37244982cd0830c3d4f5, type: 2}
   m_CullingMode: 1
@@ -10011,7 +10010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5304956608596208007}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.9361863, y: 0, z: 0.5587395}
+  m_LocalPosition: {x: -0.94, y: 0, z: 0.559}
   m_LocalScale: {x: 0.13024229, y: 1, z: 2.8804538}
   m_Children: []
   m_Father: {fileID: 5304956608569702912}

@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    Button playAgain, mainMenu;
+    Button playAgain, mainMenu = null;
 
     private void Start()
     {

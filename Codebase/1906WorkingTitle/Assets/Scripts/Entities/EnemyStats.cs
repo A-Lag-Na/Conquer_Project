@@ -43,6 +43,8 @@ public class EnemyStats : MonoBehaviour
 
     //Enemy's color and renderer
     private Renderer enemyRender = null;
+
+    //Please don't set colors to null. They're non-nullable types that generate errors if set to null.
     public Color enemyColor;
 
     Animator anim = null;
@@ -69,7 +71,7 @@ public class EnemyStats : MonoBehaviour
             enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
     }
 
-    private void OnDestroy()
+    public void Death()
     {
         if (gameObject.CompareTag("BulletHell Enemy"))
             Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
@@ -106,6 +108,11 @@ public class EnemyStats : MonoBehaviour
         return bulletSpeed;
     }
 
+    public GameObject GetSpawner()
+    {
+        return spawnerObject;
+    }
+
     public void SetHealth(float _health)
     {
         health = _health;
@@ -129,6 +136,11 @@ public class EnemyStats : MonoBehaviour
     public void SetBulletSpeed(float _speed)
     {
         bulletSpeed = _speed;
+    }
+
+    public void SetSpawner(GameObject _spawner)
+    {
+        spawnerObject = _spawner;
     }
     #endregion
 
@@ -164,6 +176,8 @@ public class EnemyStats : MonoBehaviour
             spawnerScript.remainingChildren -= 1;
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
+        if(CompareTag("BulletHell Enemy"))
+            Death();
         Destroy(gameObject);
     }
 
@@ -191,11 +205,6 @@ public class EnemyStats : MonoBehaviour
         if (anim != null)
             anim.SetTrigger("On Hit");
         enemyRender.material.color = Color.red;
-    }
-
-    public void SetSpawner(GameObject _spawner)
-    {
-        spawnerObject = _spawner;
     }
 
     public Renderer GetRenderer()

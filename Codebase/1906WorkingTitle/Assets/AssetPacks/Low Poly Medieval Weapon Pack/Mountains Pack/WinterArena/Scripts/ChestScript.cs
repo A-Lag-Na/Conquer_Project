@@ -25,7 +25,6 @@ public class ChestScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
             //play open animation;  
             chestAnim.SetTrigger("open");
             //Gets Random Coin ammount
@@ -36,10 +35,5 @@ public class ChestScript : MonoBehaviour
             //Not allow the player to cash out the chest again
             capsuleCollider.enabled = false;
         }
-       
     }
-   
-    
-
- 
 }

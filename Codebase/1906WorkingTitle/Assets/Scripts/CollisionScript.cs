@@ -5,26 +5,29 @@ using UnityEngine.AI;
 
 public class CollisionScript : MonoBehaviour
 {
-    private AudioSource audioSource;
+    #region CollsionScriptProperties
+    private AudioSource audioSource = null;
     private AudioClip hurt = null;
     //public AudioClip burn;
-    public float bulletDamage;
+    public float bulletDamage = 0.0f;
     [SerializeField] GameObject sparks = null;
     [SerializeField] GameObject blood = null;
     private bool isIceImmune = false;
     private bool isFireImmune = false;
     private bool isStunImmune = false;
 
-    private Player player;
-    private EnemyStats enemy;
-    private EnemyAI ai;
-    private NavMeshAgent nav;
+    private Player player = null;
+    private EnemyStats enemy = null;
+    private EnemyAI ai = null;
+    private NavMeshAgent nav = null;
 
     [SerializeField] GameObject fireCreep = null;
     [SerializeField] GameObject iceCreep = null;
 
     [SerializeField] GameObject owner = null;
+    #endregion
 
+    #region CollisionScriptFunctions
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.collider.gameObject;
@@ -36,7 +39,7 @@ public class CollisionScript : MonoBehaviour
             if (audioSource != null)
             {
                 audioSource.volume = 1.0f;
-                if(hurt != null)
+                if (hurt != null)
                     audioSource.PlayOneShot(hurt);
                 audioSource.volume = 0.5f;
             }
@@ -49,9 +52,9 @@ public class CollisionScript : MonoBehaviour
                     isIceImmune = player.isIceImmune;
                     isStunImmune = player.isStunImmune;
                 }
-                if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy")) 
+                else if (target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
                 {
-                    if(!target.CompareTag("BulletHell Enemy"))
+                    if (!target.CompareTag("BulletHell Enemy"))
                         ai = target.GetComponent<EnemyAI>();
                     enemy = target.GetComponent<EnemyStats>();
                     isFireImmune = enemy.isFireImmune;
@@ -64,13 +67,9 @@ public class CollisionScript : MonoBehaviour
                 Instantiate(sparks, transform.position, sparks.transform.rotation);
                 {
                     if (gameObject.CompareTag("FirePot"))
-                    {
                         Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
-                    }
                     if (gameObject.CompareTag("IcePot"))
-                    {
                         Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
-                    }
                 }
             }
             if (!(isIceImmune && isFireImmune && isStunImmune))
@@ -133,10 +132,10 @@ public class CollisionScript : MonoBehaviour
                             }
                         case "Love Bullet":
                             {
-                                if(ai != null)
+                                if (ai != null)
                                 {
-                                    DamageCheck();
-                                    StartCoroutine(ai.FallInLove(5.0f));
+                                    if(target.CompareTag("Enemy") && ai != null)
+                                        con.TimerAdd("love", 5);
                                 }
                                 break;
                             }
@@ -188,7 +187,7 @@ public class CollisionScript : MonoBehaviour
                                 }
                                 break;
                             }
-                        
+
                         default:
                             {
                                 DamageCheck();
@@ -200,6 +199,7 @@ public class CollisionScript : MonoBehaviour
             }
         }
     }
+
     private void DamageCheck()
     {
         if (player != null)
@@ -213,12 +213,15 @@ public class CollisionScript : MonoBehaviour
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
     }
+
     public GameObject GetOwner()
     {
         return owner;
     }
+
     public void SetOwner(GameObject _owner)
     {
         owner = _owner;
     }
+    #endregion
 }

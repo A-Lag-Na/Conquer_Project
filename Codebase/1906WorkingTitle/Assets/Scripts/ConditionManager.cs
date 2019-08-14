@@ -5,29 +5,31 @@ using UnityEngine.AI;
 
 public class ConditionManager : MonoBehaviour
 {
-    private int fireTimer = 0;
-    private int thawTimer = 0;
+    #region ConditionManagerProperties
+    [SerializeField] int fireTimer = 0;
+    [SerializeField] int thawTimer = 0;
     private int stunTimer = 0;
     private int auraTimer = 0;
 
-    private bool isPlayer;
-    private Component statsScript;
-    private Component aiScript;
+    private bool isPlayer = false;
+    private Component statsScript = null;
+    private Component aiScript = null;
 
     private Renderer enemyRender = null;
-    private float speed;
-    private float maxSpeed;
-    private float minFrozenSpeed;
+    private float speed = 0.0f;
+    private float maxSpeed = 0.0f;
+    private float minFrozenSpeed = 0.0f;
 
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
-    private float thawIncrement;
-    private float fireDamage;
-    private float auraDamage;
+    private float thawIncrement = 0.0f;
+    private float fireDamage = 0.0f;
+    private float auraDamage = 0.0f;
 
-    GameObject fireParticle = null;
-    GameObject iceParticle = null;
+    [SerializeField] GameObject fireParticle = null;
+    [SerializeField] GameObject iceParticle = null;
 
-    private bool isPaused;
+    private bool isPaused = false;
+    #endregion
 
     public void Start()
     {
@@ -41,27 +43,19 @@ public class ConditionManager : MonoBehaviour
         else
         {
             if (tag.Equals("Enemy"))
-            {
                 aiScript = GetComponentInParent<EnemyAI>();
-            }
             if (tag.Equals("BulletHell Enemy"))
-            {
                 aiScript = GetComponentInParent<BulletHellEnemy>();
-            }
             isPlayer = false;
             statsScript = GetComponentInParent<EnemyStats>();
             enemyRender = ((EnemyStats)statsScript).GetRenderer();
         }
-        fireParticle = GameObject.FindGameObjectWithTag("Fire Particle");
-        iceParticle = GameObject.FindGameObjectWithTag("Ice Particle");
+        if (auraDamage == 0f)
+            auraDamage = .017f;
         if (fireParticle != null)
             fireParticle.SetActive(false);
         if (iceParticle != null)
             iceParticle.SetActive(false);
-        if (auraDamage == 0f)
-        {
-            auraDamage = .017f;
-        }
         speed = GetSpeed();
         maxSpeed = GetSpeed();
     }
@@ -74,7 +68,7 @@ public class ConditionManager : MonoBehaviour
             {
                 if (fireTimer > 0)
                 {
-                    if (fireParticle != null)
+                    if (fireParticle.activeSelf == false && fireParticle != null)
                         fireParticle.SetActive(true);
                     fireTimer--;
                     if (fireTimer % 60 == 0)
@@ -82,7 +76,7 @@ public class ConditionManager : MonoBehaviour
                 }
                 if (thawTimer > 0)
                 {
-                    if (iceParticle != null)
+                    if (iceParticle.activeSelf == false && iceParticle != null)
                         iceParticle.SetActive(true);
                     thawTimer--;
                     if (Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
@@ -96,16 +90,16 @@ public class ConditionManager : MonoBehaviour
                 }
                 if (auraTimer > 0)
                 {
-                    if (!tag.Equals("Player"))
-                        enemyRender.material.color = Color.Lerp(enemyRender.material.color, Color.black, .08f);
                     Damage(auraDamage);
                     auraTimer--;
                 }
             }
-            if (fireTimer <= 0)
+            if (fireParticle.activeSelf && fireTimer == 0)
+            {
                 if (fireParticle != null)
                     fireParticle.SetActive(false);
-            if (thawTimer <= 0)
+            }
+            if (iceParticle.activeSelf && thawTimer == 0)
             {
                 SetSpeed(maxSpeed);
                 if (iceParticle != null)
@@ -139,12 +133,18 @@ public class ConditionManager : MonoBehaviour
                     auraTimer += ticks;
                     break;
                 }
+            case "love":
+                {
+                    StartCoroutine(GetComponent<EnemyAI>().FallInLove(5f));
+                    break;
+                }
             default:
                 {
                     break;
                 }
         }
     }
+
     public void TimerSet(string condition, int ticks)
     {
         switch (condition)
@@ -177,114 +177,101 @@ public class ConditionManager : MonoBehaviour
     public float GetSpeed()
     {
         if (isPlayer)
-        {
             return ((Player)statsScript).GetMovementSpeed();
-        }
         else
-        {
             return ((EnemyStats)statsScript).GetMovementSpeed();
-        }
     }
+
     public void SetSpeed(float _speed)
     {
         if (isPlayer)
-        {
             ((Player)statsScript).SetMovementSpeed(_speed);
-        }
         else
-        {
             ((EnemyStats)statsScript).SetMovementSpeed(_speed);
-        }
     }
+
     public void SubtractSpeed(float _speed)
     {
         if (GetSpeed() - _speed >= 0)
-        {
             SetSpeed(GetSpeed() - _speed);
-        }
     }
+
     public void Damage(float _damage)
     {
         if (isPlayer)
-        {
             ((Player)statsScript).TakeDamage(_damage);
-        }
         else
-        {
             ((EnemyStats)statsScript).TakeDamage(_damage);
-        }
     }
+
     public float GetThawIncrement()
     {
         return thawIncrement;
     }
+
     public float GetMinFrozenSpeed()
     {
         return minFrozenSpeed;
     }
+
     public float GetFireDamage()
     {
         return fireDamage;
     }
+
     public void SetThawIncrement(float _thawIncrement)
     {
         thawIncrement = _thawIncrement;
     }
+
     public void SetMinFrozenSpeed(float _minFrozenSpeed)
     {
         minFrozenSpeed = _minFrozenSpeed;
     }
+
     public void SetFireDamage(float _fireDamage)
     {
         fireDamage = _fireDamage;
     }
+
     public void Modify(float _amountToIncrease = 1)
     {
         maxSpeed += _amountToIncrease;
     }
+
     public void Refresh()
     {
         maxSpeed = GetSpeed();
     }
+
     void OnPauseGame()
     {
         isPaused = true;
         if (isPlayer)
-        {
             ((Player)aiScript).OnPauseGame();
-        }
         else if (gameObject.CompareTag("BulletHell Enemy"))
-        {
             ((BulletHellEnemy)aiScript).OnPauseGame();
-        }
         else
-        {
             ((EnemyAI)aiScript).OnPauseGame();
-        }
     }
+
     void OnResumeGame()
     {
         isPaused = false;
-
     }
+
     public void Unstun()
     {
         if (gameObject.CompareTag("Player"))
-        {
             ((Player)aiScript).Unstun();
-        }
         else
         {
             NavMeshAgent nav = GetComponentInParent<NavMeshAgent>();
             nav.enabled = true;
             if (gameObject.CompareTag("BulletHell Enemy"))
-            {
                 ((BulletHellEnemy)aiScript).Unstun();
-            }
             else
-            {
                 ((EnemyAI)aiScript).Unstun();
-            }
         }
     }
     #endregion GetSet

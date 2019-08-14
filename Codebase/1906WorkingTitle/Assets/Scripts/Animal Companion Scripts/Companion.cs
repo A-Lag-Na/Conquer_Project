@@ -134,15 +134,9 @@ public class Companion : MonoBehaviour
         else if (name == "Ice Resist Companion")
             playerStats.isIceImmune = true;
         else if (name == "Item Grabber Companion")
-        {
             animalCollider.isTrigger = false;
-            gameObject.layer = 19;
-        }
         else if (name == "Melee Companion")
-        {
             animalCollider.isTrigger = false;
-            gameObject.layer = 19;
-        }
         else if (name == "Movement Speed Companion")
             playerStats.ModifySpeed(3);
         else if (name == "Stun Resist Companion")
@@ -154,6 +148,7 @@ public class Companion : MonoBehaviour
         else if (name == "XP Companion")
             playerStats.XPModifier(0.5f);
         isFollowing = true;
+        gameObject.layer = 19;
         playerStats.SetCompanion(this);
         previousExp = playerStats.GetExperience();
     }
@@ -170,19 +165,13 @@ public class Companion : MonoBehaviour
         else if (name == "Fire Resist Companion")
             playerStats.isFireImmune = false;
         else if (name == "Health Regen Companion")
-            playerStats.ModifyHealth(10);
+            playerStats.ModifyHealth(-10);
         else if (name == "Ice Resist Companion")
             playerStats.isIceImmune = false;
         else if (name == "Item Grabber Companion")
-        {
             animalCollider.isTrigger = true;
-            gameObject.layer = 0;
-        }
         else if (name == "Melee Companion")
-        {
             animalCollider.isTrigger = true;
-            gameObject.layer = 0;
-        }
         else if (name == "Movement Speed Companion")
             playerStats.ModifySpeed(-3);
         else if (name == "Stun Resist Companion")
@@ -190,6 +179,7 @@ public class Companion : MonoBehaviour
         else if (name == "XP Companion")
             playerStats.XPModifier(-0.5f);
         isFollowing = false;
+        gameObject.layer = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
