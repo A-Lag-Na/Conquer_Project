@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
 
         playerY = transform.position.y;
 
-        Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
+        Cursor.SetCursor(crosshairs, new Vector2(256, 256), CursorMode.Auto);
 
         source = GetComponent<AudioSource>();
         source.enabled = true;

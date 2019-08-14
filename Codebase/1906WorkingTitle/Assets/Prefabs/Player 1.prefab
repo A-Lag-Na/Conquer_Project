@@ -4861,7 +4861,7 @@ MonoBehaviour:
   isStunImmune: 0
   isStunned: 0
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
-  crosshairs: {fileID: 2800000, guid: a36edb871ebe51b4e92d1058f4bff961, type: 3}
+  crosshairs: {fileID: 2800000, guid: e172a6b57ccab9b4dacfe9aab123543e, type: 3}
   mainUI: {fileID: 0}
   deathAura: {fileID: 1108498970550749515}
   iceSpell: {fileID: 6187281563759390062}
@@ -5031,7 +5031,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a9909f4baa02349af53588177d0750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1 &609496171085165552
 GameObject:
   m_ObjectHideFlags: 0
