@@ -21,7 +21,7 @@ public class ConditionManager : MonoBehaviour
     private float minFrozenSpeed = 0.0f;
 
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
-    private float thawIncrement = 0.0f;
+    [SerializeField] float thawIncrement = 0.0f;
     private float fireDamage = 0.0f;
     private float auraDamage = 0.0f;
 
@@ -66,6 +66,7 @@ public class ConditionManager : MonoBehaviour
         {
             if (fireTimer > 0 || thawTimer > 0 || stunTimer > 0 || auraTimer > 0)
             {
+                #region FireTimer
                 if (fireTimer > 0)
                 {
                     if (fireParticle.activeSelf == false && fireParticle != null)
@@ -74,25 +75,33 @@ public class ConditionManager : MonoBehaviour
                     if (fireTimer % 60 == 0)
                         Damage(fireDamage);
                 }
+                #endregion
+                #region Thawtimer
                 if (thawTimer > 0)
                 {
                     if (iceParticle.activeSelf == false && iceParticle != null)
                         iceParticle.SetActive(true);
                     thawTimer--;
-                    if (Mathf.Clamp(GetSpeed() + thawIncrement, minFrozenSpeed, maxSpeed - thawIncrement) <= maxSpeed)
-                        SetSpeed(Mathf.Clamp(GetSpeed() + thawIncrement / 30f, minFrozenSpeed, maxSpeed));
+                    float speedThaw = GetSpeed() + thawIncrement / 30f;
+                    if (speedThaw <= maxSpeed)
+                        AddSpeed(thawIncrement / 30f);
                 }
+                #endregion
+                #region StunTimer
                 if (stunTimer > 0)
                 {
                     stunTimer--;
                     if (stunTimer == 0)
                         Unstun();
                 }
+                #endregion
+                #region AuraTimer
                 if (auraTimer > 0)
                 {
                     Damage(auraDamage);
                     auraTimer--;
                 }
+                #endregion
             }
             if (fireParticle.activeSelf && fireTimer == 0)
             {
@@ -181,7 +190,6 @@ public class ConditionManager : MonoBehaviour
         else
             return ((EnemyStats)statsScript).GetMovementSpeed();
     }
-
     public void SetSpeed(float _speed)
     {
         if (isPlayer)
@@ -189,13 +197,28 @@ public class ConditionManager : MonoBehaviour
         else
             ((EnemyStats)statsScript).SetMovementSpeed(_speed);
     }
-
     public void SubtractSpeed(float _speed)
     {
         if (GetSpeed() - _speed >= 0)
             SetSpeed(GetSpeed() - _speed);
     }
+    public void AddSpeed(float _speed)
+    {
+        if(GetSpeed() + _speed <= maxSpeed)
+        {
+            SetSpeed(GetSpeed() + _speed);
+        }
+    }
+    public void SetMaxSpeed(float _maxSpeed)
+    {
+        maxSpeed = _maxSpeed;
+    }
+    public void Modify(float _amountToIncrease = 1)
+    {
+        maxSpeed += _amountToIncrease;
+    }
 
+    #region Nonspeed
     public void Damage(float _damage)
     {
         if (isPlayer)
@@ -234,16 +257,6 @@ public class ConditionManager : MonoBehaviour
         fireDamage = _fireDamage;
     }
 
-    public void Modify(float _amountToIncrease = 1)
-    {
-        maxSpeed += _amountToIncrease;
-    }
-
-    public void Refresh()
-    {
-        maxSpeed = GetSpeed();
-    }
-
     void OnPauseGame()
     {
         isPaused = true;
@@ -274,5 +287,7 @@ public class ConditionManager : MonoBehaviour
                 ((EnemyAI)aiScript).Unstun();
         }
     }
+    #endregion
+
     #endregion GetSet
 }

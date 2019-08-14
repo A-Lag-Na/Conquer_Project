@@ -11,7 +11,7 @@ public class DartAI : MonoBehaviour
     int bulletDamage = 0;
 
     //If this enemy's attack behavior is enabled or not.
-    [SerializeField] bool attackEnabled = true;
+    [SerializeField] bool attackEnabled = false;
 
     //What projectile the enemy shoots
     [SerializeField] GameObject projectile = null;
@@ -26,7 +26,7 @@ public class DartAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        attackRate = 0.5f;
+        attackRate = 0.7f;
         bulletSpeed = 10;
         bulletDamage = 1;
         source = GetComponentInParent<AudioSource>();
@@ -69,5 +69,10 @@ public class DartAI : MonoBehaviour
     {
         StopAllCoroutines();
         attackEnabled = false;
+    }
+
+    public void EnableAttack()
+    {
+        attackEnabled = true;
     }
 }

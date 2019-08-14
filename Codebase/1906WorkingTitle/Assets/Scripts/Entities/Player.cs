@@ -51,6 +51,8 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject deathAura = null;
     [SerializeField] GameObject iceSpell = null;
     SaveScript save = null;
+
+    private ConditionManager con;
     #endregion
 
     #region PlayerMovementProperties
@@ -107,6 +109,7 @@ public class Player : MonoBehaviour
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
         save = GetComponent<SaveScript>();
+        con = GetComponent<ConditionManager>();
     }
 
     // Update is called once per frame
@@ -506,7 +509,6 @@ public class Player : MonoBehaviour
     public void SetMovementSpeed(float newMovementSpeed)
     {
         playerMovementSpeed = newMovementSpeed;
-        GetComponent<ConditionManager>().Refresh();
     }
 
     public float GetMovementSpeed()
@@ -514,9 +516,14 @@ public class Player : MonoBehaviour
         return playerMovementSpeed;
     }
 
+    public void AddPlayerSpeed(float _sum)
+    {
+        playerMovementSpeed += _sum;
+    }
+
     public void ModifySpeed(float _playerSpeed)
     {
-        GetComponent<ConditionManager>().Modify(_playerSpeed);
+        con.Modify(_playerSpeed);
     }
     #endregion
 
