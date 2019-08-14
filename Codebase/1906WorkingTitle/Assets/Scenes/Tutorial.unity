@@ -1980,6 +1980,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1666413372}
     - target: {fileID: 3521666438964514095, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2035,11 +2040,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
-        type: 3}
-      propertyPath: mainCamera
-      value: 
-      objectReference: {fileID: 1666413372}
     - target: {fileID: 469536748384550718, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: fireParticle
@@ -5851,19 +5851,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 45fe3ec28eac2064d985117cf812ef9d, type: 3}
---- !u!114 &6313259012707526688
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8267165128279785179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f4e8d00443717246afb71ee9ae6368e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawner: {fileID: 1504975807}
 --- !u!65 &6313259012707526691
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6148,7 +6135,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5021342993642009674}
   - component: {fileID: 6313259012707526691}
-  - component: {fileID: 6313259012707526688}
   - component: {fileID: 8267165128279785180}
   m_Layer: 0
   m_Name: Tutorial

@@ -149,7 +149,7 @@ MonoBehaviour:
   doors:
   - {fileID: 0}
   points: 4
-  timer: 4
+  timer: 1.5
   remainingChildren: 0
   spawnedEnemies: []
 --- !u!1 &5369622686599183123
