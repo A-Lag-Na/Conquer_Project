@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlainsTrigger : MonoBehaviour
 {
-    GameObject cactusBarrier;
-    GameObject iceEffect;
+    [SerializeField] GameObject cactusBarrier;
+    [SerializeField] GameObject iceEffect;
 
     // Start is called before the first frame update
     void Start()
@@ -20,7 +20,6 @@ public class PlainsTrigger : MonoBehaviour
         {
             StartCoroutine(FreezePath());
         }
-
     }
 
     IEnumerator FreezePath()
@@ -29,9 +28,5 @@ public class PlainsTrigger : MonoBehaviour
         yield return new WaitForSeconds(2);
         cactusBarrier.SetActive(false);
         iceEffect.SetActive(false);
-       
-
     }
-
-
 }

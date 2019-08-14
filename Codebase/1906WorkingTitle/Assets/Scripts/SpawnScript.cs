@@ -9,7 +9,7 @@ public class SpawnScript : MonoBehaviour
     [SerializeField] private bool spawnEnabled = true;
     [SerializeField] private bool multiSpawnpoint = false;
 
-    [SerializeField] List<GameObject> spawnpoints;
+    [SerializeField] List<GameObject> spawnpoints = new List<GameObject>();
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
@@ -58,7 +58,7 @@ public class SpawnScript : MonoBehaviour
         if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 
-        if (pointsClone > 0)
+        if (spawnEnabled && pointsClone > 0)
         {
             for (int i = enemiesClone.Count - 1; i >= 0; i--)
                 if (enemiesClone[i].GetPoints() > pointsClone)

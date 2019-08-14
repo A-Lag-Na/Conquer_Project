@@ -9997,8 +9997,8 @@ MonoBehaviour:
   fireTimer: 0
   thawTimer: 0
   thawIncrement: 0.05
-  fireParticle: {fileID: 0}
-  iceParticle: {fileID: 0}
+  fireParticle: {fileID: 2523717985868745337}
+  iceParticle: {fileID: 2056206684944073577}
 --- !u!195 &5819966560183394842
 NavMeshAgent:
   m_ObjectHideFlags: 0
