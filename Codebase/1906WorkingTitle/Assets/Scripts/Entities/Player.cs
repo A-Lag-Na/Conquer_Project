@@ -667,12 +667,24 @@ public class Player : MonoBehaviour
     #region Death Aura
     public void EnableDeathAura()
     {
-        deathAura.SetActive(true);
+        if (deathAura.activeSelf)
+        {
+            DisableThis dt = deathAura.GetComponent<DisableThis>();
+            dt.AddTime(180);
+        }
+        else
+            deathAura.SetActive(true);
     }
 
     public void EnableConeofCold()
     {
-        iceSpell.SetActive(true);
+        if (iceSpell.activeSelf)
+        {
+            DisableThis dt = iceSpell.GetComponent<DisableThis>();
+            dt.AddTime(180);
+        }
+        else
+            iceSpell.SetActive(true);
     }
     #endregion
     #endregion
