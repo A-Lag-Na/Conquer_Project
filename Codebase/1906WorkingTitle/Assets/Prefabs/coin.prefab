@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  clip: {fileID: 8300000, guid: 64fc13dac97920b45bef45ca791a84e7, type: 3}
+  clip: {fileID: 8300000, guid: 66908bbaee342524a833dbdf2952ae88, type: 3}
 --- !u!135 &876931979831814746
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -6,15 +6,17 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    Button playAgain, mainMenu = null;
+    Button playAgain, mainMenu = null, continueFromLastSave;
 
     private void Start()
     {
         playAgain = transform.Find("Play Again").GetComponent<Button>();
         mainMenu = transform.Find("Main Menu").GetComponent<Button>();
+        continueFromLastSave = transform.Find("Continue from last save").GetComponent<Button>();
 
         playAgain.onClick.AddListener(PlayAgain);
         mainMenu.onClick.AddListener(MainMenu);
+        continueFromLastSave.onClick.AddListener(Continue);
 
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -32,6 +34,20 @@ public class GameOver : MonoBehaviour
     {
         UnPause();
         SceneManager.LoadScene("Main Menu");
+    }
+
+    void Continue()
+    {
+        UnPause();
+        Object[] objects = Resources.FindObjectsOfTypeAll(typeof(GameObject));
+        foreach (GameObject go in objects)
+            if (go.CompareTag("Player") && !go.activeSelf)
+            {
+                go.SetActive(true);
+                go.GetComponent<Animator>().SetBool("Death", false);
+                go.GetComponent<SaveScript>().Load();
+            }
+        gameObject.SetActive(false);
     }
 
     void UnPause()

@@ -28,6 +28,7 @@ TagManager:
   - BoxPiece
   - Fire Particle
   - Ice Particle
+  - GameOver
   layers:
   - Default
   - TransparentFX

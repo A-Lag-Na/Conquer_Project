@@ -39,6 +39,7 @@ public class Companion : MonoBehaviour
         {
             source = GetComponent<AudioSource>();
             source.enabled = true;
+            canAttack = true;
         }
     }
 
@@ -165,7 +166,11 @@ public class Companion : MonoBehaviour
         else if (name == "Fire Resist Companion")
             playerStats.isFireImmune = false;
         else if (name == "Health Regen Companion")
+        {
             playerStats.ModifyHealth(-10);
+            if (playerStats.GetHealth() > playerStats.GetMaxHealth())
+                playerStats.SetHealth(playerStats.GetMaxHealth());
+        }
         else if (name == "Ice Resist Companion")
             playerStats.isIceImmune = false;
         else if (name == "Item Grabber Companion")
@@ -201,7 +206,7 @@ public class Companion : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectilePos.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 10;
         clone.SetActive(true);

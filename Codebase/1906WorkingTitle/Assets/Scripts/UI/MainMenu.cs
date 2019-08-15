@@ -6,29 +6,29 @@ using UnityEngine.UI;
 public class MainMenu : MonoBehaviour
 {
     #region MainMenuProperties
-    private Button startBTN, howToPlayBTN, optionsBTN, exitBTN = null;
+    private Button startBTN, creditsBTN, optionsBTN, exitBTN = null;
 
-    private GameObject howToPlay, options = null;
+    private GameObject credits, options = null;
     #endregion
 
     //Start is called before the first frame update
     void Start()
     {
-        howToPlay = GameObject.Find("How to playText");
-        howToPlay.SetActive(false);
+        credits = GameObject.Find("Credits");
+        credits.SetActive(false);
 
         options = GameObject.Find("Options");
         options.SetActive(false);
 
         //assign buttons
         startBTN = GameObject.Find("Start Game").GetComponent<Button>();
-        howToPlayBTN = GameObject.Find("How to PlayBTN").GetComponent<Button>();
+        creditsBTN = GameObject.Find("CreditsBTN").GetComponent<Button>();
         optionsBTN = GameObject.Find("OptionsBTN").GetComponent<Button>();
         exitBTN = GameObject.Find("Exit Game").GetComponent<Button>();
 
         //add function listeners
         startBTN.onClick.AddListener(StartGame);
-        howToPlayBTN.onClick.AddListener(HowToPlay);
+        creditsBTN.onClick.AddListener(Credits);
         optionsBTN.onClick.AddListener(OptionsMenu);
         exitBTN.onClick.AddListener(ExitGame);
 
@@ -36,8 +36,8 @@ public class MainMenu : MonoBehaviour
 
     private void OnEnable()
     {
-        if (howToPlay != null)
-            howToPlay.SetActive(false);
+        if (credits != null)
+            credits.SetActive(false);
         if (options != null)
             options.SetActive(false);
     }
@@ -56,15 +56,15 @@ public class MainMenu : MonoBehaviour
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(1));
     }
 
-    private void HowToPlay()
+    private void Credits()
     {
-        howToPlay.SetActive(true);
+        credits.SetActive(true);
     }
 
     public void CloseHowTo()
     {
-        if (howToPlay.activeSelf)
-            howToPlay.SetActive(false);
+        if (credits.activeSelf)
+            credits.SetActive(false);
     }
 
     private void OptionsMenu()
