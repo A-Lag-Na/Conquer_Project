@@ -166,7 +166,11 @@ public class Companion : MonoBehaviour
         else if (name == "Fire Resist Companion")
             playerStats.isFireImmune = false;
         else if (name == "Health Regen Companion")
+        {
             playerStats.ModifyHealth(-10);
+            if (playerStats.GetHealth() > playerStats.GetMaxHealth())
+                playerStats.SetHealth(playerStats.GetMaxHealth());
+        }
         else if (name == "Ice Resist Companion")
             playerStats.isIceImmune = false;
         else if (name == "Item Grabber Companion")

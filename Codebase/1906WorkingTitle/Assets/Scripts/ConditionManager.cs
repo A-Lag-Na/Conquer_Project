@@ -216,6 +216,7 @@ public class ConditionManager : MonoBehaviour
     public void Modify(float _amountToIncrease = 1)
     {
         maxSpeed += _amountToIncrease;
+        SetSpeed(maxSpeed);
     }
 
     #region Nonspeed
