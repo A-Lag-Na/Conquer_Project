@@ -28,7 +28,6 @@ public class Player : MonoBehaviour
     //If player is currently stunned
     public bool isStunned = false;
 
-    private bool isRotated = false;
     private bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
@@ -103,7 +102,6 @@ public class Player : MonoBehaviour
             mainUI = GameObject.Find("Main UI");
 
         lastTimeFired = 0.0f;
-        isRotated = false;
         isDashing = false;
         isRegenerating = false;
         bulletChoice = 1;
@@ -136,8 +134,7 @@ public class Player : MonoBehaviour
 
 
             // Change the player's tranform's rotation to the rotation Quaternion
-            if (isRotated == false)
-                transform.rotation = rotation;
+            transform.rotation = rotation;
 
             #endregion
 
@@ -251,7 +248,6 @@ public class Player : MonoBehaviour
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
                 lastTimeFired = Time.time;
                 source.PlayOneShot(fire);
-                StartCoroutine(ShootRotation());
             }
         }
     }
@@ -266,16 +262,6 @@ public class Player : MonoBehaviour
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
         lastTimeFired = Time.time;
         source.PlayOneShot(fire);
-        StartCoroutine(ShootRotation());
-    }
-
-    IEnumerator ShootRotation()
-    {
-        isRotated = true;
-        animator.SetTrigger("Attack");
-        transform.Rotate(0, 90, 0);
-        yield return new WaitForSeconds(.5f);
-        isRotated = false;
     }
 
     IEnumerator PlayerDash()
