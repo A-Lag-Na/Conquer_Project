@@ -21,9 +21,9 @@ public class ConditionManager : MonoBehaviour
     private float minFrozenSpeed = 0.0f;
 
     //thawIncrement: How much the player's  movement speed increases on a thaw tick
-    [SerializeField] float thawIncrement = 0.0f;
-    private float fireDamage = 0.0f;
-    private float auraDamage = 0.0f;
+    [SerializeField] float thawIncrement = 0.1f;
+    private float fireDamage = 1.0f;
+    private float auraDamage = 0.3f;
 
     [SerializeField] GameObject fireParticle = null;
     [SerializeField] GameObject iceParticle = null;
@@ -103,6 +103,7 @@ public class ConditionManager : MonoBehaviour
                 }
                 #endregion
             }
+            #region Timer End
             if (fireParticle.activeSelf && fireTimer == 0)
             {
                 if (fireParticle != null)
@@ -110,10 +111,10 @@ public class ConditionManager : MonoBehaviour
             }
             if (iceParticle.activeSelf && thawTimer == 0)
             {
-                SetSpeed(maxSpeed);
                 if (iceParticle != null)
                     iceParticle.SetActive(false);
             }
+            #endregion
         }
     }
 
@@ -182,6 +183,8 @@ public class ConditionManager : MonoBehaviour
     #endregion
 
     #region GetSetters
+
+    #region Speed
     //Cast get-setters (This get-set speed workaround feels silly and wrong)
     public float GetSpeed()
     {
@@ -209,6 +212,10 @@ public class ConditionManager : MonoBehaviour
             SetSpeed(GetSpeed() + _speed);
         }
     }
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
     public void SetMaxSpeed(float _maxSpeed)
     {
         maxSpeed = _maxSpeed;
@@ -218,6 +225,7 @@ public class ConditionManager : MonoBehaviour
         maxSpeed += _amountToIncrease;
         SetSpeed(maxSpeed);
     }
+    #endregion
 
     #region Nonspeed
     public void Damage(float _damage)

@@ -111,7 +111,10 @@ public class Player : MonoBehaviour
         con = GetComponent<ConditionManager>();
 
         gameOver = GameObject.FindGameObjectWithTag("GameOver");
-        gameOver.SetActive(false);
+        if(gameOver != null)
+        {
+            gameOver.SetActive(false);
+        }
     }
 
     // Update is called once per frame
