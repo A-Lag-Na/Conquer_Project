@@ -39,6 +39,7 @@ public class Companion : MonoBehaviour
         {
             source = GetComponent<AudioSource>();
             source.enabled = true;
+            canAttack = true;
         }
     }
 
@@ -201,7 +202,7 @@ public class Companion : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectilePos.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 10;
         clone.SetActive(true);
