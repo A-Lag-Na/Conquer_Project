@@ -27,7 +27,7 @@ public class BaseItem : MonoBehaviour
     public Sprite GetSprite()
     {
         if (sprite != null)
-            return sprite;
+            return Sprite.Instantiate<Sprite>(sprite);
         else
             return Resources.Load<Sprite>("Sprites/background");
     }

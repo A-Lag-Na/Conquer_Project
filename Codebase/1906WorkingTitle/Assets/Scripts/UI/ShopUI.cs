@@ -104,7 +104,7 @@ public class ShopUI : MonoBehaviour
     public void Checkout(BaseItem _item)
     {
         currentItem = _item;
-        purchaseText.text = $"{currentItem.name}\n{currentItem.GetValue()} Coins";
+        purchaseText.text = $"{currentItem.GetName()}\n{currentItem.GetValue()} Coins";
     }
 
     void DenyPuchase()
