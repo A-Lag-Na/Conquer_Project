@@ -692,8 +692,8 @@ GameObject:
   - component: {fileID: 5575471617385740144}
   - component: {fileID: 4117839961456214203}
   - component: {fileID: 7914485573470476578}
-  - component: {fileID: 5152859660487611633}
   - component: {fileID: 2067493638227390341}
+  - component: {fileID: 5152859660487611633}
   - component: {fileID: 4005364401290509594}
   m_Layer: 5
   m_Name: Resume
@@ -759,6 +759,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2067493638227390341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2993530976767874367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &5152859660487611633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,20 +818,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &2067493638227390341
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2993530976767874367}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &4005364401290509594
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1005,8 +1005,8 @@ GameObject:
   - component: {fileID: 805436406026876862}
   - component: {fileID: 7675464491289090638}
   - component: {fileID: 3013976613442838764}
-  - component: {fileID: 186764408759445030}
   - component: {fileID: 827058572947921870}
+  - component: {fileID: 186764408759445030}
   - component: {fileID: 8773062841504603811}
   m_Layer: 5
   m_Name: OptionsBTN
@@ -1072,6 +1072,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &827058572947921870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3833457699477441935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &186764408759445030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1117,20 +1131,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &827058572947921870
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3833457699477441935}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &8773062841504603811
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1522,8 +1522,8 @@ GameObject:
   - component: {fileID: 5133190703988970443}
   - component: {fileID: 5133190703988970440}
   - component: {fileID: 5133190703988970441}
-  - component: {fileID: 5133190703988970442}
   - component: {fileID: 5834619257895644481}
+  - component: {fileID: 5133190703988970442}
   - component: {fileID: 3677926445560456079}
   m_Layer: 5
   m_Name: OptionsBack
@@ -1589,6 +1589,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &5834619257895644481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5133190703988970444}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &5133190703988970442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1645,20 +1659,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5834619257895644481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5133190703988970444}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &3677926445560456079
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3354,8 +3354,8 @@ GameObject:
   - component: {fileID: 5509915578445042594}
   - component: {fileID: 3902479998212301946}
   - component: {fileID: 2393846800633636861}
-  - component: {fileID: 1406047495202656129}
   - component: {fileID: 3752208934393907715}
+  - component: {fileID: 1406047495202656129}
   - component: {fileID: 3891401292873116815}
   m_Layer: 5
   m_Name: ControlsBack
@@ -3421,6 +3421,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &3752208934393907715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5533844542135492096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1406047495202656129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3477,20 +3491,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &3752208934393907715
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5533844542135492096}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &3891401292873116815
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3599,8 +3599,8 @@ GameObject:
   - component: {fileID: 2669609479475427386}
   - component: {fileID: 1571417815890184121}
   - component: {fileID: 5934177801284295537}
-  - component: {fileID: 8382688541663432321}
   - component: {fileID: 7910533249107817609}
+  - component: {fileID: 8382688541663432321}
   - component: {fileID: 8121409549208348871}
   m_Layer: 5
   m_Name: Exit Game
@@ -3666,6 +3666,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7910533249107817609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7278153555360125835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &8382688541663432321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3711,20 +3725,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &7910533249107817609
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7278153555360125835}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &8121409549208348871
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3912,8 +3912,8 @@ GameObject:
   - component: {fileID: 7450736680758116439}
   - component: {fileID: 7450736680758116442}
   - component: {fileID: 7450736680758116441}
-  - component: {fileID: 7450736680758116440}
   - component: {fileID: 360435510532799272}
+  - component: {fileID: 7450736680758116440}
   - component: {fileID: 5590809922566123189}
   m_Layer: 5
   m_Name: ControlsBTN
@@ -3979,6 +3979,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &360435510532799272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7450736680758116438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &7450736680758116440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4024,20 +4038,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &360435510532799272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7450736680758116438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &5590809922566123189
 AudioSource:
   m_ObjectHideFlags: 0

@@ -4,7 +4,6 @@ using UnityEngine;
 public class TutorialDone : MonoBehaviour
 {
   //After The Tutorial is done this changes to the game scene.
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "Player")

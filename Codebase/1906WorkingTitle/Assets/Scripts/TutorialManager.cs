@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour
 {
-    [SerializeField] GameObject player = null;
+    [SerializeField] private GameObject player = null;
     private Player playerScript = null;
-    [SerializeField] GameObject spawner = null;
+    [SerializeField] private GameObject spawner = null;
     private SpawnScript spawnScript = null;
-    [SerializeField] GameObject[] popUps = null;
+    [SerializeField] private GameObject[] popUps = null;
     private GameObject door;
     [SerializeField] GameObject pickup = null;
     private Inventory inventoryScript = null;

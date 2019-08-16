@@ -169,10 +169,10 @@ GameObject:
   - component: {fileID: 36972777}
   - component: {fileID: 36972783}
   - component: {fileID: 36972782}
+  - component: {fileID: 36972778}
   - component: {fileID: 36972781}
   - component: {fileID: 36972780}
   - component: {fileID: 36972779}
-  - component: {fileID: 36972778}
   m_Layer: 5
   m_Name: Crossbow
   m_TagString: Untagged
@@ -238,6 +238,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &36972778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36972776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &36972781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,20 +423,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &36972778
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 36972776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &84869498
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,10 +661,10 @@ GameObject:
   - component: {fileID: 216154305}
   - component: {fileID: 216154311}
   - component: {fileID: 216154310}
+  - component: {fileID: 216154306}
   - component: {fileID: 216154309}
   - component: {fileID: 216154308}
   - component: {fileID: 216154307}
-  - component: {fileID: 216154306}
   m_Layer: 5
   m_Name: Sling
   m_TagString: Untagged
@@ -730,6 +730,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &216154306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216154304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &216154309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,20 +915,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &216154306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 216154304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &227147559
 GameObject:
   m_ObjectHideFlags: 0
@@ -1077,10 +1077,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 262215220}
+  - component: {fileID: 262215218}
   - component: {fileID: 262215219}
   - component: {fileID: 262215216}
   - component: {fileID: 262215215}
-  - component: {fileID: 262215218}
   - component: {fileID: 262215217}
   m_Layer: 5
   m_Name: WeaponsButton
@@ -1109,6 +1109,20 @@ RectTransform:
   m_AnchoredPosition: {x: -1736.1001, y: -110}
   m_SizeDelta: {x: 258, y: 91.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &262215218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 262215214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!222 &262215219
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1191,20 +1205,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &262215218
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 262215214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &262215217
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1391,10 +1391,10 @@ GameObject:
   m_Component:
   - component: {fileID: 308355390}
   - component: {fileID: 308355396}
+  - component: {fileID: 308355392}
   - component: {fileID: 308355395}
   - component: {fileID: 308355394}
   - component: {fileID: 308355393}
-  - component: {fileID: 308355392}
   - component: {fileID: 308355391}
   m_Layer: 5
   m_Name: Cone of Cold
@@ -1432,6 +1432,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308355389}
   m_CullTransparentMesh: 0
+--- !u!114 &308355392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 308355389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &308355395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1614,20 +1628,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &308355392
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 308355389}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &308355391
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1660,10 +1660,10 @@ GameObject:
   - component: {fileID: 387575752}
   - component: {fileID: 387575756}
   - component: {fileID: 387575755}
+  - component: {fileID: 568410386868883370}
   - component: {fileID: 387575754}
   - component: {fileID: 387575753}
   - component: {fileID: 3108830575822627296}
-  - component: {fileID: 568410386868883370}
   m_Layer: 5
   m_Name: Ice Potion
   m_TagString: Untagged
@@ -1729,6 +1729,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &568410386868883370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 387575751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &387575754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1903,20 +1917,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &568410386868883370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 387575751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &418758222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1928,10 +1928,10 @@ GameObject:
   - component: {fileID: 418758223}
   - component: {fileID: 418758227}
   - component: {fileID: 418758226}
+  - component: {fileID: 9211719262352379079}
   - component: {fileID: 418758225}
   - component: {fileID: 418758224}
   - component: {fileID: 4032162666703604098}
-  - component: {fileID: 9211719262352379079}
   m_Layer: 5
   m_Name: Defense Potion
   m_TagString: Untagged
@@ -1997,6 +1997,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &9211719262352379079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418758222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &418758225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2170,20 +2184,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &9211719262352379079
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 418758222}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &496468319
 GameObject:
   m_ObjectHideFlags: 0
@@ -2269,10 +2269,10 @@ GameObject:
   - component: {fileID: 501690709}
   - component: {fileID: 501690715}
   - component: {fileID: 501690714}
+  - component: {fileID: 501690710}
   - component: {fileID: 501690713}
   - component: {fileID: 501690712}
   - component: {fileID: 501690711}
-  - component: {fileID: 501690710}
   m_Layer: 5
   m_Name: Longbow
   m_TagString: Untagged
@@ -2338,6 +2338,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &501690710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501690708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &501690713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2509,20 +2523,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &501690710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 501690708}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &543783396
 GameObject:
   m_ObjectHideFlags: 0
@@ -2687,10 +2687,10 @@ GameObject:
   - component: {fileID: 762305158}
   - component: {fileID: 762305162}
   - component: {fileID: 762305161}
+  - component: {fileID: 7067248726303981818}
   - component: {fileID: 762305160}
   - component: {fileID: 762305159}
   - component: {fileID: 3574326203055974117}
-  - component: {fileID: 7067248726303981818}
   m_Layer: 5
   m_Name: Fire Potion
   m_TagString: Untagged
@@ -2756,6 +2756,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7067248726303981818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762305157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &762305160
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2930,20 +2944,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7067248726303981818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 762305157}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &780102028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3181,10 +3181,10 @@ GameObject:
   m_Component:
   - component: {fileID: 959448304}
   - component: {fileID: 959448310}
+  - component: {fileID: 959448306}
   - component: {fileID: 959448309}
   - component: {fileID: 959448308}
   - component: {fileID: 959448307}
-  - component: {fileID: 959448306}
   - component: {fileID: 959448305}
   m_Layer: 5
   m_Name: Death Aura
@@ -3222,6 +3222,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 959448303}
   m_CullTransparentMesh: 0
+--- !u!114 &959448306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959448303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &959448309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3404,20 +3418,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &959448306
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959448303}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &959448305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3605,10 +3605,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1019869670}
+  - component: {fileID: 1019869668}
   - component: {fileID: 1019869669}
   - component: {fileID: 1019869666}
   - component: {fileID: 1019869665}
-  - component: {fileID: 1019869668}
   - component: {fileID: 1019869667}
   m_Layer: 5
   m_Name: PotionsButton
@@ -3637,6 +3637,20 @@ RectTransform:
   m_AnchoredPosition: {x: -1478.0999, y: -110}
   m_SizeDelta: {x: 258, y: 91.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1019869668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1019869664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!222 &1019869669
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3719,20 +3733,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1019869668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019869664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &1019869667
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3994,10 +3994,10 @@ GameObject:
   - component: {fileID: 1134029008}
   - component: {fileID: 1134029012}
   - component: {fileID: 1134029011}
+  - component: {fileID: 8680731735604222329}
   - component: {fileID: 1134029010}
   - component: {fileID: 1134029009}
   - component: {fileID: 2034988768085891164}
-  - component: {fileID: 8680731735604222329}
   m_Layer: 5
   m_Name: Damage Buff Potion
   m_TagString: Untagged
@@ -4063,6 +4063,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &8680731735604222329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1134029007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1134029010
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4236,20 +4250,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8680731735604222329
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1134029007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &1183543466
 GameObject:
   m_ObjectHideFlags: 0
@@ -4565,10 +4565,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1506888152}
+  - component: {fileID: 1506888154}
   - component: {fileID: 1506888157}
   - component: {fileID: 1506888156}
   - component: {fileID: 1506888155}
-  - component: {fileID: 1506888154}
   - component: {fileID: 1506888153}
   m_Layer: 5
   m_Name: ScrollsButton
@@ -4597,6 +4597,20 @@ RectTransform:
   m_AnchoredPosition: {x: -1220.0999, y: -110}
   m_SizeDelta: {x: 258, y: 91.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1506888154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1506888151}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!222 &1506888157
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4679,20 +4693,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1506888154
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1506888151}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &1506888153
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4801,10 +4801,10 @@ GameObject:
   - component: {fileID: 1555430879}
   - component: {fileID: 1555430885}
   - component: {fileID: 1555430884}
+  - component: {fileID: 1555430880}
   - component: {fileID: 1555430883}
   - component: {fileID: 1555430882}
   - component: {fileID: 1555430881}
-  - component: {fileID: 1555430880}
   m_Layer: 5
   m_Name: Recurve Bow
   m_TagString: Untagged
@@ -4870,6 +4870,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &1555430880
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555430878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1555430883
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5041,20 +5055,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1555430880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1555430878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &1658312864
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,10 +5298,10 @@ GameObject:
   - component: {fileID: 1940595601}
   - component: {fileID: 1940595605}
   - component: {fileID: 1940595604}
+  - component: {fileID: 4777061881216494809}
   - component: {fileID: 1940595603}
   - component: {fileID: 1940595602}
   - component: {fileID: 1312252999383829636}
-  - component: {fileID: 4777061881216494809}
   m_Layer: 5
   m_Name: Movement Speed Potion
   m_TagString: Untagged
@@ -5367,6 +5367,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &4777061881216494809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1940595600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1940595603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5540,20 +5554,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &4777061881216494809
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1940595600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &1948832550
 GameObject:
   m_ObjectHideFlags: 0
@@ -5718,10 +5718,10 @@ GameObject:
   - component: {fileID: 2073634518}
   - component: {fileID: 2073634524}
   - component: {fileID: 2073634523}
+  - component: {fileID: 2073634519}
   - component: {fileID: 2073634522}
   - component: {fileID: 2073634521}
   - component: {fileID: 2073634520}
-  - component: {fileID: 2073634519}
   m_Layer: 5
   m_Name: Love Potion
   m_TagString: Untagged
@@ -5787,6 +5787,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2073634519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2073634517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &2073634522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5961,20 +5975,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2073634519
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073634517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &134891182189783519
 GameObject:
   m_ObjectHideFlags: 0
@@ -6326,10 +6326,10 @@ GameObject:
   - component: {fileID: 704642015467125782}
   - component: {fileID: 704642015467125803}
   - component: {fileID: 704642015467125800}
+  - component: {fileID: 296495758674753021}
   - component: {fileID: 704642015467125801}
   - component: {fileID: 704642015467125802}
   - component: {fileID: 8064941153032615950}
-  - component: {fileID: 296495758674753021}
   m_Layer: 5
   m_Name: Shortbow
   m_TagString: Untagged
@@ -6395,6 +6395,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &296495758674753021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704642015467125783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &704642015467125801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6566,20 +6580,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &296495758674753021
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704642015467125783}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &704642015522887014
 GameObject:
   m_ObjectHideFlags: 0
@@ -6987,10 +6987,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 704642015928776643}
+  - component: {fileID: 5866439736106496967}
   - component: {fileID: 704642015928776640}
   - component: {fileID: 704642015928776641}
   - component: {fileID: 704642015928776654}
-  - component: {fileID: 5866439736106496967}
   - component: {fileID: 7424863932464245759}
   m_Layer: 5
   m_Name: Exit
@@ -7019,6 +7019,20 @@ RectTransform:
   m_AnchoredPosition: {x: -962.09985, y: -109.99994}
   m_SizeDelta: {x: 258, y: 91.7}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &5866439736106496967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704642015928776655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!222 &704642015928776640
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7101,20 +7115,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5866439736106496967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704642015928776655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &7424863932464245759
 AudioSource:
   m_ObjectHideFlags: 0
@@ -7383,10 +7383,10 @@ GameObject:
   - component: {fileID: 704642016076782410}
   - component: {fileID: 704642016076782415}
   - component: {fileID: 704642016076782412}
+  - component: {fileID: 443229668155600428}
   - component: {fileID: 704642016076782413}
   - component: {fileID: 704642016076782414}
   - component: {fileID: 6430841140194282640}
-  - component: {fileID: 443229668155600428}
   m_Layer: 5
   m_Name: Health Potion
   m_TagString: Untagged
@@ -7452,6 +7452,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &443229668155600428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704642016076782411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &704642016076782413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7625,20 +7639,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &443229668155600428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704642016076782411}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &704642016548087251
 GameObject:
   m_ObjectHideFlags: 0
@@ -7808,10 +7808,10 @@ GameObject:
   m_Component:
   - component: {fileID: 704642016854098550}
   - component: {fileID: 704642016854098443}
+  - component: {fileID: 7294096120707392003}
   - component: {fileID: 704642016854098440}
   - component: {fileID: 704642016854098441}
   - component: {fileID: 4772431529629735659}
-  - component: {fileID: 7294096120707392003}
   m_Layer: 5
   m_Name: Purchase
   m_TagString: Untagged
@@ -7847,6 +7847,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704642016854098551}
   m_CullTransparentMesh: 0
+--- !u!114 &7294096120707392003
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704642016854098551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &704642016854098440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8029,20 +8043,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7294096120707392003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 704642016854098551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &704642016871969301
 GameObject:
   m_ObjectHideFlags: 0
@@ -8502,10 +8502,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8608584833033656806}
   - component: {fileID: 6848559643382477072}
+  - component: {fileID: 6130154285283000930}
   - component: {fileID: 1724633508103343227}
   - component: {fileID: 5403136311086631015}
   - component: {fileID: 7051730938377732153}
-  - component: {fileID: 6130154285283000930}
   - component: {fileID: 8630462814714000445}
   m_Layer: 5
   m_Name: Fireball
@@ -8543,6 +8543,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1966781228803529390}
   m_CullTransparentMesh: 0
+--- !u!114 &6130154285283000930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1966781228803529390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1724633508103343227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8725,20 +8739,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6130154285283000930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1966781228803529390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &8630462814714000445
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8924,10 +8924,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1908533791628088904}
   - component: {fileID: 2681180263017471245}
+  - component: {fileID: 7904501228457331699}
   - component: {fileID: 498898523956836911}
   - component: {fileID: 7041774695340385653}
   - component: {fileID: 3664154027946280734}
-  - component: {fileID: 7904501228457331699}
   m_Layer: 5
   m_Name: Continue
   m_TagString: Untagged
@@ -8963,6 +8963,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2974202235247464824}
   m_CullTransparentMesh: 0
+--- !u!114 &7904501228457331699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974202235247464824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &498898523956836911
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9145,20 +9159,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7904501228457331699
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2974202235247464824}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &3012276685911855596
 GameObject:
   m_ObjectHideFlags: 0
@@ -10147,10 +10147,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6805691289550128611}
   - component: {fileID: 7269368128684551010}
+  - component: {fileID: 1542671312140339791}
   - component: {fileID: 1193743917788015656}
   - component: {fileID: 6331251761493011596}
   - component: {fileID: 6587917451906118573}
-  - component: {fileID: 1542671312140339791}
   - component: {fileID: 3602821697089220151}
   m_Layer: 5
   m_Name: Hex Shot
@@ -10188,6 +10188,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5565228845957563193}
   m_CullTransparentMesh: 0
+--- !u!114 &1542671312140339791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5565228845957563193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &1193743917788015656
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10370,20 +10384,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &1542671312140339791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565228845957563193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &3602821697089220151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11422,10 +11422,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8351882526948347161}
   - component: {fileID: 5135973528552573283}
+  - component: {fileID: 946075988930042456}
   - component: {fileID: 4378131291707296050}
   - component: {fileID: 6065550829933610272}
   - component: {fileID: 8417907962770868416}
-  - component: {fileID: 946075988930042456}
   - component: {fileID: 1572866079759830767}
   m_Layer: 5
   m_Name: Lightning Bolt
@@ -11463,6 +11463,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8946536644279616071}
   m_CullTransparentMesh: 0
+--- !u!114 &946075988930042456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8946536644279616071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 0}
+  click: {fileID: 0}
 --- !u!114 &4378131291707296050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11645,20 +11659,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &946075988930042456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8946536644279616071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &1572866079759830767
 MonoBehaviour:
   m_ObjectHideFlags: 0
