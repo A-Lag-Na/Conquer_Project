@@ -4,17 +4,18 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] Camera mainCamera = null;
-    [SerializeField] AudioSource townMusicSource = null;
-    [SerializeField] AudioSource forestMusicSource = null;
-    [SerializeField] AudioSource desertMusicSource = null;
-    [SerializeField] AudioSource mountainsMusicSource = null;
-    [SerializeField] AudioSource castleMusicSource = null;
-    [SerializeField] AudioSource bossMusicSource = null;
-    GameObject gameOverScreen = null;
+    #region Properties
+    [SerializeField] private Camera mainCamera = null;
+    [SerializeField] private AudioSource townMusicSource = null;
+    [SerializeField] private AudioSource forestMusicSource = null;
+    [SerializeField] private AudioSource desertMusicSource = null;
+    [SerializeField] private AudioSource mountainsMusicSource = null;
+    [SerializeField] private AudioSource castleMusicSource = null;
+    [SerializeField] private AudioSource bossMusicSource = null;
+    private GameObject gameOverScreen = null;
     bool isDead = false;
+    #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
         mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
@@ -32,7 +33,6 @@ public class MusicManager : MonoBehaviour
         gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (mainCamera.transform.position.z > -112 && mainCamera.transform.position.z < 1.9f && mainCamera.transform.position.x > -120.36f && mainCamera.transform.position.x < 119.64f)
