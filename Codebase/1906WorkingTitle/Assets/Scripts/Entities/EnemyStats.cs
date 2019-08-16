@@ -75,12 +75,6 @@ public class EnemyStats : MonoBehaviour
             enemyRender.material.color = Color.Lerp(enemyRender.material.color, enemyColor, 0.1f);
     }
 
-    public void Death()
-    {
-        if (gameObject.CompareTag("BulletHell Enemy"))
-            Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
-    }
-
     #region Getters and Setters
     public int GetPoints()
     {
@@ -187,7 +181,8 @@ public class EnemyStats : MonoBehaviour
     public void Kill()
     { 
         if (CompareTag("BulletHell Enemy"))
-            Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
+            GetComponent<BulletHellEnemy>().Death();
+            //Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
         if (pickUp != null)
         {
             Vector3 vec = GetComponent<Transform>().position;

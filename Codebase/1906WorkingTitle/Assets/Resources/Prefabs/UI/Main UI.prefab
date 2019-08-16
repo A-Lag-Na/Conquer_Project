@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67, y: -160.48001}
-  m_SizeDelta: {x: 231.23999, y: 43.36}
+  m_AnchoredPosition: {x: -67, y: -166.12003}
+  m_SizeDelta: {x: 251.17, y: 43.36}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &366889743
 CanvasRenderer:
@@ -67,10 +67,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0ae807fa48a42c34f821b7f0e1a6f03f, type: 3}
-    m_FontSize: 17
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -113,8 +113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67, y: -159.26001}
-  m_SizeDelta: {x: 218.28, y: 40.93}
+  m_AnchoredPosition: {x: -67, y: -164.9}
+  m_SizeDelta: {x: 253.16, y: 40.93}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &871817358
 CanvasRenderer:
@@ -146,10 +146,10 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0ae807fa48a42c34f821b7f0e1a6f03f, type: 3}
-    m_FontSize: 17
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
+    m_MinSize: 2
     m_MaxSize: 40
     m_Alignment: 4
     m_AlignByGeometry: 0
@@ -1160,7 +1160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1750.9, y: -89.6}
+  m_AnchoredPosition: {x: -1750.8999, y: -75.3}
   m_SizeDelta: {x: 134.9, y: 134.86}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7643891376914082275
@@ -1309,7 +1309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1522.2, y: -89.2}
+  m_AnchoredPosition: {x: -1522.2, y: -74.8999}
   m_SizeDelta: {x: 134.9, y: 134.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7643891377523823779
