@@ -21,6 +21,7 @@ public class DartAI : MonoBehaviour
     {
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
+        attackRate = 0.7f;
     }
 
     void Update()
