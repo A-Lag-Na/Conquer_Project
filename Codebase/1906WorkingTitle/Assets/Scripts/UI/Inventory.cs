@@ -167,7 +167,7 @@ public class Inventory : MonoBehaviour
                         player.ModifyDamage(-1 * intModValue);
                         break;
 
-                    case "Movement Speed Potion":
+                    case "Speed Potion":
                         con.AddSpeed(consumableNode.Value.GetFloatModifier());
                         float floatModValue = consumableNode.Value.GetFloatModifier();
                         RemoveConsumable();
