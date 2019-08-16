@@ -16,4 +16,14 @@ public class Weapon : BaseItem
     {
         return attackSpeed;
     }
+
+    public void SetAttackDamage(int _damage)
+    {
+        damage = _damage;
+    }
+
+    public void SetAttackSpeed(float _attackspeed)
+    {
+        attackSpeed = _attackspeed;
+    }
 }
