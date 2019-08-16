@@ -175,6 +175,8 @@ public class EnemyStats : MonoBehaviour
                 gameObject.GetComponent<CharacterController>().gameObject.SetActive(false);
                 gameObject.GetComponent<CapsuleCollider>().gameObject.SetActive(false);
              }
+           
+
             yield return new WaitForSeconds(5);
         }
      
