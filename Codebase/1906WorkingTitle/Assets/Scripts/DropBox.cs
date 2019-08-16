@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DropBox : MonoBehaviour
 {
-    [SerializeField] GameObject boxPiece = null;
-    [SerializeField] GameObject spawner = null;
+    public GameObject boxPiece = null;
+    public GameObject spawner = null;
     
     void Update()
     {
