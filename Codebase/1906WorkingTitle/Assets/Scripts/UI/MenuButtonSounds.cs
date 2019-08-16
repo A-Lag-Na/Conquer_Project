@@ -18,8 +18,8 @@ public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
         button = GetComponentInParent<Button>();
         button.onClick.AddListener(Clicked);
 
-        hover = Resources.Load<AudioClip>("SFX/Goose");
-        click = Resources.Load<AudioClip>("SFX/Shoot");
+        hover = Resources.Load<AudioClip>("SFX/hover");
+        click = Resources.Load<AudioClip>("SFX/click");
     }
 
     private void Clicked()

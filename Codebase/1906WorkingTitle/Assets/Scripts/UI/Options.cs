@@ -58,7 +58,7 @@ public class Options : MonoBehaviour
             currentScreen.SetActive(false);
             currentScreen = null;
         }
-        else
+        else if (headUI != null)
         {
             headUI.SetActive(true);
             gameObject.SetActive(false);
