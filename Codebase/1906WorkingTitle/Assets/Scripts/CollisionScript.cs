@@ -11,12 +11,10 @@ public class CollisionScript : MonoBehaviour
     private bool isFireImmune = false;
     private bool isStunImmune = false;
     private Color hitColor = Color.red;
-
+    public float bulletDamage = 0.0f;
     #endregion
 
     #region Unity Components
-
-    public float bulletDamage = 0.0f;
     [SerializeField] GameObject sparks = null;
     [SerializeField] GameObject blood = null;
     [SerializeField] GameObject fireCreep = null;
@@ -27,22 +25,17 @@ public class CollisionScript : MonoBehaviour
     private EnemyStats enemy = null;
     private EnemyAI ai = null;
     private NavMeshAgent nav = null;
-
     private AudioSource audioSource = null;
     private AudioClip hurt = null;
-    //public AudioClip burn;
     #endregion
 
     #region CollisionScriptFunctions
-
-
     private void OnCollisionEnter(Collision collision)
     {
         GameObject target = collision.collider.gameObject;
         if (target != owner)
         {
             nav = target.GetComponent<NavMeshAgent>();
-
             audioSource = target.GetComponent<AudioSource>();
             if (audioSource != null)
             {

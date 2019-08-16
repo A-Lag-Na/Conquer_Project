@@ -6,8 +6,7 @@ public class PlainsTrigger : MonoBehaviour
 {
     [SerializeField] GameObject cactusBarrier;
     [SerializeField] GameObject iceEffect;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         cactusBarrier = GameObject.Find("Desert Cactus Blockade");
@@ -17,9 +16,7 @@ public class PlainsTrigger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Ice Bullet")
-        {
             StartCoroutine(FreezePath());
-        }
     }
 
     IEnumerator FreezePath()

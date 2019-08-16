@@ -5,7 +5,6 @@ using UnityEngine;
 public class SaveScript : MonoBehaviour
 {
     Player player = null;
-    // Start is called before the first frame update
     void Start()
     {
         player = GetComponent<Player>();
@@ -27,7 +26,6 @@ public class SaveScript : MonoBehaviour
         int playerSpendingPoints = player.GetSpendingPoints();
         int playerLives = player.GetLives();
 
-
         PlayerPrefs.SetFloat("PlayerPositionX", playerPosition.x);
         PlayerPrefs.SetFloat("PlayerPositionY", playerPosition.y);
         PlayerPrefs.SetFloat("PlayerPositionZ", playerPosition.z);
@@ -43,7 +41,6 @@ public class SaveScript : MonoBehaviour
         PlayerPrefs.SetInt("Level", playerLevel);
         PlayerPrefs.SetInt("SpendingPoints", playerSpendingPoints);
         PlayerPrefs.SetInt("Lives", playerLives);
-
 
         PlayerPrefs.Save();
     }

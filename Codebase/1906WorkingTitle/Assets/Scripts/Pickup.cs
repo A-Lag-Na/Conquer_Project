@@ -5,7 +5,6 @@ using UnityEngine;
 public class Pickup : MonoBehaviour
 {
     public enum Type {Coin, Health, Potion, Box, EOF};
-
     public Type type = Type.Coin;
     [SerializeField] AudioClip clip = null;
 

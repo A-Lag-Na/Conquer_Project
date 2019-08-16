@@ -824,6 +824,7 @@ GameObject:
   - component: {fileID: 1915596153934488277}
   - component: {fileID: 1915596155084330891}
   - component: {fileID: 1915596155084330890}
+  - component: {fileID: 4671067578034886243}
   m_Layer: 0
   m_Name: Castle_W_Blue
   m_TagString: Untagged
@@ -899,6 +900,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &4671067578034886243
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915596155084330893}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.9740076, y: 6.366152, z: 5.9740076}
+  m_Center: {x: -0.008092523, y: 3.1960163, z: -0.024015665}
 --- !u!1 &1915596155137179907
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,8 +10,7 @@ public class MountainsTrigger : MonoBehaviour
     //Particle effect for the fire
     GameObject fireOne = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         //Getting the GO in the script
@@ -24,7 +23,6 @@ public class MountainsTrigger : MonoBehaviour
         // the coroutine wont start unless triggered by the fire bullet, ice bullet and normal bullet will not have an effect on the barrier
         if (other.tag == "Fire Bullet")
             StartCoroutine(BurnPath());
-
     }
 
     //Coroutine to melt the ice
@@ -35,5 +33,4 @@ public class MountainsTrigger : MonoBehaviour
         iceBarrier.SetActive(false);
         fireOne.SetActive(false);
     }
-
 }

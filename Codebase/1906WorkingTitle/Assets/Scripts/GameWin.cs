@@ -47,8 +47,6 @@ public class GameWin : MonoBehaviour
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
     }
     
-
-    // Update is called once per frame
     void Update()
     {
         if (fadeIn.color != black)
