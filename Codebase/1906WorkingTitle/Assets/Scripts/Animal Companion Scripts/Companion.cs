@@ -60,7 +60,7 @@ public class Companion : MonoBehaviour
             rotation.z = 0.0f;
             // Change the companion's tranform's rotation to the rotation Quaternion
             transform.rotation = rotation;
-            if (name == "Health Regen Companion" && playerStats.GetisRegenerating() == false)
+            if (name == "Health Regen Companion" && playerStats.GetIsRegenerating() == false)
                 StartCoroutine(playerStats.HealthRegen());
             else if (name == "Item Grabber Companion")
             {
