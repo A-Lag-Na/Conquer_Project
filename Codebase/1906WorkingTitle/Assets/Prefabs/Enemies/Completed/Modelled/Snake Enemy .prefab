@@ -673,8 +673,8 @@ MonoBehaviour:
   enemyPoints: 1
   health: 3
   damage: 1
-  attackRate: 1
-  bulletSpeed: 15
+  attackRate: 1.5
+  bulletSpeed: 12
   isFireImmune: 0
   isIceImmune: 0
   isStunImmune: 0
@@ -701,8 +701,8 @@ MonoBehaviour:
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectilePos: {fileID: 5204572398621868574}
-  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   loveParticle: {fileID: 2100573480834995604}
+  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
 --- !u!114 &3060468487126496441
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1344,6 +1344,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7999029628684770106}
     m_Modifications:
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
+      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1398,11 +1403,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}

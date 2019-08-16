@@ -198,9 +198,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackEnabled: 0
-  attackRate: 0.7
-  bulletSpeed: 10
-  bulletDamage: 1
+  attackRate: 2
+  bulletSpeed: 20
+  bulletDamage: 15
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectilePos: {fileID: 305934244615624428}

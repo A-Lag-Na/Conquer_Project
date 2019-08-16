@@ -236,7 +236,7 @@ PrefabInstance:
     - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: attackRate
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
