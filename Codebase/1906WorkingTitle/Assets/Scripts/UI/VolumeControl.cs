@@ -29,7 +29,7 @@ public class VolumeControl : MonoBehaviour
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
 
-        testSound = Resources.Load<AudioClip>("SFX/Goose");
+        testSound = Resources.Load<AudioClip>("SFX/click");
     }
 
     // Update is called once per frame
@@ -37,7 +37,8 @@ public class VolumeControl : MonoBehaviour
     {
         if(sfxVolume != sfxSlider.value)
         {
-            soundFX.PlayOneShot(testSound);
+            if(soundFX != null)
+                soundFX.PlayOneShot(testSound);
         }
 
         masterVolume = masterSlider.value;
