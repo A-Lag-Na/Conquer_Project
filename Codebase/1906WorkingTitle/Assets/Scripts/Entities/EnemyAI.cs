@@ -17,8 +17,8 @@ public class EnemyAI : MonoBehaviour
     #region UnityComponents
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
-    [SerializeField] AudioClip fire = null;
     [SerializeField] GameObject loveParticle = null;
+    [SerializeField] AudioClip fire = null;
 
     EnemyStats enemyStats = null;
     SpawnScript spawnScript = null;
@@ -109,10 +109,12 @@ public class EnemyAI : MonoBehaviour
     //Manages charmed condition
     public IEnumerator FallInLove(float time)
     {
+        loveParticle.SetActive(true);
         SetTarget();
         inLove = true;
         yield return new WaitForSeconds(5f);
         inLove = false;
+        loveParticle.SetActive(false);
         target = player;
     }
 

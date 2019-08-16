@@ -87,21 +87,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Splitter
       objectReference: {fileID: 0}
-    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Radius
-      value: 0.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Center.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5252745215803708209, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: m_Speed
-      value: 2.5
-      objectReference: {fileID: 0}
     - target: {fileID: 5252745215803708239, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: projectile
@@ -118,42 +103,6 @@ PrefabInstance:
       propertyPath: stunParticle
       value: 
       objectReference: {fileID: 7582872100022336414}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: enemyPoints
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: health
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: damage
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: attackRate
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: bulletSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: childEnemy
-      value: 
-      objectReference: {fileID: 8297779320312325896, guid: 775ffee37e4bd604181d7b45c579c69f,
-        type: 3}
-    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
-        type: 3}
-      propertyPath: children
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 118930910161991321, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -224,40 +173,101 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3155286080545078039, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: d0bd997c31bd53342bae53677ecc3b65, type: 2}
-    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+      propertyPath: m_Radius
+      value: 0.7
       objectReference: {fileID: 0}
-    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 5811055361389125274, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      propertyPath: m_Center.y
+      value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 4939133605024569724, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      propertyPath: enemyPoints
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
+      propertyPath: health
+      value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
+      propertyPath: damage
+      value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 5593589482158339365, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
         type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      propertyPath: attackRate
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: bulletSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: childEnemy
+      value: 
+      objectReference: {fileID: 7741987563203690779, guid: 775ffee37e4bd604181d7b45c579c69f,
+        type: 3}
+    - target: {fileID: 1416346680458635933, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: children
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5252745215803708209, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_Speed
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3557996498262862731, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8186905746408103537, guid: dd4b119632cb8374f8a1b7cb53949f3b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd4b119632cb8374f8a1b7cb53949f3b, type: 3}
