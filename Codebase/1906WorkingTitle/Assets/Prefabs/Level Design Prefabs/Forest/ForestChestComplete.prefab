@@ -102,18 +102,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1427511737151756244}
     m_Modifications:
-    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
-      propertyPath: m_Name
-      value: ForestChestBottom
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
-      propertyPath: m_NavMeshLayer
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -158,6 +146,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
+      propertyPath: m_Name
+      value: ForestChestBottom
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e5f540077da33c4eab7f0f7f1121747, type: 3}
 --- !u!4 &1457953546410577174 stripped
@@ -173,11 +173,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1427511737151756244}
     m_Modifications:
-    - target: {fileID: 6764796034061976918, guid: dbcf0ce17021698439941a569e865ff0,
-        type: 3}
-      propertyPath: m_Name
-      value: Chest Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 6764796034061976939, guid: dbcf0ce17021698439941a569e865ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,7 +186,7 @@ PrefabInstance:
     - target: {fileID: 6764796034061976939, guid: dbcf0ce17021698439941a569e865ff0,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6764796034061976939, guid: dbcf0ce17021698439941a569e865ff0,
         type: 3}
@@ -232,6 +227,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6764796034061976918, guid: dbcf0ce17021698439941a569e865ff0,
+        type: 3}
+      propertyPath: m_Name
+      value: Chest Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbcf0ce17021698439941a569e865ff0, type: 3}
