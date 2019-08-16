@@ -66,7 +66,7 @@ public class Inventory : MonoBehaviour
     #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
-        weaponList.AddLast((Weapon)_weapon);
+        weaponList.AddLast(WeaponDeepCopy((Weapon)_weapon));
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
@@ -77,12 +77,37 @@ public class Inventory : MonoBehaviour
 
     public void AddConsumable(BaseItem _consumable)
     {
-        BaseItem clone = _consumable;
-        consumableList.AddLast((Consumable)clone);
+        consumableList.AddLast(ConsumableDeepCopy((Consumable)_consumable));
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
         }
+    }
+    #endregion
+
+    #region Deep Copy
+    private Weapon WeaponDeepCopy(Weapon _weapon)
+    {
+        Weapon clone = new Weapon();
+        clone.SetName(_weapon.GetName());
+        clone.SetSprite(_weapon.GetSprite());
+        clone.SetValue(_weapon.GetValue());
+        clone.SetAttackDamage(_weapon.GetAttackDamage());
+        clone.SetAttackSpeed(_weapon.GetAttackSpeed());
+        return clone;
+    }
+
+    private Consumable ConsumableDeepCopy(Consumable _consumable)
+    {
+        Consumable clone = new Consumable();
+        clone.SetName(_consumable.GetName());
+        clone.SetSprite(_consumable.GetSprite());
+        clone.SetValue(_consumable.GetValue());
+        clone.SetConsumableEffect(_consumable.GetConsumableEffect());
+        clone.SetConsumableType(_consumable.GetConsumableType());
+        clone.SetFloatModifier(_consumable.GetFloatModifier());
+        clone.SetIntModifier(_consumable.GetIntModifier());
+        return clone;
     }
     #endregion
 
@@ -190,7 +215,7 @@ public class Inventory : MonoBehaviour
             //if thrown type
             else
             {
-                player.ThrowConsumable(consumableNode.Value.GetPotionEffect());
+                player.ThrowConsumable(consumableNode.Value.GetConsumableEffect());
                 RemoveConsumable();
             }
 

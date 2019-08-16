@@ -39,17 +39,17 @@ public class BaseItem : MonoBehaviour
     #endregion
 
     #region Sets
-    protected void SetValue(int _value)
+    public void SetValue(int _value)
     {
         value = _value;
     }
 
-    protected void SetSprite(Sprite _sprite)
+    public void SetSprite(Sprite _sprite)
     {
         sprite = _sprite;
     }
 
-    protected void SetName(string _name)
+    public void SetName(string _name)
     {
         name = _name;
     }

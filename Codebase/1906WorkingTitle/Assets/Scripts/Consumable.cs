@@ -13,6 +13,8 @@ public class Consumable : BaseItem
     #endregion
 
     #region ConsumableFunctions
+
+    #region Gets
     public ConsumableType GetConsumableType()
     {
         return consumableType;
@@ -28,9 +30,30 @@ public class Consumable : BaseItem
         return intModifier;
     }
 
-    public GameObject GetPotionEffect()
+    public GameObject GetConsumableEffect()
     {
         return consumableEffect;
     }
+    #endregion
+
+    #region Sets
+    public void SetConsumableType(ConsumableType _consumableType)
+    {
+        consumableType = _consumableType;
+    }
+    public void SetFloatModifier(float _floatModifier)
+    {
+        floatModifier = _floatModifier;
+    }
+    public void SetIntModifier(int _intModifier)
+    {
+        intModifier = _intModifier;
+    }
+    public void SetConsumableEffect(GameObject _consumableEffect)
+    {
+        consumableEffect =_consumableEffect;
+    }
+    #endregion
+
     #endregion
 }
