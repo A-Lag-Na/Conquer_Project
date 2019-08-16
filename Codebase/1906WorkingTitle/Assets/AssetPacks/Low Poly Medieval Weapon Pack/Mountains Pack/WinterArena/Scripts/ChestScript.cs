@@ -48,7 +48,7 @@ public class ChestScript : MonoBehaviour
     IEnumerator ShowParticle()
     {
         chestParticles.SetActive(true);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         chestParticles.SetActive(false);
     }
 }
