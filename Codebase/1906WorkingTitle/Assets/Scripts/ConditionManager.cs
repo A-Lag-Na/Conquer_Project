@@ -28,8 +28,9 @@ public class ConditionManager : MonoBehaviour
     private Renderer enemyRender = null;
     [SerializeField] private GameObject fireParticle = null;
     [SerializeField] private GameObject iceParticle = null;
+    [SerializeField] private GameObject stunParticle = null;
     #endregion
-    #endregion 
+    #endregion
 
     public void Start()
     {
@@ -90,6 +91,8 @@ public class ConditionManager : MonoBehaviour
                 #region StunTimer
                 if (stunTimer > 0)
                 {
+                    if (!stunParticle.activeSelf)
+                        stunParticle.SetActive(true);
                     stunTimer--;
                     if (stunTimer == 0)
                         Unstun();
@@ -113,6 +116,10 @@ public class ConditionManager : MonoBehaviour
             {
                 if (iceParticle != null)
                     iceParticle.SetActive(false);
+            }
+            if (stunParticle.activeSelf && stunTimer == 0)
+            {
+                    stunParticle.SetActive(false);
             }
             #endregion
         }

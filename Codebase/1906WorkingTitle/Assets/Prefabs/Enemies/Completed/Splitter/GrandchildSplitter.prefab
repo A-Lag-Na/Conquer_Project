@@ -91,6 +91,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1928979425485858369, guid: 775ffee37e4bd604181d7b45c579c69f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 631704976809376325, guid: 775ffee37e4bd604181d7b45c579c69f,
         type: 3}
       propertyPath: health
@@ -149,6 +154,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1858954460338497158, guid: 775ffee37e4bd604181d7b45c579c69f,
+        type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 997245283, guid: 775ffee37e4bd604181d7b45c579c69f, type: 3}

@@ -18,6 +18,7 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
     [SerializeField] AudioClip fire = null;
+    [SerializeField] GameObject loveParticle = null;
 
     EnemyStats enemyStats = null;
     SpawnScript spawnScript = null;
