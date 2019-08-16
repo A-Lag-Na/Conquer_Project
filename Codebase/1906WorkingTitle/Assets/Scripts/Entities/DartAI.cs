@@ -37,7 +37,9 @@ public class DartAI : MonoBehaviour
     {
         attackEnabled = false;
         GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
-        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
+        CollisionScript cs = clone.GetComponent<CollisionScript>();
+        cs.bulletDamage = bulletDamage;
+        cs.SetOwner(gameObject);
         clone.gameObject.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);

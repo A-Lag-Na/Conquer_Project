@@ -314,7 +314,6 @@ public class Player : MonoBehaviour
     public void Death()
     {
         animator.SetBool("Death", true);
-        //Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
         gameOver.SetActive(true);
         gameObject.SetActive(false);
     }
