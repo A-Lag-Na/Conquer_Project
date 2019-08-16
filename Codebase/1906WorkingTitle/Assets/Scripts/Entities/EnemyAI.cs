@@ -18,7 +18,6 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
     [SerializeField] AudioClip fire = null;
-    [SerializeField] GameObject loveParticle = null;
 
     EnemyStats enemyStats = null;
     SpawnScript spawnScript = null;
@@ -169,6 +168,7 @@ public class EnemyAI : MonoBehaviour
         if (anim != null && !isStunned)
             anim.SetTrigger("Attack");
         yield return new WaitForSeconds(attackRate);
+        anim.SetTrigger("Walk");
         attackEnabled = true;
     }
     #endregion

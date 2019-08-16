@@ -171,8 +171,9 @@ public class EnemyStats : MonoBehaviour
              anim.SetBool("Dead", true);
              if (gameObject.name == "Wasp")
              {
-                GetComponent<CharacterController>().gameObject.SetActive(false);
-                GetComponent<CapsuleCollider>().gameObject.SetActive(false);
+                gameObject.GetComponent<TurnerAI>().OnPauseGame();
+                gameObject.GetComponent<CharacterController>().gameObject.SetActive(false);
+                gameObject.GetComponent<CapsuleCollider>().gameObject.SetActive(false);
              }
             yield return new WaitForSeconds(5);
         }
