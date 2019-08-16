@@ -206,32 +206,35 @@ public class Player : MonoBehaviour
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
             GameObject clone;
+            CollisionScript collisionScript = null;
             switch (type)
             {
                 case 1:
                     {
-                        if (projectile0.layer == 17)
-                        {
-                            projectile0.SetActive(true);
-                            clone = null;
-                        }
-                        else
-                            clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
+                        clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(new Color(0.913f, 0.541f, 0.109f));
                         break;
                     }
                 case 2:
                     {
                         clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(Color.red);
                         break;
                     }
                 case 3:
                     {
                         clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(new Color(0.360f, 0.952f, 0.960f));
                         break;
                     }
                 case 4:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(Color.yellow);
                         break;
                     }
                 default:
@@ -242,7 +245,7 @@ public class Player : MonoBehaviour
             }
             if (clone != null)
             {
-                CollisionScript collisionScript = clone.GetComponent<CollisionScript>();
+                
                 clone.GetComponent<TrailRenderer>().time = .1125f;
                 collisionScript.SetOwner(gameObject);
                 collisionScript.bulletDamage = playerAttackDamage;
@@ -258,8 +261,28 @@ public class Player : MonoBehaviour
     public void ThrowConsumable(GameObject consumable)
     {
         GameObject clone = Instantiate(consumable, projectilePosition.transform.position, transform.rotation);
+        CollisionScript collisionScript = clone.GetComponent<CollisionScript>();
         clone.GetComponent<TrailRenderer>().time = .1125f;
-        clone.GetComponent<CollisionScript>().bulletDamage = 0;
+        collisionScript.bulletDamage = 0;
+        Color hitColor = Color.red;
+        switch (clone.tag)
+        {
+            case "Love Bullet":
+                hitColor = new Color(0.960f, 0.619f, 0.921f);
+                break;
+            case "Hex":
+                hitColor = new Color(0.498f, 0.011f, 0.729f);
+                break;
+            case "FireBall":
+                hitColor = new Color(0.913f, 0.541f, 0.109f);
+                break;
+            case "Default":
+                hitColor = Color.yellow;
+                break;
+            default:
+                break;
+        }
+        collisionScript.SetHitColor(hitColor);
         clone.gameObject.layer = 10;
         clone.gameObject.SetActive(true);
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
@@ -282,10 +305,10 @@ public class Player : MonoBehaviour
         isDashing = false;
     }
 
-    public void BlinkOnHit()
+    public void BlinkOnHit(Color _color)
     {
         animator.SetTrigger("On Hit");
-        playerRenderer.material.color = Color.red;
+        playerRenderer.material.color = _color;
     }
 
     public void Death()
@@ -299,7 +322,7 @@ public class Player : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
-            TakeDamage();
+            TakeDamage(Color.red);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -320,11 +343,11 @@ public class Player : MonoBehaviour
     #region AccessorsAndMutators
 
     #region Health
-    public void TakeDamage(float amountOfDamage = 1)
+    public void TakeDamage(Color _color, float amountOfDamage = 1)
     {
         //Decrease health by amountOfDamage until 0 or less
         if (amountOfDamage >= 1)
-            BlinkOnHit();
+            BlinkOnHit(_color);
         amountOfDamage /= playerDefense;
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)

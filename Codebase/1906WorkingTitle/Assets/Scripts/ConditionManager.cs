@@ -73,7 +73,7 @@ public class ConditionManager : MonoBehaviour
                         fireParticle.SetActive(true);
                     fireTimer--;
                     if (fireTimer % 60 == 0)
-                        Damage(fireDamage);
+                        Damage(new Color(0.913f, 0.541f, 0.109f), fireDamage);
                 }
                 #endregion
                 #region Thawtimer
@@ -98,7 +98,7 @@ public class ConditionManager : MonoBehaviour
                 #region AuraTimer
                 if (auraTimer > 0)
                 {
-                    Damage(auraDamage);
+                    Damage(Color.Lerp(enemyRender.material.color, Color.green, 0.2f), auraDamage);
                     auraTimer--;
                 }
                 #endregion
@@ -228,12 +228,12 @@ public class ConditionManager : MonoBehaviour
     #endregion
 
     #region Nonspeed
-    public void Damage(float _damage)
+    public void Damage(Color _color, float _damage)
     {
         if (isPlayer)
-            ((Player)statsScript).TakeDamage(_damage);
+            ((Player)statsScript).TakeDamage(_color, _damage);
         else
-            ((EnemyStats)statsScript).TakeDamage(_damage);
+            ((EnemyStats)statsScript).TakeDamage(_color, _damage);
     }
 
     public float GetThawIncrement()

@@ -149,11 +149,11 @@ public class EnemyStats : MonoBehaviour
 
     #region EnemyFunctions
     //Our enemy is damaged
-    public void TakeDamage(float _damage = 1)
+    public void TakeDamage(Color _color, float _damage = 1)
     {
         if (damage > 0f)
         {
-            BlinkOnHit();
+            BlinkOnHit(_color);
             health -= _damage;
             if (health <= 0)
             {
@@ -203,11 +203,11 @@ public class EnemyStats : MonoBehaviour
     }
 
     //Color feedback on damage taken
-    public void BlinkOnHit()
+    public void BlinkOnHit(Color _color)
     {
         if (anim != null)
             anim.SetTrigger("On Hit");
-        enemyRender.material.color = Color.red;
+        enemyRender.material.color = _color;
     }
 
     public Renderer GetRenderer()

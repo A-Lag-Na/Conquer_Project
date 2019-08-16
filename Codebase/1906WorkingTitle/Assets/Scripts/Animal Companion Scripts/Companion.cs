@@ -197,7 +197,7 @@ public class Companion : MonoBehaviour
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {
                 if (target != null)
-                    target.GetComponent<EnemyStats>().TakeDamage();
+                    target.GetComponent<EnemyStats>().TakeDamage(Color.red);
                 hasAttacked = true;
                 lastTimeAttacked = Time.time;
             }

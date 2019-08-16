@@ -57,9 +57,9 @@ public class EnemyAI : MonoBehaviour
         {
             if (inLove && spawnScript.GetNumEnemies() > 1 && target == null && player != null)
                 SetTarget();
-            if(target.transform.position != null && player != null)
+            if(target != null && target.transform.position != null && player != null)
                 agent.SetDestination(target.transform.position);
-            if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
+            if (target != null && (agent.remainingDistance < agent.stoppingDistance || agent.speed <= 0))
             {
                 Vector3 targetPosition = target.transform.position;
                 Vector3 relativePosition = targetPosition - transform.position;
@@ -109,9 +109,7 @@ public class EnemyAI : MonoBehaviour
     {
         SetTarget();
         inLove = true;
-        gameObject.layer = 9;
         yield return new WaitForSeconds(5f);
-        gameObject.layer = 11;
         inLove = false;
         target = player;
     }

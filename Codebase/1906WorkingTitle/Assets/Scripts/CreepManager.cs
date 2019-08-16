@@ -50,7 +50,7 @@ public class CreepManager : MonoBehaviour
                         if ((player != null || enemy != null) && !isFireImmune)
                         {
                             con.TimerAdd("fire", 1);
-                            con.Damage(particleDamage);
+                            con.Damage(new Color(0.913f, 0.541f, 0.109f), particleDamage);
                         }
                         break;
                     }
@@ -69,7 +69,7 @@ public class CreepManager : MonoBehaviour
                         {
                             con.SubtractSpeed(0.006f);
                             con.TimerAdd("thaw", 1);
-                            con.Damage(particleDamage);
+                            con.Damage(new Color(0.360f, 0.952f, 0.960f), particleDamage);
                         }
                         break;
                     }

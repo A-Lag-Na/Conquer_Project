@@ -8,6 +8,7 @@ public class BulletSplit : MonoBehaviour
     [SerializeField] private float boltSpeed = 5;
     [SerializeField] private int numChildren = 0;
     [SerializeField] GameObject bolts = null;
+    private List<Vector3> EnemyPositions = null;
     private int layer = 0;
     #endregion
 
@@ -21,8 +22,8 @@ public class BulletSplit : MonoBehaviour
         string tag = collision.collider.tag;
         if (tag.Equals("Enemy"))
         {
-            List<Vector3> EnemyPositions = new List<Vector3>();
             GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+            EnemyPositions = new List<Vector3>();
             foreach (GameObject enemy in enemies)
                 EnemyPositions.Add(enemy.transform.position);
 
@@ -37,7 +38,7 @@ public class BulletSplit : MonoBehaviour
 
                 for (int i = 0; i < numChildren; i++)
                 {
-                    if (EnemyPositions.Count > 0 && EnemyPositions[i] != null)
+                    if (EnemyPositions.Count-1 >= i)
                     {
                         GameObject bolt = Instantiate(bolts, currentPosition, gameObject.transform.rotation);
                         Transform boltTransform = bolt.GetComponent<Transform>();
