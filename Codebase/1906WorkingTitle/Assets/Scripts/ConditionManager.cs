@@ -74,7 +74,7 @@ public class ConditionManager : MonoBehaviour
                         fireParticle.SetActive(true);
                     fireTimer--;
                     if (fireTimer % 60 == 0)
-                        Damage(new Color(0.913f, 0.541f, 0.109f), fireDamage);
+                        Damage(new Color(0.921f, 0.505f, 0f), fireDamage);
                 }
                 #endregion
                 #region Thawtimer

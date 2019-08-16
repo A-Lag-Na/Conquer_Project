@@ -9954,10 +9954,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 10
-  health: 10
-  damage: 3
-  attackRate: 0.5
-  bulletSpeed: 15
+  health: 25
+  damage: 4
+  attackRate: 1
+  bulletSpeed: 30
   isFireImmune: 0
   isIceImmune: 0
   isStunImmune: 0
@@ -9984,8 +9984,8 @@ MonoBehaviour:
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectilePos: {fileID: 3640597462570849471}
-  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   loveParticle: {fileID: 2100573482411656448}
+  fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
 --- !u!114 &5819966560183394840
 MonoBehaviour:
   m_ObjectHideFlags: 0
