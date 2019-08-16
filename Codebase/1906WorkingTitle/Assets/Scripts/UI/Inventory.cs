@@ -56,6 +56,12 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
+    #region Amount of Potions
+    public int GetNumPotions()
+    {
+        return amountOfPotions;
+    }
+
     #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
