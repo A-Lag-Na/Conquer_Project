@@ -60,23 +60,24 @@ public class TutorialManager : MonoBehaviour
         else if (popUpIndex == 2)
         {
             if (spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
-            {   
+            {
+                playerScript.LevelUp();
                 popUpIndex++;
+                playerScript.SetHealth(1);
+                pickup.SetActive(true);
             }
         }
         //Potion usage
         else if(popUpIndex == 3)
         {
-            pickup.SetActive(true);
-            if ()
+            if (Input.GetKeyDown(KeyCode.F) && inventoryScript.GetNumPotions() <= 0)
             {
-
+                popUpIndex++;
             }
         }
         //Activating the stats screen N
         else if (popUpIndex == 4)
-        {
-            playerScript.GainExperience(playerScript.GetNextLevelExperience());
+        { 
             if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
