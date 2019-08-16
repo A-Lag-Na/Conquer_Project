@@ -5,11 +5,12 @@ using UnityEngine;
 public class ChestScript : MonoBehaviour
 {
 
-     Animator chestAnim; //Animator for the chest;
-     GameObject player; //Player Object
-     Player playerScript;//Player Script
-     CapsuleCollider capsuleCollider; // Capsule Collider
-    
+    Animator chestAnim; //Animator for the chest;
+    GameObject player; //Player Object
+    Player playerScript;//Player Script
+    CapsuleCollider capsuleCollider; // Capsule Collider
+    GameObject chestParticles = null;
+
     // Use this for initialization
     void Awake()
     {
@@ -19,6 +20,12 @@ public class ChestScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
         capsuleCollider = GetComponent<CapsuleCollider>();
+    }
+
+    private void Start()
+    {
+        chestParticles = GetComponentInChildren<ParticleSystem>().gameObject;
+        chestParticles.SetActive(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,6 +41,14 @@ public class ChestScript : MonoBehaviour
             playerScript.AddCoins(seed);
             //Not allow the player to cash out the chest again
             capsuleCollider.enabled = false;
+            StartCoroutine(ShowParticle());
         }
+    }
+
+    IEnumerator ShowParticle()
+    {
+        chestParticles.SetActive(true);
+        yield return new WaitForSeconds(2);
+        chestParticles.SetActive(false);
     }
 }
