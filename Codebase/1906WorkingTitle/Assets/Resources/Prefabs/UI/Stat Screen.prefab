@@ -85,9 +85,9 @@ GameObject:
   - component: {fileID: 5399573448905081841}
   - component: {fileID: 5399573448905081844}
   - component: {fileID: 5399573448905081843}
+  - component: {fileID: 6439903625828082548}
   - component: {fileID: 5399573448905081842}
   - component: {fileID: 6618931139808512995}
-  - component: {fileID: 6439903625828082548}
   m_Layer: 5
   m_Name: Defense Button
   m_TagString: Untagged
@@ -152,6 +152,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &6439903625828082548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399573448905081840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
+  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &5399573448905081842
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -294,20 +308,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &6439903625828082548
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399573448905081840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &5399573448926979583
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,9 +479,9 @@ GameObject:
   - component: {fileID: 5399573448995872327}
   - component: {fileID: 5399573448995872378}
   - component: {fileID: 5399573448995872377}
+  - component: {fileID: 2318674440875690647}
   - component: {fileID: 5399573448995872376}
   - component: {fileID: 8699737468759888292}
-  - component: {fileID: 2318674440875690647}
   m_Layer: 5
   m_Name: Attack Damage Button
   m_TagString: Untagged
@@ -546,6 +546,20 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2318674440875690647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399573448995872326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
+  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &5399573448995872376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -688,20 +702,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &2318674440875690647
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399573448995872326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!1 &5399573448996810138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1458,9 +1458,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5399573450321852299}
   - component: {fileID: 5399573450321852302}
+  - component: {fileID: 520133834501469791}
   - component: {fileID: 5399573450321852301}
   - component: {fileID: 5399573450321852300}
-  - component: {fileID: 520133834501469791}
   - component: {fileID: 2449733363278532507}
   m_Layer: 5
   m_Name: Attack Speed Button
@@ -1497,6 +1497,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5399573450321852298}
   m_CullTransparentMesh: 0
+--- !u!114 &520133834501469791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5399573450321852298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
+  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!114 &5399573450321852301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1571,20 +1585,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &520133834501469791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5399573450321852298}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 368e28d00c9e4a242b9aa06837d528ca, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hover: {fileID: 8300000, guid: 2aacd173e3a17724ab64d2493ffd2b71, type: 3}
-  click: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
 --- !u!82 &2449733363278532507
 AudioSource:
   m_ObjectHideFlags: 0
