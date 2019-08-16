@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 3371395352039972693}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 3377534769466221441}
   - {fileID: 3377450521951344597}
@@ -130,10 +130,10 @@ MonoBehaviour:
   value: 10
   name: Health Potion
   sprite: {fileID: 21300000, guid: 76adcf4f8457f7943a57b3111757000f, type: 3}
-  potionType: 0
+  consumableType: 0
   floatModifier: 5
   intModifier: 5
-  potionEffect: {fileID: 0}
+  consumableEffect: {fileID: 0}
 --- !u!114 &580936018199728615
 MonoBehaviour:
   m_ObjectHideFlags: 0

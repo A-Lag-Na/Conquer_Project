@@ -5,7 +5,7 @@ using UnityEngine;
 public class DropBox : MonoBehaviour
 {
     public GameObject boxPiece = null;
-    private GameObject spawner = null;
+    public GameObject spawner = null;
     
     void Update()
     {
