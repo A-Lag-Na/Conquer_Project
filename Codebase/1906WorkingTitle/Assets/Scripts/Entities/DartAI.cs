@@ -4,54 +4,45 @@ using UnityEngine;
 
 public class DartAI : MonoBehaviour
 {
-
-    [SerializeField] private float attackRate = 0.0f;
-
-    private float bulletSpeed = 0.0f;
-    int bulletDamage = 0;
-
-    //If this enemy's attack behavior is enabled or not.
-    [SerializeField] bool attackEnabled = false;
-
-    //What projectile the enemy shoots
-    [SerializeField] GameObject projectile = null;
-    [SerializeField] GameObject projectilePos = null;
-
-    [SerializeField] AudioClip fire = null;
-
-    AudioSource source = null;
-
+    #region Variables
+    [SerializeField] private bool attackEnabled = false;
+    [SerializeField] private float attackRate = 0.7f;
+    [SerializeField] private float bulletSpeed = 10f;
+    [SerializeField] private int bulletDamage = 1;
     private bool isPaused = false;
 
-    // Start is called before the first frame update
+    [SerializeField] GameObject projectile = null;
+    [SerializeField] GameObject projectilePos = null;
+    [SerializeField] AudioClip fire = null;
+    AudioSource source = null;
+    #endregion
+
     void Start()
     {
-        attackRate = 0.7f;
-        bulletSpeed = 10;
-        bulletDamage = 1;
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
+    }
+
+    void Update()
+    {
+        if (!isPaused)
+            if (attackEnabled)
+                StartCoroutine(DartAttack());
     }
 
     IEnumerator DartAttack()
     {
         attackEnabled = false;
         GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
-        clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
+        CollisionScript cs = clone.GetComponent<CollisionScript>();
+        cs.bulletDamage = bulletDamage;
+        cs.SetOwner(gameObject);
         clone.gameObject.layer = 12;
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isPaused)
-            if (attackEnabled)
-                StartCoroutine(DartAttack());
     }
 
     #region Pause/Unpause
@@ -65,14 +56,15 @@ public class DartAI : MonoBehaviour
     }
     #endregion
 
+    #region AttackEnable
     public void DisableAttack()
     {
         StopAllCoroutines();
         attackEnabled = false;
     }
-
     public void EnableAttack()
     {
         attackEnabled = true;
     }
+    #endregion
 }

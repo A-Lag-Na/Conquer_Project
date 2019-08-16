@@ -5,11 +5,13 @@ using UnityEngine.AI;
 
 public class TurnerAI : MonoBehaviour
 {
-    CharacterController characterController = null;
-    Vector3 moveDirection = Vector3.zero;
+    #region Variables
+    private CharacterController characterController = null;
+    private Vector3 moveDirection = Vector3.zero;
     private bool paused = false;
-    float enemyY = 0.0f;
-    float lastTurned = 0.0f;
+    private float enemyY = 0.0f;
+    private float lastTurned = 0.0f;
+    #endregion
 
     private void Start()
     {
