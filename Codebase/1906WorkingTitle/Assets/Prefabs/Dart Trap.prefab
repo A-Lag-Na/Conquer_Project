@@ -197,8 +197,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d67fed464e8695e48a5c5d799873b3f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRate: 0
   attackEnabled: 0
+  attackRate: 0.7
+  bulletSpeed: 10
+  bulletDamage: 1
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectilePos: {fileID: 305934244615624428}

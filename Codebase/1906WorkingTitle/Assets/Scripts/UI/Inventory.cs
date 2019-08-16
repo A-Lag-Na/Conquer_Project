@@ -77,7 +77,8 @@ public class Inventory : MonoBehaviour
 
     public void AddConsumable(BaseItem _consumable)
     {
-        consumableList.AddLast((Consumable)_consumable);
+        BaseItem clone = _consumable;
+        consumableList.AddLast((Consumable)clone);
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
