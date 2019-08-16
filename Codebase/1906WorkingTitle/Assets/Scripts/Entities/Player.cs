@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private int playerCoinModifier = 1;
     private int bulletChoice = 1;
     Companion currentCompanion = null;
+    bool isAbleToDash = true;
     #endregion
 
     #region UnityComponents
@@ -103,6 +104,7 @@ public class Player : MonoBehaviour
 
         lastTimeFired = 0.0f;
         isDashing = false;
+        isAbleToDash = true;
         isRegenerating = false;
         bulletChoice = 1;
         deathAura.SetActive(false);
@@ -111,7 +113,7 @@ public class Player : MonoBehaviour
         con = GetComponent<ConditionManager>();
 
         gameOver = GameObject.FindGameObjectWithTag("GameOver");
-        if(gameOver != null)
+        if (gameOver != null)
         {
             gameOver.SetActive(false);
         }
@@ -154,14 +156,19 @@ public class Player : MonoBehaviour
                 #region PlayerMovement
 
                 // Move the Player GameObject when the WASD or Arrow Keys are pressed
-                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-                moveDirection *= playerMovementSpeed;
-                characterController.Move(moveDirection * Time.deltaTime);
+                if (isDashing == false)
+                {
+                    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+                    moveDirection *= playerMovementSpeed;
+                    characterController.Move(moveDirection * Time.deltaTime);
+                }
+                else
+                    characterController.Move(moveDirection / playerMovementSpeed);
 
 
                 // Player Dash if Spacebar is pressed
                 if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
-                    if (isDashing == false)
+                    if (isAbleToDash == true)
                         StartCoroutine(PlayerDash());
 
 
@@ -193,8 +200,6 @@ public class Player : MonoBehaviour
                 #endregion
             }
         }
-        if (Input.GetKeyDown(KeyCode.L))
-            save.Load();
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
@@ -245,7 +250,7 @@ public class Player : MonoBehaviour
             }
             if (clone != null)
             {
-                
+
                 clone.GetComponent<TrailRenderer>().time = .1125f;
                 collisionScript.SetOwner(gameObject);
                 collisionScript.bulletDamage = playerAttackDamage;
@@ -295,14 +300,16 @@ public class Player : MonoBehaviour
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(0.01f);
         isDashing = true;
+        isAbleToDash = false;
         gameObject.layer = 15;
-        characterController.Move(moveDirection);
-        yield return new WaitForSeconds(0.1f);
-        gameObject.layer = 9;
-        yield return new WaitForSeconds(0.3f);
-        dashTrail.SetActive(false);
-        yield return new WaitForSeconds(0.6f);
+        //characterController.Move(moveDirection);
+        yield return new WaitForSeconds(0.2f);
         isDashing = false;
+        gameObject.layer = 9;
+        yield return new WaitForSeconds(0.1f);
+        dashTrail.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        isAbleToDash = true;
     }
 
     public void BlinkOnHit(Color _color)
@@ -314,7 +321,6 @@ public class Player : MonoBehaviour
     public void Death()
     {
         animator.SetBool("Death", true);
-        //Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
         gameOver.SetActive(true);
         gameObject.SetActive(false);
     }
