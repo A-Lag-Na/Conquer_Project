@@ -158,16 +158,31 @@ public class EnemyStats : MonoBehaviour
             health -= _damage;
             if (health <= 0)
             {
-                if (anim != null)
-                    anim.SetBool("Dead", true);
-                Kill();
+                StartCoroutine(DieAnim());
             }
         }
     }
 
+    //Coroutine for Enemy death 
+    IEnumerator DieAnim()
+    {
+        if (anim != null)
+        {
+             anim.SetBool("Dead", true);
+             if (gameObject.name == "Wasp")
+             {
+                GetComponent<CharacterController>().gameObject.SetActive(false);
+                GetComponent<CapsuleCollider>().gameObject.SetActive(false);
+             }
+            yield return new WaitForSeconds(5);
+        }
+     
+        Kill();
+    }
+
     //Kill function
     public void Kill()
-    {
+    { 
         if (CompareTag("BulletHell Enemy"))
             Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
         if (pickUp != null)
@@ -208,7 +223,13 @@ public class EnemyStats : MonoBehaviour
     public void BlinkOnHit(Color _color)
     {
         if (anim != null)
-            anim.SetTrigger("On Hit");
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                 if(anim.GetParameter(i).name == "On Hit")
+                    anim.SetTrigger("On Hit");
+            }
+        }
         enemyRender.material.color = _color;
     }
 
