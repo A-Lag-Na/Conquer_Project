@@ -9,7 +9,7 @@ public class EnemyStats : MonoBehaviour
     //How many points the enemy is worth to the spawner, and how much experience it grants on kill.
     [SerializeField] private int enemyPoints = 1;
 
-    //How many hits it takes to kill the enemy.
+    //How much damage it takes to kill the enemy.
     [SerializeField] private float health = 2;
 
     //How much damage the enemy deals on hit.
@@ -18,13 +18,15 @@ public class EnemyStats : MonoBehaviour
     //Amount of seconds between attacks.
     [SerializeField] private float attackRate = 1;
 
-    //Speed at whichc bullets travel
+    //Speed at which this enemies bullets travel
     [SerializeField] private float bulletSpeed = 10;
 
+    //Condition immunities
     public bool isFireImmune = false;
     public bool isIceImmune = false;
     public bool isStunImmune = false;
-    //Has this enemy been spawned externally? (through splitter or spawner enemy)
+
+    //Has this enemy been spawned externally? (through splitter enemy)
     private bool isChild = false;
     #endregion
 
@@ -33,12 +35,14 @@ public class EnemyStats : MonoBehaviour
     //Pickup the enemy will drop
     [SerializeField] GameObject pickUp = null;
 
+    //Children enemies that this enemy spawns on death
     [SerializeField] GameObject childEnemy = null;
 
     //Need this to notify the spawner to add new enemies on split.
     [SerializeField] GameObject spawnerObject = null;
     SpawnScript spawnerScript = null;
 
+    //How many children this enemy spawns on death
     public int children = 0;
 
     //Enemy's color and renderer
@@ -60,10 +64,7 @@ public class EnemyStats : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
         if(GetComponent<Animator>() != null)
-        {
             anim = GetComponent<Animator>();
-        }
-
         if (spawnerObject != null)
             spawnerScript = spawnerObject.GetComponent<SpawnScript>();
     }
@@ -167,6 +168,8 @@ public class EnemyStats : MonoBehaviour
     //Kill function
     public void Kill()
     {
+        if (CompareTag("BulletHell Enemy"))
+            Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
         if (pickUp != null)
         {
             Vector3 vec = GetComponent<Transform>().position;
@@ -179,11 +182,10 @@ public class EnemyStats : MonoBehaviour
             spawnerScript.remainingChildren -= 1;
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
-        if(CompareTag("BulletHell Enemy"))
-            Death();
         Destroy(gameObject);
     }
 
+    //Generate children enemies.
     public void Split(int children)
     {
         for (int i = 0; i < children; i++)

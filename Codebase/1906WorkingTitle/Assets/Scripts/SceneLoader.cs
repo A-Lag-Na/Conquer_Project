@@ -6,12 +6,11 @@ using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-    Text text;
-    Slider progress;
-    bool restart;
-    float delay;
-
-    // Start is called before the first frame update
+    private Text text;
+    private Slider progress;
+    private bool restart;
+    private float delay;
+    
     void Start()
     {
         text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
@@ -20,8 +19,7 @@ public class SceneLoader : MonoBehaviour
         delay = 0.55f;
         StartCoroutine(LoadNewScene(0));
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (restart)

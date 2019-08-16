@@ -6,13 +6,10 @@ using UnityEngine.AI;
 public class BulletHellEnemy : MonoBehaviour
 {
     #region SerializeFields
-    [SerializeField] private float attackRate = 1;
-
-    [SerializeField] private int bulletSpeed = 2;
-
     //What projectile the enemy shoots
     [SerializeField] private GameObject projectile = null;
-
+    [SerializeField] private float attackRate = 1;
+    [SerializeField] private int bulletSpeed = 2;    
     [SerializeField] private AudioClip fire = null;
     #endregion
 
@@ -20,7 +17,7 @@ public class BulletHellEnemy : MonoBehaviour
     private int rotationSpeed = 1;
     private float lastTimeFired = 0.0f;
     private bool isPaused = false;
-    public bool isStunned = false;
+    private bool isStunned = false;
     private int bulletDamage = 1;
     private float timeMade = 0.0f;
     #endregion
@@ -35,19 +32,17 @@ public class BulletHellEnemy : MonoBehaviour
     {
         timeMade = Time.time;
     }
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        bulletDamage = GetComponent<EnemyStats>().GetDamage();
         player = GameObject.FindGameObjectWithTag("Player");
+        agent = GetComponent<NavMeshAgent>();
+        bulletDamage = GetComponent<EnemyStats>().GetDamage();        
         source = GetComponentInParent<AudioSource>();
         source.enabled = true;
         rotationSpeed = 120;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (!isPaused & !isStunned)
@@ -62,7 +57,6 @@ public class BulletHellEnemy : MonoBehaviour
     #region EnemyFunctions
     public void ShootBullet()
     {
-        //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + attackRate)
         {
             if (Time.time >= timeMade + 15)

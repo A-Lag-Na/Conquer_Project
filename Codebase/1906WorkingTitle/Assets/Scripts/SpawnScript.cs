@@ -5,27 +5,29 @@ using UnityEngine;
 public class SpawnScript : MonoBehaviour
 {
     #region SpawnerStats
-    //Whether the spawner is spawning or not.
+    #region SerializedFields
+    //Whether the spawner can spawn or not.
     [SerializeField] private bool spawnEnabled = true;
     [SerializeField] private bool multiSpawnpoint = false;
-
     [SerializeField] List<GameObject> spawnpoints = new List<GameObject>();
 
     //List of different enemies the spawner can choose to spawn.
     [SerializeField] private List<GameObject> enemies = null;
-    private List<EnemyStats> enemiesClone;
 
     //list of doors.
     [SerializeField] private List<GameObject> doors = null;
 
     //How many points worth of enemies the spawner can spawn
     [SerializeField] private int points = 0;
+    #endregion
+
+    #region Other
+    private List<EnemyStats> enemiesClone;
     private int pointsClone;
-
-    //Number of seconds between spawn.
-    public float timer = 3;
-
     private bool spawnAgain = true;
+
+    //Number of seconds between spawns.
+    public float timer = 3;
 
     //Tracks number of externally spawned enemies
     public int remainingChildren;
@@ -33,8 +35,8 @@ public class SpawnScript : MonoBehaviour
     //List of enemies spawned by the spawner.
     public List<GameObject> spawnedEnemies;
     #endregion
-
-    // Start is called before the first frame update
+    #endregion
+    
     void Start()
     {
         pointsClone = points;
@@ -42,8 +44,7 @@ public class SpawnScript : MonoBehaviour
         for (int i = 0; i < enemies.Count; i++)
             enemiesClone.Add(enemies[i].GetComponent<EnemyStats>());
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (spawnEnabled && spawnAgain)
@@ -91,22 +92,17 @@ public class SpawnScript : MonoBehaviour
 
             //Adds children to remainingchildren counter
             remainingChildren += enemyCloneStats.children;
-
         }
 
         yield return new WaitForSeconds(timer);
         spawnAgain = true;
     }
 
-
     #region SpawnerFunctions
-
-    //Get-setters for enabled
     public bool GetEnabled()
     {
         return spawnEnabled;
     }
-
     public void SetEnabled(bool _enable)
     {
         spawnEnabled = _enable;
@@ -132,13 +128,6 @@ public class SpawnScript : MonoBehaviour
                 if(childs.gameObject.GetComponent<DartAI>() != null)
                         childs.gameObject.GetComponent<DartAI>().EnableAttack();
         }
-    }
-
-    //Function that changes the locks of some doors but not others
-    public void SetDoorRange(bool _lock, int _lower, int _upper)
-    {
-        for (int i = _lower; i < _upper; i++)
-            doors[i].SetActive(_lock);
     }
 
     //Resets the spawner
@@ -169,6 +158,7 @@ public class SpawnScript : MonoBehaviour
     {
         remainingChildren++;
     }
+
     public void SubtractRemainingChild()
     {
         remainingChildren--;
