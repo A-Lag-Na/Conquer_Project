@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class IceSpell : MonoBehaviour
 {
-    Player player;
-    // Start is called before the first frame update
+    Player player = null;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         player.SetLastTimeFired(Time.time);
