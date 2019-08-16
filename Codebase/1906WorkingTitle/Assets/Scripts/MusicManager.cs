@@ -11,6 +11,8 @@ public class MusicManager : MonoBehaviour
     [SerializeField] AudioSource mountainsMusicSource = null;
     [SerializeField] AudioSource castleMusicSource = null;
     [SerializeField] AudioSource bossMusicSource = null;
+    GameObject gameOverScreen = null;
+    bool isDead = false;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,13 @@ public class MusicManager : MonoBehaviour
         desertMusicSource.enabled = false;
         mountainsMusicSource.enabled = false;
         castleMusicSource.enabled = false;
+        bossMusicSource.enabled = false;
+        isDead = true;
+    }
+
+    private void Awake()
+    {
+        gameOverScreen = GameObject.FindGameObjectWithTag("GameOver");
     }
 
     // Update is called once per frame
@@ -79,6 +88,22 @@ public class MusicManager : MonoBehaviour
             mountainsMusicSource.enabled = false;
             castleMusicSource.enabled = false;
             bossMusicSource.enabled = true;
+        }
+        if (gameOverScreen.activeInHierarchy)
+            Death();
+    }
+
+    public void Death()
+    {
+        if (isDead)
+        {
+            townMusicSource.volume /= 4;
+            forestMusicSource.volume /= 4;
+            desertMusicSource.volume /= 4;
+            mountainsMusicSource.volume /= 4;
+            castleMusicSource.volume /= 4;
+            bossMusicSource.volume /= 4;
+            isDead = false;
         }
     }
 }
