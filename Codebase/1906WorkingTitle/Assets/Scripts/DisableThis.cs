@@ -4,17 +4,29 @@ using UnityEngine;
 
 public class DisableThis : MonoBehaviour
 {
-    public float _time;
+    public uint time;
 
-    IEnumerator Timer(float _time)
+    private void Update()
     {
-        yield return new WaitForSeconds(_time);
-        gameObject.SetActive(false);
+        if(time <= 0)
+        {
+            time += 180;
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            time--;
+        }
     }
 
-    private void OnEnable()
+    public void AddTime(uint _time)
     {
-        StartCoroutine(Timer(_time));
+        time += _time;
+    }
+
+    public float GetTime()
+    {
+        return time;
     }
 }
 

@@ -5,13 +5,11 @@ using UnityEngine;
 public class CreepManager : MonoBehaviour
 {
     #region CreepManagerProperties
-    Player player = null;
-    EnemyStats enemy = null;
-
-    bool isFireImmune = false;
-    bool isIceImmune = false;
-
-    [SerializeField] float particleDamage = 0;
+    [SerializeField] private float particleDamage = 0;
+    private Player player = null;
+    private EnemyStats enemy = null;
+    private bool isFireImmune = false;
+    private bool isIceImmune = false;
     #endregion
 
     #region CreepManagerFunctions
@@ -19,9 +17,6 @@ public class CreepManager : MonoBehaviour
     {
         string colliderTag = collide.gameObject.tag;
         ConditionManager con = collide.gameObject.GetComponentInParent<ConditionManager>();
-
-        //Burn sound effect
-        //audioSource.PlayOneShot(burn);
 
         if (colliderTag == "Player")
         {
@@ -50,7 +45,7 @@ public class CreepManager : MonoBehaviour
                         if ((player != null || enemy != null) && !isFireImmune)
                         {
                             con.TimerAdd("fire", 1);
-                            con.Damage(particleDamage);
+                            con.Damage(new Color(0.913f, 0.541f, 0.109f), particleDamage);
                         }
                         break;
                     }
@@ -69,7 +64,7 @@ public class CreepManager : MonoBehaviour
                         {
                             con.SubtractSpeed(0.006f);
                             con.TimerAdd("thaw", 1);
-                            con.Damage(particleDamage);
+                            con.Damage(new Color(0.360f, 0.952f, 0.960f), particleDamage);
                         }
                         break;
                     }

@@ -7,33 +7,27 @@ public class EnemyAI : MonoBehaviour
 {
     #region EnemyStats
     [SerializeField] private float attackRate = 0.0f;
-    private float bulletSpeed = 0.0f;
-    int bulletDamage = 0;
-    public bool isStunned = false;
+    [SerializeField] private float bulletSpeed = 0.0f;
+    [SerializeField] int bulletDamage = 0;
+    private bool isStunned = false;
     private bool isPaused, inLove = false;
-    bool attackEnabled = true;
+    private bool attackEnabled = true;
     #endregion
 
-    //If this enemy's attack behavior is enabled or not.
-
     #region UnityComponents
-    //What projectile the enemy shoots
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
-
     [SerializeField] AudioClip fire = null;
 
     EnemyStats enemyStats = null;
     SpawnScript spawnScript = null;
-
     Animator anim = null;
     NavMeshAgent agent = null;
     GameObject player = null;
     GameObject target = null;
     AudioSource source = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         anim = GetComponent<Animator>();
@@ -49,17 +43,21 @@ public class EnemyAI : MonoBehaviour
         source.enabled = true;
         target = player;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (!isPaused && !isStunned)
         {
+            //If charmed and there are enemies left to fight, SetTarget to new enemy
             if (inLove && spawnScript.GetNumEnemies() > 1 && target == null && player != null)
                 SetTarget();
-            if(target.transform.position != null && player != null)
+
+            //If there is a target, move towards their position.
+            if(target != null && target.transform.position != null && player != null)
                 agent.SetDestination(target.transform.position);
-            if (agent.remainingDistance < agent.stoppingDistance || GetComponent<NavMeshAgent>().speed <= 0)
+
+            //If is within stopping distance of the target, just rotate towards them.
+            if (target != null && (agent.remainingDistance < agent.stoppingDistance || agent.speed <= 0))
             {
                 Vector3 targetPosition = target.transform.position;
                 Vector3 relativePosition = targetPosition - transform.position;
@@ -95,27 +93,29 @@ public class EnemyAI : MonoBehaviour
         isPaused = false;
     }
 
+    //Set enemy to stunned
     public void Stun()
     {
         isStunned = true;
     }
 
+    //Set enemy to not stunned
     public void Unstun()
     {
         isStunned = false;
     }
 
+    //Manages charmed condition
     public IEnumerator FallInLove(float time)
     {
         SetTarget();
         inLove = true;
-        gameObject.layer = 9;
         yield return new WaitForSeconds(5f);
-        gameObject.layer = 11;
         inLove = false;
         target = player;
     }
 
+    //Finds a enemy for this charmed enemy to attack.
     private void SetTarget()
     {
         List<GameObject> gameObjectList = new List<GameObject>();

@@ -32,7 +32,7 @@ public class SpikeTrap : MonoBehaviour
         spikeTrapAnim.SetTrigger("open");
         if (onTrap)
         {
-            playerScript.TakeDamage(5);
+            playerScript.TakeDamage(Color.red, 5);
         }
         //wait 2 seconds;
         yield return new WaitForSeconds(2);

@@ -6,25 +6,27 @@ using UnityEngine.AI;
 public class CollisionScript : MonoBehaviour
 {
     #region CollsionScriptProperties
-    private AudioSource audioSource = null;
-    private AudioClip hurt = null;
-    //public AudioClip burn;
-    public float bulletDamage = 0.0f;
-    [SerializeField] GameObject sparks = null;
-    [SerializeField] GameObject blood = null;
+    
     private bool isIceImmune = false;
     private bool isFireImmune = false;
     private bool isStunImmune = false;
+    private Color hitColor = Color.red;
+    public float bulletDamage = 0.0f;
+    #endregion
+
+    #region Unity Components
+    [SerializeField] GameObject sparks = null;
+    [SerializeField] GameObject blood = null;
+    [SerializeField] GameObject fireCreep = null;
+    [SerializeField] GameObject iceCreep = null;
+    [SerializeField] GameObject owner = null;
 
     private Player player = null;
     private EnemyStats enemy = null;
     private EnemyAI ai = null;
     private NavMeshAgent nav = null;
-
-    [SerializeField] GameObject fireCreep = null;
-    [SerializeField] GameObject iceCreep = null;
-
-    [SerializeField] GameObject owner = null;
+    private AudioSource audioSource = null;
+    private AudioClip hurt = null;
     #endregion
 
     #region CollisionScriptFunctions
@@ -34,7 +36,6 @@ public class CollisionScript : MonoBehaviour
         if (target != owner)
         {
             nav = target.GetComponent<NavMeshAgent>();
-
             audioSource = target.GetComponent<AudioSource>();
             if (audioSource != null)
             {
@@ -84,7 +85,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isFireImmune)
                                 {
-                                    DamageCheck();
+                                    DamageCheck(hitColor);
                                     //Burn sound effect
                                     //audioSource.PlayOneShot(burn);
                                     con.TimerAdd("fire", 179);
@@ -95,7 +96,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isIceImmune)
                                 {
-                                    DamageCheck();
+                                    DamageCheck(hitColor);
                                     con.SubtractSpeed(0.6f);
                                     con.TimerAdd("thaw", 90);
                                 }
@@ -105,7 +106,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isStunImmune)
                                 {
-                                    DamageCheck();
+                                    DamageCheck(hitColor);
                                     if (target.CompareTag("BulletHell Enemy"))
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
@@ -134,28 +135,29 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (ai != null)
                                 {
-                                    if(target.CompareTag("Enemy") && ai != null)
+                                    if (target.CompareTag("Enemy") && ai != null)
+                                    {
                                         con.TimerAdd("love", 5);
+                                        DamageCheck(hitColor);
+                                    }
                                 }
                                 break;
                             }
                         case "FirePot":
                             {
-                                DamageCheck();
                                 Instantiate(sparks, transform.position, sparks.transform.rotation);
                                 Instantiate(fireCreep, transform.position, fireCreep.transform.rotation);
                                 break;
                             }
                         case "IcePot":
                             {
-                                DamageCheck();
                                 Instantiate(sparks, transform.position, sparks.transform.rotation);
                                 Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                                 break;
                             }
                         case "Hex":
                             {
-                                DamageCheck();
+                                DamageCheck(hitColor);
                                 if (!isFireImmune)
                                 {
                                     //Burn sound effect
@@ -190,7 +192,7 @@ public class CollisionScript : MonoBehaviour
 
                         default:
                             {
-                                DamageCheck();
+                                DamageCheck(Color.red);
                                 break;
                             }
                     }
@@ -200,16 +202,16 @@ public class CollisionScript : MonoBehaviour
         }
     }
 
-    private void DamageCheck()
+    private void DamageCheck(Color _color)
     {
         if (player != null)
         {
-            player.TakeDamage(bulletDamage);
+            player.TakeDamage(_color, bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
         if (enemy != null)
         {
-            enemy.TakeDamage(bulletDamage);
+            enemy.TakeDamage(_color, bulletDamage);
             Instantiate(blood, transform.position, blood.transform.rotation);
         }
     }
@@ -222,6 +224,11 @@ public class CollisionScript : MonoBehaviour
     public void SetOwner(GameObject _owner)
     {
         owner = _owner;
+    }
+
+    public void SetHitColor(Color _color)
+    {
+        hitColor = _color;
     }
     #endregion
 }

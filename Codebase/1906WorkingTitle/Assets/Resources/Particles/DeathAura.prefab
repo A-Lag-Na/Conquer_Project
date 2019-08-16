@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3031127060560052265}
   - component: {fileID: 9072134817292618610}
   - component: {fileID: 8953555929006894276}
+  - component: {fileID: 344266142393009322}
   m_Layer: 17
   m_Name: DeathAura
   m_TagString: Aura
@@ -4766,3 +4767,16 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &344266142393009322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8317217325041530158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32a16cc815f465641b49ebe74fd5603e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  time: 180

@@ -6,24 +6,27 @@ public class Companion : MonoBehaviour
 {
     #region CompanionStats
     int bulletDamage = 0;
-    GameObject player = null;
-    GameObject target = null;
-    Player playerStats = null;
     Vector3 animalVelocity = Vector3.zero;
     Vector3 playerPositionOffset = Vector3.zero;
     public bool isFollowing = false;
-    SphereCollider animalCollider = null;
-    Inventory playerInventory = null;
-    Pickup pickup = null;
     float lastTimeAttacked = 0.0f;
     bool hasAttacked = false;
     bool canAttack = true;
+    float previousExp = 0.0f;
+    #endregion
+
+    #region Unity Components
+    GameObject player = null;
+    GameObject target = null;
+    Player playerStats = null;
     [SerializeField] GameObject projectile = null;
     [SerializeField] GameObject projectilePos = null;
     [SerializeField] AudioClip fire = null;
     AudioSource source = null;
     [SerializeField] GameObject potion = null;
-    float previousExp = 0.0f;
+    SphereCollider animalCollider = null;
+    Inventory playerInventory = null;
+    Pickup pickup = null;
     #endregion
 
     // Start is called before the first frame update
@@ -39,6 +42,7 @@ public class Companion : MonoBehaviour
         {
             source = GetComponent<AudioSource>();
             source.enabled = true;
+            canAttack = true;
         }
     }
 
@@ -56,7 +60,7 @@ public class Companion : MonoBehaviour
             rotation.z = 0.0f;
             // Change the companion's tranform's rotation to the rotation Quaternion
             transform.rotation = rotation;
-            if (name == "Health Regen Companion" && playerStats.GetisRegenerating() == false)
+            if (name == "Health Regen Companion" && playerStats.GetIsRegenerating() == false)
                 StartCoroutine(playerStats.HealthRegen());
             else if (name == "Item Grabber Companion")
             {
@@ -165,7 +169,11 @@ public class Companion : MonoBehaviour
         else if (name == "Fire Resist Companion")
             playerStats.isFireImmune = false;
         else if (name == "Health Regen Companion")
+        {
             playerStats.ModifyHealth(-10);
+            if (playerStats.GetHealth() > playerStats.GetMaxHealth())
+                playerStats.SetHealth(playerStats.GetMaxHealth());
+        }
         else if (name == "Ice Resist Companion")
             playerStats.isIceImmune = false;
         else if (name == "Item Grabber Companion")
@@ -192,7 +200,7 @@ public class Companion : MonoBehaviour
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {
                 if (target != null)
-                    target.GetComponent<EnemyStats>().TakeDamage();
+                    target.GetComponent<EnemyStats>().TakeDamage(Color.red);
                 hasAttacked = true;
                 lastTimeAttacked = Time.time;
             }
@@ -201,7 +209,7 @@ public class Companion : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
-        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectile.transform.rotation);
+        GameObject clone = Instantiate(projectile, projectilePos.transform.position, projectilePos.transform.rotation);
         clone.GetComponent<CollisionScript>().bulletDamage = bulletDamage;
         clone.gameObject.layer = 10;
         clone.SetActive(true);

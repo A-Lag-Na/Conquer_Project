@@ -86,7 +86,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3515849231724748062}
-  - component: {fileID: 3515849231724748061}
   - component: {fileID: 3515849231724748058}
   - component: {fileID: 3515849231724748059}
   - component: {fileID: 3515849231724748056}
@@ -94,6 +93,7 @@ GameObject:
   - component: {fileID: 3515849231724748033}
   - component: {fileID: 3515849231724748035}
   - component: {fileID: 3515849231724748060}
+  - component: {fileID: 719435841317660331}
   m_Layer: 11
   m_Name: Turner
   m_TagString: Enemy
@@ -118,19 +118,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &3515849231724748061
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3515849231724748057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &3515849231724748058
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -145,7 +132,7 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 126
   m_CollisionDetection: 0
 --- !u!143 &3515849231724748059
 CharacterController:
@@ -159,11 +146,11 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 0.5
-  m_SlopeLimit: 45
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
+  m_Radius: 0
+  m_SlopeLimit: 0
+  m_StepOffset: 0
+  m_SkinWidth: 0.0001
+  m_MinMoveDistance: 0
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &3515849231724748056
 MonoBehaviour:
@@ -190,7 +177,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 1
-  health: 2
+  health: 1
   damage: 2
   attackRate: 1
   bulletSpeed: 10
@@ -337,6 +324,20 @@ MonoBehaviour:
   thawIncrement: 0.05
   fireParticle: {fileID: 676603630490754251}
   iceParticle: {fileID: 2946079569270823399}
+--- !u!136 &719435841317660331
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3515849231724748057}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &3515849231793573071
 PrefabInstance:
   m_ObjectHideFlags: 0

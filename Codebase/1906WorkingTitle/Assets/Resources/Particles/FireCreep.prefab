@@ -397,7 +397,7 @@ ParticleSystem:
     startSizeY:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -660,8 +660,8 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     randomizeRotationDirection: 0
-    maxNumParticles: 100
-    size3D: 1
+    maxNumParticles: 80
+    size3D: 0
     rotation3D: 0
     gravityModifier:
       serializedVersion: 2
@@ -719,15 +719,15 @@ ParticleSystem:
   ShapeModule:
     serializedVersion: 6
     enabled: 1
-    type: 0
+    type: 10
     angle: 25
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
     m_Position: {x: 0, y: 0, z: 0}
-    m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 1, y: 1, z: 1}
+    m_Rotation: {x: 90, y: 0, z: 0}
+    m_Scale: {x: 1, y: 1, z: 0}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -3614,9 +3614,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3792,7 +3792,7 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 257
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
@@ -4775,6 +4775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  particleDamage: 0
 --- !u!1001 &6576097857926753712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4789,28 +4790,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
-      propertyPath: m_TagString
-      value: FirePot
+      propertyPath: m_Layer
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
-      propertyPath: m_Layer
-      value: 14
+      propertyPath: m_TagString
+      value: FirePot
       objectReference: {fileID: 0}
     - target: {fileID: 4547882303786511871, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.75
+      value: 10.76
       objectReference: {fileID: 0}
     - target: {fileID: 4547882303786511871, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -6.39
+      value: -7.49
       objectReference: {fileID: 0}
     - target: {fileID: 4547882303786511871, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.01
+      value: 5.42
       objectReference: {fileID: 0}
     - target: {fileID: 4547882303786511871, guid: b835f69537dc0534e92fdf75f7f4c014,
         type: 3}
@@ -4852,14 +4853,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
-      propertyPath: fireCreep
-      value: 
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
-    - {fileID: 1114702312, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
-    - {fileID: 1844844462920280700, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
 --- !u!1 &498315632295467297 stripped
 GameObject:

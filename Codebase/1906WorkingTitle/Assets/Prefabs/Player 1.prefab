@@ -4861,10 +4861,11 @@ MonoBehaviour:
   isStunImmune: 0
   isStunned: 0
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
-  crosshairs: {fileID: 2800000, guid: a36edb871ebe51b4e92d1058f4bff961, type: 3}
+  crosshairs: {fileID: 2800000, guid: e172a6b57ccab9b4dacfe9aab123543e, type: 3}
   mainUI: {fileID: 0}
   deathAura: {fileID: 1108498970550749515}
   iceSpell: {fileID: 6187281563759390062}
+  gameOver: {fileID: 0}
   projectile0: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectile1: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
@@ -5289,7 +5290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleDamage: 0
+  particleDamage: 0.3
 --- !u!1 &1207218610028428235
 GameObject:
   m_ObjectHideFlags: 0
@@ -6303,7 +6304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8477406419875487616}
   m_LocalRotation: {x: -0, y: -0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.039, y: 1.539, z: 1.423}
+  m_LocalPosition: {x: 0.039, y: 1.31, z: 0.48}
   m_LocalScale: {x: 0.10000005, y: 0.099999994, z: 0.10000005}
   m_Children: []
   m_Father: {fileID: 3521666438964514095}
@@ -6504,11 +6505,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6328421150536088941, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
         type: 3}
@@ -6867,11 +6863,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8317217325041530158, guid: f845679bd1374be4aa923173f94b349e,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 8795769098935091346, guid: f845679bd1374be4aa923173f94b349e,
         type: 3}

@@ -12,11 +12,13 @@ public class Inventory : MonoBehaviour
     [SerializeField] LinkedListNode<Consumable> consumableNode = null;
     [SerializeField] int amountOfPotions = 0;
     Player player = null;
+    ConditionManager con = null;
     #endregion
 
     private void Start()
     {
         player = GetComponentInParent<Player>();
+        con = player.GetComponent<ConditionManager>();
         weaponNode = weaponList.First;
         consumableNode = consumableList.First;
     }
@@ -157,11 +159,13 @@ public class Inventory : MonoBehaviour
                         break;
 
                     case "Movement Speed Potion":
-                        player.ModifySpeed(consumableNode.Value.GetFloatModifier());
+                        con.AddSpeed(consumableNode.Value.GetFloatModifier());
                         float floatModValue = consumableNode.Value.GetFloatModifier();
                         RemoveConsumable();
                         yield return new WaitForSeconds(6f);
-                        player.ModifySpeed(-1 * floatModValue);
+                        float maxSpeed = con.GetMaxSpeed();
+                        if(con.GetSpeed() > maxSpeed)
+                            con.SetSpeed(maxSpeed);
                         break;
                     case "Death Aura":
                         player.EnableDeathAura();

@@ -119,10 +119,12 @@ public class SpawnScript : MonoBehaviour
             doors[i].SetActive(_lock);
         if (!_lock)
         {
+            CameraTrigger ct = GetComponentInParent<CameraTrigger>();
             foreach (Transform child in transform.parent)
                     if(child.gameObject.GetComponent<DartAI>() != null)
                         child.gameObject.GetComponent<DartAI>().DisableAttack();
-            GetComponentInParent<CameraTrigger>().DisableRoom();
+            if(ct != null)
+                ct.DisableRoom();
         }
         else if (_lock)
         {

@@ -26,6 +26,9 @@ TagManager:
   - Love Bullet
   - FireBall
   - BoxPiece
+  - Fire Particle
+  - Ice Particle
+  - GameOver
   layers:
   - Default
   - TransparentFX
@@ -44,12 +47,12 @@ TagManager:
   - Creep
   - Dash
   - Trap
-  - 
+  - Spell
   - 
   - 
   - 
   - Companion
-  - 
+  - Decoration
   - 
   - 
   - 

@@ -10,6 +10,8 @@ public class VolumeControl : MonoBehaviour
     [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume = 0.0f;
     Slider masterSlider = null, musicSlider = null, sfxSlider = null;
     [SerializeField] AudioMixer musicMixer = null, sfxMixer = null;
+    [SerializeField] AudioSource soundFX = null;
+    AudioClip testSound = null;
     #endregion
 
     // Start is called before the first frame update
@@ -26,11 +28,18 @@ public class VolumeControl : MonoBehaviour
         masterSlider.value = masterVolume;
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
+
+        testSound = Resources.Load<AudioClip>("SFX/Goose");
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(sfxVolume != sfxSlider.value)
+        {
+            soundFX.PlayOneShot(testSound);
+        }
+
         masterVolume = masterSlider.value;
         musicVolume = musicSlider.value;
         sfxVolume = sfxSlider.value;

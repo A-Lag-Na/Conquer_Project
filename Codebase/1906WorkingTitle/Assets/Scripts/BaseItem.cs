@@ -13,7 +13,6 @@ public class BaseItem : MonoBehaviour
     #endregion
 
     #region BaseFunctions
-
     #region Gets
     public Type GetItemType()
     {
@@ -37,8 +36,8 @@ public class BaseItem : MonoBehaviour
     {
         return name;
     }
-
     #endregion
+
     #region Sets
     protected void SetValue(int _value)
     {
@@ -55,6 +54,5 @@ public class BaseItem : MonoBehaviour
         name = _name;
     }
     #endregion
-
     #endregion
 }

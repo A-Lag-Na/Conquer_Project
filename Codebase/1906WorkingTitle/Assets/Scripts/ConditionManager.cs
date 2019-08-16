@@ -6,30 +6,30 @@ using UnityEngine.AI;
 public class ConditionManager : MonoBehaviour
 {
     #region ConditionManagerProperties
-    [SerializeField] int fireTimer = 0;
-    [SerializeField] int thawTimer = 0;
+    #region Fields
+    //thawIncrement: How much the player's  movement speed increases on a thaw tick
+    [SerializeField] private float thawIncrement = 0.1f;
+    [SerializeField] private int fireTimer = 0;
+    [SerializeField] private int thawTimer = 0;
+    private float fireDamage = 1.0f;
+    private float auraDamage = 0.1f;
     private int stunTimer = 0;
     private int auraTimer = 0;
-
     private bool isPlayer = false;
-    private Component statsScript = null;
-    private Component aiScript = null;
-
-    private Renderer enemyRender = null;
     private float speed = 0.0f;
     private float maxSpeed = 0.0f;
     private float minFrozenSpeed = 0.0f;
-
-    //thawIncrement: How much the player's  movement speed increases on a thaw tick
-    [SerializeField] float thawIncrement = 0.0f;
-    private float fireDamage = 0.0f;
-    private float auraDamage = 0.0f;
-
-    [SerializeField] GameObject fireParticle = null;
-    [SerializeField] GameObject iceParticle = null;
-
     private bool isPaused = false;
     #endregion
+
+    #region Unity Components
+    private Component statsScript = null;
+    private Component aiScript = null;
+    private Renderer enemyRender = null;
+    [SerializeField] private GameObject fireParticle = null;
+    [SerializeField] private GameObject iceParticle = null;
+    #endregion
+    #endregion 
 
     public void Start()
     {
@@ -73,7 +73,7 @@ public class ConditionManager : MonoBehaviour
                         fireParticle.SetActive(true);
                     fireTimer--;
                     if (fireTimer % 60 == 0)
-                        Damage(fireDamage);
+                        Damage(new Color(0.913f, 0.541f, 0.109f), fireDamage);
                 }
                 #endregion
                 #region Thawtimer
@@ -98,11 +98,12 @@ public class ConditionManager : MonoBehaviour
                 #region AuraTimer
                 if (auraTimer > 0)
                 {
-                    Damage(auraDamage);
+                    Damage(Color.Lerp(enemyRender.material.color, Color.green, 0.2f), auraDamage);
                     auraTimer--;
                 }
                 #endregion
             }
+            #region Timer End
             if (fireParticle.activeSelf && fireTimer == 0)
             {
                 if (fireParticle != null)
@@ -110,10 +111,10 @@ public class ConditionManager : MonoBehaviour
             }
             if (iceParticle.activeSelf && thawTimer == 0)
             {
-                SetSpeed(maxSpeed);
                 if (iceParticle != null)
                     iceParticle.SetActive(false);
             }
+            #endregion
         }
     }
 
@@ -182,6 +183,8 @@ public class ConditionManager : MonoBehaviour
     #endregion
 
     #region GetSetters
+
+    #region Speed
     //Cast get-setters (This get-set speed workaround feels silly and wrong)
     public float GetSpeed()
     {
@@ -209,6 +212,10 @@ public class ConditionManager : MonoBehaviour
             SetSpeed(GetSpeed() + _speed);
         }
     }
+    public float GetMaxSpeed()
+    {
+        return maxSpeed;
+    }
     public void SetMaxSpeed(float _maxSpeed)
     {
         maxSpeed = _maxSpeed;
@@ -216,15 +223,17 @@ public class ConditionManager : MonoBehaviour
     public void Modify(float _amountToIncrease = 1)
     {
         maxSpeed += _amountToIncrease;
+        SetSpeed(maxSpeed);
     }
+    #endregion
 
     #region Nonspeed
-    public void Damage(float _damage)
+    public void Damage(Color _color, float _damage)
     {
         if (isPlayer)
-            ((Player)statsScript).TakeDamage(_damage);
+            ((Player)statsScript).TakeDamage(_color, _damage);
         else
-            ((EnemyStats)statsScript).TakeDamage(_damage);
+            ((EnemyStats)statsScript).TakeDamage(_color, _damage);
     }
 
     public float GetThawIncrement()
@@ -283,5 +292,5 @@ public class ConditionManager : MonoBehaviour
     }
     #endregion
 
-    #endregion GetSet
+    #endregion
 }

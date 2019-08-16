@@ -5,19 +5,20 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     #region PlayerStats
-    [SerializeField] float playerMovementSpeed = 8.0f;
-    [SerializeField] float playerHealth = 10.0f;
-    [SerializeField] float maxPlayerHealth = 10.0f;
-    [SerializeField] int playerDefense = 1;
-    [SerializeField] float playerAttackSpeed = 1.0f;
+    [SerializeField] private float playerMovementSpeed = 8.0f;
+    [SerializeField] private float playerHealth = 10.0f;
+    [SerializeField] private float maxPlayerHealth = 10.0f;
+    [SerializeField] private int playerDefense = 1;
+    [SerializeField] private float playerAttackSpeed = 1.0f;
     [SerializeField] private int visualAttackSpeed = 1;
-    [SerializeField] int playerAttackDamage = 1;
+    [SerializeField] private int playerAttackDamage = 1;
+    [SerializeField] private int playerSpendingPoints = 0;
+    [SerializeField] private int playerLives = 5;
+    [SerializeField] private uint bulletVelocity = 0;
+
     private float playerExperience = 0.0f;
     private float nextLevelExperience = 10.0f;
     private int playerLevel = 1;
-    [SerializeField] private int playerSpendingPoints = 0;
-    [SerializeField] private int playerLives = 5;
-
     private float lastTimeFired = 0.0f;
 
     //If player is immune to status conditions
@@ -28,31 +29,34 @@ public class Player : MonoBehaviour
     //If player is currently stunned
     public bool isStunned = false;
 
-    private bool isRotated = false;
+    //Other misc fields
     private bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
     private int playerCoinModifier = 1;
     private int bulletChoice = 1;
-    Companion currentCompanion = null;
+    
+    private bool isAbleToDash = true;
     #endregion
 
     #region UnityComponents
+    [SerializeField] private AudioClip fire = null;
+    [SerializeField] private Texture2D crosshairs = null;
+    [SerializeField] private GameObject mainUI = null;
+    [SerializeField] private GameObject deathAura = null;
+    [SerializeField] private GameObject iceSpell = null;
+    [SerializeField] private GameObject gameOver = null;
+
+    private Animator animator = null;
+    private GameObject dashTrail = null;
+    private SaveScript save = null;
+    private Companion currentCompanion = null;
+    private ConditionManager con;
     private CharacterController characterController = null;
     private Renderer playerRenderer = null;
     private Color playerColor = Color.black;
     private AudioSource source = null;
     private Inventory inventory = null;
-    [SerializeField] private AudioClip fire = null;
-    [SerializeField] private Texture2D crosshairs = null;
-    private Animator animator = null;
-    private GameObject dashTrail = null;
-    [SerializeField] private GameObject mainUI = null;
-    [SerializeField] GameObject deathAura = null;
-    [SerializeField] GameObject iceSpell = null;
-    SaveScript save = null;
-
-    private ConditionManager con;
     #endregion
 
     #region PlayerMovementProperties
@@ -69,97 +73,84 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectile1 = null;
     [SerializeField] private GameObject projectile2 = null;
     [SerializeField] private GameObject projectile3 = null;
-
-    [SerializeField] private uint bulletVelocity = 0;
     [SerializeField] private GameObject projectilePosition = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
-
-        dashTrail = GameObject.Find("DashTrail");
-        dashTrail.SetActive(false);
-
         characterController = GetComponent<CharacterController>();
-
         inventory = GetComponent<Inventory>();
-
         playerRenderer = GetComponentInChildren<Renderer>();
-        playerColor = playerRenderer.material.color;
-
         animator = GetComponent<Animator>();
-
-        playerY = transform.position.y;
-
-        Cursor.SetCursor(crosshairs, new Vector2(128, 128), CursorMode.Auto);
-
         source = GetComponent<AudioSource>();
-        source.enabled = true;
+        save = GetComponent<SaveScript>();
+        con = GetComponent<ConditionManager>();
 
+        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        dashTrail = GameObject.Find("DashTrail");
+        gameOver = GameObject.FindGameObjectWithTag("GameOver");
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
 
+        Cursor.SetCursor(crosshairs, new Vector2(256, 256), CursorMode.Auto);
+
+        if (gameOver != null)
+            gameOver.SetActive(false);
+        dashTrail.SetActive(false);
+        playerColor = playerRenderer.material.color;
+        playerY = transform.position.y;
+        source.enabled = true;
         lastTimeFired = 0.0f;
-        isRotated = false;
         isDashing = false;
+        isAbleToDash = true;
         isRegenerating = false;
         bulletChoice = 1;
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
-        save = GetComponent<SaveScript>();
-        con = GetComponent<ConditionManager>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (!paused)
         {
             #region PlayerRotation
-
             // Rotate the Player Transform to face the Mouse Position
             mousePosition = Input.mousePosition;
             targetPosition = mainCamera.ScreenToWorldPoint(mousePosition);
             Vector3 relativePosition = targetPosition - transform.position;
-
-
             Quaternion rotation = Quaternion.LookRotation(relativePosition);
+
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
             rotation.z = 0.0f;
-
-
+            
             // Change the player's tranform's rotation to the rotation Quaternion
-            if (isRotated == false)
-                transform.rotation = rotation;
-
+            transform.rotation = rotation;
             #endregion
 
             #region HitFeedback
-
             // Player reverting to original color after hit
             if (playerRenderer.material.color != playerColor)
                 playerRenderer.material.color = Color.Lerp(playerRenderer.material.color, playerColor, 0.1f);
-
             #endregion
 
             if (!isStunned)
             {
                 #region PlayerMovement
+                //Move the Player GameObject when the WASD or Arrow Keys are pressed
+                if (isDashing == false)
+                {
+                    moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
+                    moveDirection *= playerMovementSpeed;
+                    characterController.Move(moveDirection * Time.deltaTime);
+                }
+                else
+                    characterController.Move(moveDirection / playerMovementSpeed);
 
-                // Move the Player GameObject when the WASD or Arrow Keys are pressed
-                moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0.0f, Input.GetAxis("Vertical"));
-                moveDirection *= playerMovementSpeed;
-                characterController.Move(moveDirection * Time.deltaTime);
-
-
-                // Player Dash if Spacebar is pressed
+                //Player Dash if Spacebar is pressed
                 if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
-                    if (isDashing == false)
+                    if (isAbleToDash == true)
                         StartCoroutine(PlayerDash());
-
 
                 //Set animator values
                 if (animator != null)
@@ -168,7 +159,6 @@ public class Player : MonoBehaviour
                     animator.SetFloat("Horizontal", moveDirection.x);
                     animator.SetFloat("Vertical", moveDirection.z);
                 }
-
                 #endregion
 
                 #region PlayerAttack
@@ -183,49 +173,51 @@ public class Player : MonoBehaviour
                 // If the corresponding button is clicked call ShootBullet
                 if (Input.GetAxis("Fire1") > 0f)
                     ShootBullet(bulletChoice);
-
                 #endregion
+
+                if (playerExperience >= nextLevelExperience)
+                    LevelUp();
             }
         }
-        if (Input.GetKeyDown(KeyCode.L))
-            save.Load();
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
     }
 
     #region PlayerFunctions
-
     public void ShootBullet(int type)
     {
         //Instantiate a projectile and set the projectile's velocity towards the forward vector of the player transform
         if (Time.time > lastTimeFired + playerAttackSpeed)
         {
             GameObject clone;
+            CollisionScript collisionScript = null;
             switch (type)
             {
                 case 1:
                     {
-                        if (projectile0.layer == 17)
-                        {
-                            projectile0.SetActive(true);
-                            clone = null;
-                        }
-                        else
-                            clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
+                        clone = Instantiate(projectile0, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(new Color(0.913f, 0.541f, 0.109f));
                         break;
                     }
                 case 2:
                     {
                         clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(new Color(0.913f, 0.541f, 0.109f));
                         break;
                     }
                 case 3:
                     {
                         clone = Instantiate(projectile2, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(new Color(0.360f, 0.952f, 0.960f));
                         break;
                     }
                 case 4:
                     {
                         clone = Instantiate(projectile3, projectilePosition.transform.position, transform.rotation);
+                        collisionScript = clone.GetComponent<CollisionScript>();
+                        collisionScript.SetHitColor(Color.yellow);
                         break;
                     }
                 default:
@@ -236,7 +228,7 @@ public class Player : MonoBehaviour
             }
             if (clone != null)
             {
-                CollisionScript collisionScript = clone.GetComponent<CollisionScript>();
+
                 clone.GetComponent<TrailRenderer>().time = .1125f;
                 collisionScript.SetOwner(gameObject);
                 collisionScript.bulletDamage = playerAttackDamage;
@@ -245,7 +237,6 @@ public class Player : MonoBehaviour
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
                 lastTimeFired = Time.time;
                 source.PlayOneShot(fire);
-                StartCoroutine(ShootRotation());
             }
         }
     }
@@ -253,23 +244,33 @@ public class Player : MonoBehaviour
     public void ThrowConsumable(GameObject consumable)
     {
         GameObject clone = Instantiate(consumable, projectilePosition.transform.position, transform.rotation);
+        CollisionScript collisionScript = clone.GetComponent<CollisionScript>();
         clone.GetComponent<TrailRenderer>().time = .1125f;
-        clone.GetComponent<CollisionScript>().bulletDamage = 0;
+        collisionScript.bulletDamage = 0;
+        Color hitColor = Color.red;
+        switch (clone.tag)
+        {
+            case "Love Bullet":
+                hitColor = new Color(0.960f, 0.619f, 0.921f);
+                break;
+            case "Hex":
+                hitColor = new Color(0.498f, 0.011f, 0.729f);
+                break;
+            case "FireBall":
+                hitColor = new Color(0.913f, 0.541f, 0.109f);
+                break;
+            case "Default":
+                hitColor = Color.yellow;
+                break;
+            default:
+                break;
+        }
+        collisionScript.SetHitColor(hitColor);
         clone.gameObject.layer = 10;
         clone.gameObject.SetActive(true);
         clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
         lastTimeFired = Time.time;
         source.PlayOneShot(fire);
-        StartCoroutine(ShootRotation());
-    }
-
-    IEnumerator ShootRotation()
-    {
-        isRotated = true;
-        animator.SetTrigger("Attack");
-        transform.Rotate(0, 90, 0);
-        yield return new WaitForSeconds(.5f);
-        isRotated = false;
     }
 
     IEnumerator PlayerDash()
@@ -277,33 +278,35 @@ public class Player : MonoBehaviour
         dashTrail.SetActive(true);
         yield return new WaitForSeconds(0.01f);
         isDashing = true;
+        isAbleToDash = false;
         gameObject.layer = 15;
-        characterController.Move(moveDirection);
-        yield return new WaitForSeconds(0.1f);
-        gameObject.layer = 9;
-        yield return new WaitForSeconds(0.3f);
-        dashTrail.SetActive(false);
-        yield return new WaitForSeconds(0.6f);
+        //characterController.Move(moveDirection);
+        yield return new WaitForSeconds(0.2f);
         isDashing = false;
+        gameObject.layer = 9;
+        yield return new WaitForSeconds(0.1f);
+        dashTrail.SetActive(false);
+        yield return new WaitForSeconds(0.7f);
+        isAbleToDash = true;
     }
 
-    public void BlinkOnHit()
+    public void BlinkOnHit(Color _color)
     {
         animator.SetTrigger("On Hit");
-        playerRenderer.material.color = Color.red;
+        playerRenderer.material.color = _color;
     }
 
     public void Death()
     {
         animator.SetBool("Death", true);
-        Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Over Screen"));
+        gameOver.SetActive(true);
         gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
-            TakeDamage();
+            TakeDamage(Color.red);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -324,11 +327,11 @@ public class Player : MonoBehaviour
     #region AccessorsAndMutators
 
     #region Health
-    public void TakeDamage(float amountOfDamage = 1)
+    public void TakeDamage(Color _color, float amountOfDamage = 1)
     {
         //Decrease health by amountOfDamage until 0 or less
         if (amountOfDamage >= 1)
-            BlinkOnHit();
+            BlinkOnHit(_color);
         amountOfDamage /= playerDefense;
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)
@@ -364,7 +367,7 @@ public class Player : MonoBehaviour
         maxPlayerHealth += _playerHealth;
     }
 
-    public bool GetisRegenerating()
+    public bool GetIsRegenerating()
     {
         return isRegenerating;
     }
@@ -406,11 +409,6 @@ public class Player : MonoBehaviour
     {
         playerCoinModifier += _coinModifier;
     }
-
-    public void SetCoins(int _coins)
-    {
-        inventory.AddCoins(_coins);
-    }
     #endregion
 
     #region Defense
@@ -434,7 +432,6 @@ public class Player : MonoBehaviour
     {
         playerDefense = _playerDefense;
     }
-
     #endregion
 
     #region Damage
@@ -528,10 +525,9 @@ public class Player : MonoBehaviour
     #endregion
 
     #region LevelAndXP
-
     public void LevelUp()
     {
-        maxPlayerHealth += 10;
+        maxPlayerHealth += 3;
         playerHealth = maxPlayerHealth;
         playerMovementSpeed++;
         playerSpendingPoints++;
@@ -586,8 +582,6 @@ public class Player : MonoBehaviour
     {
         playerEXP *= playerExperienceModifier;
         playerExperience += playerEXP;
-        if (playerExperience >= nextLevelExperience)
-            LevelUp();
     }
 
     public void XPModifier(float _XPModifier)
@@ -611,7 +605,6 @@ public class Player : MonoBehaviour
     {
         playerLives = _lives;
     }
-
     #endregion
 
     #region Pause
@@ -651,7 +644,6 @@ public class Player : MonoBehaviour
     #endregion
 
     #region Companion
-
     public void SetCompanion(Companion _companion)
     {
         currentCompanion = _companion;
@@ -661,18 +653,29 @@ public class Player : MonoBehaviour
     {
         currentCompanion = null;
     }
-
     #endregion
 
     #region Death Aura
     public void EnableDeathAura()
     {
-        deathAura.SetActive(true);
+        if (deathAura.activeSelf)
+        {
+            DisableThis dt = deathAura.GetComponent<DisableThis>();
+            dt.AddTime(180);
+        }
+        else
+            deathAura.SetActive(true);
     }
 
     public void EnableConeofCold()
     {
-        iceSpell.SetActive(true);
+        if (iceSpell.activeSelf)
+        {
+            DisableThis dt = iceSpell.GetComponent<DisableThis>();
+            dt.AddTime(180);
+        }
+        else
+            iceSpell.SetActive(true);
     }
     #endregion
     #endregion
