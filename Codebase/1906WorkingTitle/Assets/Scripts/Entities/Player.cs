@@ -203,7 +203,7 @@ public class Player : MonoBehaviour
                     {
                         clone = Instantiate(projectile1, projectilePosition.transform.position, transform.rotation);
                         collisionScript = clone.GetComponent<CollisionScript>();
-                        collisionScript.SetHitColor(new Color(0.913f, 0.541f, 0.109f));
+                        collisionScript.SetHitColor(new Color(0.921f, 0.505f, 0f));
                         break;
                     }
                 case 3:
@@ -257,7 +257,7 @@ public class Player : MonoBehaviour
                 hitColor = new Color(0.498f, 0.011f, 0.729f);
                 break;
             case "FireBall":
-                hitColor = new Color(0.913f, 0.541f, 0.109f);
+                hitColor = new Color(0.921f, 0.505f, 0f);
                 break;
             case "Default":
                 hitColor = Color.yellow;
