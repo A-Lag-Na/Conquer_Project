@@ -10,12 +10,15 @@ public class TutorialManager : MonoBehaviour
     private SpawnScript spawnScript = null;
     [SerializeField] private GameObject[] popUps = null;
     private GameObject door;
+    [SerializeField] GameObject pickup = null;
+    private Inventory inventoryScript = null;
     int popUpIndex = 0;
 
     public void Start()
     {
         spawnScript = spawner.GetComponent<SpawnScript>();
         playerScript = player.GetComponent<Player>();
+        inventoryScript = player.GetComponent<Inventory>();
         door = GameObject.FindGameObjectWithTag("Door");
         spawner.SetActive(false);
         spawnScript.SetEnabled(false);
@@ -57,19 +60,24 @@ public class TutorialManager : MonoBehaviour
         else if (popUpIndex == 2)
         {
             if (spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
-            {   
+            {
+                playerScript.LevelUp();
                 popUpIndex++;
+                playerScript.SetHealth(1);
+                pickup.SetActive(true);
             }
         }
         //Potion usage
         else if(popUpIndex == 3)
         {
-
+            if (Input.GetKeyDown(KeyCode.F) && inventoryScript.GetNumPotions() <= 0)
+            {
+                popUpIndex++;
+            }
         }
-        //Activating the stats screen
+        //Activating the stats screen N
         else if (popUpIndex == 4)
-        {
-            playerScript.GainExperience(playerScript.GetNextLevelExperience());
+        { 
             if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }

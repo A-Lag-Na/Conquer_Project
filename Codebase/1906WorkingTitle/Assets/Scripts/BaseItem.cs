@@ -27,7 +27,7 @@ public class BaseItem : MonoBehaviour
     public Sprite GetSprite()
     {
         if (sprite != null)
-            return sprite;
+            return Sprite.Instantiate<Sprite>(sprite);
         else
             return Resources.Load<Sprite>("Sprites/background");
     }
@@ -39,17 +39,17 @@ public class BaseItem : MonoBehaviour
     #endregion
 
     #region Sets
-    protected void SetValue(int _value)
+    public void SetValue(int _value)
     {
         value = _value;
     }
 
-    protected void SetSprite(Sprite _sprite)
+    public void SetSprite(Sprite _sprite)
     {
         sprite = _sprite;
     }
 
-    protected void SetName(string _name)
+    public void SetName(string _name)
     {
         name = _name;
     }

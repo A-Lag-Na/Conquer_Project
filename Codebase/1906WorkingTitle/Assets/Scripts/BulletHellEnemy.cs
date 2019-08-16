@@ -26,6 +26,7 @@ public class BulletHellEnemy : MonoBehaviour
     private AudioSource source = null;
     private NavMeshAgent agent = null;
     private GameObject player = null;
+    [SerializeField] GameObject gameWin = null;
     #endregion
 
     private void OnEnable()
@@ -117,5 +118,11 @@ public class BulletHellEnemy : MonoBehaviour
         clone.GetComponent<TrailRenderer>().endColor = Color.white;
         return clone;
     }
+
+    public void Death()
+    {
+        Instantiate(gameWin);
+    }
+
     #endregion
 }

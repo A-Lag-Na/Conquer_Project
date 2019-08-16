@@ -66,7 +66,8 @@ public class Inventory : MonoBehaviour
     #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
-        weaponList.AddLast((Weapon)_weapon);
+        //weaponList.AddLast(WeaponDeepCopy((Weapon)_weapon));
+        weaponList.AddLast(Weapon.Instantiate<Weapon>((Weapon)_weapon));
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
@@ -77,7 +78,8 @@ public class Inventory : MonoBehaviour
 
     public void AddConsumable(BaseItem _consumable)
     {
-        consumableList.AddLast((Consumable)_consumable);
+        //consumableList.AddLast(ConsumableDeepCopy((Consumable)_consumable));
+        consumableList.AddLast(Consumable.Instantiate<Consumable>((Consumable)_consumable));
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
@@ -139,7 +141,7 @@ public class Inventory : MonoBehaviour
             //if consumable type
             if (consumableNode.Value.GetConsumableType() == Consumable.ConsumableType.Consumable)
             {
-                switch (consumableNode.Value.name)
+                switch (consumableNode.Value.GetName())
                 {
                     case "Health Potion":
                         if (player.GetHealth() < player.GetMaxHealth())
@@ -165,7 +167,7 @@ public class Inventory : MonoBehaviour
                         player.ModifyDamage(-1 * intModValue);
                         break;
 
-                    case "Movement Speed Potion":
+                    case "Speed Potion":
                         con.AddSpeed(consumableNode.Value.GetFloatModifier());
                         float floatModValue = consumableNode.Value.GetFloatModifier();
                         RemoveConsumable();
@@ -183,13 +185,14 @@ public class Inventory : MonoBehaviour
                         RemoveConsumable();
                         break;
                     default:
+                        Debug.Log("Consumable without matching name");
                         break;
                 }
             }
             //if thrown type
             else
             {
-                player.ThrowConsumable(consumableNode.Value.GetPotionEffect());
+                player.ThrowConsumable(consumableNode.Value.GetConsumableEffect());
                 RemoveConsumable();
             }
 

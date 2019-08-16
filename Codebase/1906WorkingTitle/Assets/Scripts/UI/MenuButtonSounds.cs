@@ -24,7 +24,8 @@ public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
 
     private void Clicked()
     {
-        source.PlayOneShot(click);
+        if(source != null && source.isActiveAndEnabled)
+            source.PlayOneShot(click);
     }
 
     public void OnPointerEnter(PointerEventData eventData)

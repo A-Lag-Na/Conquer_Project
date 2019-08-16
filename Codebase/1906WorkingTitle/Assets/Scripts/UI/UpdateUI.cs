@@ -91,7 +91,7 @@ public class UpdateUI : MonoBehaviour
             if (player.GetMaxHealth() != 0)
                 HealthScale.x = health / maxHealth;
             healthTransform.localScale = HealthScale;
-            healthText.text = $"{health} / {maxHealth}";
+            healthText.text = $"{(int)health} / {maxHealth}";
             #endregion
 
             #region Level Update
@@ -181,6 +181,7 @@ public class UpdateUI : MonoBehaviour
         if (Input.GetButtonDown("Open Shop"))
             OpenShop();
         #endregion
+
     }
 
     #region UIFunctions
