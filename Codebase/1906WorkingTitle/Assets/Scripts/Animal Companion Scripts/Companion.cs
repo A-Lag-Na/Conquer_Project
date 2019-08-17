@@ -27,6 +27,8 @@ public class Companion : MonoBehaviour
     SphereCollider animalCollider = null;
     Inventory playerInventory = null;
     Pickup pickup = null;
+    GameObject companionAura = null;
+    Animator animator = null;
     #endregion
 
     // Start is called before the first frame update
@@ -44,6 +46,9 @@ public class Companion : MonoBehaviour
             source.enabled = true;
             canAttack = true;
         }
+        companionAura = GetComponentInChildren<ParticleSystem>().gameObject;
+        companionAura.SetActive(false);
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -60,6 +65,10 @@ public class Companion : MonoBehaviour
             rotation.z = 0.0f;
             // Change the companion's tranform's rotation to the rotation Quaternion
             transform.rotation = rotation;
+            if (name == "Movement Speed Companion")
+                transform.Rotate(0, 180, 0);
+            if (name == "Defense Companion" || name == "Health Regen Companion" || name == "Item Grabber Companion" || name == "Melee Companion")
+                transform.Rotate(0, 90, 0);
             if (name == "Health Regen Companion" && playerStats.GetIsRegenerating() == false)
                 StartCoroutine(playerStats.HealthRegen());
             else if (name == "Item Grabber Companion")
@@ -73,7 +82,16 @@ public class Companion : MonoBehaviour
                     if (Vector3.Distance(target.transform.position, player.transform.position) > 10)
                         transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
                     if (Vector3.Distance(target.transform.position, player.transform.position) <= 10)
+                    {
                         transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref animalVelocity, 0.5f);
+                        rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                        // Lock the rotation around X and Z Axes
+                        rotation.x = 0.0f;
+                        rotation.z = 0.0f;
+                        // Change the companion's tranform's rotation to the rotation Quaternion
+                        transform.rotation = rotation;
+                        transform.Rotate(0, 90, 0);
+                    }
                 }
             }
             else if (name == "Melee Companion")
@@ -88,7 +106,16 @@ public class Companion : MonoBehaviour
                     if (hasAttacked == true || Vector3.Distance(target.transform.position, player.transform.position) > 10)
                         transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
                     if (Vector3.Distance(target.transform.position, player.transform.position) <= 10 && hasAttacked == false)
+                    {
                         transform.position = Vector3.SmoothDamp(transform.position, target.transform.position, ref animalVelocity, 0.5f);
+                        rotation = Quaternion.LookRotation(target.transform.position - transform.position);
+                        // Lock the rotation around X and Z Axes
+                        rotation.x = 0.0f;
+                        rotation.z = 0.0f;
+                        // Change the companion's tranform's rotation to the rotation Quaternion
+                        transform.rotation = rotation;
+                        transform.Rotate(0, 90, 0);
+                    }
                 }
                 if (Time.time > lastTimeAttacked + 5)
                     hasAttacked = false;
@@ -119,6 +146,18 @@ public class Companion : MonoBehaviour
                     Instantiate(potion, transform.position, transform.rotation);
                     previousExp = playerStats.GetExperience();
                 }
+            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion")
+            {
+                if (transform.position.x <= playerPositionOffset.x + .1f && transform.position.x >= playerPositionOffset.x - .1f && transform.position.y <= playerPositionOffset.y + .1f && transform.position.y >= playerPositionOffset.y - .1f && transform.position.z <= playerPositionOffset.z + .1f && transform.position.z >= playerPositionOffset.z - .1f)
+                    animator.SetBool("isWalking", false);
+                else
+                    animator.SetBool("isWalking", true);
+            }
+        }
+        else
+        {
+            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion")
+                animator.SetBool("isWalking", false);
         }
     }
 
@@ -152,9 +191,10 @@ public class Companion : MonoBehaviour
         else if (name == "XP Companion")
             playerStats.XPModifier(0.5f);
         isFollowing = true;
-        gameObject.layer = 19;
+        gameObject.layer = 21;
         playerStats.SetCompanion(this);
         previousExp = playerStats.GetExperience();
+        companionAura.SetActive(true);
     }
 
     public void Deactivate()
@@ -188,6 +228,7 @@ public class Companion : MonoBehaviour
             playerStats.XPModifier(-0.5f);
         isFollowing = false;
         gameObject.layer = 0;
+        companionAura.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)
