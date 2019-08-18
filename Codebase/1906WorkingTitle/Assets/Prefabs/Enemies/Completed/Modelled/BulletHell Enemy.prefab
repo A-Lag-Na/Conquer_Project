@@ -68,7 +68,7 @@ NavMeshAgent:
   m_Acceleration: 16
   avoidancePriority: 50
   m_AngularSpeed: 600
-  m_StoppingDistance: 9
+  m_StoppingDistance: 50
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPoints: 10
   health: 50
-  damage: 2
+  damage: 5
   attackRate: 0.1
   bulletSpeed: 10
   isFireImmune: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   projectile: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   attackRate: 0.1
-  bulletSpeed: 5
+  bulletSpeed: 10
   fire: {fileID: 8300000, guid: afa2c4c2364726141bc9a04cd73b64f8, type: 3}
   gameWin: {fileID: 5644824397331297145, guid: d779c4464e11f3d4d9d406a84486f684, type: 3}
 --- !u!82 &370994784
@@ -257,11 +257,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648946467457729220}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: c8b8564491115a5489e3120f56730f19,
-        type: 3}
-      propertyPath: m_Name
-      value: Slime
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: c8b8564491115a5489e3120f56730f19,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -332,6 +327,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: c8b8564491115a5489e3120f56730f19,
+        type: 3}
+      propertyPath: m_Name
+      value: Slime
+      objectReference: {fileID: 0}
     - target: {fileID: 993360492062788025, guid: c8b8564491115a5489e3120f56730f19,
         type: 3}
       propertyPath: m_CastShadows
@@ -352,11 +352,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648946467457729220}
     m_Modifications:
-    - target: {fileID: 8532103577989711177, guid: f4813bb5b2f3306489786f75bc37657c,
-        type: 3}
-      propertyPath: m_Name
-      value: Stun Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 8186905745659930275, guid: f4813bb5b2f3306489786f75bc37657c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -411,6 +406,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8532103577989711177, guid: f4813bb5b2f3306489786f75bc37657c,
+        type: 3}
+      propertyPath: m_Name
+      value: Stun Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4813bb5b2f3306489786f75bc37657c, type: 3}
@@ -529,11 +529,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1648946467457729220}
     m_Modifications:
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -603,6 +598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
       objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}

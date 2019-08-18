@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 4555826511667937158
     second: CatArmature|Walking
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey
+    second: {fileID: 2100000, guid: 7230aca4cdd6da04cb32adc13c8a511a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

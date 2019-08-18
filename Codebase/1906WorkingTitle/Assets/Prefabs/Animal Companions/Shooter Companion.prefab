@@ -4794,8 +4794,8 @@ GameObject:
   - component: {fileID: 1810482166649867122}
   - component: {fileID: 1778786080}
   - component: {fileID: 1778786078}
-  - component: {fileID: 1778786079}
   - component: {fileID: 815054978}
+  - component: {fileID: 8787125102621380085}
   m_Layer: 0
   m_Name: Shooter Companion
   m_TagString: Companion
@@ -4950,19 +4950,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1778786079
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1810482166649867125}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &815054978
 Animator:
   serializedVersion: 3
@@ -4982,6 +4969,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &8787125102621380085
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1810482166649867125}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.5, z: -0.5}
 --- !u!1 &1913149016815476909
 GameObject:
   m_ObjectHideFlags: 0

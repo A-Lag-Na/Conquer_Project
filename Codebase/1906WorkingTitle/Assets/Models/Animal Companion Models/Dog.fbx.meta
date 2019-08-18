@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: 5709960796966067405
     second: DogArmature|Walking
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dog
+    second: {fileID: 2100000, guid: 0d4047c3bac96184f824a8e000d11687, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

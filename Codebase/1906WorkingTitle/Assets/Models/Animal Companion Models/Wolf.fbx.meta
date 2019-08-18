@@ -9,7 +9,12 @@ ModelImporter:
   - first:
       74: -7055130361298753953
     second: WolfArmature|Walking
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wolf
+    second: {fileID: 2100000, guid: 4c15ce7aa9a70734085153986af5c67a, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -18,7 +18,12 @@ ModelImporter:
   - first:
       74: 3507104242674810391
     second: BatArmature|Bat_Hit
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: 37e7a3253c4f99a47aa9cb12111cb870, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

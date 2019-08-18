@@ -12,7 +12,22 @@ ModelImporter:
   - first:
       74: -4878228373340701315
     second: Eagle|Idle
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Beak
+    second: {fileID: 2100000, guid: 825126abf06da51429559dd0aa5e5dc8, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: 90854c24fcbb9d14e81dc911342dba6d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Wings
+    second: {fileID: 2100000, guid: 90854c24fcbb9d14e81dc911342dba6d, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
