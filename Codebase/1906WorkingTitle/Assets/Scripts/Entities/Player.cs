@@ -49,6 +49,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject iceSpell = null;
     [SerializeField] private GameObject gameOver = null;
     [SerializeField] GameObject saveUI = null;
+    [SerializeField] GameObject loadUI = null;
 
     private Animator animator = null;
     private GameObject dashTrail = null;
@@ -111,6 +112,8 @@ public class Player : MonoBehaviour
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
         enemyRespawn = false;
+        saveUI.SetActive(false);
+        loadUI.SetActive(false);
     }
 
     void Update()

@@ -77,6 +77,7 @@ public class SaveScript : MonoBehaviour
             player.SetSpendingPoints(playerSpendingPoints);
             player.gameObject.GetComponent<Inventory>().SetCoins(playerGold);
             player.gameObject.GetComponent<Inventory>().SetBoxPieces(playerBoxes);
+            player.SetLives(5);
             GetComponent<CharacterController>().enabled = true;
         }
     }
