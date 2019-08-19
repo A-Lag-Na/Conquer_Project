@@ -125,7 +125,7 @@ public class UpdateUI : MonoBehaviour
             #region Inventory Update
             //update inventory
             InvSlot1.sprite = inventory.WeaponSprite();
-            InvSlot2.sprite = inventory.PotionSprite();
+            InvSlot2.sprite = inventory.ConsumableSprite();
             InvSlot1Name.text = inventory.WeaponName();
             InvSlot2Name.text = inventory.ConsumableName();
             #endregion
