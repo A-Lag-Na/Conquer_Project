@@ -32,6 +32,8 @@ public class CameraTrigger : MonoBehaviour
                 spawn.SetDoorLock(true);
                 spawn.SetEnabled(true);
             }
+            if (other.gameObject.GetComponent<Player>().enemyRespawn)
+                spawn.ResetSpawner();
         }
     }
 

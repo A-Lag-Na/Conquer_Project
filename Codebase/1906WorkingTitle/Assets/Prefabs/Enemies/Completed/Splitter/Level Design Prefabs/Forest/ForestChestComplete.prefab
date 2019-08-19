@@ -9,10 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1427511737151756244}
-  - component: {fileID: 9168733589072973614}
   - component: {fileID: 5030045114434001493}
-  - component: {fileID: 6850470910481854596}
-  - component: {fileID: 885133540271366143}
   m_Layer: 0
   m_Name: ForestChestComplete
   m_TagString: Untagged
@@ -37,25 +34,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9168733589072973614
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431749003381945229}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cc626abef6aa2ce4590462eff0e54571, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!65 &5030045114434001493
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -69,27 +47,46 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 2, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &6850470910481854596
+--- !u!95 &2707649704136731053
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8609280275810753321}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: cc626abef6aa2ce4590462eff0e54571, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &1560110773049946616
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431749003381945229}
+  m_GameObject: {fileID: 8609280275810753321}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 2
+  m_Radius: 2.689156
   m_Height: 5
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &885133540271366143
+  m_Center: {x: 0, y: 0, z: 0.18735805}
+--- !u!114 &4100661172367989173
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 431749003381945229}
+  m_GameObject: {fileID: 8609280275810753321}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bc90ee2f9e333a488b1d18ee8a965fd, type: 3}
@@ -173,6 +170,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1427511737151756244}
     m_Modifications:
+    - target: {fileID: 6764796034061976918, guid: dbcf0ce17021698439941a569e865ff0,
+        type: 3}
+      propertyPath: m_Name
+      value: Chest Particle
+      objectReference: {fileID: 0}
     - target: {fileID: 6764796034061976939, guid: dbcf0ce17021698439941a569e865ff0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -227,11 +229,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6764796034061976918, guid: dbcf0ce17021698439941a569e865ff0,
-        type: 3}
-      propertyPath: m_Name
-      value: Chest Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dbcf0ce17021698439941a569e865ff0, type: 3}
@@ -306,6 +303,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55df886252da3624fbe98bce822145ff, type: 3}
+--- !u!1 &8609280275810753321 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 100000, guid: 55df886252da3624fbe98bce822145ff,
+    type: 3}
+  m_PrefabInstance: {fileID: 8609280275810852233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8609280275810977545 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 55df886252da3624fbe98bce822145ff,

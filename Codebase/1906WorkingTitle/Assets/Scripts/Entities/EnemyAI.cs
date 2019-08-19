@@ -168,8 +168,15 @@ public class EnemyAI : MonoBehaviour
         clone.SetActive(true);
         source.PlayOneShot(fire);
         clone.GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
+
         if (anim != null && !isStunned)
-            anim.SetTrigger("Attack");
+        {
+            for (int i = 0; i < anim.parameterCount; i++)
+            {
+                if (anim.GetParameter(i).name == "Attack")
+                    anim.SetTrigger("Attack");
+            }
+        }
         yield return new WaitForSeconds(attackRate);
         attackEnabled = true;
     }
