@@ -35,8 +35,10 @@ public class Player : MonoBehaviour
     private float playerExperienceModifier = 1;
     private int playerCoinModifier = 1;
     private int bulletChoice = 1;
-    
+
     private bool isAbleToDash = true;
+
+    public bool enemyRespawn = false;
     #endregion
 
     #region UnityComponents
@@ -75,7 +77,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject projectile3 = null;
     [SerializeField] private GameObject projectilePosition = null;
     #endregion
-    
+
     void Start()
     {
         characterController = GetComponent<CharacterController>();
@@ -107,8 +109,9 @@ public class Player : MonoBehaviour
         bulletChoice = 1;
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
+        enemyRespawn = false;
     }
-    
+
     void Update()
     {
         if (!paused)
@@ -123,7 +126,7 @@ public class Player : MonoBehaviour
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
             rotation.z = 0.0f;
-            
+
             // Change the player's tranform's rotation to the rotation Quaternion
             transform.rotation = rotation;
             #endregion
