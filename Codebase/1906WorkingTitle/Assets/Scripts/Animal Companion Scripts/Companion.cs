@@ -29,6 +29,10 @@ public class Companion : MonoBehaviour
     Pickup pickup = null;
     GameObject companionAura = null;
     Animator animator = null;
+    GameObject storagePosition = null;
+    string storageName = "";
+    bool hasDeactivated = false;
+    bool isLookingAtStorage = false;
     #endregion
 
     // Start is called before the first frame update
@@ -49,6 +53,10 @@ public class Companion : MonoBehaviour
         companionAura = GetComponentInChildren<ParticleSystem>().gameObject;
         companionAura.SetActive(false);
         animator = GetComponent<Animator>();
+        storageName = $"{name} Storage";
+        storagePosition = GameObject.Find(storageName);
+        hasDeactivated = false;
+        isLookingAtStorage = false;
     }
 
     // Update is called once per frame
@@ -159,6 +167,44 @@ public class Companion : MonoBehaviour
             if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
                 animator.SetBool("isWalking", false);
         }
+        if (hasDeactivated)
+        {
+            transform.position = Vector3.SmoothDamp(transform.position, storagePosition.transform.position, ref animalVelocity, 1);
+            if (transform.position.x <= storagePosition.transform.position.x + .1f && transform.position.x >= storagePosition.transform.position.x - .1f && transform.position.y <= storagePosition.transform.position.y + .1f && transform.position.y >= storagePosition.transform.position.y - .1f && transform.position.z <= storagePosition.transform.position.z + .1f && transform.position.z >= storagePosition.transform.position.z - .1f)
+            {
+                isLookingAtStorage = false;
+                if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
+                    animator.SetBool("isWalking", false);
+            }
+            else
+            {
+                isLookingAtStorage = true;
+                if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
+                    animator.SetBool("isWalking", true);
+            }
+            if (isLookingAtStorage)
+            {
+                Quaternion rotation = Quaternion.LookRotation(storagePosition.transform.position - transform.position);
+                // Lock the rotation around X and Z Axes
+                rotation.x = 0.0f;
+                rotation.z = 0.0f;
+                // Change the companion's tranform's rotation to the rotation Quaternion
+                transform.rotation = rotation;
+            }
+            else
+            {
+                Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position);
+                // Lock the rotation around X and Z Axes
+                rotation.x = 0.0f;
+                rotation.z = 0.0f;
+                // Change the companion's tranform's rotation to the rotation Quaternion
+                transform.rotation = rotation;
+            }
+            if (name == "Movement Speed Companion" || name == "Scavenger Companion")
+                transform.Rotate(0, 180, 0);
+            if (name == "Defense Companion" || name == "Health Regen Companion" || name == "Item Grabber Companion" || name == "Melee Companion")
+                transform.Rotate(0, 90, 0);
+        }
     }
 
     #region CompanionFunctions
@@ -195,6 +241,7 @@ public class Companion : MonoBehaviour
         playerStats.SetCompanion(this);
         previousExp = playerStats.GetExperience();
         companionAura.SetActive(true);
+        hasDeactivated = false;
     }
 
     public void Deactivate()
@@ -229,6 +276,7 @@ public class Companion : MonoBehaviour
         isFollowing = false;
         gameObject.layer = 0;
         companionAura.SetActive(false);
+        hasDeactivated = true;
     }
 
     private void OnCollisionEnter(Collision collision)
