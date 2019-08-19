@@ -85,6 +85,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isFireImmune)
                                 {
+                                    SetHitColor(new Color(0.921f, 0.505f, 0f));
                                     DamageCheck(hitColor);
                                     //Burn sound effect
                                     //audioSource.PlayOneShot(burn);
@@ -96,7 +97,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isIceImmune)
                                 {
-                                    DamageCheck(hitColor);
+                                    DamageCheck(new Color(0.360f, 0.952f, 0.960f));
                                     con.SubtractSpeed(0.6f);
                                     con.TimerAdd("thaw", 90);
                                 }
@@ -106,7 +107,8 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isStunImmune)
                                 {
-                                    DamageCheck(hitColor);
+                                    DamageCheck(Color.yellow
+);
                                     if (target.CompareTag("BulletHell Enemy"))
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
@@ -200,6 +202,12 @@ public class CollisionScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void DamageCheck(Color _color)
