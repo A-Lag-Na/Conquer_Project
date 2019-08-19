@@ -24,7 +24,7 @@ public class Companion : MonoBehaviour
     [SerializeField] AudioClip fire = null;
     AudioSource source = null;
     [SerializeField] GameObject potion = null;
-    SphereCollider animalCollider = null;
+    CapsuleCollider animalCollider = null;
     Inventory playerInventory = null;
     Pickup pickup = null;
     GameObject companionAura = null;
@@ -36,7 +36,7 @@ public class Companion : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = player.GetComponent<Player>();
-        animalCollider = GetComponent<SphereCollider>();
+        animalCollider = GetComponent<CapsuleCollider>();
         animalCollider.isTrigger = true;
         playerInventory = player.GetComponent<Inventory>();
         gameObject.layer = 0;
@@ -65,7 +65,7 @@ public class Companion : MonoBehaviour
             rotation.z = 0.0f;
             // Change the companion's tranform's rotation to the rotation Quaternion
             transform.rotation = rotation;
-            if (name == "Movement Speed Companion")
+            if (name == "Movement Speed Companion" || name == "Scavenger Companion")
                 transform.Rotate(0, 180, 0);
             if (name == "Defense Companion" || name == "Health Regen Companion" || name == "Item Grabber Companion" || name == "Melee Companion")
                 transform.Rotate(0, 90, 0);
@@ -146,7 +146,7 @@ public class Companion : MonoBehaviour
                     Instantiate(potion, transform.position, transform.rotation);
                     previousExp = playerStats.GetExperience();
                 }
-            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion")
+            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
             {
                 if (transform.position.x <= playerPositionOffset.x + .1f && transform.position.x >= playerPositionOffset.x - .1f && transform.position.y <= playerPositionOffset.y + .1f && transform.position.y >= playerPositionOffset.y - .1f && transform.position.z <= playerPositionOffset.z + .1f && transform.position.z >= playerPositionOffset.z - .1f)
                     animator.SetBool("isWalking", false);
@@ -156,7 +156,7 @@ public class Companion : MonoBehaviour
         }
         else
         {
-            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion")
+            if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
                 animator.SetBool("isWalking", false);
         }
     }

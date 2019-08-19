@@ -5587,8 +5587,8 @@ GameObject:
   - component: {fileID: 6784758675335209078}
   - component: {fileID: 1489911655}
   - component: {fileID: 1489911654}
-  - component: {fileID: 6784758675335209065}
   - component: {fileID: 663794068}
+  - component: {fileID: 6013239686109394283}
   m_Layer: 21
   m_Name: Melee Companion
   m_TagString: Companion
@@ -5646,19 +5646,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
---- !u!135 &6784758675335209065
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6784758675335209066}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &663794068
 Animator:
   serializedVersion: 3
@@ -5678,6 +5665,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &6013239686109394283
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6784758675335209066}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.5
+  m_Height: 8
+  m_Direction: 0
+  m_Center: {x: 0.5, y: 1.5, z: -0.25}
 --- !u!1 &6962549243305523358
 GameObject:
   m_ObjectHideFlags: 0

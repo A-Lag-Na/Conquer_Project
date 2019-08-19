@@ -18,7 +18,12 @@ ModelImporter:
   - first:
       74: -3693655769034393273
     second: DragonArmature|Dragon_Hit
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Main
+    second: {fileID: 2100000, guid: 3943847815a57da4b8fc515a00c44e11, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
