@@ -72,7 +72,8 @@ public class SceneLoader : MonoBehaviour
 
         if (async.isDone)
         {
-            GameObject.FindGameObjectWithTag("Player");
+            //GameObject.FindGameObjectWithTag("Player").GetComponent<Player>().LoadSave();
         }
+        async.allowSceneActivation = true;
     }
 }
