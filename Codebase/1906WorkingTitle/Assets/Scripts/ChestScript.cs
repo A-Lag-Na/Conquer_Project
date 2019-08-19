@@ -8,6 +8,7 @@ public class ChestScript : MonoBehaviour
     Animator chestAnim; //Animator for the chest;
     GameObject player; //Player Object
     Player playerScript;//Player Script
+    Inventory playerInventory;
     CapsuleCollider capsuleCollider; // Capsule Collider
     GameObject chestParticles = null;
 
@@ -19,6 +20,7 @@ public class ChestScript : MonoBehaviour
         //get the Player Component 
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponentInParent<Player>();
+        playerInventory = player.GetComponent<Inventory>();
         capsuleCollider = GetComponent<CapsuleCollider>();
     }
 
@@ -38,6 +40,47 @@ public class ChestScript : MonoBehaviour
             //Gets Random Coin ammount
             System.Random rand = new System.Random();
             int seed = rand.Next(1, 50);
+            switch (seed)
+            {
+                case 1:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Health Potion"));
+                    break;
+                case 2:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Cone of Cold"));
+                    break;
+                case 3:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Damage Buff Potion"));
+                    break;
+                case 4:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Death Aura"));
+                    break;
+                case 5:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Defense Potion"));
+                    break;
+                case 6:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Fire Potion"));
+                    break;
+                case 7:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Fireball"));
+                    break;
+                case 8:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Hex Shot"));
+                    break;
+                case 9:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Ice Potion"));
+                    break;
+                case 10:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Love Potion"));
+                    break;
+                case 11:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Speed Potion"));
+                    break;
+                case 12:
+                    playerInventory.AddConsumable(Resources.Load<Consumable>("Prefabs/PickUps/Lightning Bolt"));
+                    break;
+                default:
+                    break;
+            }
             //Player gets treasure
             playerScript.AddCoins(seed);
             //Not allow the player to cash out the chest again
@@ -45,6 +88,8 @@ public class ChestScript : MonoBehaviour
             StartCoroutine(ShowParticle());
         }
     }
+
+    
 
     IEnumerator ShowParticle()
     {

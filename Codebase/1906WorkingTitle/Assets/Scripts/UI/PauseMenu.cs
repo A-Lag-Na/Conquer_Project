@@ -36,6 +36,8 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        if (GameObject.FindGameObjectWithTag("MainCamera"))
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
 
     // Update is called once per frame
@@ -55,6 +57,8 @@ public class PauseMenu : MonoBehaviour
             foreach (GameObject go in objects)
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            if (GameObject.FindGameObjectWithTag("MainCamera"))
+                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
             mainUI.SetActive(false);
         }
 
@@ -83,6 +87,8 @@ public class PauseMenu : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        if (GameObject.FindGameObjectWithTag("MainCamera"))
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 
     void ExitGame()

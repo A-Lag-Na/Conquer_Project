@@ -5,6 +5,7 @@ using UnityEngine;
 public class SaveScript : MonoBehaviour
 {
     Player player = null;
+    int saveSlot = 0;
     void Start()
     {
         player = GetComponent<Player>();
@@ -12,10 +13,11 @@ public class SaveScript : MonoBehaviour
 
     public void Save()
     {
-        Vector3 playerPosition = player.GetPosition();
         float playerMovementSpeed = player.GetMovementSpeed();
-        float playerHealth = player.GetHealth();
         float maxPlayerHealth = player.GetMaxHealth();
+        if (player.GetCompanion() != null)
+            if (player.GetCompanion().gameObject.name == "Health Regen Companion")
+                maxPlayerHealth -= 10;
         float playerAttackSpeed = player.GetFireRate();
         float playerExperience = player.GetExperience();
         float nextLevelExperience = player.GetNextLevelExperience();
@@ -24,51 +26,46 @@ public class SaveScript : MonoBehaviour
         int playerAttackDamage = player.GetDamage();
         int playerLevel = player.GetLevel();
         int playerSpendingPoints = player.GetSpendingPoints();
-        int playerLives = player.GetLives();
+        int playerGold = player.gameObject.GetComponent<Inventory>().GetCoins();
+        int playerBoxes = player.gameObject.GetComponent<Inventory>().GetBoxPieces();
 
-        PlayerPrefs.SetFloat("PlayerPositionX", playerPosition.x);
-        PlayerPrefs.SetFloat("PlayerPositionY", playerPosition.y);
-        PlayerPrefs.SetFloat("PlayerPositionZ", playerPosition.z);
-        PlayerPrefs.SetFloat("MoveSpeed", playerMovementSpeed);
-        PlayerPrefs.SetFloat("Health", playerHealth);
-        PlayerPrefs.SetFloat("MaxHealth", maxPlayerHealth);
-        PlayerPrefs.SetFloat("AttackSpeed", playerAttackSpeed);
-        PlayerPrefs.SetFloat("Exp", playerExperience);
-        PlayerPrefs.SetFloat("NextLevelExp", nextLevelExperience);
-        PlayerPrefs.SetInt("Defense", playerDefense);
-        PlayerPrefs.SetInt("VisualAttackSpeed", visualAttackSpeed);
-        PlayerPrefs.SetInt("Damage", playerAttackDamage);
-        PlayerPrefs.SetInt("Level", playerLevel);
-        PlayerPrefs.SetInt("SpendingPoints", playerSpendingPoints);
-        PlayerPrefs.SetInt("Lives", playerLives);
+        PlayerPrefs.SetFloat($"MoveSpeed{saveSlot}", playerMovementSpeed);
+        PlayerPrefs.SetFloat($"MaxHealth{saveSlot}", maxPlayerHealth);
+        PlayerPrefs.SetFloat($"AttackSpeed{saveSlot}", playerAttackSpeed);
+        PlayerPrefs.SetFloat($"Exp{saveSlot}", playerExperience);
+        PlayerPrefs.SetFloat($"NextLevelExp{saveSlot}", nextLevelExperience);
+        PlayerPrefs.SetInt($"Defense{saveSlot}", playerDefense);
+        PlayerPrefs.SetInt($"VisualAttackSpeed{saveSlot}", visualAttackSpeed);
+        PlayerPrefs.SetInt($"Damage{saveSlot}", playerAttackDamage);
+        PlayerPrefs.SetInt($"Level{saveSlot}", playerLevel);
+        PlayerPrefs.SetInt($"SpendingPoints{saveSlot}", playerSpendingPoints);
+        PlayerPrefs.SetInt($"Gold{saveSlot}", playerGold);
+        PlayerPrefs.SetInt($"Boxes{saveSlot}", playerBoxes);
 
         PlayerPrefs.Save();
     }
 
     public void Load()
     {
-        if (PlayerPrefs.HasKey("PlayerPositionX"))
+        if (PlayerPrefs.HasKey($"MoveSpeed{saveSlot}"))
         {
-            float playerPositionX = PlayerPrefs.GetFloat("PlayerPositionX");
-            float playerPositionY = PlayerPrefs.GetFloat("PlayerPositionY");
-            float playerPositionZ = PlayerPrefs.GetFloat("PlayerPositionZ");
-            float playerMovementSpeed = PlayerPrefs.GetFloat("MoveSpeed");
-            float playerHealth = PlayerPrefs.GetFloat("Health");
-            float maxPlayerHealth = PlayerPrefs.GetFloat("MaxHealth");
-            float playerAttackSpeed = PlayerPrefs.GetFloat("AttackSpeed");
-            float playerExperience = PlayerPrefs.GetFloat("Exp");
-            float nextLevelExperience = PlayerPrefs.GetFloat("NextLevelExp");
-            int playerDefense = PlayerPrefs.GetInt("Defense");
-            int visualAttackSpeed = PlayerPrefs.GetInt("VisualAttackSpeed");
-            int playerAttackDamage = PlayerPrefs.GetInt("Damage");
-            int playerLevel = PlayerPrefs.GetInt("Level");
-            int playerSpendingPoints = PlayerPrefs.GetInt("SpendingPoints");
-            int playerLives = PlayerPrefs.GetInt("Lives");
+            float playerMovementSpeed = PlayerPrefs.GetFloat($"MoveSpeed{saveSlot}");
+            float maxPlayerHealth = PlayerPrefs.GetFloat($"MaxHealth{saveSlot}");
+            float playerAttackSpeed = PlayerPrefs.GetFloat($"AttackSpeed{saveSlot}");
+            float playerExperience = PlayerPrefs.GetFloat($"Exp{saveSlot}");
+            float nextLevelExperience = PlayerPrefs.GetFloat($"NextLevelExp{saveSlot}");
+            int playerDefense = PlayerPrefs.GetInt($"Defense{saveSlot}");
+            int visualAttackSpeed = PlayerPrefs.GetInt($"VisualAttackSpeed{saveSlot}");
+            int playerAttackDamage = PlayerPrefs.GetInt($"Damage{saveSlot}");
+            int playerLevel = PlayerPrefs.GetInt($"Level{saveSlot}");
+            int playerSpendingPoints = PlayerPrefs.GetInt($"SpendingPoints{saveSlot}");
+            int playerGold = PlayerPrefs.GetInt($"Gold{saveSlot}");
+            int playerBoxes = PlayerPrefs.GetInt($"Boxes{saveSlot}");
 
-            player.GetComponent<CharacterController>().enabled = false;
-            player.SetPosition(new Vector3(playerPositionX, playerPositionY, playerPositionZ));
+            GetComponent<CharacterController>().enabled = false;
+            player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
             player.SetMovementSpeed(playerMovementSpeed);
-            player.SetHealth(playerHealth);
+            player.SetHealth(maxPlayerHealth);
             player.SetMaxHealth(maxPlayerHealth);
             player.SetFireRate(playerAttackSpeed);
             player.SetExperience(playerExperience);
@@ -78,8 +75,19 @@ public class SaveScript : MonoBehaviour
             player.SetDamage(playerAttackDamage);
             player.SetLevel(playerLevel);
             player.SetSpendingPoints(playerSpendingPoints);
-            player.SetLives(playerLives);
-            player.GetComponent<CharacterController>().enabled = true;
+            player.gameObject.GetComponent<Inventory>().SetCoins(playerGold);
+            player.gameObject.GetComponent<Inventory>().SetBoxPieces(playerBoxes);
+            GetComponent<CharacterController>().enabled = true;
         }
+    }
+
+    public int GetSaveSlot()
+    {
+        return saveSlot;
+    }
+
+    public void SetSaveSlot(int _newSave)
+    {
+        saveSlot = _newSave;
     }
 }

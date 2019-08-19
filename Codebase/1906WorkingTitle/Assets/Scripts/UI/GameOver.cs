@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameOver : MonoBehaviour
 {
     Button playAgain, mainMenu = null, continueFromLastSave;
+    [SerializeField] GameObject loadUI = null;
 
     private void Start()
     {
@@ -45,9 +46,9 @@ public class GameOver : MonoBehaviour
             {
                 go.SetActive(true);
                 go.GetComponent<Animator>().SetBool("Death", false);
-                go.GetComponent<SaveScript>().Load();
             }
         gameObject.SetActive(false);
+        loadUI.SetActive(true);
     }
 
     void UnPause()
@@ -56,5 +57,7 @@ public class GameOver : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        if (GameObject.FindGameObjectWithTag("MainCamera"))
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 }

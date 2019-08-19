@@ -61,6 +61,7 @@ public class SceneLoader : MonoBehaviour
 
         // Async load passed in scene
         AsyncOperation async = SceneManager.LoadSceneAsync(scene);
+        async.allowSceneActivation = false;
 
         // update progress while loading
         while (!async.isDone)
@@ -68,5 +69,11 @@ public class SceneLoader : MonoBehaviour
             yield return null;
             progress.value = async.progress * 10f;
         }
+
+        if (async.isDone)
+        {
+            GameObject.Find("Load UI").SetActive(true);
+        }
+        async.allowSceneActivation = true;
     }
 }
