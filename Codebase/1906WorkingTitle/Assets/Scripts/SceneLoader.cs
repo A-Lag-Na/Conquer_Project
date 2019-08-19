@@ -61,12 +61,18 @@ public class SceneLoader : MonoBehaviour
 
         // Async load passed in scene
         AsyncOperation async = SceneManager.LoadSceneAsync(scene);
+        async.allowSceneActivation = false;
 
         // update progress while loading
         while (!async.isDone)
         {
             yield return null;
             progress.value = async.progress * 10f;
+        }
+
+        if (async.isDone)
+        {
+            GameObject.FindGameObjectWithTag("Player");
         }
     }
 }
