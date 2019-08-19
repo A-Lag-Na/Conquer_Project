@@ -65,6 +65,7 @@ public class SaveScript : MonoBehaviour
             GetComponent<CharacterController>().enabled = false;
             player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
             player.SetMovementSpeed(playerMovementSpeed);
+            GetComponent<ConditionManager>().SetMaxSpeed(playerMovementSpeed);
             player.SetHealth(maxPlayerHealth);
             player.SetMaxHealth(maxPlayerHealth);
             player.SetFireRate(playerAttackSpeed);
@@ -77,6 +78,7 @@ public class SaveScript : MonoBehaviour
             player.SetSpendingPoints(playerSpendingPoints);
             player.gameObject.GetComponent<Inventory>().SetCoins(playerGold);
             player.gameObject.GetComponent<Inventory>().SetBoxPieces(playerBoxes);
+            player.SetLives(5);
             GetComponent<CharacterController>().enabled = true;
         }
     }
