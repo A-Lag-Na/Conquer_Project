@@ -73,6 +73,7 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
 
     private void Update()
@@ -132,7 +133,7 @@ public class StatScreen : MonoBehaviour
             foreach (GameObject go in objects)
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            //mainUI.SetActive(false);
+            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
         }
     }
 
@@ -160,9 +161,9 @@ public class StatScreen : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
         if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
-            //mainUI.SetActive(true);
     }
     #endregion
 

@@ -8,7 +8,8 @@ public class GameWin : MonoBehaviour
 {
     #region GameWinProperties
     Text text = null;
-    float time, delay = 0.0f;
+    System.TimeSpan time;
+    float delay = 0.0f;
     int minutes, seconds;
     Text title, content, btnTxt1, btnTxt2 = null;
     Image fadeIn, btnBack1, btnBack2 = null;
@@ -18,7 +19,7 @@ public class GameWin : MonoBehaviour
 
     void Start()
     {
-        time = Time.realtimeSinceStartup;
+        time = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().Stop();
         delay = 0.02f;
         white = new Color(1f, 1f, 1f, 1f);
         red = new Color(1f, 0f, 0f, 1f);
@@ -45,6 +46,7 @@ public class GameWin : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
     
     void Update()
@@ -63,7 +65,7 @@ public class GameWin : MonoBehaviour
             btnTxt2.color = Color.Lerp(btnTxt2.color, black, delay);
         if (title.color != red)
             title.color = Color.Lerp(title.color, red, delay);
-        text.text = $"It took you {(int)time / 60} minutes and {(int)time % 60} seconds!";
+        text.text = $"It took you {time.Minutes} minutes and {time.Seconds} seconds!";
     }
 
     void PlayAgain()
@@ -86,5 +88,6 @@ public class GameWin : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 }
