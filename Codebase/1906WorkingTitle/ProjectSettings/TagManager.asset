@@ -30,6 +30,7 @@ TagManager:
   - Ice Particle
   - GameOver
   - MainMenu
+  - PauseMenu
   layers:
   - Default
   - TransparentFX

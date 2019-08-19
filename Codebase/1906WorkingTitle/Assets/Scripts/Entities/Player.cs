@@ -165,13 +165,13 @@ public class Player : MonoBehaviour
                 #endregion
 
                 #region PlayerAttack
-                if (Input.GetButtonDown("Bullet 1"))
+                if (Input.GetButtonDown("Bullet 1") && inventory.GetBulletCount() >= 0)
                     bulletChoice = 1;
-                if (Input.GetButtonDown("Bullet 2"))
+                if (Input.GetButtonDown("Bullet 2") && inventory.GetBulletCount() >= 1)
                     bulletChoice = 2;
-                if (Input.GetButtonDown("Bullet 3"))
+                if (Input.GetButtonDown("Bullet 3") && inventory.GetBulletCount() >= 2)
                     bulletChoice = 3;
-                if (Input.GetButtonDown("Bullet 4"))
+                if (Input.GetButtonDown("Bullet 4") && inventory.GetBulletCount() >= 3)
                     bulletChoice = 4;
                 // If the corresponding button is clicked call ShootBullet
                 if (Input.GetAxis("Fire1") > 0f)
