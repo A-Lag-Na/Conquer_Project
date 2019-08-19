@@ -29,6 +29,7 @@ TagManager:
   - Fire Particle
   - Ice Particle
   - GameOver
+  - Knight
   layers:
   - Default
   - TransparentFX
