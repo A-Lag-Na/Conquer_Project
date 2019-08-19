@@ -13,7 +13,7 @@ public class UpdateUI : MonoBehaviour
     private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
     private int lives, coins = 0;
 
-    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null;
+    private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null, buttonPromptText;
     private RectTransform healthTransform, levelTransform = null;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
     private Sprite cSprite, tabSprite = null;
@@ -58,6 +58,7 @@ public class UpdateUI : MonoBehaviour
         levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
         levelFlasher = transform.Find("XP Bar").transform.Find("LevelUpFlash").GetComponent<Image>();
         buttonPrompt = transform.Find("ButtonPrompt").GetComponent<Image>();
+        buttonPromptText = transform.Find("ButtonPrompt").GetChild(0).GetComponent<Text>();
 
         //update inventory slots
         InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
@@ -72,10 +73,6 @@ public class UpdateUI : MonoBehaviour
         damageColor = new Color(255.0f, 0.0f, 0.0f, 0.0f);
         levelColorOpaque = new Color32(1, 210, 231, 128);
         levelColorTransparent = new Color32(1, 210, 231, 0);
-
-        //set button sprites
-        cSprite = Resources.Load<Sprite>("Sprites/c_sprite");
-        tabSprite = Resources.Load<Sprite>("Sprites/tab_sprite");
     }
 
     private void Update()
@@ -151,15 +148,15 @@ public class UpdateUI : MonoBehaviour
             if (levelUp)
             {
                 buttonPrompt.color = new Color32(255, 255, 255, 255);
-                buttonPrompt.sprite = tabSprite;
+                buttonPromptText.text = "Level Up!";
             }
         }
         if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
-            buttonPrompt.sprite = cSprite;
+            buttonPromptText.text = "Shop";
         }
-        else if (buttonPrompt.sprite != tabSprite)
+        else if (buttonPromptText.text != "Level Up!")
             buttonPrompt.color = new Color32(0, 0, 0, 0);
         #endregion
 
@@ -202,7 +199,7 @@ public class UpdateUI : MonoBehaviour
     {
         levelUp = true;
         buttonPrompt.color = new Color32(255, 255, 255, 255);
-        buttonPrompt.sprite = tabSprite;
+        buttonPromptText.text = "Level Up!";
     }
 
     void PauseGame()
