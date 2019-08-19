@@ -35,7 +35,7 @@ public class CollisionScript : MonoBehaviour
         GameObject target = collision.collider.gameObject;
         if (target != owner)
         {
-            nav = target.GetComponent<NavMeshAgent>();
+            #region Audio
             audioSource = target.GetComponent<AudioSource>();
             if (audioSource != null)
             {
@@ -44,6 +44,7 @@ public class CollisionScript : MonoBehaviour
                     audioSource.PlayOneShot(hurt);
                 audioSource.volume = 0.5f;
             }
+            #endregion
             if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
                 if (target.CompareTag("Player"))
@@ -85,6 +86,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isFireImmune)
                                 {
+                                    SetHitColor(new Color(0.921f, 0.505f, 0f));
                                     DamageCheck(hitColor);
                                     //Burn sound effect
                                     //audioSource.PlayOneShot(burn);
@@ -96,7 +98,7 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isIceImmune)
                                 {
-                                    DamageCheck(hitColor);
+                                    DamageCheck(new Color(0.360f, 0.952f, 0.960f));
                                     con.SubtractSpeed(0.6f);
                                     con.TimerAdd("thaw", 90);
                                 }
@@ -106,7 +108,8 @@ public class CollisionScript : MonoBehaviour
                             {
                                 if (!isStunImmune)
                                 {
-                                    DamageCheck(hitColor);
+                                    DamageCheck(Color.yellow
+);
                                     if (target.CompareTag("BulletHell Enemy"))
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
@@ -123,7 +126,6 @@ public class CollisionScript : MonoBehaviour
                                             BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
                                             bulletHellAI.Stun();
                                         }
-                                        nav.enabled = false;
                                     }
                                     else
                                         player.Stun();
@@ -175,13 +177,11 @@ public class CollisionScript : MonoBehaviour
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
                                         bulletHellAI.Stun();
-                                        nav.enabled = false;
                                     }
                                     else if (!target.CompareTag("Player"))
                                     {
                                         EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
                                         enemyAI.Stun();
-                                        nav.enabled = false;
                                     }
                                     else
                                         player.Stun();
@@ -200,6 +200,12 @@ public class CollisionScript : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
+
+    private void OnBecameInvisible()
+    {
+        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     private void DamageCheck(Color _color)

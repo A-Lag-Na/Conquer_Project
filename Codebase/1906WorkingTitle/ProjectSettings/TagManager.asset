@@ -29,6 +29,8 @@ TagManager:
   - Fire Particle
   - Ice Particle
   - GameOver
+  - MainMenu
+  - PauseMenu
   - Knight
   layers:
   - Default

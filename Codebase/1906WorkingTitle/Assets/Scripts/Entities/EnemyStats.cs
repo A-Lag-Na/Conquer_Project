@@ -62,7 +62,8 @@ public class EnemyStats : MonoBehaviour
         enemyRender = GetComponentInChildren<Renderer>();
         enemyColor = enemyRender.material.color;
         player = GameObject.FindGameObjectWithTag("Player");
-        playerScript = player.GetComponentInParent<Player>();
+        if(player != null)
+            playerScript = player.GetComponentInParent<Player>();
         if(GetComponent<Animator>() != null)
             anim = GetComponent<Animator>();
         if (spawnerObject != null)
@@ -152,29 +153,9 @@ public class EnemyStats : MonoBehaviour
             health -= _damage;
             if (health <= 0)
             {
-                StartCoroutine(DieAnim());
+                Kill();
             }
         }
-    }
-
-    //Coroutine for Enemy death 
-    IEnumerator DieAnim()
-    {
-        if (anim != null)
-        {
-             anim.SetBool("Dead", true);
-             if (gameObject.name == "Wasp")
-             {
-                gameObject.GetComponent<TurnerAI>().OnPauseGame();
-                gameObject.GetComponent<CharacterController>().gameObject.SetActive(false);
-                gameObject.GetComponent<CapsuleCollider>().gameObject.SetActive(false);
-             }
-           
-
-            yield return new WaitForSeconds(5);
-        }
-     
-        Kill();
     }
 
     //Kill function

@@ -97,7 +97,7 @@ public class StatScreen : MonoBehaviour
 
             //update movement speed
             movementSpeed = player.GetMovementSpeed();
-            movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{movementSpeed}";
+            movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{(int)movementSpeed}";
 
             //update attack speed
             attackSpeed = player.GetAttackSpeed();

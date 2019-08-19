@@ -157,5 +157,20 @@ PrefabInstance:
       propertyPath: ColorBySpeedModule.gradient.maxGradient.key0.g
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1239361643, guid: 30a0cb6263942a34d82f7fb0fc626505, type: 3}
+      propertyPath: particleDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6576097856881388637, guid: 30a0cb6263942a34d82f7fb0fc626505,
+        type: 3}
+      propertyPath: iceCreep
+      value: 
+      objectReference: {fileID: 7834789050226885555}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30a0cb6263942a34d82f7fb0fc626505, type: 3}
+--- !u!1 &7834789050226885555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 498315632295467297, guid: 30a0cb6263942a34d82f7fb0fc626505,
+    type: 3}
+  m_PrefabInstance: {fileID: 7660794816860134034}
+  m_PrefabAsset: {fileID: 0}

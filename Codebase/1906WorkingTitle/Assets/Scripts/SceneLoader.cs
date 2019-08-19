@@ -17,7 +17,6 @@ public class SceneLoader : MonoBehaviour
         progress = transform.GetChild(0).GetChild(1).GetComponent<Slider>();
         restart = true;
         delay = 0.55f;
-        StartCoroutine(LoadNewScene(0));
     }
     
     void Update()
@@ -41,6 +40,21 @@ public class SceneLoader : MonoBehaviour
     }
 
     public IEnumerator LoadNewScene(int scene)
+    {
+        // This line waits for 1.5 seconds before executing the next line in the coroutine.
+        yield return new WaitForSeconds(1.5f);
+
+        // Async load passed in scene
+        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
+
+        // update progress while loading
+        while (!async.isDone)
+        {
+            yield return null;
+            progress.value = async.progress * 10f;
+        }
+    }
+    public IEnumerator LoadSceneandSettings(int scene)
     {
         // This line waits for 1.5 seconds before executing the next line in the coroutine.
         yield return new WaitForSeconds(1.5f);

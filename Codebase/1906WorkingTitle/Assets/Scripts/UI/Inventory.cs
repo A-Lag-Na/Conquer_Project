@@ -13,6 +13,7 @@ public class Inventory : MonoBehaviour
     [SerializeField] int amountOfPotions = 0;
     Player player = null;
     ConditionManager con = null;
+    int bulletCount;
     #endregion
 
     private void Start()
@@ -210,7 +211,7 @@ public class Inventory : MonoBehaviour
             return Resources.Load<Sprite>("Sprites/background");
     }
 
-    public Sprite PotionSprite()
+    public Sprite ConsumableSprite()
     {
         if (consumableNode != null)
             return consumableNode.Value.GetSprite();
@@ -263,6 +264,23 @@ public class Inventory : MonoBehaviour
     public void AddBoxPiece()
     {
         numBoxPieces++;
+    }
+
+    public int GetBoxPieces()
+    {
+        return numBoxPieces;
+    }
+    #endregion
+
+    #region Bullet Count
+    public void AddBullet()
+    {
+        bulletCount++;
+    }
+
+    public int GetBulletCount()
+    {
+        return bulletCount;
     }
     #endregion
 }
