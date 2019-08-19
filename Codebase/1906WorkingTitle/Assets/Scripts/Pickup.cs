@@ -37,7 +37,7 @@ public class Pickup : MonoBehaviour
                     collision.collider.GetComponentInParent<Inventory>().AddBoxPiece();
                     break;
                 case Type.Bullet:
-                    collision.collider.GetComponentInParent<Inventory>().AddBoxPiece();
+                    collision.collider.GetComponentInParent<Inventory>().AddBullet();
                     break;
                 case Type.EOF:
                     break;

@@ -10,7 +10,7 @@ public class DropBox : MonoBehaviour
     void Update()
     {
         
-        if (spawner != null && boxPiece != null)
+        if (spawner != null && boxPiece != null && bullet != null)
         {
             if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count > 0)
             {

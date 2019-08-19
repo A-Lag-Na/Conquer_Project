@@ -14,8 +14,11 @@ public class Options : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        loadSave = GameObject.Find("LoadSave").GetComponent<Button>();
-        loadSave.onClick.AddListener(LoadSave);
+        if (transform.Find("LoadSave"))
+        {
+            loadSave = transform.Find("LoadSave").GetComponent<Button>();
+            loadSave.onClick.AddListener(LoadSave);
+        }
 
         if (GameObject.Find("Pause"))
             headUI = GameObject.Find("Pause");
@@ -41,10 +44,11 @@ public class Options : MonoBehaviour
     #region OptionsFunctions
     void LoadSave()
     {
-        if(headUI.CompareTag("MainMenu"))
-        //else if(headUI.CompareTag("PauseMenu"))
-            GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
-
+        if (loadSave != null)
+        {
+            if(headUI.CompareTag("PauseMenu"))
+                GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
+        }
     }
 
     public void CloseCurrentScreen()
