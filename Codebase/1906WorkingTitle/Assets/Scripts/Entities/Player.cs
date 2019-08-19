@@ -16,9 +16,9 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerLives = 5;
     [SerializeField] private uint bulletVelocity = 0;
 
-    private float playerExperience = 0.0f;
+    [SerializeField] private float playerExperience = 0.0f;
     private float nextLevelExperience = 10.0f;
-    private int playerLevel = 1;
+    [SerializeField] private int playerLevel = 1;
     private float lastTimeFired = 0.0f;
 
     //If player is immune to status conditions
@@ -48,6 +48,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject deathAura = null;
     [SerializeField] private GameObject iceSpell = null;
     [SerializeField] private GameObject gameOver = null;
+    GameObject saveUI = null;
 
     private Animator animator = null;
     private GameObject dashTrail = null;
@@ -93,6 +94,8 @@ public class Player : MonoBehaviour
         gameOver = GameObject.FindGameObjectWithTag("GameOver");
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
+        if (GameObject.Find("Save UI"))
+            saveUI = GameObject.Find("Save UI");
 
         Cursor.SetCursor(crosshairs, new Vector2(256, 256), CursorMode.Auto);
 
@@ -655,6 +658,11 @@ public class Player : MonoBehaviour
     public void ResetCompanion()
     {
         currentCompanion = null;
+    }
+
+    public Companion GetCompanion()
+    {
+        return currentCompanion;
     }
     #endregion
 
