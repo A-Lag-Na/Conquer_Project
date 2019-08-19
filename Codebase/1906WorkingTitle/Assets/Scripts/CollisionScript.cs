@@ -35,7 +35,7 @@ public class CollisionScript : MonoBehaviour
         GameObject target = collision.collider.gameObject;
         if (target != owner)
         {
-            nav = target.GetComponent<NavMeshAgent>();
+            #region Audio
             audioSource = target.GetComponent<AudioSource>();
             if (audioSource != null)
             {
@@ -44,6 +44,7 @@ public class CollisionScript : MonoBehaviour
                     audioSource.PlayOneShot(hurt);
                 audioSource.volume = 0.5f;
             }
+            #endregion
             if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
                 if (target.CompareTag("Player"))
@@ -125,7 +126,6 @@ public class CollisionScript : MonoBehaviour
                                             BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
                                             bulletHellAI.Stun();
                                         }
-                                        nav.enabled = false;
                                     }
                                     else
                                         player.Stun();
@@ -177,13 +177,11 @@ public class CollisionScript : MonoBehaviour
                                     {
                                         BulletHellEnemy bulletHellAI = enemy.GetComponent<BulletHellEnemy>();
                                         bulletHellAI.Stun();
-                                        nav.enabled = false;
                                     }
                                     else if (!target.CompareTag("Player"))
                                     {
                                         EnemyAI enemyAI = enemy.GetComponent<EnemyAI>();
                                         enemyAI.Stun();
-                                        nav.enabled = false;
                                     }
                                     else
                                         player.Stun();
