@@ -46,11 +46,7 @@ public class Options : MonoBehaviour
     {
         if (loadSave != null)
         {
-            if (headUI.CompareTag("MainMenu"))
-            {
-
-            }
-            else if(headUI.CompareTag("PauseMenu"))
+            if(headUI.CompareTag("PauseMenu"))
                 GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
         }
     }
