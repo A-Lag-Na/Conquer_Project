@@ -17,7 +17,6 @@ public class SceneLoader : MonoBehaviour
         progress = transform.GetChild(0).GetChild(1).GetComponent<Slider>();
         restart = true;
         delay = 0.55f;
-        StartCoroutine(LoadNewScene(0));
     }
     
     void Update()

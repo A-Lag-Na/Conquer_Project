@@ -210,7 +210,7 @@ public class Inventory : MonoBehaviour
             return Resources.Load<Sprite>("Sprites/background");
     }
 
-    public Sprite PotionSprite()
+    public Sprite ConsumableSprite()
     {
         if (consumableNode != null)
             return consumableNode.Value.GetSprite();

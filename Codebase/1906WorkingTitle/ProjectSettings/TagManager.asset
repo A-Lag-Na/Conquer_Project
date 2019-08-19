@@ -29,6 +29,7 @@ TagManager:
   - Fire Particle
   - Ice Particle
   - GameOver
+  - MainMenu
   layers:
   - Default
   - TransparentFX
