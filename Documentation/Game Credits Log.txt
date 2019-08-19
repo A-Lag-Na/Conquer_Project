@@ -12,6 +12,7 @@ Models:
 http://quaternius.com/assets.html?i=2
 https://assetstore.unity.com/publishers/17283
 https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
+https://assetstore.unity.com/packages/3d/ammunition-pack-demo-82208
 
 Music:
 
