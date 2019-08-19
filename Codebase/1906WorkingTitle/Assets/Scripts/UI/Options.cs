@@ -41,8 +41,10 @@ public class Options : MonoBehaviour
     #region OptionsFunctions
     void LoadSave()
     {
-        if(headUI)
-        GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
+        if(headUI.CompareTag("MainMenu"))
+        //else if(headUI.CompareTag("PauseMenu"))
+            GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
+
     }
 
     public void CloseCurrentScreen()
