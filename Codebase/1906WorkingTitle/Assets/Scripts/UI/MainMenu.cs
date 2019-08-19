@@ -15,10 +15,12 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         credits = GameObject.Find("Credits");
-        credits.SetActive(false);
+        if(credits != null)
+            credits.SetActive(false);
 
         options = GameObject.Find("Options");
-        options.SetActive(false);
+        if(options != null)
+            options.SetActive(false);
 
         //assign buttons
         startBTN = GameObject.Find("Start Game").GetComponent<Button>();
