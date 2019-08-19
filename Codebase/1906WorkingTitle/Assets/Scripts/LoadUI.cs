@@ -12,6 +12,7 @@ public class LoadUI : MonoBehaviour
     Text loadOneText = null;
     Text loadTwoText = null;
     Text loadThreeText = null;
+    GameObject mainUI = null;
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +27,8 @@ public class LoadUI : MonoBehaviour
         loadOneText = loadOne.gameObject.GetComponentInChildren<Text>();
         loadTwoText = loadTwo.gameObject.GetComponentInChildren<Text>();
         loadThreeText = loadThree.gameObject.GetComponentInChildren<Text>();
+        if (GameObject.Find("Main UI"))
+            mainUI = GameObject.Find("Main UI");
     }
 
     private void Update()
@@ -38,21 +41,43 @@ public class LoadUI : MonoBehaviour
             loadThreeText.text = $"Load 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}";
     }
 
-    public void SelectOne()
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.GetComponent<UpdateUI>().ResumeGame();
+    }
+
+    private void SelectOne()
     {
         saveScript.SetSaveSlot(1);
         saveScript.Load();
+        gameObject.SetActive(false);
     }
 
-    public void SelectTwo()
+    private void SelectTwo()
     {
         saveScript.SetSaveSlot(2);
         saveScript.Load();
+        gameObject.SetActive(false);
     }
 
-    public void SelectThree()
+    private void SelectThree()
     {
         saveScript.SetSaveSlot(3);
         saveScript.Load();
+        gameObject.SetActive(false);
     }
 }

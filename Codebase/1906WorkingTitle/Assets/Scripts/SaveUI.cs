@@ -8,10 +8,12 @@ public class SaveUI : MonoBehaviour
     Button saveOne = null;
     Button saveTwo = null;
     Button saveThree = null;
+    Button back = null;
     SaveScript saveScript = null;
     Text saveOneText = null;
     Text saveTwoText = null;
     Text saveThreeText = null;
+    GameObject mainUI = null;
 
     // Start is called before the first frame update
     void Start()
@@ -19,13 +21,36 @@ public class SaveUI : MonoBehaviour
         saveOne = GameObject.Find("Save File 1").GetComponent<Button>();
         saveTwo = GameObject.Find("Save File 2").GetComponent<Button>();
         saveThree = GameObject.Find("Save File 3").GetComponent<Button>();
+        back = GameObject.Find("Back Button").GetComponent<Button>();
         saveScript = GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>();
         saveOne.onClick.AddListener(SelectOne);
         saveTwo.onClick.AddListener(SelectTwo);
         saveThree.onClick.AddListener(SelectThree);
+        back.onClick.AddListener(TurnOff);
         saveOneText = saveOne.gameObject.GetComponentInChildren<Text>();
         saveTwoText = saveTwo.gameObject.GetComponentInChildren<Text>();
         saveThreeText = saveThree.gameObject.GetComponentInChildren<Text>();
+        if (GameObject.Find("Main UI"))
+            mainUI = GameObject.Find("Main UI");
+    }
+
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
+                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.GetComponent<UpdateUI>().ResumeGame();
     }
 
     private void Update()
@@ -38,7 +63,7 @@ public class SaveUI : MonoBehaviour
             saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}";
     }
 
-    public void SelectOne()
+    private void SelectOne()
     {
         saveScript.SetSaveSlot(1);
         saveScript.Save();
@@ -46,7 +71,7 @@ public class SaveUI : MonoBehaviour
             saveOneText.text = $"Save 1\nLevel: {PlayerPrefs.GetInt($"Level{saveScript.GetSaveSlot()}")}";
     }
 
-    public void SelectTwo()
+    private void SelectTwo()
     {
         saveScript.SetSaveSlot(2);
         saveScript.Save();
@@ -54,11 +79,16 @@ public class SaveUI : MonoBehaviour
             saveTwoText.text = $"Save 2\nLevel: {PlayerPrefs.GetInt($"Level{saveScript.GetSaveSlot()}")}";
     }
 
-    public void SelectThree()
+    private void SelectThree()
     {
         saveScript.SetSaveSlot(3);
         saveScript.Save();
         if (PlayerPrefs.HasKey($"Level{saveScript.GetSaveSlot()}"))
             saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{saveScript.GetSaveSlot()}")}";
+    }
+
+    public void TurnOff()
+    {
+        gameObject.SetActive(false);
     }
 }

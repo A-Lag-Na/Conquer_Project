@@ -318,7 +318,7 @@ public class Player : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("SavePoint"))
-            save.Save();
+            saveUI.SetActive(true);
         if (other.CompareTag("Companion"))
         {
             if (currentCompanion != null)
