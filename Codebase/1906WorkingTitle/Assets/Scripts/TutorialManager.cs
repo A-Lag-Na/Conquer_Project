@@ -13,6 +13,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] GameObject pickup = null;
     private Inventory inventoryScript = null;
     int popUpIndex = 0;
+    bool pressF;
 
     public void Start()
     {
@@ -46,8 +47,14 @@ public class TutorialManager : MonoBehaviour
                     Input.GetAxis("Vertical") < 0f || Input.GetAxis("Horizontal") > 0f)
                 popUpIndex++;
         }
+        //Dash
+        else if(popUpIndex == 1)
+        {
+            if (playerScript.isDashing)
+                popUpIndex++;
+        }
         //Attack
-        else if (popUpIndex == 1)
+        else if (popUpIndex == 2)
         {
             if (Input.GetMouseButtonDown(0))
             {
@@ -57,7 +64,7 @@ public class TutorialManager : MonoBehaviour
             }
         }
         //Enemies
-        else if (popUpIndex == 2)
+        else if (popUpIndex == 3)
         {
             if (spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
             {
@@ -68,28 +75,30 @@ public class TutorialManager : MonoBehaviour
             }
         }
         //Potion usage
-        else if(popUpIndex == 3)
+        else if(popUpIndex == 4)
         {
-            if (Input.GetKeyDown(KeyCode.F) && inventoryScript.GetNumPotions() <= 0)
+            if (Input.GetKeyDown(KeyCode.F) || pressF)
             {
-                popUpIndex++;
+                pressF = true;
+                if(inventoryScript.GetNumPotions() <= 0)
+                     popUpIndex++;
             }
         }
         //Activating the stats screen N
-        else if (popUpIndex == 4)
+        else if (popUpIndex == 5)
         { 
             if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
         //Leveling up
-        else if (popUpIndex == 5)
+        else if (popUpIndex == 6)
         {
             if ((player.GetComponent<Player>().GetDamage() > 1 || player.GetComponent<Player>().GetDefense() > 1
                 || player.GetComponent<Player>().GetAttackSpeed() > 1) || Input.GetButtonDown("Open Stats") || Input.GetKeyDown(KeyCode.Escape))
                 popUpIndex++;
         }
         //Move towards game
-        else if (popUpIndex == 6)
+        else if (popUpIndex == 7)
         {
             if (door.activeSelf)
                 door.SetActive(false);
