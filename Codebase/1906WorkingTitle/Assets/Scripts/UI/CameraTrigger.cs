@@ -8,6 +8,7 @@ public class CameraTrigger : MonoBehaviour
     [SerializeField] public GameObject spawner = null;
     SpawnScript spawn = null;
     [SerializeField] bool hasVisited = false;
+    [SerializeField] GameObject knight  = null;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,17 @@ public class CameraTrigger : MonoBehaviour
             if (other.gameObject.GetComponent<Player>().enemyRespawn)
                 spawn.ResetSpawner();
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if(knight != null)
+            {
+                knight.SetActive(false);
+            }
+        }
+
     }
 
     public void DisableRoom()
