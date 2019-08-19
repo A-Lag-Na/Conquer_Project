@@ -4775,7 +4775,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleDamage: 0
+  particleDamage: 0.1
 --- !u!1001 &6576097857926753712
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4853,7 +4853,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
+      propertyPath: fireCreep
+      value: 
+      objectReference: {fileID: 498315632295467297}
+    m_RemovedComponents:
+    - {fileID: 1114702317, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: b835f69537dc0534e92fdf75f7f4c014, type: 3}
 --- !u!1 &498315632295467297 stripped
 GameObject:

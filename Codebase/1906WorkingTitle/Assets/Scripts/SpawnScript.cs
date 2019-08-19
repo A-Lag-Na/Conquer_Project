@@ -47,6 +47,7 @@ public class SpawnScript : MonoBehaviour
     
     void Update()
     {
+        RefreshSpawnedEnemies();
         if (spawnEnabled && spawnAgain)
             StartCoroutine(SpawnEnemy());
     }
@@ -54,8 +55,6 @@ public class SpawnScript : MonoBehaviour
     IEnumerator SpawnEnemy()
     {
         spawnAgain = false;
-        RefreshSpawnedEnemies();
-
         if (remainingChildren <= 0 && spawnedEnemies.Count == 0 && pointsClone < 1)
             SetDoorLock(false);
 

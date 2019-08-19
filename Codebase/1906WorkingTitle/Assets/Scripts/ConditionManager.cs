@@ -83,7 +83,7 @@ public class ConditionManager : MonoBehaviour
                     if (iceParticle.activeSelf == false && iceParticle != null)
                         iceParticle.SetActive(true);
                     thawTimer--;
-                    float speedThaw = GetSpeed() + thawIncrement / 30f;
+                    float speedThaw = GetSpeed() + (thawIncrement / 30f);
                     if (speedThaw <= maxSpeed)
                         AddSpeed(thawIncrement / 30f);
                 }

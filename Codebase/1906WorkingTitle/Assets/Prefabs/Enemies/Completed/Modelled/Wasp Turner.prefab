@@ -10800,7 +10800,7 @@ MonoBehaviour:
   isFireImmune: 0
   isIceImmune: 0
   isStunImmune: 1
-  pickUp: {fileID: 0}
+  pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
   spawnerObject: {fileID: 0}
   children: 0
