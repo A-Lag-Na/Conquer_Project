@@ -34,11 +34,11 @@ public class LoadUI : MonoBehaviour
     private void Update()
     {
         if (PlayerPrefs.HasKey($"Level{1}"))
-            loadOneText.text = $"Load 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}";
+            loadOneText.text = $"Load 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{1}")}";
         if (PlayerPrefs.HasKey($"Level{2}"))
-            loadTwoText.text = $"Load 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}";
+            loadTwoText.text = $"Load 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{2}")}";
         if (PlayerPrefs.HasKey($"Level{3}"))
-            loadThreeText.text = $"Load 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}";
+            loadThreeText.text = $"Load 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{3}")}";
     }
 
     private void OnEnable()
