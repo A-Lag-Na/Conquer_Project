@@ -284,7 +284,10 @@ public class Companion : MonoBehaviour
         if (name == "Item Grabber Companion")
             if (collision.collider.CompareTag("Pickups"))
                 if (pickup.type == Pickup.Type.Coin)
+                {
                     playerInventory.AddCoins(1);
+                    Destroy(collision.collider.gameObject);
+                }
         if (name == "Melee Companion")
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {

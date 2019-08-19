@@ -55,6 +55,11 @@ public class Inventory : MonoBehaviour
     {
         return gold;
     }
+
+    public void SetCoins(int _coins)
+    {
+        gold = _coins;
+    }
     #endregion
 
     #region Amount of Potions
@@ -269,6 +274,11 @@ public class Inventory : MonoBehaviour
     public int GetBoxPieces()
     {
         return numBoxPieces;
+    }
+
+    public void SetBoxPieces(int _pieces)
+    {
+        numBoxPieces = _pieces;
     }
     #endregion
 

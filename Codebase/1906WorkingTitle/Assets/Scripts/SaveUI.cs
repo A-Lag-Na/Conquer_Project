@@ -56,11 +56,11 @@ public class SaveUI : MonoBehaviour
     private void Update()
     {
         if (PlayerPrefs.HasKey($"Level{1}"))
-            saveOneText.text = $"Save 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}";
+            saveOneText.text = $"Save 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{1}")}";
         if (PlayerPrefs.HasKey($"Level{2}"))
-            saveTwoText.text = $"Save 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}";
+            saveTwoText.text = $"Save 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{2}")}";
         if (PlayerPrefs.HasKey($"Level{3}"))
-            saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}";
+            saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{3}")}";
     }
 
     private void SelectOne()
