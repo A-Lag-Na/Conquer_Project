@@ -30,7 +30,7 @@ public class Player : MonoBehaviour
     public bool isStunned = false;
 
     //Other misc fields
-    private bool isDashing = false;
+    public bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
     private int playerCoinModifier = 1;
