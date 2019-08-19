@@ -24,6 +24,7 @@ public class ChestScript : MonoBehaviour
 
     private void Start()
     {
+        if(GetComponentInChildren<ParticleSystem>().gameObject != null)
         chestParticles = GetComponentInChildren<ParticleSystem>().gameObject;
         chestParticles.SetActive(false);
     }
