@@ -56,7 +56,7 @@ public class StatScreen : MonoBehaviour
         healthText.text = $"Current / Max Health\t\t\t\t\t\t\t\t\t{currentHealth} / {maxHealth}";
 
         //update movement speed
-        movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{movementSpeed}";
+        movementSpeedText.text = $"Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{movementSpeed}";
 
         //update attack speed
         attackSpeedText.text = $"Attack Speed\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{attackSpeed}";
