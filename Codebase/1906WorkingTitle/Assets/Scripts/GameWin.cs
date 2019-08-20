@@ -7,14 +7,14 @@ using UnityEngine.SceneManagement;
 public class GameWin : MonoBehaviour
 {
     #region GameWinProperties
-    Text text = null;
-    System.TimeSpan time;
-    float delay = 0.0f;
-    int minutes, seconds;
-    Text title, content, btnTxt1, btnTxt2 = null;
-    Image fadeIn, btnBack1, btnBack2 = null;
-    Button playAgain, mainMenu = null;
-    Color white, red, black = Color.clear;
+    private Text text = null;
+    private System.TimeSpan time;
+    private float delay = 0.0f;
+    private int minutes, seconds;
+    private Text title, content, btnTxt1, btnTxt2 = null;
+    private Image fadeIn, btnBack1, btnBack2 = null;
+    private Button playAgain, mainMenu = null;
+    private Color white, red, black = Color.clear;
     #endregion
 
     void Start()

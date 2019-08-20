@@ -5,8 +5,8 @@ using UnityEngine;
 public class FireBall : MonoBehaviour
 {
     #region FireBallProperties
-    [SerializeField] GameObject childType = null;
-    [SerializeField] float explosionDamage = 2;
+    [SerializeField] private GameObject childType = null;
+    [SerializeField] private float explosionDamage = 2;
     #endregion
 
     private void OnCollisionEnter(Collision collision)
