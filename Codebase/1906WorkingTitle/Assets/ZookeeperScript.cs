@@ -37,7 +37,6 @@ public class ZookeeperScript : BaseNPC
                 return dialogues[0].textArray[12];
             case "XP Companion":
                 return dialogues[0].textArray[13];
-
             default:
                 return dialogues[0].textArray[14];
         }
