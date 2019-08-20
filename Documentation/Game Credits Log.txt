@@ -7,6 +7,7 @@ https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
 https://opengameart.org/content/pixel-lightning
 https://iconmonstr.com/audio-9-png/
 https://iconmonstr.com/audio-5-png/
+https://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680
 
 Models:
 http://quaternius.com/assets.html?i=2
@@ -14,6 +15,7 @@ https://assetstore.unity.com/publishers/17283
 https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
 https://assetstore.unity.com/packages/3d/props/weapons/free-cartoon-weapon-pack-23956
 https://assetstore.unity.com/packages/3d/props/old-scroll-33919
+https://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680
 
 Music:
 https://westarmusic.sourceaudio.com/#!details?id=15891764
