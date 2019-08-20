@@ -61,6 +61,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Hex Shot
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
+      propertyPath: m_TagString
+      value: Pickups
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.02

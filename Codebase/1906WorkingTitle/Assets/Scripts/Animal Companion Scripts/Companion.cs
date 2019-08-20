@@ -288,6 +288,11 @@ public class Companion : MonoBehaviour
                     playerInventory.AddCoins(1);
                     Destroy(collision.collider.gameObject);
                 }
+                else if (pickup.type == Pickup.Type.Potion || pickup.type == Pickup.Type.Spells)
+                {
+                    playerInventory.AddConsumable(pickup.GetComponent<Consumable>());
+                    Destroy(collision.collider.gameObject);
+                }
         if (name == "Melee Companion")
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {

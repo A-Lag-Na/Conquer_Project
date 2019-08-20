@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
     public bool isIceImmune = false;
     public bool isFireImmune = false;
     public bool isStunImmune = false;
-    
+
     //Other misc fields
     public bool isStunned = false;
     public bool isDashing = false;
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
         source = GetComponent<AudioSource>();
         save = GetComponent<SaveScript>();
         con = GetComponent<ConditionManager>();
-        
+
         dashTrail = GameObject.Find("DashTrail");
         gameOver = GameObject.FindGameObjectWithTag("GameOver");
         if (GameObject.Find("Main UI"))
@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
                     characterController.Move(moveDirection * Time.deltaTime);
                 }
                 else
-                    characterController.Move(moveDirection / playerMovementSpeed);
+                    characterController.Move(moveDirection * (playerMovementSpeed / 75));
 
                 //Player Dash if Spacebar is pressed
                 if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
@@ -237,6 +237,7 @@ public class Player : MonoBehaviour
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
                 lastTimeFired = Time.time;
                 source.PlayOneShot(fire);
+                animator.SetBool("Attack", true);
             }
         }
     }
@@ -465,9 +466,12 @@ public class Player : MonoBehaviour
 
     public void AddAttackSpeed()
     {
-        visualAttackSpeed++;
-        playerAttackSpeed -= 0.1f;
-        playerSpendingPoints--;
+        if (playerAttackSpeed > 0.2f)
+        {
+            visualAttackSpeed++;
+            playerAttackSpeed -= 0.1f;
+            playerSpendingPoints--;
+        }
     }
 
     public void ModifyAttackSpeed(float _attackSpeed)

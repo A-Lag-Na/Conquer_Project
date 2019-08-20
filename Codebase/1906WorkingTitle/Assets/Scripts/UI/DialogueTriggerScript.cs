@@ -10,19 +10,32 @@ public class DialogueTriggerScript : MonoBehaviour
     [SerializeField] private Player playerScript = null;
     [SerializeField] private DialogueManager dialogueManager = null;
     [SerializeField] private string dialogueName = null;
+    [SerializeField] private bool chain = true;
     private bool debouncer = true;
 
     private void OnTriggerEnter(Collider other)
     {
         //Player will be stopped and NPC Knight will walk towards him
         if (other.tag == "Player" && debouncer)
-        {        
+        {
             debouncer = false;
-            dialogueManager.dialogue = baseNPC.GetDialogue(dialogueName);
-            baseNPC.DoAction();
-            dialogueCanvas.gameObject.SetActive(true);
+            dialogueManager.dialogueTriggerScript = this;
             playerScript.isStunned = true;
-            dialogueManager.DisplayText();
+            dialogueCanvas.gameObject.SetActive(true);
+            baseNPC.DoAction();
+            if (playerScript.GetCompanion() != null)
+                dialogueName = playerScript.GetCompanion().gameObject.name;
+
+            if (chain)
+            {
+                dialogueManager.dialogue = baseNPC.GetDialogue(dialogueName);
+                dialogueManager.DisplayText();
+            }
+            else
+            {
+                dialogueManager.DisplayText(baseNPC.GetString(dialogueName));
+            }
+
             debouncer = true;
         }
     }

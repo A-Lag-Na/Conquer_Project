@@ -15,13 +15,6 @@ public class SaveScript : MonoBehaviour
     {
         float playerMovementSpeed = player.GetMovementSpeed();
         float maxPlayerHealth = player.GetMaxHealth();
-        string animalName = "";
-        if (player.GetCompanion() != null)
-        {
-            animalName = player.GetCompanion().gameObject.name;
-            if (player.GetCompanion().gameObject.name == "Health Regen Companion")
-                maxPlayerHealth -= 10;
-        }
         float playerAttackSpeed = player.GetFireRate();
         float playerExperience = player.GetExperience();
         float nextLevelExperience = player.GetNextLevelExperience();
@@ -33,6 +26,19 @@ public class SaveScript : MonoBehaviour
         int playerGold = player.gameObject.GetComponent<Inventory>().GetCoins();
         int playerBoxes = player.gameObject.GetComponent<Inventory>().GetBoxPieces();
         int bulletCount = player.gameObject.GetComponent<Inventory>().GetBulletCount();
+        string animalName = "";
+        if (player.GetCompanion() != null)
+        {
+            animalName = player.GetCompanion().gameObject.name;
+            if (player.GetCompanion().gameObject.name == "Health Regen Companion")
+                maxPlayerHealth -= 10;
+            else if (player.GetCompanion().gameObject.name == "Attack Companion")
+                playerAttackDamage -= 1;
+            else if (player.GetCompanion().gameObject.name == "Defense Companion")
+                playerDefense -= 1;
+            else if (player.GetCompanion().gameObject.name == "Movement Speed Companion")
+                playerMovementSpeed -= 3;
+        }
 
         PlayerPrefs.SetFloat($"MoveSpeed{saveSlot}", playerMovementSpeed);
         PlayerPrefs.SetFloat($"MaxHealth{saveSlot}", maxPlayerHealth);

@@ -9,9 +9,10 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text text = null;
     [SerializeField] private Canvas canvas = null;
     [SerializeField] private Text continuePrompt = null;
-    [SerializeField] private DialogueTriggerScript dialogueTriggerScript = null;
+    public DialogueTriggerScript dialogueTriggerScript = null;
 
     private bool enter = false;
+    private bool exit = false;
     private int textIndex = 0;
 
     private void Update()
@@ -20,8 +21,15 @@ public class DialogueManager : MonoBehaviour
         if (enter)
         {
             continuePrompt.gameObject.SetActive(true);
-            TextConditions();
+            if (exit)
+            {
+                TextConditionsSingle();
+            }
+            else
+                TextConditionsChain();
         }
+        
+
     }
 
     public void DisplayText()
@@ -35,12 +43,19 @@ public class DialogueManager : MonoBehaviour
         {
             text.text = dialogue.textArray[textIndex];
             //Wait time for "Press Enter to continue" to pop up
-            StartCoroutine(TextWait());
+            StartCoroutine(TextWaitChain());
         }
     }
 
+    public void DisplayText(string t)
+    {
+        text.text = t;
+        //Wait time for "Press Enter to continue" to pop up
+        StartCoroutine(TextWaitSingle());
+    }
+
     //If Enter pressed the index will go up one and enter value will be restored to false
-    private void TextConditions()
+    private void TextConditionsChain()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -50,15 +65,31 @@ public class DialogueManager : MonoBehaviour
             DisplayText();
         }
     }
-
-    //Wait for player to read
-    IEnumerator TextWait()
+    private void TextConditionsSingle()
     {
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            enter = false;
+            EndSequence();
+            exit = false;
+        }
+    }
+
+    //Wait for player to read if in chain mode
+    IEnumerator TextWaitChain()
+    {   
         continuePrompt.gameObject.SetActive(false);
         yield return new WaitForSeconds(2);
         enter = true;
     }
 
+    IEnumerator TextWaitSingle()
+    {
+        continuePrompt.gameObject.SetActive(false);
+        yield return new WaitForSeconds(2);
+        enter = true;
+        exit = true;
+    }
     //When all text has gone through end the sequence
     private void EndSequence()
     {
