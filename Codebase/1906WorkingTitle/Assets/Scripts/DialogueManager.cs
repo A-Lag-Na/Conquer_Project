@@ -5,11 +5,11 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Dialogue dialogue;
-    [SerializeField] private Text text;
-    [SerializeField] private Canvas canvas;
-    [SerializeField] private Text continuePrompt;
-    [SerializeField] private DialogueTriggerScript dialogueTriggerScript;
+    public Dialogue dialogue = null;
+    [SerializeField] private Text text = null;
+    [SerializeField] private Canvas canvas = null;
+    [SerializeField] private Text continuePrompt = null;
+    [SerializeField] private DialogueTriggerScript dialogueTriggerScript = null;
 
     private bool enter = false;
     private int textIndex = 0;
