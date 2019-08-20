@@ -8,14 +8,24 @@ https://opengameart.org/content/pixel-lightning
 https://iconmonstr.com/audio-9-png/
 https://iconmonstr.com/audio-5-png/
 https://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680
+https://www.maxpixel.net/Paper-Certificate-Roll-Scroll-Parchment-Sheet-154169
+https://pixabay.com/illustrations/seal-wax-seal-coat-of-arms-initials-2519330/
+https://www.pexels.com/photo/accuracy-action-active-activity-433077/
+https://es.wikipedia.org/wiki/Archivo:House-Tarly-Main-Shield.png
 
 Models:
 http://quaternius.com/assets.html?i=2
-https://assetstore.unity.com/publishers/17283
+https://assetstore.unity.com/packages/3d/environments/forest-low-poly-toon-battle-arena-tower-defense-pack-100080
+https://assetstore.unity.com/packages/3d/environments/desert-low-poly-toon-battle-arena-tower-defense-pack-124507
+https://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-low-poly-toon-battle-arena-tower-defense-pack-109791
+https://assetstore.unity.com/packages/3d/environments/winter-forest-low-poly-toon-battle-arena-tower-defense-pack-150432
 https://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets
 https://assetstore.unity.com/packages/3d/props/weapons/free-cartoon-weapon-pack-23956
 https://assetstore.unity.com/packages/3d/props/old-scroll-33919
 https://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680
+https://www.mixamo.com/#/?page=1&query=petting&type=Motion%2CMotionPack
+https://www.mixamo.com/#/?page=2&type=Character
+https://www.mixamo.com/#/?page=2&type=Character
 
 Music:
 https://westarmusic.sourceaudio.com/#!details?id=15891764
@@ -30,6 +40,8 @@ Fonts:
 https://www.1001freefonts.com/dark-crystal.font
 https://www.1001freefonts.com/quicksand.font
 https://www.1001freefonts.com/karmafuture.font
+https://www.1001freefonts.com/goudy-mediaeval.font
+https://www.1001freefonts.com/zenda.font
 
 SFX:
 https://kenney.nl/assets/ui-audio
