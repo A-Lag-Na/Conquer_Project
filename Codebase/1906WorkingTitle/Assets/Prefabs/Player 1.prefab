@@ -4767,7 +4767,6 @@ GameObject:
   - component: {fileID: 469536748384550718}
   - component: {fileID: 469536748384550719}
   - component: {fileID: 469536748384550707}
-  - component: {fileID: 469536748384550709}
   - component: {fileID: 1918027684}
   m_Layer: 9
   m_Name: Player 1
@@ -4859,16 +4858,21 @@ MonoBehaviour:
   playerSpendingPoints: 0
   playerLives: 5
   bulletVelocity: 20
+  playerExperience: 0
+  playerLevel: 1
   isIceImmune: 0
   isFireImmune: 0
   isStunImmune: 0
   isStunned: 0
+  isDashing: 0
+  enemyRespawn: 0
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
   crosshairs: {fileID: 2800000, guid: e172a6b57ccab9b4dacfe9aab123543e, type: 3}
   mainUI: {fileID: 0}
   deathAura: {fileID: 1108498970550749515}
   iceSpell: {fileID: 6187281563759390062}
   gameOver: {fileID: 0}
+  saveUI: {fileID: 1333151634723959810, guid: 7f01fe4289656484c95abdb445634429, type: 3}
   projectile0: {fileID: 6748821361840403601, guid: b835f69537dc0534e92fdf75f7f4c014,
     type: 3}
   projectile1: {fileID: 6842668380782409971, guid: d7a867c1320493f458e035c700b65057,
@@ -4896,7 +4900,6 @@ MonoBehaviour:
   fireParticle: {fileID: 7417954766070948613}
   iceParticle: {fileID: 7689078792782139800}
   stunParticle: {fileID: 7250462919772704403}
-  loveParticle: {fileID: 8908068206843150031}
 --- !u!82 &469536748384550719
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5009,20 +5012,6 @@ MonoBehaviour:
   gold: 0
   numBoxPieces: 0
   amountOfPotions: 0
---- !u!136 &469536748384550709
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 469536748384550716}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5958344
-  m_Height: 4.2347116
-  m_Direction: 1
-  m_Center: {x: 0, y: 1.7834048, z: 0.03321147}
 --- !u!114 &1918027684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6505,11 +6494,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: IceSpell
       objectReference: {fileID: 0}
-    - target: {fileID: 6328421150536088936, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6328421150536088941, guid: 2d8c87066c0928146a7f1c0bb6975a0d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6590,11 +6574,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Stun Particle
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532103577989711177, guid: f4813bb5b2f3306489786f75bc37657c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8186905745659930275, guid: f4813bb5b2f3306489786f75bc37657c,
         type: 3}
@@ -6697,11 +6676,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerFire
       objectReference: {fileID: 0}
-    - target: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
-        type: 3}
-      propertyPath: m_TagString
-      value: Fire Particle
-      objectReference: {fileID: 0}
     - target: {fileID: 4154862393677500423, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6759,15 +6733,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e2f8653fcb530429a753e7a3d9f9ef, type: 3}
---- !u!1 &7417954766070948613 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
-    type: 3}
-  m_PrefabInstance: {fileID: 6870478570076369665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7417954766070948614 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4154862393677500423, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
+    type: 3}
+  m_PrefabInstance: {fileID: 6870478570076369665}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7417954766070948613 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
     type: 3}
   m_PrefabInstance: {fileID: 6870478570076369665}
   m_PrefabAsset: {fileID: 0}
@@ -6782,11 +6756,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Love Particle
-      objectReference: {fileID: 0}
-    - target: {fileID: 2100573481163130872, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3557996497279168876, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
@@ -6860,17 +6829,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
-      propertyPath: VelocityModule.orbitalY.scalar
-      value: -6
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
       propertyPath: InitialModule.startColor.minMaxState
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
-        type: 3}
-      propertyPath: InitialModule.startColor.maxGradient.key0.r
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
@@ -6890,6 +6854,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
+        type: 3}
       propertyPath: InitialModule.startSizeY.minMaxState
       value: 0
       objectReference: {fileID: 0}
@@ -6900,8 +6869,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
-      propertyPath: InitialModule.startSize.scalar
-      value: 1.4
+      propertyPath: ShapeModule.radius.value
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
@@ -6910,22 +6879,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
         type: 3}
-      propertyPath: InitialModule.startSpeed.scalar
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 4360965166748825753, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
-        type: 3}
-      propertyPath: ShapeModule.radius.value
-      value: 0.6
+      propertyPath: VelocityModule.orbitalY.scalar
+      value: -6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4eb76a6a4b4a9d842ab717446677f7a9, type: 3}
---- !u!1 &8908068206843150031 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2100573481163130872, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
-    type: 3}
-  m_PrefabInstance: {fileID: 7402066922352916791}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6330343997330622555 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3557996497279168876, guid: 4eb76a6a4b4a9d842ab717446677f7a9,
@@ -6998,11 +6956,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PlayerIce
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_TagString
-      value: Ice Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}
@@ -7130,11 +7083,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: DeathAura
       objectReference: {fileID: 0}
-    - target: {fileID: 8317217325041530158, guid: f845679bd1374be4aa923173f94b349e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8795769098935091346, guid: f845679bd1374be4aa923173f94b349e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7202,15 +7150,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f845679bd1374be4aa923173f94b349e, type: 3}
---- !u!1 &1108498970550749515 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8317217325041530158, guid: f845679bd1374be4aa923173f94b349e,
-    type: 3}
-  m_PrefabInstance: {fileID: 8939254830611004517}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &440866243598171383 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8795769098935091346, guid: f845679bd1374be4aa923173f94b349e,
+    type: 3}
+  m_PrefabInstance: {fileID: 8939254830611004517}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1108498970550749515 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8317217325041530158, guid: f845679bd1374be4aa923173f94b349e,
     type: 3}
   m_PrefabInstance: {fileID: 8939254830611004517}
   m_PrefabAsset: {fileID: 0}

@@ -26,6 +26,8 @@ public class SaveScript : MonoBehaviour
         int playerAttackDamage = player.GetDamage();
         int playerLevel = player.GetLevel();
         int playerSpendingPoints = player.GetSpendingPoints();
+        int playerGold = player.gameObject.GetComponent<Inventory>().GetCoins();
+        int playerBoxes = player.gameObject.GetComponent<Inventory>().GetBoxPieces();
 
         PlayerPrefs.SetFloat($"MoveSpeed{saveSlot}", playerMovementSpeed);
         PlayerPrefs.SetFloat($"MaxHealth{saveSlot}", maxPlayerHealth);
@@ -37,6 +39,8 @@ public class SaveScript : MonoBehaviour
         PlayerPrefs.SetInt($"Damage{saveSlot}", playerAttackDamage);
         PlayerPrefs.SetInt($"Level{saveSlot}", playerLevel);
         PlayerPrefs.SetInt($"SpendingPoints{saveSlot}", playerSpendingPoints);
+        PlayerPrefs.SetInt($"Gold{saveSlot}", playerGold);
+        PlayerPrefs.SetInt($"Boxes{saveSlot}", playerBoxes);
 
         PlayerPrefs.Save();
     }
@@ -55,8 +59,13 @@ public class SaveScript : MonoBehaviour
             int playerAttackDamage = PlayerPrefs.GetInt($"Damage{saveSlot}");
             int playerLevel = PlayerPrefs.GetInt($"Level{saveSlot}");
             int playerSpendingPoints = PlayerPrefs.GetInt($"SpendingPoints{saveSlot}");
+            int playerGold = PlayerPrefs.GetInt($"Gold{saveSlot}");
+            int playerBoxes = PlayerPrefs.GetInt($"Boxes{saveSlot}");
 
+            GetComponent<CharacterController>().enabled = false;
+            player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
             player.SetMovementSpeed(playerMovementSpeed);
+            GetComponent<ConditionManager>().SetMaxSpeed(playerMovementSpeed);
             player.SetHealth(maxPlayerHealth);
             player.SetMaxHealth(maxPlayerHealth);
             player.SetFireRate(playerAttackSpeed);
@@ -67,6 +76,10 @@ public class SaveScript : MonoBehaviour
             player.SetDamage(playerAttackDamage);
             player.SetLevel(playerLevel);
             player.SetSpendingPoints(playerSpendingPoints);
+            player.gameObject.GetComponent<Inventory>().SetCoins(playerGold);
+            player.gameObject.GetComponent<Inventory>().SetBoxPieces(playerBoxes);
+            player.SetLives(5);
+            GetComponent<CharacterController>().enabled = true;
         }
     }
 
