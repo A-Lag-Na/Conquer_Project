@@ -5,30 +5,32 @@ using UnityEngine.AI;
 
 public class EnemyAI : MonoBehaviour
 {
+    #region Variables
     #region EnemyStats
     [SerializeField] private float attackRate = 0.0f;
     [SerializeField] private float bulletSpeed = 0.0f;
-    [SerializeField] int bulletDamage = 0;
+    [SerializeField] private int bulletDamage = 0;
     private bool isStunned = false;
     private bool isPaused, inLove = false;
     private bool attackEnabled = true;
     #endregion
 
     #region UnityComponents
-    [SerializeField] GameObject projectile = null;
-    [SerializeField] GameObject projectilePos = null;
-    [SerializeField] GameObject loveParticle = null;
-    [SerializeField] AudioClip fire = null;
+    [SerializeField] private GameObject projectile = null;
+    [SerializeField] private GameObject projectilePos = null;
+    [SerializeField] private GameObject loveParticle = null;
+    [SerializeField] private AudioClip fire = null;
 
-    EnemyStats enemyStats = null;
-    SpawnScript spawnScript = null;
-    Animator anim = null;
-    NavMeshAgent agent = null;
-    GameObject player = null;
-    GameObject target = null;
-    AudioSource source = null;
+    private EnemyStats enemyStats = null;
+    private SpawnScript spawnScript = null;
+    private Animator anim = null;
+    private NavMeshAgent agent = null;
+    private GameObject player = null;
+    private GameObject target = null;
+    private AudioSource source = null;
     #endregion
-    
+    #endregion
+
     void Start()
     {
         anim = GetComponent<Animator>();
