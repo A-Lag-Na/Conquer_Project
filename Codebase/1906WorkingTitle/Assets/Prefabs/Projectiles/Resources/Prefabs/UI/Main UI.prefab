@@ -34,8 +34,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -67, y: -166.12003}
-  m_SizeDelta: {x: 251.17, y: 43.36}
+  m_AnchoredPosition: {x: -65.095, y: -161.8}
+  m_SizeDelta: {x: 267.6, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &366889743
 CanvasRenderer:
@@ -113,8 +113,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -51.93, y: -164.9}
-  m_SizeDelta: {x: 223.04, y: 43.36}
+  m_AnchoredPosition: {x: -65.09501, y: -161.8}
+  m_SizeDelta: {x: 267.6, y: 52}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &871817358
 CanvasRenderer:
@@ -970,11 +970,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fbfd030e216f9b479788fe8e33a540c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  inventory: {fileID: 0}
   damageColor: {r: 0, g: 0, b: 0, a: 0}
   levelColorOpaque: {r: 0, g: 0, b: 0, a: 0}
   levelColorTransparent: {r: 0, g: 0, b: 0, a: 0}
+  player: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!1 &7643891376267197376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1240,8 +1240,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 169.1001, y: -75.3}
-  m_SizeDelta: {x: 134.90002, y: 134.86}
+  m_AnchoredPosition: {x: 177.74, y: -75.29}
+  m_SizeDelta: {x: 130.19, y: 130.15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7643891376914082275
 CanvasRenderer:
@@ -1389,8 +1389,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 397.80005, y: -74.8999}
-  m_SizeDelta: {x: 134.90002, y: 134.9}
+  m_AnchoredPosition: {x: 455, y: -74.8999}
+  m_SizeDelta: {x: 130.19, y: 130.19}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7643891377523823779
 CanvasRenderer:
