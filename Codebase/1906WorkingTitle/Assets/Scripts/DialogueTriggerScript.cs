@@ -5,12 +5,12 @@ using UnityEngine.UI;
 
 public class DialogueTriggerScript : MonoBehaviour
 {
-    [SerializeField] BaseNPC baseNPC;
-    [SerializeField] Canvas dialogueCanvas;
-    [SerializeField] Player playerScript;
-    [SerializeField] DialogueManager dialogueManager;
-    [SerializeField] string dialogueName;
-    bool debouncer = true;
+    [SerializeField] private BaseNPC baseNPC;
+    [SerializeField] private Canvas dialogueCanvas;
+    [SerializeField] private Player playerScript;
+    [SerializeField] private DialogueManager dialogueManager;
+    [SerializeField] private string dialogueName;
+    private bool debouncer = true;
 
     private void OnTriggerEnter(Collider other)
     {
