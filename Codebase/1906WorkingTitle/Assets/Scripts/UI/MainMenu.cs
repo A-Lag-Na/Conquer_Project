@@ -54,8 +54,8 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
-        GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
-        StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(2));
+        GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/IntroLetter"));
+        StartCoroutine(clone.GetComponent<IntroLetterLoader>().LoadNewScene(2));
     }
 
     private void LoadGame()
