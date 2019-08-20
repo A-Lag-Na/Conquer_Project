@@ -15,6 +15,4 @@ public class DancingLadyScript : BaseNPC
         int val = Random.Range(0, 4);
         return dialogues[val];
     }
-
-
 }

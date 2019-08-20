@@ -5,12 +5,12 @@ using UnityEngine;
 public class ChestScript : MonoBehaviour
 {
 
-    Animator chestAnim; //Animator for the chest;
-    GameObject player; //Player Object
-    Player playerScript;//Player Script
-    Inventory playerInventory;
-    CapsuleCollider capsuleCollider; // Capsule Collider
-    GameObject chestParticles = null;
+    private Animator chestAnim = null; //Animator for the chest;
+    private GameObject player = null; //Player Object
+    private Player playerScript = null;//Player Script
+    private Inventory playerInventory = null;
+    private CapsuleCollider capsuleCollider = null; // Capsule Collider
+    private GameObject chestParticles = null;
 
     // Use this for initialization
     void Awake()
@@ -88,8 +88,6 @@ public class ChestScript : MonoBehaviour
             StartCoroutine(ShowParticle());
         }
     }
-
-    
 
     IEnumerator ShowParticle()
     {

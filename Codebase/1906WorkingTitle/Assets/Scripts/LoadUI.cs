@@ -5,16 +5,15 @@ using UnityEngine.UI;
 
 public class LoadUI : MonoBehaviour
 {
-    Button loadOne = null;
-    Button loadTwo = null;
-    Button loadThree = null;
-    SaveScript saveScript = null;
-    Text loadOneText = null;
-    Text loadTwoText = null;
-    Text loadThreeText = null;
-    GameObject mainUI = null;
-
-    // Start is called before the first frame update
+    private Button loadOne = null;
+    private Button loadTwo = null;
+    private Button loadThree = null;
+    private SaveScript saveScript = null;
+    private Text loadOneText = null;
+    private Text loadTwoText = null;
+    private Text loadThreeText = null;
+    private GameObject mainUI = null;
+    
     void Start()
     {
         loadOne = GameObject.Find("Load File 1").GetComponent<Button>();

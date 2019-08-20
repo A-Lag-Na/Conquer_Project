@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class CastleEntrance : MonoBehaviour
 {
-    [SerializeField] GameObject castleGate = null;
-    Inventory playerInventory = null;
+    [SerializeField] private GameObject castleGate = null;
+    private Inventory playerInventory = null;
     private bool open = false;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         playerInventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(playerInventory.GetBoxPieces() == 3)
