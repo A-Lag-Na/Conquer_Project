@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CameraTrigger : MonoBehaviour
 {
-    GameObject camPos = null;
+    [SerializeField] private bool hasVisited = false;
+    [SerializeField] private GameObject knight = null;
     [SerializeField] public GameObject spawner = null;
-    SpawnScript spawn = null;
-    [SerializeField] bool hasVisited = false;
-    [SerializeField] GameObject knight  = null;
-
-    // Start is called before the first frame update
+    private GameObject camPos = null;
+    private SpawnScript spawn = null;
+    
     void Start()
     {
         //Finds each camera position object in each room
@@ -37,6 +36,7 @@ public class CameraTrigger : MonoBehaviour
                 spawn.ResetSpawner();
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")

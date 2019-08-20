@@ -6,14 +6,15 @@ public class Inventory : MonoBehaviour
 {
     #region InventoryStats
     [SerializeField] private int gold = 0, numBoxPieces = 0;
-    LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
-    LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
-    [SerializeField] LinkedListNode<Weapon> weaponNode = null;
-    [SerializeField] LinkedListNode<Consumable> consumableNode = null;
-    [SerializeField] int amountOfPotions = 0;
-    Player player = null;
-    ConditionManager con = null;
-    int bulletCount;
+    [SerializeField] private LinkedListNode<Weapon> weaponNode = null;
+    [SerializeField] private LinkedListNode<Consumable> consumableNode = null;
+    [SerializeField] private int amountOfPotions = 0;
+
+    private LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
+    private LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
+    private Player player = null;
+    private ConditionManager con = null;
+    private int bulletCount;
     #endregion
 
     private void Start()

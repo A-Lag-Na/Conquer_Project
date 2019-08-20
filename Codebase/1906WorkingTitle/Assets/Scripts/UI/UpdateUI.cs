@@ -16,7 +16,6 @@ public class UpdateUI : MonoBehaviour
     private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null, buttonPromptText;
     private RectTransform healthTransform, levelTransform = null;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
-    private Sprite cSprite, tabSprite = null;
 
     //Color flashes
     [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = Color.clear;
@@ -157,7 +156,10 @@ public class UpdateUI : MonoBehaviour
             buttonPromptText.text = "Shop";
         }
         else if (buttonPromptText.text != "Level Up!")
+        {
             buttonPrompt.color = new Color32(0, 0, 0, 0);
+            buttonPromptText.text = "";
+        }
         #endregion
 
         #region InputCheck
