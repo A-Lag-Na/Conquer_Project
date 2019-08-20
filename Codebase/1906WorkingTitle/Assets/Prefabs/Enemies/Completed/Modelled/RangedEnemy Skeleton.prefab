@@ -641,6 +641,7 @@ GameObject:
   - component: {fileID: 6200112785858796563}
   - component: {fileID: 7312011207607015748}
   - component: {fileID: 7895898995581828697}
+  - component: {fileID: 1179029434671567700}
   m_Layer: 11
   m_Name: RangedEnemy Skeleton
   m_TagString: Enemy
@@ -881,6 +882,18 @@ CapsuleCollider:
   m_Height: 6.4163465
   m_Direction: 1
   m_Center: {x: -0.033846125, y: 2.3512568, z: 0}
+--- !u!114 &1179029434671567700
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7895898995581828696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ebe82e679cbba4ca0eaf330d216fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7928890565300790292
 GameObject:
   m_ObjectHideFlags: 0
@@ -1152,6 +1165,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 320143187611483921}
     m_Modifications:
+    - target: {fileID: 8532103577989711177, guid: f4813bb5b2f3306489786f75bc37657c,
+        type: 3}
+      propertyPath: m_Name
+      value: Stun Particle
+      objectReference: {fileID: 0}
     - target: {fileID: 8186905745659930275, guid: f4813bb5b2f3306489786f75bc37657c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1206,11 +1224,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8532103577989711177, guid: f4813bb5b2f3306489786f75bc37657c,
-        type: 3}
-      propertyPath: m_Name
-      value: Stun Particle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4813bb5b2f3306489786f75bc37657c, type: 3}
@@ -1329,6 +1342,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 320143187611483921}
     m_Modifications:
+    - target: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
+        type: 3}
+      propertyPath: m_Name
+      value: Fire
+      objectReference: {fileID: 0}
     - target: {fileID: 4154862393677500423, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1398,11 +1416,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4154862393677500420, guid: 01e2f8653fcb530429a753e7a3d9f9ef,
-        type: 3}
-      propertyPath: m_Name
-      value: Fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01e2f8653fcb530429a753e7a3d9f9ef, type: 3}

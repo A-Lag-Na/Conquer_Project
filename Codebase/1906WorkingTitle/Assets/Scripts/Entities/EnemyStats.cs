@@ -33,9 +33,6 @@ public class EnemyStats : MonoBehaviour
 
     #region UnityComponents
 
-    //Pickup the enemy will drop
-    [SerializeField] private GameObject pickUp = null;
-
     //Children enemies that this enemy spawns on death
     [SerializeField] private GameObject childEnemy = null;
 
@@ -161,15 +158,11 @@ public class EnemyStats : MonoBehaviour
 
     //Kill function
     public void Kill()
-    { 
+    {
+        if(GetComponent<DropChance>())
+            GetComponent<DropChance>().Drop();
         if (CompareTag("BulletHell Enemy"))
             GetComponent<BulletHellEnemy>().Death();
-        if (pickUp != null)
-        {
-            Vector3 vec = GetComponent<Transform>().position;
-            vec = new Vector3(vec.x, vec.y + 0.5f, vec.z);
-            Instantiate(pickUp, vec, Quaternion.identity);
-        }
         if (childEnemy != null && children > 0)
             Split(children);
         if (isChild)
