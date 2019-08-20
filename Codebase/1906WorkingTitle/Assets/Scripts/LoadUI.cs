@@ -70,7 +70,7 @@ public class LoadUI : MonoBehaviour
         if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
         if (mainUI != null)
-            mainUI.SetActive(false);
+            mainUI.SetActive(true);
     }
 
     private void SelectOne()

@@ -55,7 +55,7 @@ public class ShopUI : MonoBehaviour
         coinText.text = $"X{coins}";
 
         //exit stat screen and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Open Shop"))
             ExitMenu();
     }
 
