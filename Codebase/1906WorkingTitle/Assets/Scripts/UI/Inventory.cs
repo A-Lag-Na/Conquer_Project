@@ -95,6 +95,7 @@ public class Inventory : MonoBehaviour
         }
     }
     #endregion
+
     #region Deep Copy
     private NonMonoWeapon WeaponDeepCopy(Weapon _weapon)
     {
@@ -123,6 +124,7 @@ public class Inventory : MonoBehaviour
         return clone;
     }
     #endregion
+
     #region Cycle Weapon
 
     public void CycleWeaponForward()
@@ -208,7 +210,7 @@ public class Inventory : MonoBehaviour
                         float floatModValue = consumableNode.Value.GetFloatModifier();
                         RemoveConsumable();
                         yield return new WaitForSeconds(6f);
-                        player.ModifySpeed(consumableNode.Value.GetFloatModifier() * -1);
+                        player.ModifySpeed(floatModValue * -1);
                         break;
                     case "Death Aura":
                         player.EnableDeathAura();
