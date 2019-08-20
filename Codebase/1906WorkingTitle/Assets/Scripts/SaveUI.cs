@@ -58,6 +58,8 @@ public class SaveUI : MonoBehaviour
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
+        if (mainUI != null)
+            mainUI.SetActive(false);
     }
 
     private void Update()

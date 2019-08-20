@@ -466,9 +466,12 @@ public class Player : MonoBehaviour
 
     public void AddAttackSpeed()
     {
-        visualAttackSpeed++;
-        playerAttackSpeed -= 0.1f;
-        playerSpendingPoints--;
+        if (playerAttackSpeed > 0.2f)
+        {
+            visualAttackSpeed++;
+            playerAttackSpeed -= 0.1f;
+            playerSpendingPoints--;
+        }
     }
 
     public void ModifyAttackSpeed(float _attackSpeed)
