@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IceSpell : MonoBehaviour
 {
-    Player player = null;
+    private Player player = null;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();

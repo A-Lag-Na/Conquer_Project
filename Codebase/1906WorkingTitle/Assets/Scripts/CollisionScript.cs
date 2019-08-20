@@ -44,6 +44,8 @@ public class CollisionScript : MonoBehaviour
                 audioSource.volume = 0.5f;
             }
             #endregion
+
+            #region Get stats
             if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
                 if (target.CompareTag("Player"))
@@ -73,6 +75,7 @@ public class CollisionScript : MonoBehaviour
                         Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                 }
             }
+            #endregion
             if (!(isIceImmune && isFireImmune && isStunImmune))
             {
                 ConditionManager con = target.GetComponent<ConditionManager>();

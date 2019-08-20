@@ -314,6 +314,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: saveUI
+      value: 
+      objectReference: {fileID: 175528594}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: loadUI
+      value: 
+      objectReference: {fileID: 1741818740}
     - target: {fileID: 3521666438964514095, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -369,16 +379,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
-        type: 3}
-      propertyPath: saveUI
-      value: 
-      objectReference: {fileID: 175528594}
-    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
-        type: 3}
-      propertyPath: loadUI
-      value: 
-      objectReference: {fileID: 1741818740}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e24b01301e171e540bf8b839f876b570, type: 3}
 --- !u!1001 &71567068
@@ -500,6 +500,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f01fe4289656484c95abdb445634429, type: 3}
+--- !u!1 &150561970
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 150561971}
+  m_Layer: 0
+  m_Name: Zookeeper Transform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &150561971
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 150561970}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: -30, y: 31.859379, z: 25.399998}
+  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &175528594 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1333151634723959810, guid: 7f01fe4289656484c95abdb445634429,
