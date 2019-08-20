@@ -15,29 +15,24 @@ public class Player : MonoBehaviour
     [SerializeField] private int playerSpendingPoints = 0;
     [SerializeField] private int playerLives = 5;
     [SerializeField] private uint bulletVelocity = 0;
-
     [SerializeField] private float playerExperience = 0.0f;
-    private float nextLevelExperience = 10.0f;
     [SerializeField] private int playerLevel = 1;
-    private float lastTimeFired = 0.0f;
 
     //If player is immune to status conditions
     public bool isIceImmune = false;
     public bool isFireImmune = false;
     public bool isStunImmune = false;
-
-    //If player is currently stunned
-    public bool isStunned = false;
-
+    
     //Other misc fields
+    public bool isStunned = false;
     public bool isDashing = false;
     private bool isRegenerating = false;
     private float playerExperienceModifier = 1;
     private int playerCoinModifier = 1;
     private int bulletChoice = 1;
-
+    private float nextLevelExperience = 10.0f;
+    private float lastTimeFired = 0.0f;
     private bool isAbleToDash = true;
-
     public bool enemyRespawn = false;
     #endregion
 
@@ -48,8 +43,8 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject deathAura = null;
     [SerializeField] private GameObject iceSpell = null;
     [SerializeField] private GameObject gameOver = null;
-    [SerializeField] GameObject saveUI = null;
-    [SerializeField] GameObject loadUI = null;
+    [SerializeField] private GameObject saveUI = null;
+    [SerializeField] private GameObject loadUI = null;
 
     private Animator animator = null;
     private GameObject dashTrail = null;
