@@ -14,11 +14,13 @@ public class StatScreen : MonoBehaviour
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
     private GameObject mainUI = null;
+    private StopWatch sw;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
+        sw = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
@@ -73,8 +75,9 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
+
+        if(sw != null)
+            sw.PauseStopWatch();
     }
 
     private void Update()
@@ -134,8 +137,8 @@ public class StatScreen : MonoBehaviour
             foreach (GameObject go in objects)
                 if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            if (GameObject.FindGameObjectWithTag("MainCamera"))
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
+            if(sw != null)
+                sw.PauseStopWatch();
         }
     }
 
@@ -163,11 +166,10 @@ public class StatScreen : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
+        if (sw != null)
+            sw.ResumeStopWatch();
         if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
     }
     #endregion
-
 }

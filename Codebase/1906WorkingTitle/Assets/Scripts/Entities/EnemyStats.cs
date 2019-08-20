@@ -5,6 +5,7 @@ using UnityEngine.AI;
 
 public class EnemyStats : MonoBehaviour
 {
+    #region Variable
     #region Stats
     //How many points the enemy is worth to the spawner, and how much experience it grants on kill.
     [SerializeField] private int enemyPoints = 1;
@@ -33,27 +34,27 @@ public class EnemyStats : MonoBehaviour
     #region UnityComponents
 
     //Pickup the enemy will drop
-    [SerializeField] GameObject pickUp = null;
+    [SerializeField] private GameObject pickUp = null;
 
     //Children enemies that this enemy spawns on death
-    [SerializeField] GameObject childEnemy = null;
+    [SerializeField] private GameObject childEnemy = null;
 
     //Need this to notify the spawner to add new enemies on split.
-    [SerializeField] GameObject spawnerObject = null;
-    SpawnScript spawnerScript = null;
+    [SerializeField] private GameObject spawnerObject = null;
 
     //How many children this enemy spawns on death
     public int children = 0;
-
-    //Enemy's color and renderer
-    private Renderer enemyRender = null;
-
+    
     //Please don't set colors to null. They're non-nullable types that generate errors if set to null.
     public Color enemyColor;
 
-    Animator anim = null;
-    GameObject player = null;
-    Player playerScript = null;
+    //Enemy's color and renderer
+    private Renderer enemyRender = null;
+    private Animator anim = null;
+    private GameObject player = null;
+    private Player playerScript = null;
+    private SpawnScript spawnerScript = null;
+    #endregion
     #endregion
 
     public void Start()
@@ -147,14 +148,14 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(Color _color, float _damage = 1)
     {
+        if (health <= 0)
+        {
+            Kill();
+        }
         if (damage > 0f)
         {
             BlinkOnHit(_color);
             health -= _damage;
-            if (health <= 0)
-            {
-                Kill();
-            }
         }
     }
 
@@ -163,7 +164,6 @@ public class EnemyStats : MonoBehaviour
     { 
         if (CompareTag("BulletHell Enemy"))
             GetComponent<BulletHellEnemy>().Death();
-            //Instantiate(Resources.Load<GameObject>("Prefabs/UI/Game Win"));
         if (pickUp != null)
         {
             Vector3 vec = GetComponent<Transform>().position;
@@ -186,7 +186,6 @@ public class EnemyStats : MonoBehaviour
         {
             GameObject child = Instantiate(childEnemy, transform.position, Quaternion.identity);
             EnemyStats childStats = child.GetComponent<EnemyStats>();
-
             childStats.isChild = true;
 
             if (spawnerObject != null)

@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class KnightScript : BaseNPC
 {
-    [SerializeField] Positions[] positions;
-    [SerializeField] GameObject knight = null;
-    [SerializeField] GameObject dialogueTrigger;
-    [SerializeField] Animator anim;
+    [SerializeField] private Positions[] positions;
+    [SerializeField] private GameObject knight = null;
+    [SerializeField] private GameObject dialogueTrigger;
+    [SerializeField] private Animator anim;
 
-    bool walk = false;
-    float speed = 1.5f;
-    Vector3 initialPos;
-    Vector3 movePos;
-    Quaternion qTo = Quaternion.identity;
+    private Collider col = null;
+
+    private bool walk = false;
+    private float speed = 1.5f;
+    private Vector3 initialPos;
+    private Vector3 movePos;
+    private Quaternion qTo = Quaternion.identity;
 
     // Start is called before the first frame update
     void Start()
     {
         initialPos = positions[0].inital;
         knight.transform.position = initialPos;
+        col = GetComponent<Collider>();
     }
 
     private void Update()
@@ -73,6 +76,6 @@ public class KnightScript : BaseNPC
     }
     public override void OnDialogueEnd()
     {
-        dialogueTrigger.GetComponent<Collider>().enabled = false;
+        col.enabled = false;
     }
 }
