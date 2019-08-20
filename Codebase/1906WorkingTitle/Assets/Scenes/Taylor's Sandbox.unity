@@ -324,6 +324,11 @@ PrefabInstance:
       propertyPath: loadUI
       value: 
       objectReference: {fileID: 1741818740}
+    - target: {fileID: 469536748384550705, guid: e24b01301e171e540bf8b839f876b570,
+        type: 3}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 963194227}
     - target: {fileID: 3521666438964514095, guid: e24b01301e171e540bf8b839f876b570,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -547,6 +552,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Load UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7134253381314059336, guid: 4c47334e654ecac409ef1104dc456831,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7134253381314059343, guid: 4c47334e654ecac409ef1104dc456831,
         type: 3}
