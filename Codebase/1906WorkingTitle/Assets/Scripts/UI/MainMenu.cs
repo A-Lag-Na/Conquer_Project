@@ -7,11 +7,9 @@ public class MainMenu : MonoBehaviour
 {
     #region MainMenuProperties
     private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
-
     private GameObject credits, options = null;
     #endregion
-
-    //Start is called before the first frame update
+    
     void Start()
     {
 
