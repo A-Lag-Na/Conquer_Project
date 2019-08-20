@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    Button playAgain, mainMenu = null, continueFromLastSave;
-    [SerializeField] GameObject loadUI = null;
+    [SerializeField] private GameObject loadUI = null;
+    private Button playAgain, mainMenu = null, continueFromLastSave;
 
     private void Start()
     {
@@ -25,19 +25,19 @@ public class GameOver : MonoBehaviour
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
     }
 
-    void PlayAgain()
+    private void PlayAgain()
     {
         UnPause();
         SceneManager.LoadScene("Build Scene");
     }
 
-    void MainMenu()
+    private void MainMenu()
     {
         UnPause();
         SceneManager.LoadScene("Main Menu");
     }
 
-    void Continue()
+    private void Continue()
     {
         UnPause();
         Object[] objects = Resources.FindObjectsOfTypeAll(typeof(GameObject));
