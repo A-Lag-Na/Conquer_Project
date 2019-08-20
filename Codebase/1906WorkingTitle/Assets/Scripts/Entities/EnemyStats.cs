@@ -148,14 +148,14 @@ public class EnemyStats : MonoBehaviour
     //Our enemy is damaged
     public void TakeDamage(Color _color, float _damage = 1)
     {
-        if (health <= 0)
-        {
-            Kill();
-        }
-        if (damage > 0f)
+        if (_damage > 0f)
         {
             BlinkOnHit(_color);
             health -= _damage;
+            if (health <= 0f)
+            {
+                Kill();
+            }
         }
     }
 
