@@ -6,32 +6,29 @@ using UnityEngine.UI;
 public class StatScreen : MonoBehaviour
 {
     #region StatScreenProperties
-    private Button speedBTN, damageBTN, defenseBTN = null;
-    [SerializeField] Player player = null;
+    [SerializeField] private Player player = null;
     private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp, attackSpeed = 0.0f;
     private int defense, damage, level, pointsAvailable = 0;
-
+    private Button speedBTN, damageBTN, defenseBTN = null;
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
     private GameObject mainUI = null;
     private StopWatch sw;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         sw = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
-            //mainUI.SetActive(false);
         }
         //assign buttons
         speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
         damageBTN = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
         defenseBTN = transform.Find("Defense").GetChild(0).GetComponent<Button>();
 
-        //assign funsction listeners
+        //assign function listeners
         speedBTN.onClick.AddListener(AddSpeed);
         damageBTN.onClick.AddListener(AddDamage);
         defenseBTN.onClick.AddListener(AddDefense);
