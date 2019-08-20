@@ -80,6 +80,6 @@ public class SceneLoader : MonoBehaviour
                 }
             }
         }
-        SceneManager.UnloadScene(SceneManager.GetActiveScene());
+        SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
     }
 }
