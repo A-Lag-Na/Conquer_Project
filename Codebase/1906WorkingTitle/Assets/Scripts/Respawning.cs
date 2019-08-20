@@ -14,7 +14,7 @@ public class Respawning : MonoBehaviour
     int mountainSpawnedNumber = 0;
     int desertSpawnedNumber = 0;
     Player player = null;
-    Camera mainCamera = null;
+    [SerializeField] Camera mainCamera = null;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +25,6 @@ public class Respawning : MonoBehaviour
         forestSpawnedNumber = 0;
         mountainSpawnedNumber = 0;
         desertSpawnedNumber = 0;
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 

@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private Vector3 moveDirection = Vector3.zero;
     private Vector3 mousePosition = Vector3.zero;
     private Vector3 targetPosition = Vector3.zero;
-    private Camera mainCamera = null;
+    [SerializeField] Camera mainCamera = null;
     private float playerY = 0.0f;
     private bool paused = false;
     #endregion
@@ -84,8 +84,7 @@ public class Player : MonoBehaviour
         source = GetComponent<AudioSource>();
         save = GetComponent<SaveScript>();
         con = GetComponent<ConditionManager>();
-
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
+        
         dashTrail = GameObject.Find("DashTrail");
         gameOver = GameObject.FindGameObjectWithTag("GameOver");
         if (GameObject.Find("Main UI"))
@@ -682,6 +681,13 @@ public class Player : MonoBehaviour
         }
         else
             iceSpell.SetActive(true);
+    }
+    #endregion
+
+    #region LoadUI
+    public GameObject GetLoadUI()
+    {
+        return loadUI;
     }
     #endregion
     #endregion
