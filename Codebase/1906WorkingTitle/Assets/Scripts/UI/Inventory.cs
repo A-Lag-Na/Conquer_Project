@@ -291,5 +291,10 @@ public class Inventory : MonoBehaviour
     {
         return bulletCount;
     }
+
+    public void SetBulletCount(int _bulletCount)
+    {
+        bulletCount = _bulletCount;
+    }
     #endregion
 }

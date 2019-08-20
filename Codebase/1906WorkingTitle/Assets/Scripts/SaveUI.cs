@@ -9,6 +9,7 @@ public class SaveUI : MonoBehaviour
     Button saveTwo = null;
     Button saveThree = null;
     Button back = null;
+    Button clearSaves = null;
     SaveScript saveScript = null;
     Text saveOneText = null;
     Text saveTwoText = null;
@@ -22,16 +23,20 @@ public class SaveUI : MonoBehaviour
         saveTwo = GameObject.Find("Save File 2").GetComponent<Button>();
         saveThree = GameObject.Find("Save File 3").GetComponent<Button>();
         back = GameObject.Find("Back Button").GetComponent<Button>();
+        clearSaves = GameObject.Find("Clear Saves").GetComponent<Button>();
         saveScript = GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>();
         saveOne.onClick.AddListener(SelectOne);
         saveTwo.onClick.AddListener(SelectTwo);
         saveThree.onClick.AddListener(SelectThree);
         back.onClick.AddListener(TurnOff);
+        clearSaves.onClick.AddListener(ClearSaves);
         saveOneText = saveOne.gameObject.GetComponentInChildren<Text>();
         saveTwoText = saveTwo.gameObject.GetComponentInChildren<Text>();
         saveThreeText = saveThree.gameObject.GetComponentInChildren<Text>();
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
+        if (mainUI != null)
+            mainUI.SetActive(false);
     }
 
     private void OnEnable()
@@ -41,6 +46,8 @@ public class SaveUI : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.SetActive(false);
     }
 
     private void OnDisable()
@@ -57,10 +64,18 @@ public class SaveUI : MonoBehaviour
     {
         if (PlayerPrefs.HasKey($"Level{1}"))
             saveOneText.text = $"Save 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{1}")}";
+        else
+            saveOneText.text = "Save 1";
+
         if (PlayerPrefs.HasKey($"Level{2}"))
             saveTwoText.text = $"Save 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{2}")}";
+        else
+            saveTwoText.text = "Save 2";
+
         if (PlayerPrefs.HasKey($"Level{3}"))
             saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{3}")}";
+        else
+            saveThreeText.text = "Save 3";
     }
 
     private void SelectOne()
@@ -90,5 +105,10 @@ public class SaveUI : MonoBehaviour
     public void TurnOff()
     {
         gameObject.SetActive(false);
+    }
+
+    private void ClearSaves()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
