@@ -18,7 +18,6 @@ public class MusicManager : MonoBehaviour
 
     void Start()
     {
-        mainCamera = GameObject.Find("Main Camera").GetComponent<Camera>();
         townMusicSource.enabled = false;
         forestMusicSource.enabled = false;
         desertMusicSource.enabled = false;

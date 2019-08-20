@@ -8,7 +8,7 @@ public class SceneLoader : MonoBehaviour
 {
     private Text text;
     private Slider progress;
-    private bool restart;
+    private bool restart, load;
     private float delay;
     
     void Start()
@@ -60,18 +60,27 @@ public class SceneLoader : MonoBehaviour
         yield return new WaitForSeconds(1.5f);
 
         // Async load passed in scene
-        AsyncOperation async = SceneManager.LoadSceneAsync(scene);
-
+        AsyncOperation async = SceneManager.LoadSceneAsync(scene,LoadSceneMode.Additive);
+        async.allowSceneActivation = false;
         // update progress while loading
         while (!async.isDone)
         {
-            yield return null;
+            yield return 0;
             progress.value = async.progress * 10f;
         }
 
         if (async.isDone)
         {
-            GameObject.Find("Load UI").SetActive(true);
+            Scene reference = SceneManager.GetSceneByBuildIndex(scene);
+            GameObject[] array = reference.GetRootGameObjects();
+            foreach (GameObject obj in array)
+            {
+                if (obj.CompareTag("Player"))
+                {
+                    obj.GetComponent<Player>().GetLoadUI().SetActive(true);
+                }
+            }
         }
+        SceneManager.UnloadScene(SceneManager.GetActiveScene());
     }
 }
