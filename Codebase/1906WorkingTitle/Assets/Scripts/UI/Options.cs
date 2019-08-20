@@ -10,8 +10,7 @@ public class Options : MonoBehaviour
     private Button loadSave = null;
     private GameObject headUI = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (transform.Find("LoadSave"))
@@ -33,8 +32,7 @@ public class Options : MonoBehaviour
         if (headUI != null)
             headUI.SetActive(false);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
