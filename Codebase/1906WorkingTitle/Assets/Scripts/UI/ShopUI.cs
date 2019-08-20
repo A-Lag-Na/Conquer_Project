@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
     [SerializeField] private Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
     private Inventory inventory = null;
-    private Text coinText, purchaseText = null;
+    private Text coinText, purchaseText = null, descriptionText = null;
     private GameObject mainUI, denyScreen = null;
     private BaseItem currentItem = null;
     private int coins = 0;
@@ -29,6 +29,7 @@ public class ShopUI : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("Player"))
             inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         purchaseText = transform.Find("Display").GetChild(0).GetComponent<Text>();
+        descriptionText = transform.Find("Display").GetChild(1).GetComponent<Text>();
 
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -104,7 +105,8 @@ public class ShopUI : MonoBehaviour
     public void Checkout(BaseItem _item)
     {
         currentItem = _item;
-        purchaseText.text = $"{currentItem.GetName()}\n{currentItem.GetValue()} Coins";
+        purchaseText.text = $"{currentItem.GetName()} - {currentItem.GetValue()} Coins";
+        descriptionText.text = currentItem.GetDesc();
     }
 
     void DenyPuchase()
