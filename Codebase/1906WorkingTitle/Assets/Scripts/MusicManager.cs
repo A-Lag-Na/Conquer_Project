@@ -88,8 +88,11 @@ public class MusicManager : MonoBehaviour
             castleMusicSource.enabled = false;
             bossMusicSource.enabled = true;
         }
+
         if (gameOverScreen.activeInHierarchy)
             Death();
+        if (!gameOverScreen.activeInHierarchy)
+            Alive();
     }
 
     public void Death()
@@ -103,6 +106,20 @@ public class MusicManager : MonoBehaviour
             castleMusicSource.volume /= 4;
             bossMusicSource.volume /= 4;
             isDead = false;
+        }
+    }
+
+    public void Alive()
+    {
+        if (!isDead)
+        {
+            townMusicSource.volume *= 4;
+            forestMusicSource.volume *= 4;
+            desertMusicSource.volume *= 4;
+            mountainsMusicSource.volume *= 4;
+            castleMusicSource.volume *= 4;
+            bossMusicSource.volume *= 4;
+            isDead = true;
         }
     }
 }
