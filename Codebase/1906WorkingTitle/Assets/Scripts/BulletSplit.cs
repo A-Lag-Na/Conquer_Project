@@ -7,7 +7,7 @@ public class BulletSplit : MonoBehaviour
     #region BulletSplitProperties
     [SerializeField] private float boltSpeed = 5;
     [SerializeField] private int numChildren = 0;
-    [SerializeField] GameObject bolts = null;
+    [SerializeField] private GameObject bolts = null;
     private List<Vector3> EnemyPositions = null;
     private int layer = 0;
     #endregion

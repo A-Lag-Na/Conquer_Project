@@ -5,23 +5,20 @@ using UnityEngine.UI;
 
 public class UpdateUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     #region RecordedStats
+    //Color flashes
+    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = Color.clear;
     [SerializeField] private Player player = null;
     [SerializeField] private Inventory inventory = null;
-    private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
-    private int lives, coins = 0;
-
     private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null, buttonPromptText;
     private RectTransform healthTransform, levelTransform = null;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
 
-    //Color flashes
-    [SerializeField] Color damageColor, levelColorOpaque, levelColorTransparent = Color.clear;
-
+    private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
+    private int lives, coins = 0;
+    
     //distance from shop
-    float dist = 0.0f;
+    private float dist = 0.0f;
 
     // stat screen and pause menu references to keep
     private GameObject statScreen, pauseMenu = null;

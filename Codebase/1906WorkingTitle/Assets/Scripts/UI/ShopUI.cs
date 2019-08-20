@@ -6,17 +6,15 @@ using UnityEngine.UI;
 public class ShopUI : MonoBehaviour
 {
     #region ShopStats
+    [SerializeField] private GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
+    [SerializeField] private Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
     private Inventory inventory = null;
-    private int coins = 0;
     private Text coinText, purchaseText = null;
-    [SerializeField] Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
     private GameObject mainUI, denyScreen = null;
-    [SerializeField] GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
-    //List<BaseItem> shopItems = new List<BaseItem>();
-    BaseItem currentItem = null;
+    private BaseItem currentItem = null;
+    private int coins = 0;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (GameObject.Find("Main UI"))
@@ -46,11 +44,9 @@ public class ShopUI : MonoBehaviour
         potionsScreen.SetActive(false);
         scrollsScreen.SetActive(false);
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-
         //update coin count
         if (inventory != null)
             coins = inventory.GetCoins();

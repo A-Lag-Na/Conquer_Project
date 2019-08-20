@@ -6,10 +6,10 @@ public class Consumable : BaseItem
 {
     #region ConsumableStats
     public enum ConsumableType { Consumable, Thrown, EOF};
-    [SerializeField] ConsumableType consumableType = ConsumableType.Consumable;
-    [SerializeField] float floatModifier = 5;
-    [SerializeField] int intModifier = 5;
-    [SerializeField] GameObject consumableEffect = null;
+    [SerializeField] private ConsumableType consumableType = ConsumableType.Consumable;
+    [SerializeField] private float floatModifier = 5;
+    [SerializeField] private int intModifier = 5;
+    [SerializeField] private GameObject consumableEffect = null;
     #endregion
 
     #region ConsumableFunctions

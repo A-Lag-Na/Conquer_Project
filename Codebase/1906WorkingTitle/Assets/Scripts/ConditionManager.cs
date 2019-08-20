@@ -23,12 +23,12 @@ public class ConditionManager : MonoBehaviour
     #endregion
 
     #region Unity Components
-    private Component statsScript = null;
-    private Component aiScript = null;
-    private Renderer enemyRender = null;
     [SerializeField] private GameObject fireParticle = null;
     [SerializeField] private GameObject iceParticle = null;
     [SerializeField] private GameObject stunParticle = null;
+    private Component statsScript = null;
+    private Component aiScript = null;
+    private Renderer enemyRender = null;
     #endregion
     #endregion
 

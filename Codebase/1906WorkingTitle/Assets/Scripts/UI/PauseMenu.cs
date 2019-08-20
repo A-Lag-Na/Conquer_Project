@@ -7,11 +7,10 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     #region PauseMenuProperties
-    Button ResumeBTN, OptionsBTN, ExitBTN = null;
-    GameObject mainUI, optionsMenu = null;
+    private Button ResumeBTN, OptionsBTN, ExitBTN = null;
+    private GameObject mainUI, optionsMenu = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         if (GameObject.Find("Main UI"))
@@ -39,8 +38,7 @@ public class PauseMenu : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("MainCamera"))
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         //exit pause menu and reenable main ui
@@ -69,19 +67,19 @@ public class PauseMenu : MonoBehaviour
     }
 
     #region PauseMenuFunctions
-    void Resume()
+    private void Resume()
     {
         UnPause();
         if (mainUI != null)
             mainUI.SetActive(true);
     }
 
-    void Options()
+    private void Options()
     {
         optionsMenu.SetActive(true);
     }
 
-    void UnPause()
+    private void UnPause()
     {
         Time.timeScale = 1;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -91,7 +89,7 @@ public class PauseMenu : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 
-    void ExitGame()
+    private void ExitGame()
     {
         UnPause();
         SceneManager.LoadScene("Main Menu");
