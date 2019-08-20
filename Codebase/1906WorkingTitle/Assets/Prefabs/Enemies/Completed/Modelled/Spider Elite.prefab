@@ -6003,6 +6003,7 @@ GameObject:
   - component: {fileID: 6245438018223235816}
   - component: {fileID: 4718152115843452303}
   - component: {fileID: 4718152114390604110}
+  - component: {fileID: 3879460130186314430}
   m_Layer: 11
   m_Name: Spider Elite
   m_TagString: Enemy
@@ -6262,6 +6263,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &3879460130186314430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6245438018223235815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ebe82e679cbba4ca0eaf330d216fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6627500025617531618
 GameObject:
   m_ObjectHideFlags: 0

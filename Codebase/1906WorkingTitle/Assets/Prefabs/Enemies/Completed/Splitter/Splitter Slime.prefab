@@ -721,6 +721,7 @@ GameObject:
   - component: {fileID: 5618701346419799565}
   - component: {fileID: 5618701346419799562}
   - component: {fileID: 5618701346419799563}
+  - component: {fileID: -8564255954252213919}
   m_Layer: 11
   m_Name: Splitter Slime
   m_TagString: Enemy
@@ -938,7 +939,6 @@ MonoBehaviour:
   isFireImmune: 0
   isIceImmune: 0
   isStunImmune: 0
-  pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 1608901376067040404, guid: cc74026ce59200343ad83a9c62211c32,
     type: 3}
   spawnerObject: {fileID: 0}
@@ -957,6 +957,18 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.76840883
   m_Center: {x: -0.014441173, y: 0.3251441, z: 0.017686207}
+--- !u!114 &-8564255954252213919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5618701346419799555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ebe82e679cbba4ca0eaf330d216fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5618701345548403880
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1276,21 +1288,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5618701345491990691}
     m_Modifications:
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Layer
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1360,6 +1357,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Layer
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}

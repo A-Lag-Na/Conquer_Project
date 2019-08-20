@@ -9797,6 +9797,7 @@ GameObject:
   - component: {fileID: 5819966560183394842}
   - component: {fileID: 2586545948894429067}
   - component: {fileID: 8844043960904476035}
+  - component: {fileID: -8985752451425768793}
   m_Layer: 11
   m_Name: Snake Elite
   m_TagString: Enemy
@@ -10055,6 +10056,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &-8985752451425768793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2586545948894429064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54ebe82e679cbba4ca0eaf330d216fbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2621235603561098199
 GameObject:
   m_ObjectHideFlags: 0

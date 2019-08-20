@@ -6,12 +6,12 @@ public class Inventory : MonoBehaviour
 {
     #region InventoryStats
     [SerializeField] private int gold = 0, numBoxPieces = 0;
-    [SerializeField] private LinkedListNode<Weapon> weaponNode = null;
-    [SerializeField] private LinkedListNode<Consumable> consumableNode = null;
+    [SerializeField] private LinkedListNode<NonMonoWeapon> weaponNode = null;
+    [SerializeField] private LinkedListNode<NonMonoConsumable> consumableNode = null;
     [SerializeField] private int amountOfPotions = 0;
 
-    private LinkedList<Weapon> weaponList = new LinkedList<Weapon>();
-    private LinkedList<Consumable> consumableList = new LinkedList<Consumable>();
+    private LinkedList<NonMonoWeapon> weaponList = new LinkedList<NonMonoWeapon>();
+    private LinkedList<NonMonoConsumable> consumableList = new LinkedList<NonMonoConsumable>();
     private Player player = null;
     private ConditionManager con = null;
     private int bulletCount;
@@ -73,8 +73,9 @@ public class Inventory : MonoBehaviour
     #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
-        //weaponList.AddLast(WeaponDeepCopy((Weapon)_weapon));
-        weaponList.AddLast(Weapon.Instantiate<Weapon>((Weapon)_weapon));
+        weaponList.AddLast(WeaponDeepCopy((Weapon)_weapon));
+        //weaponList.AddLast((Weapon)_weapon);
+        //weaponList.AddLast(Weapon.Instantiate<Weapon>((Weapon)_weapon));
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
@@ -85,15 +86,43 @@ public class Inventory : MonoBehaviour
 
     public void AddConsumable(BaseItem _consumable)
     {
-        //consumableList.AddLast(ConsumableDeepCopy((Consumable)_consumable));
-        consumableList.AddLast(Consumable.Instantiate<Consumable>((Consumable)_consumable));
+        consumableList.AddLast(ConsumableDeepCopy((Consumable)_consumable));
+        //consumableList.AddLast((Consumable)_consumable);
+        //consumableList.AddLast(Consumable.Instantiate<Consumable>((Consumable)_consumable));
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
         }
     }
     #endregion
+    #region Deep Copy
+    private NonMonoWeapon WeaponDeepCopy(Weapon _weapon)
+    {
+        NonMonoWeapon clone = new NonMonoWeapon();
+        clone.SetName(_weapon.GetName());
+        clone.SetSprite(_weapon.GetSprite());
+        clone.SetValue(_weapon.GetValue());
+        clone.SetAttackDamage(_weapon.GetAttackDamage());
+        clone.SetAttackSpeed(_weapon.GetAttackSpeed());
+        return clone;
+    }
 
+    private NonMonoConsumable ConsumableDeepCopy(Consumable _consumable)
+    {
+        NonMonoConsumable clone = new NonMonoConsumable();
+        clone.SetName(_consumable.GetName());
+        clone.SetSprite(_consumable.GetSprite());
+        clone.SetValue(_consumable.GetValue());
+        clone.SetConsumableEffect(_consumable.GetConsumableEffect());
+        if(_consumable.GetConsumableType() == Consumable.ConsumableType.Consumable)
+            clone.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
+        else
+            clone.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+        clone.SetFloatModifier(_consumable.GetFloatModifier());
+        clone.SetIntModifier(_consumable.GetIntModifier());
+        return clone;
+    }
+    #endregion
     #region Cycle Weapon
 
     public void CycleWeaponForward()
@@ -146,7 +175,7 @@ public class Inventory : MonoBehaviour
         if (consumableNode != null)
         {
             //if consumable type
-            if (consumableNode.Value.GetConsumableType() == Consumable.ConsumableType.Consumable)
+            if (consumableNode.Value.GetConsumableType() == NonMonoConsumable.ConsumableType.Consumable)
             {
                 switch (consumableNode.Value.GetName())
                 {
