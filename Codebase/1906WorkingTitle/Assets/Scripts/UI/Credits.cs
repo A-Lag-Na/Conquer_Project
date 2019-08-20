@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class Credits : MonoBehaviour
 {
     GameObject text = null;
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         text = transform.Find("Credit").gameObject;
@@ -18,16 +17,10 @@ public class Credits : MonoBehaviour
         StartCoroutine(Continue());
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     IEnumerator Continue()
     {
         yield return new WaitForSeconds(20f);
         text.GetComponent<RectTransform>().position = new Vector3();
-        text.GetComponent<Text>().text = "Press ";
+        text.GetComponent<Text>().text = "Press escape";
     }
 }
