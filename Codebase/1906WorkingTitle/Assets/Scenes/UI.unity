@@ -334,7 +334,7 @@ PrefabInstance:
     - target: {fileID: 7643891376193755789, guid: 088100d67a5aa474fb02caba1b105ef8,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7643891376193755785, guid: 088100d67a5aa474fb02caba1b105ef8,
         type: 3}
@@ -440,6 +440,19 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7643891377523823781, guid: 088100d67a5aa474fb02caba1b105ef8,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 416.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 871817356, guid: 088100d67a5aa474fb02caba1b105ef8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -67.45002
+      objectReference: {fileID: 0}
+    - target: {fileID: 871817356, guid: 088100d67a5aa474fb02caba1b105ef8, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -166.12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 088100d67a5aa474fb02caba1b105ef8, type: 3}
@@ -920,6 +933,54 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 387575753, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Shoot out an AOE fireball
+      objectReference: {fileID: 0}
+    - target: {fileID: 418758224, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Temporarily increase defense by 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 762305159, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Shoot out a AOE of lingering fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 959448305, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: An area around you will be temporarily harmful to your enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 1134029009, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Temporarily increase damage by 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1940595602, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Temporarily increase movement speed by 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2073634521, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
+      propertyPath: description
+      value: Temporarily turn your enemies into allies
+      objectReference: {fileID: 0}
+    - target: {fileID: 704642016076782414, guid: dc3caa54645e85b43b7288a104d3a236,
+        type: 3}
+      propertyPath: description
+      value: Heal for 5HP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8630462814714000445, guid: dc3caa54645e85b43b7288a104d3a236,
+        type: 3}
+      propertyPath: description
+      value: Shoot out an explosive AOE shot and set your enemies on fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 3602821697089220151, guid: dc3caa54645e85b43b7288a104d3a236,
+        type: 3}
+      propertyPath: description
+      value: Curse your enemies and slow them, stun them, and set them on fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1572866079759830767, guid: dc3caa54645e85b43b7288a104d3a236,
+        type: 3}
+      propertyPath: description
+      value: Shoot a bolt of lightning and more shots will target nearby enemies
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3caa54645e85b43b7288a104d3a236, type: 3}
@@ -1641,7 +1702,7 @@ PrefabInstance:
     - target: {fileID: 8143376995351104596, guid: ad5734e8cb4573e4a8e1338faca4fed1,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8143376995351104607, guid: ad5734e8cb4573e4a8e1338faca4fed1,
         type: 3}

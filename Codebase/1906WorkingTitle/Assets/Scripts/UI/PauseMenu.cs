@@ -44,7 +44,7 @@ public class PauseMenu : MonoBehaviour
     void Update()
     {
         //exit pause menu and reenable main ui
-        if (Input.GetKeyDown(KeyCode.Escape) && !transform.Find("Options").gameObject.activeSelf)
+        if ((Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape)) && !transform.Find("Options").gameObject.activeSelf)
             Resume();
     }
 
