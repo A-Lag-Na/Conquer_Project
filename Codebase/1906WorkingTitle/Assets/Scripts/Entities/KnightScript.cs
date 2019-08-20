@@ -6,7 +6,6 @@ public class KnightScript : BaseNPC
 {
     [SerializeField] private Positions[] positions = null;
     [SerializeField] private GameObject knight = null;
-    [SerializeField] private GameObject dialogueTrigger = null;
     [SerializeField] private Animator anim = null;
 
     private Collider col = null;
