@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    private Dialogue dialogue;
+    public Dialogue dialogue;
     [SerializeField] private Text text;
     [SerializeField] private Canvas canvas;
     [SerializeField] private Text continuePrompt;

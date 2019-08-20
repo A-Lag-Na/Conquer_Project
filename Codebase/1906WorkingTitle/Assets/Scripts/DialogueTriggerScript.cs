@@ -10,7 +10,6 @@ public class DialogueTriggerScript : MonoBehaviour
     [SerializeField] Player playerScript;
     [SerializeField] DialogueManager dialogueManager;
     [SerializeField] string dialogueName;
-
     bool debouncer = true;
 
     private void OnTriggerEnter(Collider other)
