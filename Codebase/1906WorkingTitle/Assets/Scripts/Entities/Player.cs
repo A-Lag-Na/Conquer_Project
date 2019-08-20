@@ -237,6 +237,7 @@ public class Player : MonoBehaviour
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
                 lastTimeFired = Time.time;
                 source.PlayOneShot(fire);
+                animator.SetBool("Attack", true);
             }
         }
     }
