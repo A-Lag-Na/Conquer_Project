@@ -174,13 +174,11 @@ public class Inventory : MonoBehaviour
                         break;
 
                     case "Speed Potion":
-                        con.AddSpeed(consumableNode.Value.GetFloatModifier());
+                        player.ModifySpeed(consumableNode.Value.GetFloatModifier());
                         float floatModValue = consumableNode.Value.GetFloatModifier();
                         RemoveConsumable();
                         yield return new WaitForSeconds(6f);
-                        float maxSpeed = con.GetMaxSpeed();
-                        if(con.GetSpeed() > maxSpeed)
-                            con.SetSpeed(maxSpeed);
+                        player.ModifySpeed(consumableNode.Value.GetFloatModifier() * -1);
                         break;
                     case "Death Aura":
                         player.EnableDeathAura();
