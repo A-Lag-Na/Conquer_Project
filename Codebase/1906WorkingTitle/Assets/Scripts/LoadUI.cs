@@ -13,7 +13,7 @@ public class LoadUI : MonoBehaviour
     private Text loadTwoText = null;
     private Text loadThreeText = null;
     private GameObject mainUI = null;
-    
+
     void Start()
     {
         loadOne = GameObject.Find("Load File 1").GetComponent<Button>();
@@ -28,16 +28,26 @@ public class LoadUI : MonoBehaviour
         loadThreeText = loadThree.gameObject.GetComponentInChildren<Text>();
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
+        if (mainUI != null)
+            mainUI.SetActive(false);
     }
 
     private void Update()
     {
         if (PlayerPrefs.HasKey($"Level{1}"))
             loadOneText.text = $"Load 1\nLevel: {PlayerPrefs.GetInt($"Level{1}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{1}")}";
+        else
+            loadOneText.text = "Load 1";
+
         if (PlayerPrefs.HasKey($"Level{2}"))
             loadTwoText.text = $"Load 2\nLevel: {PlayerPrefs.GetInt($"Level{2}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{2}")}";
+        else
+            loadTwoText.text = "Load 2";
+
         if (PlayerPrefs.HasKey($"Level{3}"))
             loadThreeText.text = $"Load 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{3}")}";
+        else
+            loadThreeText.text = "Load 3";
     }
 
     private void OnEnable()
@@ -47,6 +57,8 @@ public class LoadUI : MonoBehaviour
         foreach (GameObject go in objects)
             if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.SetActive(false);
     }
 
     private void OnDisable()

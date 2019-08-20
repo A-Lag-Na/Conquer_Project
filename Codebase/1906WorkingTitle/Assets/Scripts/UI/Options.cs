@@ -7,18 +7,11 @@ using UnityEngine.SceneManagement;
 public class Options : MonoBehaviour
 {
     #region OptionsProperties
-    private Button loadSave = null;
     private GameObject headUI = null;
     #endregion
     
     void Start()
     {
-        if (transform.Find("LoadSave"))
-        {
-            loadSave = transform.Find("LoadSave").GetComponent<Button>();
-            loadSave.onClick.AddListener(LoadSave);
-        }
-
         if (GameObject.Find("Pause"))
             headUI = GameObject.Find("Pause");
         else
@@ -40,14 +33,6 @@ public class Options : MonoBehaviour
     }
 
     #region OptionsFunctions
-    void LoadSave()
-    {
-        if (loadSave != null)
-        {
-            if(headUI.CompareTag("PauseMenu"))
-                GameObject.FindGameObjectWithTag("Player").GetComponent<SaveScript>().Load();
-        }
-    }
 
     public void CloseCurrentScreen()
     {
