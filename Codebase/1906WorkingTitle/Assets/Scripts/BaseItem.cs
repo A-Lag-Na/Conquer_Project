@@ -9,6 +9,7 @@ public class BaseItem : MonoBehaviour
     [SerializeField] private Type itemType = Type.EOF;
     [SerializeField] private int value = 0;
     [SerializeField] private new string name = "";
+    [SerializeField] private string description = "";
     [SerializeField] private Sprite sprite;
     #endregion
 
@@ -36,9 +37,19 @@ public class BaseItem : MonoBehaviour
     {
         return name;
     }
+
+    public string GetDesc()
+    {
+        return description;
+    }
     #endregion
 
     #region Sets
+    public void SetType(Type _type)
+    {
+        itemType = _type;
+    }
+
     public void SetValue(int _value)
     {
         value = _value;
@@ -52,6 +63,11 @@ public class BaseItem : MonoBehaviour
     public void SetName(string _name)
     {
         name = _name;
+    }
+
+    public void SetDesc(string _desc)
+    {
+        description = _desc;
     }
     #endregion
     #endregion

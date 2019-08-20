@@ -6,7 +6,6 @@ using UnityEngine.AI;
 public class CollisionScript : MonoBehaviour
 {
     #region CollsionScriptProperties
-    
     private bool isIceImmune = false;
     private bool isFireImmune = false;
     private bool isStunImmune = false;
@@ -15,11 +14,11 @@ public class CollisionScript : MonoBehaviour
     #endregion
 
     #region Unity Components
-    [SerializeField] GameObject sparks = null;
-    [SerializeField] GameObject blood = null;
-    [SerializeField] GameObject fireCreep = null;
-    [SerializeField] GameObject iceCreep = null;
-    [SerializeField] GameObject owner = null;
+    [SerializeField] private GameObject sparks = null;
+    [SerializeField] private GameObject blood = null;
+    [SerializeField] private GameObject fireCreep = null;
+    [SerializeField] private GameObject iceCreep = null;
+    [SerializeField] private GameObject owner = null;
 
     private Player player = null;
     private EnemyStats enemy = null;
@@ -45,6 +44,8 @@ public class CollisionScript : MonoBehaviour
                 audioSource.volume = 0.5f;
             }
             #endregion
+
+            #region Get stats
             if (target.CompareTag("Player") || target.CompareTag("Enemy") || target.CompareTag("BulletHell Enemy"))
             {
                 if (target.CompareTag("Player"))
@@ -74,6 +75,7 @@ public class CollisionScript : MonoBehaviour
                         Instantiate(iceCreep, transform.position, iceCreep.transform.rotation);
                 }
             }
+            #endregion
             if (!(isIceImmune && isFireImmune && isStunImmune))
             {
                 ConditionManager con = target.GetComponent<ConditionManager>();

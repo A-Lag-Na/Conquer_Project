@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class DropBox : MonoBehaviour
 {
-    [SerializeField] GameObject boxPiece = null, bullet = null;
-    [SerializeField] GameObject dialogueTrigger;
+    [SerializeField] private GameObject boxPiece = null, bullet = null;
+    [SerializeField] private GameObject dialogueTrigger = null;
  
     void DropLoot()
     {

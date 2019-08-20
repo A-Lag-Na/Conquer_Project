@@ -24,6 +24,11 @@ https://westarmusic.sourceaudio.com/#!details?id=10024505
 https://westarmusic.sourceaudio.com/#!details?id=21840546
 https://westarmusic.sourceaudio.com/#!details?id=21835121
 
+Fonts:
+https://www.1001freefonts.com/dark-crystal.font
+https://www.1001freefonts.com/quicksand.font
+https://www.1001freefonts.com/karmafuture.font
+
 SFX:
 https://kenney.nl/assets/ui-audio
 https://shapeforms.itch.io/the-mint-coins-and-money-lite

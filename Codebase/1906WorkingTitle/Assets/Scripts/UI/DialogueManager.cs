@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class DialogueManager : MonoBehaviour
 {
-    public Dialogue dialogue;
-    [SerializeField] Text text;
-    [SerializeField] Canvas canvas;
-    [SerializeField] Text continuePrompt;
-    [SerializeField] DialogueTriggerScript dialogueTriggerScript;
+    public Dialogue dialogue = null;
+    [SerializeField] private Text text = null;
+    [SerializeField] private Canvas canvas = null;
+    [SerializeField] private Text continuePrompt = null;
+    [SerializeField] private DialogueTriggerScript dialogueTriggerScript = null;
 
-    bool enter = false;
-    int textIndex = 0;
+    private bool enter = false;
+    private int textIndex = 0;
 
     private void Update()
     {
@@ -22,7 +22,6 @@ public class DialogueManager : MonoBehaviour
             continuePrompt.gameObject.SetActive(true);
             TextConditions();
         }
-
     }
 
     public void DisplayText()
@@ -39,7 +38,6 @@ public class DialogueManager : MonoBehaviour
             StartCoroutine(TextWait());
         }
     }
-
 
     //If Enter pressed the index will go up one and enter value will be restored to false
     private void TextConditions()

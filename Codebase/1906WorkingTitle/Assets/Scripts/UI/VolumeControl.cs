@@ -8,13 +8,12 @@ public class VolumeControl : MonoBehaviour
 {
     #region VolumeProperties
     [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume = 0.0f;
-    Slider masterSlider = null, musicSlider = null, sfxSlider = null;
-    [SerializeField] AudioMixer musicMixer = null, sfxMixer = null;
-    [SerializeField] AudioSource soundFX = null;
-    AudioClip testSound = null;
+    private Slider masterSlider = null, musicSlider = null, sfxSlider = null;
+    [SerializeField] private AudioMixer musicMixer = null, sfxMixer = null;
+    [SerializeField] private AudioSource soundFX = null;
+    private AudioClip testSound = null;
     #endregion
-
-    // Start is called before the first frame update
+    
     void Start()
     {
         masterSlider = transform.Find("Master Volume").GetComponent<Slider>();
@@ -31,8 +30,7 @@ public class VolumeControl : MonoBehaviour
 
         testSound = Resources.Load<AudioClip>("SFX/click");
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if(sfxVolume != sfxSlider.value)

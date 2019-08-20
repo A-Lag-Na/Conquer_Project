@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlainsTrigger : MonoBehaviour
 {
-    [SerializeField] GameObject cactusBarrier;
-    [SerializeField] GameObject iceEffect;
+    [SerializeField] private GameObject cactusBarrier;
+    [SerializeField] private GameObject iceEffect;
     
     void Start()
     {

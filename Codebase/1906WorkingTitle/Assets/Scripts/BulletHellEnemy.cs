@@ -26,7 +26,7 @@ public class BulletHellEnemy : MonoBehaviour
     private AudioSource source = null;
     private NavMeshAgent agent = null;
     private GameObject player = null;
-    [SerializeField] GameObject gameWin = null;
+    [SerializeField] private GameObject gameWin = null;
     #endregion
 
     private void OnEnable()

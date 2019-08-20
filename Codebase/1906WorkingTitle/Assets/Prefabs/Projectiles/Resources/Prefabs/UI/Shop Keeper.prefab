@@ -323,6 +323,7 @@ MonoBehaviour:
   itemType: 0
   value: 11
   name: Crossbow
+  description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
   damage: 3
   attackSpeed: 0
@@ -815,6 +816,7 @@ MonoBehaviour:
   itemType: 0
   value: 11
   name: Sling
+  description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
   damage: 7
   attackSpeed: -0.1
@@ -1643,6 +1645,8 @@ MonoBehaviour:
   itemType: 1
   value: 6
   name: Cone of Cold
+  description: For a short duration, spray out freezing ice in a small area in front
+    of yourself
   sprite: {fileID: 0}
   consumableType: 0
   floatModifier: 5
@@ -1814,6 +1818,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Ice Potion
+  description: Shoot out an AOE fireball
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
   consumableType: 1
   floatModifier: 5
@@ -2082,6 +2087,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Defense Potion
+  description: Temporarily increase defense by 5
   sprite: {fileID: 21300000, guid: f53f7886c0cbb9144ae2f9253cd64f5f, type: 3}
   consumableType: 0
   floatModifier: 5
@@ -2423,6 +2429,7 @@ MonoBehaviour:
   itemType: 0
   value: 11
   name: Longbow
+  description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
   damage: 5
   attackSpeed: -0.03
@@ -2841,6 +2848,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Fire Potion
+  description: Shoot out a AOE of lingering fire
   sprite: {fileID: 21300000, guid: f53f7886c0cbb9144ae2f9253cd64f5f, type: 3}
   consumableType: 1
   floatModifier: 5
@@ -3433,6 +3441,7 @@ MonoBehaviour:
   itemType: 1
   value: 6
   name: Death Aura
+  description: An area around you will be temporarily harmful to your enemies
   sprite: {fileID: 0}
   consumableType: 0
   floatModifier: 5
@@ -4148,6 +4157,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Damage Buff Potion
+  description: Temporarily increase damage by 5
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
   consumableType: 0
   floatModifier: 5
@@ -4955,6 +4965,7 @@ MonoBehaviour:
   itemType: 0
   value: 11
   name: Recurve Bow
+  description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
   damage: 6
   attackSpeed: -0.02
@@ -5452,6 +5463,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Speed Potion
+  description: Temporarily increase movement speed by 5
   sprite: {fileID: 21300000, guid: 76adcf4f8457f7943a57b3111757000f, type: 3}
   consumableType: 0
   floatModifier: 5
@@ -5872,6 +5884,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Love Potion
+  description: Temporarily turn your enemies into allies
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
   consumableType: 1
   floatModifier: 5
@@ -6247,7 +6260,7 @@ Canvas:
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 704642016776867525}
-  m_PlaneDistance: 100
+  m_PlaneDistance: 1
   m_PixelPerfect: 0
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
@@ -6308,13 +6321,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94ee1d3c595ab214eb3a93f635e977f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponsScreen: {fileID: 604655320479609164}
+  potionsScreen: {fileID: 6354035863022337387}
+  scrollsScreen: {fileID: 7053126099001501475}
   Weapons: {fileID: 262215215}
   Potions: {fileID: 1019869665}
   Scrolls: {fileID: 1506888155}
   Exit: {fileID: 704642015928776654}
-  weaponsScreen: {fileID: 604655320479609164}
-  potionsScreen: {fileID: 6354035863022337387}
-  scrollsScreen: {fileID: 7053126099001501475}
 --- !u!1 &704642015467125783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6480,6 +6493,7 @@ MonoBehaviour:
   itemType: 0
   value: 7
   name: Shortbow
+  description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
   damage: 3
   attackSpeed: 0.06
@@ -6854,13 +6868,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 704642016021845575}
+  - {fileID: 7236276147318367358}
   m_Father: {fileID: 704642015438919478}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -375, y: -504}
-  m_SizeDelta: {x: 475.2, y: 475.2}
+  m_AnchoredPosition: {x: -564.2, y: -562.5}
+  m_SizeDelta: {x: 999, y: 623.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &704642015618155334
 CanvasRenderer:
@@ -7246,8 +7261,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -237.99997, y: -237.99997}
-  m_SizeDelta: {x: 475.2, y: 475.2}
+  m_AnchoredPosition: {x: -499.5, y: -97.2}
+  m_SizeDelta: {x: 939.6, y: 153.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &704642016021845593
 CanvasRenderer:
@@ -7279,11 +7294,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 0ae807fa48a42c34f821b7f0e1a6f03f, type: 3}
-    m_FontSize: 51
+    m_FontSize: 137
     m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 51
+    m_BestFit: 1
+    m_MinSize: 12
+    m_MaxSize: 300
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -7537,6 +7552,7 @@ MonoBehaviour:
   itemType: 1
   value: 10
   name: Health Potion
+  description: Heal for 5HP
   sprite: {fileID: 21300000, guid: 76adcf4f8457f7943a57b3111757000f, type: 3}
   consumableType: 0
   floatModifier: 5
@@ -7734,7 +7750,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &704642016776867524
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7742,17 +7758,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704642016776867523}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -980}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 97.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 704642015438919478}
   m_Father: {fileID: 928947838737578683}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 960, y: 540}
+  m_AnchoredPosition: {x: -0.3, y: 3.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &704642016776867525
@@ -7782,7 +7798,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 252.3
+  orthographic size: 7.786545
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -7836,7 +7852,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -374.99994, y: -907}
+  m_AnchoredPosition: {x: -374.99994, y: -972}
   m_SizeDelta: {x: 561.6, y: 105.29999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &704642016854098443
@@ -8492,6 +8508,85 @@ Transform:
   m_Father: {fileID: 1918393813495267601}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1827345842929803220
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7236276147318367358}
+  - component: {fileID: 8134867595451763597}
+  - component: {fileID: 5620732619570855907}
+  m_Layer: 5
+  m_Name: Description
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7236276147318367358
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827345842929803220}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 704642015618155332}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00023556, y: -111}
+  m_SizeDelta: {x: 939.6, y: 346.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8134867595451763597
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827345842929803220}
+  m_CullTransparentMesh: 0
+--- !u!114 &5620732619570855907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827345842929803220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 0ae807fa48a42c34f821b7f0e1a6f03f, type: 3}
+    m_FontSize: 51
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 1
+    m_MaxSize: 300
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
 --- !u!1 &1966781228803529390
 GameObject:
   m_ObjectHideFlags: 0
@@ -8754,6 +8849,7 @@ MonoBehaviour:
   itemType: 1
   value: 6
   name: Fireball
+  description: Shoot out an explosive AOE shot and set your enemies on fire
   sprite: {fileID: 0}
   consumableType: 1
   floatModifier: 5
@@ -10399,6 +10495,7 @@ MonoBehaviour:
   itemType: 1
   value: 3
   name: Hex Shot
+  description: Curse your enemies and slow them, stun them, and set them on fire
   sprite: {fileID: 0}
   consumableType: 1
   floatModifier: 5
@@ -10853,7 +10950,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2260937760016223013
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11674,6 +11771,7 @@ MonoBehaviour:
   itemType: 1
   value: 6
   name: Lightning Bolt
+  description: Shoot a bolt of lightning and more shots will target nearby enemies
   sprite: {fileID: 0}
   consumableType: 1
   floatModifier: 5

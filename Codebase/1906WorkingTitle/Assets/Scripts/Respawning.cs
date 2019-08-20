@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class Respawning : MonoBehaviour
 {
-    [SerializeField] SpawnScript forestBoss = null;
-    [SerializeField] SpawnScript mountainBoss = null;
-    [SerializeField] SpawnScript desertBoss = null;
-    bool forestNotRespawned = false;
-    bool mountainsNotRespawned = false;
-    bool desertNotRespawned = false;
-    int forestSpawnedNumber = 0;
-    int mountainSpawnedNumber = 0;
-    int desertSpawnedNumber = 0;
-    Player player = null;
-    [SerializeField] Camera mainCamera = null;
+    [SerializeField] private SpawnScript forestBoss = null;
+    [SerializeField] private SpawnScript mountainBoss = null;
+    [SerializeField] private SpawnScript desertBoss = null;
+    [SerializeField] private Camera mainCamera = null;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool forestNotRespawned = false;
+    private bool mountainsNotRespawned = false;
+    private bool desertNotRespawned = false;
+    private int forestSpawnedNumber = 0;
+    private int mountainSpawnedNumber = 0;
+    private int desertSpawnedNumber = 0;
+    private Player player = null;
+
+    private void Start()
     {
         forestNotRespawned = true;
         mountainsNotRespawned = true;
@@ -28,8 +28,7 @@ public class Respawning : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (forestBoss.GetNumEnemies() > 0)
             forestSpawnedNumber = forestBoss.GetNumEnemies();
@@ -51,7 +50,7 @@ public class Respawning : MonoBehaviour
             player.enemyRespawn = false;
     }
 
-    void ResetForest()
+    private void ResetForest()
     {
         if (forestNotRespawned)
         {
@@ -60,7 +59,7 @@ public class Respawning : MonoBehaviour
         }
     }
 
-    void ResetMountains()
+    private void ResetMountains()
     {
         if (mountainsNotRespawned)
         {
@@ -69,7 +68,7 @@ public class Respawning : MonoBehaviour
         }
     }
 
-    void ResetDesert()
+    private void ResetDesert()
     {
         if (desertNotRespawned)
         {

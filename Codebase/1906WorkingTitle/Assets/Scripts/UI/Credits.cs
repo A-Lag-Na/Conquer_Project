@@ -19,8 +19,7 @@ public class Credits : MonoBehaviour
 
     IEnumerator Continue()
     {
-        yield return new WaitForSeconds(20f);
-        text.GetComponent<RectTransform>().position = new Vector3();
-        text.GetComponent<Text>().text = "Press escape";
+        yield return new WaitForSeconds(22f);
+        GameObject.FindGameObjectWithTag("MainMenu").GetComponent<MainMenu>().CloseCredits();
     }
 }
