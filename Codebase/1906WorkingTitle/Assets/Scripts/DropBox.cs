@@ -4,24 +4,14 @@ using UnityEngine;
 
 public class DropBox : MonoBehaviour
 {
-    public GameObject boxPiece = null, bullet = null;
-    public GameObject spawner = null;
-    
-    void Update()
+    [SerializeField] GameObject boxPiece = null, bullet = null;
+    [SerializeField] GameObject spawner = null;
+    [SerializeField] GameObject dialogueTrigger;
+ 
+    void DropLoot()
     {
-        
-        if (spawner != null && boxPiece != null && bullet != null)
-        {
-            if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count > 0)
-            {
-                boxPiece.SetActive(false);
-                bullet.SetActive(false);
-            }
-            else
-            {
-                boxPiece.SetActive(true);
-                bullet.SetActive(true);
-            }
-        }
+        boxPiece.SetActive(true);
+        bullet.SetActive(true);
+        dialogueTrigger.SetActive(true);
     }
 }
