@@ -44,8 +44,7 @@ public class SaveUI : MonoBehaviour
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-            if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
-                go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         if (mainUI != null)
             mainUI.SetActive(false);
     }

@@ -160,24 +160,23 @@ public class UpdateUI : MonoBehaviour
         #endregion
 
         #region InputCheck
-        //check for menu or inventory input
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-            PauseGame();
+            //check for menu or inventory input
+            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
+                PauseGame();
 
-        if (Input.GetButtonDown("Open Stats"))
-        {
-            OpenStats();
-        }
+            if (Input.GetButtonDown("Open Stats"))
+            {
+                OpenStats();
+            }
 
-        if (Input.GetButtonDown("Use Potion"))
-        {
-            StartCoroutine(inventory.ConsumableTimer());
-        }
+            if (Input.GetButtonDown("Use Potion"))
+            {
+                StartCoroutine(inventory.ConsumableTimer());
+            }
 
-        if (Input.GetButtonDown("Open Shop"))
-            OpenShop();
-        #endregion
-
+            if (Input.GetButtonDown("Open Shop"))
+                OpenShop();
+            #endregion
     }
 
     #region UIFunctions
@@ -234,5 +233,6 @@ public class UpdateUI : MonoBehaviour
         levelFlasher.color = levelColorTransparent;
         buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
+    
     #endregion
 }

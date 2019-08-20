@@ -34,7 +34,7 @@ public class ShopUI : MonoBehaviour
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
-            if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
+            if (go.name != "Shop UI")
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
 
         Exit.onClick.AddListener(ExitMenu);
@@ -66,7 +66,7 @@ public class ShopUI : MonoBehaviour
             Time.timeScale = 0;
             Object[] objects = FindObjectsOfType(typeof(GameObject));
             foreach (GameObject go in objects)
-                if ((go.name != "Shop UI" && go.name != "Main UI" && go.name != "Pause Menu"))
+                if (go.name != "Shop UI")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
             if (GameObject.FindGameObjectWithTag("MainCamera"))
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
