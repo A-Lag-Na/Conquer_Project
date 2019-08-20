@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class KnightScript : BaseNPC
 {
-    [SerializeField] private Positions[] positions;
+    [SerializeField] private Positions[] positions = null;
     [SerializeField] private GameObject knight = null;
-    [SerializeField] private GameObject dialogueTrigger;
-    [SerializeField] private Animator anim;
+    [SerializeField] private GameObject dialogueTrigger = null;
+    [SerializeField] private Animator anim = null;
 
     private Collider col = null;
 
@@ -38,7 +38,6 @@ public class KnightScript : BaseNPC
               anim.SetTrigger("Idle");
             }
         }
-
     }
 
     void RotateTo(Vector3 init, Vector3 other)
