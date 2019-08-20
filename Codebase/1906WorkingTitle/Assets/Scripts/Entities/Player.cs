@@ -113,7 +113,6 @@ public class Player : MonoBehaviour
         iceSpell.SetActive(false);
         enemyRespawn = false;
         saveUI.SetActive(false);
-        loadUI.SetActive(false);
     }
 
     void Update()

@@ -5,34 +5,34 @@ using UnityEngine;
 public class Companion : MonoBehaviour
 {
     #region CompanionStats
-    int bulletDamage = 0;
-    Vector3 animalVelocity = Vector3.zero;
-    Vector3 playerPositionOffset = Vector3.zero;
+    private int bulletDamage = 0;
+    private Vector3 animalVelocity = Vector3.zero;
+    private Vector3 playerPositionOffset = Vector3.zero;
     public bool isFollowing = false;
-    float lastTimeAttacked = 0.0f;
-    bool hasAttacked = false;
-    bool canAttack = true;
-    float previousExp = 0.0f;
+    private float lastTimeAttacked = 0.0f;
+    private bool hasAttacked = false;
+    private bool canAttack = true;
+    private float previousExp = 0.0f;
+    private string storageName = "";
+    private bool hasDeactivated = false;
+    private bool isLookingAtStorage = false;
     #endregion
 
     #region Unity Components
-    GameObject player = null;
-    GameObject target = null;
-    Player playerStats = null;
-    [SerializeField] GameObject projectile = null;
-    [SerializeField] GameObject projectilePos = null;
-    [SerializeField] AudioClip fire = null;
-    AudioSource source = null;
-    [SerializeField] GameObject potion = null;
-    CapsuleCollider animalCollider = null;
-    Inventory playerInventory = null;
-    Pickup pickup = null;
-    GameObject companionAura = null;
-    Animator animator = null;
-    GameObject storagePosition = null;
-    string storageName = "";
-    bool hasDeactivated = false;
-    bool isLookingAtStorage = false;
+    [SerializeField] private GameObject projectile = null;
+    [SerializeField] private GameObject projectilePos = null;
+    [SerializeField] private AudioClip fire = null;
+    [SerializeField] private GameObject potion = null;
+    private GameObject player = null;
+    private GameObject target = null;
+    private Player playerStats = null;
+    private CapsuleCollider animalCollider = null;
+    private Inventory playerInventory = null;
+    private Pickup pickup = null;
+    private GameObject companionAura = null;
+    private Animator animator = null;
+    private GameObject storagePosition = null;
+    private AudioSource source = null;
     #endregion
 
     // Start is called before the first frame update
