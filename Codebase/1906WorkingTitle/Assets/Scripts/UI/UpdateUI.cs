@@ -47,12 +47,15 @@ public class UpdateUI : MonoBehaviour
             inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
         }
 
-        healthTransform = transform.Find("Health Bar").GetChild(0).GetComponent<RectTransform>();
-        healthText = transform.Find("Health Bar").GetChild(1).GetComponent<Text>();
+        healthTransform = transform.Find("Health").GetChild(1).GetComponent<RectTransform>();
+        healthText = transform.Find("Health").GetChild(2).GetComponent<Text>();
+
         coinText = transform.Find("Coins Icon").GetChild(0).GetComponent<Text>();
         livesText = transform.Find("Lives Icon").GetChild(0).GetComponent<Text>();
-        levelTransform = transform.Find("XP Bar").GetChild(0).GetComponent<RectTransform>();
-        levelFlasher = transform.Find("XP Bar").transform.Find("LevelUpFlash").GetComponent<Image>();
+
+        levelTransform = transform.Find("Level").GetChild(1).GetComponent<RectTransform>();
+        levelFlasher = transform.Find("Level").Find("LevelUpFlash").GetComponent<Image>();
+
         buttonPrompt = transform.Find("ButtonPrompt").GetComponent<Image>();
         buttonPromptText = transform.Find("ButtonPrompt").GetChild(0).GetComponent<Text>();
 
