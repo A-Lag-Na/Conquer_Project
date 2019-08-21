@@ -12,7 +12,7 @@ public class StatScreen : MonoBehaviour
     private Button speedBTN, damageBTN, defenseBTN = null;
     private Text levelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
-    private GameObject mainUI = null;
+    private GameObject mainUI = null, attackMax = null;
     private StopWatch stopWatch;
     #endregion
     
@@ -45,6 +45,8 @@ public class StatScreen : MonoBehaviour
         damageText = GameObject.Find("Attack Damage").GetComponent<Text>();
         defenseText = GameObject.Find("Defense").GetComponent<Text>();
         pointsText = GameObject.Find("Available Points").GetComponent<Text>();
+        attackMax = transform.Find("Attack Speed").GetChild(1).gameObject;
+        attackMax.SetActive(false);
 
         //grab level bar RectTransform
         levelTransform = transform.Find("Level").GetChild(0).GetComponent<RectTransform>();
@@ -122,6 +124,11 @@ public class StatScreen : MonoBehaviour
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Open Stats"))
             ResumeGame();
+        if(player.GetAttackSpeed() <= 0.2f)
+        {
+            speedBTN.enabled = false;
+            attackMax.SetActive(true);
+        }
     }
 
     #region StatScreenFunctions
