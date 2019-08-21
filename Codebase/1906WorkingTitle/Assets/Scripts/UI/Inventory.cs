@@ -73,9 +73,9 @@ public class Inventory : MonoBehaviour
     #region Add Weapons and Consumables
     public void AddWeapon(BaseItem _weapon)
     {
-        weaponList.AddLast(WeaponDeepCopy((Weapon)_weapon));
-        //weaponList.AddLast((Weapon)_weapon);
-        //weaponList.AddLast(Weapon.Instantiate<Weapon>((Weapon)_weapon));
+        NonMonoWeapon wepClone = WeaponDeepCopy((Weapon)_weapon);
+        if(!weaponList.Contains(wepClone))
+            weaponList.AddLast(wepClone);
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
@@ -87,8 +87,6 @@ public class Inventory : MonoBehaviour
     public void AddConsumable(BaseItem _consumable)
     {
         consumableList.AddLast(ConsumableDeepCopy((Consumable)_consumable));
-        //consumableList.AddLast((Consumable)_consumable);
-        //consumableList.AddLast(Consumable.Instantiate<Consumable>((Consumable)_consumable));
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
