@@ -93,7 +93,11 @@ public class SaveScript : MonoBehaviour
             player.gameObject.GetComponent<Inventory>().SetBoxPieces(playerBoxes);
             player.SetLives(5);
             if (GameObject.Find(animalName))
+            {
+                if (player.GetCompanion() != null)
+                    player.GetCompanion().Deactivate();
                 GameObject.Find(animalName).GetComponent<Companion>().Activate();
+            }
             player.gameObject.GetComponent<Inventory>().SetBulletCount(bulletCount);
         }
         GetComponent<CharacterController>().enabled = false;
