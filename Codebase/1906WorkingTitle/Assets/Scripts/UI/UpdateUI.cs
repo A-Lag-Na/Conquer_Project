@@ -57,10 +57,10 @@ public class UpdateUI : MonoBehaviour
         buttonPromptText = transform.Find("ButtonPrompt").GetChild(0).GetComponent<Text>();
 
         //update inventory slots
-        InvSlot1 = transform.Find("Inventory Slot 1").GetComponent<Image>();
-        InvSlot1Name = transform.Find("Inventory Slot 1").GetChild(0).GetComponent<Text>();
-        InvSlot2 = transform.Find("Inventory Slot 2").GetComponent<Image>();
-        InvSlot2Name = transform.Find("Inventory Slot 2").GetChild(0).GetComponent<Text>();
+        InvSlot1 = transform.Find("Inventory").Find("Inventory Slot 1").GetComponent<Image>();
+        InvSlot1Name = transform.Find("Inventory").Find("Inventory Slot 1").GetChild(0).GetComponent<Text>();
+        InvSlot2 = transform.Find("Inventory").Find("Inventory Slot 2").GetComponent<Image>();
+        InvSlot2Name = transform.Find("Inventory").Find("Inventory Slot 2").GetChild(0).GetComponent<Text>();
 
         //grab damage flashing panel
         damageFlasher = transform.Find("DamagePanel").GetComponent<Image>();
@@ -160,24 +160,23 @@ public class UpdateUI : MonoBehaviour
         #endregion
 
         #region InputCheck
-        //check for menu or inventory input
-        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
-            PauseGame();
+            //check for menu or inventory input
+            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
+                PauseGame();
 
-        if (Input.GetButtonDown("Open Stats"))
-        {
-            OpenStats();
-        }
+            if (Input.GetButtonDown("Open Stats"))
+            {
+                OpenStats();
+            }
 
-        if (Input.GetButtonDown("Use Potion"))
-        {
-            StartCoroutine(inventory.ConsumableTimer());
-        }
+            if (Input.GetButtonDown("Use Potion"))
+            {
+                StartCoroutine(inventory.ConsumableTimer());
+            }
 
-        if (Input.GetButtonDown("Open Shop"))
-            OpenShop();
-        #endregion
-
+            if (Input.GetButtonDown("Open Shop"))
+                OpenShop();
+            #endregion
     }
 
     #region UIFunctions
@@ -234,5 +233,6 @@ public class UpdateUI : MonoBehaviour
         levelFlasher.color = levelColorTransparent;
         buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
+    
     #endregion
 }

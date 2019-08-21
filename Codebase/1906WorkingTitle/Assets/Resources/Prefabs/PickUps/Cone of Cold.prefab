@@ -7,9 +7,19 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4258993450777356240, guid: 5ac25f42b62085247b2fb0e108307c20,
+        type: 3}
+      propertyPath: type
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 741419663642377865, guid: 5ac25f42b62085247b2fb0e108307c20,
         type: 3}
       propertyPath: m_Name
+      value: Cone of Cold
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768933163172786003, guid: 5ac25f42b62085247b2fb0e108307c20,
+        type: 3}
+      propertyPath: name
       value: Cone of Cold
       objectReference: {fileID: 0}
     - target: {fileID: 741419663642272425, guid: 5ac25f42b62085247b2fb0e108307c20,
@@ -67,10 +77,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2768933163172786003, guid: 5ac25f42b62085247b2fb0e108307c20,
-        type: 3}
-      propertyPath: name
-      value: Cone of Cold
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6171330467863241885, guid: 5ac25f42b62085247b2fb0e108307c20, type: 3}
+    - {fileID: 1126503098694408711, guid: 5ac25f42b62085247b2fb0e108307c20, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5ac25f42b62085247b2fb0e108307c20, type: 3}
