@@ -13,4 +13,8 @@ MonoBehaviour:
   m_Name: Post Forest Boss
   m_EditorClassIdentifier: 
   textArray:
-  - You've Defeated the Forest Boss
+  - Congratulations for completing your first trial!
+  - You seemed to have acquired a new attack!
+  - Press 2 to shoot Fire proyectiles.
+  - That could really be handy in those chilly mountains
+  - But the Dancing Lady in the SouthWest of the town knows more on those topics.
