@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: Post Desert Boss
   m_EditorClassIdentifier: 
   textArray:
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Wow! You've defeated the Dragon Desert!
+  - "You seem to have obtained stun bullets. Press 4 to switch to them.\tNow take
+    all the collected pieces of Pandora's Box,"
+  - -and head to the castle gates, to reclaim the throne!
