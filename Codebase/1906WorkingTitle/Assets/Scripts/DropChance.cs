@@ -6,7 +6,7 @@ public class DropChance : MonoBehaviour
 {
     public void Drop()
     {
-        int rand = Random.Range(1,13);
+        int rand = Random.Range(1,50);
         GameObject pickup = null;
         switch (rand)
         {
