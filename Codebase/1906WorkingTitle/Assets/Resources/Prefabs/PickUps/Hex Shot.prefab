@@ -44,7 +44,7 @@ MonoBehaviour:
   value: 0
   name: Hex Shot
   description: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: f24821034a3d5c040ad78ea119cb6dff, type: 3}
   consumableType: 1
   floatModifier: 5
   intModifier: 5
