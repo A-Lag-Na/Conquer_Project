@@ -15,17 +15,17 @@ PrefabInstance:
     - target: {fileID: 7926430109853385409, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.02
+      value: -26.82196
       objectReference: {fileID: 0}
     - target: {fileID: 7926430109853385409, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.69
+      value: 44.74063
       objectReference: {fileID: 0}
     - target: {fileID: 7926430109853385409, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.42
+      value: -27.274527
       objectReference: {fileID: 0}
     - target: {fileID: 7926430109853385409, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
@@ -69,13 +69,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4766885912704503611, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
-      propertyPath: consumableType
-      value: 1
+      propertyPath: name
+      value: Fireball
       objectReference: {fileID: 0}
     - target: {fileID: 4766885912704503611, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}
-      propertyPath: name
-      value: Fireball
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de1e943f983e23e4d944f9d910b98ce9,
+        type: 3}
+    - target: {fileID: 4766885912704503611, guid: e550523d1bd558348a772819f6cc37bb,
+        type: 3}
+      propertyPath: consumableType
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4766885912704503611, guid: e550523d1bd558348a772819f6cc37bb,
         type: 3}

@@ -77,6 +77,12 @@ PrefabInstance:
       propertyPath: description
       value: Shoot out an explosive AOE shot and set your enemies on fire
       objectReference: {fileID: 0}
+    - target: {fileID: 7143897278909510353, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de1e943f983e23e4d944f9d910b98ce9,
+        type: 3}
     - target: {fileID: 2100591278994668230, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: sprite
@@ -114,6 +120,12 @@ PrefabInstance:
       propertyPath: description
       value: An area around you will be temporarily harmful to your enemies
       objectReference: {fileID: 0}
+    - target: {fileID: 1504669077053440541, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ef694b86dabf95342aa8719a11d29c10,
+        type: 3}
     - target: {fileID: 1504669076337411624, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: sprite
@@ -148,15 +160,33 @@ PrefabInstance:
       value: For a short duration, spray out freezing ice in a small area in front
         of yourself
       objectReference: {fileID: 0}
+    - target: {fileID: 1504669076630808531, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3438878bfd060844a9d0854061ee6b66,
+        type: 3}
     - target: {fileID: 86230093569034243, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: description
       value: Shoot a bolt of lightning and more shots will target nearby enemies
       objectReference: {fileID: 0}
+    - target: {fileID: 86230093569034243, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b5d0bd7ce4e69224da537a266c8fbc32,
+        type: 3}
     - target: {fileID: 2674684850218969307, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: description
       value: Curse your enemies and slow them, stun them, and set them on fire
       objectReference: {fileID: 0}
+    - target: {fileID: 2674684850218969307, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f24821034a3d5c040ad78ea119cb6dff,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b615c8a61229b1428738d5673ba9a3b, type: 3}

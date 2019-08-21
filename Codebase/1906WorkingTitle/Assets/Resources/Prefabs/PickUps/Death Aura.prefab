@@ -29,17 +29,17 @@ PrefabInstance:
     - target: {fileID: 5679437203941153948, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -25.02
+      value: -27.565805
       objectReference: {fileID: 0}
     - target: {fileID: 5679437203941153948, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 46.69
+      value: 44.689224
       objectReference: {fileID: 0}
     - target: {fileID: 5679437203941153948, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.42
+      value: -27.287214
       objectReference: {fileID: 0}
     - target: {fileID: 5679437203941153948, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
@@ -88,17 +88,21 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7130989593009688934, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
-      propertyPath: consumableEffect
+      propertyPath: sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: ef694b86dabf95342aa8719a11d29c10,
+        type: 3}
     - target: {fileID: 7130989593009688934, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
         type: 3}
       propertyPath: consumableType
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1242886944407902888, guid: 3a21dbd2d9c6d8349bd524983bfd9edc, type: 3}
-    - {fileID: 5420438203354145842, guid: 3a21dbd2d9c6d8349bd524983bfd9edc, type: 3}
+    - target: {fileID: 7130989593009688934, guid: 3a21dbd2d9c6d8349bd524983bfd9edc,
+        type: 3}
+      propertyPath: consumableEffect
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a21dbd2d9c6d8349bd524983bfd9edc, type: 3}
 --- !u!1 &741419663642377865 stripped
 GameObject:
