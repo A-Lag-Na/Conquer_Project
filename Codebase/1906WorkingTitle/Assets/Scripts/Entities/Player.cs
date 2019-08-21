@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
                     characterController.Move(moveDirection * Time.deltaTime);
                 }
                 else
-                    characterController.Move(moveDirection * (playerMovementSpeed / 75));
+                    characterController.Move(moveDirection / playerMovementSpeed);
 
                 //Player Dash if Spacebar is pressed
                 if (Input.GetButtonDown("Dash") && moveDirection != Vector3.zero)
@@ -533,9 +533,11 @@ public class Player : MonoBehaviour
     {
         maxPlayerHealth += 3;
         playerHealth = maxPlayerHealth;
-        playerMovementSpeed++;
+        if (playerMovementSpeed < 15)
+            playerMovementSpeed++;
         playerSpendingPoints++;
-        playerExperience -= 10;
+        playerExperience -= nextLevelExperience;
+        nextLevelExperience += 5;
         playerLevel++;
         GetComponent<ConditionManager>().Modify();
         if (mainUI != null && mainUI.activeSelf)
