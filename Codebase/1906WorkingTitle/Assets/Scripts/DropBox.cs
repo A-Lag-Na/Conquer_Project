@@ -16,7 +16,6 @@ public class DropBox : MonoBehaviour
         {
             if (spawner.GetComponent<SpawnScript>().GetPointsRemaining() <= 0 && spawner.activeSelf)
             {
-                Debug.Log("lololol");
                 if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count <= 0 && spawner.activeSelf)
                 {
                     DropLoot();
