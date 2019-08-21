@@ -77,37 +77,12 @@ PrefabInstance:
       propertyPath: description
       value: Shoot out an explosive AOE shot and set your enemies on fire
       objectReference: {fileID: 0}
-    - target: {fileID: 1504669076537784508, guid: 9b615c8a61229b1428738d5673ba9a3b,
+    - target: {fileID: 2100591278994668230, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
-      propertyPath: description
-      value: Temporarily increase defense by 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504669076630808531, guid: 9b615c8a61229b1428738d5673ba9a3b,
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5b667c5f208f0014bbeaf07d8ae020db,
         type: 3}
-      propertyPath: description
-      value: For a short duration, spray out freezing ice in a small area in front
-        of yourself
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504669076685908261, guid: 9b615c8a61229b1428738d5673ba9a3b,
-        type: 3}
-      propertyPath: description
-      value: Shoot out an AOE of lingering ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504669076848827499, guid: 9b615c8a61229b1428738d5673ba9a3b,
-        type: 3}
-      propertyPath: description
-      value: Shoot out an AOE of lingering fire
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504669077053440541, guid: 9b615c8a61229b1428738d5673ba9a3b,
-        type: 3}
-      propertyPath: description
-      value: An area around you will be temporarily harmful to your enemies
-      objectReference: {fileID: 0}
-    - target: {fileID: 1504669077433413181, guid: 9b615c8a61229b1428738d5673ba9a3b,
-        type: 3}
-      propertyPath: description
-      value: Temporarily increase damage by 5
-      objectReference: {fileID: 0}
     - target: {fileID: 1504669078103531573, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: description
@@ -118,15 +93,70 @@ PrefabInstance:
       propertyPath: description
       value: Temporarily increase speed by 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2674684850218969307, guid: 9b615c8a61229b1428738d5673ba9a3b,
+    - target: {fileID: 1504669077433413181, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: description
-      value: Curse your enemies and slow them, stun them, and set them on fire
+      value: Temporarily increase damage by 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504669077682846478, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1f23d68fcc896a4f82a42b54bac1ce7,
+        type: 3}
+    - target: {fileID: 1504669076848827499, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: Shoot out an AOE of lingering fire
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504669077053440541, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: An area around you will be temporarily harmful to your enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504669076337411624, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 717ca1b653efc1b4098a521e2cf0b158,
+        type: 3}
+    - target: {fileID: 1504669076365848064, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 28d1e2c4a2ff2ce4bb3a7333be81b5ed,
+        type: 3}
+    - target: {fileID: 1504669076589262772, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: c9cf47cdcaa1f63408c7e9b48f65d695,
+        type: 3}
+    - target: {fileID: 1504669076537784508, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: Temporarily increase defense by 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504669076685908261, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: Shoot out an AOE of lingering ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1504669076630808531, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: For a short duration, spray out freezing ice in a small area in front
+        of yourself
       objectReference: {fileID: 0}
     - target: {fileID: 86230093569034243, guid: 9b615c8a61229b1428738d5673ba9a3b,
         type: 3}
       propertyPath: description
       value: Shoot a bolt of lightning and more shots will target nearby enemies
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674684850218969307, guid: 9b615c8a61229b1428738d5673ba9a3b,
+        type: 3}
+      propertyPath: description
+      value: Curse your enemies and slow them, stun them, and set them on fire
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b615c8a61229b1428738d5673ba9a3b, type: 3}
