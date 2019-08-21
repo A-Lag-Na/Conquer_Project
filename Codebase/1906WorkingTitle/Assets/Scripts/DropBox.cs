@@ -14,14 +14,16 @@ public class DropBox : MonoBehaviour
     {
         if (buffer)
         {
-            if (spawner.GetComponent<SpawnScript>().GetPointsRemaining() <= 0)
+            if (spawner.GetComponent<SpawnScript>().GetPointsRemaining() <= 0 && spawner.activeSelf)
             {
-                if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count <= 0)
+                if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count <= 0 && spawner.activeSelf)
                 {
                     DropLoot();
                     buffer = false;
                 }
             }
+
+
         }
     }
     void DropLoot()

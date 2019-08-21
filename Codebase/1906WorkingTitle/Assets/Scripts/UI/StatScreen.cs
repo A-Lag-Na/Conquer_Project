@@ -38,13 +38,13 @@ public class StatScreen : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
         //assign Texts
-        levelText = GameObject.Find("Level").GetComponent<Text>();
-        healthText = GameObject.Find("Health").GetComponent<Text>();
-        movementSpeedText = GameObject.Find("Speed").GetComponent<Text>();
-        attackSpeedText = GameObject.Find("Attack Speed").GetComponent<Text>();
-        damageText = GameObject.Find("Attack Damage").GetComponent<Text>();
-        defenseText = GameObject.Find("Defense").GetComponent<Text>();
-        pointsText = GameObject.Find("Available Points").GetComponent<Text>();
+        levelText = transform.Find("Level").GetComponent<Text>();
+        healthText = transform.Find("Health").GetComponent<Text>();
+        movementSpeedText = transform.Find("Speed").GetComponent<Text>();
+        attackSpeedText = transform.Find("Attack Speed").GetComponent<Text>();
+        damageText = transform.Find("Attack Damage").GetComponent<Text>();
+        defenseText = transform.Find("Defense").GetComponent<Text>();
+        pointsText = transform.Find("Available Points").GetComponent<Text>();
         attackMax = transform.Find("Attack Speed").GetChild(1).gameObject;
         attackMax.SetActive(false);
 
