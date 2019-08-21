@@ -7,22 +7,13 @@ public class KnightScript : BaseNPC
     [SerializeField] private Positions[] positions = null;
     [SerializeField] private GameObject knight = null;
     [SerializeField] private Animator anim = null;
-
-    private Collider col = null;
+   
 
     private bool walk = false;
     private float speed = 1.5f;
     private Vector3 initialPos;
     private Vector3 movePos;
     private Quaternion qTo = Quaternion.identity;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        initialPos = positions[0].inital;
-        knight.transform.position = initialPos;
-        col = GetComponent<Collider>();
-    }
 
     private void Update()
     {
@@ -33,8 +24,8 @@ public class KnightScript : BaseNPC
 
             if (knight.transform.position == movePos)
             {
-              walk = false;
-              anim.SetTrigger("Idle");
+                walk = false;
+                anim.SetTrigger("Idle");
             }
         }
     }
@@ -42,9 +33,10 @@ public class KnightScript : BaseNPC
     void RotateTo(Vector3 init, Vector3 other)
     {
         Vector3 direction = (init - other).normalized;
+        direction.x = -direction.x;
         direction.z = -direction.z;
         qTo = Quaternion.LookRotation(direction);
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo , 360f);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, qTo, 360f);
     }
 
     public override Dialogue GetDialogue(string dialogue)
@@ -52,15 +44,22 @@ public class KnightScript : BaseNPC
         switch (dialogue)
         {
             case "Welcome":
-                initialPos = positions[0].inital;
+                initialPos = positions[0].initial;
+                knight.transform.position = initialPos;
                 movePos = positions[0].next;
                 RotateTo(initialPos, movePos);
                 return dialogues[0];
             case "Forest":
-                initialPos = positions[1].inital;
+                initialPos = positions[1].initial;
+                knight.transform.position = initialPos;
                 movePos = positions[1].next;
                 RotateTo(initialPos, movePos);
                 return dialogues[1];
+            case "Mountains":
+                initialPos = positions[2].initial;
+                movePos = positions[2].next;
+                RotateTo(initialPos, movePos);
+                return dialogues[2];
 
             default:
                 return dialogues[0];
@@ -73,8 +72,9 @@ public class KnightScript : BaseNPC
         anim.SetTrigger("Walk");
         walk = true;
     }
+
     public override void OnDialogueEnd()
     {
-        col.enabled = false;
+        dialogueTriggerScript.GetComponent<Collider>().enabled = false;
     }
 }

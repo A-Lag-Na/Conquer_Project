@@ -20,9 +20,10 @@ public class DialogueTriggerScript : MonoBehaviour
         {
             debouncer = false;
             dialogueManager.dialogueTriggerScript = this;
+            baseNPC.dialogueTriggerScript = this;
             playerScript.isStunned = true;
             dialogueCanvas.gameObject.SetActive(true);
-            baseNPC.DoAction();
+           
             if (playerScript.GetCompanion() != null)
                 dialogueName = playerScript.GetCompanion().gameObject.name;
 
@@ -35,7 +36,7 @@ public class DialogueTriggerScript : MonoBehaviour
             {
                 dialogueManager.DisplayText(baseNPC.GetString(dialogueName));
             }
-
+            baseNPC.DoAction();
             debouncer = true;
         }
     }

@@ -6,6 +6,7 @@ public abstract class BaseNPC : MonoBehaviour
 {
     public Dialogue[] dialogues;
     public DialogueManager dialogueManager;
+    public DialogueTriggerScript dialogueTriggerScript;
     
     public virtual Dialogue GetDialogue(string dialogue)
     {

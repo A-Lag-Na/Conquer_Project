@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d70f9c36575b52b4f90d79adc97071c7, type: 3}
   m_Name: Post Forest Boss Positions
   m_EditorClassIdentifier: 
-  inital: {x: 0, y: 0, z: 0}
-  next: {x: 0, y: 0, z: 0}
+  initial: {x: 104, y: -10, z: 76}
+  next: {x: 84, y: -10, z: 76}

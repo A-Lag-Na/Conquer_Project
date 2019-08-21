@@ -90,6 +90,7 @@ public class DialogueManager : MonoBehaviour
         enter = true;
         exit = true;
     }
+
     //When all text has gone through end the sequence
     private void EndSequence()
     {

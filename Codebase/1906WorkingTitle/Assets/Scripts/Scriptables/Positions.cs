@@ -5,6 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Scriptables/Vector3 Array")]
 public class Positions : ScriptableObject
 {
-    public Vector3 inital;
+    public Vector3 initial;
     public Vector3 next;
 }
