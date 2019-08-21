@@ -11,7 +11,7 @@ public class Pickup : MonoBehaviour
     private void Update()
     {
         if(Type.Coin == type)
-            transform.Rotate(Vector3.forward * (100.0f * Time.deltaTime));
+            transform.Rotate(Vector3.right * (100.0f * Time.deltaTime));
     }
 
     private void OnTriggerEnter(Collider other)
