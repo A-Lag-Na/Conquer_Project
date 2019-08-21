@@ -48,7 +48,7 @@ public class TutorialManager : MonoBehaviour
                 popUpIndex++;
         }
         //Dash
-        else if(popUpIndex == 1)
+        else if (popUpIndex == 1)
         {
             if (playerScript.isDashing)
                 popUpIndex++;
@@ -68,6 +68,7 @@ public class TutorialManager : MonoBehaviour
         {
             if (spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
             {
+                playerScript.SetExperience(playerScript.GetNextLevelExperience());
                 playerScript.LevelUp();
                 popUpIndex++;
                 playerScript.SetHealth(1);
@@ -75,18 +76,18 @@ public class TutorialManager : MonoBehaviour
             }
         }
         //Potion usage
-        else if(popUpIndex == 4)
+        else if (popUpIndex == 4)
         {
             if (Input.GetKeyDown(KeyCode.F) || pressF)
             {
                 pressF = true;
-                if(inventoryScript.GetNumPotions() <= 0)
-                     popUpIndex++;
+                if (inventoryScript.GetNumPotions() <= 0)
+                    popUpIndex++;
             }
         }
         //Activating the stats screen N
         else if (popUpIndex == 5)
-        { 
+        {
             if (Input.GetButtonDown("Open Stats"))
                 popUpIndex++;
         }
