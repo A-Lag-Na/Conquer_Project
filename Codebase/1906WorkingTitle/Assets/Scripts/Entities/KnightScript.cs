@@ -57,9 +57,16 @@ public class KnightScript : BaseNPC
                 return dialogues[1];
             case "Mountains":
                 initialPos = positions[2].initial;
+                knight.transform.position = initialPos;
                 movePos = positions[2].next;
                 RotateTo(initialPos, movePos);
                 return dialogues[2];
+            case "Desert":
+                initialPos = positions[3].initial;
+                knight.transform.position = initialPos;
+                movePos = positions[3].next;
+                RotateTo(initialPos, movePos);
+                return dialogues[3];
 
             default:
                 return dialogues[0];
