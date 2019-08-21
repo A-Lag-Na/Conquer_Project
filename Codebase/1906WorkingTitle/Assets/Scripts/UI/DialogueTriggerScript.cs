@@ -23,9 +23,12 @@ public class DialogueTriggerScript : MonoBehaviour
             baseNPC.dialogueTriggerScript = this;
             playerScript.isStunned = true;
             dialogueCanvas.gameObject.SetActive(true);
-           
-            if (playerScript.GetCompanion() != null)
-                dialogueName = playerScript.GetCompanion().gameObject.name;
+
+            if (baseNPC.name == "Zookeeper")
+            {
+              if (playerScript.GetCompanion() != null)
+                    dialogueName = playerScript.GetCompanion().gameObject.name;
+            }
 
             if (chain)
             {

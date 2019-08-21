@@ -9,17 +9,19 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private Text text = null;
     [SerializeField] private Canvas canvas = null;
     [SerializeField] private Text continuePrompt = null;
+    [SerializeField] private Text skipPrompt = null;
     public DialogueTriggerScript dialogueTriggerScript = null;
 
     private bool enter = false;
     private bool exit = false;
+    private bool skip = false;
     private int textIndex = 0;
 
     private void Update()
     {
         //If the player can press enter "Press enter to continue" The continue prompt text will also be turned on
         if (enter)
-        {
+        {   
             continuePrompt.gameObject.SetActive(true);
             if (exit)
             {
@@ -28,8 +30,11 @@ public class DialogueManager : MonoBehaviour
             else
                 TextConditionsChain();
         }
-        
 
+        if (skip)
+        {
+            EndSequence();
+        }
     }
 
     public void DisplayText()
@@ -64,6 +69,11 @@ public class DialogueManager : MonoBehaviour
             //Wait time for "Press Enter to continue" to pop up
             DisplayText();
         }
+        if (Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            skipPrompt.gameObject.SetActive(true);
+            skip = true;
+        }
     }
     private void TextConditionsSingle()
     {
@@ -79,14 +89,14 @@ public class DialogueManager : MonoBehaviour
     IEnumerator TextWaitChain()
     {   
         continuePrompt.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.5f);
         enter = true;
     }
 
     IEnumerator TextWaitSingle()
     {
         continuePrompt.gameObject.SetActive(false);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(.5f);
         enter = true;
         exit = true;
     }

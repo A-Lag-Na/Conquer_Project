@@ -1,13 +1,13 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1102 &-6740276190608495650
+--- !u!1102 &-2044633692546170793
 AnimatorState:
   serializedVersion: 5
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SkeletonArmature|Skeleton_Running
+  m_Name: SkeletonArmature|Skeleton_Idle
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []
@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 8534037678179333468, guid: bc0a7be22a816534087fe8d7115ef76a,
+  m_Motion: {fileID: 1881067910185220424, guid: bc0a7be22a816534087fe8d7115ef76a,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -37,8 +37,8 @@ AnimatorStateMachine:
   m_Name: Base Layer
   m_ChildStates:
   - serializedVersion: 1
-    m_State: {fileID: -6740276190608495650}
-    m_Position: {x: 390, y: 110, z: 0}
+    m_State: {fileID: -2044633692546170793}
+    m_Position: {x: 440, y: 120, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -48,7 +48,7 @@ AnimatorStateMachine:
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
-  m_DefaultState: {fileID: -6740276190608495650}
+  m_DefaultState: {fileID: -2044633692546170793}
 --- !u!91 &9100000
 AnimatorController:
   m_ObjectHideFlags: 0

@@ -10,7 +10,7 @@ public class KnightScript : BaseNPC
    
 
     private bool walk = false;
-    private float speed = 1.5f;
+    private float speed = 2.5f;
     private Vector3 initialPos;
     private Vector3 movePos;
     private Quaternion qTo = Quaternion.identity;
