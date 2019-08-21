@@ -61,6 +61,7 @@ public class KnightScript : BaseNPC
                 movePos = positions[1].next;
                 RotateTo(initialPos, movePos);
                 return dialogues[1];
+
             default:
                 return dialogues[0];
         }
