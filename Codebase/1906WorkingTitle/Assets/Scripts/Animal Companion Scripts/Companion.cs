@@ -33,12 +33,14 @@ public class Companion : MonoBehaviour
     private Animator animator = null;
     private GameObject storagePosition = null;
     private AudioSource source = null;
+    GameObject activePosition = null;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
+        activePosition = GameObject.Find("PlayerPositionOffset");
         playerStats = player.GetComponent<Player>();
         animalCollider = GetComponent<CapsuleCollider>();
         animalCollider.isTrigger = true;
@@ -66,7 +68,7 @@ public class Companion : MonoBehaviour
         {
             if (name != "Item Grabber Companion" && name != "Melee Companion")
                 transform.position = Vector3.SmoothDamp(transform.position, playerPositionOffset, ref animalVelocity, 0.5f);
-            playerPositionOffset = new Vector3(player.transform.position.x - 3, player.transform.position.y + 1, player.transform.position.z);
+            playerPositionOffset = activePosition.transform.position;
             Quaternion rotation = Quaternion.LookRotation(player.transform.position - transform.position);
             // Lock the rotation around X and Z Axes
             rotation.x = 0.0f;
