@@ -18,7 +18,8 @@ public class StatScreen : MonoBehaviour
     
     void Start()
     {
-        stopWatch = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
+        if(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
+            stopWatch = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
