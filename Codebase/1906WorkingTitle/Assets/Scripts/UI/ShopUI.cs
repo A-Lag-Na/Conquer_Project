@@ -68,7 +68,7 @@ public class ShopUI : MonoBehaviour
             foreach (GameObject go in objects)
                 if (go.name != "Shop UI")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            if (GameObject.FindGameObjectWithTag("MainCamera"))
+            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
             mainUI.SetActive(false);
         }
@@ -81,7 +81,7 @@ public class ShopUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
         transform.parent.gameObject.SetActive(false);
         if (mainUI != null)

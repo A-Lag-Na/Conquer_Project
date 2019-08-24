@@ -90,7 +90,7 @@ public class SpawnScript : MonoBehaviour
             pointsClone -= enemyCloneStats.GetPoints();
 
             //Adds children to remainingchildren counter
-            remainingChildren += enemyCloneStats.children;
+            //remainingChildren += enemyCloneStats.children;
         }
 
         yield return new WaitForSeconds(timer);
