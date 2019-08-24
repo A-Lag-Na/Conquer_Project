@@ -57,7 +57,7 @@ public class GameOver : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 }

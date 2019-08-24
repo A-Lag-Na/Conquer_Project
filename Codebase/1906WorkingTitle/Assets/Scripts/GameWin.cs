@@ -19,7 +19,7 @@ public class GameWin : MonoBehaviour
 
     void Start()
     {
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             time = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().Stop();
         delay = 0.02f;
         white = new Color(1f, 1f, 1f, 1f);
@@ -47,7 +47,7 @@ public class GameWin : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        if(GameObject.FindGameObjectWithTag("MainCamera"))
+        if(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
     
@@ -90,7 +90,7 @@ public class GameWin : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 }

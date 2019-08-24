@@ -35,7 +35,7 @@ public class PauseMenu : MonoBehaviour
         foreach (GameObject go in objects)
             if (go.name != "Pause Menu")
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
     }
     
@@ -55,7 +55,7 @@ public class PauseMenu : MonoBehaviour
             foreach (GameObject go in objects)
                 if (go.name != "Pause Menu")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            if (GameObject.FindGameObjectWithTag("MainCamera"))
+            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
                 GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
             mainUI.SetActive(false);
         }
@@ -87,7 +87,7 @@ public class PauseMenu : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera"))
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
     }
 

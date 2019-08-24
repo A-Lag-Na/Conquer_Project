@@ -101,7 +101,7 @@ public class SpawnScript : MonoBehaviour
                 pointsClone -= enemyCloneStats.GetPoints();
 
                 //Adds children to remainingchildren counter
-                remainingChildren += enemyCloneStats.children;
+            //remainingChildren += enemyCloneStats.children;
             }
         }
         yield return new WaitForSeconds(timer);
@@ -154,6 +154,14 @@ public class SpawnScript : MonoBehaviour
     public void AddEnemy(GameObject _enemy)
     {
         spawnedEnemies.Add(_enemy);
+    }
+
+    public void DespawnEnemies()
+    {
+        foreach(EnemyStats e in enemiesClone)
+        {
+            e.Despawn();
+        }
     }
 
     //Searches list and removes any null values (dead enemies)
