@@ -166,7 +166,7 @@ public class EnemyStats : MonoBehaviour
         if (childEnemy != null && children > 0)
             Split(children);
         if (isChild)
-            spawnerScript.remainingChildren -= 1;
+            spawnerScript.SubtractRemainingChild();
         if (playerScript != null)
             playerScript.GainExperience(enemyPoints);
         Destroy(gameObject);
@@ -190,7 +190,7 @@ public class EnemyStats : MonoBehaviour
             {
                 childStats.SetSpawner(spawnerObject);
                 spawnerScript.AddEnemy(child);
-                spawnerScript.remainingChildren += childStats.children;
+                spawnerScript.AddRemainingChild();
             }
         }
     }
