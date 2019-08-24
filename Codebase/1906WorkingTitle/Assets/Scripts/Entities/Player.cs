@@ -106,7 +106,8 @@ public class Player : MonoBehaviour
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
         enemyRespawn = false;
-        saveUI.SetActive(false);
+        if(saveUI != null)
+            saveUI.SetActive(false);
     }
 
     void Update()

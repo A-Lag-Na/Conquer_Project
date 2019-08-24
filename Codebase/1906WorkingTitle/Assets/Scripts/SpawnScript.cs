@@ -131,8 +131,7 @@ public class SpawnScript : MonoBehaviour
 
     //Resets the spawner
     public void ResetSpawner()
-    {
-        enemiesClone.Clear();
+    { 
         pointsClone = points;
         if (enemies.Count > 0)
             for (int i = 0; i < enemies.Count; i++)
@@ -143,6 +142,14 @@ public class SpawnScript : MonoBehaviour
     public void AddEnemy(GameObject _enemy)
     {
         spawnedEnemies.Add(_enemy);
+    }
+
+    public void DespawnEnemies()
+    {
+        foreach(EnemyStats e in enemiesClone)
+        {
+            e.Despawn();
+        }
     }
 
     //Searches list and removes any null values (dead enemies)

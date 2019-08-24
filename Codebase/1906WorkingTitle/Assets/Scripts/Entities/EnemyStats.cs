@@ -172,6 +172,11 @@ public class EnemyStats : MonoBehaviour
         Destroy(gameObject);
     }
 
+    public void Despawn()
+    {
+        Destroy(gameObject);
+    }
+
     //Generate children enemies.
     public void Split(int children)
     {

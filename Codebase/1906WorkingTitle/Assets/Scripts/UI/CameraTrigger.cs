@@ -39,6 +39,7 @@ public class CameraTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        //spawn.DespawnEnemies();
         if (other.tag == "Player")
         {
             if(knight != null)
