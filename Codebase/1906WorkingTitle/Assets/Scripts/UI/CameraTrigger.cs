@@ -15,8 +15,7 @@ public class CameraTrigger : MonoBehaviour
         //Finds each camera position object in each room
         camPos = transform.Find("Camera Position").gameObject;
         spawn = spawner.GetComponent<SpawnScript>();
-        spawner.SetActive(false);
-        hasVisited = false;
+        spawn.SetEnabled(false);
     }
 
     private void OnTriggerEnter(Collider other)
@@ -27,13 +26,12 @@ public class CameraTrigger : MonoBehaviour
             Camera.main.transform.position = camPos.transform.position;
             if (!hasVisited)
             {
-                spawner.SetActive(true);
                 //Spawns enemies and locks rooms
                 spawn.SetDoorLock(true);
                 spawn.SetEnabled(true);
-            }
-            if (other.gameObject.GetComponent<Player>().enemyRespawn)
+                spawn.SetClearCheck(true);
                 spawn.ResetSpawner();
+            }
         }
     }
 
@@ -47,11 +45,10 @@ public class CameraTrigger : MonoBehaviour
                 knight.SetActive(false);
             }
         }
-
     }
 
-    public void DisableRoom()
+    public void ClearRoom(bool _cleared)
     {
-        hasVisited = true;
+        hasVisited = _cleared;
     }
 }

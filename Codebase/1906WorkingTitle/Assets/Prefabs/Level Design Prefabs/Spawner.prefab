@@ -144,6 +144,7 @@ MonoBehaviour:
   - {fileID: 207912401}
   - {fileID: 478270013}
   - {fileID: 5369622686599183123}
+  isAreaCleared: 0
   enemies:
   - {fileID: 6438206596685392169, guid: 8d5103ebf6374414185043236b7fe8d2, type: 3}
   doors:

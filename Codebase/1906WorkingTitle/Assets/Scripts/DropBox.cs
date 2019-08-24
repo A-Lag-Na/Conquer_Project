@@ -7,17 +7,25 @@ public class DropBox : MonoBehaviour
     [SerializeField] private GameObject boxPiece = null, bullet = null;
     [SerializeField] private GameObject dialogueTrigger = null;
     [SerializeField] private GameObject spawner = null;
+    private SpawnScript spawnScript = null;
+    [SerializeField] private GameObject areaManager = null;
 
     private bool buffer = true;
 
+    private void Start()
+    {
+        spawnScript = spawner.GetComponent<SpawnScript>();
+    }
     private void Update()
     {
         if (buffer)
         {
-            if (spawner.GetComponent<SpawnScript>().GetPointsRemaining() <= 0 && spawner.activeSelf)
+            if (spawnScript.GetPointsRemaining() <= 0 && spawner.activeSelf)
             {
-                if (spawner.GetComponent<SpawnScript>().spawnedEnemies.Count <= 0 && spawner.activeSelf)
+                if (spawnScript.spawnedEnemies.Count <= 0 && spawner.activeSelf)
                 {
+                    if(areaManager != null)
+                        areaManager.GetComponent<AreaManager>().AreaReset(false);
                     DropLoot();
                     buffer = false;
                 }
