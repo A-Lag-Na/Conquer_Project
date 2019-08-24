@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4668630539982141165}
   - component: {fileID: 4668630539982141162}
   m_Layer: 0
-  m_Name: Desert Cactus Blockade
+  m_Name: Ice Cactus Blockade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -60,8 +60,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67f68354d7c5e9d4c89604820da1248c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cactusBarrier: {fileID: 0}
-  iceEffect: {fileID: 0}
 --- !u!65 &4668630539982141162
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -124,16 +122,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4668630539982141167}
     m_Modifications:
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_Name
-      value: Ice
-      objectReference: {fileID: 0}
-    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1740744601386134248, guid: 5874562e5d5b0e6449be4d4e49d5aece,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -203,6 +191,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_Name
+      value: Ice
+      objectReference: {fileID: 0}
+    - target: {fileID: 1740744601386134263, guid: 5874562e5d5b0e6449be4d4e49d5aece,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5874562e5d5b0e6449be4d4e49d5aece, type: 3}

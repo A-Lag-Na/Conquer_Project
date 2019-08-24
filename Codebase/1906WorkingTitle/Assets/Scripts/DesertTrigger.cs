@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlainsTrigger : MonoBehaviour
+public class DesertTrigger : MonoBehaviour
 {
-    [SerializeField] private GameObject cactusBarrier;
-    [SerializeField] private GameObject iceEffect;
+    [SerializeField] private GameObject cactusBarrier = null;
+    private GameObject iceEffect;
     
     void Start()
     {
-        cactusBarrier = GameObject.Find("Desert Cactus Blockade");
         iceEffect = cactusBarrier.transform.GetChild(1).gameObject;
     }
 
