@@ -13,6 +13,4 @@ MonoBehaviour:
   m_Name: Helpful Data 1
   m_EditorClassIdentifier: 
   textArray:
-  - 'The dragons are used to their flames.
-
-    .'
+  - The dragons are used to their flames.
