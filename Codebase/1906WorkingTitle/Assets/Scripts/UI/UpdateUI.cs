@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
@@ -170,7 +171,7 @@ public class UpdateUI : MonoBehaviour
 
         #region InputCheck
         //check for menu or inventory input
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf && SceneManager.sceneCount == 1)
             PauseGame();
 
         if (Input.GetButtonDown("Open Stats"))
