@@ -6,7 +6,6 @@ public class CastleEntrance : MonoBehaviour
 {
     [SerializeField] private GameObject castleGate = null;
     private Inventory playerInventory = null;
-    private bool open = false;
     
     void Start()
     {
@@ -16,15 +15,7 @@ public class CastleEntrance : MonoBehaviour
     void Update()
     {
         if(playerInventory.GetBoxPieces() == 3)
-            open = true;
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && open)
-        {
             StartCoroutine(OpenGate());
-        }
     }
 
     IEnumerator OpenGate()
