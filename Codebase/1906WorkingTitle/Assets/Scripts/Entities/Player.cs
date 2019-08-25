@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxPlayerHealth = 10.0f;
     [SerializeField] private int playerDefense = 1;
     [SerializeField] private float playerAttackSpeed = 1.0f;
+    [SerializeField] private float playerTrueAttackSpeed = 1.0f;
     [SerializeField] private int visualAttackSpeed = 1;
     [SerializeField] private int playerAttackDamage = 1;
     [SerializeField] private int playerSpendingPoints = 0;
@@ -489,6 +490,7 @@ public class Player : MonoBehaviour
             visualAttackSpeed++;
             playerAttackSpeed -= 0.1f;
             playerSpendingPoints--;
+            playerTrueAttackSpeed = playerAttackSpeed;
         }
     }
 
@@ -506,6 +508,11 @@ public class Player : MonoBehaviour
     public float GetFireRate()
     {
         return playerAttackSpeed;
+    }
+
+    public float GetTrueFireRate()
+    {
+        return playerTrueAttackSpeed;
     }
 
     public void SetFireRate(float _playerAttackSpeed)

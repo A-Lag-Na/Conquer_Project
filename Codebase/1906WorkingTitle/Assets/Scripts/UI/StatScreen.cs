@@ -125,10 +125,15 @@ public class StatScreen : MonoBehaviour
         //exit stat screen and reenable main ui
         if (Input.GetKeyDown(KeyCode.Escape) || Input.GetButtonDown("Open Stats"))
             ResumeGame();
-        if(player.GetAttackSpeed() <= 0.2f)
+        if(player.GetTrueFireRate() <= 0.2f)
         {
             speedBTN.enabled = false;
             attackMax.SetActive(true);
+        }
+        else
+        {
+            speedBTN.enabled = true;
+            attackMax.SetActive(false);
         }
     }
 
