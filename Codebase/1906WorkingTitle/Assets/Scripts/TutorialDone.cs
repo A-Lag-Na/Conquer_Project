@@ -8,7 +8,7 @@ public class TutorialDone : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/IntroLetter"));
+            GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
             StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(2));
         }
     }
