@@ -75,6 +75,7 @@ public class GameWin : MonoBehaviour
         UnPause();
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(2));
+        playAgain.enabled = false;
     }
 
     void MainMenu()
@@ -82,6 +83,7 @@ public class GameWin : MonoBehaviour
         UnPause();
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(0));
+        mainMenu.enabled = false;
     }
 
     void UnPause()

@@ -29,12 +29,14 @@ public class GameOver : MonoBehaviour
     {
         UnPause();
         SceneManager.LoadScene("Build Scene");
+        playAgain.enabled = false;
     }
 
     private void MainMenu()
     {
         UnPause();
         SceneManager.LoadScene("Main Menu");
+        mainMenu.enabled = false;
     }
 
     private void Continue()
@@ -49,6 +51,7 @@ public class GameOver : MonoBehaviour
             }
         gameObject.SetActive(false);
         loadUI.SetActive(true);
+        continueFromLastSave.enabled = false;
     }
 
     void UnPause()
