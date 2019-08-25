@@ -34,6 +34,7 @@ public class Player : MonoBehaviour
     private float lastTimeFired = 0.0f;
     private bool isAbleToDash = true;
     public bool enemyRespawn = false;
+    public bool isInvincible = false;
     #endregion
 
     #region UnityComponents
@@ -106,8 +107,9 @@ public class Player : MonoBehaviour
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
         enemyRespawn = false;
-        if(saveUI != null)
+        if (saveUI != null)
             saveUI.SetActive(false);
+        isInvincible = false;
     }
 
     void Update()
@@ -181,6 +183,13 @@ public class Player : MonoBehaviour
             }
         }
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
+        if (isInvincible)
+        {
+            gameObject.layer = 22;
+            playerRenderer.material.color = Color.yellow;
+        }
+        else
+            gameObject.layer = 9;
     }
 
     #region PlayerFunctions
@@ -338,9 +347,10 @@ public class Player : MonoBehaviour
         playerHealth -= amountOfDamage;
         if (mainUI != null && mainUI.activeSelf)
             mainUI.GetComponent<UpdateUI>().TakeDamage();
-        if (playerHealth <= 0)
+        if (playerHealth < 1)
         {
             playerLives--;
+            StartCoroutine(Invincible());
             if (playerLives <= 0)
                 Death();
             playerHealth = maxPlayerHealth;
@@ -391,6 +401,13 @@ public class Player : MonoBehaviour
     public void SetMaxHealth(float _playerMaxHealth)
     {
         maxPlayerHealth = _playerMaxHealth;
+    }
+
+    public IEnumerator Invincible()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(1);
+        isInvincible = false;
     }
 
     #endregion

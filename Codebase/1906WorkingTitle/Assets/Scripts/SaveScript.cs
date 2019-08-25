@@ -263,6 +263,17 @@ public class SaveScript : MonoBehaviour
             playerInventory.SetCoins(playerGold);
             playerInventory.SetBoxPieces(playerBoxes);
             playerInventory.SetBulletCount(bulletCount);
+            GetComponent<CharacterController>().enabled = false;
+            if (player.GetLives() <= 0)
+            {
+                player.SetPosition(player.GetPosition());
+                StartCoroutine(player.Invincible());
+            }
+            else
+            {
+                player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
+            }
+            GetComponent<CharacterController>().enabled = true;
             player.SetLives(5);
 
             if (GameObject.Find(animalName))
@@ -273,9 +284,6 @@ public class SaveScript : MonoBehaviour
             }
 
         }
-        GetComponent<CharacterController>().enabled = false;
-        player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
-        GetComponent<CharacterController>().enabled = true;
     }
 
     public int GetSaveSlot()
