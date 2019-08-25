@@ -185,12 +185,7 @@ public class Player : MonoBehaviour
         }
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
         if (isInvincible)
-        {
-            gameObject.layer = 22;
             playerRenderer.material.color = Color.yellow;
-        }
-        else
-            gameObject.layer = 9;
     }
 
     #region PlayerFunctions
@@ -341,20 +336,23 @@ public class Player : MonoBehaviour
     #region Health
     public void TakeDamage(Color _color, float amountOfDamage = 1)
     {
-        //Decrease health by amountOfDamage until 0 or less
-        if (amountOfDamage >= 1)
-            BlinkOnHit(_color);
-        amountOfDamage /= playerDefense;
-        playerHealth -= amountOfDamage;
-        if (mainUI != null && mainUI.activeSelf)
-            mainUI.GetComponent<UpdateUI>().TakeDamage();
-        if (playerHealth < 1)
+        if (!isInvincible)
         {
-            playerLives--;
-            StartCoroutine(Invincible());
-            if (playerLives <= 0)
-                Death();
-            playerHealth = maxPlayerHealth;
+            //Decrease health by amountOfDamage until 0 or less
+            if (amountOfDamage >= 1)
+                BlinkOnHit(_color);
+            amountOfDamage /= playerDefense;
+            playerHealth -= amountOfDamage;
+            if (mainUI != null && mainUI.activeSelf)
+                mainUI.GetComponent<UpdateUI>().TakeDamage();
+            if (playerHealth < 1)
+            {
+                playerLives--;
+                StartCoroutine(Invincible());
+                if (playerLives <= 0)
+                    Death();
+                playerHealth = maxPlayerHealth;
+            }
         }
     }
 
