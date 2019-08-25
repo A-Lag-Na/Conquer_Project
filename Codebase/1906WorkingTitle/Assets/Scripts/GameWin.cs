@@ -7,12 +7,13 @@ using UnityEngine.SceneManagement;
 public class GameWin : MonoBehaviour
 {
     #region GameWinProperties
-    private Text text = null;
+    private Text displayText = null;
     private System.TimeSpan time;
     private float delay = 0.0f;
     private int minutes, seconds;
-    private Text title, content, btnTxt1, btnTxt2 = null;
-    private Image fadeIn, btnBack1, btnBack2 = null;
+    private Text title, btnTxt1, btnTxt2 = null;
+    private Image btnBack1, btnBack2 = null;
+    private RawImage fadeIn;
     private Button playAgain, mainMenu = null;
     private Color white, red, black = Color.clear;
     #endregion
@@ -27,17 +28,16 @@ public class GameWin : MonoBehaviour
         black = new Color(0f, 0f, 0f, 1f);
 
         #region Grabs
-        text = transform.GetChild(0).GetChild(0).GetComponent<Text>();
-        fadeIn = transform.GetChild(0).GetComponent<Image>();
-        content = transform.GetChild(0).GetChild(0).GetComponent<Text>();
-        title = transform.GetChild(0).GetChild(1).GetComponent<Text>();
-        btnTxt1 = transform.GetChild(0).GetChild(2).GetChild(0).GetComponent<Text>();
-        btnBack1 = transform.GetChild(0).GetChild(2).GetComponent<Image>();
-        btnTxt2 = transform.GetChild(0).GetChild(3).GetChild(0).GetComponent<Text>();
-        btnBack2 = transform.GetChild(0).GetChild(3).GetComponent<Image>();
+        displayText = transform.GetChild(1).GetComponent<Text>();
+        fadeIn = transform.GetChild(0).GetComponent<RawImage>();
+        title = transform.GetChild(2).GetComponent<Text>();
+        btnTxt1 = transform.GetChild(3).GetChild(0).GetComponent<Text>();
+        btnBack1 = transform.GetChild(3).GetComponent<Image>();
+        btnTxt2 = transform.GetChild(4).GetChild(0).GetComponent<Text>();
+        btnBack2 = transform.GetChild(4).GetComponent<Image>();
 
-        playAgain = transform.GetChild(0).Find("Play Again").GetComponent<Button>();
-        mainMenu = transform.GetChild(0).Find("Main Menu").GetComponent<Button>();
+        playAgain = transform.Find("Play Again").GetComponent<Button>();
+        mainMenu = transform.Find("Main Menu").GetComponent<Button>();
 
         playAgain.onClick.AddListener(PlayAgain);
         mainMenu.onClick.AddListener(MainMenu);
@@ -55,8 +55,8 @@ public class GameWin : MonoBehaviour
     {
         if (fadeIn.color != black)
             fadeIn.color = Color.Lerp(fadeIn.color, black, delay);
-        if (content.color != white)
-            content.color = Color.Lerp(content.color, white, delay);
+        if (displayText.color != white)
+            displayText.color = Color.Lerp(displayText.color, white, delay);
         if (btnBack1.color != white)
             btnBack1.color = Color.Lerp(btnBack1.color, white, delay);
         if (btnBack2.color != white)
@@ -67,7 +67,7 @@ public class GameWin : MonoBehaviour
             btnTxt2.color = Color.Lerp(btnTxt2.color, black, delay);
         if (title.color != red)
             title.color = Color.Lerp(title.color, red, delay);
-        text.text = $"It took you {time.Minutes} minutes and {time.Seconds} seconds!";
+        displayText.text = $"It took you {time.Minutes} minutes and {time.Seconds} seconds!";
     }
 
     void PlayAgain()
