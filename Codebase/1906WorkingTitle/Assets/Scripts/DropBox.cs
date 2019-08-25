@@ -36,8 +36,11 @@ public class DropBox : MonoBehaviour
     }
     void DropLoot()
     {
-        boxPiece.SetActive(true);
-        bullet.SetActive(true);
+        //boxPiece.SetActive(true);
+        //bullet.SetActive(true);
+        Inventory playerInv = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+        playerInv.AddBoxPiece();
+        playerInv.AddBullet();
         dialogueTrigger.SetActive(true);
     }
 }

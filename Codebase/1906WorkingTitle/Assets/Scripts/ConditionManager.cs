@@ -101,7 +101,7 @@ public class ConditionManager : MonoBehaviour
                 #region AuraTimer
                 if (auraTimer > 0)
                 {
-                    Damage(Color.Lerp(enemyRender.material.color, Color.green, 0.2f), auraDamage);
+                    Damage(Color.green, auraDamage);
                     auraTimer--;
                 }
                 #endregion
