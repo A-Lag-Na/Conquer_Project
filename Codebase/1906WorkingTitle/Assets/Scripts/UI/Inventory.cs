@@ -14,7 +14,7 @@ public class Inventory : MonoBehaviour
     [HideInInspector] public LinkedList<NonMonoConsumable> consumableList = new LinkedList<NonMonoConsumable>();
     private Player player = null;
     private ConditionManager con = null;
-    private int bulletCount;
+    [SerializeField] private int bulletCount;
     #endregion
 
     private void Start()

@@ -16,7 +16,7 @@ public class UpdateUI : MonoBehaviour
 
     private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
     private int lives, coins = 0;
-    
+
     //distance from shop
     private float dist = 0.0f;
 
@@ -122,8 +122,14 @@ public class UpdateUI : MonoBehaviour
             //update inventory
             InvSlot1.sprite = inventory.WeaponSprite();
             InvSlot2.sprite = inventory.ConsumableSprite();
-            InvSlot1Name.text = inventory.WeaponName();
-            InvSlot2Name.text = inventory.ConsumableName();
+            if (inventory.WeaponName() != "")
+                InvSlot1Name.text = inventory.WeaponName();
+            else
+                InvSlot1Name.text = "Empty";
+            if (inventory.ConsumableName() != "")
+                InvSlot2Name.text = inventory.ConsumableName();
+            else
+                InvSlot2Name.text = "Empty";
             #endregion
         }
         #endregion
@@ -163,23 +169,23 @@ public class UpdateUI : MonoBehaviour
         #endregion
 
         #region InputCheck
-            //check for menu or inventory input
-            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
-                PauseGame();
+        //check for menu or inventory input
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
+            PauseGame();
 
-            if (Input.GetButtonDown("Open Stats"))
-            {
-                OpenStats();
-            }
+        if (Input.GetButtonDown("Open Stats"))
+        {
+            OpenStats();
+        }
 
-            if (Input.GetButtonDown("Use Potion"))
-            {
-                StartCoroutine(inventory.ConsumableTimer());
-            }
+        if (Input.GetButtonDown("Use Potion"))
+        {
+            StartCoroutine(inventory.ConsumableTimer());
+        }
 
-            if (Input.GetButtonDown("Open Shop"))
-                OpenShop();
-            #endregion
+        if (Input.GetButtonDown("Open Shop"))
+            OpenShop();
+        #endregion
     }
 
     #region UIFunctions
@@ -236,6 +242,6 @@ public class UpdateUI : MonoBehaviour
         levelFlasher.color = levelColorTransparent;
         buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
-    
+
     #endregion
 }
