@@ -154,6 +154,14 @@ public class Inventory : MonoBehaviour
             player.ModifyDamage(weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
+        else
+        {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
+            weaponNode = weaponList.First;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
     }
 
     public void CycleWeaponBackward()
@@ -163,6 +171,14 @@ public class Inventory : MonoBehaviour
             player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
             weaponNode = weaponNode.Previous;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
+        else
+        {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
+            weaponNode = weaponList.Last;
             player.ModifyDamage(weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
@@ -176,12 +192,16 @@ public class Inventory : MonoBehaviour
     {
         if (consumableNode.Next != null)
             consumableNode = consumableNode.Next;
+        else
+            consumableNode = consumableList.First;
     }
 
     public void CycleConsumableBackward()
     {
         if (consumableNode.Previous != null)
             consumableNode = consumableNode.Previous;
+        else
+            consumableNode = consumableList.Last;
     }
 
     #endregion
