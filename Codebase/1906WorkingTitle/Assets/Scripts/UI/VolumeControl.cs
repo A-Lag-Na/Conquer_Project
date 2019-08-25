@@ -11,7 +11,6 @@ public class VolumeControl : MonoBehaviour
     private Slider masterSlider = null, musicSlider = null, sfxSlider = null;
     [SerializeField] private AudioMixer musicMixer = null, sfxMixer = null;
     [SerializeField] private AudioSource soundFX = null;
-    private AudioClip testSound = null;
     #endregion
     
     void Start()
@@ -27,17 +26,11 @@ public class VolumeControl : MonoBehaviour
         masterSlider.value = masterVolume;
         musicSlider.value = musicVolume;
         sfxSlider.value = sfxVolume;
-
-        testSound = Resources.Load<AudioClip>("SFX/click");
+        
     }
     
     void Update()
     {
-        if(sfxVolume != sfxSlider.value)
-        {
-            if(soundFX != null)
-                soundFX.PlayOneShot(testSound);
-        }
 
         masterVolume = masterSlider.value;
         musicVolume = musicSlider.value;
