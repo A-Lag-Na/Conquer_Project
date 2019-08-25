@@ -2840,11 +2840,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shop Keeper Variant
       objectReference: {fileID: 0}
-    - target: {fileID: 8406958141300280038, guid: e20af885337aedd4c82f6e672a51e9e3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4823595151515384053, guid: e20af885337aedd4c82f6e672a51e9e3,
         type: 3}
       propertyPath: m_LocalPosition.x
