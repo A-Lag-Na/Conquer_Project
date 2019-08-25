@@ -365,4 +365,12 @@ public class Inventory : MonoBehaviour
         bulletCount = _bulletCount;
     }
     #endregion
+
+    public NonMonoWeapon GetWeaponNodeValue()
+    {
+        if (weaponNode != null)
+            return weaponNode.Value;
+        else
+            return null;
+    }
 }

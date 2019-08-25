@@ -24,6 +24,11 @@ public class SaveScript : MonoBehaviour
 
     public void Save()
     {
+        if (playerInventory.GetWeaponNodeValue() != null)
+        {
+            player.ModifyDamage(-1 * playerInventory.GetWeaponNodeValue().GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * playerInventory.GetWeaponNodeValue().GetAttackSpeed());
+        }
         Vector3 playerPosition = player.GetPosition();
         float playerMovementSpeed = player.GetMovementSpeed();
         float maxPlayerHealth = player.GetMaxHealth();

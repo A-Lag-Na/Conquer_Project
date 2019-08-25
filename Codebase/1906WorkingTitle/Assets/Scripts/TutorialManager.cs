@@ -74,6 +74,8 @@ public class TutorialManager : MonoBehaviour
                 playerScript.SetHealth(1);
                 pickup.SetActive(true);
             }
+            else
+                playerScript.SetHealth(playerScript.GetMaxHealth());
         }
         //Potion usage
         else if (popUpIndex == 4)
