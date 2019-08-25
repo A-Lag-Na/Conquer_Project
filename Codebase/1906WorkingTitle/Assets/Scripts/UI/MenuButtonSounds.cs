@@ -14,9 +14,12 @@ public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
     // Start is called before the first frame update
     void Start()
     {
-        source = GetComponent<AudioSource>();
-        button = GetComponentInParent<Button>();
-        button.onClick.AddListener(Clicked);
+        if(GetComponent<AudioSource>())
+            source = GetComponent<AudioSource>();
+        if(GetComponent<Button>())
+            button = GetComponentInParent<Button>();
+        if(button != null)
+            button.onClick.AddListener(Clicked);
         hover = Resources.Load<AudioClip>("SFX/hover");
         click = Resources.Load<AudioClip>("SFX/click");
     }
