@@ -14,6 +14,11 @@ public class SaveScript : MonoBehaviour
     [SerializeField] GameObject[] consumableEffects = new GameObject[7];
     ConditionManager conManager = null;
 
+    LinkedList<NonMonoWeapon> weapons = new LinkedList<NonMonoWeapon>();
+    LinkedList<NonMonoConsumable> consumables = new LinkedList<NonMonoConsumable>();
+    LinkedListNode<NonMonoWeapon> wepNode = null;
+    LinkedListNode<NonMonoConsumable> conNode = null;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -24,11 +29,135 @@ public class SaveScript : MonoBehaviour
 
     public void Save()
     {
-        if (playerInventory.GetWeaponNodeValue() != null)
+        int weaponNumber = 1;
+        while (PlayerPrefs.HasKey($"Weapon{weaponNumber}{saveSlot}"))
         {
-            player.ModifyDamage(-1 * playerInventory.GetWeaponNodeValue().GetAttackDamage());
-            player.ModifyAttackSpeed(-1 * playerInventory.GetWeaponNodeValue().GetAttackSpeed());
+            string name = PlayerPrefs.GetString($"Weapon{weaponNumber}{saveSlot}");
+            int damage = PlayerPrefs.GetInt($"WeaponDamage{weaponNumber}{saveSlot}");
+            float speed = PlayerPrefs.GetFloat($"WeaponSpeed{weaponNumber}{saveSlot}");
+            NonMonoWeapon weapon = new NonMonoWeapon();
+            weapon.SetName(name);
+            weapon.SetAttackDamage(damage);
+            weapon.SetAttackSpeed(speed);
+            weapon.SetType(NonMonoBaseItem.Type.Weapon);
+            weapon.SetDesc("");
+            weapon.SetValue(0);
+            if (name == "Shortbow")
+                weapon.SetSprite(sprites[2]);
+            else if (name == "Longbow")
+                weapon.SetSprite(sprites[3]);
+            else if (name == "Crossbow")
+                weapon.SetSprite(sprites[0]);
+            else if (name == "Sling")
+                weapon.SetSprite(sprites[4]);
+            else if (name == "Recurve Bow")
+                weapon.SetSprite(sprites[1]);
+
+            if (!weapons.Contains(weapon))
+                weapons.AddLast(weapon);
+            if (wepNode == null)
+                wepNode = weapons.First;
+            weaponNumber++;
         }
+
+        int consumableNumber = 1;
+        while (PlayerPrefs.HasKey($"Consumable{consumableNumber}{saveSlot}"))
+        {
+            string name = PlayerPrefs.GetString($"Consumable{consumableNumber}{saveSlot}");
+            int intMod = PlayerPrefs.GetInt($"ConsumableInt{consumableNumber}{saveSlot}");
+            float floatMod = PlayerPrefs.GetFloat($"ConsumableFloat{consumableNumber}{saveSlot}");
+            NonMonoConsumable consumable = new NonMonoConsumable();
+            consumable.SetName(name);
+            consumable.SetIntModifier(intMod);
+            consumable.SetFloatModifier(floatMod);
+            consumable.SetDesc("");
+            consumable.SetValue(0);
+            if (name == "Health Potion" || name == "Speed Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
+                consumable.SetSprite(sprites[5]);
+            }
+            else if (name == "Defense Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
+                consumable.SetSprite(sprites[6]);
+            }
+            else if (name == "Damage Buff Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
+                consumable.SetSprite(sprites[7]);
+            }
+            else if (name == "Fire Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[6]);
+                consumable.SetConsumableEffect(consumableEffects[0]);
+            }
+            else if (name == "Ice Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[7]);
+                consumable.SetConsumableEffect(consumableEffects[1]);
+            }
+            else if (name == "Love Potion")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[7]);
+                consumable.SetConsumableEffect(consumableEffects[2]);
+            }
+            else if (name == "Hex Shot")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[11]);
+                consumable.SetConsumableEffect(consumableEffects[3]);
+            }
+            else if (name == "Fireball")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[10]);
+                consumable.SetConsumableEffect(consumableEffects[4]);
+            }
+            else if (name == "Lightning Bolt")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[12]);
+                consumable.SetConsumableEffect(consumableEffects[5]);
+            }
+            else if (name == "Death Aura")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[9]);
+            }
+            else if (name == "Cone of Cold")
+            {
+                consumable.SetType(NonMonoBaseItem.Type.Consumable);
+                consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                consumable.SetSprite(sprites[8]);
+                consumable.SetConsumableEffect(consumableEffects[6]);
+            }
+
+            if (!consumables.Contains(consumable))
+                consumables.AddLast(consumable);
+            if (conNode == null)
+                conNode = consumables.First;
+            consumableNumber++;
+        }
+
+        //if (playerInventory.GetWeaponNodeValue() != null)
+        //{
+        //    player.ModifyDamage(-1 * playerInventory.GetWeaponNodeValue().GetAttackDamage());
+        //    player.ModifyAttackSpeed(-1 * playerInventory.GetWeaponNodeValue().GetAttackSpeed());
+        //}
         Vector3 playerPosition = player.GetPosition();
         float playerMovementSpeed = player.GetMovementSpeed();
         float maxPlayerHealth = player.GetMaxHealth();
@@ -65,7 +194,18 @@ public class SaveScript : MonoBehaviour
             PlayerPrefs.SetFloat($"{animalCompanions[i].name}PositionZ{saveSlot}", animalPosition.z);
         }
 
-        int weaponNumber = 1;
+        weaponNumber = 1;
+        wepNode = weapons.First;
+        while (wepNode != null && PlayerPrefs.HasKey($"Weapon{weaponNumber}{saveSlot}"))
+        {
+            PlayerPrefs.DeleteKey($"Weapon{weaponNumber}{saveSlot}");
+            PlayerPrefs.DeleteKey($"WeaponDamage{weaponNumber}{saveSlot}");
+            PlayerPrefs.DeleteKey($"WeaponSpeed{weaponNumber}{saveSlot}");
+            wepNode = wepNode.Next;
+            weaponNumber++;
+        }
+
+        weaponNumber = 1;
         weaponNode = playerInventory.weaponList.First;
         while (weaponNode != null)
         {
@@ -79,7 +219,18 @@ public class SaveScript : MonoBehaviour
             weaponNumber++;
         }
 
-        int consumableNumber = 1;
+        consumableNumber = 1;
+        conNode = consumables.First;
+        while (conNode != null && PlayerPrefs.HasKey($"Consumable{consumableNumber}{saveSlot}"))
+        {
+            PlayerPrefs.DeleteKey($"Consumable{consumableNumber}{saveSlot}");
+            PlayerPrefs.DeleteKey($"ConsumableInt{consumableNumber}{saveSlot}");
+            PlayerPrefs.DeleteKey($"ConsumableFloat{consumableNumber}{saveSlot}");
+            conNode = conNode.Next;
+            consumableNumber++;
+        }
+
+        consumableNumber = 1;
         consumableNode = playerInventory.consumableList.First;
         while (consumableNode != null)
         {
