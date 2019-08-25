@@ -10801,7 +10801,6 @@ MonoBehaviour:
   isFireImmune: 0
   isIceImmune: 0
   isStunImmune: 1
-  pickUp: {fileID: 2622553748948649575, guid: cebf82bd43e5f6647b6716b5246d0cb1, type: 3}
   childEnemy: {fileID: 0}
   spawnerObject: {fileID: 0}
   children: 0
@@ -10952,10 +10951,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.92748725
+  m_Radius: 1.5430838
   m_Height: 4.2310877
-  m_Direction: 1
-  m_Center: {x: 0.36153954, y: 1.5182881, z: -0.011201724}
+  m_Direction: 0
+  m_Center: {x: 0.36153957, y: 0.9026915, z: -0.011201799}
 --- !u!114 &5890351964780241698
 MonoBehaviour:
   m_ObjectHideFlags: 0

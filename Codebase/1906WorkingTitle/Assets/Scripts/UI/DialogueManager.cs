@@ -34,6 +34,7 @@ public class DialogueManager : MonoBehaviour
         if (skip)
         {
             EndSequence();
+            skip = false;
         }
     }
 

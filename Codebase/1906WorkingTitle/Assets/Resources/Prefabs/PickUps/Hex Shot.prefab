@@ -65,6 +65,14 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Pickups
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
       propertyPath: m_LocalPosition.x
       value: -25.991646
@@ -133,6 +141,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 428d6b2f56d2e4db0a29ae394b8955f6, type: 2}
+    - target: {fileID: 2300000, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0882da95153541c09fc1451e68b2ec1, type: 3}
 --- !u!1 &3181572459067244774 stripped

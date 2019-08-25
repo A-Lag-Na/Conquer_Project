@@ -283,18 +283,6 @@ public class Companion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (name == "Item Grabber Companion")
-            if (collision.collider.CompareTag("Pickups"))
-                if (pickup.type == Pickup.Type.Coin)
-                {
-                    playerInventory.AddCoins(1);
-                    Destroy(collision.collider.gameObject);
-                }
-                else if (pickup.type == Pickup.Type.Potion || pickup.type == Pickup.Type.Spells)
-                {
-                    playerInventory.AddConsumable(pickup.GetComponent<Consumable>());
-                    Destroy(collision.collider.gameObject);
-                }
         if (name == "Melee Companion")
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {
@@ -303,6 +291,22 @@ public class Companion : MonoBehaviour
                 hasAttacked = true;
                 lastTimeAttacked = Time.time;
             }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (name == "Item Grabber Companion")
+            if (collider.CompareTag("Pickups"))
+                if (pickup.type == Pickup.Type.Coin)
+                {
+                    playerInventory.AddCoins(1);
+                    Destroy(collider.gameObject);
+                }
+                else if (pickup.type == Pickup.Type.Potion || pickup.type == Pickup.Type.Spells)
+                {
+                    playerInventory.AddConsumable(pickup.GetComponent<Consumable>());
+                    Destroy(collider.gameObject);
+                }
     }
 
     IEnumerator Attack()
