@@ -10,7 +10,6 @@ public class VolumeControl : MonoBehaviour
     [Range(0.0001f, 1f)] [SerializeField] private float masterVolume, musicVolume, sfxVolume = 0.0f;
     private Slider masterSlider = null, musicSlider = null, sfxSlider = null;
     [SerializeField] private AudioMixer musicMixer = null, sfxMixer = null;
-    [SerializeField] private AudioSource soundFX = null;
     #endregion
     
     void Start()
