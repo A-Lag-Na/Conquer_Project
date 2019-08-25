@@ -19,7 +19,7 @@ public class UpdateUI : MonoBehaviour
     private int lives, coins = 0;
 
     //distance from shop
-    private float dist = 0.0f;
+    private float currentDist = 0.0f, desiredDistance;
 
     // stat screen and pause menu references to keep
     private GameObject statScreen, pauseMenu = null;
@@ -150,14 +150,14 @@ public class UpdateUI : MonoBehaviour
         //check if near shop
         if (GameObject.Find("Shop Keeper") != null)
         {
-            dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+            currentDist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
             if (levelUp)
             {
                 buttonPrompt.color = new Color32(255, 255, 255, 255);
                 buttonPromptText.text = "Level Up!";
             }
         }
-        if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
+        if (GameObject.Find("Shop Keeper") != null && currentDist <= 8.2f)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPromptText.text = "Shop";
@@ -232,7 +232,7 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (dist <= 8.2f)
+        if (currentDist <= 8.2f)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
