@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 3368796350588388649, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -7.62
       objectReference: {fileID: 0}
     - target: {fileID: 3368796350588388649, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 3368796350588388649, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -4.87
       objectReference: {fileID: 0}
     - target: {fileID: 3368796350588388649, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
@@ -74,20 +74,35 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3373190173062687597, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
-      propertyPath: consumableType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3373190173062687597, guid: 94185d1852af3ce4fa4cad1b95348fcd,
-        type: 3}
       propertyPath: sprite
       value: 
       objectReference: {fileID: 21300000, guid: f53f7886c0cbb9144ae2f9253cd64f5f,
         type: 3}
     - target: {fileID: 3373190173062687597, guid: 94185d1852af3ce4fa4cad1b95348fcd,
         type: 3}
+      propertyPath: consumableType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3373190173062687597, guid: 94185d1852af3ce4fa4cad1b95348fcd,
+        type: 3}
       propertyPath: consumableEffect
       value: 
       objectReference: {fileID: 864540937790779359, guid: 459cbfc34200f404c8a3c1205393beca,
         type: 3}
+    - target: {fileID: 3359039121006372747, guid: 94185d1852af3ce4fa4cad1b95348fcd,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3359071132678529193, guid: 94185d1852af3ce4fa4cad1b95348fcd,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3358939078027047881, guid: 94185d1852af3ce4fa4cad1b95348fcd,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94185d1852af3ce4fa4cad1b95348fcd, type: 3}

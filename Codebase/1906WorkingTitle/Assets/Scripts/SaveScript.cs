@@ -12,16 +12,19 @@ public class SaveScript : MonoBehaviour
     LinkedListNode<NonMonoConsumable> consumableNode = null;
     [SerializeField] Sprite[] sprites = new Sprite[13];
     [SerializeField] GameObject[] consumableEffects = new GameObject[7];
+    ConditionManager conManager = null;
 
     void Start()
     {
         player = GetComponent<Player>();
         playerInventory = GetComponent<Inventory>();
         animalCompanions = GameObject.FindGameObjectsWithTag("Companion");
+        conManager = GetComponent<ConditionManager>();
     }
 
     public void Save()
     {
+        Vector3 playerPosition = player.GetPosition();
         float playerMovementSpeed = player.GetMovementSpeed();
         float maxPlayerHealth = player.GetMaxHealth();
         float playerAttackSpeed = player.GetFireRate();
@@ -85,6 +88,9 @@ public class SaveScript : MonoBehaviour
             consumableNumber++;
         }
 
+        PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
+        PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
+        PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
         PlayerPrefs.SetFloat($"MoveSpeed{saveSlot}", playerMovementSpeed);
         PlayerPrefs.SetFloat($"MaxHealth{saveSlot}", maxPlayerHealth);
         PlayerPrefs.SetFloat($"AttackSpeed{saveSlot}", playerAttackSpeed);
@@ -107,6 +113,9 @@ public class SaveScript : MonoBehaviour
     {
         if (PlayerPrefs.HasKey($"MoveSpeed{saveSlot}"))
         {
+            float playerX = PlayerPrefs.GetFloat($"PlayerX{saveSlot}");
+            float playerY = PlayerPrefs.GetFloat($"PlayerY{saveSlot}");
+            float playerZ = PlayerPrefs.GetFloat($"PlayerZ{saveSlot}");
             float playerMovementSpeed = PlayerPrefs.GetFloat($"MoveSpeed{saveSlot}");
             float maxPlayerHealth = PlayerPrefs.GetFloat($"MaxHealth{saveSlot}");
             float playerAttackSpeed = PlayerPrefs.GetFloat($"AttackSpeed{saveSlot}");
@@ -249,7 +258,7 @@ public class SaveScript : MonoBehaviour
             }
 
             player.SetMovementSpeed(playerMovementSpeed);
-            GetComponent<ConditionManager>().SetMaxSpeed(playerMovementSpeed);
+            conManager.SetMaxSpeed(playerMovementSpeed);
             player.SetHealth(maxPlayerHealth);
             player.SetMaxHealth(maxPlayerHealth);
             player.SetFireRate(playerAttackSpeed);
@@ -266,12 +275,15 @@ public class SaveScript : MonoBehaviour
             GetComponent<CharacterController>().enabled = false;
             if (player.GetLives() <= 0)
             {
+                conManager.TimerSet("fire", 0);
+                conManager.TimerSet("thaw", 0);
+                conManager.TimerSet("stun", 0);
                 player.SetPosition(player.GetPosition());
                 StartCoroutine(player.Invincible());
             }
             else
             {
-                player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
+                player.SetPosition(new Vector3(playerX, playerY, playerZ));
             }
             GetComponent<CharacterController>().enabled = true;
             player.SetLives(5);
@@ -283,6 +295,20 @@ public class SaveScript : MonoBehaviour
                 GameObject.Find(animalName).GetComponent<Companion>().Activate();
             }
 
+        }
+        else
+        {
+            if (player.GetLives() <= 0)
+            {
+                conManager.TimerSet("fire", 0);
+                conManager.TimerSet("thaw", 0);
+                conManager.TimerSet("stun", 0);
+                player.SetPosition(player.GetPosition());
+                StartCoroutine(player.Invincible());
+            }
+            else
+                player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
+            player.SetLives(5);
         }
     }
 
