@@ -73,6 +73,7 @@ public class UpdateUI : MonoBehaviour
         damageColor = new Color(255.0f, 0.0f, 0.0f, 0.0f);
         levelColorOpaque = new Color32(1, 210, 231, 128);
         levelColorTransparent = new Color32(1, 210, 231, 0);
+        desiredDistance = 6.2f;
     }
 
     private void Update()
@@ -157,7 +158,7 @@ public class UpdateUI : MonoBehaviour
                 buttonPromptText.text = "Level Up!";
             }
         }
-        if (GameObject.Find("Shop Keeper") != null && currentDist <= 8.2f)
+        if (GameObject.Find("Shop Keeper") != null && currentDist <= desiredDistance)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPromptText.text = "Shop";
@@ -232,7 +233,7 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (currentDist <= 8.2f)
+        if (currentDist <= desiredDistance)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
