@@ -395,15 +395,14 @@ public class SaveScript : MonoBehaviour
                 else if (name == "Death Aura")
                 {
                     consumable.SetType(NonMonoBaseItem.Type.Consumable);
-                    consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                    consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
                     consumable.SetSprite(sprites[9]);
                 }
                 else if (name == "Cone of Cold")
                 {
                     consumable.SetType(NonMonoBaseItem.Type.Consumable);
-                    consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
+                    consumable.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
                     consumable.SetSprite(sprites[8]);
-                    consumable.SetConsumableEffect(consumableEffects[6]);
                 }
                 playerInventory.AddNonMonoConsumable(consumable);
                 consumableNumber++;
