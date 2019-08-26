@@ -6,17 +6,10 @@ public class MountainsTrigger : MonoBehaviour
 {
     #region MountainsTriggerProperties
     //Obstacle
-    GameObject iceBarrier = null;
+    [SerializeField] private GameObject iceBarrier = null;
     //Particle effect for the fire
-    GameObject fireOne = null;
+    [SerializeField] private GameObject fireOne = null;
     #endregion
-    
-    void Start()
-    {
-        //Getting the GO in the script
-        iceBarrier = GameObject.Find("Mountain Ice Barrier");
-        fireOne = iceBarrier.transform.GetChild(1).gameObject;
-    }
 
     private void OnTriggerEnter(Collider other)
     {

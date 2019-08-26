@@ -78,7 +78,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Continue from last save
+  m_Text: Load Previous Save
 --- !u!1 &1986799990262601549
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,6 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80db8ebbd64ca5d44a6d07879e9760de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadUI: {fileID: 0}
 --- !u!1 &1986799991156967645
 GameObject:
   m_ObjectHideFlags: 0

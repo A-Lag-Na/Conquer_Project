@@ -10,11 +10,11 @@ public class Inventory : MonoBehaviour
     [SerializeField] private LinkedListNode<NonMonoConsumable> consumableNode = null;
     [SerializeField] private int amountOfPotions = 0;
 
-    private LinkedList<NonMonoWeapon> weaponList = new LinkedList<NonMonoWeapon>();
-    private LinkedList<NonMonoConsumable> consumableList = new LinkedList<NonMonoConsumable>();
+    [HideInInspector] public LinkedList<NonMonoWeapon> weaponList = new LinkedList<NonMonoWeapon>();
+    [HideInInspector] public LinkedList<NonMonoConsumable> consumableList = new LinkedList<NonMonoConsumable>();
     private Player player = null;
     private ConditionManager con = null;
-    private int bulletCount;
+    [SerializeField] private int bulletCount;
     #endregion
 
     private void Start()
@@ -74,7 +74,7 @@ public class Inventory : MonoBehaviour
     public void AddWeapon(BaseItem _weapon)
     {
         NonMonoWeapon wepClone = WeaponDeepCopy((Weapon)_weapon);
-        if(!weaponList.Contains(wepClone))
+        if (!weaponList.Contains(wepClone))
             weaponList.AddLast(wepClone);
         if (weaponNode == null)
         {
@@ -91,6 +91,25 @@ public class Inventory : MonoBehaviour
         {
             consumableNode = consumableList.First;
         }
+    }
+
+    public void AddNonMonoWeapon(NonMonoWeapon _weapon)
+    {
+        if (!weaponList.Contains(_weapon))
+            weaponList.AddLast(_weapon);
+        if (weaponNode == null)
+        {
+            weaponNode = weaponList.First;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
+    }
+
+    public void AddNonMonoConsumable(NonMonoConsumable _consumable)
+    {
+        consumableList.AddLast(_consumable);
+        if (consumableNode == null)
+            consumableNode = consumableList.First;
     }
     #endregion
 
@@ -113,7 +132,7 @@ public class Inventory : MonoBehaviour
         clone.SetSprite(_consumable.GetSprite());
         clone.SetValue(_consumable.GetValue());
         clone.SetConsumableEffect(_consumable.GetConsumableEffect());
-        if(_consumable.GetConsumableType() == Consumable.ConsumableType.Consumable)
+        if (_consumable.GetConsumableType() == Consumable.ConsumableType.Consumable)
             clone.SetConsumableType(NonMonoConsumable.ConsumableType.Consumable);
         else
             clone.SetConsumableType(NonMonoConsumable.ConsumableType.Thrown);
@@ -135,6 +154,14 @@ public class Inventory : MonoBehaviour
             player.ModifyDamage(weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
+        else
+        {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
+            weaponNode = weaponList.First;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
     }
 
     public void CycleWeaponBackward()
@@ -144,6 +171,14 @@ public class Inventory : MonoBehaviour
             player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
             weaponNode = weaponNode.Previous;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
+        else
+        {
+            player.ModifyDamage(-1 * weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(-1 * weaponNode.Value.GetAttackSpeed());
+            weaponNode = weaponList.Last;
             player.ModifyDamage(weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
@@ -157,12 +192,16 @@ public class Inventory : MonoBehaviour
     {
         if (consumableNode.Next != null)
             consumableNode = consumableNode.Next;
+        else
+            consumableNode = consumableList.First;
     }
 
     public void CycleConsumableBackward()
     {
         if (consumableNode.Previous != null)
             consumableNode = consumableNode.Previous;
+        else
+            consumableNode = consumableList.Last;
     }
 
     #endregion
@@ -326,4 +365,12 @@ public class Inventory : MonoBehaviour
         bulletCount = _bulletCount;
     }
     #endregion
+
+    public NonMonoWeapon GetWeaponNodeValue()
+    {
+        if (weaponNode != null)
+            return weaponNode.Value;
+        else
+            return null;
+    }
 }

@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float maxPlayerHealth = 10.0f;
     [SerializeField] private int playerDefense = 1;
     [SerializeField] private float playerAttackSpeed = 1.0f;
+    [SerializeField] private float playerTrueAttackSpeed = 1.0f;
     [SerializeField] private int visualAttackSpeed = 1;
     [SerializeField] private int playerAttackDamage = 1;
     [SerializeField] private int playerSpendingPoints = 0;
@@ -34,6 +35,7 @@ public class Player : MonoBehaviour
     private float lastTimeFired = 0.0f;
     private bool isAbleToDash = true;
     public bool enemyRespawn = false;
+    public bool isInvincible = false;
     #endregion
 
     #region UnityComponents
@@ -106,8 +108,9 @@ public class Player : MonoBehaviour
         deathAura.SetActive(false);
         iceSpell.SetActive(false);
         enemyRespawn = false;
-        if(saveUI != null)
+        if (saveUI != null)
             saveUI.SetActive(false);
+        isInvincible = false;
     }
 
     void Update()
@@ -181,6 +184,8 @@ public class Player : MonoBehaviour
             }
         }
         transform.position = new Vector3(transform.position.x, playerY, transform.position.z);
+        if (isInvincible)
+            playerRenderer.material.color = Color.yellow;
     }
 
     #region PlayerFunctions
@@ -331,19 +336,23 @@ public class Player : MonoBehaviour
     #region Health
     public void TakeDamage(Color _color, float amountOfDamage = 1)
     {
-        //Decrease health by amountOfDamage until 0 or less
-        if (amountOfDamage >= 1)
-            BlinkOnHit(_color);
-        amountOfDamage /= playerDefense;
-        playerHealth -= amountOfDamage;
-        if (mainUI != null && mainUI.activeSelf)
-            mainUI.GetComponent<UpdateUI>().TakeDamage();
-        if (playerHealth <= 0)
+        if (!isInvincible)
         {
-            playerLives--;
-            if (playerLives <= 0)
-                Death();
-            playerHealth = maxPlayerHealth;
+            //Decrease health by amountOfDamage until 0 or less
+            if (amountOfDamage >= 1)
+                BlinkOnHit(_color);
+            amountOfDamage /= playerDefense;
+            playerHealth -= amountOfDamage;
+            if (mainUI != null && mainUI.activeSelf)
+                mainUI.GetComponent<UpdateUI>().TakeDamage();
+            if (playerHealth < 1)
+            {
+                playerLives--;
+                StartCoroutine(Invincible());
+                if (playerLives <= 0)
+                    Death();
+                playerHealth = maxPlayerHealth;
+            }
         }
     }
 
@@ -391,6 +400,13 @@ public class Player : MonoBehaviour
     public void SetMaxHealth(float _playerMaxHealth)
     {
         maxPlayerHealth = _playerMaxHealth;
+    }
+
+    public IEnumerator Invincible()
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(1);
+        isInvincible = false;
     }
 
     #endregion
@@ -472,6 +488,7 @@ public class Player : MonoBehaviour
             visualAttackSpeed++;
             playerAttackSpeed -= 0.1f;
             playerSpendingPoints--;
+            playerTrueAttackSpeed = playerAttackSpeed;
         }
     }
 
@@ -489,6 +506,11 @@ public class Player : MonoBehaviour
     public float GetFireRate()
     {
         return playerAttackSpeed;
+    }
+
+    public float GetTrueFireRate()
+    {
+        return playerTrueAttackSpeed;
     }
 
     public void SetFireRate(float _playerAttackSpeed)

@@ -110,6 +110,13 @@ public class SaveUI : MonoBehaviour
 
     private void ClearSaves()
     {
+        float masterVolume = PlayerPrefs.GetFloat("masterVolume");
+        float musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        float sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
         PlayerPrefs.DeleteAll();
+        PlayerPrefs.SetFloat("masterVolume", masterVolume);
+        PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        PlayerPrefs.Save();
     }
 }

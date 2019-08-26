@@ -201,6 +201,7 @@ public class Companion : MonoBehaviour
                 rotation.z = 0.0f;
                 // Change the companion's tranform's rotation to the rotation Quaternion
                 transform.rotation = rotation;
+                gameObject.layer = 0;
             }
             if (name == "Movement Speed Companion" || name == "Scavenger Companion")
                 transform.Rotate(0, 180, 0);
@@ -276,25 +277,12 @@ public class Companion : MonoBehaviour
         else if (name == "XP Companion")
             playerStats.XPModifier(-0.5f);
         isFollowing = false;
-        gameObject.layer = 0;
         companionAura.SetActive(false);
         hasDeactivated = true;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (name == "Item Grabber Companion")
-            if (collision.collider.CompareTag("Pickups"))
-                if (pickup.type == Pickup.Type.Coin)
-                {
-                    playerInventory.AddCoins(1);
-                    Destroy(collision.collider.gameObject);
-                }
-                else if (pickup.type == Pickup.Type.Potion || pickup.type == Pickup.Type.Spells)
-                {
-                    playerInventory.AddConsumable(pickup.GetComponent<Consumable>());
-                    Destroy(collision.collider.gameObject);
-                }
         if (name == "Melee Companion")
             if (collision.collider.CompareTag("Enemy") || collision.collider.CompareTag("BulletHell Enemy"))
             {
@@ -303,6 +291,22 @@ public class Companion : MonoBehaviour
                 hasAttacked = true;
                 lastTimeAttacked = Time.time;
             }
+    }
+
+    private void OnTriggerEnter(Collider collider)
+    {
+        if (name == "Item Grabber Companion")
+            if (collider.CompareTag("Pickups"))
+                if (pickup.type == Pickup.Type.Coin)
+                {
+                    playerInventory.AddCoins(1);
+                    Destroy(collider.gameObject);
+                }
+                else if (pickup.type == Pickup.Type.Potion || pickup.type == Pickup.Type.Spells)
+                {
+                    playerInventory.AddConsumable(pickup.GetComponent<Consumable>());
+                    Destroy(collider.gameObject);
+                }
     }
 
     IEnumerator Attack()

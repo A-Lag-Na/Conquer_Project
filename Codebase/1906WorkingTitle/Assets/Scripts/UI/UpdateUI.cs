@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UpdateUI : MonoBehaviour
 {
@@ -16,9 +17,9 @@ public class UpdateUI : MonoBehaviour
 
     private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
     private int lives, coins = 0;
-    
+
     //distance from shop
-    private float dist = 0.0f;
+    private float currentDist = 0.0f, desiredDistance;
 
     // stat screen and pause menu references to keep
     private GameObject statScreen, pauseMenu = null;
@@ -72,6 +73,7 @@ public class UpdateUI : MonoBehaviour
         damageColor = new Color(255.0f, 0.0f, 0.0f, 0.0f);
         levelColorOpaque = new Color32(1, 210, 231, 128);
         levelColorTransparent = new Color32(1, 210, 231, 0);
+        desiredDistance = 6.2f;
     }
 
     private void Update()
@@ -122,8 +124,14 @@ public class UpdateUI : MonoBehaviour
             //update inventory
             InvSlot1.sprite = inventory.WeaponSprite();
             InvSlot2.sprite = inventory.ConsumableSprite();
-            InvSlot1Name.text = inventory.WeaponName();
-            InvSlot2Name.text = inventory.ConsumableName();
+            if (inventory.WeaponName() != "")
+                InvSlot1Name.text = inventory.WeaponName();
+            else
+                InvSlot1Name.text = "Empty";
+            if (inventory.ConsumableName() != "")
+                InvSlot2Name.text = inventory.ConsumableName();
+            else
+                InvSlot2Name.text = "Empty";
             #endregion
         }
         #endregion
@@ -143,14 +151,14 @@ public class UpdateUI : MonoBehaviour
         //check if near shop
         if (GameObject.Find("Shop Keeper") != null)
         {
-            dist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+            currentDist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
             if (levelUp)
             {
                 buttonPrompt.color = new Color32(255, 255, 255, 255);
                 buttonPromptText.text = "Level Up!";
             }
         }
-        if (GameObject.Find("Shop Keeper") != null && dist <= 8.2f)
+        if (GameObject.Find("Shop Keeper") != null && currentDist <= desiredDistance)
         {
             buttonPrompt.color = new Color32(255, 255, 255, 255);
             buttonPromptText.text = "Shop";
@@ -163,23 +171,23 @@ public class UpdateUI : MonoBehaviour
         #endregion
 
         #region InputCheck
-            //check for menu or inventory input
-            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf)
-                PauseGame();
+        //check for menu or inventory input
+        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf && SceneManager.sceneCount == 1)
+            PauseGame();
 
-            if (Input.GetButtonDown("Open Stats"))
-            {
-                OpenStats();
-            }
+        if (Input.GetButtonDown("Open Stats"))
+        {
+            OpenStats();
+        }
 
-            if (Input.GetButtonDown("Use Potion"))
-            {
-                StartCoroutine(inventory.ConsumableTimer());
-            }
+        if (Input.GetButtonDown("Use Potion"))
+        {
+            StartCoroutine(inventory.ConsumableTimer());
+        }
 
-            if (Input.GetButtonDown("Open Shop"))
-                OpenShop();
-            #endregion
+        if (Input.GetButtonDown("Open Shop"))
+            OpenShop();
+        #endregion
     }
 
     #region UIFunctions
@@ -225,7 +233,7 @@ public class UpdateUI : MonoBehaviour
 
     void OpenShop()
     {
-        if (dist <= 8.2f)
+        if (currentDist <= desiredDistance)
             if (GameObject.Find("Shop Keeper") != null)
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
     }
@@ -236,6 +244,6 @@ public class UpdateUI : MonoBehaviour
         levelFlasher.color = levelColorTransparent;
         buttonPrompt.color = new Color(0.0f, 0.0f, 0.0f, 0.0f);
     }
-    
+
     #endregion
 }
