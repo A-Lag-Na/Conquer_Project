@@ -18,6 +18,7 @@ public class SaveScript : MonoBehaviour
     LinkedList<NonMonoConsumable> consumables = new LinkedList<NonMonoConsumable>();
     LinkedListNode<NonMonoWeapon> wepNode = null;
     LinkedListNode<NonMonoConsumable> conNode = null;
+    [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
 
     void Start()
     {
@@ -445,7 +446,12 @@ public class SaveScript : MonoBehaviour
                     player.GetCompanion().Deactivate();
                 GameObject.Find(animalName).GetComponent<Companion>().Activate();
             }
-
+            if (playerInventory.GetBoxPieces() >= 1)
+                bossSpawnersDoors[0].SetActive(true);
+            if (playerInventory.GetBoxPieces() >= 2)
+                bossSpawnersDoors[1].SetActive(true);
+            if (playerInventory.GetBoxPieces() >= 3)
+                bossSpawnersDoors[2].SetActive(true);
         }
         else
         {
