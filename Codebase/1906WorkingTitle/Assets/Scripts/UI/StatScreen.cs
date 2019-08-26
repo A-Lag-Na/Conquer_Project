@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class StatScreen : MonoBehaviour
 {
@@ -9,7 +10,8 @@ public class StatScreen : MonoBehaviour
     [SerializeField] private Player player = null;
     private float movementSpeed, currentHealth, maxHealth, currentExperience, nextLevelExp, attackSpeed = 0.0f;
     private int defense, damage, level, pointsAvailable = 0;
-    private Button speedBTN, damageBTN, defenseBTN = null;
+    private Button[] buttons;
+    //private Button speedBTN, damageBTN, defenseBTN = null;
     private Text currentLevelText, nextLevelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
     private GameObject mainUI = null, attackMax = null;
@@ -24,15 +26,26 @@ public class StatScreen : MonoBehaviour
         {
             mainUI = GameObject.Find("Main UI");
         }
-        //assign buttons
-        speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
-        damageBTN = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
-        defenseBTN = transform.Find("Defense").GetChild(0).GetComponent<Button>();
 
-        //assign function listeners
-        speedBTN.onClick.AddListener(AddSpeed);
-        damageBTN.onClick.AddListener(AddDamage);
-        defenseBTN.onClick.AddListener(AddDefense);
+        buttons = transform.GetComponentsInChildren<Button>();
+
+        buttons[0] = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
+        buttons[1] = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
+        buttons[2] = transform.Find("Defense").GetChild(0).GetComponent<Button>();
+
+        buttons[0].onClick.AddListener(AddSpeed);
+        buttons[1].onClick.AddListener(AddDamage);
+        buttons[2].onClick.AddListener(AddDefense);
+
+        ////assign buttons
+        //speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
+        //damageBTN = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
+        //defenseBTN = transform.Find("Defense").GetChild(0).GetComponent<Button>();
+
+        ////assign function listeners
+        //speedBTN.onClick.AddListener(AddSpeed);
+        //damageBTN.onClick.AddListener(AddDamage);
+        //defenseBTN.onClick.AddListener(AddDefense);
 
         //assign player if found
         if (GameObject.FindGameObjectWithTag("Player"))
@@ -61,6 +74,7 @@ public class StatScreen : MonoBehaviour
 
         if(stopWatch != null)
             stopWatch.PauseStopWatch();
+        buttons[0].Select();
     }
 
     private void Update()
@@ -111,17 +125,28 @@ public class StatScreen : MonoBehaviour
             ResumeGame();
         if(player.GetTrueFireRate() <= 0.2f)
         {
-            speedBTN.enabled = false;
+            buttons[0].enabled = false;
+            //speedBTN.enabled = false;
             attackMax.SetActive(true);
         }
         else
         {
-            speedBTN.enabled = true;
+            buttons[0].enabled = true;
+            //speedBTN.enabled = true;
             attackMax.SetActive(false);
         }
+        int selected = 0;
+        foreach (Button button in buttons)
+        {
+            if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+            {
+                selected++;
+                break;
+            }
+        }
+        if (selected == 0 && (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy))
+            buttons[0].Select();
     }
-
-    #region StatScreenFunctions
     private void OnEnable()
     {
         if (mainUI != null)
@@ -134,7 +159,14 @@ public class StatScreen : MonoBehaviour
             if(stopWatch != null)
                 stopWatch.PauseStopWatch();
         }
+        if (buttons != null && buttons[0] != null)
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            buttons[0].Select();
+        }
     }
+
+    #region StatScreenFunctions
 
     public void AddSpeed()
     {

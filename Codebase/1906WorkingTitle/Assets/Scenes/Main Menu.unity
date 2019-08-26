@@ -288,7 +288,6 @@ MonoBehaviour:
   sfxVolume: 1
   musicMixer: {fileID: 24100000, guid: 97854397d8abdb04eb4606712ff0c3b1, type: 2}
   sfxMixer: {fileID: 24100000, guid: 7b45ffbc56e7aca48a4be53f78dce682, type: 2}
-  soundFX: {fileID: 3344049940191524440}
 --- !u!114 &334596062
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5680,7 +5679,7 @@ GameObject:
   - component: {fileID: 8143376995643590058}
   - component: {fileID: 8143376995643590062}
   m_Layer: 5
-  m_Name: Button
+  m_Name: CreditBack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

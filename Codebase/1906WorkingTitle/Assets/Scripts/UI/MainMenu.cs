@@ -2,32 +2,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
     #region MainMenuProperties
-    private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
+    //private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
+    private Button[] buttons;
     private GameObject credits, options = null;
     #endregion
     
     void Start()
     {
-
+        buttons = transform.GetComponentsInChildren<Button>();
         //assign buttons
-        startBTN = transform.Find("Start Game").GetComponent<Button>();
-        loadBTN = transform.Find("Load Game").GetComponent<Button>();
-        tutorialBTN = transform.Find("Tutorial").GetComponent<Button>();
-        creditsBTN = transform.Find("CreditsBTN").GetComponent<Button>();
-        optionsBTN = transform.Find("OptionsBTN").GetComponent<Button>();
-        exitBTN = transform.Find("Exit Game").GetComponent<Button>();
+        ////startBTN = transform.Find("Start Game").GetComponent<Button>();
+        ////loadBTN = transform.Find("Load Game").GetComponent<Button>();
+        ////tutorialBTN = transform.Find("Tutorial").GetComponent<Button>();
+        ////creditsBTN = transform.Find("CreditsBTN").GetComponent<Button>();
+        ////optionsBTN = transform.Find("OptionsBTN").GetComponent<Button>();
+        ////exitBTN = transform.Find("Exit Game").GetComponent<Button>();
 
-        //add function listeners
-        startBTN.onClick.AddListener(StartGame);
-        loadBTN.onClick.AddListener(LoadGame);
-        tutorialBTN.onClick.AddListener(Tutorial);
-        creditsBTN.onClick.AddListener(Credits);
-        optionsBTN.onClick.AddListener(OptionsMenu);
-        exitBTN.onClick.AddListener(ExitGame);
+        ////add function listeners
+        //startBTN.onClick.AddListener(StartGame);
+        //loadBTN.onClick.AddListener(LoadGame);
+        //tutorialBTN.onClick.AddListener(Tutorial);
+        //creditsBTN.onClick.AddListener(Credits);
+        //optionsBTN.onClick.AddListener(OptionsMenu);
+        //exitBTN.onClick.AddListener(ExitGame);
+
+        buttons[0].onClick.AddListener(StartGame);
+        buttons[1].onClick.AddListener(LoadGame);
+        buttons[2].onClick.AddListener(Tutorial);
+        buttons[3].onClick.AddListener(Credits);
+        buttons[4].onClick.AddListener(OptionsMenu);
+        buttons[5].onClick.AddListener(ExitGame);
 
         credits = GameObject.Find("Credits");
         credits.SetActive(false);
@@ -48,6 +57,18 @@ public class MainMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
             CloseCredits();
+
+        int selected = 0;
+        foreach (Button button in buttons)
+        {
+            if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+            {
+                selected++;
+                break;
+            }
+        }
+        if (selected == 0 && (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy))
+            buttons[0].Select();
     }
 
     #region MainMenuFunctions
@@ -56,21 +77,21 @@ public class MainMenu : MonoBehaviour
     {
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/IntroLetter"));
         StartCoroutine(clone.GetComponent<IntroLetterLoader>().LoadNewScene(2));
-        startBTN.enabled = false;
+        buttons[0].enabled = false;
     }
 
     private void LoadGame()
     {
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadSceneandSettings(2));
-        loadBTN.enabled = false;
+        buttons[1].enabled = false;
     }
 
     private void Tutorial()
     {
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(1));
-        tutorialBTN.enabled = false;
+        buttons[2].enabled = false;
     }
 
     private void Credits()
