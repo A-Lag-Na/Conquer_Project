@@ -15,6 +15,7 @@ public class IntroLetterLoader : MonoBehaviour
     {
         progress = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
         continueText.SetActive(false);
+        progress.enabled = false;
     }
 
     private void Update()

@@ -3,21 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private GameObject loadUI = null;
-    private Button playAgain, mainMenu = null, continueFromLastSave;
+    private Button[] buttons;
+    //private Button playAgain, mainMenu = null, continueFromLastSave;
 
     private void Start()
     {
-        playAgain = transform.Find("Play Again").GetComponent<Button>();
-        mainMenu = transform.Find("Main Menu").GetComponent<Button>();
-        continueFromLastSave = transform.Find("Continue from last save").GetComponent<Button>();
+        buttons = GetComponentsInChildren<Button>();
 
-        playAgain.onClick.AddListener(PlayAgain);
-        mainMenu.onClick.AddListener(MainMenu);
-        continueFromLastSave.onClick.AddListener(Continue);
+        buttons[0].onClick.AddListener(PlayAgain);
+        buttons[1].onClick.AddListener(MainMenu);
+        buttons[2].onClick.AddListener(Continue);
+
+        buttons[0].Select();
+
+        //playAgain = transform.Find("Play Again").GetComponent<Button>();
+        //mainMenu = transform.Find("Main Menu").GetComponent<Button>();
+        //continueFromLastSave = transform.Find("Continue from last save").GetComponent<Button>();
+
+        //playAgain.onClick.AddListener(PlayAgain);
+        //mainMenu.onClick.AddListener(MainMenu);
+        //continueFromLastSave.onClick.AddListener(Continue);
 
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
@@ -25,18 +35,36 @@ public class GameOver : MonoBehaviour
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
     }
 
+    private void Update()
+    {
+
+        int selected = 0;
+        foreach (Button button in buttons)
+        {
+            if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+            {
+                selected++;
+                break;
+            }
+        }
+        if (selected == 0 && (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy))
+            buttons[0].Select();
+    }
+
     private void PlayAgain()
     {
         UnPause();
         SceneManager.LoadScene("Build Scene");
-        playAgain.enabled = false;
+        //playAgain.enabled = false;
+        buttons[0].enabled = false;
     }
 
     private void MainMenu()
     {
         UnPause();
         SceneManager.LoadScene("Main Menu");
-        mainMenu.enabled = false;
+        //mainMenu.enabled = false;
+        buttons[1].enabled = false;
     }
 
     private void Continue()
@@ -51,7 +79,8 @@ public class GameOver : MonoBehaviour
             }
         gameObject.SetActive(false);
         loadUI.SetActive(true);
-        continueFromLastSave.enabled = false;
+        //continueFromLastSave.enabled = false;
+        buttons[2].enabled = false;
     }
 
     void UnPause()
