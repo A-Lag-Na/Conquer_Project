@@ -8,6 +8,7 @@ public class DialogueTriggerScript : MonoBehaviour
     [SerializeField] private BaseNPC baseNPC = null;
     [SerializeField] private Canvas dialogueCanvas = null;
     [SerializeField] private Player playerScript = null;
+    [SerializeField] private Animator playerAnimator = null;
     [SerializeField] private DialogueManager dialogueManager = null;
     [SerializeField] private string dialogueName = null;
     [SerializeField] private bool chain = true;
@@ -22,6 +23,7 @@ public class DialogueTriggerScript : MonoBehaviour
             dialogueManager.dialogueTriggerScript = this;
             baseNPC.dialogueTriggerScript = this;
             playerScript.isStunned = true;
+            playerAnimator.enabled = false;
             dialogueCanvas.gameObject.SetActive(true);
 
             if (baseNPC.name == "Zookeeper")
@@ -46,6 +48,7 @@ public class DialogueTriggerScript : MonoBehaviour
 
     public void OnDialogueEnd()
     {
+        playerAnimator.enabled = true;
         playerScript.isStunned = false;
         baseNPC.OnDialogueEnd();
     }

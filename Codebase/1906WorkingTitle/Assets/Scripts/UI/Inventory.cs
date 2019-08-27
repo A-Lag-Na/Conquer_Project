@@ -39,8 +39,13 @@ public class Inventory : MonoBehaviour
         {
             if (Input.GetButtonDown("Potion Scroll Up"))
                 CycleConsumableForward();
-            if (Input.GetButtonUp("Potion Scroll Down"))
+            if (Input.GetButtonDown("Potion Scroll Down"))
                 CycleConsumableBackward();
+        }
+
+        if (Input.GetButtonDown("Use Potion"))
+        {
+            StartCoroutine(ConsumableTimer());
         }
 
         amountOfPotions = consumableList.Count;
@@ -74,14 +79,36 @@ public class Inventory : MonoBehaviour
     public void AddWeapon(BaseItem _weapon)
     {
         NonMonoWeapon wepClone = WeaponDeepCopy((Weapon)_weapon);
-        if (!weaponList.Contains(wepClone))
-            weaponList.AddLast(wepClone);
+        weaponList.AddLast(wepClone);
         if (weaponNode == null)
         {
             weaponNode = weaponList.First;
             player.ModifyDamage(weaponNode.Value.GetAttackDamage());
             player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
+    }
+
+    public void AddNonMonoWeapon(NonMonoWeapon _weapon)
+    {
+        weaponList.AddLast(_weapon);
+        if (weaponNode == null)
+        {
+            weaponNode = weaponList.First;
+            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
+            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
+        }
+    }
+
+    public bool CheckDuplicateWeapon(BaseItem _weapon)
+    {
+        NonMonoWeapon _tempWeapon = WeaponDeepCopy((Weapon)_weapon);
+        LinkedListNode<NonMonoWeapon> _tempWeaponNode;
+        for (_tempWeaponNode = weaponList.First; _tempWeaponNode!= null; _tempWeaponNode = _tempWeaponNode.Next)
+        {
+            if(_tempWeaponNode.Value.GetName() == _tempWeapon.GetName())
+                return true;
+        }
+        return false;
     }
 
     public void AddConsumable(BaseItem _consumable)
@@ -90,18 +117,6 @@ public class Inventory : MonoBehaviour
         if (consumableNode == null)
         {
             consumableNode = consumableList.First;
-        }
-    }
-
-    public void AddNonMonoWeapon(NonMonoWeapon _weapon)
-    {
-        if (!weaponList.Contains(_weapon))
-            weaponList.AddLast(_weapon);
-        if (weaponNode == null)
-        {
-            weaponNode = weaponList.First;
-            player.ModifyDamage(weaponNode.Value.GetAttackDamage());
-            player.ModifyAttackSpeed(weaponNode.Value.GetAttackSpeed());
         }
     }
 

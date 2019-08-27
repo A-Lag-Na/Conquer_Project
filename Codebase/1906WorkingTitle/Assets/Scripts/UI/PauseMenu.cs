@@ -101,9 +101,10 @@ public class PauseMenu : MonoBehaviour
     {
         UnPause();
         if (mainUI != null)
+        {
             mainUI.SetActive(true);
-        if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
+        }
     }
 
     private void Options()
