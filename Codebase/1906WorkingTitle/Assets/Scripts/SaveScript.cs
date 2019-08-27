@@ -20,6 +20,7 @@ public class SaveScript : MonoBehaviour
     LinkedListNode<NonMonoConsumable> conNode = null;
     [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
     [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
+    [SerializeField] List<ChestScript> chests = new List<ChestScript>();
 
     void Start()
     {
@@ -243,6 +244,11 @@ public class SaveScript : MonoBehaviour
             consumableNumber++;
         }
 
+        for (int i = 0; i < chests.Capacity; i++)
+        {
+            PlayerPrefs.SetInt($"Chest{chests[i].GetListIndex()}{saveSlot}", chests[i].GetOpenChest());
+        }
+
         PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
         PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
         PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
@@ -413,6 +419,13 @@ public class SaveScript : MonoBehaviour
                 }
                 playerInventory.AddNonMonoConsumable(consumable);
                 consumableNumber++;
+            }
+
+            for (int i = 0; i < chests.Capacity; i++)
+            {
+                chests[i].SetOpenChest(PlayerPrefs.GetInt($"Chest{chests[i].GetListIndex()}{saveSlot}"));
+                if (chests[i].GetOpenChest() == 1)
+                    chests[i].ChestOpen();
             }
 
             player.SetMovementSpeed(playerMovementSpeed);

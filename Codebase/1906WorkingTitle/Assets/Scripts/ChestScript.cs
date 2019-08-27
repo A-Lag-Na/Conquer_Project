@@ -11,6 +11,8 @@ public class ChestScript : MonoBehaviour
     private Inventory playerInventory = null;
     private CapsuleCollider capsuleCollider = null; // Capsule Collider
     private GameObject chestParticles = null;
+    [SerializeField] int listIndex = 0;
+    int openChest = 0;
 
     // Use this for initialization
     void Awake()
@@ -37,6 +39,7 @@ public class ChestScript : MonoBehaviour
         {
             //play open animation;  
             chestAnim.SetTrigger("open");
+            openChest = 1;
             //Gets Random Coin ammount
             System.Random rand = new System.Random();
             int seed = rand.Next(1, 50);
@@ -94,5 +97,26 @@ public class ChestScript : MonoBehaviour
         chestParticles.SetActive(true);
         yield return new WaitForSeconds(1);
         chestParticles.SetActive(false);
+    }
+
+    public void ChestOpen()
+    {
+        chestAnim.SetTrigger("open");
+        capsuleCollider.enabled = false;
+    }
+
+    public int GetListIndex()
+    {
+        return listIndex;
+    }
+
+    public int GetOpenChest()
+    {
+        return openChest;
+    }
+
+    public void SetOpenChest(int _open)
+    {
+        openChest = _open;
     }
 }
