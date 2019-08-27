@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class GameOver : MonoBehaviour
 {
-    [SerializeField] private GameObject loadUI = null;
+    GameObject player = null;
     private Button[] buttons;
     //private Button playAgain, mainMenu = null, continueFromLastSave;
 
@@ -33,6 +33,7 @@ public class GameOver : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -75,12 +76,17 @@ public class GameOver : MonoBehaviour
             if (go.CompareTag("Player") && !go.activeSelf)
             {
                 go.SetActive(true);
-                go.GetComponent<Animator>().SetBool("Death", false);
+                //go.GetComponent<Animator>().SetBool("Death", false);
             }
-        gameObject.SetActive(false);
-        loadUI.SetActive(true);
+        ConditionManager conManager = player.GetComponent<ConditionManager>();
+        conManager.TimerSet("fire", 0);
+        conManager.TimerSet("thaw", 0);
+        conManager.TimerSet("stun", 0);
+        player.GetComponent<Player>().SetLives(5);
+        StartCoroutine(player.GetComponent<Player>().Invincible());
         //continueFromLastSave.enabled = false;
         buttons[2].enabled = false;
+        gameObject.SetActive(false);
     }
 
     void UnPause()

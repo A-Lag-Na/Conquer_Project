@@ -454,16 +454,7 @@ public class SaveScript : MonoBehaviour
         }
         else
         {
-            if (player.GetLives() <= 0)
-            {
-                conManager.TimerSet("fire", 0);
-                conManager.TimerSet("thaw", 0);
-                conManager.TimerSet("stun", 0);
-                player.SetPosition(player.GetPosition());
-                StartCoroutine(player.Invincible());
-            }
-            else
-                player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
+            player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
             player.SetLives(5);
         }
     }
