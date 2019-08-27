@@ -305,9 +305,7 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
-        animator.SetBool("Death", true);
         gameOver.SetActive(true);
-        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

@@ -96,7 +96,7 @@ public class StatScreen : MonoBehaviour
             //update health
             currentHealth = player.GetHealth();
             maxHealth = player.GetMaxHealth();
-            healthText.text = $"{currentHealth} / {maxHealth}";
+            healthText.text = $"{(int)currentHealth} / {(int)maxHealth}";
 
             //update movement speed
             movementSpeed = player.GetMovementSpeed();

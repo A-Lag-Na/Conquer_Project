@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class GameWin : MonoBehaviour
 {
@@ -14,7 +15,9 @@ public class GameWin : MonoBehaviour
     private Text title, btnTxt1, btnTxt2 = null;
     private Image btnBack1, btnBack2 = null;
     private RawImage fadeIn;
-    private Button playAgain, mainMenu = null;
+    private Button[] buttons;
+    private bool done;
+    //private Button playAgain, mainMenu = null;
     private Color white, red, black = Color.clear;
     #endregion
 
@@ -36,11 +39,20 @@ public class GameWin : MonoBehaviour
         btnTxt2 = transform.GetChild(4).GetChild(0).GetComponent<Text>();
         btnBack2 = transform.GetChild(4).GetComponent<Image>();
 
-        playAgain = transform.Find("Play Again").GetComponent<Button>();
-        mainMenu = transform.Find("Main Menu").GetComponent<Button>();
+        //playAgain = transform.Find("Play Again").GetComponent<Button>();
+        //mainMenu = transform.Find("Main Menu").GetComponent<Button>();
 
-        playAgain.onClick.AddListener(PlayAgain);
-        mainMenu.onClick.AddListener(MainMenu);
+        //playAgain.onClick.AddListener(PlayAgain);
+        //mainMenu.onClick.AddListener(MainMenu);
+
+        buttons = GetComponentsInChildren<Button>();
+
+        buttons[0].enabled = false;
+        buttons[1].enabled = false;
+
+        buttons[0].onClick.AddListener(PlayAgain);
+        buttons[1].onClick.AddListener(MainMenu);
+        
         #endregion
 
         Time.timeScale = 0;
@@ -49,6 +61,7 @@ public class GameWin : MonoBehaviour
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
         if(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
+        done = false;
     }
     
     void Update()
@@ -68,6 +81,27 @@ public class GameWin : MonoBehaviour
         if (title.color != red)
             title.color = Color.Lerp(title.color, red, delay);
         displayText.text = $"It took you {time.Minutes} minutes and {time.Seconds} seconds!";
+        if(fadeIn.color.a >= 0.8f && !done)
+        {
+
+            buttons[0].enabled = true;
+            buttons[1].enabled = true;
+            done = true;
+        }
+        if (done)
+        {
+            int selected = 0;
+            foreach (Button button in buttons)
+            {
+                if (EventSystem.current.currentSelectedGameObject == button.gameObject)
+                {
+                    selected++;
+                    break;
+                }
+            }
+            if (selected == 0 && (EventSystem.current.currentSelectedGameObject == null || !EventSystem.current.currentSelectedGameObject.activeInHierarchy))
+                buttons[0].Select();
+        }
     }
 
     void PlayAgain()
@@ -75,7 +109,8 @@ public class GameWin : MonoBehaviour
         UnPause();
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(2));
-        playAgain.enabled = false;
+        //playAgain.enabled = false;
+        buttons[0].enabled = false;
     }
 
     void MainMenu()
@@ -83,7 +118,8 @@ public class GameWin : MonoBehaviour
         UnPause();
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(0));
-        mainMenu.enabled = false;
+        //mainMenu.enabled = false;
+        buttons[1].enabled = false;
     }
 
     void UnPause()

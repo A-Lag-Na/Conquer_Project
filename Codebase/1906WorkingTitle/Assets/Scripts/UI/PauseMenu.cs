@@ -42,6 +42,8 @@ public class PauseMenu : MonoBehaviour
         buttons[1].onClick.AddListener(Options);
         buttons[2].onClick.AddListener(ExitGame);
 
+        buttons[0].Select();
+
         Time.timeScale = 0;
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)

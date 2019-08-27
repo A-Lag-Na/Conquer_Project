@@ -36,7 +36,13 @@ public class MainMenu : MonoBehaviour
         buttons[2].onClick.AddListener(Tutorial);
         buttons[3].onClick.AddListener(Credits);
         buttons[4].onClick.AddListener(OptionsMenu);
-        buttons[5].onClick.AddListener(ExitGame);
+
+#if UNITY_STANDALONE
+            buttons[5].onClick.AddListener(ExitGame);
+#elif UNITY_WEBGL
+            buttons[5].gameObject.SetActive(false);
+     Debug.Log("Unity Webplayer");
+#endif
 
         credits = GameObject.Find("Credits");
         credits.SetActive(false);
@@ -71,7 +77,7 @@ public class MainMenu : MonoBehaviour
             buttons[0].Select();
     }
 
-    #region MainMenuFunctions
+#region MainMenuFunctions
 
     private void StartGame()
     {
@@ -114,5 +120,5 @@ public class MainMenu : MonoBehaviour
     {
         Application.Quit();
     }
-    #endregion
+#endregion
 }
