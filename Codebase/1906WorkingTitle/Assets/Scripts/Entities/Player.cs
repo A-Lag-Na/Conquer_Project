@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     private bool isAbleToDash = true;
     public bool enemyRespawn = false;
     public bool isInvincible = false;
+    [HideInInspector] public int iceWall = 0;
+    [HideInInspector] public int cactusWall = 0;
     #endregion
 
     #region UnityComponents
