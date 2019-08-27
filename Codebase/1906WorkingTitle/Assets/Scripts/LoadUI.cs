@@ -28,8 +28,6 @@ public class LoadUI : MonoBehaviour
         loadThreeText = loadThree.gameObject.GetComponentInChildren<Text>();
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
-        if (mainUI != null)
-            mainUI.SetActive(false);
     }
 
     private void Update()
@@ -56,8 +54,6 @@ public class LoadUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-        if (mainUI != null)
-            mainUI.SetActive(false);
     }
 
     private void OnDisable()
@@ -68,8 +64,6 @@ public class LoadUI : MonoBehaviour
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
         if (mainUI != null)
             mainUI.GetComponent<UpdateUI>().ResumeGame();
-        if (mainUI != null)
-            mainUI.SetActive(true);
     }
 
     private void SelectOne()
