@@ -14,6 +14,11 @@ public class DialogueTriggerScript : MonoBehaviour
     [SerializeField] private bool chain = true;
     private bool debouncer = true;
 
+    private void Start()
+    {
+        playerAnimator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         //Player will be stopped and NPC Knight will walk towards him

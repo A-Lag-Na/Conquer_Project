@@ -21,6 +21,7 @@ public class SaveScript : MonoBehaviour
     [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
     [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
     [SerializeField] List<ChestScript> chests = new List<ChestScript>();
+    [SerializeField] List<GameObject> dialogueTriggers = new List<GameObject>();
 
     void Start()
     {
@@ -469,12 +470,22 @@ public class SaveScript : MonoBehaviour
                     player.GetCompanion().Deactivate();
                 GameObject.Find(animalName).GetComponent<Companion>().Activate();
             }
+            dialogueTriggers[0].SetActive(false);
             if (playerInventory.GetBoxPieces() >= 1)
+            {
                 bossSpawnersDoors[0].SetActive(true);
+                dialogueTriggers[1].SetActive(false);
+            }
             if (playerInventory.GetBoxPieces() >= 2)
+            {
                 bossSpawnersDoors[1].SetActive(true);
+                dialogueTriggers[2].SetActive(false);
+            }
             if (playerInventory.GetBoxPieces() >= 3)
+            {
                 bossSpawnersDoors[2].SetActive(true);
+                dialogueTriggers[3].SetActive(false);
+            }
         }
         else
         {
