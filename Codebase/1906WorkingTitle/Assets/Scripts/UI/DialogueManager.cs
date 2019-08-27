@@ -107,7 +107,7 @@ public class DialogueManager : MonoBehaviour
     //When all text has gone through end the sequence
     private void EndSequence()
     {
-       skipPrompt.gameObject.SetActive(false);
+        skipPrompt.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
         StopAllCoroutines();
         dialogueTriggerScript.OnDialogueEnd();
