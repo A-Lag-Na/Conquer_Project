@@ -36,6 +36,9 @@ public class Player : MonoBehaviour
     private bool isAbleToDash = true;
     public bool enemyRespawn = false;
     public bool isInvincible = false;
+    [HideInInspector] public int iceWall = 0;
+    [HideInInspector] public int cactusWall = 0;
+    bool canRotate = false;
     #endregion
 
     #region UnityComponents
@@ -92,7 +95,11 @@ public class Player : MonoBehaviour
         if (GameObject.Find("Main UI"))
             mainUI = GameObject.Find("Main UI");
 
-        Cursor.SetCursor(crosshairs, new Vector2(256, 256), CursorMode.Auto);
+        #if UNITY_STANDALONE
+                Cursor.SetCursor(crosshairs, new Vector2(52, 52), CursorMode.Auto);
+        #elif UNITY_WEBGL
+                Cursor.SetCursor(crosshairs, new Vector2(52, 52), CursorMode.ForceSoftware);
+        #endif
 
         if (gameOver != null)
             gameOver.SetActive(false);
@@ -111,6 +118,7 @@ public class Player : MonoBehaviour
         if (saveUI != null)
             saveUI.SetActive(false);
         isInvincible = false;
+        canRotate = true;
     }
 
     void Update()
@@ -129,7 +137,8 @@ public class Player : MonoBehaviour
             rotation.z = 0.0f;
 
             // Change the player's tranform's rotation to the rotation Quaternion
-            transform.rotation = rotation;
+            if (canRotate)
+                transform.rotation = rotation;
             #endregion
 
             #region HitFeedback
@@ -243,9 +252,17 @@ public class Player : MonoBehaviour
                 clone.GetComponent<Rigidbody>().velocity = transform.TransformDirection(Vector3.forward * bulletVelocity);
                 lastTimeFired = Time.time;
                 source.PlayOneShot(fire);
-                animator.SetBool("Attack", true);
+                animator.SetTrigger("Attack");
+                StartCoroutine(StopRotation());
             }
         }
+    }
+
+    IEnumerator StopRotation()
+    {
+        canRotate = false;
+        yield return new WaitForSeconds(0.6428572f);
+        canRotate = true;
     }
 
     public void ThrowConsumable(GameObject consumable)

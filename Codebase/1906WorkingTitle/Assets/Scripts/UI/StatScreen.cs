@@ -195,7 +195,9 @@ public class StatScreen : MonoBehaviour
         if (stopWatch != null)
             stopWatch.ResumeStopWatch();
         if (mainUI != null)
+        {
             mainUI.GetComponent<UpdateUI>().ResumeGame();
+        }
     }
     #endregion
 }

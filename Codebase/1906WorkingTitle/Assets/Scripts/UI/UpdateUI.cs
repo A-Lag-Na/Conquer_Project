@@ -14,7 +14,7 @@ public class UpdateUI : MonoBehaviour
     private Text healthText, livesText, coinText, InvSlot1Name, InvSlot2Name = null, buttonPromptText;
     private RectTransform healthTransform, levelTransform = null;
     private Image InvSlot1, InvSlot2, damageFlasher, levelFlasher, buttonPrompt = null;
-
+    private bool isPaused;
     private float health, maxHealth, currentExperience, nextLevelExp = 0.0f;
     private int lives, coins = 0;
 
@@ -74,120 +74,120 @@ public class UpdateUI : MonoBehaviour
         levelColorOpaque = new Color32(1, 210, 231, 128);
         levelColorTransparent = new Color32(1, 210, 231, 0);
         desiredDistance = 6.2f;
+        isPaused = false;
     }
 
     private void Update()
     {
-        #region UIUpdates
-        if (player != null)
+        if (!isPaused)
         {
-            #region Health Update
-            //update health
-            health = player.GetHealth();
-            maxHealth = player.GetMaxHealth();
-            Vector3 HealthScale = healthTransform.localScale;
-            if (player.GetMaxHealth() != 0)
-                HealthScale.x = health / maxHealth;
-            healthTransform.localScale = HealthScale;
-            healthText.text = $"{(int)health} / {maxHealth}";
-            #endregion
 
-            #region Level Update
-            //update level bar
-            if (!levelUp)
+            #region UIUpdates
+            if (player != null)
             {
-                currentExperience = player.GetExperience();
-                nextLevelExp = player.GetNextLevelExperience();
-                Vector3 levelScale = levelTransform.localScale;
-                levelScale.x = currentExperience / nextLevelExp;
-                levelTransform.localScale = levelScale;
+                #region Health Update
+                //update health
+                health = player.GetHealth();
+                maxHealth = player.GetMaxHealth();
+                Vector3 HealthScale = healthTransform.localScale;
+                if (player.GetMaxHealth() != 0)
+                    HealthScale.x = health / maxHealth;
+                healthTransform.localScale = HealthScale;
+                healthText.text = $"{(int)health} / {maxHealth}";
+                #endregion
+
+                #region Level Update
+                //update level bar
+                if (!levelUp)
+                {
+                    currentExperience = player.GetExperience();
+                    nextLevelExp = player.GetNextLevelExperience();
+                    Vector3 levelScale = levelTransform.localScale;
+                    levelScale.x = currentExperience / nextLevelExp;
+                    levelTransform.localScale = levelScale;
+                }
+                else
+                {
+                    levelTransform.localScale = new Vector3(1, 1, 1);
+                }
+                #endregion
+
+                #region Coin Update
+                //update coin count
+                coins = player.GetCoins();
+                coinText.text = $"X{coins}";
+                #endregion
+
+                #region Lives Update
+                //update lives count
+                lives = player.GetLives();
+                livesText.text = $"X{lives}";
+                #endregion
+
+                #region Inventory Update
+                //update inventory
+                InvSlot1.sprite = inventory.WeaponSprite();
+                InvSlot2.sprite = inventory.ConsumableSprite();
+                if (inventory.WeaponName() != "")
+                    InvSlot1Name.text = inventory.WeaponName();
+                else
+                    InvSlot1Name.text = "Empty";
+                if (inventory.ConsumableName() != "")
+                    InvSlot2Name.text = inventory.ConsumableName();
+                else
+                    InvSlot2Name.text = "Empty";
+                #endregion
             }
-            else
-            {
-                levelTransform.localScale = new Vector3(1, 1, 1);
-            }
             #endregion
 
-            #region Coin Update
-            //update coin count
-            coins = player.GetCoins();
-            coinText.text = $"X{coins}";
+            #region DamageFlash
+            //taking damage
+            if (damageFlasher.color != damageColor)
+                damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
             #endregion
 
-            #region Lives Update
-            //update lives count
-            lives = player.GetLives();
-            livesText.text = $"X{lives}";
-            #endregion
-
-            #region Inventory Update
-            //update inventory
-            InvSlot1.sprite = inventory.WeaponSprite();
-            InvSlot2.sprite = inventory.ConsumableSprite();
-            if (inventory.WeaponName() != "")
-                InvSlot1Name.text = inventory.WeaponName();
-            else
-                InvSlot1Name.text = "Empty";
-            if (inventory.ConsumableName() != "")
-                InvSlot2Name.text = inventory.ConsumableName();
-            else
-                InvSlot2Name.text = "Empty";
-            #endregion
-        }
-        #endregion
-
-        #region DamageFlash
-        //taking damage
-        if (damageFlasher.color != damageColor)
-            damageFlasher.color = Color.Lerp(damageFlasher.color, damageColor, 0.1f);
-        #endregion
-
-        #region Level up
-        if (levelUp)
-            levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
-        #endregion
-
-        #region Button Prompts
-        //check if near shop
-        if (GameObject.Find("Shop Keeper") != null)
-        {
-            currentDist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+            #region Level up
             if (levelUp)
+                levelFlasher.color = Color.Lerp(levelColorTransparent, levelColorOpaque, Mathf.PingPong(Time.time * 2, 1));
+            #endregion
+
+            #region Button Prompts
+            //check if near shop
+            if (GameObject.Find("Shop Keeper") != null)
+            {
+                currentDist = Vector3.Distance(GameObject.Find("Shop Keeper").GetComponent<Transform>().position, player.transform.position);
+                if (levelUp)
+                {
+                    buttonPrompt.color = new Color32(255, 255, 255, 255);
+                    buttonPromptText.text = "Level Up!";
+                }
+            }
+            if (GameObject.Find("Shop Keeper") != null && currentDist <= desiredDistance)
             {
                 buttonPrompt.color = new Color32(255, 255, 255, 255);
-                buttonPromptText.text = "Level Up!";
+                buttonPromptText.text = "Shop";
             }
-        }
-        if (GameObject.Find("Shop Keeper") != null && currentDist <= desiredDistance)
-        {
-            buttonPrompt.color = new Color32(255, 255, 255, 255);
-            buttonPromptText.text = "Shop";
-        }
-        else if (buttonPromptText.text != "Level Up!")
-        {
-            buttonPrompt.color = new Color32(0, 0, 0, 0);
-            buttonPromptText.text = "";
-        }
-        #endregion
+            else if (buttonPromptText.text != "Level Up!")
+            {
+                buttonPrompt.color = new Color32(0, 0, 0, 0);
+                buttonPromptText.text = "";
+            }
+            #endregion
 
-        #region InputCheck
-        //check for menu or inventory input
-        if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf && SceneManager.sceneCount == 1)
-            PauseGame();
+            #region InputCheck
+            //check for menu or inventory input
+            if ((Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P)) && !statScreen.activeSelf && SceneManager.sceneCount == 1)
+                PauseGame();
 
-        if (Input.GetButtonDown("Open Stats"))
-        {
-            OpenStats();
+            if (Input.GetButtonDown("Open Stats"))
+            {
+                OpenStats();
+            }
+
+            if (Input.GetButtonDown("Open Shop"))
+                OpenShop();
+            #endregion
         }
-
-        if (Input.GetButtonDown("Use Potion"))
-        {
-            StartCoroutine(inventory.ConsumableTimer());
-        }
-
-        if (Input.GetButtonDown("Open Shop"))
-            OpenShop();
-        #endregion
     }
 
     #region UIFunctions
@@ -214,7 +214,10 @@ public class UpdateUI : MonoBehaviour
     void PauseGame()
     {
         if (pauseMenu != null)
+        {
             pauseMenu.SetActive(true);
+            isPaused = true;
+        }
     }
 
     public void ResumeGame()
@@ -223,19 +226,26 @@ public class UpdateUI : MonoBehaviour
             statScreen.SetActive(false);
         if (pauseMenu != null)
             pauseMenu.SetActive(false);
+        isPaused = false;
     }
 
     void OpenStats()
     {
         if (statScreen != null)
+        {
             statScreen.SetActive(true);
+            isPaused = true;
+        }
     }
 
     void OpenShop()
     {
         if (currentDist <= desiredDistance)
             if (GameObject.Find("Shop Keeper") != null)
+            {
                 GameObject.Find("Shop Keeper").GetComponent<ShopKeep>().OpenShop();
+                isPaused = true;
+            }
     }
 
     public void StopLevelFlashing()

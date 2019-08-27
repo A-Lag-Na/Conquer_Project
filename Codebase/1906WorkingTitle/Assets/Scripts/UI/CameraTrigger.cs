@@ -45,6 +45,8 @@ public class CameraTrigger : MonoBehaviour
                 knight.SetActive(false);
             }
         }
+        if (other.CompareTag("Enemy"))
+            other.GetComponent<EnemyStats>().Kill();
     }
 
     public void ClearRoom(bool _cleared)

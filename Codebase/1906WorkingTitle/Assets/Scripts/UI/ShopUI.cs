@@ -9,7 +9,7 @@ public class ShopUI : MonoBehaviour
     [SerializeField] private GameObject weaponsScreen = null, potionsScreen = null, scrollsScreen = null;
     [SerializeField] private Button Weapons = null, Potions = null, Scrolls = null, Exit = null;
     private Inventory inventory = null;
-    private Text coinText, purchaseText = null, descriptionText = null;
+    private Text coinText, denyReason = null, purchaseText = null, descriptionText = null;
     private GameObject mainUI, denyScreen = null;
     private BaseItem currentItem = null;
     private int coins = 0;
@@ -24,6 +24,7 @@ public class ShopUI : MonoBehaviour
         }
 
         denyScreen = transform.Find("Deny Screen").gameObject;
+        denyReason = denyScreen.transform.GetChild(0).GetChild(1).GetComponent<Text>();
         denyScreen.SetActive(false);
 
         if (GameObject.FindGameObjectWithTag("Player"))
@@ -85,21 +86,36 @@ public class ShopUI : MonoBehaviour
             GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
         transform.parent.gameObject.SetActive(false);
         if (mainUI != null)
+        {
             mainUI.SetActive(true);
+            mainUI.GetComponent<UpdateUI>().ResumeGame();
+        }
     }
 
     public void Purchase()
     {
         if (currentItem != null && currentItem.GetValue() <= coins)
         {
-            inventory.AddCoins(-1 * currentItem.GetValue());
             if (currentItem.GetItemType() == BaseItem.Type.Weapon)
-                inventory.AddWeapon(currentItem);
+            {
+                if (!inventory.CheckDuplicateWeapon(currentItem))
+                {
+                    inventory.AddWeapon(currentItem);
+                    inventory.AddCoins(-1 * currentItem.GetValue());
+                }
+                else
+                {
+                    DenyPuchase(true);
+                }
+            }
             else
+            {
                 inventory.AddConsumable(currentItem);
+                inventory.AddCoins(-1 * currentItem.GetValue());
+            }
         }
         else if (currentItem != null && currentItem.GetValue() > coins)
-            DenyPuchase();
+            DenyPuchase(false);
     }
 
     public void Checkout(BaseItem _item)
@@ -109,9 +125,14 @@ public class ShopUI : MonoBehaviour
         descriptionText.text = currentItem.GetDesc();
     }
 
-    void DenyPuchase()
+    void DenyPuchase(bool duplicateWeapon)
     {
         denyScreen.SetActive(true);
+        
+        if (duplicateWeapon)
+            denyReason.text = "You already have this weapon";
+        else
+            denyReason.text = "You don't have enough money to purchase this item";
     }
 
     public void Continue()

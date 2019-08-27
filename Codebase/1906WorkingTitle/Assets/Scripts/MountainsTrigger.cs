@@ -9,12 +9,12 @@ public class MountainsTrigger : MonoBehaviour
     [SerializeField] private GameObject iceBarrier = null;
     //Particle effect for the fire
     [SerializeField] private GameObject fireOne = null;
-    bool active;
+    Player playerSave = null;
     #endregion
 
     private void Start()
     {
-        active = false;
+        playerSave = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -23,7 +23,7 @@ public class MountainsTrigger : MonoBehaviour
         if (other.tag == "Fire Bullet")
         {
             StartCoroutine(BurnPath());
-            active = true;
+            playerSave.iceWall = 1;
         }
     }
 

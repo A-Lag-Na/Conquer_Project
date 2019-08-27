@@ -36,6 +36,22 @@ public class GameOver : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
+    private void OnEnable()
+    {
+        Time.timeScale = 0;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+    }
+
+    private void OnDisable()
+    {
+        Time.timeScale = 1;
+        Object[] objects = FindObjectsOfType(typeof(GameObject));
+        foreach (GameObject go in objects)
+            go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+    }
+
     private void Update()
     {
 
@@ -85,7 +101,7 @@ public class GameOver : MonoBehaviour
         player.GetComponent<Player>().SetLives(5);
         StartCoroutine(player.GetComponent<Player>().Invincible());
         //continueFromLastSave.enabled = false;
-        buttons[2].enabled = false;
+        //buttons[2].enabled = false;
         gameObject.SetActive(false);
     }
 

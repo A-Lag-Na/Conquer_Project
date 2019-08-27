@@ -19,6 +19,8 @@ public class SaveScript : MonoBehaviour
     LinkedListNode<NonMonoWeapon> wepNode = null;
     LinkedListNode<NonMonoConsumable> conNode = null;
     [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
+    [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
+    [SerializeField] List<ChestScript> chests = new List<ChestScript>();
 
     void Start()
     {
@@ -168,6 +170,8 @@ public class SaveScript : MonoBehaviour
         int playerGold = playerInventory.GetCoins();
         int playerBoxes = playerInventory.GetBoxPieces();
         int bulletCount = playerInventory.GetBulletCount();
+        int mountainWall = player.iceWall;
+        int desertWall = player.cactusWall;
         string animalName = "";
         if (player.GetCompanion() != null)
         {
@@ -240,6 +244,11 @@ public class SaveScript : MonoBehaviour
             consumableNumber++;
         }
 
+        for (int i = 0; i < chests.Capacity; i++)
+        {
+            PlayerPrefs.SetInt($"Chest{chests[i].GetListIndex()}{saveSlot}", chests[i].GetOpenChest());
+        }
+
         PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
         PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
         PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
@@ -256,6 +265,8 @@ public class SaveScript : MonoBehaviour
         PlayerPrefs.SetInt($"Gold{saveSlot}", playerGold);
         PlayerPrefs.SetInt($"Boxes{saveSlot}", playerBoxes);
         PlayerPrefs.SetInt($"BulletCount{saveSlot}", bulletCount);
+        PlayerPrefs.SetInt($"IceWall{saveSlot}", mountainWall);
+        PlayerPrefs.SetInt($"CactusWall{saveSlot}", desertWall);
         PlayerPrefs.SetString($"AnimalName{saveSlot}", animalName);
 
         PlayerPrefs.Save();
@@ -282,6 +293,8 @@ public class SaveScript : MonoBehaviour
             int playerBoxes = PlayerPrefs.GetInt($"Boxes{saveSlot}");
             string animalName = PlayerPrefs.GetString($"AnimalName{saveSlot}");
             int bulletCount = PlayerPrefs.GetInt($"BulletCount{saveSlot}");
+            player.iceWall = PlayerPrefs.GetInt($"IceWall{saveSlot}");
+            player.cactusWall = PlayerPrefs.GetInt($"CactusWall{saveSlot}");
 
             for (int i = 0; i < animalCompanions.Length; i++)
             {
@@ -408,6 +421,13 @@ public class SaveScript : MonoBehaviour
                 consumableNumber++;
             }
 
+            for (int i = 0; i < chests.Capacity; i++)
+            {
+                chests[i].SetOpenChest(PlayerPrefs.GetInt($"Chest{chests[i].GetListIndex()}{saveSlot}"));
+                if (chests[i].GetOpenChest() == 1)
+                    chests[i].ChestOpen();
+            }
+
             player.SetMovementSpeed(playerMovementSpeed);
             conManager.SetMaxSpeed(playerMovementSpeed);
             player.SetHealth(maxPlayerHealth);
@@ -423,6 +443,10 @@ public class SaveScript : MonoBehaviour
             playerInventory.SetCoins(playerGold);
             playerInventory.SetBoxPieces(playerBoxes);
             playerInventory.SetBulletCount(bulletCount);
+            if (player.cactusWall == 1)
+                areaDoors[1].SetActive(false);
+            if (player.iceWall == 1)
+                areaDoors[0].SetActive(false);
             GetComponent<CharacterController>().enabled = false;
             if (player.GetLives() <= 0)
             {
