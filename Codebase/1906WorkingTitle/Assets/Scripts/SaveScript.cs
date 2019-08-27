@@ -19,6 +19,7 @@ public class SaveScript : MonoBehaviour
     LinkedListNode<NonMonoWeapon> wepNode = null;
     LinkedListNode<NonMonoConsumable> conNode = null;
     [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
+    [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
 
     void Start()
     {
@@ -168,6 +169,8 @@ public class SaveScript : MonoBehaviour
         int playerGold = playerInventory.GetCoins();
         int playerBoxes = playerInventory.GetBoxPieces();
         int bulletCount = playerInventory.GetBulletCount();
+        int mountainWall = player.iceWall;
+        int desertWall = player.cactusWall;
         string animalName = "";
         if (player.GetCompanion() != null)
         {
@@ -256,6 +259,8 @@ public class SaveScript : MonoBehaviour
         PlayerPrefs.SetInt($"Gold{saveSlot}", playerGold);
         PlayerPrefs.SetInt($"Boxes{saveSlot}", playerBoxes);
         PlayerPrefs.SetInt($"BulletCount{saveSlot}", bulletCount);
+        PlayerPrefs.SetInt($"IceWall{saveSlot}", mountainWall);
+        PlayerPrefs.SetInt($"CactusWall{saveSlot}", desertWall);
         PlayerPrefs.SetString($"AnimalName{saveSlot}", animalName);
 
         PlayerPrefs.Save();
@@ -282,6 +287,8 @@ public class SaveScript : MonoBehaviour
             int playerBoxes = PlayerPrefs.GetInt($"Boxes{saveSlot}");
             string animalName = PlayerPrefs.GetString($"AnimalName{saveSlot}");
             int bulletCount = PlayerPrefs.GetInt($"BulletCount{saveSlot}");
+            player.iceWall = PlayerPrefs.GetInt($"IceWall{saveSlot}");
+            player.cactusWall = PlayerPrefs.GetInt($"CactusWall{saveSlot}");
 
             for (int i = 0; i < animalCompanions.Length; i++)
             {
@@ -423,6 +430,10 @@ public class SaveScript : MonoBehaviour
             playerInventory.SetCoins(playerGold);
             playerInventory.SetBoxPieces(playerBoxes);
             playerInventory.SetBulletCount(bulletCount);
+            if (player.cactusWall == 1)
+                areaDoors[1].SetActive(false);
+            if (player.iceWall == 1)
+                areaDoors[0].SetActive(false);
             GetComponent<CharacterController>().enabled = false;
             if (player.GetLives() <= 0)
             {
@@ -454,16 +465,7 @@ public class SaveScript : MonoBehaviour
         }
         else
         {
-            if (player.GetLives() <= 0)
-            {
-                conManager.TimerSet("fire", 0);
-                conManager.TimerSet("thaw", 0);
-                conManager.TimerSet("stun", 0);
-                player.SetPosition(player.GetPosition());
-                StartCoroutine(player.Invincible());
-            }
-            else
-                player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
+            player.SetPosition(new Vector3(-1.4f, -9.9f, -55.6f));
             player.SetLives(5);
         }
     }

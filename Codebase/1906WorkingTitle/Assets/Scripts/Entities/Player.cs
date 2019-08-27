@@ -36,6 +36,8 @@ public class Player : MonoBehaviour
     private bool isAbleToDash = true;
     public bool enemyRespawn = false;
     public bool isInvincible = false;
+    [HideInInspector] public int iceWall = 0;
+    [HideInInspector] public int cactusWall = 0;
     #endregion
 
     #region UnityComponents
@@ -305,9 +307,7 @@ public class Player : MonoBehaviour
 
     public void Death()
     {
-        animator.SetBool("Death", true);
         gameOver.SetActive(true);
-        gameObject.SetActive(false);
     }
 
     private void OnCollisionEnter(Collision collision)

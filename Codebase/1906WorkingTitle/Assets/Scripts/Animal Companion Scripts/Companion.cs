@@ -153,7 +153,9 @@ public class Companion : MonoBehaviour
             else if (name == "Scavenger Companion")
                 if (playerStats.GetExperience() > previousExp)
                 {
-                    Instantiate(potion, transform.position, transform.rotation);
+                    int randomNumber = Random.Range(0, int.MaxValue);
+                    if (randomNumber % 2 == 0)
+                        Instantiate(potion, transform.position, transform.rotation);
                     previousExp = playerStats.GetExperience();
                 }
             if (name != "Fire Resist Companion" && name != "Movement Speed Companion" && name != "Shooter Companion" && name != "XP Companion" && name != "Scavenger Companion")
