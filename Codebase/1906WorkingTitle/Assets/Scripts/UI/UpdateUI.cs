@@ -220,6 +220,11 @@ public class UpdateUI : MonoBehaviour
         }
     }
 
+    public void PauseUI()
+    {
+        isPaused = true;
+    }
+
     public void ResumeGame()
     {
         if (statScreen != null)

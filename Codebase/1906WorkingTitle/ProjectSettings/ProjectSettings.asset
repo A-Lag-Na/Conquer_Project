@@ -14,8 +14,8 @@ PlayerSettings:
   accelerometerFrequency: 60
   companyName: Score_Flux
   productName: Conquer
-  defaultCursor: {fileID: 2800000, guid: e172a6b57ccab9b4dacfe9aab123543e, type: 3}
-  cursorHotspot: {x: 52, y: 52}
+  defaultCursor: {fileID: 2800000, guid: 1dfb60a711e788348b8780c0900efba3, type: 3}
+  cursorHotspot: {x: 16, y: 16}
   m_SplashScreenBackgroundColor: {r: 0.13725491, g: 0.12156863, b: 0.1254902, a: 1}
   m_ShowUnitySplashScreen: 1
   m_ShowUnitySplashLogo: 1

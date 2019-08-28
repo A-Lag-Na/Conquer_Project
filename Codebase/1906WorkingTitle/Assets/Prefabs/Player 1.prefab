@@ -4949,7 +4949,7 @@ MonoBehaviour:
   iceWall: 0
   cactusWall: 0
   fire: {fileID: 8300000, guid: 369d22e84dbde8b40a5e2f50de620941, type: 3}
-  crosshairs: {fileID: 2800000, guid: e172a6b57ccab9b4dacfe9aab123543e, type: 3}
+  crosshairs: {fileID: 2800000, guid: 1dfb60a711e788348b8780c0900efba3, type: 3}
   mainUI: {fileID: 0}
   deathAura: {fileID: 1108498970550749515}
   iceSpell: {fileID: 6187281563759390062}

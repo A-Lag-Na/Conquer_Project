@@ -34,7 +34,10 @@ public class SaveUI : MonoBehaviour
         saveTwoText = saveTwo.gameObject.GetComponentInChildren<Text>();
         saveThreeText = saveThree.gameObject.GetComponentInChildren<Text>();
         if (GameObject.Find("Main UI"))
+        {
             mainUI = GameObject.Find("Main UI");
+            mainUI.GetComponent<UpdateUI>().PauseUI();
+        }
     }
 
     private void OnEnable()
@@ -43,6 +46,8 @@ public class SaveUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.GetComponent<UpdateUI>().PauseUI();
     }
 
     private void OnDisable()

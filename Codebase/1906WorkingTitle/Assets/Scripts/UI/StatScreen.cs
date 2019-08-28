@@ -20,8 +20,6 @@ public class StatScreen : MonoBehaviour
     
     void Start()
     {
-        if(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
-            stopWatch = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
@@ -36,16 +34,6 @@ public class StatScreen : MonoBehaviour
         buttons[0].onClick.AddListener(AddSpeed);
         buttons[1].onClick.AddListener(AddDamage);
         buttons[2].onClick.AddListener(AddDefense);
-
-        ////assign buttons
-        //speedBTN = transform.Find("Attack Speed").GetChild(0).GetComponent<Button>();
-        //damageBTN = transform.Find("Attack Damage").GetChild(0).GetComponent<Button>();
-        //defenseBTN = transform.Find("Defense").GetChild(0).GetComponent<Button>();
-
-        ////assign function listeners
-        //speedBTN.onClick.AddListener(AddSpeed);
-        //damageBTN.onClick.AddListener(AddDamage);
-        //defenseBTN.onClick.AddListener(AddDefense);
 
         //assign player if found
         if (GameObject.FindGameObjectWithTag("Player"))
@@ -126,13 +114,11 @@ public class StatScreen : MonoBehaviour
         if(player.GetTrueFireRate() <= 0.2f)
         {
             buttons[0].enabled = false;
-            //speedBTN.enabled = false;
             attackMax.SetActive(true);
         }
         else
         {
             buttons[0].enabled = true;
-            //speedBTN.enabled = true;
             attackMax.SetActive(false);
         }
         int selected = 0;

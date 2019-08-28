@@ -27,7 +27,10 @@ public class LoadUI : MonoBehaviour
         loadTwoText = loadTwo.gameObject.GetComponentInChildren<Text>();
         loadThreeText = loadThree.gameObject.GetComponentInChildren<Text>();
         if (GameObject.Find("Main UI"))
+        {
             mainUI = GameObject.Find("Main UI");
+            mainUI.GetComponent<UpdateUI>().PauseUI();
+        }
     }
 
     private void Update()
@@ -54,6 +57,8 @@ public class LoadUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+        if (mainUI != null)
+            mainUI.GetComponent<UpdateUI>().PauseUI();
     }
 
     private void OnDisable()
