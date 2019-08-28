@@ -312,7 +312,7 @@ public class SaveScript : MonoBehaviour
                 float animalZ = PlayerPrefs.GetFloat($"{animalCompanions[i].name}PositionZ{saveSlot}");
                 animalCompanions[i].transform.position = new Vector3(animalX, animalY, animalZ);
                 if (animalX < -22 && animalZ < -30 && animalX > -60 && animalZ > -47)
-                    animalCompanions[i].GetComponent<Companion>().Deactivate();
+                    animalCompanions[i].GetComponent<Companion>().SaveDeactivate();
             }
 
             int weaponNumber = 1;
