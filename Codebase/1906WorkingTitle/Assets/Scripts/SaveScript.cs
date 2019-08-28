@@ -21,6 +21,8 @@ public class SaveScript : MonoBehaviour
     [SerializeField] List<GameObject> bossSpawnersDoors = new List<GameObject>();
     [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
     [SerializeField] List<ChestScript> chests = new List<ChestScript>();
+    [SerializeField] List<GameObject> dialogueTriggers = new List<GameObject>();
+    StopWatch saveTime = null;
 
     void Start()
     {
@@ -28,6 +30,7 @@ public class SaveScript : MonoBehaviour
         playerInventory = GetComponent<Inventory>();
         animalCompanions = GameObject.FindGameObjectsWithTag("Companion");
         conManager = GetComponent<ConditionManager>();
+        saveTime = GameObject.Find("Main Camera").GetComponent<StopWatch>();
     }
 
     public void Save()
@@ -172,6 +175,7 @@ public class SaveScript : MonoBehaviour
         int bulletCount = playerInventory.GetBulletCount();
         int mountainWall = player.iceWall;
         int desertWall = player.cactusWall;
+        int savedTime = saveTime.SaveTime();
         string animalName = "";
         if (player.GetCompanion() != null)
         {
@@ -249,6 +253,7 @@ public class SaveScript : MonoBehaviour
             PlayerPrefs.SetInt($"Chest{chests[i].GetListIndex()}{saveSlot}", chests[i].GetOpenChest());
         }
 
+        PlayerPrefs.SetInt($"Time{saveSlot}", savedTime);
         PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
         PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
         PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
@@ -295,6 +300,7 @@ public class SaveScript : MonoBehaviour
             int bulletCount = PlayerPrefs.GetInt($"BulletCount{saveSlot}");
             player.iceWall = PlayerPrefs.GetInt($"IceWall{saveSlot}");
             player.cactusWall = PlayerPrefs.GetInt($"CactusWall{saveSlot}");
+            int savedTime = PlayerPrefs.GetInt($"Time{saveSlot}");
 
             for (int i = 0; i < animalCompanions.Length; i++)
             {
@@ -428,6 +434,8 @@ public class SaveScript : MonoBehaviour
                     chests[i].ChestOpen();
             }
 
+            saveTime.SetSavedTime(savedTime);
+
             player.SetMovementSpeed(playerMovementSpeed);
             conManager.SetMaxSpeed(playerMovementSpeed);
             player.SetHealth(maxPlayerHealth);
@@ -469,12 +477,22 @@ public class SaveScript : MonoBehaviour
                     player.GetCompanion().Deactivate();
                 GameObject.Find(animalName).GetComponent<Companion>().Activate();
             }
+            dialogueTriggers[0].SetActive(false);
             if (playerInventory.GetBoxPieces() >= 1)
+            {
                 bossSpawnersDoors[0].SetActive(true);
+                dialogueTriggers[1].SetActive(false);
+            }
             if (playerInventory.GetBoxPieces() >= 2)
+            {
                 bossSpawnersDoors[1].SetActive(true);
+                dialogueTriggers[2].SetActive(false);
+            }
             if (playerInventory.GetBoxPieces() >= 3)
+            {
                 bossSpawnersDoors[2].SetActive(true);
+                dialogueTriggers[3].SetActive(false);
+            }
         }
         else
         {

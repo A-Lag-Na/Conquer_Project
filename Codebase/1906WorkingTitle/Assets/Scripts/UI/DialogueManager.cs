@@ -22,7 +22,7 @@ public class DialogueManager : MonoBehaviour
         //If the player can press enter "Press enter to continue" The continue prompt text will also be turned on
         if (enter)
         {   
-            continuePrompt.gameObject.SetActive(true);
+           
             if (exit)
             {
                 TextConditionsSingle();
@@ -72,7 +72,6 @@ public class DialogueManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.RightArrow))
         {
-            skipPrompt.gameObject.SetActive(true);
             skip = true;
         }
     }
@@ -92,6 +91,8 @@ public class DialogueManager : MonoBehaviour
         continuePrompt.gameObject.SetActive(false);
         yield return new WaitForSeconds(.5f);
         enter = true;
+        skipPrompt.gameObject.SetActive(true);
+        continuePrompt.gameObject.SetActive(true);
     }
 
     IEnumerator TextWaitSingle()
@@ -99,12 +100,14 @@ public class DialogueManager : MonoBehaviour
         continuePrompt.gameObject.SetActive(false);
         yield return new WaitForSeconds(.5f);
         enter = true;
+        continuePrompt.gameObject.SetActive(true);
         exit = true;
     }
 
     //When all text has gone through end the sequence
     private void EndSequence()
     {
+        skipPrompt.gameObject.SetActive(false);
         canvas.gameObject.SetActive(false);
         StopAllCoroutines();
         dialogueTriggerScript.OnDialogueEnd();

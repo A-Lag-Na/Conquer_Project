@@ -90,7 +90,7 @@ PrefabInstance:
     - target: {fileID: 1810308395457174340, guid: 8653f999264ae864aaa61b8020694860,
         type: 3}
       propertyPath: health
-      value: 25
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 1810308395457174340, guid: 8653f999264ae864aaa61b8020694860,
         type: 3}
@@ -105,7 +105,7 @@ PrefabInstance:
     - target: {fileID: 1810308395457174340, guid: 8653f999264ae864aaa61b8020694860,
         type: 3}
       propertyPath: bulletSpeed
-      value: 25
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 1810308395457174341, guid: 8653f999264ae864aaa61b8020694860,
         type: 3}
