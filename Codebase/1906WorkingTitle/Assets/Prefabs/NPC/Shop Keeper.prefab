@@ -538,7 +538,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 6
+  value: 10
   name: Fireball
   description: 
   sprite: {fileID: 0}
@@ -1270,11 +1270,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  value: 11
+  value: 175
   name: Sling
   description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
-  damage: 7
+  damage: 3
   attackSpeed: -0.1
 --- !u!82 &1504669076337411631
 AudioSource:
@@ -1536,7 +1536,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  value: 11
+  value: 275
   name: Crossbow
   description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
@@ -2108,7 +2108,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 20
   name: Defense Potion
   description: 
   sprite: {fileID: 21300000, guid: f53f7886c0cbb9144ae2f9253cd64f5f, type: 3}
@@ -2376,7 +2376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  value: 11
+  value: 325
   name: Longbow
   description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
@@ -2813,7 +2813,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 6
+  value: 20
   name: Cone of Cold
   description: 
   sprite: {fileID: 0}
@@ -3064,7 +3064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 12
   name: Ice Potion
   description: 
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 12
   name: Fire Potion
   description: 
   sprite: {fileID: 21300000, guid: f53f7886c0cbb9144ae2f9253cd64f5f, type: 3}
@@ -4084,7 +4084,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 6
+  value: 30
   name: Death Aura
   description: 
   sprite: {fileID: 0}
@@ -4874,7 +4874,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 100
   name: Damage Buff Potion
   description: 
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
@@ -5529,11 +5529,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  value: 11
+  value: 225
   name: Recurve Bow
   description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
-  damage: 6
+  damage: 4
   attackSpeed: -0.02
 --- !u!82 &1504669077682846477
 AudioSource:
@@ -6101,7 +6101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 20
   name: Love Potion
   description: 
   sprite: {fileID: 21300000, guid: a59de71c57b208240b9d48cd71852939, type: 3}
@@ -6444,7 +6444,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 40
   name: Speed Potion
   description: 
   sprite: {fileID: 21300000, guid: 76adcf4f8457f7943a57b3111757000f, type: 3}
@@ -7264,7 +7264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 0
-  value: 7
+  value: 200
   name: Shortbow
   description: 
   sprite: {fileID: 21300000, guid: 102b50cacfbf7dc48a76806505fcf600, type: 3}
@@ -8048,7 +8048,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 10
+  value: 20
   name: Health Potion
   description: Heal for 5HP
   sprite: {fileID: 21300000, guid: 76adcf4f8457f7943a57b3111757000f, type: 3}
@@ -10485,7 +10485,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 3
+  value: 7
   name: Hex Shot
   description: 
   sprite: {fileID: 0}
@@ -10552,7 +10552,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03ecec10542249f46ad6eb46f47a8569, type: 2}
+  - {fileID: 2100000, guid: 7af048a1893a86149a58389b9504b814, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10645,7 +10645,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03ecec10542249f46ad6eb46f47a8569, type: 2}
+  - {fileID: 2100000, guid: 7af048a1893a86149a58389b9504b814, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -10736,7 +10736,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 03ecec10542249f46ad6eb46f47a8569, type: 2}
+  - {fileID: 2100000, guid: 7af048a1893a86149a58389b9504b814, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11234,7 +11234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemType: 1
-  value: 6
+  value: 5
   name: Lightning Bolt
   description: 
   sprite: {fileID: 0}

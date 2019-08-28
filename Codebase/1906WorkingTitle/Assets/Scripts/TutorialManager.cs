@@ -12,6 +12,7 @@ public class TutorialManager : MonoBehaviour
     private GameObject door;
     [SerializeField] GameObject pickup = null;
     private Inventory inventoryScript = null;
+    [SerializeField] GameObject shop = null;
     int popUpIndex = 0;
     bool pressF;
 
@@ -81,7 +82,7 @@ public class TutorialManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F) || pressF)
             {
                 pressF = true;
-                if (inventoryScript.GetNumPotions() <= 0)
+                if (playerScript.GetHealth() > 1)
                 {
                     popUpIndex++;
                     playerScript.SetExperience(playerScript.GetNextLevelExperience());
@@ -100,10 +101,31 @@ public class TutorialManager : MonoBehaviour
         {
             if ((player.GetComponent<Player>().GetDamage() > 1 || player.GetComponent<Player>().GetDefense() > 1
                 || player.GetComponent<Player>().GetAttackSpeed() > 1) || Input.GetButtonDown("Open Stats") || Input.GetKeyDown(KeyCode.Escape))
+            {
+                popUpIndex++;
+                player.GetComponent<Inventory>().AddCoins(998);
+            }
+        }
+        // Shop
+        else if(popUpIndex == 7)
+        {
+            if(shop.transform.Find("Shop Camera").gameObject.activeSelf)
+                popUpIndex++;
+        }
+        // Weapons and Consumable
+        else if(popUpIndex == 8)
+        {
+            if(Input.GetButtonDown("Submit"))
+                popUpIndex++;
+        }
+        // Scrolling
+        else if(popUpIndex == 9)
+        {
+            if (Input.GetButtonDown("Submit"))
                 popUpIndex++;
         }
         //Move towards game
-        else if (popUpIndex == 7)
+        else if (popUpIndex == 10)
         {
             if (door.activeSelf)
                 door.SetActive(false);
