@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class TutorialDone : MonoBehaviour
 {
-    [SerializeField] GameObject dialogueCanvas;
+    [SerializeField] GameObject dialogueCanvas = null;
 
   //After The Tutorial is done this changes to the game scene.
     private void OnTriggerEnter(Collider other)

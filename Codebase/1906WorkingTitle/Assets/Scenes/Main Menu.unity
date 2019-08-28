@@ -331,6 +331,80 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &355619896
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 355619897}
+  - component: {fileID: 355619899}
+  - component: {fileID: 355619898}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &355619897
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355619896}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8143376993987587673}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.000030517578, y: -807.8999}
+  m_SizeDelta: {x: 593.2, y: 563.7}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &355619898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355619896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 2ec0d8117faf3c8468bdcd78cf3e7407, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &355619899
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 355619896}
+  m_CullTransparentMesh: 0
 --- !u!224 &398023956
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5915,14 +5989,15 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 355619897}
   m_Father: {fileID: 8143376993947296888}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -89.599976, y: -2421}
-  m_SizeDelta: {x: 1381.9, y: 1221.5}
+  m_AnchoredPosition: {x: -89.599976, y: -3441.2}
+  m_SizeDelta: {x: 1381.9, y: 2179.6}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &8143376993987587674
 MonoBehaviour:
@@ -5958,7 +6033,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Developers:\nTaylor Addington\nPetra Andraschko\nAlegna M. Medina Rodriguez\nJatin
-    Patel\n\nTextures/Materials/Sprites:\r\nhttps://opengameart.org/content/fireflame\r\nhttps://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets\r\nhttps://opengameart.org/content/pixel-lightning\r\nhttps://iconmonstr.com/audio-9-png/\r\nhttps://iconmonstr.com/audio-5-png/\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680\r\nhttps://www.maxpixel.net/Paper-Certificate-Roll-Scroll-Parchment-Sheet-154169\r\nhttps://pixabay.com/illustrations/seal-wax-seal-coat-of-arms-initials-2519330/\r\nhttps://www.pexels.com/photo/accuracy-action-active-activity-433077/\r\nhttps://es.wikipedia.org/wiki/Archivo:House-Tarly-Main-Shield.png\r\nhttps://commons.wikimedia.org/wiki/File:Neuschwanstein_Castle_LOC_print.jpg\r\n\r\nModels:\r\nhttp://quaternius.com/assets.html?i=2\r\nhttps://assetstore.unity.com/packages/3d/environments/forest-low-poly-toon-battle-arena-tower-defense-pack-100080\r\nhttps://assetstore.unity.com/packages/3d/environments/desert-low-poly-toon-battle-arena-tower-defense-pack-124507\r\nhttps://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-low-poly-toon-battle-arena-tower-defense-pack-109791\r\nhttps://assetstore.unity.com/packages/3d/environments/winter-forest-low-poly-toon-battle-arena-tower-defense-pack-150432\r\nhttps://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/free-cartoon-weapon-pack-23956\r\nhttps://assetstore.unity.com/packages/3d/props/old-scroll-33919\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680\r\nhttps://www.mixamo.com/#/?page=1&query=petting&type=Motion%2CMotionPack\r\nhttps://www.mixamo.com/#/?page=2&type=Character\r\nhttps://www.mixamo.com/#/?page=2&type=Character\r\nhttps://pixabay.com/vectors/crossbow-fantasy-weapon-arms-1300032/\r\nhttps://game-icons.net/1x1/lorc/heavy-arrow.html\r\nhttps://game-icons.net/1x1/delapouite/sling.html\r\nhttps://www.reinerstilesets.de/graphics/3d-grafiken/3d-sonstiges/\r\nhttps://opengameart.org/content/painterly-spell-icons-part-1\r\nhttps://opengameart.org/content/painterly-spell-icons-part-2\r\nhttps://opengameart.org/content/painterly-spell-icons-part-4\r\nhttps://opengameart.org/content/big-pack-of-hand-painted-tiling-textures\r\n\r\nMusic:\r\nhttps://westarmusic.sourceaudio.com/#!details?id=15891764\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21842151\r\nhttps://westarmusic.sourceaudio.com/#!details?id=22188822\r\nhttps://westarmusic.sourceaudio.com/#!details?id=23392168\r\nhttps://westarmusic.sourceaudio.com/#!details?id=10024505\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21840546\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21835121\r\n\r\nFonts:\r\nhttps://www.1001freefonts.com/dark-crystal.font\r\nhttps://www.1001freefonts.com/quicksand.font\r\nhttps://www.1001freefonts.com/karmafuture.font\r\nhttps://www.1001freefonts.com/goudy-mediaeval.font\r\nhttps://www.1001freefonts.com/zenda.font\r\n\r\nSFX:\r\nhttps://kenney.nl/assets/ui-audio\r\nhttps://shapeforms.itch.io/the-mint-coins-and-money-lite\r\nhttps://www.freesfx.co.uk\r\n(burning)"
+    Patel\n\nTextures/Materials/Sprites:\r\nhttps://opengameart.org/content/fireflame\r\nhttps://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets\r\nhttps://opengameart.org/content/pixel-lightning\r\nhttps://iconmonstr.com/audio-9-png/\r\nhttps://iconmonstr.com/audio-5-png/\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680\r\nhttps://www.maxpixel.net/Paper-Certificate-Roll-Scroll-Parchment-Sheet-154169\r\nhttps://pixabay.com/illustrations/seal-wax-seal-coat-of-arms-initials-2519330/\r\nhttps://www.pexels.com/photo/accuracy-action-active-activity-433077/\r\nhttps://es.wikipedia.org/wiki/Archivo:House-Tarly-Main-Shield.png\r\nhttps://commons.wikimedia.org/wiki/File:Neuschwanstein_Castle_LOC_print.jpg\r\n\r\nModels:\r\nhttp://quaternius.com/assets.html?i=2\r\nhttps://assetstore.unity.com/packages/3d/environments/forest-low-poly-toon-battle-arena-tower-defense-pack-100080\r\nhttps://assetstore.unity.com/packages/3d/environments/desert-low-poly-toon-battle-arena-tower-defense-pack-124507\r\nhttps://assetstore.unity.com/packages/3d/environments/dungeons/dungeon-low-poly-toon-battle-arena-tower-defense-pack-109791\r\nhttps://assetstore.unity.com/packages/3d/environments/winter-forest-low-poly-toon-battle-arena-tower-defense-pack-150432\r\nhttps://devilsworkshop.itch.io/low-poly-3d-and-pixel-2d-rpg-game-assets\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/free-cartoon-weapon-pack-23956\r\nhttps://assetstore.unity.com/packages/3d/props/old-scroll-33919\r\nhttps://assetstore.unity.com/packages/3d/props/weapons/low-poly-weapons-71680\r\nhttps://www.mixamo.com/#/?page=1&query=petting&type=Motion%2CMotionPack\r\nhttps://www.mixamo.com/#/?page=2&type=Character\r\nhttps://www.mixamo.com/#/?page=2&type=Character\r\nhttps://pixabay.com/vectors/crossbow-fantasy-weapon-arms-1300032/\r\nhttps://game-icons.net/1x1/lorc/heavy-arrow.html\r\nhttps://game-icons.net/1x1/delapouite/sling.html\r\nhttps://www.reinerstilesets.de/graphics/3d-grafiken/3d-sonstiges/\r\nhttps://opengameart.org/content/painterly-spell-icons-part-1\r\nhttps://opengameart.org/content/painterly-spell-icons-part-2\r\nhttps://opengameart.org/content/painterly-spell-icons-part-4\r\nhttps://opengameart.org/content/big-pack-of-hand-painted-tiling-textures\r\n\r\nMusic:\r\nhttps://westarmusic.sourceaudio.com/#!details?id=15891764\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21842151\r\nhttps://westarmusic.sourceaudio.com/#!details?id=22188822\r\nhttps://westarmusic.sourceaudio.com/#!details?id=23392168\r\nhttps://westarmusic.sourceaudio.com/#!details?id=10024505\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21840546\r\nhttps://westarmusic.sourceaudio.com/#!details?id=21835121\r\n\r\nFonts:\r\nhttps://www.1001freefonts.com/dark-crystal.font\r\nhttps://www.1001freefonts.com/quicksand.font\r\nhttps://www.1001freefonts.com/karmafuture.font\r\nhttps://www.1001freefonts.com/goudy-mediaeval.font\r\nhttps://www.1001freefonts.com/zenda.font\r\n\r\nSFX:\r\nhttps://kenney.nl/assets/ui-audio\r\nhttps://shapeforms.itch.io/the-mint-coins-and-money-lite\r\nhttps://www.freesfx.co.uk\r"
 --- !u!222 &8143376993987587675
 CanvasRenderer:
   m_ObjectHideFlags: 0
