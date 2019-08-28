@@ -4814,7 +4814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d798a36caa0d374b9b9d20dcfdbd155, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleDamage: 0.2
+  particleDamage: 0.05
 --- !u!114 &-7862210702073185784
 MonoBehaviour:
   m_ObjectHideFlags: 0
