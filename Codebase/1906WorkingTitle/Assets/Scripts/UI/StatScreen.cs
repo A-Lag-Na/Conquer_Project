@@ -15,10 +15,13 @@ public class StatScreen : MonoBehaviour
     private Text currentLevelText, nextLevelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
     private GameObject mainUI = null, attackMax = null;
+    private StopWatch stopWatch = null;
     #endregion
     
     void Start()
     {
+        if(GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
+            stopWatch = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
@@ -33,6 +36,7 @@ public class StatScreen : MonoBehaviour
         buttons[0].onClick.AddListener(AddSpeed);
         buttons[1].onClick.AddListener(AddDamage);
         buttons[2].onClick.AddListener(AddDefense);
+        
 
         //assign player if found
         if (GameObject.FindGameObjectWithTag("Player"))
@@ -58,6 +62,9 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             if (go.name != "Stat Screen")
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+
+        if(stopWatch != null)
+            stopWatch.PauseStopWatch();
         buttons[0].Select();
     }
 
@@ -110,11 +117,13 @@ public class StatScreen : MonoBehaviour
         if(player.GetTrueFireRate() <= 0.2f)
         {
             buttons[0].enabled = false;
+            //speedBTN.enabled = false;
             attackMax.SetActive(true);
         }
         else
         {
             buttons[0].enabled = true;
+            //speedBTN.enabled = true;
             attackMax.SetActive(false);
         }
         int selected = 0;
@@ -138,6 +147,8 @@ public class StatScreen : MonoBehaviour
             foreach (GameObject go in objects)
                 if (go.name != "Stat Screen")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
+            if(stopWatch != null)
+                stopWatch.PauseStopWatch();
         }
         if (buttons != null && buttons[0] != null)
         {
@@ -172,6 +183,8 @@ public class StatScreen : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
+        if (stopWatch != null)
+            stopWatch.ResumeStopWatch();
         if (mainUI != null)
         {
             mainUI.GetComponent<UpdateUI>().ResumeGame();

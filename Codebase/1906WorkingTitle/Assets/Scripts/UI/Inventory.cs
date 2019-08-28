@@ -12,6 +12,7 @@ public class Inventory : MonoBehaviour
 
     [HideInInspector] public LinkedList<NonMonoWeapon> weaponList = new LinkedList<NonMonoWeapon>();
     [HideInInspector] public LinkedList<NonMonoConsumable> consumableList = new LinkedList<NonMonoConsumable>();
+    private bool isPaused;
     private Player player = null;
     private ConditionManager con = null;
     [SerializeField] private int bulletCount;
@@ -27,27 +28,29 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if (weaponNode != null)
+        if (!isPaused)
         {
-            if (Input.GetAxis("Mouse ScrollWheel") > 0f)
-                CycleWeaponForward();
-            if (Input.GetAxis("Mouse ScrollWheel") < 0f)
-                CycleWeaponBackward();
-        }
+            if (weaponNode != null)
+            {
+                if (Input.GetAxis("Mouse ScrollWheel") > 0f)
+                    CycleWeaponForward();
+                if (Input.GetAxis("Mouse ScrollWheel") < 0f)
+                    CycleWeaponBackward();
+            }
 
-        if (consumableNode != null)
-        {
-            if (Input.GetButtonDown("Potion Scroll Up"))
-                CycleConsumableForward();
-            if (Input.GetButtonDown("Potion Scroll Down"))
-                CycleConsumableBackward();
-        }
+            if (consumableNode != null)
+            {
+                if (Input.GetButtonDown("Potion Scroll Up"))
+                    CycleConsumableForward();
+                if (Input.GetButtonDown("Potion Scroll Down"))
+                    CycleConsumableBackward();
+            }
 
-        if (Input.GetButtonDown("Use Potion"))
-        {
-            StartCoroutine(ConsumableTimer());
+            if (Input.GetButtonDown("Use Potion"))
+            {
+                StartCoroutine(ConsumableTimer());
+            }
         }
-
         amountOfPotions = consumableList.Count;
     }
 
@@ -381,11 +384,15 @@ public class Inventory : MonoBehaviour
     }
     #endregion
 
-    public NonMonoWeapon GetWeaponNodeValue()
+    #region Pause
+    public void OnPauseGame()
     {
-        if (weaponNode != null)
-            return weaponNode.Value;
-        else
-            return null;
+        isPaused = true;
     }
+
+    public void OnResumeGame()
+    {
+        isPaused = false;
+    }
+    #endregion
 }

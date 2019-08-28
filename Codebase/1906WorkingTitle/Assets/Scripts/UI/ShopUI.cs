@@ -13,10 +13,13 @@ public class ShopUI : MonoBehaviour
     private GameObject mainUI, denyScreen = null;
     private BaseItem currentItem = null;
     private int coins = 0;
+    private StopWatch stopWatch = null;
     #endregion
-    
+
     void Start()
     {
+        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
+            stopWatch = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>();
         if (GameObject.Find("Main UI"))
         {
             mainUI = GameObject.Find("Main UI");
@@ -69,8 +72,8 @@ public class ShopUI : MonoBehaviour
             foreach (GameObject go in objects)
                 if (go.name != "Shop UI")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
-                GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().PauseStopWatch();
+            if (stopWatch != null)
+                stopWatch.PauseStopWatch();
             mainUI.SetActive(false);
         }
     }
@@ -82,8 +85,8 @@ public class ShopUI : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>())
-            GameObject.FindGameObjectWithTag("MainCamera").GetComponent<StopWatch>().ResumeStopWatch();
+        if (stopWatch != null)
+            stopWatch.ResumeStopWatch();
         transform.parent.gameObject.SetActive(false);
         if (mainUI != null)
         {
