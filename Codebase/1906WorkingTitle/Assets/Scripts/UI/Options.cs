@@ -20,7 +20,7 @@ public class Options : MonoBehaviour
             headUI = GameObject.Find("Main Menu");
         if(headUI != null)
             headUI.SetActive(false);
-        backBTN = transform.Find("OptionsBack").GetComponent<Button>();
+        backBTN = transform.Find("Sound").Find("OptionsBack").GetComponent<Button>();
         backBTN.Select();
     }
 

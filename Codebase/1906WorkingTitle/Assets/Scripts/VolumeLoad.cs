@@ -9,10 +9,33 @@ public class VolumeLoad : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // master volume
+        if(PlayerPrefs.HasKey("masterVolume"))
+            masterVolume = PlayerPrefs.GetFloat("masterVolume");
+        else
+        {
+            masterVolume = 1.0f;
+            PlayerPrefs.SetFloat("masterVolume", masterVolume);
+        }
 
-        musicVolume = PlayerPrefs.GetFloat("musicVolume");
-        sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
-        masterVolume = PlayerPrefs.GetFloat("masterVolume");
+        // music volume
+        if (PlayerPrefs.HasKey("musicVolume"))
+            musicVolume = PlayerPrefs.GetFloat("musicVolume");
+        else
+        {
+            musicVolume = 1.0f;
+            PlayerPrefs.SetFloat("musicVolume", musicVolume);
+        }
+
+        // sfx volume
+        if (PlayerPrefs.HasKey("sfxVolume"))
+            sfxVolume = PlayerPrefs.GetFloat("sfxVolume");
+        else
+        {
+            sfxVolume = 1.0f;
+            PlayerPrefs.SetFloat("sfxVolume", sfxVolume);
+        }
+
         AudioListener.volume = masterVolume;
 
         AudioSource[] mixers = GetComponentsInParent<AudioSource>();

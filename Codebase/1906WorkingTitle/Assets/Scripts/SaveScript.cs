@@ -22,6 +22,7 @@ public class SaveScript : MonoBehaviour
     [SerializeField] List<GameObject> areaDoors = new List<GameObject>();
     [SerializeField] List<ChestScript> chests = new List<ChestScript>();
     [SerializeField] List<GameObject> dialogueTriggers = new List<GameObject>();
+    StopWatch saveTime = null;
 
     void Start()
     {
@@ -29,6 +30,7 @@ public class SaveScript : MonoBehaviour
         playerInventory = GetComponent<Inventory>();
         animalCompanions = GameObject.FindGameObjectsWithTag("Companion");
         conManager = GetComponent<ConditionManager>();
+        saveTime = GameObject.Find("Main Camera").GetComponent<StopWatch>();
     }
 
     public void Save()
@@ -173,6 +175,7 @@ public class SaveScript : MonoBehaviour
         int bulletCount = playerInventory.GetBulletCount();
         int mountainWall = player.iceWall;
         int desertWall = player.cactusWall;
+        int savedTime = saveTime.SaveTime();
         string animalName = "";
         if (player.GetCompanion() != null)
         {
@@ -250,6 +253,7 @@ public class SaveScript : MonoBehaviour
             PlayerPrefs.SetInt($"Chest{chests[i].GetListIndex()}{saveSlot}", chests[i].GetOpenChest());
         }
 
+        PlayerPrefs.SetInt($"Time{saveSlot}", savedTime);
         PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
         PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
         PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
@@ -296,6 +300,7 @@ public class SaveScript : MonoBehaviour
             int bulletCount = PlayerPrefs.GetInt($"BulletCount{saveSlot}");
             player.iceWall = PlayerPrefs.GetInt($"IceWall{saveSlot}");
             player.cactusWall = PlayerPrefs.GetInt($"CactusWall{saveSlot}");
+            int savedTime = PlayerPrefs.GetInt($"Time{saveSlot}");
 
             for (int i = 0; i < animalCompanions.Length; i++)
             {
@@ -428,6 +433,8 @@ public class SaveScript : MonoBehaviour
                 if (chests[i].GetOpenChest() == 1)
                     chests[i].ChestOpen();
             }
+
+            saveTime.SetSavedTime(savedTime);
 
             player.SetMovementSpeed(playerMovementSpeed);
             conManager.SetMaxSpeed(playerMovementSpeed);
