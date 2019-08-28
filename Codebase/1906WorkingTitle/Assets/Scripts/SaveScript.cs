@@ -282,6 +282,7 @@ public class SaveScript : MonoBehaviour
     {
         if (PlayerPrefs.HasKey($"MoveSpeed{saveSlot}"))
         {
+            saveTime = GameObject.Find("Main Camera").GetComponent<StopWatch>();
             float playerX = PlayerPrefs.GetFloat($"PlayerX{saveSlot}");
             float playerY = PlayerPrefs.GetFloat($"PlayerY{saveSlot}");
             float playerZ = PlayerPrefs.GetFloat($"PlayerZ{saveSlot}");

@@ -30,6 +30,8 @@ public class DialogueTriggerScript : MonoBehaviour
             playerScript.isStunned = true;
             playerAnimator.enabled = false;
             dialogueCanvas.gameObject.SetActive(true);
+            if (dialogueName == "Welcome")
+                gameObject.SetActive(false);
 
             if (baseNPC.name == "Zookeeper")
             {
