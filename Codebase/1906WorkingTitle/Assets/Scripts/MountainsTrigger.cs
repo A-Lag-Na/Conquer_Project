@@ -9,20 +9,23 @@ public class MountainsTrigger : MonoBehaviour
     [SerializeField] private GameObject iceBarrier = null;
     //Particle effect for the fire
     [SerializeField] private GameObject fireOne = null;
+    bool active;
     Player playerSave = null;
     #endregion
 
     private void Start()
     {
         playerSave = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        active = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         // the coroutine wont start unless triggered by the fire bullet, ice bullet and normal bullet will not have an effect on the barrier
-        if (other.tag == "Fire Bullet")
+        if (other.tag == "Fire Bullet" && !active)
         {
             StartCoroutine(BurnPath());
+            active = true;
             playerSave.iceWall = 1;
         }
     }
