@@ -32,7 +32,7 @@ public class MenuButtonSounds : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        button.Select();
+        EventSystem.current.SetSelectedGameObject(button.gameObject, eventData);
         source.PlayOneShot(hover);
     }
 }

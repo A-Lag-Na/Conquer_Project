@@ -68,8 +68,6 @@ public class TutorialManager : MonoBehaviour
         {
             if (spawnScript.GetPointsRemaining() < 1 && spawnScript.GetNumEnemies() == 0)
             {
-                playerScript.SetExperience(playerScript.GetNextLevelExperience());
-                playerScript.LevelUp();
                 popUpIndex++;
                 playerScript.SetHealth(1);
                 pickup.SetActive(true);
@@ -84,7 +82,11 @@ public class TutorialManager : MonoBehaviour
             {
                 pressF = true;
                 if (inventoryScript.GetNumPotions() <= 0)
+                {
                     popUpIndex++;
+                    playerScript.SetExperience(playerScript.GetNextLevelExperience());
+                    playerScript.LevelUp();
+                }
             }
         }
         //Activating the stats screen N
