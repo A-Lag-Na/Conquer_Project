@@ -96,9 +96,9 @@ public class Player : MonoBehaviour
             mainUI = GameObject.Find("Main UI");
 
         #if UNITY_STANDALONE
-                Cursor.SetCursor(crosshairs, new Vector2(52, 52), CursorMode.Auto);
+                Cursor.SetCursor(crosshairs, new Vector2(16, 16), CursorMode.Auto);
         #elif UNITY_WEBGL
-                Cursor.SetCursor(crosshairs, new Vector2(52, 52), CursorMode.ForceSoftware);
+                Cursor.SetCursor(crosshairs, new Vector2(16, 16), CursorMode.ForceSoftware);
         #endif
 
         if (gameOver != null)

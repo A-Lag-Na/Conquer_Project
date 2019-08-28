@@ -15,7 +15,6 @@ public class StatScreen : MonoBehaviour
     private Text currentLevelText, nextLevelText, healthText, movementSpeedText, attackSpeedText, damageText, defenseText, pointsText = null;
     private RectTransform levelTransform = null;
     private GameObject mainUI = null, attackMax = null;
-    private StopWatch stopWatch;
     #endregion
     
     void Start()
@@ -59,9 +58,6 @@ public class StatScreen : MonoBehaviour
         foreach (GameObject go in objects)
             if (go.name != "Stat Screen")
                 go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-
-        if(stopWatch != null)
-            stopWatch.PauseStopWatch();
         buttons[0].Select();
     }
 
@@ -142,8 +138,6 @@ public class StatScreen : MonoBehaviour
             foreach (GameObject go in objects)
                 if (go.name != "Stat Screen")
                     go.SendMessage("OnPauseGame", SendMessageOptions.DontRequireReceiver);
-            if(stopWatch != null)
-                stopWatch.PauseStopWatch();
         }
         if (buttons != null && buttons[0] != null)
         {
@@ -178,8 +172,6 @@ public class StatScreen : MonoBehaviour
         Object[] objects = FindObjectsOfType(typeof(GameObject));
         foreach (GameObject go in objects)
             go.SendMessage("OnResumeGame", SendMessageOptions.DontRequireReceiver);
-        if (stopWatch != null)
-            stopWatch.ResumeStopWatch();
         if (mainUI != null)
         {
             mainUI.GetComponent<UpdateUI>().ResumeGame();
