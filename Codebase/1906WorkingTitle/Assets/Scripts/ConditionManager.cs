@@ -12,7 +12,7 @@ public class ConditionManager : MonoBehaviour
     [SerializeField] private int fireTimer = 0;
     [SerializeField] private int thawTimer = 0;
     private float fireDamage = 1.0f;
-    private float auraDamage = 0.1f;
+    private float auraDamage = 0.05f;
     private int stunTimer = 0;
     private int auraTimer = 0;
     private bool isPlayer = false;

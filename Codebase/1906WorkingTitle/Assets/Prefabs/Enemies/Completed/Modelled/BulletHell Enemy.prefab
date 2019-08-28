@@ -90,7 +90,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyPoints: 10
-  health: 50
+  health: 250
   damage: 5
   attackRate: 0.1
   bulletSpeed: 10
