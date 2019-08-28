@@ -30,11 +30,11 @@ public class SaveScript : MonoBehaviour
         playerInventory = GetComponent<Inventory>();
         animalCompanions = GameObject.FindGameObjectsWithTag("Companion");
         conManager = GetComponent<ConditionManager>();
-        saveTime = GameObject.Find("Main Camera").GetComponent<StopWatch>();
     }
 
     public void Save()
     {
+        saveTime = GameObject.Find("Main Camera").GetComponent<StopWatch>();
         int weaponNumber = 1;
         while (PlayerPrefs.HasKey($"Weapon{weaponNumber}{saveSlot}"))
         {
