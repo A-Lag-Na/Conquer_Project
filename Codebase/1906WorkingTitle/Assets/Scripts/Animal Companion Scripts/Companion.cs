@@ -283,6 +283,14 @@ public class Companion : MonoBehaviour
         hasDeactivated = true;
     }
 
+    public void SaveDeactivate()
+    {
+        playerStats.ResetCompanion();
+        isFollowing = false;
+        companionAura.SetActive(false);
+        hasDeactivated = true;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (name == "Melee Companion")

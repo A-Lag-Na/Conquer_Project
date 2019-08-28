@@ -10,10 +10,12 @@ public class MainMenu : MonoBehaviour
     //private Button startBTN, loadBTN, tutorialBTN, creditsBTN, optionsBTN, exitBTN = null;
     private Button[] buttons;
     private GameObject credits, options = null;
+    GameObject music = null;
     #endregion
     
     void Start()
     {
+        music = GameObject.Find("Menu Music");
         buttons = transform.GetComponentsInChildren<Button>();
         //assign buttons
         ////startBTN = transform.Find("Start Game").GetComponent<Button>();
@@ -84,6 +86,7 @@ public class MainMenu : MonoBehaviour
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/IntroLetter"));
         StartCoroutine(clone.GetComponent<IntroLetterLoader>().LoadNewScene(2));
         buttons[0].enabled = false;
+        music.SetActive(false);
     }
 
     private void LoadGame()
@@ -91,6 +94,7 @@ public class MainMenu : MonoBehaviour
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadSceneandSettings(2));
         buttons[1].enabled = false;
+        music.SetActive(false);
     }
 
     private void Tutorial()
@@ -98,6 +102,7 @@ public class MainMenu : MonoBehaviour
         GameObject clone = Instantiate(Resources.Load<GameObject>("Prefabs/UI/SceneLoader"));
         StartCoroutine(clone.GetComponent<SceneLoader>().LoadNewScene(1));
         buttons[2].enabled = false;
+        music.SetActive(false);
     }
 
     private void Credits()
