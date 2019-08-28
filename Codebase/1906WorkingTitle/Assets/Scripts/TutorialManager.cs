@@ -89,7 +89,7 @@ public class TutorialManager : MonoBehaviour
                 }
             }
         }
-        //Activating the stats screen N
+        //Activating the stats screen
         else if (popUpIndex == 5)
         {
             if (Input.GetButtonDown("Open Stats"))

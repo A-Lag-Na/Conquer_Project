@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 135539862}
   - component: {fileID: 135539861}
   m_Layer: 5
-  m_Name: Text (4)
+  m_Name: Potion Usage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -342,7 +342,7 @@ GameObject:
   - component: {fileID: 188136174}
   - component: {fileID: 188136173}
   m_Layer: 5
-  m_Name: Text (5)
+  m_Name: Leveling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -740,7 +740,7 @@ GameObject:
   - component: {fileID: 427740117}
   - component: {fileID: 427740116}
   m_Layer: 5
-  m_Name: Text (6)
+  m_Name: Stats
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -978,7 +978,7 @@ GameObject:
   - component: {fileID: 604274870}
   - component: {fileID: 604274869}
   m_Layer: 5
-  m_Name: Text (3)
+  m_Name: Fighting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1118,7 +1118,7 @@ GameObject:
   - component: {fileID: 787889308}
   - component: {fileID: 787889307}
   m_Layer: 5
-  m_Name: Text (7)
+  m_Name: Continue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1313,7 +1313,7 @@ GameObject:
   - component: {fileID: 1074933561}
   - component: {fileID: 1074933560}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Movement
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1632,7 +1632,7 @@ GameObject:
   - component: {fileID: 1346315396}
   - component: {fileID: 1346315395}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: Dashing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 1415448496}
   - component: {fileID: 1415448495}
   m_Layer: 5
-  m_Name: Text (2)
+  m_Name: Shooting
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
