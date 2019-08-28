@@ -76,6 +76,9 @@ public class SaveUI : MonoBehaviour
             saveThreeText.text = $"Save 3\nLevel: {PlayerPrefs.GetInt($"Level{3}")}\nBox Pieces: {PlayerPrefs.GetInt($"Boxes{3}")}";
         else
             saveThreeText.text = "Save 3";
+
+        if(Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.P))
+            TurnOff();
     }
 
     private void SelectOne()
