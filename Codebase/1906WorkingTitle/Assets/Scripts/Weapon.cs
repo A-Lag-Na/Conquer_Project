@@ -26,4 +26,9 @@ public class Weapon : BaseItem
     {
         attackSpeed = _attackspeed;
     }
+
+    private void Start()
+    {
+        SetDesc($"This weapon deals {damage} damage and adds {attackSpeed * 10} to your attack speed");
+    }
 }
