@@ -175,7 +175,7 @@ public class SaveScript : MonoBehaviour
         int bulletCount = playerInventory.GetBulletCount();
         int mountainWall = player.iceWall;
         int desertWall = player.cactusWall;
-        int savedTime = saveTime.SaveTime();
+        System.TimeSpan savedTime = saveTime.SaveTime();
         string animalName = "";
         if (player.GetCompanion() != null)
         {
@@ -253,7 +253,8 @@ public class SaveScript : MonoBehaviour
             PlayerPrefs.SetInt($"Chest{chests[i].GetListIndex()}{saveSlot}", chests[i].GetOpenChest());
         }
 
-        PlayerPrefs.SetInt($"Time{saveSlot}", savedTime);
+        PlayerPrefs.SetInt($"TimeMinutes{saveSlot}", savedTime.Minutes);
+        PlayerPrefs.SetInt($"TimeSeconds{saveSlot}", savedTime.Seconds);
         PlayerPrefs.SetFloat($"PlayerX{saveSlot}", playerPosition.x);
         PlayerPrefs.SetFloat($"PlayerY{saveSlot}", playerPosition.y);
         PlayerPrefs.SetFloat($"PlayerZ{saveSlot}", playerPosition.z);
@@ -300,7 +301,8 @@ public class SaveScript : MonoBehaviour
             int bulletCount = PlayerPrefs.GetInt($"BulletCount{saveSlot}");
             player.iceWall = PlayerPrefs.GetInt($"IceWall{saveSlot}");
             player.cactusWall = PlayerPrefs.GetInt($"CactusWall{saveSlot}");
-            int savedTime = PlayerPrefs.GetInt($"Time{saveSlot}");
+            int savedTimeMinutes = PlayerPrefs.GetInt($"TimeMinutes{saveSlot}");
+            int savedTimeSeconds = PlayerPrefs.GetInt($"TimeSeconds{saveSlot}");
 
             for (int i = 0; i < animalCompanions.Length; i++)
             {
@@ -434,7 +436,7 @@ public class SaveScript : MonoBehaviour
                     chests[i].ChestOpen();
             }
 
-            saveTime.SetSavedTime(savedTime);
+            saveTime.SetSavedTime(new System.TimeSpan(0, savedTimeMinutes, savedTimeSeconds));
 
             player.SetMovementSpeed(playerMovementSpeed);
             conManager.SetMaxSpeed(playerMovementSpeed);

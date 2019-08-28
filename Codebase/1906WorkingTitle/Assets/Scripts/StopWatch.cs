@@ -6,7 +6,7 @@ using UnityEngine;
 public class StopWatch : MonoBehaviour
 {
     Stopwatch stopWatch = new Stopwatch();
-    int savedTime = 0;
+    System.TimeSpan savedTime;
 
     // Start is called before the first frame update
     void Start()
@@ -23,7 +23,7 @@ public class StopWatch : MonoBehaviour
     public System.TimeSpan Stop()
     {
         stopWatch.Stop();
-        return stopWatch.Elapsed;
+        return stopWatch.Elapsed.Add(savedTime);
     }
 
     public void PauseStopWatch()
@@ -36,12 +36,12 @@ public class StopWatch : MonoBehaviour
         stopWatch.Start();
     }
 
-    public int SaveTime()
+    public System.TimeSpan SaveTime()
     {
-        return stopWatch.Elapsed.Minutes;
+        return stopWatch.Elapsed;
     }
 
-    public void SetSavedTime(int _time)
+    public void SetSavedTime(System.TimeSpan _time)
     {
         savedTime = _time;
     }
